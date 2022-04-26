@@ -98,20 +98,44 @@ Best Current Practice [insert reference] applies to the OAuth Device
 Authroization Grant. 
 
 # Attacks and Mitigations
-The Device Authorization Grant allows a user to complete an authorization 
-request on a different device from the one on which the request is 
-initiatiated. This is commonly achieved by presenting the user code and 
-the verification URI obtained by the client from the authorization server 
-to the user. The user access the verification URI and enters the user code, 
-thereby transferring the session from the client device to the authorization
-device.
 
 ## Illicit Consent Grant Attack with Legitimate Device
-A (A1) Web Attacker as described in [insert reference] has control of a 
-legitimate client device such as a smart TV, interactive whiteboard, 
-or printer. The attacker uses this device to initiate the Device 
-Authorization Grant. The attacker, by virtue of having access to the client
-device, obtains the user code and proceeds to present it to 
+### Threat
+The Device Authorization Grant allows a user to complete an authorization 
+request on a different device from the one on which the request is 
+initiatiated. This is achieved by presenting the user code and 
+the verification URI obtained by the client from the authorization server 
+to the user. The user access the verification URI and enters the user code
+on their authroization device, thereby binding the authorisation request 
+initiatied on the client to the authorization device. This reliance on the user 
+to complete the protocol is exploited by a number of attacks ([ref1], [ref2], 
+[ref3]).
+
+In these attacks, an (A1) Web Attacker as described in [insert reference] that 
+has access to a legitimate client device such as a smart TV, interactive 
+whiteboard, or printer can inititate the Device Authorization Grant and obtain a 
+verification uri (verification_uri) and user code (user_code). The attacker 
+proceeds to trick the user into accesing the verification uri, enter the user code
+and complete the authroization step, thereby obtaining illicit consent from the user
+to access their resources. 
+
+The attacker uses a number of common social engineering techniques similar to those 
+employed in phishing attacks to convince the user to complete these steps. For 
+example, the attacker may send an e-mail to an end user, informing them that they 
+will be logged out of their service, unless they go to the verification URI, enter 
+the user code and complete the authorization. The attacker may perform a targeted 
+attack to obtain consent from a specific user, or may perfrom a "spray" attack, by 
+sending such an e-mail to a broad audience in the hope that one of them will respond 
+and authorise the request. Illicit consent grant attacks use similar techniques to 
+phishing attacks but unlike phishing attacks does not collect the users credentials. 
+Instead, it tricks the user into granting consent, thereby bypassing phishing 
+countermeasures like multi-factor authentication. It can be executed without certain
+aspects of phishing infrastructure, like web-sies that are setup to collct user 
+credentials, which in turn makes these attacks harder to detect and requires different 
+countermeasures.
+
+### Countermeasures
+
 
 ## Illicit Consent Grant Attack with Compromised Device
 
@@ -124,7 +148,7 @@ legitimate client device. The attacker uses this device to initiate the
 
 ### Token Exfiltration Attack
 
-### Countermeasures
+
 
 # IANA Considerations {#IANA}
 
