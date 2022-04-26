@@ -100,7 +100,7 @@ Authroization Grant.
 # Attacks and Mitigations
 
 ## Illicit Consent Grant Attack with Legitimate Device
-### Threat
+### Attack 
 The Device Authorization Grant allows a user to complete an authorization 
 request on a different device from the one on which the request is 
 initiatiated. This is achieved by presenting the user code and 
@@ -134,7 +134,7 @@ aspects of phishing infrastructure, like web-sies that are setup to collct user
 credentials, which in turn makes these attacks harder to detect and requires different 
 countermeasures.
 
-### Countermeasures
+### Mitigation
 
 
 ## Illicit Consent Grant Attack with Compromised Device
