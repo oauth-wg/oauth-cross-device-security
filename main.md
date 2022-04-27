@@ -1,5 +1,5 @@
 %%%
-title = "Cross-Device Flow Security Best Current Practice"
+title = "Device Authorisation Grant Flow Security Best Current Practice"
 abbrev = "CDFS"
 ipr = "trust200902"
 area = "Security"
