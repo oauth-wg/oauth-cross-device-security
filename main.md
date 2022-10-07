@@ -1,5 +1,5 @@
 %%%
-title = "Device Authorisation Grant Flow Security Best Current Practice"
+title = "Cross Device Flows: Security Best Current Practice"
 abbrev = "CDFS"
 ipr = "trust200902"
 area = "Security"
@@ -44,39 +44,63 @@ organization="Okta"
 
 .# Abstract 
 
-This document describes security considerations and the current best 
-practices for the OAuth 2.0 Device Authorization Grant [@RFC2119]. It 
-updates and extends the security considerations for the OAuth 2.0 
-Device Authorization Grant with new threats and mitigations that 
-reflect practical experiences gathered since it was published. 
+This document describes the threats against cross-device flows 
+along with near term mitigations, protocol selection guidance 
+and the analytical tools needed to evaluate the effectiveness of 
+these mitigations. It serves as a security guide to system designers, 
+architects, product managers, security specialists, fraud analysts 
+and engineers implementing cross-device flows.
 
 {mainmatter}
 
 
 # Introduction {#Introduction}
-The OAuth Device Authroization Grant [@RFC2119] is an OAuth 2.0 [@RFC6749] 
-protocol extension that enables OAuth clients to request user authorization 
-from applications on devices that have limited input capabilities or lack a 
-suitable browser. Such devices include smart TVs, media consoles, picture 
-frames, and printers, which lack an easy input method or a suitable browser 
-required for traditional OAuth interactions. 
+Cross-device flows enable a user initiate and authorization flow on 
+one device (the initiating device) and then use a second, personally 
+trusted device (authorization device), to authorize access to a resource 
+(e.g. access to a service). 
 
-The Device Authroization Grant flow allows the user to complete the 
-authorization request on a secondary device, such as a smartphone, which 
-does have the requisite input and browser capabilities to complete the user 
-interaction.
+In a typical example of a cross-device flow, the user takes an action on 
+the initiating device by starting a purchase, adding a device to a network 
+or connecting a service to the initiating device. This action results in a 
+QR code or user code being displayed on the initiating device. The user 
+then scans the QR code or enter the user code on the authenticating device
+before completing the authorization on the authentication device. The 
+session between the initiating device and the authorization device is 
+linked through the QR code or user code.
 
-Since its publication, the OAuth Device Authroization Grant [@RFC2119] has seen 
-adoption in a variety of application areas that require authorization in 
-scenarios with constrained input capabilities. With increased adoption and popularity, 
-a number of attacks have been observed, and although some of these attacks were 
-considered in the security considerations of the OAuth Device Authroization Grant 
-[@RFC2119], continued exploitation demonstrates a need for more specific 
-recommendations, adoption of additional mitigations, and a defense in depth.
+In some variant of these flows, the user receives a push notification on 
+their authenticating device that triggers the authorization flow, removing 
+the need to scan a QR code or enter a user code manually. 
 
-This document provides updated security recommendations to address these 
-challenges. It does not supplant the security considerations described in 
-[@RFC2119], but is intended as an addition to it.
+These flows are increasingly popular and typically involve using a mobile 
+phone to scan a QR code or enter a user code displayed on an initiating 
+device (e.g. Smart TV, Kiosk, PC etc).
+
+The channel between the initiating device and the authorization device is 
+unauthenticated and relies on the user's judgment to decide whether to trust 
+a QR code, user code or the authorization request pushed to their authorization 
+device. Several publications have emerged in the public domain, describing how 
+the unauthenticated channel can be exploited using social engineering techniques 
+borrowed from phishing. Unlike traditional phishing attacks, these attacks don’t 
+harvest credentials. Instead, they skip the step of collecting credentials by 
+persuading users into granting authorization using their authorization devices. 
+Once the user grants authorization, the attacker has access to access to the users 
+resources and in some cases are able to collect access and refresh tokens. Once in 
+possession of the access and refresh tokens, the attacker may use these tokens to
+execute lateral attacks and gain additional access, or monetize the tokens by 
+selling them. These attacks are effective, even when multi-factor authentication 
+is deployed, since the attacker’s aim is not to capture and replay the credentials, 
+but rather to persuade the user to grant authorization. 
+
+In order to defend against these attacks, this document outlines three responses:
+
+    #1 Deploy practical mitigations with protocols that are susceptible to 
+    unauthenticated channel exploits.
+    #2 Select protocols that are not susceptible to unauthenticated channel exploits 
+    when possible.
+    #3 Conduct formal analysis of cross-device flows to assess susceptibility to 
+    these attacks and the effectiveness of the proposed mitigations.
 
 ## Conventions and Terminology
 
@@ -92,10 +116,26 @@ This specification uses the terms "access token", "refresh token",
 "grant type", "access token request", "access token response", and
 "client" defined by The OAuth 2.0 Authorization Framework [@!RFC6749].
 
-# The OAuth Device Authorization Grant Attacker Model
-The attacker model as described in [@RFC6819] and the OAuth 2.0 Security 
-Best Current Practice [insert reference] applies to the OAuth Device 
-Authroization Grant. 
+# Cross Device Flow
+In a cross-device flow, a user starts a scenario on the initiating device 
+(e.g. a PC) and then uses a authorization device (e.g. a smartphone) to 
+authorize access to a resource (e.g. access to a streaming service). This 
+has several benefits, including:
+
+    * Authorization on devices with limited input capabilities: End-users 
+    can authorize devices with limited input capabilities to access content 
+    (e.g. smart TVs, digital whiteboards, printers, etc).
+    * Secure authentication on shared or public devices: End-users can perform 
+    authentication and authorization using a personally trusted device, without 
+    risk of disclosing their credentials to a public or shared device. 
+    * Ubiquitous multi-factor authentication: Enables a user to use multi-factor 
+    authentication, independent of the device on which the service is being 
+    accessed (e.g. a kiosk, smart TV or shared PC).
+	* Convenience of a single, portable, credential store: Users can keep all 
+    their credentials in a mobile wallet or mobile phone that they already carry 
+    with them. 
+
+Examples of cross-device flow scenarios include:
 
 # Attacks and Mitigations
 
