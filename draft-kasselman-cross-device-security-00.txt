@@ -68,44 +68,44 @@ Table of Contents
      1.1.  Conventions and Terminology . . . . . . . . . . . . . . .   4
    2.  Cross Device Flow Concepts  . . . . . . . . . . . . . . . . .   4
      2.1.  Example A1: Authorize access to a video streaming
-           service . . . . . . . . . . . . . . . . . . . . . . . . .   5
+           service . . . . . . . . . . . . . . . . . . . . . . . . .   6
      2.2.  Example A2: Authorize access to productivity services . .   6
      2.3.  Example A3: Authorize use of a bike sharing scheme  . . .   6
      2.4.  Example A4: Authorize a financial transaction . . . . . .   6
-     2.5.  Example A5: Add a device to a network.  . . . . . . . . .   6
-     2.6.  Example A6: Remote onboarding . . . . . . . . . . . . . .   6
+     2.5.  Example A5: Add a device to a network.  . . . . . . . . .   7
+     2.6.  Example A6: Remote onboarding . . . . . . . . . . . . . .   7
    3.  Cross-Device Flow Exploits  . . . . . . . . . . . . . . . . .   7
      3.1.  Example B1: Illicit access to a video streaming
            service . . . . . . . . . . . . . . . . . . . . . . . . .   9
-     3.2.  Example B2: Illicit access to productivity services . . .   9
+     3.2.  Example B2: Illicit access to productivity services . . .  10
      3.3.  Example B3: Illicit access to physical assets . . . . . .  10
      3.4.  Example B4: Illicit Transaction Authorization . . . . . .  10
-     3.5.  Example B5: Illicit Network Join  . . . . . . . . . . . .  10
-     3.6.  Example B6: Illicit Onboarding  . . . . . . . . . . . . .  10
+     3.5.  Example B5: Illicit Network Join  . . . . . . . . . . . .  11
+     3.6.  Example B6: Illicit Onboarding  . . . . . . . . . . . . .  11
    4.  Cross-Device Protocols and Standards  . . . . . . . . . . . .  11
    5.  Mitigating Against Cross-Device Flow Attacks  . . . . . . . .  12
      5.1.  Establish Proximity . . . . . . . . . . . . . . . . . . .  13
      5.2.  Short Lived/Timebound Codes . . . . . . . . . . . . . . .  14
      5.3.  One-Time or Limited Use Codes . . . . . . . . . . . . . .  14
-     5.4.  Unique Codes  . . . . . . . . . . . . . . . . . . . . . .  14
-     5.5.  Content Filtering . . . . . . . . . . . . . . . . . . . .  14
+     5.4.  Unique Codes  . . . . . . . . . . . . . . . . . . . . . .  15
+     5.5.  Content Filtering . . . . . . . . . . . . . . . . . . . .  15
      5.6.  Trusted Devices . . . . . . . . . . . . . . . . . . . . .  15
      5.7.  Trusted Networks  . . . . . . . . . . . . . . . . . . . .  15
-     5.8.  Limited Scopes  . . . . . . . . . . . . . . . . . . . . .  15
+     5.8.  Limited Scopes  . . . . . . . . . . . . . . . . . . . . .  16
      5.9.  Short lived tokens  . . . . . . . . . . . . . . . . . . .  16
      5.10. Rate Limits . . . . . . . . . . . . . . . . . . . . . . .  16
      5.11. Sender Constrained Tokens . . . . . . . . . . . . . . . .  16
-     5.12. User Experience . . . . . . . . . . . . . . . . . . . . .  16
+     5.12. User Experience . . . . . . . . . . . . . . . . . . . . .  17
      5.13. Practical Mitigation Summary  . . . . . . . . . . . . . .  17
    6.  Protocol selection  . . . . . . . . . . . . . . . . . . . . .  18
      6.1.  IETF OAuth 2.0 Device Authorization Grant RFC8682:  . . .  18
+       6.1.1.  Description . . . . . . . . . . . . . . . . . . . . .  18
+       6.1.2.  Susceptibility  . . . . . . . . . . . . . . . . . . .  19
+       6.1.3.  Mitigations . . . . . . . . . . . . . . . . . . . . .  19
+       6.1.4.  When to use . . . . . . . . . . . . . . . . . . . . .  19
      6.2.  OpenID Foundation Client Initiated Back-Channel
            Authentication (CIBA):  . . . . . . . . . . . . . . . . .  19
-     6.3.  FIDO2/WebAuthn  . . . . . . . . . . . . . . . . . . . . .  20
-     6.4.  Protocol Selection Summary  . . . . . . . . . . . . . . .  21
-   7.  Foundational pillars  . . . . . . . . . . . . . . . . . . . .  21
-   8.  Conclusion  . . . . . . . . . . . . . . . . . . . . . . . . .  22
-   9.  Contributors  . . . . . . . . . . . . . . . . . . . . . . . .  22
+       6.2.1.  Description . . . . . . . . . . . . . . . . . . . . .  19
 
 
 
@@ -114,9 +114,23 @@ Kasselman, et al.         Expires 10 April 2023                 [Page 2]
 Internet-Draft                    CDFS                      October 2022
 
 
-   10. Informative References  . . . . . . . . . . . . . . . . . . .  23
-   Appendix A.  Document History . . . . . . . . . . . . . . . . . .  23
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  23
+       6.2.2.  Susceptibility  . . . . . . . . . . . . . . . . . . .  19
+       6.2.3.  Device capabilities . . . . . . . . . . . . . . . . .  20
+       6.2.4.  Mitigations . . . . . . . . . . . . . . . . . . . . .  20
+       6.2.5.  When to use . . . . . . . . . . . . . . . . . . . . .  20
+     6.3.  FIDO2/WebAuthn  . . . . . . . . . . . . . . . . . . . . .  20
+       6.3.1.  Description . . . . . . . . . . . . . . . . . . . . .  20
+       6.3.2.  Susceptibility  . . . . . . . . . . . . . . . . . . .  21
+       6.3.3.  Device capabilities . . . . . . . . . . . . . . . . .  21
+       6.3.4.  Mitigations . . . . . . . . . . . . . . . . . . . . .  21
+       6.3.5.  When to use . . . . . . . . . . . . . . . . . . . . .  21
+     6.4.  Protocol Selection Summary  . . . . . . . . . . . . . . .  21
+   7.  Foundational pillars  . . . . . . . . . . . . . . . . . . . .  22
+   8.  Conclusion  . . . . . . . . . . . . . . . . . . . . . . . . .  23
+   9.  Contributors  . . . . . . . . . . . . . . . . . . . . . . . .  23
+   10. Informative References  . . . . . . . . . . . . . . . . . . .  24
+   Appendix A.  Document History . . . . . . . . . . . . . . . . . .  24
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  24
 
 1.  Introduction
 
@@ -141,6 +155,21 @@ Internet-Draft                    CDFS                      October 2022
    they skip the step of collecting credentials by persuading users into
    granting authorization using their authorization devices.
 
+
+
+
+
+
+
+
+
+
+
+Kasselman, et al.         Expires 10 April 2023                 [Page 3]
+
+Internet-Draft                    CDFS                      October 2022
+
+
    Once the user grants authorization, the attacker has access to access
    to the users resources and in some cases are able to collect access
    and refresh tokens.  Once in possession of the access and refresh
@@ -160,15 +189,6 @@ Internet-Draft                    CDFS                      October 2022
    3.  Conduct formal analysis of cross-device flows to assess
        susceptibility to these attacks and the effectiveness of the
        proposed mitigations.
-
-
-
-
-
-Kasselman, et al.         Expires 10 April 2023                 [Page 3]
-
-Internet-Draft                    CDFS                      October 2022
-
 
 1.1.  Conventions and Terminology
 
@@ -192,6 +212,19 @@ Internet-Draft                    CDFS                      October 2022
    streaming service).
 
    A typical example of a cross-device flow is shown below:
+
+
+
+
+
+
+
+
+
+Kasselman, et al.         Expires 10 April 2023                 [Page 4]
+
+Internet-Draft                    CDFS                      October 2022
+
 
                               (B) Initiating Device
               +--------------+     Get QR/User Code  +---------------+
@@ -218,14 +251,6 @@ Internet-Draft                    CDFS                      October 2022
       to the initiating device.
    *  (B) The initiating device retrieves a QR code or user code from an
       authorization server
-
-
-
-Kasselman, et al.         Expires 10 April 2023                 [Page 4]
-
-Internet-Draft                    CDFS                      October 2022
-
-
    *  (C) The QR code or user code is displayed on the initiating device
       where the user scans the QR code or enter the user code on the
       authorization device
@@ -248,6 +273,15 @@ Internet-Draft                    CDFS                      October 2022
       perform authentication and authorization using a personally
       trusted device, without risk of disclosing their credentials to a
       public or shared device.
+
+
+
+
+Kasselman, et al.         Expires 10 April 2023                 [Page 5]
+
+Internet-Draft                    CDFS                      October 2022
+
+
    *  Ubiquitous multi-factor authentication: Enables a user to use
       multi-factor authentication, independent of the device on which
       the service is being accessed (e.g. a kiosk, smart TV or shared
@@ -267,20 +301,6 @@ Internet-Draft                    CDFS                      October 2022
    credentials to authorize the smart TV to access the streaming
    service.  The user enters their credentials and grant authorization,
    after which the streaming service is available on the smart TV.
-
-
-
-
-
-
-
-
-
-
-Kasselman, et al.         Expires 10 April 2023                 [Page 5]
-
-Internet-Draft                    CDFS                      October 2022
-
 
 2.2.  Example A2: Authorize access to productivity services
 
@@ -311,6 +331,13 @@ Internet-Draft                    CDFS                      October 2022
    to authorize the transaction.  The user opens their app and
    authenticates to the service before authorizing the transaction.
 
+
+
+Kasselman, et al.         Expires 10 April 2023                 [Page 6]
+
+Internet-Draft                    CDFS                      October 2022
+
+
 2.5.  Example A5: Add a device to a network.
 
    An employee is issued with a laptop computer that is already joined
@@ -330,14 +357,6 @@ Internet-Draft                    CDFS                      October 2022
    issued ID, proof of a background check and proof of their
    qualifications.  The onboarding portal displays a QR code, which the
    user scans with their mobile phone.  Scanning the QR code invokes the
-
-
-
-Kasselman, et al.         Expires 10 April 2023                 [Page 6]
-
-Internet-Draft                    CDFS                      October 2022
-
-
    employee's wallet on their mobile phone, and the employee is asked to
    present digital versions of mobile driving license, proof of a
    background check by an identity verifier and proof of their
@@ -366,6 +385,15 @@ Internet-Draft                    CDFS                      October 2022
    device (smart TV) and the device on which the authentication/
    authorization will take place (the mobile phone).
 
+
+
+
+
+Kasselman, et al.         Expires 10 April 2023                 [Page 7]
+
+Internet-Draft                    CDFS                      October 2022
+
+
    Attackers exploit this absence of an authenticated channel between
    the two devices by obtaining QR codes or user codes (e.g. by
    initiating the authorization flows).  They then use social
@@ -376,23 +404,6 @@ Internet-Draft                    CDFS                      October 2022
    or authorization request obtains access to the users resources.
    These attacks are also known as illicit consent grant attacks.  The
    figure below shows an example of such an attack.
-
-
-
-
-
-
-
-
-
-
-
-
-
-Kasselman, et al.         Expires 10 April 2023                 [Page 7]
-
-Internet-Draft                    CDFS                      October 2022
-
 
                               (B) Initiating Device
               +--------------+     Get QR/User Code  +---------------+
@@ -431,6 +442,14 @@ Internet-Draft                    CDFS                      October 2022
       initiating device.
    *  (B) The initiating device retrieves a QR code or user code from an
       authorization server
+
+
+
+Kasselman, et al.         Expires 10 April 2023                 [Page 8]
+
+Internet-Draft                    CDFS                      October 2022
+
+
    *  (C) The attacker copies the QR code or user code
    *  (D) The attacker changes the context in which the QR code or user
       code is displayed in such a way that the user is likely to scan
@@ -441,15 +460,6 @@ Internet-Draft                    CDFS                      October 2022
       enter the user code on the authorization device.
    *  (D) The user authenticates to the Authorization Server before
       granting authorization.
-
-
-
-
-Kasselman, et al.         Expires 10 April 2023                 [Page 8]
-
-Internet-Draft                    CDFS                      October 2022
-
-
    *  (E) The Authorization Server issues tokens or grants authroization
       to the initiating device, which is under the attackers control, to
       access the users resources and the attacker gains access to the
@@ -487,6 +497,15 @@ Internet-Draft                    CDFS                      October 2022
    addition of a new device, the attacker obtains an access and refresh
    token, which they sell for a profit.
 
+
+
+
+
+Kasselman, et al.         Expires 10 April 2023                 [Page 9]
+
+Internet-Draft                    CDFS                      October 2022
+
+
 3.2.  Example B2: Illicit access to productivity services
 
    An attacker emulates an enterprise application (e.g. an interactive
@@ -498,14 +517,6 @@ Internet-Draft                    CDFS                      October 2022
    that this is the third time that they have been notified and their
    last opportunity to prevent deletion of their work files.  One or
    more employees respond by following the URL, entering the code and
-
-
-
-Kasselman, et al.         Expires 10 April 2023                 [Page 9]
-
-Internet-Draft                    CDFS                      October 2022
-
-
    performing multi-factor authentication.  Once these employees
    authorized access, the attacker obtains access and refresh tokens
    from the authorization server and uses it to access the users files,
@@ -536,6 +547,21 @@ Internet-Draft                    CDFS                      October 2022
    authorize the transaction, but a small percentage grants
    authorization by approving the transaction.
 
+
+
+
+
+
+
+
+
+
+
+Kasselman, et al.         Expires 10 April 2023                [Page 10]
+
+Internet-Draft                    CDFS                      October 2022
+
+
 3.5.  Example B5: Illicit Network Join
 
    An employee that is colluding with an attacker logs into their PC and
@@ -554,14 +580,6 @@ Internet-Draft                    CDFS                      October 2022
    attacker obtains a list of potential new employees and sends an
    e-mail informing them that it is time to present proof of their
    background check or government issued ID.  The new employee scans the
-
-
-
-Kasselman, et al.         Expires 10 April 2023                [Page 10]
-
-Internet-Draft                    CDFS                      October 2022
-
-
    QR code, invokes their wallet and presents their credentials.  Once
    the credentials are presented, the employee's account is activated.
    The employee portal accessed by the attacker obtained the QR code
@@ -592,6 +610,14 @@ Internet-Draft                    CDFS                      October 2022
       user code or QR code is displayed on the initiating device and
       entered on a second device (e.g. a mobile phone).
 
+
+
+
+Kasselman, et al.         Expires 10 April 2023                [Page 11]
+
+Internet-Draft                    CDFS                      October 2022
+
+
    *  Open ID Foundation Client Initiated Back-Channel Authentication
       (CIBA): A standard under development as part of the Financial-
       grade API (FAPI) family of standards that allows a device or
@@ -608,15 +634,6 @@ Internet-Draft                    CDFS                      October 2022
       retrieve credentials (Issuance) or present credentials
       (Presentation).  The QR code is presented on a device that
       initiates the flow.
-
-
-
-
-
-Kasselman, et al.         Expires 10 April 2023                [Page 11]
-
-Internet-Draft                    CDFS                      October 2022
-
 
    *  Self-Issued OpenID Provider v2 (SIOP V2): A standard that allows
       end-user to present self-attested or third party attested
@@ -648,6 +665,15 @@ Internet-Draft                    CDFS                      October 2022
 
    1.  Secure deployed protocols with practical mitigations.
    2.  Adopt or develop more secure protocols where possible.
+
+
+
+
+Kasselman, et al.         Expires 10 April 2023                [Page 12]
+
+Internet-Draft                    CDFS                      October 2022
+
+
    3.  Provide analytical tools to assess vulnerabilities and
        effectiveness of mitigations.  Practical Mitigations
 
@@ -665,14 +691,6 @@ Internet-Draft                    CDFS                      October 2022
    an additional layer of security that makes it harder to initiate the
    attack, disrupts attacks when in process or reduces the impact of a
    successful attack.
-
-
-
-
-Kasselman, et al.         Expires 10 April 2023                [Page 12]
-
-Internet-Draft                    CDFS                      October 2022
-
 
 5.1.  Establish Proximity
 
@@ -704,6 +722,14 @@ Internet-Draft                    CDFS                      October 2022
    *  Shared network: Device proximity can be inferred by verifying that
       both devices are on the same network.  This check may be performed
       by the authorization server by comparing the network addresses of
+
+
+
+Kasselman, et al.         Expires 10 April 2023                [Page 13]
+
+Internet-Draft                    CDFS                      October 2022
+
+
       the device where the code is displayed (initiating device) with
       that of the authentication/authorization device.  Alternatively
       the check can be performed on the device, provided that the
@@ -722,13 +748,6 @@ Internet-Draft                    CDFS                      October 2022
       performed by the authorization server or on the users device,
       provided that the information encoded in a QR code is integrity
       protected using a digital signature.
-
-
-
-Kasselman, et al.         Expires 10 April 2023                [Page 13]
-
-Internet-Draft                    CDFS                      October 2022
-
 
    Note: There are scenarios that require that an authorization takes
    place in a different location than the one in which the transaction
@@ -757,6 +776,16 @@ Internet-Draft                    CDFS                      October 2022
    is validated by the authorization server when the user scans the QR
    code.
 
+
+
+
+
+
+Kasselman, et al.         Expires 10 April 2023                [Page 14]
+
+Internet-Draft                    CDFS                      October 2022
+
+
 5.4.  Unique Codes
 
    By issuing unique user or QR codes, an authorization server can
@@ -776,15 +805,6 @@ Internet-Draft                    CDFS                      October 2022
    tune content filtering solutions to detect artifacts like QR codes or
    user codes that are being reused in multiple messages to disrupt
    spray attacks.
-
-
-
-
-
-Kasselman, et al.         Expires 10 April 2023                [Page 14]
-
-Internet-Draft                    CDFS                      October 2022
-
 
 5.6.  Trusted Devices
 
@@ -814,6 +834,14 @@ Internet-Draft                    CDFS                      October 2022
    operator ,which may include only allowinfg trusted devices on the
    network, device management, user authentication and physical access
    policies and systems.  By limiting protocol initiation to a specific
+
+
+
+Kasselman, et al.         Expires 10 April 2023                [Page 15]
+
+Internet-Draft                    CDFS                      October 2022
+
+
    network, the attacker needs to have access to a device on the
    network.
 
@@ -827,20 +855,6 @@ Internet-Draft                    CDFS                      October 2022
    included may be further refined based on whether the protocol is
    initiated on a trusted device or the user's location relative to the
    initiating device.
-
-
-
-
-
-
-
-
-
-
-Kasselman, et al.         Expires 10 April 2023                [Page 15]
-
-Internet-Draft                    CDFS                      October 2022
-
 
 5.9.  Short lived tokens
 
@@ -876,6 +890,14 @@ Internet-Draft                    CDFS                      October 2022
    tokens will further reduce the ability of the attacker to move tokens
    to another device.
 
+
+
+
+Kasselman, et al.         Expires 10 April 2023                [Page 16]
+
+Internet-Draft                    CDFS                      October 2022
+
+
 5.12.  User Experience
 
    The user experience should preserve the context within which the
@@ -887,16 +909,6 @@ Internet-Draft                    CDFS                      October 2022
    credential presentation.  The user experience should reinforce the
    message that unless the user initiated the authorization request, or
    was expecting it, they should decline the request.
-
-
-
-
-
-
-Kasselman, et al.         Expires 10 April 2023                [Page 16]
-
-Internet-Draft                    CDFS                      October 2022
-
 
    It should be clear to the user how to decline the request.  To avoid
    accidental authorization grants, the "decline" option may be the
@@ -924,18 +936,6 @@ Internet-Draft                    CDFS                      October 2022
    combining one or more of these mitigations the overall security
    profile of a cross-device flow improves significantly.  The following
    table provides a summary view of these mitigations:
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -991,13 +991,13 @@ Internet-Draft                    CDFS                      October 2022
 
 6.1.  IETF OAuth 2.0 Device Authorization Grant [RFC8682]:
 
-   *  Description: A standard to enable authorization on devices with
-      constrained input capabilities (smart TVs, printers, kiosks).  In
-      this protocol, the user code or QR code is displayed or made
-      available on the initiating device (smart TV) and entered on a
-      second device (e.g. a mobile phone).
+6.1.1.  Description
 
-
+   A standard to enable authorization on devices with constrained input
+   capabilities (smart TVs, printers, kiosks).  In this protocol, the
+   user code or QR code is displayed or made available on the initiating
+   device (smart TV) and entered on a second device (e.g. a mobile
+   phone).
 
 
 
@@ -1010,54 +1010,54 @@ Kasselman, et al.         Expires 10 April 2023                [Page 18]
 Internet-Draft                    CDFS                      October 2022
 
 
-   *  Susceptibility: There are several reports in the public domain
-      outlining how the unauthenticated channel may be exploited to
-      execute an illicit consent grant attack.  Device capabilities:
-      There are no assumptions in the protocol about underlying
-      capabilities of the device, making it a "least common denominator"
-      protocol that is expected to work on the broadest set of devices
-      and environments.
-   *  Mitigations: In addition to the security considerations section in
-      the standard, it is recommended that one or more of the
-      mitigations outlined in this document be considered, especially
-      mitigations that can help establish proximity or prevent attackers
-      from obtaining QR or user codes.
-   *  When to use: Only use this protocol if other cross-device
-      protocols are not viable due to device or system constraints.
-      Avoid using if the protected resources are sensitive, high value
-      or business critical.  Always deploy additional mitigations like
-      proximity or only allow with pre-registered devices.
+6.1.2.  Susceptibility
+
+   There are several reports in the public domain outlining how the
+   unauthenticated channel may be exploited to execute an illicit
+   consent grant attack.  Device capabilities: There are no assumptions
+   in the protocol about underlying capabilities of the device, making
+   it a "least common denominator" protocol that is expected to work on
+   the broadest set of devices and environments.
+
+6.1.3.  Mitigations
+
+   In addition to the security considerations section in the standard,
+   it is recommended that one or more of the mitigations outlined in
+   this document be considered, especially mitigations that can help
+   establish proximity or prevent attackers from obtaining QR or user
+   codes.
+
+6.1.4.  When to use
+
+   Only use this protocol if other cross-device protocols are not viable
+   due to device or system constraints.  Avoid using if the protected
+   resources are sensitive, high value or business critical.  Always
+   deploy additional mitigations like proximity or only allow with pre-
+   registered devices.
 
 6.2.  OpenID Foundation Client Initiated Back-Channel Authentication
       (CIBA):
 
-   *  Description: A standard under development as part of the
-      Financial-grade API (FAPI) family of standards that allows a
-      device or service (e.g. a PC, Smart TV, Kiosk) to request the
-      OpenID Provider to initiate an authentication flow if it knows a
-      valid identifier for the user.  The user completes the
-      authentication flow using a second device (e.g. a mobile phone).
-      In this flow the user does not scan a QR code or obtain a user
-      code from the initiating device.
-   *  Susceptibility: Less susceptible to unauthenticated channel
-      attacks, but still vulnerable to attackers who know or can guess
-      the user identifier and initiate a spray attack as described in
-      Example 4.
-   *  Device capabilities: There is no requirement on the initiating
-      device to support specific hardware.  The authorizing device must
-      be registered/associated with the user and it must be possible for
-      the Authorization Server to trigger an authorization on this
-      device.
-   *  Mitigations: In addition to the security considerations section in
-      the standard, it is recommended that one or more of the
-      mitigations outlined in this document be considered, especially
-      mitigations that can help establish proximity or prevent attackers
-      from initiating authorization requests.
-   *  When to use: Use CIBA instead of Device Authorization Grant if it
-      is possible for the initiating device to obtain a user identifier
-      on the initiating device (e.g. through an input or selection
-      mechanism) and if the Authorization Server can trigger an
-      authorization on the authorization device.
+6.2.1.  Description
+
+   A standard under development as part of the Financial-grade API
+   (FAPI) family of standards that allows a device or service (e.g. a
+   PC, Smart TV, Kiosk) to request the OpenID Provider to initiate an
+   authentication flow if it knows a valid identifier for the user.  The
+   user completes the authentication flow using a second device (e.g. a
+   mobile phone).  In this flow the user does not scan a QR code or
+   obtain a user code from the initiating device.
+
+6.2.2.  Susceptibility
+
+   Less susceptible to unauthenticated channel attacks, but still
+   vulnerable to attackers who know or can guess the user identifier and
+   initiate a spray attack as described in Example 4.
+
+
+
+
+
 
 
 
@@ -1066,52 +1066,52 @@ Kasselman, et al.         Expires 10 April 2023                [Page 19]
 Internet-Draft                    CDFS                      October 2022
 
 
+6.2.3.  Device capabilities
+
+   There is no requirement on the initiating device to support specific
+   hardware.  The authorizing device must be registered/associated with
+   the user and it must be possible for the Authorization Server to
+   trigger an authorization on this device.
+
+6.2.4.  Mitigations
+
+   In addition to the security considerations section in the standard,
+   it is recommended that one or more of the mitigations outlined in
+   this document be considered, especially mitigations that can help
+   establish proximity or prevent attackers from initiating
+   authorization requests.
+
+6.2.5.  When to use
+
+   Use CIBA instead of Device Authorization Grant if it is possible for
+   the initiating device to obtain a user identifier on the initiating
+   device (e.g. through an input or selection mechanism) and if the
+   Authorization Server can trigger an authorization on the
+   authorization device.
+
 6.3.  FIDO2/WebAuthn
 
-   *  Description: FIDO2/WebAuthn is a stack of standards developed in
-      the FIDO Alliance and W3C respectively which allow for origin-
-      bound, phishing-resistant user authentication using asymmetric
-      cryptography that can be invoked from a web browser or native
-      client.  Version 2.2 of the FIDO Client to Authenticator Protocol
-      (CTAP) supports a new cross-device authentication protocol, called
-      "hybrid", which enables an external device, such as a phone or
-      tablet, to be used as a roaming authenticator for signing into the
-      primary device, such as a desktop or laptop.  This is commonly
-      called FIDO Cross-Device Authentication (CDA).  When a user wants
-      to authenticate using their mobile device (authenticator) for the
-      first time, they need to link their authenticator to their main
-      device.  This is done using a scan of a QR code.  When the
-      authenticator scans the QR code, the device sends an encrypted BLE
-      advertisement containing keying material and a tunnel ID.  The
-      main device and authenticator both establish connections to the
-      web service, and the normal CTAP protocol exchange occurs.  If the
-      user chooses to keep their authenticator linked with the main
-      device, the QR code link step is not necessary for subsequent use.
-      The user will receive a push notification on the authenticator.
-   *  Susceptibility: The Cross-Device Authentication flow proves
-      proximity by leveraging BLE advertisements for service
-      establishment, significantly reducing the susceptibility to any of
-      the exploits described in Examples 1-6.
-   *  Device capabilities: Both the initiating device and the
-      authenticator require BLE support.  The initiating device must
-      support both FIDO2/WebAuthn, specifically CTAP 2.2 with hybrid
-      transport.  The mobile phone must support CTAP 2.2+ to be used as
-      a cross-device authenticator.
-   *  Mitigations: FIDO Cross-Device Authentication (CDA) establishes
-      proximity through the use of BLE, reducing the need for additional
-      mitigations.  An implementer may still choose to implement
-      additional mitigation as described in this document.
-   *  When to use: FIDO2/WebAuthn should be used for cross-device
-      authentication scenarios whenever the devices are capable of doing
-      so.  It may be used as an authentication method with the
-      Authorization Code Grant [RFC6749] and PKCE [RFC7663], to grant
-      authorization to an initiating device (e.g.  Smart TV or
-      interactive whiteboard) using a mobile phone as the authenticating
-      device.  This combination of FIDO2/WebAuthn and Authorization Code
-      Flow with PKCE enables cross device authorization flows, without
-      the risks posed by the Device Authorization Grant [RFC8628].
+6.3.1.  Description
 
+   FIDO2/WebAuthn is a stack of standards developed in the FIDO Alliance
+   and W3C respectively which allow for origin-bound, phishing-resistant
+   user authentication using asymmetric cryptography that can be invoked
+   from a web browser or native client.  Version 2.2 of the FIDO Client
+   to Authenticator Protocol (CTAP) supports a new cross-device
+   authentication protocol, called "hybrid", which enables an external
+   device, such as a phone or tablet, to be used as a roaming
+   authenticator for signing into the primary device, such as a desktop
+   or laptop.  This is commonly called FIDO Cross-Device Authentication
+   (CDA).
 
+   When a user wants to authenticate using their mobile device
+   (authenticator) for the first time, they need to link their
+   authenticator to their main device.  This is done using a scan of a
+   QR code.  When the authenticator scans the QR code, the device sends
+   an encrypted BLE advertisement containing keying material and a
+   tunnel ID.  The main device and authenticator both establish
+   connections to the web service, and the normal CTAP protocol exchange
+   occurs.
 
 
 
@@ -1121,6 +1121,42 @@ Kasselman, et al.         Expires 10 April 2023                [Page 20]
 
 Internet-Draft                    CDFS                      October 2022
 
+
+   If the user chooses to keep their authenticator linked with the main
+   device, the QR code link step is not necessary for subsequent use.
+   The user will receive a push notification on the authenticator.
+
+6.3.2.  Susceptibility
+
+   The Cross-Device Authentication flow proves proximity by leveraging
+   BLE advertisements for service establishment, significantly reducing
+   the susceptibility to any of the exploits described in Examples 1-6.
+
+6.3.3.  Device capabilities
+
+   Both the initiating device and the authenticator require BLE support.
+   The initiating device must support both FIDO2/WebAuthn, specifically
+   CTAP 2.2 with hybrid transport.  The mobile phone must support CTAP
+   2.2+ to be used as a cross-device authenticator.
+
+6.3.4.  Mitigations
+
+   FIDO Cross-Device Authentication (CDA) establishes proximity through
+   the use of BLE, reducing the need for additional mitigations.  An
+   implementer may still choose to implement additional mitigation as
+   described in this document.
+
+6.3.5.  When to use
+
+   FIDO2/WebAuthn should be used for cross-device authentication
+   scenarios whenever the devices are capable of doing so.  It may be
+   used as an authentication method with the Authorization Code Grant
+   [RFC6749] and PKCE [RFC7663], to grant authorization to an initiating
+   device (e.g.  Smart TV or interactive whiteboard) using a mobile
+   phone as the authenticating device.  This combination of FIDO2/
+   WebAuthn and Authorization Code Flow with PKCE enables cross device
+   authorization flows, without the risks posed by the Device
+   Authorization Grant [RFC8628].
 
 6.4.  Protocol Selection Summary
 
@@ -1134,6 +1170,14 @@ Internet-Draft                    CDFS                      October 2022
    is used, additional mitigations to enforce proximity and initiate
    transactions from trusted devices or trusted networks should be
    considered.  The OAuth 2.0 Device Authorization Grant provides the
+
+
+
+Kasselman, et al.         Expires 10 April 2023                [Page 21]
+
+Internet-Draft                    CDFS                      October 2022
+
+
    most flexibility and has the lowest requirements on devices used, but
    it is recommended that it is only used when additional mitigations
    are deployed to prevent attacks that exploit the unauthenticated
@@ -1173,7 +1217,19 @@ Internet-Draft                    CDFS                      October 2022
 
 
 
-Kasselman, et al.         Expires 10 April 2023                [Page 21]
+
+
+
+
+
+
+
+
+
+
+
+
+Kasselman, et al.         Expires 10 April 2023                [Page 22]
 
 Internet-Draft                    CDFS                      October 2022
 
@@ -1229,7 +1285,7 @@ Internet-Draft                    CDFS                      October 2022
 
 
 
-Kasselman, et al.         Expires 10 April 2023                [Page 22]
+Kasselman, et al.         Expires 10 April 2023                [Page 23]
 
 Internet-Draft                    CDFS                      October 2022
 
@@ -1285,7 +1341,7 @@ Authors' Addresses
 
 
 
-Kasselman, et al.         Expires 10 April 2023                [Page 23]
+Kasselman, et al.         Expires 10 April 2023                [Page 24]
 
 Internet-Draft                    CDFS                      October 2022
 
@@ -1341,4 +1397,4 @@ Internet-Draft                    CDFS                      October 2022
 
 
 
-Kasselman, et al.         Expires 10 April 2023                [Page 24]
+Kasselman, et al.         Expires 10 April 2023                [Page 25]

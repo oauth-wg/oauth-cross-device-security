@@ -439,37 +439,70 @@ Practical Mitigations</li>
 
 <section anchor="ietf-oauth-2-0-device-authorization-grant-rfc8682"><name>IETF OAuth 2.0 Device Authorization Grant <xref target="RFC8682"></xref>:</name>
 
-<ul spacing="compact">
-<li>Description: A standard to enable authorization on devices with constrained input capabilities (smart TVs, printers, kiosks). In this protocol, the user code or QR code is displayed or made available on the initiating device (smart TV) and entered on a second device (e.g. a mobile phone).</li>
-<li>Susceptibility: There are several reports in the public domain outlining how the unauthenticated channel may be exploited to execute an illicit consent grant attack.
-Device capabilities: There are no assumptions in the protocol about underlying capabilities of the device, making it a &quot;least common denominator&quot; protocol that is expected to work on the broadest set of devices and environments.</li>
-<li>Mitigations: In addition to the security considerations section in the standard, it is recommended that one or more of the mitigations outlined in this document be considered, especially mitigations that can help establish proximity or prevent attackers from obtaining QR or user codes.</li>
-<li>When to use: Only use this protocol if other cross-device protocols are not viable due to device or system constraints. Avoid using if the protected resources are sensitive, high value or business critical. Always deploy additional mitigations like proximity or only allow with pre-registered devices.</li>
-</ul>
+<section anchor="description"><name>Description</name>
+<t>A standard to enable authorization on devices with constrained input capabilities (smart TVs, printers, kiosks). In this protocol, the user code or QR code is displayed or made available on the initiating device (smart TV) and entered on a second device (e.g. a mobile phone).</t>
+</section>
+
+<section anchor="susceptibility"><name>Susceptibility</name>
+<t>There are several reports in the public domain outlining how the unauthenticated channel may be exploited to execute an illicit consent grant attack.
+Device capabilities: There are no assumptions in the protocol about underlying capabilities of the device, making it a &quot;least common denominator&quot; protocol that is expected to work on the broadest set of devices and environments.</t>
+</section>
+
+<section anchor="mitigations"><name>Mitigations</name>
+<t>In addition to the security considerations section in the standard, it is recommended that one or more of the mitigations outlined in this document be considered, especially mitigations that can help establish proximity or prevent attackers from obtaining QR or user codes.</t>
+</section>
+
+<section anchor="when-to-use"><name>When to use</name>
+<t>Only use this protocol if other cross-device protocols are not viable due to device or system constraints. Avoid using if the protected resources are sensitive, high value or business critical. Always deploy additional mitigations like proximity or only allow with pre-registered devices.</t>
+</section>
 </section>
 
 <section anchor="openid-foundation-client-initiated-back-channel-authentication-ciba"><name>OpenID Foundation Client Initiated Back-Channel Authentication (CIBA):</name>
 
-<ul spacing="compact">
-<li>Description: A standard under development as part of the Financial-grade API (FAPI) family of standards that allows a device or service (e.g. a PC, Smart TV, Kiosk) to request the OpenID Provider to initiate an authentication flow if it knows a valid identifier for the user. The user completes the authentication flow using a second device (e.g. a mobile phone). In this flow the user does not scan a QR code or obtain a user code from the initiating device.</li>
-<li>Susceptibility: Less susceptible to unauthenticated channel attacks, but still vulnerable to attackers who know or can guess the user identifier and initiate a spray attack as described in Example 4.</li>
-<li>Device capabilities: There is no requirement on the initiating device to support specific hardware. The authorizing device must be registered/associated with the user and it must be possible for the Authorization Server to trigger an authorization on this device.</li>
-<li>Mitigations: In addition to the security considerations section in the standard, it is recommended that one or more of the mitigations outlined in this document be considered, especially mitigations that can help establish proximity or prevent attackers from initiating authorization requests.</li>
-<li>When to use: Use CIBA instead of Device Authorization Grant if it is possible for the initiating device to obtain a user identifier on the initiating device (e.g. through an input or selection mechanism) and if the Authorization Server can trigger an authorization on the authorization device.</li>
-</ul>
+<section anchor="description-1"><name>Description</name>
+<t>A standard under development as part of the Financial-grade API (FAPI) family of standards that allows a device or service (e.g. a PC, Smart TV, Kiosk) to request the OpenID Provider to initiate an authentication flow if it knows a valid identifier for the user. The user completes the authentication flow using a second device (e.g. a mobile phone). In this flow the user does not scan a QR code or obtain a user code from the initiating device.</t>
+</section>
+
+<section anchor="susceptibility-1"><name>Susceptibility</name>
+<t>Less susceptible to unauthenticated channel attacks, but still vulnerable to attackers who know or can guess the user identifier and initiate a spray attack as described in Example 4.</t>
+</section>
+
+<section anchor="device-capabilities"><name>Device capabilities</name>
+<t>There is no requirement on the initiating device to support specific hardware. The authorizing device must be registered/associated with the user and it must be possible for the Authorization Server to trigger an authorization on this device.</t>
+</section>
+
+<section anchor="mitigations-1"><name>Mitigations</name>
+<t>In addition to the security considerations section in the standard, it is recommended that one or more of the mitigations outlined in this document be considered, especially mitigations that can help establish proximity or prevent attackers from initiating authorization requests.</t>
+</section>
+
+<section anchor="when-to-use-1"><name>When to use</name>
+<t>Use CIBA instead of Device Authorization Grant if it is possible for the initiating device to obtain a user identifier on the initiating device (e.g. through an input or selection mechanism) and if the Authorization Server can trigger an authorization on the authorization device.</t>
+</section>
 </section>
 
 <section anchor="fido2-webauthn"><name>FIDO2/WebAuthn</name>
 
-<ul spacing="compact">
-<li>Description: FIDO2/WebAuthn is a stack of standards developed in the FIDO Alliance and W3C respectively which allow for origin-bound, phishing-resistant user authentication using asymmetric cryptography that can be invoked from a web browser or native client. Version 2.2 of the FIDO Client to Authenticator Protocol (CTAP) supports a new cross-device authentication protocol, called &quot;hybrid&quot;, which enables an external device, such as a phone or tablet, to be used as a roaming authenticator for signing into the primary device, such as a desktop or laptop. This is commonly called FIDO Cross-Device Authentication (CDA).
-When a user wants to authenticate using their mobile device (authenticator) for the first time, they need to link their authenticator to their main device. This is done using a scan of a QR code. When the authenticator scans the QR code, the device sends an encrypted BLE advertisement containing keying material and a tunnel ID. The main device and authenticator both establish connections to the web service, and the normal CTAP protocol exchange occurs.
-If the user chooses to keep their authenticator linked with the main device, the QR code link step is not necessary for subsequent use. The user will receive a push notification on the authenticator.</li>
-<li>Susceptibility: The Cross-Device Authentication flow proves proximity by leveraging BLE advertisements for service establishment, significantly reducing the susceptibility to any of the exploits described in Examples 1-6.</li>
-<li>Device capabilities: Both the initiating device and the authenticator require BLE support. The initiating device must support both FIDO2/WebAuthn, specifically CTAP 2.2 with hybrid transport. The mobile phone must support CTAP 2.2+ to be used as a cross-device authenticator.</li>
-<li>Mitigations: FIDO Cross-Device Authentication (CDA) establishes proximity through the use of BLE, reducing the need for additional mitigations. An implementer may still choose to implement additional mitigation as described in this document.</li>
-<li>When to use: FIDO2/WebAuthn should be used for cross-device authentication scenarios whenever the devices are capable of doing so. It may be used as an authentication method with the Authorization Code Grant <xref target="RFC6749"></xref> and PKCE <xref target="RFC7663"></xref>, to grant authorization to an initiating device (e.g. Smart TV or interactive whiteboard) using a mobile phone as the authenticating device. This combination of FIDO2/WebAuthn and Authorization Code Flow with PKCE enables cross device authorization flows, without the risks posed by the Device Authorization Grant <xref target="RFC8628"></xref>.</li>
-</ul>
+<section anchor="description-2"><name>Description</name>
+<t>FIDO2/WebAuthn is a stack of standards developed in the FIDO Alliance and W3C respectively which allow for origin-bound, phishing-resistant user authentication using asymmetric cryptography that can be invoked from a web browser or native client. Version 2.2 of the FIDO Client to Authenticator Protocol (CTAP) supports a new cross-device authentication protocol, called &quot;hybrid&quot;, which enables an external device, such as a phone or tablet, to be used as a roaming authenticator for signing into the primary device, such as a desktop or laptop. This is commonly called FIDO Cross-Device Authentication (CDA).</t>
+<t>When a user wants to authenticate using their mobile device (authenticator) for the first time, they need to link their authenticator to their main device. This is done using a scan of a QR code. When the authenticator scans the QR code, the device sends an encrypted BLE advertisement containing keying material and a tunnel ID. The main device and authenticator both establish connections to the web service, and the normal CTAP protocol exchange occurs.</t>
+<t>If the user chooses to keep their authenticator linked with the main device, the QR code link step is not necessary for subsequent use. The user will receive a push notification on the authenticator.</t>
+</section>
+
+<section anchor="susceptibility-2"><name>Susceptibility</name>
+<t>The Cross-Device Authentication flow proves proximity by leveraging BLE advertisements for service establishment, significantly reducing the susceptibility to any of the exploits described in Examples 1-6.</t>
+</section>
+
+<section anchor="device-capabilities-1"><name>Device capabilities</name>
+<t>Both the initiating device and the authenticator require BLE support. The initiating device must support both FIDO2/WebAuthn, specifically CTAP 2.2 with hybrid transport. The mobile phone must support CTAP 2.2+ to be used as a cross-device authenticator.</t>
+</section>
+
+<section anchor="mitigations-2"><name>Mitigations</name>
+<t>FIDO Cross-Device Authentication (CDA) establishes proximity through the use of BLE, reducing the need for additional mitigations. An implementer may still choose to implement additional mitigation as described in this document.</t>
+</section>
+
+<section anchor="when-to-use-2"><name>When to use</name>
+<t>FIDO2/WebAuthn should be used for cross-device authentication scenarios whenever the devices are capable of doing so. It may be used as an authentication method with the Authorization Code Grant <xref target="RFC6749"></xref> and PKCE <xref target="RFC7663"></xref>, to grant authorization to an initiating device (e.g. Smart TV or interactive whiteboard) using a mobile phone as the authenticating device. This combination of FIDO2/WebAuthn and Authorization Code Flow with PKCE enables cross device authorization flows, without the risks posed by the Device Authorization Grant <xref target="RFC8628"></xref>.</t>
+</section>
 </section>
 
 <section anchor="protocol-selection-summary"><name>Protocol Selection Summary</name>
