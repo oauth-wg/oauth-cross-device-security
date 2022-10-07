@@ -346,18 +346,18 @@ The service may provide out-of-band reinforcement to the user on the context and
 The practical mitigations described in this section can prevent the attacks from being initiated, disrupt attacks once they start or reduce the impact or remediate an attack if it succeeds. When combining one or more of these mitigations the overall security profile of a cross-device flow improves significantly. The following table provides a summary view of these mitigations:
 
 
-        Mitigation            | Prevent | Disrupt | Recover |
-------------------------------|---------|---------|---------|
-Establish Proximity           |    X    |    X    |         |
-Short Lived/Timebound Codes   |         |    X    |         |
-Content Filtering             |         |    X    |         |
-Trusted Devices               |    X    |         |         |
-Trusted Networks              |    X    |         |         |
-Limited Scopes                |         |         |    X    |
-Short Lived Tokens            |         |         |    X    |
-Rate Limits                   |    X    |    X    |         |
-Sender Constrained Tokens     |         |         |    X    |
-User Experience               |    X    |         |         |
+|        Mitigation            | Prevent | Disrupt | Recover |
+|:-----------------------------|:-------:|:-------:|:-------:|
+|Establish Proximity           |    X    |    X    |         |
+|Short Lived/Timebound Codes   |         |    X    |         |
+|Content Filtering             |         |    X    |         |
+|Trusted Devices               |    X    |         |         |
+|Trusted Networks              |    X    |         |         |
+|Limited Scopes                |         |         |    X    |
+|Short Lived Tokens            |         |         |    X    |
+|Rate Limits                   |    X    |    X    |         |
+|Sender Constrained Tokens     |         |         |    X    |
+|User Experience               |    X    |         |         |
 Table: Practical Mitigation Summary
 
 # Protocol selection
