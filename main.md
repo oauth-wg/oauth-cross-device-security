@@ -122,20 +122,39 @@ In a cross-device flow, a user starts a scenario on the initiating device
 authorize access to a resource (e.g. access to a streaming service). This 
 has several benefits, including:
 
-- Authorization on devices with limited input capabilities: End-users can 
+- **Authorization on devices with limited input capabilities:** End-users can 
 authorize devices with limited input capabilities to access content (e.g. 
 smart TVs, digital whiteboards, printers, etc).
-- Secure authentication on shared or public devices: End-users can perform 
+- **Secure authentication on shared or public devices:** End-users can perform 
 authentication and authorization using a personally trusted device, without 
 risk of disclosing their credentials to a public or shared device. 
-- Ubiquitous multi-factor authentication: Enables a user to use multi-factor 
+- **Ubiquitous multi-factor authentication:** Enables a user to use multi-factor 
 authentication, independent of the device on which the service is being 
 accessed (e.g. a kiosk, smart TV or shared PC).
-- Convenience of a single, portable, credential store: Users can keep all 
+- **Convenience of a single, portable, credential store:** Users can keep all 
 their credentials in a mobile wallet or mobile phone that they already 
 carry with them. 
 
 Examples of cross-device flow scenarios include:
+
+##Example 1: Authorize access to a video streaming service 
+An end-user sets up a new smart TV and wants to connect it to their favorite streaming service. The TV displays a QR code that the user scans with their mobile phone. The user is redirected to the streaming service provider’s web page and asked to enter their credentials to authorize the smart TV to access the streaming service. The user enters their credentials and grant authorization, after which the streaming service is available on the smart TV.
+
+##Example 2: Authorize access to productivity services
+An employee wants to access their files on an interactive whiteboard in a conference room. The interactive whiteboard displays a URL and a code. The user enters the URL on their PC and is prompted for the code. Once they enter the code, the user is asked to authenticate and authorize the interactive whiteboard to access their files. The user enters their credentials and authorizes the transaction and the interactive whiteboard retrieves their files and allows the user to interact with the content.
+
+##Example 3: Authorize use of a bike sharing scheme
+An end-user wants to rent a bicycle from a bike sharing scheme. The bicycles are locked into bike racks on sidewalks throughout a city. To unlock and use a bike, the user scans a QR code on the bike using their mobile phone. Scanning the QR code redirects the user to the bike sharing scheme’s authorization page where the user authenticates and authorizes payment for renting the bike. Once authorized, the bike sharing service unlocks the bike, allowing the user to use it to cycle around the city.
+
+##Example 4: Authorize a financial transaction
+An end-user makes an online purchase. Before completing the purchase, they get a notification on their mobile phone, asking them to authorize the transaction. The user opens their app and authenticates to the service before authorizing the transaction.
+
+##Example 5: Add a device to a network.
+An employee is issued with a laptop computer that is already joined to a network. The employee wants to add their mobile phone to the network to allow them to access corporate data and services (e.g. files and e-mail). The PC displays a QR code, which the employee scans with their mobile phone. The mobile phone is joined to the network and the employee can start accessing corporate data and services on their mobile device.
+
+##Example 6: Remote onboarding
+A new employee is directed to an onboarding portal to provide additional information to confirm their identity on their first day with their new employer. Before activating the employee’s account, the onboarding portal requests that the employee present a government issued ID, proof of a background check and proof of their qualifications. The onboarding portal displays a QR code, which the user scans with their mobile phone. Scanning the QR code invokes the employee’s wallet on their mobile phone, and the employee is asked to present digital versions of mobile driving license, proof of a background check by an identity verifier and proof of their qualifications. The employee authorizes the release of the credentials and after completing the onboarding process, their account is activated. 
+
 
 # Attacks and Mitigations
 
