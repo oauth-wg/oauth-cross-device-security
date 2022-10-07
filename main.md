@@ -408,7 +408,7 @@ The popularity of cross-device flows attracted the attention of attackers that e
 To address these attacks, we propose a three pronged approach that includes the deployment of practical mitigations to safeguard protocols that are already deployed, provide guidance on when to use different protocols, including protocols that are not susceptible to these attacks, and the introduction of formal methods to evaluate the impact of mitigations and find additional issues.
 
 # Contributors
-Pieter Kasselman (Microsoft), Daniel Fett (Yes.com), Filip Skokan (Okta), Tim Cappalli (Microsoft)
+Pieter Kasselman (Microsoft), Daniel Fett (Yes.com), Filip Skokan (Okta), Tim Cappalli (Microsoft), Nick Ludwig (Microsoft), Adrian Frei (Microsoft), Nikhil Reddy Boreddy (Microsoft)
 
 {backmatter}
 
