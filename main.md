@@ -90,16 +90,16 @@ resources and in some cases are able to collect access and refresh tokens. Once 
 possession of the access and refresh tokens, the attacker may use these tokens to
 execute lateral attacks and gain additional access, or monetize the tokens by 
 selling them. These attacks are effective, even when multi-factor authentication 
-is deployed, since the attacker’s aim is not to capture and replay the credentials, 
+is deployed, since the attacker's aim is not to capture and replay the credentials, 
 but rather to persuade the user to grant authorization. 
 
 In order to defend against these attacks, this document outlines three responses:
 
-    #1 Deploy practical mitigations with protocols that are susceptible to 
-    unauthenticated channel exploits.
-    #2 Select protocols that are not susceptible to unauthenticated channel exploits 
-    when possible.
-    #3 Conduct formal analysis of cross-device flows to assess susceptibility to 
+1. Deploy practical mitigations with protocols that are susceptible to unauthenticated 
+channel exploits.
+2. Select protocols that are not susceptible to unauthenticated channel exploits 
+when possible.
+3. Conduct formal analysis of cross-device flows to assess susceptibility to 
     these attacks and the effectiveness of the proposed mitigations.
 
 ## Conventions and Terminology
@@ -122,18 +122,18 @@ In a cross-device flow, a user starts a scenario on the initiating device
 authorize access to a resource (e.g. access to a streaming service). This 
 has several benefits, including:
 
-    * Authorization on devices with limited input capabilities: End-users 
-    can authorize devices with limited input capabilities to access content 
-    (e.g. smart TVs, digital whiteboards, printers, etc).
-    * Secure authentication on shared or public devices: End-users can perform 
-    authentication and authorization using a personally trusted device, without 
-    risk of disclosing their credentials to a public or shared device. 
-    * Ubiquitous multi-factor authentication: Enables a user to use multi-factor 
-    authentication, independent of the device on which the service is being 
-    accessed (e.g. a kiosk, smart TV or shared PC).
-	* Convenience of a single, portable, credential store: Users can keep all 
-    their credentials in a mobile wallet or mobile phone that they already carry 
-    with them. 
+- Authorization on devices with limited input capabilities: End-users can 
+authorize devices with limited input capabilities to access content (e.g. 
+smart TVs, digital whiteboards, printers, etc).
+- Secure authentication on shared or public devices: End-users can perform 
+authentication and authorization using a personally trusted device, without 
+risk of disclosing their credentials to a public or shared device. 
+- Ubiquitous multi-factor authentication: Enables a user to use multi-factor 
+authentication, independent of the device on which the service is being 
+accessed (e.g. a kiosk, smart TV or shared PC).
+- Convenience of a single, portable, credential store: Users can keep all 
+their credentials in a mobile wallet or mobile phone that they already 
+carry with them. 
 
 Examples of cross-device flow scenarios include:
 
