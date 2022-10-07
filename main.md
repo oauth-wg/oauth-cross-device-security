@@ -269,7 +269,7 @@ A number of protocols that have been standardized, or are in the process of bein
 - Self-Issued OpenID Provider v2 (SIOP V2): A standard that allows end-user to present self-attested or third party attested attributes when used with Opend ID for Verifiable Credential protocols. The user scans a QR code presented by the relying party to initiate the flow.
 
 # Mitigating Against Cross-Device Flow Attacks
-The unauthenticated channel between the initiating device and the authenticating device allows attackers to change the context in which the authorization request is presented to the user. This shifts responsibility of authenticating the channel between the two devices to the end-user. End users have “expertise elsewhere” (i.e. experts in ). They are not security experts and don’t understand the protocols and systems they interact with. As a result, end-users are poorly equipped to authenticate the channel between the two devices. Mitigations should focus on:
+The unauthenticated channel between the initiating device and the authenticating device allows attackers to change the context in which the authorization request is presented to the user. This shifts responsibility of authenticating the channel between the two devices to the end-user. End users have "expertise elsewhere" (i.e. experts in ). They are not security experts and don’t understand the protocols and systems they interact with. As a result, end-users are poorly equipped to authenticate the channel between the two devices. Mitigations should focus on:
 
 1.	Minimizing reliance on the user to make decisions to authenticate the channel.
 2.	Providing better information with which to make decisions to authenticate the channel.
@@ -336,9 +336,9 @@ Sender constrained tokens limit the impact of a successful attack by preventing 
 ## User Experience
 The user experience should preserve the context within which the protocols were initiated and communicate this clearly to the user when they are asked to authorize, authenticate or present a credential. In preserving the context, it should be clear to the user who invoked the flow, why it was invoked and what the consequence of completing the authorization, authentication or credential presentation. The user experience should reinforce the message that unless the user initiated the authorization request, or was expecting it, they should decline the request.  
 
-It should be clear to the user how to decline the request. To avoid accidental authorization grants, the “decline” option may be the default option or given similar prominence in the user experience as the “grant” option. 
+It should be clear to the user how to decline the request. To avoid accidental authorization grants, the "decline" option may be the default option or given similar prominence in the user experience as the "grant" option. 
 
-This information may be communicated graphically or in a simple message (e.g. “It looks like you are trying to access your files on a digital whiteboard in your city center office. Click here to grant access to your files. If you are not trying to access your files, you should decline this request and notify the security department”).
+This information may be communicated graphically or in a simple message (e.g. "It looks like you are trying to access your files on a digital whiteboard in your city center office. Click here to grant access to your files. If you are not trying to access your files, you should decline this request and notify the security department").
 
 The service may provide out-of-band reinforcement to the user on the context and conditions under which an authorization grant may be requested. For example if the service provider does not send e-mails with QR codes requesting users to grant authorization, this may be reinforced in marketing messages, in-app experiences and through anti-fraud awareness campaigns.
 
@@ -366,7 +366,7 @@ Some cross-device protocols are more susceptible to the exploits described in th
 ## IETF OAuth 2.0 Device Authorization Grant [@RFC8682]: 
 - Description: A standard to enable authorization on devices with constrained input capabilities (smart TVs, printers, kiosks). In this protocol, the user code or QR code is displayed or made available on the initiating device (smart TV) and entered on a second device (e.g. a mobile phone). 
 - Susceptibility: There are several reports in the public domain outlining how the unauthenticated channel may be exploited to execute an illicit consent grant attack. 
-Device capabilities: There are no assumptions in the protocol about underlying capabilities of the device, making it a “least common denominator” protocol that is expected to work on the broadest set of devices and environments.
+Device capabilities: There are no assumptions in the protocol about underlying capabilities of the device, making it a "least common denominator" protocol that is expected to work on the broadest set of devices and environments.
 - Mitigations: In addition to the security considerations section in the standard, it is recommended that one or more of the mitigations outlined in this document be considered, especially mitigations that can help establish proximity or prevent attackers from obtaining QR or user codes.
 - When to use: Only use this protocol if other cross-device protocols are not viable due to device or system constraints. Avoid using if the protected resources are sensitive, high value or business critical. Always deploy additional mitigations like proximity or only allow with pre-registered devices.
 
@@ -392,7 +392,7 @@ The FIDO Cross-Device Authentication (CDA) flow provides the best protection aga
 # Foundational pillars
 Experience with web authorization and authentication protocols such as OAuth and OpenID Connect has shown that securing these protocols can be hard. The major reason for this is that the landscape in which they are operating - the web infrastructure with browsers, servers, and the underlying network - is complex, diverse, and ever-evolving.
 
-As is the case with other kinds of protocols, it can be easy to overlook vulnerabilities in this environment. One way to reduce the chances of hidden security problems is to use mathematical-logical models to describe the protocols, their environments and their security goals, and then use these models to try to prove security. This approach is what is usually subsumed as “formal security analysis”.
+As is the case with other kinds of protocols, it can be easy to overlook vulnerabilities in this environment. One way to reduce the chances of hidden security problems is to use mathematical-logical models to describe the protocols, their environments and their security goals, and then use these models to try to prove security. This approach is what is usually subsumed as "formal security analysis".
 
 There are two major strengths of formal analysis: First, finding new vulnerabilities does not require creativity - i.e., new classes of attacks can be uncovered even if no one thought of these attacks before. In a faithful model, vulnerabilities become clear during the proof process or even earlier. Second, formal analysis can exclude the existence of any attacks within the boundaries of the model (e.g., the protocol layers modeled, the level of detail and functionalities covered, the assumed attacker capabilities, and the formalized security goals). As a downside, there is usually a gap between the model (which necessarily abstracts away from details) and implementations. In other words, implementations can introduce flaws where the model does not have any. Nonetheless, for protocol standards, formal analysis can help to ensure that the specification is secure when implemented correctly.
 
