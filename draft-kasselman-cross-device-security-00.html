@@ -9,19 +9,20 @@
 <meta content="Daniel Fett" name="author">
 <meta content="Filip Skokan" name="author">
 <meta content="
-       This document describes the threats against cross-device flows
+       This document describes threats against cross-device flows
 along with near term mitigations, protocol selection guidance
 and the analytical tools needed to evaluate the effectiveness of
 these mitigations. It serves as a security guide to system designers,
 architects, product managers, security specialists, fraud analysts
 and engineers implementing cross-device flows. 
     " name="description">
-<meta content="xml2rfc 3.15.0" name="generator">
+<meta content="xml2rfc 3.15.1" name="generator">
 <meta content="security" name="keyword">
 <meta content="oauth2" name="keyword">
+<meta content="best current practice" name="keyword">
 <meta content="draft-kasselman-cross-device-security-00" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.15.0
+  xml2rfc 3.15.1
     Python 3.10.6
     appdirs 1.4.4
     ConfigArgParse 1.5.3
@@ -39,7 +40,7 @@ and engineers implementing cross-device flows.
     six 1.16.0
     weasyprint 56.1
 -->
-<link href="/usr/src/app/tmp/94c1b35e-185d-48f8-94a5-17434a01d832/main.xml" rel="alternate" type="application/rfc+xml">
+<link href="/usr/src/app/tmp/67ce9e24-2f6e-4c2e-ba0b-34249332f33a/main.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
 <style type="text/css">/*
 
@@ -258,7 +259,7 @@ a.selfRef:hover {
 } */
 
 /* Figures */
-tt, code, pre, code {
+tt, code, pre {
   background-color: #f9f9f9;
   font-family: 'Roboto Mono', monospace;
 }
@@ -830,7 +831,7 @@ section {
 }
 
 /* prevent monospace from becoming overly large */
-tt, code, pre, code {
+tt, code, pre {
   font-size: 95%;
 }
 
@@ -1053,6 +1054,7 @@ aside > p {
 /* Sourcecode margin in print, when there's no pilcrow */
 @media print {
   .artwork,
+  .artwork > pre,
   .sourcecode {
     margin-bottom: 1em;
   }
@@ -1201,7 +1203,7 @@ li > p:last-of-type {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Kasselman, et al.</td>
-<td class="center">Expires 10 April 2023</td>
+<td class="center">Expires 21 April 2023</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1214,12 +1216,12 @@ li > p:last-of-type {
 <dd class="internet-draft">draft-kasselman-cross-device-security-00</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2022-10-07" class="published">7 October 2022</time>
+<time datetime="2022-10-18" class="published">18 October 2022</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
-<dd class="intended-status">Standards Track</dd>
+<dd class="intended-status">Best Current Practice</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2023-04-10">10 April 2023</time></dd>
+<dd class="expires"><time datetime="2023-04-21">21 April 2023</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1240,7 +1242,7 @@ li > p:last-of-type {
 <h1 id="title">Cross Device Flows: Security Best Current Practice</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">This document describes the threats against cross-device flows
+<p id="section-abstract-1">This document describes threats against cross-device flows
 along with near term mitigations, protocol selection guidance
 and the analytical tools needed to evaluate the effectiveness of
 these mitigations. It serves as a security guide to system designers,
@@ -1266,7 +1268,7 @@ and engineers implementing cross-device flows.<a href="#section-abstract-1" clas
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 10 April 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 21 April 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1347,6 +1349,9 @@ and engineers implementing cross-device flows.<a href="#section-abstract-1" clas
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.6">
                 <p id="section-toc.1-1.3.2.6.1"><a href="#section-3.6" class="auto internal xref">3.6</a>.  <a href="#name-example-b6-illicit-onboardi" class="internal xref">Example B6: Illicit Onboarding</a></p>
 </li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.7">
+                <p id="section-toc.1-1.3.2.7.1"><a href="#section-3.7" class="auto internal xref">3.7</a>.  <a href="#name-out-of-scope" class="internal xref">Out of Scope</a></p>
+</li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
@@ -1356,128 +1361,85 @@ and engineers implementing cross-device flows.<a href="#section-abstract-1" clas
             <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-mitigating-against-cross-de" class="internal xref">Mitigating Against Cross-Device Flow Attacks</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
-                <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-establish-proximity" class="internal xref">Establish Proximity</a></p>
+                <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-practical-mitigations" class="internal xref">Practical Mitigations</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1.2.1">
+                    <p id="section-toc.1-1.5.2.1.2.1.1"><a href="#section-5.1.1" class="auto internal xref">5.1.1</a>.  <a href="#name-establish-proximity" class="internal xref">Establish Proximity</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1.2.2">
+                    <p id="section-toc.1-1.5.2.1.2.2.1"><a href="#section-5.1.2" class="auto internal xref">5.1.2</a>.  <a href="#name-short-lived-timebound-codes" class="internal xref">Short Lived/Timebound Codes</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1.2.3">
+                    <p id="section-toc.1-1.5.2.1.2.3.1"><a href="#section-5.1.3" class="auto internal xref">5.1.3</a>.  <a href="#name-one-time-or-limited-use-cod" class="internal xref">One-Time or Limited Use Codes</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1.2.4">
+                    <p id="section-toc.1-1.5.2.1.2.4.1"><a href="#section-5.1.4" class="auto internal xref">5.1.4</a>.  <a href="#name-unique-codes" class="internal xref">Unique Codes</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1.2.5">
+                    <p id="section-toc.1-1.5.2.1.2.5.1"><a href="#section-5.1.5" class="auto internal xref">5.1.5</a>.  <a href="#name-content-filtering" class="internal xref">Content Filtering</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1.2.6">
+                    <p id="section-toc.1-1.5.2.1.2.6.1"><a href="#section-5.1.6" class="auto internal xref">5.1.6</a>.  <a href="#name-trusted-devices" class="internal xref">Trusted Devices</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1.2.7">
+                    <p id="section-toc.1-1.5.2.1.2.7.1"><a href="#section-5.1.7" class="auto internal xref">5.1.7</a>.  <a href="#name-trusted-networks" class="internal xref">Trusted Networks</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1.2.8">
+                    <p id="section-toc.1-1.5.2.1.2.8.1"><a href="#section-5.1.8" class="auto internal xref">5.1.8</a>.  <a href="#name-limited-scopes" class="internal xref">Limited Scopes</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1.2.9">
+                    <p id="section-toc.1-1.5.2.1.2.9.1"><a href="#section-5.1.9" class="auto internal xref">5.1.9</a>.  <a href="#name-short-lived-tokens" class="internal xref">Short lived tokens</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1.2.10">
+                    <p id="section-toc.1-1.5.2.1.2.10.1"><a href="#section-5.1.10" class="auto internal xref">5.1.10</a>. <a href="#name-rate-limits" class="internal xref">Rate Limits</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1.2.11">
+                    <p id="section-toc.1-1.5.2.1.2.11.1"><a href="#section-5.1.11" class="auto internal xref">5.1.11</a>. <a href="#name-sender-constrained-tokens" class="internal xref">Sender Constrained Tokens</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1.2.12">
+                    <p id="section-toc.1-1.5.2.1.2.12.1"><a href="#section-5.1.12" class="auto internal xref">5.1.12</a>. <a href="#name-user-experience" class="internal xref">User Experience</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1.2.13">
+                    <p id="section-toc.1-1.5.2.1.2.13.1"><a href="#section-5.1.13" class="auto internal xref">5.1.13</a>. <a href="#name-practical-mitigation-summar" class="internal xref">Practical Mitigation Summary</a></p>
+</li>
+                </ul>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
-                <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-short-lived-timebound-codes" class="internal xref">Short Lived/Timebound Codes</a></p>
+                <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-protocol-selection" class="internal xref">Protocol selection</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2.2.1">
+                    <p id="section-toc.1-1.5.2.2.2.1.1"><a href="#section-5.2.1" class="auto internal xref">5.2.1</a>.  <a href="#name-ietf-oauth-20-device-author" class="internal xref">IETF OAuth 2.0 Device Authorization Grant RFC8682:</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2.2.2">
+                    <p id="section-toc.1-1.5.2.2.2.2.1"><a href="#section-5.2.2" class="auto internal xref">5.2.2</a>.  <a href="#name-openid-foundation-client-in" class="internal xref">OpenID Foundation Client Initiated Back-Channel Authentication (CIBA):</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2.2.3">
+                    <p id="section-toc.1-1.5.2.2.2.3.1"><a href="#section-5.2.3" class="auto internal xref">5.2.3</a>.  <a href="#name-fido2-webauthn" class="internal xref">FIDO2/WebAuthn</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2.2.4">
+                    <p id="section-toc.1-1.5.2.2.2.4.1"><a href="#section-5.2.4" class="auto internal xref">5.2.4</a>.  <a href="#name-protocol-selection-summary" class="internal xref">Protocol Selection Summary</a></p>
+</li>
+                </ul>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3">
-                <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="auto internal xref">5.3</a>.  <a href="#name-one-time-or-limited-use-cod" class="internal xref">One-Time or Limited Use Codes</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.4">
-                <p id="section-toc.1-1.5.2.4.1"><a href="#section-5.4" class="auto internal xref">5.4</a>.  <a href="#name-unique-codes" class="internal xref">Unique Codes</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.5">
-                <p id="section-toc.1-1.5.2.5.1"><a href="#section-5.5" class="auto internal xref">5.5</a>.  <a href="#name-content-filtering" class="internal xref">Content Filtering</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.6">
-                <p id="section-toc.1-1.5.2.6.1"><a href="#section-5.6" class="auto internal xref">5.6</a>.  <a href="#name-trusted-devices" class="internal xref">Trusted Devices</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.7">
-                <p id="section-toc.1-1.5.2.7.1"><a href="#section-5.7" class="auto internal xref">5.7</a>.  <a href="#name-trusted-networks" class="internal xref">Trusted Networks</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.8">
-                <p id="section-toc.1-1.5.2.8.1"><a href="#section-5.8" class="auto internal xref">5.8</a>.  <a href="#name-limited-scopes" class="internal xref">Limited Scopes</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.9">
-                <p id="section-toc.1-1.5.2.9.1"><a href="#section-5.9" class="auto internal xref">5.9</a>.  <a href="#name-short-lived-tokens" class="internal xref">Short lived tokens</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.10">
-                <p id="section-toc.1-1.5.2.10.1"><a href="#section-5.10" class="auto internal xref">5.10</a>. <a href="#name-rate-limits" class="internal xref">Rate Limits</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.11">
-                <p id="section-toc.1-1.5.2.11.1"><a href="#section-5.11" class="auto internal xref">5.11</a>. <a href="#name-sender-constrained-tokens" class="internal xref">Sender Constrained Tokens</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.12">
-                <p id="section-toc.1-1.5.2.12.1"><a href="#section-5.12" class="auto internal xref">5.12</a>. <a href="#name-user-experience" class="internal xref">User Experience</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.13">
-                <p id="section-toc.1-1.5.2.13.1"><a href="#section-5.13" class="auto internal xref">5.13</a>. <a href="#name-practical-mitigation-summar" class="internal xref">Practical Mitigation Summary</a></p>
+                <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="auto internal xref">5.3</a>.  <a href="#name-foundational-pillars" class="internal xref">Foundational Pillars</a></p>
 </li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
-            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-protocol-selection" class="internal xref">Protocol selection</a></p>
-<ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1">
-                <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="auto internal xref">6.1</a>.  <a href="#name-ietf-oauth-20-device-author" class="internal xref">IETF OAuth 2.0 Device Authorization Grant RFC8682:</a></p>
-<ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1.2.1">
-                    <p id="section-toc.1-1.6.2.1.2.1.1"><a href="#section-6.1.1" class="auto internal xref">6.1.1</a>.  <a href="#name-description" class="internal xref">Description</a></p>
-</li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1.2.2">
-                    <p id="section-toc.1-1.6.2.1.2.2.1"><a href="#section-6.1.2" class="auto internal xref">6.1.2</a>.  <a href="#name-susceptibility" class="internal xref">Susceptibility</a></p>
-</li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1.2.3">
-                    <p id="section-toc.1-1.6.2.1.2.3.1"><a href="#section-6.1.3" class="auto internal xref">6.1.3</a>.  <a href="#name-mitigations" class="internal xref">Mitigations</a></p>
-</li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1.2.4">
-                    <p id="section-toc.1-1.6.2.1.2.4.1"><a href="#section-6.1.4" class="auto internal xref">6.1.4</a>.  <a href="#name-when-to-use" class="internal xref">When to use</a></p>
-</li>
-                </ul>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2">
-                <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="auto internal xref">6.2</a>.  <a href="#name-openid-foundation-client-in" class="internal xref">OpenID Foundation Client Initiated Back-Channel Authentication (CIBA):</a></p>
-<ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2.2.1">
-                    <p id="section-toc.1-1.6.2.2.2.1.1"><a href="#section-6.2.1" class="auto internal xref">6.2.1</a>.  <a href="#name-description-2" class="internal xref">Description</a></p>
-</li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2.2.2">
-                    <p id="section-toc.1-1.6.2.2.2.2.1"><a href="#section-6.2.2" class="auto internal xref">6.2.2</a>.  <a href="#name-susceptibility-2" class="internal xref">Susceptibility</a></p>
-</li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2.2.3">
-                    <p id="section-toc.1-1.6.2.2.2.3.1"><a href="#section-6.2.3" class="auto internal xref">6.2.3</a>.  <a href="#name-device-capabilities" class="internal xref">Device capabilities</a></p>
-</li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2.2.4">
-                    <p id="section-toc.1-1.6.2.2.2.4.1"><a href="#section-6.2.4" class="auto internal xref">6.2.4</a>.  <a href="#name-mitigations-2" class="internal xref">Mitigations</a></p>
-</li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2.2.5">
-                    <p id="section-toc.1-1.6.2.2.2.5.1"><a href="#section-6.2.5" class="auto internal xref">6.2.5</a>.  <a href="#name-when-to-use-2" class="internal xref">When to use</a></p>
-</li>
-                </ul>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.3">
-                <p id="section-toc.1-1.6.2.3.1"><a href="#section-6.3" class="auto internal xref">6.3</a>.  <a href="#name-fido2-webauthn" class="internal xref">FIDO2/WebAuthn</a></p>
-<ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.3.2.1">
-                    <p id="section-toc.1-1.6.2.3.2.1.1"><a href="#section-6.3.1" class="auto internal xref">6.3.1</a>.  <a href="#name-description-3" class="internal xref">Description</a></p>
-</li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.3.2.2">
-                    <p id="section-toc.1-1.6.2.3.2.2.1"><a href="#section-6.3.2" class="auto internal xref">6.3.2</a>.  <a href="#name-susceptibility-3" class="internal xref">Susceptibility</a></p>
-</li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.3.2.3">
-                    <p id="section-toc.1-1.6.2.3.2.3.1"><a href="#section-6.3.3" class="auto internal xref">6.3.3</a>.  <a href="#name-device-capabilities-2" class="internal xref">Device capabilities</a></p>
-</li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.3.2.4">
-                    <p id="section-toc.1-1.6.2.3.2.4.1"><a href="#section-6.3.4" class="auto internal xref">6.3.4</a>.  <a href="#name-mitigations-3" class="internal xref">Mitigations</a></p>
-</li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.3.2.5">
-                    <p id="section-toc.1-1.6.2.3.2.5.1"><a href="#section-6.3.5" class="auto internal xref">6.3.5</a>.  <a href="#name-when-to-use-3" class="internal xref">When to use</a></p>
-</li>
-                </ul>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.4">
-                <p id="section-toc.1-1.6.2.4.1"><a href="#section-6.4" class="auto internal xref">6.4</a>.  <a href="#name-protocol-selection-summary" class="internal xref">Protocol Selection Summary</a></p>
-</li>
-            </ul>
+            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-conclusion" class="internal xref">Conclusion</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
-            <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-foundational-pillars" class="internal xref">Foundational pillars</a></p>
+            <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-contributors" class="internal xref">Contributors</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
-            <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-conclusion" class="internal xref">Conclusion</a></p>
+            <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
-            <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-contributors" class="internal xref">Contributors</a></p>
+            <p id="section-toc.1-1.9.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-document-history" class="internal xref">Document History</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
-            <p id="section-toc.1-1.10.1"><a href="#section-10" class="auto internal xref">10</a>. <a href="#name-informative-references" class="internal xref">Informative References</a></p>
-</li>
-          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
-            <p id="section-toc.1-1.11.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-document-history" class="internal xref">Document History</a></p>
-</li>
-          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
-            <p id="section-toc.1-1.12.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+            <p id="section-toc.1-1.10.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -1488,33 +1450,33 @@ and engineers implementing cross-device flows.<a href="#section-abstract-1" clas
       <h2 id="name-introduction">
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
-<p id="section-1-1">Cross-device flows enable a user initiate and authorization flow on
+<p id="section-1-1">Cross-device flows enable a user to initiate an authorization flow on
 one device (the initiating device) and then use a second, personally
-trusted device (authorization device), to authorize access to a resource
-(e.g. access to a service).<a href="#section-1-1" class="pilcrow">¶</a></p>
+trusted, device (authorization device) to authorize access to a resource
+(e.g., access to a service).<a href="#section-1-1" class="pilcrow">¶</a></p>
 <p id="section-1-2">These flows are increasingly popular and typically involve using a mobile
 phone to scan a QR code or enter a user code displayed on an initiating
-device (e.g. Smart TV, Kiosk, PC etc).<a href="#section-1-2" class="pilcrow">¶</a></p>
+device (e.g., Smart TV, Kiosk, Personal Computer etc).<a href="#section-1-2" class="pilcrow">¶</a></p>
 <p id="section-1-3">The channel between the initiating device and the authorization device is
 unauthenticated and relies on the user's judgment to decide whether to trust
-a QR code, user code or the authorization request pushed to their authorization
+a QR code, user code, or the authorization request pushed to their authorization
 device.<a href="#section-1-3" class="pilcrow">¶</a></p>
-<p id="section-1-4">Several publications have emerged in the public domain, describing how
+<p id="section-1-4">Several publications have emerged in the public domain (<span>[<a href="#Exploit1" class="cite xref">Exploit1</a>]</span>, <span>[<a href="#Exploit2" class="cite xref">Exploit2</a>]</span>, <span>[<a href="#Exploit3" class="cite xref">Exploit3</a>]</span>, <span>[<a href="#Exploit4" class="cite xref">Exploit4</a>]</span>, <span>[<a href="#Exploit5" class="cite xref">Exploit5</a>]</span>, <span>[<a href="#Exploit6" class="cite xref">Exploit6</a>]</span>), describing how
 the unauthenticated channel can be exploited using social engineering techniques
 borrowed from phishing. Unlike traditional phishing attacks, these attacks don't
 harvest credentials. Instead, they skip the step of collecting credentials by
 persuading users into granting authorization using their authorization devices.<a href="#section-1-4" class="pilcrow">¶</a></p>
-<p id="section-1-5">Once the user grants authorization, the attacker has access to access to the users
-resources and in some cases are able to collect access and refresh tokens. Once in
+<p id="section-1-5">Once the user grants authorization, the attacker has access to the user's
+resources and in some cases is able to collect access and refresh tokens. Once in
 possession of the access and refresh tokens, the attacker may use these tokens to
 execute lateral attacks and gain additional access, or monetize the tokens by
-selling them. These attacks are effective, even when multi-factor authentication
+selling them. These attacks are effective even when multi-factor authentication
 is deployed, since the attacker's aim is not to capture and replay the credentials,
 but rather to persuade the user to grant authorization.<a href="#section-1-5" class="pilcrow">¶</a></p>
-<p id="section-1-6">In order to defend against these attacks, this document outlines three responses:<a href="#section-1-6" class="pilcrow">¶</a></p>
+<p id="section-1-6">In order to defend against these attacks, this document outlines three potential responses:<a href="#section-1-6" class="pilcrow">¶</a></p>
 <ol start="1" type="1" class="compact type-1" id="section-1-7">
-<li id="section-1-7.1">Deploy practical mitigations with protocols that are susceptible to unauthenticated
-channel exploits.<a href="#section-1-7.1" class="pilcrow">¶</a>
+<li id="section-1-7.1">For protocols that are susceptible to unauthenticated
+channel exploits, deploy practical mitigations.<a href="#section-1-7.1" class="pilcrow">¶</a>
 </li>
         <li id="section-1-7.2">Select protocols that are not susceptible to unauthenticated channel exploits
 when possible.<a href="#section-1-7.2" class="pilcrow">¶</a>
@@ -1548,8 +1510,8 @@ appear in all capitals, as shown here.<a href="#section-1.1-1" class="pilcrow">�
 <a href="#section-2" class="section-number selfRef">2. </a><a href="#name-cross-device-flow-concepts" class="section-name selfRef">Cross Device Flow Concepts</a>
       </h2>
 <p id="section-2-1">In a cross-device flow, a user starts a scenario on the initiating device
-(e.g. a PC) and then uses a authorization device (e.g. a smartphone) to
-authorize access to a resource (e.g. access to a streaming service).<a href="#section-2-1" class="pilcrow">¶</a></p>
+(e.g., a smart TV) and then uses an authorization device (e.g., a smartphone) to
+authorize access to a resource (e.g., access to a streaming service).<a href="#section-2-1" class="pilcrow">¶</a></p>
 <p id="section-2-2">A typical example of a cross-device flow is shown below:<a href="#section-2-2" class="pilcrow">¶</a></p>
 <span id="name-typical-cross-device-flows"></span><figure id="figure-1">
         <div id="section-2-3.1">
@@ -1582,20 +1544,20 @@ or connecting a service to the initiating device.<a href="#section-2-4.1" class=
         <li class="compact" id="section-2-4.2">(B) The initiating device retrieves a QR code or user code from an authorization server<a href="#section-2-4.2" class="pilcrow">¶</a>
 </li>
         <li class="compact" id="section-2-4.3">(C) The QR code or user code is displayed on the initiating device where the user scans the QR code
-or enter the user code on the authorization device<a href="#section-2-4.3" class="pilcrow">¶</a>
+or enters the user code on the authorization device<a href="#section-2-4.3" class="pilcrow">¶</a>
 </li>
         <li class="compact" id="section-2-4.4">(D) The user authenticates to the authorization server before granting authorization.<a href="#section-2-4.4" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="section-2-4.5">(E) The Authorization Server issues tokens or grants authroization to the initiating device to access the users resources.<a href="#section-2-4.5" class="pilcrow">¶</a>
+        <li class="compact" id="section-2-4.5">(E) The Authorization Server issues tokens or grants authorization to the initiating device to access the user's resources.<a href="#section-2-4.5" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="section-2-5">In some variant of these flows, the user receives a push notification on
+<p id="section-2-5">In some variants of these flows, the user receives a push notification on
 their authenticating device that triggers the authorization flow, removing
 the need to scan a QR code or enter a user code manually.<a href="#section-2-5" class="pilcrow">¶</a></p>
 <p id="section-2-6">Cross device flows have several benefits, including:<a href="#section-2-6" class="pilcrow">¶</a></p>
 <ul class="compact">
 <li class="compact" id="section-2-7.1">Authorization on devices with limited input capabilities: End-users can
-authorize devices with limited input capabilities to access content (e.g.
+authorize devices with limited input capabilities to access content (e.g.,
 smart TVs, digital whiteboards, printers, etc).<a href="#section-2-7.1" class="pilcrow">¶</a>
 </li>
         <li class="compact" id="section-2-7.2">Secure authentication on shared or public devices: End-users can perform
@@ -1604,7 +1566,7 @@ risk of disclosing their credentials to a public or shared device.<a href="#sect
 </li>
         <li class="compact" id="section-2-7.3">Ubiquitous multi-factor authentication: Enables a user to use multi-factor
 authentication, independent of the device on which the service is being
-accessed (e.g. a kiosk, smart TV or shared PC).<a href="#section-2-7.3" class="pilcrow">¶</a>
+accessed (e.g., a kiosk, smart TV or shared Personal Computer).<a href="#section-2-7.3" class="pilcrow">¶</a>
 </li>
         <li class="compact" id="section-2-7.4">Convenience of a single, portable, credential store: Users can keep all
 their credentials in a mobile wallet or mobile phone that they already
@@ -1617,7 +1579,7 @@ carry with them.<a href="#section-2-7.4" class="pilcrow">¶</a>
         <h3 id="name-example-a1-authorize-access">
 <a href="#section-2.1" class="section-number selfRef">2.1. </a><a href="#name-example-a1-authorize-access" class="section-name selfRef">Example A1: Authorize access to a video streaming service</a>
         </h3>
-<p id="section-2.1-1">An end-user sets up a new smart TV and wants to connect it to their favorite streaming service. The TV displays a QR code that the user scans with their mobile phone. The user is redirected to the streaming service provider's web page and asked to enter their credentials to authorize the smart TV to access the streaming service. The user enters their credentials and grant authorization, after which the streaming service is available on the smart TV.<a href="#section-2.1-1" class="pilcrow">¶</a></p>
+<p id="section-2.1-1">An end-user sets up a new smart TV and wants to connect it to their favorite streaming service. The TV displays a QR code that the user scans with their mobile phone. The user is redirected to the streaming service provider's web page and asked to enter their credentials to authorize the smart TV to access the streaming service. The user enters their credentials and grants authorization, after which the streaming service is available on the smart TV.<a href="#section-2.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="example-a2-authorize-access-to-productivity-services">
@@ -1625,7 +1587,7 @@ carry with them.<a href="#section-2-7.4" class="pilcrow">¶</a>
         <h3 id="name-example-a2-authorize-access">
 <a href="#section-2.2" class="section-number selfRef">2.2. </a><a href="#name-example-a2-authorize-access" class="section-name selfRef">Example A2: Authorize access to productivity services</a>
         </h3>
-<p id="section-2.2-1">An employee wants to access their files on an interactive whiteboard in a conference room. The interactive whiteboard displays a URL and a code. The user enters the URL on their PC and is prompted for the code. Once they enter the code, the user is asked to authenticate and authorize the interactive whiteboard to access their files. The user enters their credentials and authorizes the transaction and the interactive whiteboard retrieves their files and allows the user to interact with the content.<a href="#section-2.2-1" class="pilcrow">¶</a></p>
+<p id="section-2.2-1">An employee wants to access their files on an interactive whiteboard in a conference room. The interactive whiteboard displays a URL and a code. The user enters the URL on their personal computer and is prompted for the code. Once they enter the code, the user is asked to authenticate and authorize the interactive whiteboard to access their files. The user enters their credentials and authorizes the transaction and the interactive whiteboard retrieves their files and allows the user to interact with the content.<a href="#section-2.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="example-a3-authorize-use-of-a-bike-sharing-scheme">
@@ -1649,7 +1611,7 @@ carry with them.<a href="#section-2-7.4" class="pilcrow">¶</a>
         <h3 id="name-example-a5-add-a-device-to-">
 <a href="#section-2.5" class="section-number selfRef">2.5. </a><a href="#name-example-a5-add-a-device-to-" class="section-name selfRef">Example A5: Add a device to a network.</a>
         </h3>
-<p id="section-2.5-1">An employee is issued with a laptop computer that is already joined to a network. The employee wants to add their mobile phone to the network to allow them to access corporate data and services (e.g. files and e-mail). The PC displays a QR code, which the employee scans with their mobile phone. The mobile phone is joined to the network and the employee can start accessing corporate data and services on their mobile device.<a href="#section-2.5-1" class="pilcrow">¶</a></p>
+<p id="section-2.5-1">An employee is issued with a personal computer that is already joined to a network. The employee wants to add their mobile phone to the network to allow it to access corporate data and services (e.g., files and e-mail). The personal computer displays a QR code, which the employee scans with their mobile phone. The mobile phone is joined to the network and the employee can start accessing corporate data and services on their mobile device.<a href="#section-2.5-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="example-a6-remote-onboarding">
@@ -1657,7 +1619,7 @@ carry with them.<a href="#section-2-7.4" class="pilcrow">¶</a>
         <h3 id="name-example-a6-remote-onboardin">
 <a href="#section-2.6" class="section-number selfRef">2.6. </a><a href="#name-example-a6-remote-onboardin" class="section-name selfRef">Example A6: Remote onboarding</a>
         </h3>
-<p id="section-2.6-1">A new employee is directed to an onboarding portal to provide additional information to confirm their identity on their first day with their new employer. Before activating the employee's account, the onboarding portal requests that the employee present a government issued ID, proof of a background check and proof of their qualifications. The onboarding portal displays a QR code, which the user scans with their mobile phone. Scanning the QR code invokes the employee's wallet on their mobile phone, and the employee is asked to present digital versions of mobile driving license, proof of a background check by an identity verifier and proof of their qualifications. The employee authorizes the release of the credentials and after completing the onboarding process, their account is activated.<a href="#section-2.6-1" class="pilcrow">¶</a></p>
+<p id="section-2.6-1">A new employee is directed to an onboarding portal to provide additional information to confirm their identity on their first day with their new employer. Before activating the employee's account, the onboarding portal requests that the employee present a government issued ID, proof of a background check and proof of their qualifications. The onboarding portal displays a QR code, which the user scans with their mobile phone. Scanning the QR code invokes the employee's wallet on their mobile phone, and the employee is asked to present digital versions of an identity document (e.g., a driving license), proof of a background check by an identity verifier, and proof of their qualifications. The employee authorizes the release of the credentials and after completing the onboarding process, their account is activated.<a href="#section-2.6-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1667,16 +1629,16 @@ carry with them.<a href="#section-2-7.4" class="pilcrow">¶</a>
       <h2 id="name-cross-device-flow-exploits">
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-cross-device-flow-exploits" class="section-name selfRef">Cross-Device Flow Exploits</a>
       </h2>
-<p id="section-3-1">The benefits of cross-device flows is compelling and is seeing adoption for a range of consumer and enterprise scenarios (see Scenarios). To ensure the user and service provider enjoy the benefits of using their mobile phones as authentication and authorization devices, the interaction between the two devices needs to be secure.<a href="#section-3-1" class="pilcrow">¶</a></p>
-<p id="section-3-2">A common action in these cross-device flows is to present the user with a QR code or a user code on the initiating device (e.g. Smart TV) and scanned or entered on the authorization device (the mobile phone). When the user scans the code or copies the user code, they do so without any proof that the QR code or user code is being displayed in the place or context intended by the service provider. It is up to the user's judgment to decide on whether they can trust the QR code or user code. In effect the user is asked to compensate for the absence of an authenticated channel between the initiating device (smart TV) and the device on which the authentication/authorization will take place (the mobile phone).<a href="#section-3-2" class="pilcrow">¶</a></p>
-<p id="section-3-3">Attackers exploit this absence of an authenticated channel between the two devices by obtaining QR codes or user codes (e.g. by initiating the authorization flows). They then use social engineering techniques to change the context in which authorization is requested to trick end-users to scan the QR code or enter it on their mobile devices. Once the end-user performs the authorization on the mobile device, the attacker who initiated the authentication or authorization request obtains access to the users resources. These attacks are also known as illicit consent grant attacks. The figure below shows an example of such an attack.<a href="#section-3-3" class="pilcrow">¶</a></p>
+<p id="section-3-1">The benefits of cross-device flows is compelling and is seeing adoption for a range of consumer and enterprise scenarios such as those listed above. To ensure the user and service provider enjoy the benefits of using their mobile phones as authentication and authorization devices, the interaction between the two devices needs to be secure.<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-3-2">A common action in these cross-device flows is to present the user with a QR code or a user code on the initiating device (e.g., Smart TV) and scanned or entered on the authorization device (the mobile phone). When the user scans the code or copies the user code, they do so without any proof that the QR code or user code is being displayed in the place or context intended by the service provider. It is up to the user's judgment to decide on whether they can trust the QR code or user code. In effect the user is asked to compensate for the absence of an authenticated channel between the initiating device (smart TV) and the device on which the authentication/authorization will take place (the mobile phone).<a href="#section-3-2" class="pilcrow">¶</a></p>
+<p id="section-3-3">Attackers exploit this absence of an authenticated channel between the two devices by obtaining QR codes or user codes (e.g., by initiating the authorization flows). They then use social engineering techniques to change the context in which authorization is requested to trick end-users to scan the QR code or enter it on their mobile devices. Once the end-user performs the authorization on the mobile device, the attacker who initiated the authentication or authorization request obtains access to the users resources. These attacks are also known as illicit consent grant attacks. The figure below shows an example of such an attack.<a href="#section-3-3" class="pilcrow">¶</a></p>
 <span id="name-typical-cross-device-flow-e"></span><figure id="figure-2">
         <div id="section-3-4.1">
 <pre class="lang-ascii-art sourcecode">                           (B) Initiating Device
            +--------------+     Get QR/User Code  +---------------+
-           |  Initiating  |&lt;---------------------&gt;|               |
-           |   Device     |(E) Grant Authorization| Authorization |
-           |              |&lt;---------------------&gt;|     Server    |
+           |  Attacker's  |&lt;---------------------&gt;|               |
+           |  Initiating  |(E) Grant Authorization| Authorization |
+           |   Device     |&lt;---------------------&gt;|     Server    |
            +--------------+                       |               |
              ^   | (C) Attacker Copy              |               |
 (A) Attacker |   |     QR or User Code            |               |
@@ -1723,13 +1685,13 @@ or enter the user code on the authorization device.<a href="#section-3-5.5" clas
         <li class="compact" id="section-3-5.7">(E) The Authorization Server issues tokens or grants authroization to the initiating device, which is under the attackers control, to access the users resources and the attacker gains access to the resources and possibly any authorization artefacts like access and refresh tokens.<a href="#section-3-5.7" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="section-3-6">The following examples illustrate these attacks in practical settings and shows how the unauthenticated channel is exploited by attackers who can copy the QR codes and user codes, change the context in which it is presented using social engineering techniques and misleads end-users into granting consent to avail of services, access data and make payments.<a href="#section-3-6" class="pilcrow">¶</a></p>
+<p id="section-3-6">The following examples illustrate these attacks in practical settings and show how the unauthenticated channel is exploited by attackers who can copy the QR codes and user codes, change the context in which they are presented using social engineering techniques and mislead end-users into granting consent to avail of services, access data and make payments.<a href="#section-3-6" class="pilcrow">¶</a></p>
 <div id="example-b1-illicit-access-to-a-video-streaming-service">
 <section id="section-3.1">
         <h3 id="name-example-b1-illicit-access-t">
 <a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-example-b1-illicit-access-t" class="section-name selfRef">Example B1: Illicit access to a video streaming service</a>
         </h3>
-<p id="section-3.1-1">An attacker obtains a smart TV and attempts to access an online streaming service. The smart TV obtains a QR code from the authorization server and displays it on screen. The attacker copies the QR code and embeds it in an e-mail that is sent to a large number of recipients. The e-mail contains a message stating that the streaming service wants to thank them for their loyal support and by scanning the QR code, they will be able to add a bonus device to their account for no charge. One of the recipients open the e-mail and scan the QR code to register for early access to premium content. They perform multi-factor authentication, and when asked if they want a new device to be added to their account, they authorize the action. The attacker's device is now authorized to access the content and obtains an access and refresh token. The access token allows the attacker to access content and the refresh token allows the attacker to obtain fresh tokens whenever the access token expires.<a href="#section-3.1-1" class="pilcrow">¶</a></p>
+<p id="section-3.1-1">An attacker obtains a smart TV and attempts to access an online streaming service. The smart TV obtains a QR code from the authorization server and displays it on screen. The attacker copies the QR code and embeds it in an e-mail that is sent to a large number of recipients. The e-mail contains a message stating that the streaming service wants to thank them for their loyal support and by scanning the QR code, they will be able to add a bonus device to their account for no charge. One of the recipients open the e-mail and scan the QR code to register for early access to premium content. The users perform multi-factor authentication, and when asked if they want a new device to be added to their account, they authorize the action. The attacker's device is now authorized to access the content and obtains an access and refresh token. The access token allows the attacker to access content and the refresh token allows the attacker to obtain fresh tokens whenever the access token expires.<a href="#section-3.1-1" class="pilcrow">¶</a></p>
 <p id="section-3.1-2">The attacker scales up the attack by emulating a new smart TV, obtaining multiple QR codes and widening the audience it sends the QR code to. Whenever a recipient scans the QR code and authorizes the addition of a new device, the attacker obtains an access and refresh token, which they sell for a profit.<a href="#section-3.1-2" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1738,7 +1700,7 @@ or enter the user code on the authorization device.<a href="#section-3-5.5" clas
         <h3 id="name-example-b2-illicit-access-t">
 <a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-example-b2-illicit-access-t" class="section-name selfRef">Example B2: Illicit access to productivity services</a>
         </h3>
-<p id="section-3.2-1">An attacker emulates an enterprise application (e.g. an interactive whiteboard) and initiates a cross-device flow by requesting a user code and URL from the authorization server. The attacker obtains a list of potential victims and sends an e-mail informing users that their files will be deleted within 24 hours if they don't follow the link, enter the user code and authenticate. The e-mail reminds them that this is the third time that they have been notified and their last opportunity to prevent deletion of their work files. One or more employees respond by following the URL, entering the code and performing multi-factor authentication. Once these employees authorized access, the attacker obtains access and refresh tokens from the authorization server and uses it to access the users files, perform lateral attacks to obtain access to other information and continuously refresh the session by requesting new access tokens. These tokens may be exfiltrated and sold to third parties.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
+<p id="section-3.2-1">An attacker emulates an enterprise application (e.g., an interactive whiteboard) and initiates a cross-device flow by requesting a user code and URL from the authorization server. The attacker obtains a list of potential victims and sends an e-mail informing users that their files will be deleted within 24 hours if they don't follow the link, enter the user code and authenticate. The e-mail reminds them that this is the third time that they have been notified and their last opportunity to prevent deletion of their work files. One or more employees respond by following the URL, entering the code and performing multi-factor authentication. Once these employees authorized access, the attacker obtains access and refresh tokens from the authorization server and uses it to access the users files, perform lateral attacks to obtain access to other information and continuously refresh the session by requesting new access tokens. These tokens may be exfiltrated and sold to third parties.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="example-b3-illicit-access-to-physical-assets">
@@ -1746,7 +1708,7 @@ or enter the user code on the authorization device.<a href="#section-3-5.5" clas
         <h3 id="name-example-b3-illicit-access-t">
 <a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-example-b3-illicit-access-t" class="section-name selfRef">Example B3: Illicit access to physical assets</a>
         </h3>
-<p id="section-3.3-1">An attacker copies a QR code from a bicycle locked in a bike rack in a city, prints it on a label and places the label on a bicycle at the other end of the bike rack. A customer approaches the bike that contains the replicated QR code and scans the code and authenticates before authorizing payment for renting the bicycle. The bike rack unlocks the bike containing the original QR code and the attacker removes the bicycle before cycling down the street while the customer is left frustrated that the bike they were trying to use is not being unlocked. The customer proceeds to unlock another bicycle and lodges a complaint with the bike renting company.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
+<p id="section-3.3-1">An attacker copies a QR code from a bicycle locked in a bike rack in a city, prints it on a label and places the label on a bicycle at the other end of the bike rack. A customer approaches the bike that contains the replicated QR code and scans the code and authenticates before authorizing payment for renting the bicycle. The bike rack unlocks the bike containing the original QR code and the attacker removes the bicycle before cycling down the street while the customer is left frustrated that the bike they were trying to use is not being unlocked <span>[<a href="#NYC.Bike" class="cite xref">NYC.Bike</a>]</span>. The customer proceeds to unlock another bicycle and lodges a complaint with the bike renting company.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="example-b4-illicit-transaction-authorization">
@@ -1762,7 +1724,7 @@ or enter the user code on the authorization device.<a href="#section-3-5.5" clas
         <h3 id="name-example-b5-illicit-network-">
 <a href="#section-3.5" class="section-number selfRef">3.5. </a><a href="#name-example-b5-illicit-network-" class="section-name selfRef">Example B5: Illicit Network Join</a>
         </h3>
-<p id="section-3.5-1">An employee that is colluding with an attacker logs into their PC and initiates the process to add a new device to the network. They authenticate to the network and obtain a QR code. They send the QR code to the attacker they are colluding with. The attacker scans the QR code and adds their own device to the network. They use this device access as an entry point and perform lateral moves to obtain additional privileges and access to restricted resources.<a href="#section-3.5-1" class="pilcrow">¶</a></p>
+<p id="section-3.5-1">An attacker creates a message to all employees of a company, claiming to be from a trusted technology provider investigating a suspected security breach. They ask employees to send them the QR code typically used to join a new device to the network, along with detailed steps on how to obtain the QR code. The employee, eager to assist, initiates the process to add a new mobile device to the network. They authenticate to the network and obtain a QR code. They send the QR code to the attacker. The attacker scans the QR code and adds their own device to the network. They use this device access as an entry point and perform lateral moves to obtain additional privileges and access to restricted resources.<a href="#section-3.5-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="example-b6-illicit-onboarding">
@@ -1771,6 +1733,15 @@ or enter the user code on the authorization device.<a href="#section-3-5.5" clas
 <a href="#section-3.6" class="section-number selfRef">3.6. </a><a href="#name-example-b6-illicit-onboardi" class="section-name selfRef">Example B6: Illicit Onboarding</a>
         </h3>
 <p id="section-3.6-1">An attacker initiates an employee onboarding flow and obtains a QR code from the onboarding portal to invoke a wallet and present a verifiable credential attesting to a new employee's identity. The attacker obtains a list of potential new employees and sends an e-mail informing them that it is time to present proof of their background check or government issued ID. The new employee scans the QR code, invokes their wallet and presents their credentials. Once the credentials are presented, the employee's account is activated. The employee portal accessed by the attacker obtained the QR code displays a message to the attacker with instructions on how to access their account.<a href="#section-3.6-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="out-of-scope">
+<section id="section-3.7">
+        <h3 id="name-out-of-scope">
+<a href="#section-3.7" class="section-number selfRef">3.7. </a><a href="#name-out-of-scope" class="section-name selfRef">Out of Scope</a>
+        </h3>
+<p id="section-3.7-1">In all of the attack scenarios listed above, a user is tricked or exploited. For other attacks, where the user is willingly colluding with the attacker, the security implications and potential mitigations are very different. For example, a cooperating user can bypass software mitigations on his device, share access to hardware tokens with the attacker, and install additional devices to forward radio signals to trick proximity checks.<a href="#section-3.7-1" class="pilcrow">¶</a></p>
+<p id="section-3.7-2">This document therefore only considers scenarios where a user does not collude with an attacker.<a href="#section-3.7-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1792,10 +1763,10 @@ a. E.g. it is left ot the user to decide if the QR code, user code or authentica
 <p id="section-4-3">A number of protocols that have been standardized, or are in the process of being standardized that share these characteristics include:<a href="#section-4-3" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-4-4.1">
-          <p id="section-4-4.1.1">IETF OAuth 2.0 Device Authorization Grant (RFC 8682): A standard to enable authorization on devices with constrained input capabilities (smart TVs, printers, kiosks). In this protocol, the user code or QR code is displayed on the initiating device and entered on a second device (e.g. a mobile phone).<a href="#section-4-4.1.1" class="pilcrow">¶</a></p>
+          <p id="section-4-4.1.1">IETF OAuth 2.0 Device Authorization Grant (RFC 8682): A standard to enable authorization on devices with constrained input capabilities (smart TVs, printers, kiosks). In this protocol, the user code or QR code is displayed on the initiating device and entered on a second device (e.g., a mobile phone).<a href="#section-4-4.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-4-4.2">
-          <p id="section-4-4.2.1">Open ID Foundation Client Initiated Back-Channel Authentication (CIBA): A standard under development as part of the Financial-grade API (FAPI) family of standards that allows a device or service (e.g. a PC, Smart TV, Kiosk) to request the OpenID Provider to initiate an authentication flow if it knows a valid identifier for the user. The user completes the authentication flow using a second device (e.g. a mobile phone). In this flow the user does not scan a QR code or obtain a user code from the initiating device.<a href="#section-4-4.2.1" class="pilcrow">¶</a></p>
+          <p id="section-4-4.2.1">Open ID Foundation Client Initiated Back-Channel Authentication (CIBA): A standard under development as part of the Financial-grade API (FAPI) family of standards that allows a device or service (e.g., a personal computer, Smart TV, Kiosk) to request the OpenID Provider to initiate an authentication flow if it knows a valid identifier for the user. The user completes the authentication flow using a second device (e.g., a mobile phone). In this flow the user does not scan a QR code or obtain a user code from the initiating device.<a href="#section-4-4.2.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-4-4.3">
           <p id="section-4-4.3.1">OpenID for Verifiable Credential Protocol Suite (Issuance, Presentation): The OpenID for Verifiable Credentials enables cross-device scenarios by allowing users to scan QR codes to retrieve credentials (Issuance) or present credentials (Presentation). The QR code is presented on a device that initiates the flow.<a href="#section-4-4.3.1" class="pilcrow">¶</a></p>
@@ -1811,7 +1782,7 @@ a. E.g. it is left ot the user to decide if the QR code, user code or authentica
       <h2 id="name-mitigating-against-cross-de">
 <a href="#section-5" class="section-number selfRef">5. </a><a href="#name-mitigating-against-cross-de" class="section-name selfRef">Mitigating Against Cross-Device Flow Attacks</a>
       </h2>
-<p id="section-5-1">The unauthenticated channel between the initiating device and the authenticating device allows attackers to change the context in which the authorization request is presented to the user. This shifts responsibility of authenticating the channel between the two devices to the end-user. End users have "expertise elsewhere" (i.e. experts in ). They are not security experts and don't understand the protocols and systems they interact with. As a result, end-users are poorly equipped to authenticate the channel between the two devices. Mitigations should focus on:<a href="#section-5-1" class="pilcrow">¶</a></p>
+<p id="section-5-1">The unauthenticated channel between the initiating device and the authenticating device allows attackers to change the context in which the authorization request is presented to the user. This shifts responsibility of "authenticating" the channel between the two devices to the end-user. End users have "expertise elsewhere" and are typically not security experts and don't understand the protocols and systems they interact with. As a result, end-users are poorly equipped to authenticate the channel between the two devices. Mitigations should focus on:<a href="#section-5-1" class="pilcrow">¶</a></p>
 <ol start="1" type="1" class="compact type-1" id="section-5-2">
 <li id="section-5-2.1">Minimizing reliance on the user to make decisions to authenticate the channel.<a href="#section-5-2.1" class="pilcrow">¶</a>
 </li>
@@ -1820,413 +1791,461 @@ a. E.g. it is left ot the user to decide if the QR code, user code or authentica
         <li id="section-5-2.3">Recovering from incorrect channel authentication decisions by users.<a href="#section-5-2.3" class="pilcrow">¶</a>
 </li>
       </ol>
-<p id="section-5-3">To achieve the above outcomes, the exploits of cross-device flows require a three-pronged approach that:<a href="#section-5-3" class="pilcrow">¶</a></p>
+<p id="section-5-3">To achieve the above outcomes, mitigating the exploits of cross-device flows require a three-pronged approach:<a href="#section-5-3" class="pilcrow">¶</a></p>
 <ol start="1" type="1" class="compact type-1" id="section-5-4">
 <li id="section-5-4.1">Secure deployed protocols with practical mitigations.<a href="#section-5-4.1" class="pilcrow">¶</a>
 </li>
         <li id="section-5-4.2">Adopt or develop more secure protocols where possible.<a href="#section-5-4.2" class="pilcrow">¶</a>
 </li>
-        <li id="section-5-4.3">Provide analytical tools to assess vulnerabilities and effectiveness of mitigations.
-Practical Mitigations<a href="#section-5-4.3" class="pilcrow">¶</a>
+        <li id="section-5-4.3">Provide analytical tools to assess vulnerabilities and effectiveness of mitigations.<a href="#section-5-4.3" class="pilcrow">¶</a>
 </li>
       </ol>
-<p id="section-5-5">A number of protocols that enable cross-device flows that are susceptible to illicit consent grant attacks are already deployed. The security profile of these protocols can be improved through practical mitigations that provide defense in depth that either:<a href="#section-5-5" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="compact type-1" id="section-5-6">
-<li id="section-5-6.1">Prevent the attack from being initiated.<a href="#section-5-6.1" class="pilcrow">¶</a>
-</li>
-        <li id="section-5-6.2">Disrupts the attack once it is initiated.<a href="#section-5-6.2" class="pilcrow">¶</a>
-</li>
-        <li id="section-5-6.3">Remediate or reduce the impact if the attack succeeds.<a href="#section-5-6.3" class="pilcrow">¶</a>
-</li>
-      </ol>
-<p id="section-5-7">It is recommended that one or more of the mitigations are applied whenever implementing a cross-device flow. Every mitigation provides an additional layer of security that makes it harder to initiate the attack, disrupts attacks when in process or reduces the impact of a successful attack.<a href="#section-5-7" class="pilcrow">¶</a></p>
-<div id="establish-proximity">
+<div id="practical-mitigations">
 <section id="section-5.1">
-        <h3 id="name-establish-proximity">
-<a href="#section-5.1" class="section-number selfRef">5.1. </a><a href="#name-establish-proximity" class="section-name selfRef">Establish Proximity</a>
+        <h3 id="name-practical-mitigations">
+<a href="#section-5.1" class="section-number selfRef">5.1. </a><a href="#name-practical-mitigations" class="section-name selfRef">Practical Mitigations</a>
         </h3>
-<p id="section-5.1-1">The unauthenticated channel between the initiating and authenticating device allows attackers to obtain a QR code or user code in one location and display in another location. Establishing proximity between the location of the initiating device and the authentication device limits an attacker's ability to launch attacks by sending the user or QR codes to large numbers of users across the globe. There are a couple of ways to establish proximity:<a href="#section-5.1-1" class="pilcrow">¶</a></p>
+<p id="section-5.1-1">A number of protocols that enable cross-device flows that are susceptible to illicit consent grant attacks are already deployed. The security profile of these protocols can be improved through practical mitigations that provide defense in depth that either:<a href="#section-5.1-1" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="compact type-1" id="section-5.1-2">
+<li id="section-5.1-2.1">Prevents the attack from being initiated.<a href="#section-5.1-2.1" class="pilcrow">¶</a>
+</li>
+          <li id="section-5.1-2.2">Disrupts the attack once it is initiated.<a href="#section-5.1-2.2" class="pilcrow">¶</a>
+</li>
+          <li id="section-5.1-2.3">Remediates or reduces the impact if the attack succeeds.<a href="#section-5.1-2.3" class="pilcrow">¶</a>
+</li>
+        </ol>
+<p id="section-5.1-3">It is recommended that one or more of the mitigations are applied whenever implementing a cross-device flow. Every mitigation provides an additional layer of security that makes it harder to initiate the attack, disrupts attacks when in process or reduces the impact of a successful attack.<a href="#section-5.1-3" class="pilcrow">¶</a></p>
+<div id="establish-proximity">
+<section id="section-5.1.1">
+          <h4 id="name-establish-proximity">
+<a href="#section-5.1.1" class="section-number selfRef">5.1.1. </a><a href="#name-establish-proximity" class="section-name selfRef">Establish Proximity</a>
+          </h4>
+<p id="section-5.1.1-1">The unauthenticated channel between the initiating and authenticating device allows attackers to obtain a QR code or user code in one location and display in another location. Establishing proximity between the location of the initiating device and the authentication device limits an attacker's ability to launch attacks by sending the user or QR codes to large numbers of users across the globe. There are a couple of ways to establish proximity:<a href="#section-5.1.1-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-5.1-2.1">
-            <p id="section-5.1-2.1.1">Physical connectivity: This is a good indicator of proximity, but requires specific ports, cables and hardware and may be challenging from a user experience perspective or may not be possible in certain settings (e.g. when USB ports are blocked or removed for security purposes). Physical connectivity may be better suited to dedicated hardware like FIDO devices that can be used with protocols that are resistant to the exploits described in this document.<a href="#section-5.1-2.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-5.1.1-2.1">
+              <p id="section-5.1.1-2.1.1">Physical connectivity: This is a good indicator of proximity, but requires specific ports, cables and hardware and may be challenging from a user experience perspective or may not be possible in certain settings (e.g., when USB ports are blocked or removed for security purposes). Physical connectivity may be better suited to dedicated hardware like FIDO devices that can be used with protocols that are resistant to the exploits described in this document.<a href="#section-5.1.1-2.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-5.1-2.2">
-            <p id="section-5.1-2.2.1">Wireless proximity: Near Field Communications (NFC), Bluetooth Low Energy (BLE), and Ultra Wideband (UWB) services can be used to prove proximity between the two devices. NFC technology is widely deployed in mobile phones as part of payment solutions, but NFC readers are less widely deployed. BLE presents another alternative for establishing proximity, but may present user experience challenges when setting up.<a href="#section-5.1-2.2.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-5.1.1-2.2">
+              <p id="section-5.1.1-2.2.1">Wireless proximity: Near Field Communications (NFC), Bluetooth Low Energy (BLE), and Ultra Wideband (UWB) services can be used to prove proximity between the two devices. NFC technology is widely deployed in mobile phones as part of payment solutions, but NFC readers are less widely deployed. BLE presents another alternative for establishing proximity, but may present user experience challenges when setting up.<a href="#section-5.1.1-2.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-5.1-2.3">
-            <p id="section-5.1-2.3.1">Shared network: Device proximity can be inferred by verifying that both devices are on the same network. This check may be performed by the authorization server by comparing the network addresses of the device where the code is displayed (initiating device) with that of the authentication/authorization device. Alternatively the check can be performed on the device, provided that the network address is available. This could be achieved if the authorization server encodes the initiating device's network address in the QR code and uses a digital signature to prevent tampering with the code. This does require the wallet to be aware of the countermeasure and effectively enforce it.<a href="#section-5.1-2.3.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-5.1.1-2.3">
+              <p id="section-5.1.1-2.3.1">Shared network: Device proximity can be inferred by verifying that both devices are on the same network. This check may be performed by the authorization server by comparing the network addresses of the device where the code is displayed (initiating device) with that of the authentication/authorization device. Alternatively the check can be performed on the device, provided that the network address is available. This could be achieved if the authorization server encodes the initiating device's network address in the QR code and uses a digital signature to prevent tampering with the code. This does require the wallet to be aware of the countermeasure and effectively enforce it.<a href="#section-5.1.1-2.3.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-5.1-2.4">
-            <p id="section-5.1-2.4.1">Geo-location: Proximity can be established by comparing geo-location information derived from GPS co-ordinates or geolocation lookup of IP addresses and comparing proximity. Due to inaccuracies, this may require restrictions to be at a more granular level (e.g. same city, country, region or continent). Similar to the shared network checks, these checks may be performed by the authorization server or on the users device, provided that the information encoded in a QR code is integrity protected using a digital signature.<a href="#section-5.1-2.4.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-5.1.1-2.4">
+              <p id="section-5.1.1-2.4.1">Geo-location: Proximity can be established by comparing geo-location information derived from global navigation satellite-system (GNSS) co-ordinates or geolocation lookup of IP addresses and comparing proximity. Due to inaccuracies, this may require restrictions to be at a more granular level (e.g., same city, country, region or continent). Similar to the shared network checks, these checks may be performed by the authorization server or on the users device, provided that the information encoded in a QR code is integrity protected using a digital signature.<a href="#section-5.1.1-2.4.1" class="pilcrow">¶</a></p>
 </li>
-        </ul>
-<p id="section-5.1-3">Note: There are scenarios that require that an authorization takes place in a different location than the one in which the transaction is authorized. For example, there may be a primary and secondary credit card holder and both can initiate transactions, but only the primary holder can authorize it. There is no guarantee that the primary and secondary holders are in the same location at the time of the authorization. In such cases, proximity may be an indicator of risk and the system may deploy additional controls (e.g. transaction value limits, transaction velocity limits) or use the proximity information as input to a risk management system.<a href="#section-5.1-3" class="pilcrow">¶</a></p>
+          </ul>
+<p id="section-5.1.1-3">Note: There are scenarios that require that an authorization takes place in a different location than the one in which the transaction is authorized. For example, there may be a primary and secondary credit card holder and both can initiate transactions, but only the primary holder can authorize it. There is no guarantee that the primary and secondary holders are in the same location at the time of the authorization. In such cases, proximity may be an indicator of risk and the system may deploy additional controls (e.g., transaction value limits, transaction velocity limits) or use the proximity information as input to a risk management system.<a href="#section-5.1.1-3" class="pilcrow">¶</a></p>
+<p id="section-5.1.1-4">Depending on how the proximity check is performed, an attacker may be
+able to circumvent the protection relatively easily: The attacker can
+use a VPN to simulate a shared network or spoof a GNSS position. For
+example, the attacker can try to request the location of the end-user's
+authorization device through browser APIs and then simulate the same
+location on his initiating device using standard debugging features
+available on many platforms.<a href="#section-5.1.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="short-lived-timebound-codes">
-<section id="section-5.2">
-        <h3 id="name-short-lived-timebound-codes">
-<a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-short-lived-timebound-codes" class="section-name selfRef">Short Lived/Timebound Codes</a>
-        </h3>
-<p id="section-5.2-1">The impact of an attack can be reduced by making codes short lived. If an attacker obtains a short-lived token, it limits the duration during which the unauthenticated channel can be exploited, which increases the cost of a successful attack.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+<section id="section-5.1.2">
+          <h4 id="name-short-lived-timebound-codes">
+<a href="#section-5.1.2" class="section-number selfRef">5.1.2. </a><a href="#name-short-lived-timebound-codes" class="section-name selfRef">Short Lived/Timebound Codes</a>
+          </h4>
+<p id="section-5.1.2-1">The impact of an attack can be reduced by making codes short lived. If an attacker obtains a short-lived token, the duration during which the unauthenticated channel can be exploited is reduced, potentially increasing the cost of a successful attack.<a href="#section-5.1.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="one-time-or-limited-use-codes">
-<section id="section-5.3">
-        <h3 id="name-one-time-or-limited-use-cod">
-<a href="#section-5.3" class="section-number selfRef">5.3. </a><a href="#name-one-time-or-limited-use-cod" class="section-name selfRef">One-Time or Limited Use Codes</a>
-        </h3>
-<p id="section-5.3-1">By enforcing one-time use or limited use of user or QR codes, the authorization server can limit the impact of attacks where the same user code or QR code is sent to multiple victims. One-time use may be achieved by including a nonce or date-stamp in the QR code which is validated by the authorization server when the user scans the QR code.<a href="#section-5.3-1" class="pilcrow">¶</a></p>
+<section id="section-5.1.3">
+          <h4 id="name-one-time-or-limited-use-cod">
+<a href="#section-5.1.3" class="section-number selfRef">5.1.3. </a><a href="#name-one-time-or-limited-use-cod" class="section-name selfRef">One-Time or Limited Use Codes</a>
+          </h4>
+<p id="section-5.1.3-1">By enforcing one-time use or limited use of user or QR codes, the authorization server can limit the impact of attacks where the same user code or QR code is sent to multiple victims. One-time use may be achieved by including a nonce or date-stamp in the QR code which is validated by the authorization server when the user scans the QR code.<a href="#section-5.1.3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="unique-codes">
-<section id="section-5.4">
-        <h3 id="name-unique-codes">
-<a href="#section-5.4" class="section-number selfRef">5.4. </a><a href="#name-unique-codes" class="section-name selfRef">Unique Codes</a>
-        </h3>
-<p id="section-5.4-1">By issuing unique user or QR codes, an authorization server can detect if the same codes are being repeatedly submitted. This may be interpreted as anomalous behavior and the authorizations server may choose to decline issuing access and refresh tokens or deploy other risk mitigations if it detects the same codes being presented repeatedly.<a href="#section-5.4-1" class="pilcrow">¶</a></p>
+<section id="section-5.1.4">
+          <h4 id="name-unique-codes">
+<a href="#section-5.1.4" class="section-number selfRef">5.1.4. </a><a href="#name-unique-codes" class="section-name selfRef">Unique Codes</a>
+          </h4>
+<p id="section-5.1.4-1">By issuing unique user or QR codes, an authorization server can detect if the same codes are being repeatedly submitted. This may be interpreted as anomalous behavior and the authorizations server may choose to decline issuing access and refresh tokens or deploy other risk mitigations if it detects the same codes being presented repeatedly.<a href="#section-5.1.4-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="content-filtering">
-<section id="section-5.5">
-        <h3 id="name-content-filtering">
-<a href="#section-5.5" class="section-number selfRef">5.5. </a><a href="#name-content-filtering" class="section-name selfRef">Content Filtering</a>
-        </h3>
-<p id="section-5.5-1">Attackers exploit the unauthenticated channel by changing the context of the user code or QR code and then sending a message to a user (e-mail, text, instant messaging etc). By deploying content filtering (e.g. anti-spam filter), these messages can be blocked and prevented from reaching the end-users. It may be possible to fine-tune content filtering solutions to detect artifacts like QR codes or user codes that are being reused in multiple messages to disrupt spray attacks.<a href="#section-5.5-1" class="pilcrow">¶</a></p>
+<section id="section-5.1.5">
+          <h4 id="name-content-filtering">
+<a href="#section-5.1.5" class="section-number selfRef">5.1.5. </a><a href="#name-content-filtering" class="section-name selfRef">Content Filtering</a>
+          </h4>
+<p id="section-5.1.5-1">Attackers exploit the unauthenticated channel by changing the context of the user code or QR code and then sending a message to a user (e-mail, text, instant messaging etc). By deploying content filtering (e.g., anti-spam filter), these messages can be blocked and prevented from reaching the end-users. It may be possible to fine-tune content filtering solutions to detect artifacts like QR codes or user codes that are being reused in multiple messages to disrupt spray attacks.<a href="#section-5.1.5-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="trusted-devices">
-<section id="section-5.6">
-        <h3 id="name-trusted-devices">
-<a href="#section-5.6" class="section-number selfRef">5.6. </a><a href="#name-trusted-devices" class="section-name selfRef">Trusted Devices</a>
-        </h3>
-<p id="section-5.6-1">If an attacker is unable to initiate the protocol, they are unable to obtain a QR code or user code that can be leveraged for the attacks described in this document. By restricting the protocol to only be executed on devices trusted by the authorization server, it prevents attackers from using arbitrary devices, or by mimicking devices to initiate the protocol. Trusted devices include devices that are pre-registered with the authorization server or are subject to device management policies. Device management policies may enforce patching, version updates, on-device anti-malware deployment, revocation status and device location amongst others. Trusted devices may have their identities rooted in hardware (e.g. a TPM or equivalent technology). By only allowing trusted devices to initiate cross-device flows, it requires the attacker to have access to such a device and maintain access in a way that does not result in the device's trust status from being revoked.<a href="#section-5.6-1" class="pilcrow">¶</a></p>
+<section id="section-5.1.6">
+          <h4 id="name-trusted-devices">
+<a href="#section-5.1.6" class="section-number selfRef">5.1.6. </a><a href="#name-trusted-devices" class="section-name selfRef">Trusted Devices</a>
+          </h4>
+<p id="section-5.1.6-1">If an attacker is unable to initiate the protocol, they are unable to obtain a QR code or user code that can be leveraged for the attacks described in this document. By restricting the protocol to only be executed on devices trusted by the authorization server, it prevents attackers from using arbitrary devices, or by mimicking devices to initiate the protocol. Trusted devices include devices that are pre-registered with the authorization server or are subject to device management policies. Device management policies may enforce patching, version updates, on-device anti-malware deployment, revocation status and device location amongst others. Trusted devices may have their identities rooted in hardware (e.g., a TPM or equivalent technology). By only allowing trusted devices to initiate cross-device flows, it requires the attacker to have access to such a device and maintain access in a way that does not result in the device's trust status from being revoked.<a href="#section-5.1.6-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="trusted-networks">
-<section id="section-5.7">
-        <h3 id="name-trusted-networks">
-<a href="#section-5.7" class="section-number selfRef">5.7. </a><a href="#name-trusted-networks" class="section-name selfRef">Trusted Networks</a>
-        </h3>
-<p id="section-5.7-1">An attacker can be prevented from initiating a cross device flow protocol by only aalowing the protocol to be initiated on a trusted network or within a security perimeter (e.g. a corporate network). A trusted network may be defined as a set of IP addresses and joining the network is subject to security controls managed by the network operator ,which may include only allowinfg trusted devices on the network, device management, user authentication and physical access policies and systems. By limiting protocol initiation to a specific network, the attacker needs to have access to a device on the network.<a href="#section-5.7-1" class="pilcrow">¶</a></p>
+<section id="section-5.1.7">
+          <h4 id="name-trusted-networks">
+<a href="#section-5.1.7" class="section-number selfRef">5.1.7. </a><a href="#name-trusted-networks" class="section-name selfRef">Trusted Networks</a>
+          </h4>
+<p id="section-5.1.7-1">An attacker can be prevented from initiating a cross device flow protocol by only allowing the protocol to be initiated on a trusted network or within a security perimeter (e.g., a corporate network). A trusted network may be defined as a set of IP addresses and joining the network is subject to security controls managed by the network operator, which may include only allowinfg trusted devices on the network, device management, user authentication and physical access policies and systems. By limiting protocol initiation to a specific network, the attacker needs to have access to a device on the network.<a href="#section-5.1.7-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="limited-scopes">
-<section id="section-5.8">
-        <h3 id="name-limited-scopes">
-<a href="#section-5.8" class="section-number selfRef">5.8. </a><a href="#name-limited-scopes" class="section-name selfRef">Limited Scopes</a>
-        </h3>
-<p id="section-5.8-1">Authorization servers may choose to limit the scopes they include in access tokens issued through cross-device flows where the unauthenticated channel between two devices are susceptible to being exploited. By including limited scopes, it lessens the impact in case of a successful attack. The decision about which scopes are included may be further refined based on whether the protocol is initiated on a trusted device or the user's location relative to the initiating device.<a href="#section-5.8-1" class="pilcrow">¶</a></p>
+<section id="section-5.1.8">
+          <h4 id="name-limited-scopes">
+<a href="#section-5.1.8" class="section-number selfRef">5.1.8. </a><a href="#name-limited-scopes" class="section-name selfRef">Limited Scopes</a>
+          </h4>
+<p id="section-5.1.8-1">Authorization servers may choose to limit the scopes they include in access tokens issued through cross-device flows where the unauthenticated channel between two devices are susceptible to being exploited. Including limited scopes lessens the impact in case of a successful attack. The decision about which scopes are included may be further refined based on whether the protocol is initiated on a trusted device or the user's location relative to the initiating device.<a href="#section-5.1.8-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="short-lived-tokens">
-<section id="section-5.9">
-        <h3 id="name-short-lived-tokens">
-<a href="#section-5.9" class="section-number selfRef">5.9. </a><a href="#name-short-lived-tokens" class="section-name selfRef">Short lived tokens</a>
-        </h3>
-<p id="section-5.9-1">Another mitigation strategy includes limiting the life of the access and refresh tokens. The lifetime can be lengthened or shortened, depending on the user's location, the resources they are trying to access or whether they are using a trusted device. Short lived tokens does not prevent or disrupt the attack, but serves as a remedial mechanism in case the attack succeeded.<a href="#section-5.9-1" class="pilcrow">¶</a></p>
+<section id="section-5.1.9">
+          <h4 id="name-short-lived-tokens">
+<a href="#section-5.1.9" class="section-number selfRef">5.1.9. </a><a href="#name-short-lived-tokens" class="section-name selfRef">Short lived tokens</a>
+          </h4>
+<p id="section-5.1.9-1">Another mitigation strategy includes limiting the life of the access and refresh tokens. The lifetime can be lengthened or shortened, depending on the user's location, the resources they are trying to access or whether they are using a trusted device. Short lived tokens do not prevent or disrupt the attack, but serve as a remedial mechanism in case the attack succeeded.<a href="#section-5.1.9-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="rate-limits">
-<section id="section-5.10">
-        <h3 id="name-rate-limits">
-<a href="#section-5.10" class="section-number selfRef">5.10. </a><a href="#name-rate-limits" class="section-name selfRef">Rate Limits</a>
-        </h3>
-<p id="section-5.10-1">An attacker that engages in a scaled spray attack needs to request a large number of user codes (see exploit example 1) or initiate a large number of authorization requests (see exploit example 2) in a short period of time. An authorization server can apply rate limits to minimize the number of requests it would accept from a client in a limited time period.<a href="#section-5.10-1" class="pilcrow">¶</a></p>
+<section id="section-5.1.10">
+          <h4 id="name-rate-limits">
+<a href="#section-5.1.10" class="section-number selfRef">5.1.10. </a><a href="#name-rate-limits" class="section-name selfRef">Rate Limits</a>
+          </h4>
+<p id="section-5.1.10-1">An attacker that engages in a scaled spray attack needs to request a large number of user codes (see exploit example 1) or initiate a large number of authorization requests (see exploit example 2) in a short period of time. An authorization server can apply rate limits to minimize the number of requests it would accept from a client in a limited time period.<a href="#section-5.1.10-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sender-constrained-tokens">
-<section id="section-5.11">
-        <h3 id="name-sender-constrained-tokens">
-<a href="#section-5.11" class="section-number selfRef">5.11. </a><a href="#name-sender-constrained-tokens" class="section-name selfRef">Sender Constrained Tokens</a>
-        </h3>
-<p id="section-5.11-1">Sender constrained tokens limit the impact of a successful attack by preventing the tokens from being moved from the device on which the attack was successfully executed. This makes attacks where an attacker gathers a large number of access and refresh tokens on a single device and then sells them for profit more difficult, since the attacker would also have to export the cryptographic keys used to sender constrain the tokens or be able to access them an generate signatures for future use. If the attack is being executed on a trusted device to a device with anti-malware, any attempts to exfiltrate tokens or keys may be detected and the device's trust status may be changed. Using hardware keys for sender constraining tokens will further reduce the ability of the attacker to move tokens to another device.<a href="#section-5.11-1" class="pilcrow">¶</a></p>
+<section id="section-5.1.11">
+          <h4 id="name-sender-constrained-tokens">
+<a href="#section-5.1.11" class="section-number selfRef">5.1.11. </a><a href="#name-sender-constrained-tokens" class="section-name selfRef">Sender Constrained Tokens</a>
+          </h4>
+<p id="section-5.1.11-1">Sender constrained tokens limit the impact of a successful attack by preventing the tokens from being moved from the device on which the attack was successfully executed. This makes attacks where an attacker gathers a large number of access and refresh tokens on a single device and then sells them for profit more difficult, since the attacker would also have to export the cryptographic keys used to sender constrain the tokens or be able to access them an generate signatures for future use. If the attack is being executed on a trusted device to a device with anti-malware, any attempts to exfiltrate tokens or keys may be detected and the device's trust status may be changed. Using hardware keys for sender constraining tokens will further reduce the ability of the attacker to move tokens to another device.<a href="#section-5.1.11-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="user-experience">
-<section id="section-5.12">
-        <h3 id="name-user-experience">
-<a href="#section-5.12" class="section-number selfRef">5.12. </a><a href="#name-user-experience" class="section-name selfRef">User Experience</a>
-        </h3>
-<p id="section-5.12-1">The user experience should preserve the context within which the protocols were initiated and communicate this clearly to the user when they are asked to authorize, authenticate or present a credential. In preserving the context, it should be clear to the user who invoked the flow, why it was invoked and what the consequence of completing the authorization, authentication or credential presentation. The user experience should reinforce the message that unless the user initiated the authorization request, or was expecting it, they should decline the request.<a href="#section-5.12-1" class="pilcrow">¶</a></p>
-<p id="section-5.12-2">It should be clear to the user how to decline the request. To avoid accidental authorization grants, the "decline" option may be the default option or given similar prominence in the user experience as the "grant" option.<a href="#section-5.12-2" class="pilcrow">¶</a></p>
-<p id="section-5.12-3">This information may be communicated graphically or in a simple message (e.g. "It looks like you are trying to access your files on a digital whiteboard in your city center office. Click here to grant access to your files. If you are not trying to access your files, you should decline this request and notify the security department").<a href="#section-5.12-3" class="pilcrow">¶</a></p>
-<p id="section-5.12-4">The service may provide out-of-band reinforcement to the user on the context and conditions under which an authorization grant may be requested. For example if the service provider does not send e-mails with QR codes requesting users to grant authorization, this may be reinforced in marketing messages, in-app experiences and through anti-fraud awareness campaigns.<a href="#section-5.12-4" class="pilcrow">¶</a></p>
+<section id="section-5.1.12">
+          <h4 id="name-user-experience">
+<a href="#section-5.1.12" class="section-number selfRef">5.1.12. </a><a href="#name-user-experience" class="section-name selfRef">User Experience</a>
+          </h4>
+<p id="section-5.1.12-1">The user experience should preserve the context within which the protocols were initiated and communicate this clearly to the user when they are asked to authorize, authenticate or present a credential. In preserving the context, it should be clear to the user who invoked the flow, why it was invoked and what the consequence of completing the authorization, authentication or credential presentation. The user experience should reinforce the message that unless the user initiated the authorization request, or was expecting it, they should decline the request.<a href="#section-5.1.12-1" class="pilcrow">¶</a></p>
+<p id="section-5.1.12-2">It should be clear to the user how to decline the request. To avoid accidental authorization grants, the "decline" option may be the default option or given similar prominence in the user experience as the "grant" option.<a href="#section-5.1.12-2" class="pilcrow">¶</a></p>
+<p id="section-5.1.12-3">This information may be communicated graphically or in a simple message (e.g., "It looks like you are trying to access your files on a digital whiteboard in your city center office. Click here to grant access to your files. If you are not trying to access your files, you should decline this request and notify the security department").<a href="#section-5.1.12-3" class="pilcrow">¶</a></p>
+<p id="section-5.1.12-4">The service may provide out-of-band reinforcement to the user on the context and conditions under which an authorization grant may be requested. For example if the service provider does not send e-mails with QR codes requesting users to grant authorization, this may be reinforced in marketing messages, in-app experiences and through anti-fraud awareness campaigns.<a href="#section-5.1.12-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="practical-mitigation-summary">
-<section id="section-5.13">
-        <h3 id="name-practical-mitigation-summar">
-<a href="#section-5.13" class="section-number selfRef">5.13. </a><a href="#name-practical-mitigation-summar" class="section-name selfRef">Practical Mitigation Summary</a>
-        </h3>
-<p id="section-5.13-1">The practical mitigations described in this section can prevent the attacks from being initiated, disrupt attacks once they start or reduce the impact or remediate an attack if it succeeds. When combining one or more of these mitigations the overall security profile of a cross-device flow improves significantly. The following table provides a summary view of these mitigations:<a href="#section-5.13-1" class="pilcrow">¶</a></p>
+<section id="section-5.1.13">
+          <h4 id="name-practical-mitigation-summar">
+<a href="#section-5.1.13" class="section-number selfRef">5.1.13. </a><a href="#name-practical-mitigation-summar" class="section-name selfRef">Practical Mitigation Summary</a>
+          </h4>
+<p id="section-5.1.13-1">The practical mitigations described in this section can prevent the attacks from being initiated, disrupt attacks once they start or reduce the impact or remediate an attack if it succeeds. When combining one or more of these mitigations the overall security profile of a cross-device flow improves significantly. The following table provides a summary view of these mitigations:<a href="#section-5.1.13-1" class="pilcrow">¶</a></p>
 <span id="name-practical-mitigation-summary"></span><table class="center" id="table-1">
-          <caption>
+            <caption>
 <a href="#table-1" class="selfRef">Table 1</a>:
 <a href="#name-practical-mitigation-summary" class="selfRef">Practical Mitigation Summary</a>
-          </caption>
+            </caption>
 <thead>
-            <tr>
-              <th class="text-left" rowspan="1" colspan="1">Mitigation</th>
-              <th class="text-center" rowspan="1" colspan="1">Prevent</th>
-              <th class="text-center" rowspan="1" colspan="1">Disrupt</th>
-              <th class="text-center" rowspan="1" colspan="1">Recover</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="text-left" rowspan="1" colspan="1">Establish Proximity</td>
-              <td class="text-center" rowspan="1" colspan="1">X</td>
-              <td class="text-center" rowspan="1" colspan="1">X</td>
-              <td class="text-center" rowspan="1" colspan="1"></td>
-            </tr>
-            <tr>
-              <td class="text-left" rowspan="1" colspan="1">Short Lived/Timebound Codes</td>
-              <td class="text-center" rowspan="1" colspan="1"></td>
-              <td class="text-center" rowspan="1" colspan="1">X</td>
-              <td class="text-center" rowspan="1" colspan="1"></td>
-            </tr>
-            <tr>
-              <td class="text-left" rowspan="1" colspan="1">Content Filtering</td>
-              <td class="text-center" rowspan="1" colspan="1"></td>
-              <td class="text-center" rowspan="1" colspan="1">X</td>
-              <td class="text-center" rowspan="1" colspan="1"></td>
-            </tr>
-            <tr>
-              <td class="text-left" rowspan="1" colspan="1">Trusted Devices</td>
-              <td class="text-center" rowspan="1" colspan="1">X</td>
-              <td class="text-center" rowspan="1" colspan="1"></td>
-              <td class="text-center" rowspan="1" colspan="1"></td>
-            </tr>
-            <tr>
-              <td class="text-left" rowspan="1" colspan="1">Trusted Networks</td>
-              <td class="text-center" rowspan="1" colspan="1">X</td>
-              <td class="text-center" rowspan="1" colspan="1"></td>
-              <td class="text-center" rowspan="1" colspan="1"></td>
-            </tr>
-            <tr>
-              <td class="text-left" rowspan="1" colspan="1">Limited Scopes</td>
-              <td class="text-center" rowspan="1" colspan="1"></td>
-              <td class="text-center" rowspan="1" colspan="1"></td>
-              <td class="text-center" rowspan="1" colspan="1">X</td>
-            </tr>
-            <tr>
-              <td class="text-left" rowspan="1" colspan="1">Short Lived Tokens</td>
-              <td class="text-center" rowspan="1" colspan="1"></td>
-              <td class="text-center" rowspan="1" colspan="1"></td>
-              <td class="text-center" rowspan="1" colspan="1">X</td>
-            </tr>
-            <tr>
-              <td class="text-left" rowspan="1" colspan="1">Rate Limits</td>
-              <td class="text-center" rowspan="1" colspan="1">X</td>
-              <td class="text-center" rowspan="1" colspan="1">X</td>
-              <td class="text-center" rowspan="1" colspan="1"></td>
-            </tr>
-            <tr>
-              <td class="text-left" rowspan="1" colspan="1">Sender Constrained Tokens</td>
-              <td class="text-center" rowspan="1" colspan="1"></td>
-              <td class="text-center" rowspan="1" colspan="1"></td>
-              <td class="text-center" rowspan="1" colspan="1">X</td>
-            </tr>
-            <tr>
-              <td class="text-left" rowspan="1" colspan="1">User Experience</td>
-              <td class="text-center" rowspan="1" colspan="1">X</td>
-              <td class="text-center" rowspan="1" colspan="1"></td>
-              <td class="text-center" rowspan="1" colspan="1"></td>
-            </tr>
-          </tbody>
-        </table>
+              <tr>
+                <th class="text-left" rowspan="1" colspan="1">Mitigation</th>
+                <th class="text-center" rowspan="1" colspan="1">Prevent</th>
+                <th class="text-center" rowspan="1" colspan="1">Disrupt</th>
+                <th class="text-center" rowspan="1" colspan="1">Recover</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="text-left" rowspan="1" colspan="1">Establish Proximity</td>
+                <td class="text-center" rowspan="1" colspan="1">X</td>
+                <td class="text-center" rowspan="1" colspan="1">X</td>
+                <td class="text-center" rowspan="1" colspan="1"></td>
+              </tr>
+              <tr>
+                <td class="text-left" rowspan="1" colspan="1">Short Lived/Timebound Codes</td>
+                <td class="text-center" rowspan="1" colspan="1"></td>
+                <td class="text-center" rowspan="1" colspan="1">X</td>
+                <td class="text-center" rowspan="1" colspan="1"></td>
+              </tr>
+              <tr>
+                <td class="text-left" rowspan="1" colspan="1">Content Filtering</td>
+                <td class="text-center" rowspan="1" colspan="1"></td>
+                <td class="text-center" rowspan="1" colspan="1">X</td>
+                <td class="text-center" rowspan="1" colspan="1"></td>
+              </tr>
+              <tr>
+                <td class="text-left" rowspan="1" colspan="1">Trusted Devices</td>
+                <td class="text-center" rowspan="1" colspan="1">X</td>
+                <td class="text-center" rowspan="1" colspan="1"></td>
+                <td class="text-center" rowspan="1" colspan="1"></td>
+              </tr>
+              <tr>
+                <td class="text-left" rowspan="1" colspan="1">Trusted Networks</td>
+                <td class="text-center" rowspan="1" colspan="1">X</td>
+                <td class="text-center" rowspan="1" colspan="1"></td>
+                <td class="text-center" rowspan="1" colspan="1"></td>
+              </tr>
+              <tr>
+                <td class="text-left" rowspan="1" colspan="1">Limited Scopes</td>
+                <td class="text-center" rowspan="1" colspan="1"></td>
+                <td class="text-center" rowspan="1" colspan="1"></td>
+                <td class="text-center" rowspan="1" colspan="1">X</td>
+              </tr>
+              <tr>
+                <td class="text-left" rowspan="1" colspan="1">Short Lived Tokens</td>
+                <td class="text-center" rowspan="1" colspan="1"></td>
+                <td class="text-center" rowspan="1" colspan="1"></td>
+                <td class="text-center" rowspan="1" colspan="1">X</td>
+              </tr>
+              <tr>
+                <td class="text-left" rowspan="1" colspan="1">Rate Limits</td>
+                <td class="text-center" rowspan="1" colspan="1">X</td>
+                <td class="text-center" rowspan="1" colspan="1">X</td>
+                <td class="text-center" rowspan="1" colspan="1"></td>
+              </tr>
+              <tr>
+                <td class="text-left" rowspan="1" colspan="1">Sender Constrained Tokens</td>
+                <td class="text-center" rowspan="1" colspan="1"></td>
+                <td class="text-center" rowspan="1" colspan="1"></td>
+                <td class="text-center" rowspan="1" colspan="1">X</td>
+              </tr>
+              <tr>
+                <td class="text-left" rowspan="1" colspan="1">User Experience</td>
+                <td class="text-center" rowspan="1" colspan="1">X</td>
+                <td class="text-center" rowspan="1" colspan="1"></td>
+                <td class="text-center" rowspan="1" colspan="1"></td>
+              </tr>
+            </tbody>
+          </table>
 </section>
 </div>
 </section>
 </div>
 <div id="protocol-selection">
-<section id="section-6">
-      <h2 id="name-protocol-selection">
-<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-protocol-selection" class="section-name selfRef">Protocol selection</a>
-      </h2>
-<p id="section-6-1">Some cross-device protocols are more susceptible to the exploits described in this document than others. In this section we will compare three different protocols in terms of their susceptibility to exploits focused on the unauthenticated channel, the prerequisites to implement and deploy them along with guidance on when it is appropriate to use them.<a href="#section-6-1" class="pilcrow">¶</a></p>
-<div id="ietf-oauth-2-0-device-authorization-grant-rfc8682">
-<section id="section-6.1">
-        <h3 id="name-ietf-oauth-20-device-author">
-<a href="#section-6.1" class="section-number selfRef">6.1. </a><a href="#name-ietf-oauth-20-device-author" class="section-name selfRef">IETF OAuth 2.0 Device Authorization Grant <em class="cite xref">[RFC8682]</em>:</a>
+<section id="section-5.2">
+        <h3 id="name-protocol-selection">
+<a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-protocol-selection" class="section-name selfRef">Protocol selection</a>
         </h3>
-<div id="description">
-<section id="section-6.1.1">
-          <h4 id="name-description">
-<a href="#section-6.1.1" class="section-number selfRef">6.1.1. </a><a href="#name-description" class="section-name selfRef">Description</a>
+<p id="section-5.2-1">Some cross-device protocols are more susceptible to the exploits described in this document than others. In this section we will compare three different protocols in terms of their susceptibility to exploits focused on the unauthenticated channel, the prerequisites to implement and deploy them along with guidance on when it is appropriate to use them.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+<div id="ietf-oauth-2-0-device-authorization-grant-rfc8682">
+<section id="section-5.2.1">
+          <h4 id="name-ietf-oauth-20-device-author">
+<a href="#section-5.2.1" class="section-number selfRef">5.2.1. </a><a href="#name-ietf-oauth-20-device-author" class="section-name selfRef">IETF OAuth 2.0 Device Authorization Grant <em class="cite xref">[RFC8682]</em>:</a>
           </h4>
-<p id="section-6.1.1-1">A standard to enable authorization on devices with constrained input capabilities (smart TVs, printers, kiosks). In this protocol, the user code or QR code is displayed or made available on the initiating device (smart TV) and entered on a second device (e.g. a mobile phone).<a href="#section-6.1.1-1" class="pilcrow">¶</a></p>
+<div id="description">
+<section id="section-5.2.1.1">
+            <h5 id="name-description">
+<a href="#section-5.2.1.1" class="section-number selfRef">5.2.1.1. </a><a href="#name-description" class="section-name selfRef">Description</a>
+            </h5>
+<p id="section-5.2.1.1-1">A standard to enable authorization on devices with constrained input capabilities (smart TVs, printers, kiosks). In this protocol, the user code or QR code is displayed or made available on the initiating device (smart TV) and entered on a second device (e.g., a mobile phone).<a href="#section-5.2.1.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="susceptibility">
-<section id="section-6.1.2">
-          <h4 id="name-susceptibility">
-<a href="#section-6.1.2" class="section-number selfRef">6.1.2. </a><a href="#name-susceptibility" class="section-name selfRef">Susceptibility</a>
-          </h4>
-<p id="section-6.1.2-1">There are several reports in the public domain outlining how the unauthenticated channel may be exploited to execute an illicit consent grant attack.
-Device capabilities: There are no assumptions in the protocol about underlying capabilities of the device, making it a "least common denominator" protocol that is expected to work on the broadest set of devices and environments.<a href="#section-6.1.2-1" class="pilcrow">¶</a></p>
+<section id="section-5.2.1.2">
+            <h5 id="name-susceptibility">
+<a href="#section-5.2.1.2" class="section-number selfRef">5.2.1.2. </a><a href="#name-susceptibility" class="section-name selfRef">Susceptibility</a>
+            </h5>
+<p id="section-5.2.1.2-1">There are several reports in the public domain outlining how the unauthenticated channel may be exploited to execute an illicit consent grant attack.<a href="#section-5.2.1.2-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="device-capabilities">
+<section id="section-5.2.1.3">
+            <h5 id="name-device-capabilities">
+<a href="#section-5.2.1.3" class="section-number selfRef">5.2.1.3. </a><a href="#name-device-capabilities" class="section-name selfRef">Device capabilities</a>
+            </h5>
+<p id="section-5.2.1.3-1">There are no assumptions in the protocol about underlying capabilities of the device, making it a "least common denominator" protocol that is expected to work on the broadest set of devices and environments.<a href="#section-5.2.1.3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="mitigations">
-<section id="section-6.1.3">
-          <h4 id="name-mitigations">
-<a href="#section-6.1.3" class="section-number selfRef">6.1.3. </a><a href="#name-mitigations" class="section-name selfRef">Mitigations</a>
-          </h4>
-<p id="section-6.1.3-1">In addition to the security considerations section in the standard, it is recommended that one or more of the mitigations outlined in this document be considered, especially mitigations that can help establish proximity or prevent attackers from obtaining QR or user codes.<a href="#section-6.1.3-1" class="pilcrow">¶</a></p>
+<section id="section-5.2.1.4">
+            <h5 id="name-mitigations">
+<a href="#section-5.2.1.4" class="section-number selfRef">5.2.1.4. </a><a href="#name-mitigations" class="section-name selfRef">Mitigations</a>
+            </h5>
+<p id="section-5.2.1.4-1">In addition to the security considerations section in the standard, it is recommended that one or more of the mitigations outlined in this document be considered, especially mitigations that can help establish proximity or prevent attackers from obtaining QR or user codes.<a href="#section-5.2.1.4-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="when-to-use">
-<section id="section-6.1.4">
-          <h4 id="name-when-to-use">
-<a href="#section-6.1.4" class="section-number selfRef">6.1.4. </a><a href="#name-when-to-use" class="section-name selfRef">When to use</a>
-          </h4>
-<p id="section-6.1.4-1">Only use this protocol if other cross-device protocols are not viable due to device or system constraints. Avoid using if the protected resources are sensitive, high value or business critical. Always deploy additional mitigations like proximity or only allow with pre-registered devices.<a href="#section-6.1.4-1" class="pilcrow">¶</a></p>
+<section id="section-5.2.1.5">
+            <h5 id="name-when-to-use">
+<a href="#section-5.2.1.5" class="section-number selfRef">5.2.1.5. </a><a href="#name-when-to-use" class="section-name selfRef">When to use</a>
+            </h5>
+<p id="section-5.2.1.5-1">Only use this protocol if other cross-device protocols are not viable due to device or system constraints. Avoid using if the protected resources are sensitive, high value or business critical. Always deploy additional mitigations like proximity or only allow with pre-registered devices.<a href="#section-5.2.1.5-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
 </div>
 <div id="openid-foundation-client-initiated-back-channel-authentication-ciba">
-<section id="section-6.2">
-        <h3 id="name-openid-foundation-client-in">
-<a href="#section-6.2" class="section-number selfRef">6.2. </a><a href="#name-openid-foundation-client-in" class="section-name selfRef">OpenID Foundation Client Initiated Back-Channel Authentication (CIBA):</a>
-        </h3>
-<div id="description-1">
-<section id="section-6.2.1">
-          <h4 id="name-description-2">
-<a href="#section-6.2.1" class="section-number selfRef">6.2.1. </a><a href="#name-description-2" class="section-name selfRef">Description</a>
+<section id="section-5.2.2">
+          <h4 id="name-openid-foundation-client-in">
+<a href="#section-5.2.2" class="section-number selfRef">5.2.2. </a><a href="#name-openid-foundation-client-in" class="section-name selfRef">OpenID Foundation Client Initiated Back-Channel Authentication (CIBA):</a>
           </h4>
-<p id="section-6.2.1-1">A standard under development as part of the Financial-grade API (FAPI) family of standards that allows a device or service (e.g. a PC, Smart TV, Kiosk) to request the OpenID Provider to initiate an authentication flow if it knows a valid identifier for the user. The user completes the authentication flow using a second device (e.g. a mobile phone). In this flow the user does not scan a QR code or obtain a user code from the initiating device.<a href="#section-6.2.1-1" class="pilcrow">¶</a></p>
+<div id="description-1">
+<section id="section-5.2.2.1">
+            <h5 id="name-description-2">
+<a href="#section-5.2.2.1" class="section-number selfRef">5.2.2.1. </a><a href="#name-description-2" class="section-name selfRef">Description</a>
+            </h5>
+<p id="section-5.2.2.1-1">A standard under development as part of the Financial-grade API (FAPI) family of standards that allows a device or service (e.g., a personal computer, Smart TV, Kiosk) to request the OpenID Provider to initiate an authentication flow if it knows a valid identifier for the user. The user completes the authentication flow using a second device (e.g., a mobile phone). In this flow the user does not scan a QR code or obtain a user code from the initiating device.<a href="#section-5.2.2.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="susceptibility-1">
-<section id="section-6.2.2">
-          <h4 id="name-susceptibility-2">
-<a href="#section-6.2.2" class="section-number selfRef">6.2.2. </a><a href="#name-susceptibility-2" class="section-name selfRef">Susceptibility</a>
-          </h4>
-<p id="section-6.2.2-1">Less susceptible to unauthenticated channel attacks, but still vulnerable to attackers who know or can guess the user identifier and initiate a spray attack as described in Example 4.<a href="#section-6.2.2-1" class="pilcrow">¶</a></p>
+<section id="section-5.2.2.2">
+            <h5 id="name-susceptibility-2">
+<a href="#section-5.2.2.2" class="section-number selfRef">5.2.2.2. </a><a href="#name-susceptibility-2" class="section-name selfRef">Susceptibility</a>
+            </h5>
+<p id="section-5.2.2.2-1">Less susceptible to unauthenticated channel attacks, but still vulnerable to attackers who know or can guess the user identifier and initiate a spray attack as described in Example 4.<a href="#section-5.2.2.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="device-capabilities">
-<section id="section-6.2.3">
-          <h4 id="name-device-capabilities">
-<a href="#section-6.2.3" class="section-number selfRef">6.2.3. </a><a href="#name-device-capabilities" class="section-name selfRef">Device capabilities</a>
-          </h4>
-<p id="section-6.2.3-1">There is no requirement on the initiating device to support specific hardware. The authorizing device must be registered/associated with the user and it must be possible for the Authorization Server to trigger an authorization on this device.<a href="#section-6.2.3-1" class="pilcrow">¶</a></p>
+<div id="device-capabilities-1">
+<section id="section-5.2.2.3">
+            <h5 id="name-device-capabilities-2">
+<a href="#section-5.2.2.3" class="section-number selfRef">5.2.2.3. </a><a href="#name-device-capabilities-2" class="section-name selfRef">Device capabilities</a>
+            </h5>
+<p id="section-5.2.2.3-1">There is no requirement on the initiating device to support specific hardware. The authorizing device must be registered/associated with the user and it must be possible for the Authorization Server to trigger an authorization on this device.<a href="#section-5.2.2.3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="mitigations-1">
-<section id="section-6.2.4">
-          <h4 id="name-mitigations-2">
-<a href="#section-6.2.4" class="section-number selfRef">6.2.4. </a><a href="#name-mitigations-2" class="section-name selfRef">Mitigations</a>
-          </h4>
-<p id="section-6.2.4-1">In addition to the security considerations section in the standard, it is recommended that one or more of the mitigations outlined in this document be considered, especially mitigations that can help establish proximity or prevent attackers from initiating authorization requests.<a href="#section-6.2.4-1" class="pilcrow">¶</a></p>
+<section id="section-5.2.2.4">
+            <h5 id="name-mitigations-2">
+<a href="#section-5.2.2.4" class="section-number selfRef">5.2.2.4. </a><a href="#name-mitigations-2" class="section-name selfRef">Mitigations</a>
+            </h5>
+<p id="section-5.2.2.4-1">In addition to the security considerations section in the standard, it is recommended that one or more of the mitigations outlined in this document be considered, especially mitigations that can help establish proximity or prevent attackers from initiating authorization requests.<a href="#section-5.2.2.4-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="when-to-use-1">
-<section id="section-6.2.5">
-          <h4 id="name-when-to-use-2">
-<a href="#section-6.2.5" class="section-number selfRef">6.2.5. </a><a href="#name-when-to-use-2" class="section-name selfRef">When to use</a>
-          </h4>
-<p id="section-6.2.5-1">Use CIBA instead of Device Authorization Grant if it is possible for the initiating device to obtain a user identifier on the initiating device (e.g. through an input or selection mechanism) and if the Authorization Server can trigger an authorization on the authorization device.<a href="#section-6.2.5-1" class="pilcrow">¶</a></p>
+<section id="section-5.2.2.5">
+            <h5 id="name-when-to-use-2">
+<a href="#section-5.2.2.5" class="section-number selfRef">5.2.2.5. </a><a href="#name-when-to-use-2" class="section-name selfRef">When to use</a>
+            </h5>
+<p id="section-5.2.2.5-1">Use CIBA instead of Device Authorization Grant if it is possible for the initiating device to obtain a user identifier on the initiating device (e.g., through an input or selection mechanism) and if the Authorization Server can trigger an authorization on the authorization device.<a href="#section-5.2.2.5-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
 </div>
 <div id="fido2-webauthn">
-<section id="section-6.3">
-        <h3 id="name-fido2-webauthn">
-<a href="#section-6.3" class="section-number selfRef">6.3. </a><a href="#name-fido2-webauthn" class="section-name selfRef">FIDO2/WebAuthn</a>
-        </h3>
-<div id="description-2">
-<section id="section-6.3.1">
-          <h4 id="name-description-3">
-<a href="#section-6.3.1" class="section-number selfRef">6.3.1. </a><a href="#name-description-3" class="section-name selfRef">Description</a>
+<section id="section-5.2.3">
+          <h4 id="name-fido2-webauthn">
+<a href="#section-5.2.3" class="section-number selfRef">5.2.3. </a><a href="#name-fido2-webauthn" class="section-name selfRef">FIDO2/WebAuthn</a>
           </h4>
-<p id="section-6.3.1-1">FIDO2/WebAuthn is a stack of standards developed in the FIDO Alliance and W3C respectively which allow for origin-bound, phishing-resistant user authentication using asymmetric cryptography that can be invoked from a web browser or native client. Version 2.2 of the FIDO Client to Authenticator Protocol (CTAP) supports a new cross-device authentication protocol, called "hybrid", which enables an external device, such as a phone or tablet, to be used as a roaming authenticator for signing into the primary device, such as a desktop or laptop. This is commonly called FIDO Cross-Device Authentication (CDA).<a href="#section-6.3.1-1" class="pilcrow">¶</a></p>
-<p id="section-6.3.1-2">When a user wants to authenticate using their mobile device (authenticator) for the first time, they need to link their authenticator to their main device. This is done using a scan of a QR code. When the authenticator scans the QR code, the device sends an encrypted BLE advertisement containing keying material and a tunnel ID. The main device and authenticator both establish connections to the web service, and the normal CTAP protocol exchange occurs.<a href="#section-6.3.1-2" class="pilcrow">¶</a></p>
-<p id="section-6.3.1-3">If the user chooses to keep their authenticator linked with the main device, the QR code link step is not necessary for subsequent use. The user will receive a push notification on the authenticator.<a href="#section-6.3.1-3" class="pilcrow">¶</a></p>
+<div id="description-2">
+<section id="section-5.2.3.1">
+            <h5 id="name-description-3">
+<a href="#section-5.2.3.1" class="section-number selfRef">5.2.3.1. </a><a href="#name-description-3" class="section-name selfRef">Description</a>
+            </h5>
+<p id="section-5.2.3.1-1">FIDO2/WebAuthn is a stack of standards developed in the FIDO Alliance and W3C respectively which allow for origin-bound, phishing-resistant user authentication using asymmetric cryptography that can be invoked from a web browser or native client. Version 2.2 of the FIDO Client to Authenticator Protocol (CTAP) supports a new cross-device authentication protocol, called "hybrid", which enables an external device, such as a phone or tablet, to be used as a roaming authenticator for signing into the primary device, such as a personal computer. This is commonly called FIDO Cross-Device Authentication (CDA).<a href="#section-5.2.3.1-1" class="pilcrow">¶</a></p>
+<p id="section-5.2.3.1-2">When a user wants to authenticate using their mobile device (authenticator) for the first time, they need to link their authenticator to their main device. This is done using a scan of a QR code. When the authenticator scans the QR code, the device sends an encrypted BLE advertisement containing keying material and a tunnel ID. The main device and authenticator both establish connections to the web service, and the normal CTAP protocol exchange occurs.<a href="#section-5.2.3.1-2" class="pilcrow">¶</a></p>
+<p id="section-5.2.3.1-3">If the user chooses to keep their authenticator linked with the main device, the QR code link step is not necessary for subsequent use. The user will receive a push notification on the authenticator.<a href="#section-5.2.3.1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="susceptibility-2">
-<section id="section-6.3.2">
-          <h4 id="name-susceptibility-3">
-<a href="#section-6.3.2" class="section-number selfRef">6.3.2. </a><a href="#name-susceptibility-3" class="section-name selfRef">Susceptibility</a>
-          </h4>
-<p id="section-6.3.2-1">The Cross-Device Authentication flow proves proximity by leveraging BLE advertisements for service establishment, significantly reducing the susceptibility to any of the exploits described in Examples 1-6.<a href="#section-6.3.2-1" class="pilcrow">¶</a></p>
+<section id="section-5.2.3.2">
+            <h5 id="name-susceptibility-3">
+<a href="#section-5.2.3.2" class="section-number selfRef">5.2.3.2. </a><a href="#name-susceptibility-3" class="section-name selfRef">Susceptibility</a>
+            </h5>
+<p id="section-5.2.3.2-1">The Cross-Device Authentication flow proves proximity by leveraging BLE advertisements for service establishment, significantly reducing the susceptibility to any of the exploits described in Examples 1-6.<a href="#section-5.2.3.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="device-capabilities-1">
-<section id="section-6.3.3">
-          <h4 id="name-device-capabilities-2">
-<a href="#section-6.3.3" class="section-number selfRef">6.3.3. </a><a href="#name-device-capabilities-2" class="section-name selfRef">Device capabilities</a>
-          </h4>
-<p id="section-6.3.3-1">Both the initiating device and the authenticator require BLE support. The initiating device must support both FIDO2/WebAuthn, specifically CTAP 2.2 with hybrid transport. The mobile phone must support CTAP 2.2+ to be used as a cross-device authenticator.<a href="#section-6.3.3-1" class="pilcrow">¶</a></p>
+<div id="device-capabilities-2">
+<section id="section-5.2.3.3">
+            <h5 id="name-device-capabilities-3">
+<a href="#section-5.2.3.3" class="section-number selfRef">5.2.3.3. </a><a href="#name-device-capabilities-3" class="section-name selfRef">Device capabilities</a>
+            </h5>
+<p id="section-5.2.3.3-1">Both the initiating device and the authenticator require BLE support. The initiating device must support both FIDO2/WebAuthn, specifically CTAP 2.2 with hybrid transport. The mobile phone must support CTAP 2.2+ to be used as a cross-device authenticator.<a href="#section-5.2.3.3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="mitigations-2">
-<section id="section-6.3.4">
-          <h4 id="name-mitigations-3">
-<a href="#section-6.3.4" class="section-number selfRef">6.3.4. </a><a href="#name-mitigations-3" class="section-name selfRef">Mitigations</a>
-          </h4>
-<p id="section-6.3.4-1">FIDO Cross-Device Authentication (CDA) establishes proximity through the use of BLE, reducing the need for additional mitigations. An implementer may still choose to implement additional mitigation as described in this document.<a href="#section-6.3.4-1" class="pilcrow">¶</a></p>
+<section id="section-5.2.3.4">
+            <h5 id="name-mitigations-3">
+<a href="#section-5.2.3.4" class="section-number selfRef">5.2.3.4. </a><a href="#name-mitigations-3" class="section-name selfRef">Mitigations</a>
+            </h5>
+<p id="section-5.2.3.4-1">FIDO Cross-Device Authentication (CDA) establishes proximity through the use of BLE, reducing the need for additional mitigations. An implementer may still choose to implement additional mitigation as described in this document.<a href="#section-5.2.3.4-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="when-to-use-2">
-<section id="section-6.3.5">
-          <h4 id="name-when-to-use-3">
-<a href="#section-6.3.5" class="section-number selfRef">6.3.5. </a><a href="#name-when-to-use-3" class="section-name selfRef">When to use</a>
-          </h4>
-<p id="section-6.3.5-1">FIDO2/WebAuthn should be used for cross-device authentication scenarios whenever the devices are capable of doing so. It may be used as an authentication method with the Authorization Code Grant <span>[<a href="#RFC6749" class="cite xref">RFC6749</a>]</span> and PKCE <span>[<a href="#RFC7663" class="cite xref">RFC7663</a>]</span>, to grant authorization to an initiating device (e.g. Smart TV or interactive whiteboard) using a mobile phone as the authenticating device. This combination of FIDO2/WebAuthn and Authorization Code Flow with PKCE enables cross device authorization flows, without the risks posed by the Device Authorization Grant <span>[<a href="#RFC8628" class="cite xref">RFC8628</a>]</span>.<a href="#section-6.3.5-1" class="pilcrow">¶</a></p>
+<section id="section-5.2.3.5">
+            <h5 id="name-when-to-use-3">
+<a href="#section-5.2.3.5" class="section-number selfRef">5.2.3.5. </a><a href="#name-when-to-use-3" class="section-name selfRef">When to use</a>
+            </h5>
+<p id="section-5.2.3.5-1">FIDO2/WebAuthn should be used for cross-device authentication scenarios whenever the devices are capable of doing so. It may be used as an authentication method with the Authorization Code Grant <span>[<a href="#RFC6749" class="cite xref">RFC6749</a>]</span> and PKCE <span>[<a href="#RFC7663" class="cite xref">RFC7663</a>]</span>, to grant authorization to an initiating device (e.g., Smart TV or interactive whiteboard) using a mobile phone as the authenticating device. This combination of FIDO2/WebAuthn and Authorization Code Flow with PKCE enables cross device authorization flows, without the risks posed by the Device Authorization Grant <span>[<a href="#RFC8628" class="cite xref">RFC8628</a>]</span>.<a href="#section-5.2.3.5-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
 </div>
 <div id="protocol-selection-summary">
-<section id="section-6.4">
-        <h3 id="name-protocol-selection-summary">
-<a href="#section-6.4" class="section-number selfRef">6.4. </a><a href="#name-protocol-selection-summary" class="section-name selfRef">Protocol Selection Summary</a>
-        </h3>
-<p id="section-6.4-1">The FIDO Cross-Device Authentication (CDA) flow provides the best protection against attacks on the unauthenticated channel for cross device flows. It can be combined with OAuth 2.0 and OpenID Connect protocols for standards based authorization and authentication flows. If FIDO2/WebAuthn support is not available, Channel Initiated Backchannel Authentication (CIBA) provides an alternative, provided that the underlying devices can receive push notifications. If CIBA is used, additional mitigations to enforce proximity and initiate transactions from trusted devices or trusted networks should be considered. The OAuth 2.0 Device Authorization Grant provides the most flexibility and has the lowest requirements on devices used, but it is recommended that it is only used when additional mitigations are deployed to prevent attacks that exploit the unauthenticated channel between devices.<a href="#section-6.4-1" class="pilcrow">¶</a></p>
+<section id="section-5.2.4">
+          <h4 id="name-protocol-selection-summary">
+<a href="#section-5.2.4" class="section-number selfRef">5.2.4. </a><a href="#name-protocol-selection-summary" class="section-name selfRef">Protocol Selection Summary</a>
+          </h4>
+<p id="section-5.2.4-1">The FIDO Cross-Device Authentication (CDA) flow provides the best protection against attacks on the unauthenticated channel for cross device flows. It can be combined with OAuth 2.0 and OpenID Connect protocols for standards based authorization and authentication flows. If FIDO2/WebAuthn support is not available, Channel Initiated Backchannel Authentication (CIBA) provides an alternative, provided that the underlying devices can receive push notifications. If CIBA is used, additional mitigations to enforce proximity and initiate transactions from trusted devices or trusted networks should be considered. The OAuth 2.0 Device Authorization Grant provides the most flexibility and has the lowest requirements on devices used, but it is recommended that it is only used when additional mitigations are deployed to prevent attacks that exploit the unauthenticated channel between devices.<a href="#section-5.2.4-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
 </div>
 <div id="foundational-pillars">
-<section id="section-7">
-      <h2 id="name-foundational-pillars">
-<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-foundational-pillars" class="section-name selfRef">Foundational pillars</a>
-      </h2>
-<p id="section-7-1">Experience with web authorization and authentication protocols such as OAuth and OpenID Connect has shown that securing these protocols can be hard. The major reason for this is that the landscape in which they are operating - the web infrastructure with browsers, servers, and the underlying network - is complex, diverse, and ever-evolving.<a href="#section-7-1" class="pilcrow">¶</a></p>
-<p id="section-7-2">As is the case with other kinds of protocols, it can be easy to overlook vulnerabilities in this environment. One way to reduce the chances of hidden security problems is to use mathematical-logical models to describe the protocols, their environments and their security goals, and then use these models to try to prove security. This approach is what is usually subsumed as "formal security analysis".<a href="#section-7-2" class="pilcrow">¶</a></p>
-<p id="section-7-3">There are two major strengths of formal analysis: First, finding new vulnerabilities does not require creativity - i.e., new classes of attacks can be uncovered even if no one thought of these attacks before. In a faithful model, vulnerabilities become clear during the proof process or even earlier. Second, formal analysis can exclude the existence of any attacks within the boundaries of the model (e.g., the protocol layers modeled, the level of detail and functionalities covered, the assumed attacker capabilities, and the formalized security goals). As a downside, there is usually a gap between the model (which necessarily abstracts away from details) and implementations. In other words, implementations can introduce flaws where the model does not have any. Nonetheless, for protocol standards, formal analysis can help to ensure that the specification is secure when implemented correctly.<a href="#section-7-3" class="pilcrow">¶</a></p>
-<p id="section-7-4">There are various different approaches to formal security analysis and each brings its own strengths and weaknesses. For example, models differ in the level of detail in which they can capture a protocol (granularity, expressiveness), in the kind of statements they can produce, and whether the proofs can be assisted by tools or have to be performed manually. One of the most successfully used approaches is the so-called Web Infrastructure Model (WIM), a model specifically designed for the analysis of web authentication and authorization protocols. While it is a manual (pen-and-paper) model, it captures details of browsers and web interactions in unprecedented detail. Using the WIM, previously unknown flaws in OAuth, OpenID Connect, and FAPI were discovered.<a href="#section-7-4" class="pilcrow">¶</a></p>
-<p id="section-7-5">To ensure secure cross-device interactions, a formal analysis using the WIM therefore seems to be in order. Such an analysis should comprise a generic model for cross-device flows, potentially including different kinds of interactions. The aim of the analysis would be to evaluate the effectiveness of selected mitigation strategies. To the best of our knowledge, this would be the first study of this kind.<a href="#section-7-5" class="pilcrow">¶</a></p>
+<section id="section-5.3">
+        <h3 id="name-foundational-pillars">
+<a href="#section-5.3" class="section-number selfRef">5.3. </a><a href="#name-foundational-pillars" class="section-name selfRef">Foundational Pillars</a>
+        </h3>
+<p id="section-5.3-1">Experience with web authorization and authentication protocols such as OAuth and OpenID Connect has shown that securing these protocols can be hard. The major reason for this is that the landscape in which they are operating - the web infrastructure with browsers, servers, and the underlying network - is complex, diverse, and ever-evolving.<a href="#section-5.3-1" class="pilcrow">¶</a></p>
+<p id="section-5.3-2">As is the case with other kinds of protocols, it can be easy to overlook vulnerabilities in this environment. One way to reduce the chances of hidden security problems is to use mathematical-logical models to describe the protocols, their environments and their security goals, and then use these models to try to prove security. This approach is what is usually subsumed as "formal security analysis".<a href="#section-5.3-2" class="pilcrow">¶</a></p>
+<p id="section-5.3-3">There are two major strengths of formal analysis: First, finding new vulnerabilities does not require creativity - i.e., new classes of attacks can be uncovered even if no one thought of these attacks before. In a faithful model, vulnerabilities become clear during the proof process or even earlier. Second, formal analysis can exclude the existence of any attacks within the boundaries of the model (e.g., the protocol layers modeled, the level of detail and functionalities covered, the assumed attacker capabilities, and the formalized security goals). As a downside, there is usually a gap between the model (which necessarily abstracts away from details) and implementations. In other words, implementations can introduce flaws where the model does not have any. Nonetheless, for protocol standards, formal analysis can help to ensure that the specification is secure when implemented correctly.<a href="#section-5.3-3" class="pilcrow">¶</a></p>
+<p id="section-5.3-4">There are various different approaches to formal security analysis and each brings its own strengths and weaknesses. For example, models differ in the level of detail in which they can capture a protocol (granularity, expressiveness), in the kind of statements they can produce, and whether the proofs can be assisted by tools or have to be performed manually. One of the most successfully used approaches is the so-called Web Infrastructure Model (WIM), a model specifically designed for the analysis of web authentication and authorization protocols. While it is a manual (pen-and-paper) model, it captures details of browsers and web interactions in unprecedented detail. Using the WIM, previously unknown flaws in OAuth, OpenID Connect, and FAPI were discovered.<a href="#section-5.3-4" class="pilcrow">¶</a></p>
+<p id="section-5.3-5">To ensure secure cross-device interactions, a formal analysis using the WIM therefore seems to be in order. Such an analysis should comprise a generic model for cross-device flows, potentially including different kinds of interactions. The aim of the analysis would be to evaluate the effectiveness of selected mitigation strategies. To the best of our knowledge, this would be the first study of this kind.<a href="#section-5.3-5" class="pilcrow">¶</a></p>
+</section>
+</div>
 </section>
 </div>
 <div id="conclusion">
-<section id="section-8">
+<section id="section-6">
       <h2 id="name-conclusion">
-<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-conclusion" class="section-name selfRef">Conclusion</a>
+<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-conclusion" class="section-name selfRef">Conclusion</a>
       </h2>
-<p id="section-8-1">Cross-device flows enable authorization on devices with limited input capabilities, allows for secure authentication when using public or shared devices, provides a path towards multi-factor authentication and provides the convenience of a single, portable credential store.<a href="#section-8-1" class="pilcrow">¶</a></p>
-<p id="section-8-2">The popularity of cross-device flows attracted the attention of attackers that exploit the unauthenticated channel between the initiating and authentication/authorizing device using techniques commonly used in phishing attacks. These attacks allow attackers to harvest access and refresh tokens, rather than authentication credentials, resulting in access to resources even if the user used multi-factor authentication.<a href="#section-8-2" class="pilcrow">¶</a></p>
-<p id="section-8-3">To address these attacks, we propose a three pronged approach that includes the deployment of practical mitigations to safeguard protocols that are already deployed, provide guidance on when to use different protocols, including protocols that are not susceptible to these attacks, and the introduction of formal methods to evaluate the impact of mitigations and find additional issues.<a href="#section-8-3" class="pilcrow">¶</a></p>
+<p id="section-6-1">Cross-device flows enable authorization on devices with limited input capabilities, allow for secure authentication when using public or shared devices, provide a path towards multi-factor authentication and provide the convenience of a single, portable credential store.<a href="#section-6-1" class="pilcrow">¶</a></p>
+<p id="section-6-2">The popularity of cross-device flows attracted the attention of attackers that exploit the unauthenticated channel between the initiating and authentication/authorizing device using techniques commonly used in phishing attacks. These attacks allow attackers to harvest access and refresh tokens, rather than authentication credentials, resulting in access to resources even if the user used multi-factor authentication.<a href="#section-6-2" class="pilcrow">¶</a></p>
+<p id="section-6-3">To address these attacks, we propose a three pronged approach that includes the deployment of practical mitigations to safeguard protocols that are already deployed, provide guidance on when to use different protocols, including protocols that are not susceptible to these attacks, and the introduction of formal methods to evaluate the impact of mitigations and find additional issues.<a href="#section-6-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="contributors">
-<section id="section-9">
+<section id="section-7">
       <h2 id="name-contributors">
-<a href="#section-9" class="section-number selfRef">9. </a><a href="#name-contributors" class="section-name selfRef">Contributors</a>
+<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-contributors" class="section-name selfRef">Contributors</a>
       </h2>
-<p id="section-9-1">Pieter Kasselman (Microsoft), Daniel Fett (Yes.com), Filip Skokan (Okta), Tim Cappalli (Microsoft), Nick Ludwig (Microsoft), Adrian Frei (Microsoft), Nikhil Reddy Boreddy (Microsoft)<a href="#section-9-1" class="pilcrow">¶</a></p>
+<p id="section-7-1">Pieter Kasselman (Microsoft), Daniel Fett (yes.com), Filip Skokan (Okta), Tim Cappalli (Microsoft), Nick Ludwig (Microsoft), Adrian Frei (Microsoft), Nikhil Reddy Boreddy (Microsoft)<a href="#section-7-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<section id="section-10">
+<section id="section-8">
       <h2 id="name-informative-references">
-<a href="#section-10" class="section-number selfRef">10. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
+<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
       </h2>
 <dl class="references">
+<dt id="Exploit1">[Exploit1]</dt>
+      <dd>
+<span class="refAuthor">Cooke, B.</span>, <span class="refTitle">"The Art of the Device Code Phish"</span>, <time datetime="2021-07" class="refDate">July 2021</time>, <span>&lt;<a href="https://0xboku.com/2021/07/12/ArtOfDeviceCodePhish.html">https://0xboku.com/2021/07/12/ArtOfDeviceCodePhish.html</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="Exploit2">[Exploit2]</dt>
+      <dd>
+<span class="refTitle">"Microsoft 365 OAuth Device Code Flow and Phishing"</span>, <time datetime="2021-08" class="refDate">August 2021</time>, <span>&lt;<a href="https://www.optiv.com/insights/source-zero/blog/microsoft-365-oauth-device-code-flow-and-phishing">https://www.optiv.com/insights/source-zero/blog/microsoft-365-oauth-device-code-flow-and-phishing</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="Exploit3">[Exploit3]</dt>
+      <dd>
+<span class="refAuthor">Syynimaa, N.</span>, <span class="refTitle">"Introducing a new phishing technique for compromising Office 365 accounts"</span>, <time datetime="2020-10" class="refDate">October 2020</time>, <span>&lt;<a href="https://o365blog.com/post/phishing/#new-phishing-technique-device-code-authentication">https://o365blog.com/post/phishing/#new-phishing-technique-device-code-authentication</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="Exploit4">[Exploit4]</dt>
+      <dd>
+<span class="refAuthor">Hwong, J.</span>, <span class="refTitle">"New Phishing Attacks Exploiting OAuth Authentication Flows (DEFCON 29)"</span>, <time datetime="2021-08" class="refDate">August 2021</time>, <span>&lt;<a href="https://www.youtube.com/watch?v=9slRYvpKHp4">https://www.youtube.com/watch?v=9slRYvpKHp4</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="Exploit5">[Exploit5]</dt>
+      <dd>
+<span class="refTitle">"OAuth’s Device Code Flow Abused in Phishing Attacks"</span>, <time datetime="2021-08" class="refDate">August 2021</time>, <span>&lt;<a href="https://www.secureworks.com/blog/oauths-device-code-flow-abused-in-phishing-attacks">https://www.secureworks.com/blog/oauths-device-code-flow-abused-in-phishing-attacks</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="Exploit6">[Exploit6]</dt>
+      <dd>
+<span class="refTitle">"SquarePhish: Advanced phishing tool combines QR codes and OAuth 2.0 device code flow"</span>, <time datetime="2022-08" class="refDate">August 2022</time>, <span>&lt;<a href="https://www.helpnetsecurity.com/2022/08/11/squarephish-video/">https://www.helpnetsecurity.com/2022/08/11/squarephish-video/</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="NYC.Bike">[NYC.Bike]</dt>
+      <dd>
+<span class="refAuthor">Byrne, K.J.</span>, <span class="refTitle">"Citi Bikes being swiped by joyriding scammers who have cracked the QR code"</span>, <time datetime="2021-08" class="refDate">August 2021</time>, <span>&lt;<a href="https://nypost.com/2021/08/07/citi-bikes-being-swiped-by-joyriding-scammers-who-have-cracked-the-qr-code/">https://nypost.com/2021/08/07/citi-bikes-being-swiped-by-joyriding-scammers-who-have-cracked-the-qr-code/</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC2119">[RFC2119]</dt>
       <dd>
 <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
