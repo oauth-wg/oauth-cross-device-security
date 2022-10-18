@@ -534,6 +534,9 @@ Pieter Kasselman (Microsoft), Daniel Fett (yes.com), Filip Skokan (Okta), Tim Ca
 <reference anchor="Exploit5" target="https://www.secureworks.com/blog/oauths-device-code-flow-abused-in-phishing-attacks">
   <front>
     <title>OAuth’s Device Code Flow Abused in Phishing Attacks</title>
+    <author>
+      <organization></organization>
+    </author>
     <date year="2021" month="August"/>
   </front>
 </reference>
@@ -541,6 +544,9 @@ Pieter Kasselman (Microsoft), Daniel Fett (yes.com), Filip Skokan (Okta), Tim Ca
 <reference anchor="Exploit6" target="https://www.helpnetsecurity.com/2022/08/11/squarephish-video/">
   <front>
     <title>SquarePhish: Advanced phishing tool combines QR codes and OAuth 2.0 device code flow</title>
+    <author>
+      <organization></organization>
+    </author>
     <date year="2022" month="August"/>
   </front>
 </reference>
@@ -548,10 +554,9 @@ Pieter Kasselman (Microsoft), Daniel Fett (yes.com), Filip Skokan (Okta), Tim Ca
 <reference anchor="NYC.Bike" target="https://nypost.com/2021/08/07/citi-bikes-being-swiped-by-joyriding-scammers-who-have-cracked-the-qr-code/">
   <front>
     <title>Citi Bikes being swiped by joyriding scammers who have cracked the QR code</title>
-    <date year="2021" month="August"/>
     <author initials="K.J." surname="Byrne" fullname="Kerry J. Byrne">
       <organization></organization>
     </author>
+    <date year="2021" month="August"/>
   </front>
 </reference>
-
