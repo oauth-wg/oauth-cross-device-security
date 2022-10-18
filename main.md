@@ -547,6 +547,8 @@ Pieter Kasselman (Microsoft), Daniel Fett (yes.com), Filip Skokan (Okta), Tim Ca
     <title>Citi Bikes being swiped by joyriding scammers who have cracked the QR code</title>
     <date year="2021" month="August"/>
     <author initials="K.J." surname="Byrne" fullname="Kerry J. Byrne">
+      <organization></organization>
+    </author>
   </front>
 </reference>
 
