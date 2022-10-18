@@ -504,6 +504,9 @@ Pieter Kasselman (Microsoft), Daniel Fett (yes.com), Filip Skokan (Okta), Tim Ca
 <reference anchor="Exploit2" target="https://www.optiv.com/insights/source-zero/blog/microsoft-365-oauth-device-code-flow-and-phishing">
   <front>
     <title>Microsoft 365 OAuth Device Code Flow and Phishing</title>
+    <author>
+      <organization></organization>
+    </author>
     <date year="2021" month="August"/>
   </front>
 </reference>
