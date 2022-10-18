@@ -68,7 +68,7 @@ unauthenticated and relies on the user's judgment to decide whether to trust
 a QR code, user code, or the authorization request pushed to their authorization 
 device. 
 
-Several publications have emerged in the public domain ([@DCF.Phish]), describing how 
+Several publications have emerged in the public domain ([@Exploit1], [@Exploit2], [@Exploit3], [@Exploit4], [@Exploit5], [@Exploit6]), describing how 
 the unauthenticated channel can be exploited using social engineering techniques 
 borrowed from phishing. Unlike traditional phishing attacks, these attacks don't 
 harvest credentials. Instead, they skip the step of collecting credentials by 
@@ -239,7 +239,7 @@ The attacker scales up the attack by emulating a new smart TV, obtaining multipl
 An attacker emulates an enterprise application (e.g., an interactive whiteboard) and initiates a cross-device flow by requesting a user code and URL from the authorization server. The attacker obtains a list of potential victims and sends an e-mail informing users that their files will be deleted within 24 hours if they don't follow the link, enter the user code and authenticate. The e-mail reminds them that this is the third time that they have been notified and their last opportunity to prevent deletion of their work files. One or more employees respond by following the URL, entering the code and performing multi-factor authentication. Once these employees authorized access, the attacker obtains access and refresh tokens from the authorization server and uses it to access the users files, perform lateral attacks to obtain access to other information and continuously refresh the session by requesting new access tokens. These tokens may be exfiltrated and sold to third parties.
 
 ## Example B3: Illicit access to physical assets
-An attacker copies a QR code from a bicycle locked in a bike rack in a city, prints it on a label and places the label on a bicycle at the other end of the bike rack. A customer approaches the bike that contains the replicated QR code and scans the code and authenticates before authorizing payment for renting the bicycle. The bike rack unlocks the bike containing the original QR code and the attacker removes the bicycle before cycling down the street while the customer is left frustrated that the bike they were trying to use is not being unlocked. The customer proceeds to unlock another bicycle and lodges a complaint with the bike renting company.
+An attacker copies a QR code from a bicycle locked in a bike rack in a city, prints it on a label and places the label on a bicycle at the other end of the bike rack. A customer approaches the bike that contains the replicated QR code and scans the code and authenticates before authorizing payment for renting the bicycle. The bike rack unlocks the bike containing the original QR code and the attacker removes the bicycle before cycling down the street while the customer is left frustrated that the bike they were trying to use is not being unlocked [@NYC.Bike]. The customer proceeds to unlock another bicycle and lodges a complaint with the bike renting company.
 
 ## Example B4: Illicit Transaction Authorization
 An attacker obtains a list of user identifiers for a financial institution and triggers a transaction request for each of the users on the list. The financial institution's authorization server sends push notifications to each of the users, requesting authorization of a transaction. The vast majority of users ignore the request to authorize the transaction, but a small percentage grants authorization by approving the transaction.
@@ -491,7 +491,7 @@ Pieter Kasselman (Microsoft), Daniel Fett (yes.com), Filip Skokan (Okta), Tim Ca
   </front>
 </reference>
 
-<reference anchor="DCF.Phish" target="https://0xboku.com/2021/07/12/ArtOfDeviceCodePhish.html">
+<reference anchor="Exploit1" target="https://0xboku.com/2021/07/12/ArtOfDeviceCodePhish.html">
   <front>
     <title>The Art of the Device Code Phish</title>
     <author initials="B." surname="Cooke" fullname="Bobby Cooke">
@@ -500,3 +500,53 @@ Pieter Kasselman (Microsoft), Daniel Fett (yes.com), Filip Skokan (Okta), Tim Ca
     <date year="2021" month="July"/>
   </front>
 </reference>
+
+<reference anchor="Exploit2" target="https://www.optiv.com/insights/source-zero/blog/microsoft-365-oauth-device-code-flow-and-phishing">
+  <front>
+    <title>Microsoft 365 OAuth Device Code Flow and Phishing</title>
+    <date year="2021" month="August"/>
+  </front>
+</reference>
+
+<reference anchor="Exploit3" target="https://o365blog.com/post/phishing/#new-phishing-technique-device-code-authentication">
+  <front>
+    <title>Introducing a new phishing technique for compromising Office 365 accounts</title>
+    <author initials="N." surname="Syynimaa " fullname="Nestori Syynimaa">
+      <organization></organization>
+    </author>
+    <date year="2020" month="October"/>
+  </front>
+</reference>
+
+<reference anchor="Exploit4" target="https://www.youtube.com/watch?v=9slRYvpKHp4">
+  <front>
+    <title>New Phishing Attacks Exploiting OAuth Authentication Flows (DEFCON 29)</title>
+    <author initials="J." surname="Hwong " fullname="Jenko Hwong">
+      <organization></organization>
+    </author>
+    <date year="2021" month="August"/>
+  </front>
+</reference>
+
+<reference anchor="Exploit5" target="https://www.secureworks.com/blog/oauths-device-code-flow-abused-in-phishing-attacks">
+  <front>
+    <title>OAuth’s Device Code Flow Abused in Phishing Attacks</title>
+    <date year="2021" month="August"/>
+  </front>
+</reference>
+
+<reference anchor="Exploit6" target="https://www.helpnetsecurity.com/2022/08/11/squarephish-video/">
+  <front>
+    <title>SquarePhish: Advanced phishing tool combines QR codes and OAuth 2.0 device code flow</title>
+    <date year="2022" month="August"/>
+  </front>
+</reference>
+
+<reference anchor="NYC.Bike" target="https://nypost.com/2021/08/07/citi-bikes-being-swiped-by-joyriding-scammers-who-have-cracked-the-qr-code/">
+  <front>
+    <title>Citi Bikes being swiped by joyriding scammers who have cracked the QR code</title>
+    <date year="2021" month="August"/>
+    <author initials="K.J." surname="Byrne" fullname="Kerry J. Byrne">
+  </front>
+</reference>
+
