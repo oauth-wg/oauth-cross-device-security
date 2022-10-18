@@ -72,7 +72,7 @@ Several publications have emerged in the public domain ([@Exploit1], [@Exploit2]
 the unauthenticated channel can be exploited using social engineering techniques 
 borrowed from phishing. Unlike traditional phishing attacks, these attacks don't 
 harvest credentials. Instead, they skip the step of collecting credentials by 
-persuading users into granting authorization using their authorization devices. 
+persuading users to grant authorization using their authorization devices. 
 
 Once the user grants authorization, the attacker has access to the user's 
 resources and in some cases is able to collect access and refresh tokens. Once in 
@@ -168,7 +168,7 @@ An end-user sets up a new smart TV and wants to connect it to their favorite str
 An employee wants to access their files on an interactive whiteboard in a conference room. The interactive whiteboard displays a URL and a code. The user enters the URL on their personal computer and is prompted for the code. Once they enter the code, the user is asked to authenticate and authorize the interactive whiteboard to access their files. The user enters their credentials and authorizes the transaction and the interactive whiteboard retrieves their files and allows the user to interact with the content.
 
 ## Example A3: Authorize use of a bike sharing scheme
-An end-user wants to rent a bicycle from a bike sharing scheme. The bicycles are locked into bike racks on sidewalks throughout a city. To unlock and use a bike, the user scans a QR code on the bike using their mobile phone. Scanning the QR code redirects the user to the bike sharing scheme's authorization page where the user authenticates and authorizes payment for renting the bike. Once authorized, the bike sharing service unlocks the bike, allowing the user to use it to cycle around the city.
+An end-user wants to rent a bicycle from a bike sharing scheme. The bicycles are locked in bike racks on sidewalks throughout a city. To unlock and use a bike, the user scans a QR code on the bike using their mobile phone. Scanning the QR code redirects the user to the bike sharing scheme's authorization page where the user authenticates and authorizes payment for renting the bike. Once authorized, the bike sharing service unlocks the bike, allowing the user to use it to cycle around the city.
 
 ## Example A4: Authorize a financial transaction
 An end-user makes an online purchase. Before completing the purchase, they get a notification on their mobile phone, asking them to authorize the transaction. The user opens their app and authenticates to the service before authorizing the transaction.
@@ -223,7 +223,7 @@ or connecting a service to the initiating device.
 - (B) The initiating device retrieves a QR code or user code from an authorization server
 - (C) The attacker copies the QR code or user code 
 - (D) The attacker changes the context in which the QR code or user code is displayed in such a way that the user is likely to scan the QR code or use the user code when completing the authorization.
-- (E) The QR code or user code is displayed in a a context chosen by the attackr and the user is tricked into scanning the QR code 
+- (E) The QR code or user code is displayed in a context chosen by the attackr and the user is tricked into scanning the QR code 
 or enter the user code on the authorization device.
 - (D) The user authenticates to the Authorization Server before granting authorization. 
 - (E) The Authorization Server issues tokens or grants authroization to the initiating device, which is under the attackers control, to access the users resources and the attacker gains access to the resources and possibly any authorization artefacts like access and refresh tokens.
