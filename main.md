@@ -4,13 +4,13 @@ abbrev = "CDFS"
 ipr = "trust200902"
 area = "Security"
 workgroup = "Web Authorization Protocol"
-keyword = ["security", "oauth2"]
+keyword = ["security", "oauth2", "best current practice"]
 
 [seriesInfo]
 name = "Internet-Draft"
 value = "draft-kasselman-cross-device-security-00"
 stream = "IETF"
-status = "standard"
+status = "bcp"
 
 
 [[author]]
@@ -61,14 +61,14 @@ trusted, device (authorization device) to authorize access to a resource
 
 These flows are increasingly popular and typically involve using a mobile 
 phone to scan a QR code or enter a user code displayed on an initiating 
-device (e.g., Smart TV, Kiosk, PC etc).
+device (e.g., Smart TV, Kiosk, Personal Computer etc).
 
 The channel between the initiating device and the authorization device is 
 unauthenticated and relies on the user's judgment to decide whether to trust 
 a QR code, user code, or the authorization request pushed to their authorization 
 device. 
 
-Several publications have emerged in the public domain, describing how 
+Several publications have emerged in the public domain ([@DCF.Phish]), describing how 
 the unauthenticated channel can be exploited using social engineering techniques 
 borrowed from phishing. Unlike traditional phishing attacks, these attacks don't 
 harvest credentials. Instead, they skip the step of collecting credentials by 
@@ -154,7 +154,7 @@ authentication and authorization using a personally trusted device, without
 risk of disclosing their credentials to a public or shared device. 
 - Ubiquitous multi-factor authentication: Enables a user to use multi-factor 
 authentication, independent of the device on which the service is being 
-accessed (e.g., a kiosk, smart TV or shared PC).
+accessed (e.g., a kiosk, smart TV or shared Personal Computer).
 - Convenience of a single, portable, credential store: Users can keep all 
 their credentials in a mobile wallet or mobile phone that they already 
 carry with them. 
@@ -165,7 +165,7 @@ Examples of cross-device flow scenarios include:
 An end-user sets up a new smart TV and wants to connect it to their favorite streaming service. The TV displays a QR code that the user scans with their mobile phone. The user is redirected to the streaming service provider's web page and asked to enter their credentials to authorize the smart TV to access the streaming service. The user enters their credentials and grants authorization, after which the streaming service is available on the smart TV.
 
 ## Example A2: Authorize access to productivity services
-An employee wants to access their files on an interactive whiteboard in a conference room. The interactive whiteboard displays a URL and a code. The user enters the URL on their PC and is prompted for the code. Once they enter the code, the user is asked to authenticate and authorize the interactive whiteboard to access their files. The user enters their credentials and authorizes the transaction and the interactive whiteboard retrieves their files and allows the user to interact with the content.
+An employee wants to access their files on an interactive whiteboard in a conference room. The interactive whiteboard displays a URL and a code. The user enters the URL on their personal computer and is prompted for the code. Once they enter the code, the user is asked to authenticate and authorize the interactive whiteboard to access their files. The user enters their credentials and authorizes the transaction and the interactive whiteboard retrieves their files and allows the user to interact with the content.
 
 ## Example A3: Authorize use of a bike sharing scheme
 An end-user wants to rent a bicycle from a bike sharing scheme. The bicycles are locked into bike racks on sidewalks throughout a city. To unlock and use a bike, the user scans a QR code on the bike using their mobile phone. Scanning the QR code redirects the user to the bike sharing scheme's authorization page where the user authenticates and authorizes payment for renting the bike. Once authorized, the bike sharing service unlocks the bike, allowing the user to use it to cycle around the city.
@@ -174,7 +174,7 @@ An end-user wants to rent a bicycle from a bike sharing scheme. The bicycles are
 An end-user makes an online purchase. Before completing the purchase, they get a notification on their mobile phone, asking them to authorize the transaction. The user opens their app and authenticates to the service before authorizing the transaction.
 
 ## Example A5: Add a device to a network.
-An employee is issued with a personal computer that is already joined to a network. The employee wants to add their mobile phone to the network to allow it to access corporate data and services (e.g., files and e-mail). The PC displays a QR code, which the employee scans with their mobile phone. The mobile phone is joined to the network and the employee can start accessing corporate data and services on their mobile device.
+An employee is issued with a personal computer that is already joined to a network. The employee wants to add their mobile phone to the network to allow it to access corporate data and services (e.g., files and e-mail). The personal computer displays a QR code, which the employee scans with their mobile phone. The mobile phone is joined to the network and the employee can start accessing corporate data and services on their mobile device.
 
 ## Example A6: Remote onboarding
 A new employee is directed to an onboarding portal to provide additional information to confirm their identity on their first day with their new employer. Before activating the employee's account, the onboarding portal requests that the employee present a government issued ID, proof of a background check and proof of their qualifications. The onboarding portal displays a QR code, which the user scans with their mobile phone. Scanning the QR code invokes the employee's wallet on their mobile phone, and the employee is asked to present digital versions of an identity document (e.g., a driving license), proof of a background check by an identity verifier, and proof of their qualifications. The employee authorizes the release of the credentials and after completing the onboarding process, their account is activated. 
@@ -268,7 +268,7 @@ A number of protocols that have been standardized, or are in the process of bein
 
 - IETF OAuth 2.0 Device Authorization Grant (RFC 8682): A standard to enable authorization on devices with constrained input capabilities (smart TVs, printers, kiosks). In this protocol, the user code or QR code is displayed on the initiating device and entered on a second device (e.g., a mobile phone).  
 
-- Open ID Foundation Client Initiated Back-Channel Authentication (CIBA): A standard under development as part of the Financial-grade API (FAPI) family of standards that allows a device or service (e.g., a PC, Smart TV, Kiosk) to request the OpenID Provider to initiate an authentication flow if it knows a valid identifier for the user. The user completes the authentication flow using a second device (e.g., a mobile phone). In this flow the user does not scan a QR code or obtain a user code from the initiating device.
+- Open ID Foundation Client Initiated Back-Channel Authentication (CIBA): A standard under development as part of the Financial-grade API (FAPI) family of standards that allows a device or service (e.g., a personal computer, Smart TV, Kiosk) to request the OpenID Provider to initiate an authentication flow if it knows a valid identifier for the user. The user completes the authentication flow using a second device (e.g., a mobile phone). In this flow the user does not scan a QR code or obtain a user code from the initiating device.
 
 - OpenID for Verifiable Credential Protocol Suite (Issuance, Presentation): The OpenID for Verifiable Credentials enables cross-device scenarios by allowing users to scan QR codes to retrieve credentials (Issuance) or present credentials (Presentation). The QR code is presented on a device that initiates the flow.
 
@@ -396,7 +396,7 @@ Only use this protocol if other cross-device protocols are not viable due to dev
 
 ### OpenID Foundation Client Initiated Back-Channel Authentication (CIBA): 
 #### Description
-A standard under development as part of the Financial-grade API (FAPI) family of standards that allows a device or service (e.g., a PC, Smart TV, Kiosk) to request the OpenID Provider to initiate an authentication flow if it knows a valid identifier for the user. The user completes the authentication flow using a second device (e.g., a mobile phone). In this flow the user does not scan a QR code or obtain a user code from the initiating device.
+A standard under development as part of the Financial-grade API (FAPI) family of standards that allows a device or service (e.g., a personal computer, Smart TV, Kiosk) to request the OpenID Provider to initiate an authentication flow if it knows a valid identifier for the user. The user completes the authentication flow using a second device (e.g., a mobile phone). In this flow the user does not scan a QR code or obtain a user code from the initiating device.
 
 #### Susceptibility
 Less susceptible to unauthenticated channel attacks, but still vulnerable to attackers who know or can guess the user identifier and initiate a spray attack as described in Example 4.
@@ -412,7 +412,7 @@ Use CIBA instead of Device Authorization Grant if it is possible for the initiat
 
 ### FIDO2/WebAuthn 
 #### Description
-FIDO2/WebAuthn is a stack of standards developed in the FIDO Alliance and W3C respectively which allow for origin-bound, phishing-resistant user authentication using asymmetric cryptography that can be invoked from a web browser or native client. Version 2.2 of the FIDO Client to Authenticator Protocol (CTAP) supports a new cross-device authentication protocol, called "hybrid", which enables an external device, such as a phone or tablet, to be used as a roaming authenticator for signing into the primary device, such as a desktop or laptop. This is commonly called FIDO Cross-Device Authentication (CDA).
+FIDO2/WebAuthn is a stack of standards developed in the FIDO Alliance and W3C respectively which allow for origin-bound, phishing-resistant user authentication using asymmetric cryptography that can be invoked from a web browser or native client. Version 2.2 of the FIDO Client to Authenticator Protocol (CTAP) supports a new cross-device authentication protocol, called "hybrid", which enables an external device, such as a phone or tablet, to be used as a roaming authenticator for signing into the primary device, such as a personal computer. This is commonly called FIDO Cross-Device Authentication (CDA).
 
 When a user wants to authenticate using their mobile device (authenticator) for the first time, they need to link their authenticator to their main device. This is done using a scan of a QR code. When the authenticator scans the QR code, the device sends an encrypted BLE advertisement containing keying material and a tunnel ID. The main device and authenticator both establish connections to the web service, and the normal CTAP protocol exchange occurs.
 
@@ -488,5 +488,15 @@ Pieter Kasselman (Microsoft), Daniel Fett (yes.com), Filip Skokan (Okta), Tim Ca
       <organization></organization>
     </author>
     <date year="2014" month="November"/>
+  </front>
+</reference>
+
+<reference anchor="DCF.Phish" target="https://0xboku.com/2021/07/12/ArtOfDeviceCodePhish.html">
+  <front>
+    <title>The Art of the Device Code Phish</title>
+    <author initials="B." surname="Cooke" fullname="Bobby Cooke">
+      <organization></organization>
+    </author>
+    <date year="2021" month="July"/>
   </front>
 </reference>
