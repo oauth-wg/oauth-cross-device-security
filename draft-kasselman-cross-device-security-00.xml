@@ -46,7 +46,7 @@ device.</t>
 the unauthenticated channel can be exploited using social engineering techniques
 borrowed from phishing. Unlike traditional phishing attacks, these attacks don't
 harvest credentials. Instead, they skip the step of collecting credentials by
-persuading users into granting authorization using their authorization devices.</t>
+persuading users to grant authorization using their authorization devices.</t>
 <t>Once the user grants authorization, the attacker has access to the user's
 resources and in some cases is able to collect access and refresh tokens. Once in
 possession of the access and refresh tokens, the attacker may use these tokens to
@@ -145,7 +145,7 @@ carry with them.</li>
 </section>
 
 <section anchor="example-a3-authorize-use-of-a-bike-sharing-scheme"><name>Example A3: Authorize use of a bike sharing scheme</name>
-<t>An end-user wants to rent a bicycle from a bike sharing scheme. The bicycles are locked into bike racks on sidewalks throughout a city. To unlock and use a bike, the user scans a QR code on the bike using their mobile phone. Scanning the QR code redirects the user to the bike sharing scheme's authorization page where the user authenticates and authorizes payment for renting the bike. Once authorized, the bike sharing service unlocks the bike, allowing the user to use it to cycle around the city.</t>
+<t>An end-user wants to rent a bicycle from a bike sharing scheme. The bicycles are locked in bike racks on sidewalks throughout a city. To unlock and use a bike, the user scans a QR code on the bike using their mobile phone. Scanning the QR code redirects the user to the bike sharing scheme's authorization page where the user authenticates and authorizes payment for renting the bike. Once authorized, the bike sharing service unlocks the bike, allowing the user to use it to cycle around the city.</t>
 </section>
 
 <section anchor="example-a4-authorize-a-financial-transaction"><name>Example A4: Authorize a financial transaction</name>
@@ -204,7 +204,7 @@ or connecting a service to the initiating device.</li>
 <li>(B) The initiating device retrieves a QR code or user code from an authorization server</li>
 <li>(C) The attacker copies the QR code or user code</li>
 <li>(D) The attacker changes the context in which the QR code or user code is displayed in such a way that the user is likely to scan the QR code or use the user code when completing the authorization.</li>
-<li>(E) The QR code or user code is displayed in a a context chosen by the attackr and the user is tricked into scanning the QR code
+<li>(E) The QR code or user code is displayed in a context chosen by the attackr and the user is tricked into scanning the QR code
 or enter the user code on the authorization device.</li>
 <li>(D) The user authenticates to the Authorization Server before granting authorization.</li>
 <li>(E) The Authorization Server issues tokens or grants authroization to the initiating device, which is under the attackers control, to access the users resources and the attacker gains access to the resources and possibly any authorization artefacts like access and refresh tokens.</li>

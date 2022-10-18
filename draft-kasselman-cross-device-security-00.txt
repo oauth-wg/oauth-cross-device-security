@@ -142,8 +142,8 @@ Internet-Draft                    CDFS                      October 2022
    social engineering techniques borrowed from phishing.  Unlike
    traditional phishing attacks, these attacks don't harvest
    credentials.  Instead, they skip the step of collecting credentials
-   by persuading users into granting authorization using their
-   authorization devices.
+   by persuading users to grant authorization using their authorization
+   devices.
 
    Once the user grants authorization, the attacker has access to the
    user's resources and in some cases is able to collect access and
@@ -296,8 +296,8 @@ Internet-Draft                    CDFS                      October 2022
 2.3.  Example A3: Authorize use of a bike sharing scheme
 
    An end-user wants to rent a bicycle from a bike sharing scheme.  The
-   bicycles are locked into bike racks on sidewalks throughout a city.
-   To unlock and use a bike, the user scans a QR code on the bike using
+   bicycles are locked in bike racks on sidewalks throughout a city.  To
+   unlock and use a bike, the user scans a QR code on the bike using
    their mobile phone.  Scanning the QR code redirects the user to the
    bike sharing scheme's authorization page where the user authenticates
    and authorizes payment for renting the bike.  Once authorized, the
@@ -436,7 +436,7 @@ Internet-Draft                    CDFS                      October 2022
       code is displayed in such a way that the user is likely to scan
       the QR code or use the user code when completing the
       authorization.
-   *  (E) The QR code or user code is displayed in a a context chosen by
+   *  (E) The QR code or user code is displayed in a context chosen by
       the attackr and the user is tricked into scanning the QR code or
       enter the user code on the authorization device.
    *  (D) The user authenticates to the Authorization Server before
