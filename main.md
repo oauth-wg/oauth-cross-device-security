@@ -226,7 +226,7 @@ or connecting a service to the initiating device.
 - (E) The QR code or user code is displayed in a context chosen by the attackr and the user is tricked into scanning the QR code 
 or enter the user code on the authorization device.
 - (D) The user authenticates to the Authorization Server before granting authorization. 
-- (E) The Authorization Server issues tokens or grants authroization to the initiating device, which is under the attackers control, to access the users resources and the attacker gains access to the resources and possibly any authorization artefacts like access and refresh tokens.
+- (E) The Authorization Server issues tokens or grants authorization to the initiating device, which is under the attackers control, to access the users resources and the attacker gains access to the resources and possibly any authorization artefacts like access and refresh tokens.
 
 The following examples illustrate these attacks in practical settings and show how the unauthenticated channel is exploited by attackers who can copy the QR codes and user codes, change the context in which they are presented using social engineering techniques and mislead end-users into granting consent to avail of services, access data and make payments.
 
