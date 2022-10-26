@@ -266,7 +266,7 @@ Cross-device flows that are subject to the attacks described earlier, typically 
 
 A number of protocols that have been standardized, or are in the process of being standardized that share these characteristics include:
 
-- IETF OAuth 2.0 Device Authorization Grant (RFC 8682): A standard to enable authorization on devices with constrained input capabilities (smart TVs, printers, kiosks). In this protocol, the user code or QR code is displayed on the initiating device and entered on a second device (e.g., a mobile phone).  
+- IETF OAuth 2.0 Device Authorization Grant ([@RFC8628]): A standard to enable authorization on devices with constrained input capabilities (smart TVs, printers, kiosks). In this protocol, the user code or QR code is displayed on the initiating device and entered on a second device (e.g., a mobile phone).  
 
 - Open ID Foundation Client Initiated Back-Channel Authentication (CIBA): A standard under development as part of the Financial-grade API (FAPI) family of standards that allows a device or service (e.g., a personal computer, Smart TV, Kiosk) to request the OpenID Provider to initiate an authentication flow if it knows a valid identifier for the user. The user completes the authentication flow using a second device (e.g., a mobile phone). In this flow the user does not scan a QR code or obtain a user code from the initiating device.
 
@@ -378,7 +378,7 @@ Table: Practical Mitigation Summary
 ## Protocol selection
 Some cross-device protocols are more susceptible to the exploits described in this document than others. In this section we will compare three different protocols in terms of their susceptibility to exploits focused on the unauthenticated channel, the prerequisites to implement and deploy them along with guidance on when it is appropriate to use them.
 
-### IETF OAuth 2.0 Device Authorization Grant [@RFC8682]: 
+### IETF OAuth 2.0 Device Authorization Grant [@RFC8628]: 
 #### Description 
 A standard to enable authorization on devices with constrained input capabilities (smart TVs, printers, kiosks). In this protocol, the user code or QR code is displayed or made available on the initiating device (smart TV) and entered on a second device (e.g., a mobile phone). 
 
