@@ -392,7 +392,7 @@ There are no assumptions in the protocol about underlying capabilities of the de
 In addition to the security considerations section in the standard, it is recommended that one or more of the mitigations outlined in this document be considered, especially mitigations that can help establish proximity or prevent attackers from obtaining QR or user codes.
 
 #### When to use
-Only use this protocol if other cross-device protocols are not viable due to device or system constraints. Avoid using if the protected resources are sensitive, high value or business critical. Always deploy additional mitigations like proximity or only allow with pre-registered devices.
+Only use this protocol if other cross-device protocols are not viable due to device or system constraints. Avoid using if the protected resources are sensitive, high value or business critical. Always deploy additional mitigations like proximity or only allow with pre-registered devices. Do not use for same-device scenarios (e.g. if the initiating device and authorization device is the same device).
 
 ### OpenID Foundation Client Initiated Back-Channel Authentication (CIBA): 
 #### Description
@@ -408,7 +408,7 @@ There is no requirement on the initiating device to support specific hardware. T
 In addition to the security considerations section in the standard, it is recommended that one or more of the mitigations outlined in this document be considered, especially mitigations that can help establish proximity or prevent attackers from initiating authorization requests.
 
 #### When to use
-Use CIBA instead of Device Authorization Grant if it is possible for the initiating device to obtain a user identifier on the initiating device (e.g., through an input or selection mechanism) and if the Authorization Server can trigger an authorization on the authorization device.
+Use CIBA instead of Device Authorization Grant if it is possible for the initiating device to obtain a user identifier on the initiating device (e.g., through an input or selection mechanism) and if the Authorization Server can trigger an authorization on the authorization device. Do not use for same-device scenarios (e.g. if the initiating device and authorization device is the same device).
 
 ### FIDO2/WebAuthn 
 #### Description
