@@ -274,7 +274,7 @@ A number of protocols that have been standardized, or are in the process of bein
 
 - Self-Issued OpenID Provider v2 (SIOP V2): A standard that allows end-user to present self-attested or third party attested attributes when used with Opend ID for Verifiable Credential protocols. The user scans a QR code presented by the relying party to initiate the flow.
 
-Cross-device protocols should not be used for same-device scenarios. If the initiating device and authorization device is the same device protocols like OpenID Connect Core [@OpenID.Core] and OAuth 2.0 Authorization Code Grant as defined in [@RFC6749] is more appropriate. When using the OAuth 2.0 Authorization Code Grant, it is recommended to use it with Proof Key for Code Exchange (PKCE) as define in [@RFC7636].
+Cross-device protocols should not be used for same-device scenarios. If the initiating device and authorization device is the same device protocols like OpenID Connect Core [@OpenID.Core] and OAuth 2.0 Authorization Code Grant as defined in [@RFC6749] are more appropriate. 
 
 # Mitigating Against Cross-Device Flow Attacks
 The unauthenticated channel between the initiating device and the authenticating device allows attackers to change the context in which the authorization request is presented to the user. This shifts responsibility of "authenticating" the channel between the two devices to the end-user. End users have "expertise elsewhere" and are typically not security experts and don't understand the protocols and systems they interact with. As a result, end-users are poorly equipped to authenticate the channel between the two devices. Mitigations should focus on:
