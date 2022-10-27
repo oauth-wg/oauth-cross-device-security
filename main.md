@@ -396,7 +396,7 @@ Only use this protocol if other cross-device protocols are not viable due to dev
 
 ### OpenID Foundation Client Initiated Back-Channel Authentication (CIBA): 
 #### Description
-Client Initiated Back-Channel Authentication (CIBA) [@CIBA] allows a device or service (e.g., a personal computer, Smart TV, Kiosk) to request the OpenID Provider to initiate an authentication flow if it knows a valid identifier for the user. The user completes the authentication flow using a second device (e.g., a mobile phone). In this flow the user does not scan a QR code or obtain a user code from the initiating device, but is instead contacted by the OpenID Provider to complete the authentication using a push notification, e-mail, text message or any other suitable mechanism.
+Client Initiated Back-Channel Authentication (CIBA) [@CIBA]: A standard developed in the OpenID Foundation that allows a device or service (e.g., a personal computer, Smart TV, Kiosk) to request the OpenID Provider to initiate an authentication flow if it knows a valid identifier for the user. The user completes the authentication flow using a second device (e.g., a mobile phone). In this flow the user does not scan a QR code or obtain a user code from the initiating device, but is instead contacted by the OpenID Provider to complete the authentication using a push notification, e-mail, text message or any other suitable mechanism.
 
 #### Susceptibility
 Less susceptible to unauthenticated channel attacks, but still vulnerable to attackers who know or can guess the user identifier and initiate a spray attack as described in Example 4.
