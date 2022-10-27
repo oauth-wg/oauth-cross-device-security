@@ -223,7 +223,7 @@ or connecting a service to the initiating device.
 - (B) The initiating device retrieves a QR code or user code from an authorization server
 - (C) The attacker copies the QR code or user code 
 - (D) The attacker changes the context in which the QR code or user code is displayed in such a way that the user is likely to scan the QR code or use the user code when completing the authorization.
-- (E) The QR code or user code is displayed in a context chosen by the attackr and the user is tricked into scanning the QR code 
+- (E) The QR code or user code is displayed in a context chosen by the attacker and the user is tricked into scanning the QR code 
 or enter the user code on the authorization device.
 - (D) The user authenticates to the Authorization Server before granting authorization. 
 - (E) The Authorization Server issues tokens or grants authorization to the initiating device, which is under the attackers control, to access the users resources and the attacker gains access to the resources and possibly any authorization artefacts like access and refresh tokens.
@@ -429,7 +429,7 @@ FIDO Cross-Device Authentication (CDA) establishes proximity through the use of 
 FIDO2/WebAuthn should be used for cross-device authentication scenarios whenever the devices are capable of doing so. It may be used as an authentication method with the Authorization Code Grant [@RFC6749] and PKCE [@RFC7663], to grant authorization to an initiating device (e.g., Smart TV or interactive whiteboard) using a mobile phone as the authenticating device. This combination of FIDO2/WebAuthn and Authorization Code Flow with PKCE enables cross device authorization flows, without the risks posed by the Device Authorization Grant [@RFC8628].
 
 ### Protocol Selection Summary
-The FIDO Cross-Device Authentication (CDA) flow provides the best protection against attacks on the unauthenticated channel for cross device flows. It can be combined with OAuth 2.0 and OpenID Connect protocols for standards based authorization and authentication flows. If FIDO2/WebAuthn support is not available, Channel Initiated Backchannel Authentication (CIBA) provides an alternative, provided that there is a channel through which the authorizations server can contact the end user. Examples of such a channel include device push notifications, e-mail or text messages which the user can access from their device. If CIBA is used, additional mitigations to enforce proximity and initiate transactions from trusted devices or trusted networks should be considered. The OAuth 2.0 Device Authorization Grant provides the most flexibility and has the lowest requirements on devices used, but it is recommended that it is only used when additional mitigations are deployed to prevent attacks that exploit the unauthenticated channel between devices.
+The FIDO Cross-Device Authentication (CDA) flow provides the best protection against attacks on the unauthenticated channel for cross device flows. It can be combined with OAuth 2.0 and OpenID Connect protocols for standards based authorization and authentication flows. If FIDO2/WebAuthn support is not available, Client Initiated Backchannel Authentication (CIBA) provides an alternative, provided that there is a channel through which the authorizations server can contact the end user. Examples of such a channel include device push notifications, e-mail or text messages which the user can access from their device. If CIBA is used, additional mitigations to enforce proximity and initiate transactions from trusted devices or trusted networks should be considered. The OAuth 2.0 Device Authorization Grant provides the most flexibility and has the lowest requirements on devices used, but it is recommended that it is only used when additional mitigations are deployed to prevent attacks that exploit the unauthenticated channel between devices.
 
 ## Foundational Pillars
 Experience with web authorization and authentication protocols such as OAuth and OpenID Connect has shown that securing these protocols can be hard. The major reason for this is that the landscape in which they are operating - the web infrastructure with browsers, servers, and the underlying network - is complex, diverse, and ever-evolving.
@@ -450,7 +450,7 @@ The popularity of cross-device flows attracted the attention of attackers that e
 To address these attacks, we propose a three pronged approach that includes the deployment of practical mitigations to safeguard protocols that are already deployed, provide guidance on when to use different protocols, including protocols that are not susceptible to these attacks, and the introduction of formal methods to evaluate the impact of mitigations and find additional issues.
 
 # Contributors
-Pieter Kasselman (Microsoft), Daniel Fett (yes.com), Filip Skokan (Okta), Tim Cappalli (Microsoft), Nick Ludwig (Microsoft), Adrian Frei (Microsoft), Nikhil Reddy Boreddy (Microsoft)
+We would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil Reddy Boreddy, Bjorn Hjelm, Joseph Heenan, Brian Campbell, Damien Bowden and others (please let us know, if you've been mistakenly omitted) for their valuable input, feedback and general support of this work.
 
 {backmatter}
 
