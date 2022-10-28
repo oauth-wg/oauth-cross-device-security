@@ -360,7 +360,7 @@ This information may be communicated graphically or in a simple message (e.g., "
 The service may provide out-of-band reinforcement to the user on the context and conditions under which an authorization grant may be requested. For example if the service provider does not send e-mails with QR codes requesting users to grant authorization, this may be reinforced in marketing messages, in-app experiences and through anti-fraud awareness campaigns.
 
 ### Authenticated flow
-Use Cross Device authentication after a successful phishing resistant authentication. The unauthenticated channel between the initiating and authenticating device allows attackers to obtain a QR code. When the QR Code is presented after a successful phishing resistant authentication, this prevents the attack from being initiated.
+Use cross device authentication after a successful phishing resistant authentication. The unauthenticated channel between the initiating and authenticating device allows attackers to obtain a QR code. When the QR Code is presented after a successful phishing resistant authentication, this prevents the attack from being initiated.
 
 Scenario
 
