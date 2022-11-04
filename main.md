@@ -329,10 +329,13 @@ The impact of an attack can be reduced by making codes short lived. If an attack
 By enforcing one-time use or limited use of user or QR codes, the authorization server can limit the impact of attacks where the same user code or QR code is sent to multiple victims. One-time use may be achieved by including a nonce or date-stamp in the QR code which is validated by the authorization server when the user scans the QR code.
 
 ### Unique Codes
-By issuing unique user or QR codes, an authorization server can detect if the same codes are being repeatedly submitted. This may be interpreted as anomalous behavior and the authorizations server may choose to decline issuing access and refresh tokens or deploy other risk mitigations if it detects the same codes being presented repeatedly.
+By issuing unique user or QR codes, an authorization server can detect if the same codes are being repeatedly submitted. This may be interpreted as anomalous behavior and the authorizations server may choose to decline issuing access and refresh tokens if it detects the same codes being presented repeatedly. This may be achieved by maintaining a deny list that contains QR codes or user codes that were previously used. The authorization server may use a sliding window eqaul to lifetime of a token if short lived/timebound tokens are used (see [Short Lived/Timebound Codes](#Short Lived/Timebound Codes)). This will limit the size of the deny list.
 
 ### Content Filtering
 Attackers exploit the unauthenticated channel by changing the context of the user code or QR code and then sending a message to a user (e-mail, text, instant messaging etc). By deploying content filtering (e.g., anti-spam filter), these messages can be blocked and prevented from reaching the end-users. It may be possible to fine-tune content filtering solutions to detect artifacts like QR codes or user codes that are being reused in multiple messages to disrupt spray attacks.
+
+### Detect and remediate
+The authorization server may be able to detect misuse of the codes due to repeated use as described in [Unique Codes](#Unique Codes), as an input from a content filtering engine as described in [Content Filtering](#Content Filtering), or through other mechanisms such as reports from end users. If an authorization server determines that a user code or QR code is being used in an attack it may choose to invalidate all tokens issued in response to these codes and make that information available through a token introspection endpoint (see [@RFC7662]. In addition it may notify resource servers to stop accepting these tokens or to terminate existing sessions associated with these tokens using Continious Access Evaluation Protocol (CAEP) messages [@CAEP] using the Shared Signals and Events (SSE) [@SSE] framework or an equivalent notification system. 
 
 ### Trusted Devices
 If an attacker is unable to initiate the protocol, they are unable to obtain a QR code or user code that can be leveraged for the attacks described in this document. By restricting the protocol to only be executed on devices trusted by the authorization server, it prevents attackers from using arbitrary devices, or by mimicking devices to initiate the protocol. Trusted devices include devices that are pre-registered with the authorization server or are subject to device management policies. Device management policies may enforce patching, version updates, on-device anti-malware deployment, revocation status and device location amongst others. Trusted devices may have their identities rooted in hardware (e.g., a TPM or equivalent technology). By only allowing trusted devices to initiate cross-device flows, it requires the attacker to have access to such a device and maintain access in a way that does not result in the device's trust status from being revoked. 
@@ -592,5 +595,40 @@ We would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil Reddy Bore
       <organization></organization>
     </author>
     <date year="2021" month="August"/>
+  </front>
+</reference>
+
+<reference anchor="SSE" target="https://openid.net/specs/openid-sse-framework-1_0-01.html">
+  <front>
+    <title>OpenID Shared Signals and Events Framework Specification 1.0</title>
+    <author initials="A." surname="Tulshibagwale" fullname="Atul Tulshibagwale">
+      <organization>Google</organization>
+    </author>
+    <author initials="T." surname="Cappalli" fullname="Tim Cappalli">
+      <organization>Microsoft</organization>
+    </author>  
+    <author initials="M." surname="Scurtescu" fullname="Marius Scurtescu">
+      <organization>Coinbase</organization>
+    </author>
+    <author initials="A." surname="Backman" fullname="Annabelle Backman">
+      <organization>Amazon</organization>
+    </author>   
+    <author initials="J." surname="Bradley" fullname="John Bradley">
+      <organization>Yubico</organization>
+    </author> 
+    <date year="2021" month="June"/>
+  </front>
+</reference>
+
+<reference anchor="CAEP" target="https://openid.net/specs/openid-caep-specification-1_0-01.html">
+  <front>
+    <title>OpenID Continuous Access Evaluation Profile 1.0 - draft 01</title>
+    <author initials="A." surname="Tulshibagwale" fullname="Atul Tulshibagwale">
+      <organization>Google</organization>
+    </author>
+    <author initials="T." surname="Cappalli" fullname="Tim Cappalli">
+      <organization>Microsoft</organization>
+    </author>  
+    <date year="2021" month="June"/>
   </front>
 </reference>
