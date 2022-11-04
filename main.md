@@ -8,7 +8,7 @@ keyword = ["security", "oauth2", "best current practice"]
 
 [seriesInfo]
 name = "Internet-Draft"
-value = "draft-kasselman-cross-device-security-00"
+value = "draft-kasselman-cross-device-security-01"
 stream = "IETF"
 status = "bcp"
 
@@ -482,6 +482,11 @@ We would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil Reddy Bore
 
    *  Initial draft adopted from document circulated to the OAuth Security Workshop Slack Channel
    *  Upload as draft-ietf-oauth-cross-device-security-best-practice-00
+
+   -01 
+
+   *  Updated draft based on feedback from version circulated to OAuth working group 
+   *  Upload as draft-ietf-oauth-cross-device-security-best-practice-01
 
    [[ pre Working Group Adoption: ]]
    
