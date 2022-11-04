@@ -379,7 +379,10 @@ The practical mitigations described in this section can prevent the attacks from
 |:-----------------------------|:-------:|:-------:|:-------:|
 |Establish Proximity           |    X    |    X    |         |
 |Short Lived/Timebound Codes   |         |    X    |         |
+|One-Time or Limited Use Codes |         |    X    |         |
+|Unique Codes                  |         |    X    |         |
 |Content Filtering             |         |    X    |         |
+|Detect and remediate          |         |         |    X    |
 |Trusted Devices               |    X    |         |         |
 |Trusted Networks              |    X    |         |         |
 |Limited Scopes                |         |         |    X    |
