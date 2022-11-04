@@ -250,6 +250,8 @@ An attacker creates a message to all employees of a company, claiming to be from
 ## Example B6: Illicit Onboarding
 An attacker initiates an employee onboarding flow and obtains a QR code from the onboarding portal to invoke a wallet and present a verifiable credential attesting to a new employee's identity. The attacker obtains a list of potential new employees and sends an e-mail informing them that it is time to present proof of their background check or government issued ID. The new employee scans the QR code, invokes their wallet and presents their credentials. Once the credentials are presented, the employee's account is activated. The employee portal accessed by the attacker obtained the QR code displays a message to the attacker with instructions on how to access their account.
 
+## Example B6: Illicit Session Transfer
+
 ## Out of Scope
 
 In all of the attack scenarios listed above, a user is tricked or exploited. For other attacks, where the user is willingly colluding with the attacker, the security implications and potential mitigations are very different. For example, a cooperating user can bypass software mitigations on his device, share access to hardware tokens with the attacker, and install additional devices to forward radio signals to trick proximity checks.
@@ -359,6 +361,13 @@ This information may be communicated graphically or in a simple message (e.g., "
 
 The service may provide out-of-band reinforcement to the user on the context and conditions under which an authorization grant may be requested. For example if the service provider does not send e-mails with QR codes requesting users to grant authorization, this may be reinforced in marketing messages, in-app experiences and through anti-fraud awareness campaigns.
 
+### Authenticated flow
+Use cross device authentication after a successful phishing resistant authentication. The unauthenticated channel between the initiating and authenticating device allows attackers to obtain a QR code. When the QR Code is presented after a successful phishing resistant authentication, this prevents the attack from being initiated.
+
+Scenario
+
+A user would like to verify an identity on a web application using an identity stored on a separate mobile device in a phishing resistant way. Using verifiable credentials from a secure and trusted wallet and presenting this to a trusted verifier service would be an example of this. The flow is initialized using a QR Code created inside a secure session on the target service after a phishing resistant authentication. The verifier could validate the identity from the authenticated session where the QR Code is presented, and the identity sent in the verifiable credential. 
+
 ### Practical Mitigation Summary
 The practical mitigations described in this section can prevent the attacks from being initiated, disrupt attacks once they start or reduce the impact or remediate an attack if it succeeds. When combining one or more of these mitigations the overall security profile of a cross-device flow improves significantly. The following table provides a summary view of these mitigations:
 
@@ -375,6 +384,7 @@ The practical mitigations described in this section can prevent the attacks from
 |Rate Limits                   |    X    |    X    |         |
 |Sender Constrained Tokens     |         |         |    X    |
 |User Experience               |    X    |         |         |
+|Authenticated flow            |    X    |         |         |
 Table: Practical Mitigation Summary
 
 ## Protocol selection
