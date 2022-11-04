@@ -179,6 +179,9 @@ An employee is issued with a personal computer that is already joined to a netwo
 ## Example A6: Remote onboarding
 A new employee is directed to an onboarding portal to provide additional information to confirm their identity on their first day with their new employer. Before activating the employee's account, the onboarding portal requests that the employee present a government issued ID, proof of a background check and proof of their qualifications. The onboarding portal displays a QR code, which the user scans with their mobile phone. Scanning the QR code invokes the employee's wallet on their mobile phone, and the employee is asked to present digital versions of an identity document (e.g., a driving license), proof of a background check by an identity verifier, and proof of their qualifications. The employee authorizes the release of the credentials and after completing the onboarding process, their account is activated. 
 
+## Example A7: Transfer a session
+An employee is signed into an application on their personal computer and wants to bootstrap the mobile application on their mobile phone. The employee initiates the cross-device flow and is shown a QR code in their application. The employee launches the mobile application on their phone and scans the QR code which results in the user being signed into the application on the mobile phone.
+
 # Cross-Device Flow Exploits
 The benefits of cross-device flows is compelling and is seeing adoption for a range of consumer and enterprise scenarios such as those listed above. To ensure the user and service provider enjoy the benefits of using their mobile phones as authentication and authorization devices, the interaction between the two devices needs to be secure. 
 
@@ -250,7 +253,8 @@ An attacker creates a message to all employees of a company, claiming to be from
 ## Example B6: Illicit Onboarding
 An attacker initiates an employee onboarding flow and obtains a QR code from the onboarding portal to invoke a wallet and present a verifiable credential attesting to a new employee's identity. The attacker obtains a list of potential new employees and sends an e-mail informing them that it is time to present proof of their background check or government issued ID. The new employee scans the QR code, invokes their wallet and presents their credentials. Once the credentials are presented, the employee's account is activated. The employee portal accessed by the attacker obtained the QR code displays a message to the attacker with instructions on how to access their account.
 
-## Example B6: Illicit Session Transfer
+## Example B7: Illicit session transfer
+An attacker creates a message to all employees of a company, claiming to be from a trusted technology provider investigating a suspected security breach. They ask employees to send them the QR code typically used to transfer a session. The employee, eager to assist, initiates the process to transfer a session. They authenticate  and obtain a QR code and then send the QR code to the attacker. The attacker scans the QR code with their mobile phone and access the users data and resources.
 
 ## Out of Scope
 
@@ -365,11 +369,7 @@ This information may be communicated graphically or in a simple message (e.g., "
 The service may provide out-of-band reinforcement to the user on the context and conditions under which an authorization grant may be requested. For example if the service provider does not send e-mails with QR codes requesting users to grant authorization, this may be reinforced in marketing messages, in-app experiences and through anti-fraud awareness campaigns.
 
 ### Authenticated flow
-Use cross device authentication after a successful phishing resistant authentication. The unauthenticated channel between the initiating and authenticating device allows attackers to obtain a QR code. When the QR Code is presented after a successful phishing resistant authentication, this prevents the attack from being initiated.
-
-Scenario
-
-A user would like to verify an identity on a web application using an identity stored on a separate mobile device in a phishing resistant way. Using verifiable credentials from a secure and trusted wallet and presenting this to a trusted verifier service would be an example of this. The flow is initialized using a QR Code created inside a secure session on the target service after a phishing resistant authentication. The verifier could validate the identity from the authenticated session where the QR Code is presented, and the identity sent in the verifiable credential. 
+By requiring a user to authenticate on the initiating device with a phishing resistant authentication method before initiating a cross-device flow, the server can prevent an attacker from initiating a cross-device flow and obtaining QR codes or user codes. This prevents the attacker from obtaining a QR code or user code that they can use to mislead an unsuspecting user. This requires that the initiating device has sufficient input capabilities to support a phishing resistant authentication mechanism. Note that this does not prevent the attacks described in [Example B5: Illicit Network Join](#Example B5: Illicit Network Join) and [Example B7: Illicit Session Transfer](#Example B7: Illicit Session Transfer) and it is recommended that additional mitigations described in this document is used if the cross-device flows are used in scenarios such as [Example A5: Add a device to a network](##Example A5: Add a device to a network) and [Example A7: Transfer a session](#Example A7: Transfer a session).
 
 ### Practical Mitigation Summary
 The practical mitigations described in this section can prevent the attacks from being initiated, disrupt attacks once they start or reduce the impact or remediate an attack if it succeeds. When combining one or more of these mitigations the overall security profile of a cross-device flow improves significantly. The following table provides a summary view of these mitigations:
