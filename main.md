@@ -113,22 +113,22 @@ authorize access to a resource (e.g., access to a streaming service).
 A typical example of a cross-device flow is shown below:
 ~~~ ascii-art
                            (B) Initiating Device    
-           +--------------+     Get QR/User Code  +---------------+
-           |  Initiating  |<--------------------->|               |
-           |   Device     |(E) Grant Authorization| Authorization |
-           |              |<--------------------->|     Server    |
-           +--------------+                       |               |
-             ^    |                               |               | 
-(A)User      |    | (C) Scan QR code              |               |
-   Start     |    |         or                    |               |
-   Flow      |    |   enter User Code             |               |
-             |    v                               |               |
-           +--------------+                       |               |
-           | Authorization|                       |               |
-           |    Device    |<--------------------->|               |
-           |              |(D) User Authenticates |               |
-           |              | and Authorize Access  |               |           
-           +--------------+                       +---------------+
+             +--------------+     Get QR/User Code  +---------------+
+(A)User +----|  Initiating  |<--------------------->|               |
+   Start|    |   Device     |(E) Grant Authorization| Authorization |
+   Flow +--->|              |<--------------------->|     Server    |
+             +--------------+                       |               |
+                    |                               |               | 
+                    | (C) Scan QR code              |               |
+                    |         or                    |               |
+                    |   enter User Code             |               |
+                    v                               |               |
+             +--------------+                       |               |
+             | Authorization|                       |               |
+             |    Device    |<--------------------->|               |
+             |              |(D) User Authenticates |               |
+             |              | and Authorize Access  |               |           
+             +--------------+                       +---------------+
 ~~~
 Figure: Typical Cross Device Flows
 
