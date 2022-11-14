@@ -112,8 +112,7 @@ authorize access to a resource (e.g., access to a streaming service).
 
 A typical example of a cross-device flow is shown below:
 ~~~ ascii-art
-                           (B) Initiating Device  
-                           
+                               (B) Initiating Device                    
               +--------------+     Get QR/User Code  +---------------+
 (A)User  +----|  Initiating  |<--------------------->|               |
    Start |    |   Device     |(E) Grant Authorization| Authorization |
@@ -283,7 +282,7 @@ A number of protocols that have been standardized, or are in the process of bein
 
 - Self-Issued OpenID Provider v2 (SIOP V2): A standard that allows end-user to present self-attested or third party attested attributes when used with Opend ID for Verifiable Credential protocols. The user scans a QR code presented by the relying party to initiate the flow.
 
-Cross-device protocols should not be used for same-device scenarios. If the initiating device and authorization device is the same device protocols like OpenID Connect Core [@OpenID.Core] and OAuth 2.0 Authorization Code Grant as defined in [@RFC6749] are more appropriate. 
+Cross-device protocols should not be used for same-device scenarios. If the initiating device and authorization device is the same device, protocols like OpenID Connect Core [@OpenID.Core] and OAuth 2.0 Authorization Code Grant as defined in [@RFC6749] are more appropriate. If a protocol supports both same-device and cross-device modes (e.g. [@OpenID.SIOPV2]), the cross-device mode should not be used for same-device scenarios. If an implementor decides to use a cross-device protocol or a protocol with a cross-device mode in a same-device scenario, the mitigations recommended in this document should be implemented to reduce the risks that the unauthenticated channel is exploited. 
 
 # Mitigating Against Cross-Device Flow Attacks
 The unauthenticated channel between the initiating device and the authenticating device allows attackers to change the context in which the authorization request is presented to the user. This shifts responsibility of "authenticating" the channel between the two devices to the end-user. End users have "expertise elsewhere" and are typically not security experts and don't understand the protocols and systems they interact with. As a result, end-users are poorly equipped to authenticate the channel between the two devices. Mitigations should focus on:
@@ -641,5 +640,21 @@ We would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil Reddy Bore
       <organization>Microsoft</organization>
     </author>  
     <date year="2021" month="June"/>
+  </front>
+</reference>
+
+<reference anchor="OpenID.SIOPV2" target="https://bitbucket.org/openid/connect/src/master/openid-connect-self-issued-v2/openid-connect-self-issued-v2-1_0.md">
+  <front>
+    <title>Self-Issued OpenID Provider v2</title>
+    <author initials="K." surname="Yasuda" fullname="Kristina Yasuda">
+      <organization>Microsoft</organization>
+    </author>
+    <author initials="M." surname="Jones" fullname="Michael B. Jones">
+      <organization>Microsoft</organization>
+    </author>
+    <author initials="T." surname="Lodderstedt" fullname="Torsten Lodderstedt">
+      <organization>yes.com</organization>
+    </author>
+    <date year="2022" month="November"/>
   </front>
 </reference>
