@@ -490,6 +490,12 @@ We would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil Reddy Bore
    *  Updated draft based on feedback from version circulated to OAuth working group 
    *  Upload as draft-ietf-oauth-cross-device-security-best-practice-01
 
+
+   -02 
+
+   *  Minor edits and typos
+   *  Upload as draft-ietf-oauth-cross-device-security-best-practice-02
+  
    [[ pre Working Group Adoption: ]]
    
 
@@ -580,7 +586,7 @@ We would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil Reddy Bore
 
 <reference anchor="Exploit5" target="https://www.secureworks.com/blog/oauths-device-code-flow-abused-in-phishing-attacks">
   <front>
-    <title>OAuth’s Device Code Flow Abused in Phishing Attacks</title>
+    <title>OAuth's Device Code Flow Abused in Phishing Attacks</title>
     <author>
       <organization></organization>
     </author>
