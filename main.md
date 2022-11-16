@@ -193,7 +193,7 @@ Attackers exploit this absence of an authenticated channel between the two devic
                            (B) Initiating Device    
            +--------------+     Get QR/User Code  +---------------+
            |  Attacker's  |<--------------------->|               |
-           |  Initiating  |(E) Grant Authorization| Authorization |
+           |  Initiating  |(G) Grant Authorization| Authorization |
            |   Device     |<--------------------->|     Server    |
            +--------------+                       |               |
              ^   | (C) Attacker Copy              |               | 
@@ -228,8 +228,8 @@ or connecting a service to the initiating device.
 - (D) The attacker changes the context in which the QR code or user code is displayed in such a way that the user is likely to scan the QR code or use the user code when completing the authorization.
 - (E) The QR code or user code is displayed in a context chosen by the attacker and the user is tricked into scanning the QR code 
 or enter the user code on the authorization device.
-- (D) The user authenticates to the Authorization Server before granting authorization. 
-- (E) The Authorization Server issues tokens or grants authorization to the initiating device, which is under the attackers control, to access the users resources and the attacker gains access to the resources and possibly any authorization artefacts like access and refresh tokens.
+- (F) The user authenticates to the Authorization Server before granting authorization. 
+- (G) The Authorization Server issues tokens or grants authorization to the initiating device, which is under the attackers control, to access the users resources and the attacker gains access to the resources and possibly any authorization artefacts like access and refresh tokens.
 
 The unauthenticated channel may also be exploited in variations of the above scenario where the user initiates the flow and is then tricked into sending the QR code or user code to the attacker. In these flows, the user is already authenticated and they request a QR code or user code to transfer a session or obtain some other privilege such as joining a device to a network. The attacker then proceeds to exploit the unauthenticated channel by using social engineering techniques to trick the user into initiating a flow and send the QR code or user code to the attacker, which they can then use to obtain the privileges that would have been assigned to the user. 
 
