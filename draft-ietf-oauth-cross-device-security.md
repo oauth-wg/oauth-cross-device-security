@@ -8,7 +8,7 @@ keyword = ["security", "oauth2", "best current practice"]
 
 [seriesInfo]
 name = "Internet-Draft"
-value = "draft-kasselman-cross-device-security-03"
+value = "draft-ietf-oauth-cross-device-security-latest"
 stream = "IETF"
 status = "bcp"
 
