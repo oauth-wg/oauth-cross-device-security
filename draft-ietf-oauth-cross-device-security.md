@@ -127,18 +127,18 @@ A typical example of a cross-device flow is shown below:
              | Authorization|                       |               |
              |    Device    |<--------------------->|               |
              |              |(D) User Authenticates |               |
-             |              | and Authorize Access  |               |
+             |              | and Authorizes Access |               |
              +--------------+                       +---------------+
 ~~~
 Figure: Typical Cross Device Flows
 
 - (A) The user takes an action on the initiating device by starting a purchase, adding a device to a network
 or connecting a service to the initiating device.
-- (B) The initiating device retrieves a QR code or user code from an authorization server
+- (B) The initiating device retrieves a QR code or user code from an authorization server.
 - (C) The QR code or user code is displayed on the initiating device where the user scans the QR code
-or enters the user code on the authorization device
+or enters the user code on the authorization device.
 - (D) The user authenticates to the authorization server before granting authorization.
-- (E) The Authorization Server issues tokens or grants authorization to the initiating device to access the user's resources.
+- (E) The authorization server issues tokens or grants authorization to the initiating device to access the user's resources.
 
 In some variants of these flows, the user receives a push notification on
 their authenticating device that triggers the authorization flow, removing
@@ -187,7 +187,7 @@ The benefits of cross-device flows is compelling and is seeing adoption for a ra
 
 A common action in these cross-device flows is to present the user with a QR code or a user code on the initiating device (e.g., Smart TV) and scanned or entered on the authorization device (the mobile phone). When the user scans the code or copies the user code, they do so without any proof that the QR code or user code is being displayed in the place or context intended by the service provider. It is up to the user's judgment to decide on whether they can trust the QR code or user code. In effect the user is asked to compensate for the absence of an authenticated channel between the initiating device (smart TV) and the device on which the authentication/authorization will take place (the mobile phone).
 
-Attackers exploit this absence of an authenticated channel between the two devices by obtaining QR codes or user codes (e.g., by initiating the authorization flows). They then use social engineering techniques to change the context in which authorization is requested to trick end-users to scan the QR code or enter it on their mobile devices. Once the end-user performs the authorization on the mobile device, the attacker who initiated the authentication or authorization request obtains access to the users resources. These attacks are also known as illicit consent grant attacks. The figure below shows an example of such an attack.
+Attackers exploit this absence of an authenticated channel between the two devices by obtaining QR codes or user codes (e.g., by initiating the authorization flows). They then use social engineering techniques to change the context in which authorization is requested to trick end-users to scan the QR code or enter it on their mobile devices. Once the end-user performs the authorization on the mobile device, the attacker who initiated the authentication or authorization request obtains access to the user's resources. These attacks are also known as illicit consent grant attacks. The figure below shows an example of such an attack.
 
 ~~~ ascii-art
                            (B) Initiating Device
@@ -216,15 +216,15 @@ Attackers exploit this absence of an authenticated channel between the two devic
            | Authorization|                       |               |
            |    Device    |<--------------------->|               |
            |              |(F) User Authenticates |               |
-           |              | and Authorize Access  |               |
+           |              | and Authorizes Access |               |
            +--------------+                       +---------------+
 ~~~
 Figure: Attacker Initiated Cross Device Flow Exploit
 
 - (A) The attacker initiates the protocol on the initiating device (or by mimicking the initiating device) by starting a purchase, adding a device to a network
 or connecting a service to the initiating device.
-- (B) The initiating device retrieves a QR code or user code from an authorization server
-- (C) The attacker copies the QR code or user code
+- (B) The initiating device retrieves a QR code or user code from an authorization server.
+- (C) The attacker copies the QR code or user code.
 - (D) The attacker changes the context in which the QR code or user code is displayed in such a way that the user is likely to scan the QR code or use the user code when completing the authorization.
 - (E) The QR code or user code is displayed in a context chosen by the attacker and the user is tricked into scanning the QR code
 or enter the user code on the authorization device.
@@ -236,12 +236,12 @@ The unauthenticated channel may also be exploited in variations of the above sce
 The following examples illustrate these attacks in practical settings and show how the unauthenticated channel is exploited by attackers who can copy the QR codes and user codes, change the context in which they are presented using social engineering techniques and mislead end-users into granting consent to avail of services, access data and make payments.
 
 ## Example B1: Illicit access to a video streaming service
-An attacker obtains a smart TV and attempts to access an online streaming service. The smart TV obtains a QR code from the authorization server and displays it on screen. The attacker copies the QR code and embeds it in an e-mail that is sent to a large number of recipients. The e-mail contains a message stating that the streaming service wants to thank them for their loyal support and by scanning the QR code, they will be able to add a bonus device to their account for no charge. One of the recipients open the e-mail and scan the QR code to register for early access to premium content. The users perform multi-factor authentication, and when asked if they want a new device to be added to their account, they authorize the action. The attacker's device is now authorized to access the content and obtains an access and refresh token. The access token allows the attacker to access content and the refresh token allows the attacker to obtain fresh tokens whenever the access token expires.
+An attacker obtains a smart TV and attempts to access an online streaming service. The smart TV obtains a QR code from the authorization server and displays it on screen. The attacker copies the QR code and embeds it in an e-mail that is sent to a large number of recipients. The e-mail contains a message stating that the streaming service wants to thank them for their loyal support and by scanning the QR code, they will be able to add a bonus device to their account for no charge. One of the recipients opens the e-mail and scans the QR code to register for early access to premium content. The users perform multi-factor authentication, and when asked if they want a new device to be added to their account, they authorize the action. The attacker's device is now authorized to access the content and obtains an access and refresh token. The access token allows the attacker to access content and the refresh token allows the attacker to obtain fresh tokens whenever the access token expires.
 
 The attacker scales up the attack by emulating a new smart TV, obtaining multiple QR codes and widening the audience it sends the QR code to. Whenever a recipient scans the QR code and authorizes the addition of a new device, the attacker obtains an access and refresh token, which they sell for a profit.
 
 ## Example B2: Illicit access to productivity services
-An attacker emulates an enterprise application (e.g., an interactive whiteboard) and initiates a cross-device flow by requesting a user code and URL from the authorization server. The attacker obtains a list of potential victims and sends an e-mail informing users that their files will be deleted within 24 hours if they don't follow the link, enter the user code and authenticate. The e-mail reminds them that this is the third time that they have been notified and their last opportunity to prevent deletion of their work files. One or more employees respond by following the URL, entering the code and performing multi-factor authentication. Once these employees authorized access, the attacker obtains access and refresh tokens from the authorization server and uses it to access the users files, perform lateral attacks to obtain access to other information and continuously refresh the session by requesting new access tokens. These tokens may be exfiltrated and sold to third parties.
+An attacker emulates an enterprise application (e.g., an interactive whiteboard) and initiates a cross-device flow by requesting a user code and URL from the authorization server. The attacker obtains a list of potential victims and sends an e-mail informing users that their files will be deleted within 24 hours if they don't follow the link, enter the user code and authenticate. The e-mail reminds them that this is the third time that they have been notified and their last opportunity to prevent deletion of their work files. One or more employees respond by following the URL, entering the code and performing multi-factor authentication. Once these employees authorized access, the attacker obtains access and refresh tokens from the authorization server and uses them to access the users' files, perform lateral attacks to obtain access to other information and continuously refresh the session by requesting new access tokens. These tokens may be exfiltrated and sold to third parties.
 
 ## Example B3: Illicit access to physical assets
 An attacker copies a QR code from a bicycle locked in a bike rack in a city, prints it on a label and places the label on a bicycle at the other end of the bike rack. A customer approaches the bike that contains the replicated QR code and scans the code and authenticates before authorizing payment for renting the bicycle. The bike rack unlocks the bike containing the original QR code and the attacker removes the bicycle before cycling down the street while the customer is left frustrated that the bike they were trying to use is not being unlocked [@NYC.Bike]. The customer proceeds to unlock another bicycle and lodges a complaint with the bike renting company.
