@@ -253,7 +253,7 @@ An attacker initiates an employee onboarding flow and obtains a QR code from the
 ## Example B6: Illicit Session Transfer
 
 ## Example B7: Account takeover
-The attacker creates a phishing website which will in real time create QR Codes from the original website and present these to the victim to invoke a wallet and present a verifiable credential attesting an existing identity. The attacker tries to get the victim to use the phishing website using an e-mail campaign etc. The victim scans the QR code on the phishing website, invokes their wallet and presents their credentials. Once the credentials are presented, the original session from the attackers device is updated with the victim's session. 
+An attacker wants to use some website which requires presentation of a verifiable credential for authentication. The attacker creates a phishing website which will in real time show log-in QR Codes from the original website and present these to the victim. The attacker tries to get the victim to use the phishing website using an e-mail campaign etc. The victim scans the QR code on the phishing website, invokes their wallet and presents their credentials. Once the credentials are presented, the original session from the attackers device is updated with the victim's session. 
 
 ## Out of Scope
 
