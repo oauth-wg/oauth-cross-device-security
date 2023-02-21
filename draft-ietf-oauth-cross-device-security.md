@@ -1,5 +1,5 @@
 %%%
-title = "Cross Device Flows: Security Best Current Practice"
+title = "Cross-Device Flows: Security Best Current Practice"
 abbrev = "CDFS"
 ipr = "trust200902"
 area = "Security"
@@ -8,7 +8,7 @@ keyword = ["security", "oauth2", "best current practice"]
 
 [seriesInfo]
 name = "Internet-Draft"
-value = "draft-kasselman-cross-device-security-00"
+value = "draft-ietf-oauth-cross-device-security-latest"
 stream = "IETF"
 status = "bcp"
 
@@ -20,8 +20,8 @@ fullname="Pieter Kasselman"
 organization="Microsoft"
     [author.address]
     email = "pieter.kasselman@microsoft.com"
-    
-    
+
+
 [[author]]
 initials="D."
 surname="Fett"
@@ -42,53 +42,53 @@ organization="Okta"
 
 %%%
 
-.# Abstract 
+.# Abstract
 
-This document describes threats against cross-device flows 
-along with near term mitigations, protocol selection guidance 
-and the analytical tools needed to evaluate the effectiveness of 
-these mitigations. It serves as a security guide to system designers, 
-architects, product managers, security specialists, fraud analysts 
+This document describes threats against cross-device flows
+along with near term mitigations, protocol selection guidance
+and the analytical tools needed to evaluate the effectiveness of
+these mitigations. It serves as a security guide to system designers,
+architects, product managers, security specialists, fraud analysts
 and engineers implementing cross-device flows.
 
 {mainmatter}
 
 # Introduction {#Introduction}
-Cross-device flows enable a user to initiate an authorization flow on 
-one device (the initiating device) and then use a second, personally 
-trusted, device (authorization device) to authorize access to a resource 
-(e.g., access to a service). 
+Cross-device flows enable a user to initiate an authorization flow on
+one device (the initiating device) and then use a second, personally
+trusted, device (authorization device) to authorize access to a resource
+(e.g., access to a service).
 
-These flows are increasingly popular and typically involve using a mobile 
-phone to scan a QR code or enter a user code displayed on an initiating 
+These flows are increasingly popular and typically involve using a mobile
+phone to scan a QR code or enter a user code displayed on an initiating
 device (e.g., Smart TV, Kiosk, Personal Computer etc).
 
-The channel between the initiating device and the authorization device is 
-unauthenticated and relies on the user's judgment to decide whether to trust 
-a QR code, user code, or the authorization request pushed to their authorization 
-device. 
+The channel between the initiating device and the authorization device is
+unauthenticated and relies on the user's judgment to decide whether to trust
+a QR code, user code, or the authorization request pushed to their authorization
+device.
 
-Several publications have emerged in the public domain ([@Exploit1], [@Exploit2], [@Exploit3], [@Exploit4], [@Exploit5], [@Exploit6]), describing how 
-the unauthenticated channel can be exploited using social engineering techniques 
-borrowed from phishing. Unlike traditional phishing attacks, these attacks don't 
-harvest credentials. Instead, they skip the step of collecting credentials by 
-persuading users to grant authorization using their authorization devices. 
+Several publications have emerged in the public domain ([@Exploit1], [@Exploit2], [@Exploit3], [@Exploit4], [@Exploit5], [@Exploit6]), describing how
+the unauthenticated channel can be exploited using social engineering techniques
+borrowed from phishing. Unlike traditional phishing attacks, these attacks don't
+harvest credentials. Instead, they skip the step of collecting credentials by
+persuading users to grant authorization using their authorization devices.
 
-Once the user grants authorization, the attacker has access to the user's 
-resources and in some cases is able to collect access and refresh tokens. Once in 
+Once the user grants authorization, the attacker has access to the user's
+resources and in some cases is able to collect access and refresh tokens. Once in
 possession of the access and refresh tokens, the attacker may use these tokens to
-execute lateral attacks and gain additional access, or monetize the tokens by 
-selling them. These attacks are effective even when multi-factor authentication 
-is deployed, since the attacker's aim is not to capture and replay the credentials, 
-but rather to persuade the user to grant authorization. 
+execute lateral attacks and gain additional access, or monetize the tokens by
+selling them. These attacks are effective even when multi-factor authentication
+is deployed, since the attacker's aim is not to capture and replay the credentials,
+but rather to persuade the user to grant authorization.
 
 In order to defend against these attacks, this document outlines three potential responses:
 
-1. For protocols that are susceptible to unauthenticated 
+1. For protocols that are susceptible to unauthenticated
 channel exploits, deploy practical mitigations.
-2. Select protocols that are not susceptible to unauthenticated channel exploits 
+2. Select protocols that are not susceptible to unauthenticated channel exploits
 when possible.
-3. Conduct formal analysis of cross-device flows to assess susceptibility to 
+3. Conduct formal analysis of cross-device flows to assess susceptibility to
     these attacks and the effectiveness of the proposed mitigations.
 
 ## Conventions and Terminology
@@ -106,62 +106,62 @@ This specification uses the terms "access token", "refresh token",
 "client" defined by The OAuth 2.0 Authorization Framework [@!RFC6749].
 
 # Cross Device Flow Concepts
-In a cross-device flow, a user starts a scenario on the initiating device 
-(e.g., a smart TV) and then uses an authorization device (e.g., a smartphone) to 
-authorize access to a resource (e.g., access to a streaming service). 
+In a cross-device flow, a user starts a scenario on the initiating device
+(e.g., a smart TV) and then uses an authorization device (e.g., a smartphone) to
+authorize access to a resource (e.g., access to a streaming service).
 
 A typical example of a cross-device flow is shown below:
 ~~~ ascii-art
-                           (B) Initiating Device    
-           +--------------+     Get QR/User Code  +---------------+
-           |  Initiating  |<--------------------->|               |
-           |   Device     |(E) Grant Authorization| Authorization |
-           |              |<--------------------->|     Server    |
-           +--------------+                       |               |
-             ^    |                               |               | 
-(A)User      |    | (C) Scan QR code              |               |
-   Start     |    |         or                    |               |
-   Flow      |    |   enter User Code             |               |
-             |    v                               |               |
-           +--------------+                       |               |
-           | Authorization|                       |               |
-           |    Device    |<--------------------->|               |
-           |              |(D) User Authenticates |               |
-           |              | and Authorize Access  |               |           
-           +--------------+                       +---------------+
+                              (B) Initiating Device
+             +--------------+     Get QR/User Code  +---------------+
+(A)User  +---|  Initiating  |<--------------------->|               |
+   Start |   |   Device     |(E) Grant Authorization| Authorization |
+   Flow  +-->|              |<--------------------->|     Server    |
+             +--------------+                       |               |
+                    |                               |               |
+                    | (C) Scan QR code              |               |
+                    |         or                    |               |
+                    |   enter User Code             |               |
+                    v                               |               |
+             +--------------+                       |               |
+             | Authorization|                       |               |
+             |    Device    |<--------------------->|               |
+             |              |(D) User Authenticates |               |
+             |              | and Authorize Access  |               |
+             +--------------+                       +---------------+
 ~~~
 Figure: Typical Cross Device Flows
 
-- (A) The user takes an action on the initiating device by starting a purchase, adding a device to a network 
-or connecting a service to the initiating device. 
+- (A) The user takes an action on the initiating device by starting a purchase, adding a device to a network
+or connecting a service to the initiating device.
 - (B) The initiating device retrieves a QR code or user code from an authorization server
-- (C) The QR code or user code is displayed on the initiating device where the user scans the QR code 
+- (C) The QR code or user code is displayed on the initiating device where the user scans the QR code
 or enters the user code on the authorization device
-- (D) The user authenticates to the authorization server before granting authorization. 
-- (E) The Authorization Server issues tokens or grants authorization to the initiating device to access the user's resources. 
+- (D) The user authenticates to the authorization server before granting authorization.
+- (E) The Authorization Server issues tokens or grants authorization to the initiating device to access the user's resources.
 
-In some variants of these flows, the user receives a push notification on 
-their authenticating device that triggers the authorization flow, removing 
-the need to scan a QR code or enter a user code manually. 
+In some variants of these flows, the user receives a push notification on
+their authenticating device that triggers the authorization flow, removing
+the need to scan a QR code or enter a user code manually.
 
 Cross device flows have several benefits, including:
 
-- Authorization on devices with limited input capabilities: End-users can 
-authorize devices with limited input capabilities to access content (e.g., 
+- Authorization on devices with limited input capabilities: End-users can
+authorize devices with limited input capabilities to access content (e.g.,
 smart TVs, digital whiteboards, printers, etc).
-- Secure authentication on shared or public devices: End-users can perform 
-authentication and authorization using a personally trusted device, without 
-risk of disclosing their credentials to a public or shared device. 
-- Ubiquitous multi-factor authentication: Enables a user to use multi-factor 
-authentication, independent of the device on which the service is being 
+- Secure authentication on shared or public devices: End-users can perform
+authentication and authorization using a personally trusted device, without
+risk of disclosing their credentials to a public or shared device.
+- Ubiquitous multi-factor authentication: Enables a user to use multi-factor
+authentication, independent of the device on which the service is being
 accessed (e.g., a kiosk, smart TV or shared Personal Computer).
-- Convenience of a single, portable, credential store: Users can keep all 
-their credentials in a mobile wallet or mobile phone that they already 
-carry with them. 
+- Convenience of a single, portable, credential store: Users can keep all
+their credentials in a mobile wallet or mobile phone that they already
+carry with them.
 
 Examples of cross-device flow scenarios include:
 
-## Example A1: Authorize access to a video streaming service 
+## Example A1: Authorize access to a video streaming service
 An end-user sets up a new smart TV and wants to connect it to their favorite streaming service. The TV displays a QR code that the user scans with their mobile phone. The user is redirected to the streaming service provider's web page and asked to enter their credentials to authorize the smart TV to access the streaming service. The user enters their credentials and grants authorization, after which the streaming service is available on the smart TV.
 
 ## Example A2: Authorize access to productivity services
@@ -177,33 +177,36 @@ An end-user makes an online purchase. Before completing the purchase, they get a
 An employee is issued with a personal computer that is already joined to a network. The employee wants to add their mobile phone to the network to allow it to access corporate data and services (e.g., files and e-mail). The personal computer displays a QR code, which the employee scans with their mobile phone. The mobile phone is joined to the network and the employee can start accessing corporate data and services on their mobile device.
 
 ## Example A6: Remote onboarding
-A new employee is directed to an onboarding portal to provide additional information to confirm their identity on their first day with their new employer. Before activating the employee's account, the onboarding portal requests that the employee present a government issued ID, proof of a background check and proof of their qualifications. The onboarding portal displays a QR code, which the user scans with their mobile phone. Scanning the QR code invokes the employee's wallet on their mobile phone, and the employee is asked to present digital versions of an identity document (e.g., a driving license), proof of a background check by an identity verifier, and proof of their qualifications. The employee authorizes the release of the credentials and after completing the onboarding process, their account is activated. 
+A new employee is directed to an onboarding portal to provide additional information to confirm their identity on their first day with their new employer. Before activating the employee's account, the onboarding portal requests that the employee present a government issued ID, proof of a background check and proof of their qualifications. The onboarding portal displays a QR code, which the user scans with their mobile phone. Scanning the QR code invokes the employee's wallet on their mobile phone, and the employee is asked to present digital versions of an identity document (e.g., a driving license), proof of a background check by an identity verifier, and proof of their qualifications. The employee authorizes the release of the credentials and after completing the onboarding process, their account is activated.
+
+## Example A7: Transfer a session
+An employee is signed into an application on their personal computer and wants to bootstrap the mobile application on their mobile phone. The employee initiates the cross-device flow and is shown a QR code in their application. The employee launches the mobile application on their phone and scans the QR code which results in the user being signed into the application on the mobile phone.
 
 # Cross-Device Flow Exploits
-The benefits of cross-device flows is compelling and is seeing adoption for a range of consumer and enterprise scenarios such as those listed above. To ensure the user and service provider enjoy the benefits of using their mobile phones as authentication and authorization devices, the interaction between the two devices needs to be secure. 
+The benefits of cross-device flows is compelling and is seeing adoption for a range of consumer and enterprise scenarios such as those listed above. To ensure the user and service provider enjoy the benefits of using their mobile phones as authentication and authorization devices, the interaction between the two devices needs to be secure.
 
-A common action in these cross-device flows is to present the user with a QR code or a user code on the initiating device (e.g., Smart TV) and scanned or entered on the authorization device (the mobile phone). When the user scans the code or copies the user code, they do so without any proof that the QR code or user code is being displayed in the place or context intended by the service provider. It is up to the user's judgment to decide on whether they can trust the QR code or user code. In effect the user is asked to compensate for the absence of an authenticated channel between the initiating device (smart TV) and the device on which the authentication/authorization will take place (the mobile phone). 
+A common action in these cross-device flows is to present the user with a QR code or a user code on the initiating device (e.g., Smart TV) and scanned or entered on the authorization device (the mobile phone). When the user scans the code or copies the user code, they do so without any proof that the QR code or user code is being displayed in the place or context intended by the service provider. It is up to the user's judgment to decide on whether they can trust the QR code or user code. In effect the user is asked to compensate for the absence of an authenticated channel between the initiating device (smart TV) and the device on which the authentication/authorization will take place (the mobile phone).
 
 Attackers exploit this absence of an authenticated channel between the two devices by obtaining QR codes or user codes (e.g., by initiating the authorization flows). They then use social engineering techniques to change the context in which authorization is requested to trick end-users to scan the QR code or enter it on their mobile devices. Once the end-user performs the authorization on the mobile device, the attacker who initiated the authentication or authorization request obtains access to the users resources. These attacks are also known as illicit consent grant attacks. The figure below shows an example of such an attack.
 
 ~~~ ascii-art
-                           (B) Initiating Device    
+                           (B) Initiating Device
            +--------------+     Get QR/User Code  +---------------+
            |  Attacker's  |<--------------------->|               |
-           |  Initiating  |(E) Grant Authorization| Authorization |
+           |  Initiating  |(G) Grant Authorization| Authorization |
            |   Device     |<--------------------->|     Server    |
            +--------------+                       |               |
-             ^   | (C) Attacker Copy              |               | 
-(A) Attacker |   |     QR or User Code            |               | 
-    Start    |   |                                |               |              
-    Flow     |   V                                |               |              
+             ^   | (C) Attacker Copy              |               |
+(A) Attacker |   |     QR or User Code            |               |
+    Start    |   |                                |               |
+    Flow     |   V                                |               |
            +--------------+                       |               |
            |              |                       |               |
            |   Attacker   |                       |               |
            |              | (D) Attacker Change   |               |
            |              |     QR Code/User Code |               |
-           |              |     Context           |               |           
-           +--------------+                       |               |           
+           |              |     Context           |               |
+           +--------------+                       |               |
                   | (E) User is tricked and       |               |
                   |     Scan QR code or           |               |
                   |     enter User Code           |               |
@@ -213,20 +216,22 @@ Attackers exploit this absence of an authenticated channel between the two devic
            | Authorization|                       |               |
            |    Device    |<--------------------->|               |
            |              |(F) User Authenticates |               |
-           |              | and Authorize Access  |               |           
+           |              | and Authorize Access  |               |
            +--------------+                       +---------------+
 ~~~
-Figure: Typical Cross Device Flow Exploit
+Figure: Attacker Initiated Cross Device Flow Exploit
 
-- (A) The attacker initiates the protocol on the initiating device (or by mimicking the initiating device) by starting a purchase, adding a device to a network 
-or connecting a service to the initiating device. 
+- (A) The attacker initiates the protocol on the initiating device (or by mimicking the initiating device) by starting a purchase, adding a device to a network
+or connecting a service to the initiating device.
 - (B) The initiating device retrieves a QR code or user code from an authorization server
-- (C) The attacker copies the QR code or user code 
+- (C) The attacker copies the QR code or user code
 - (D) The attacker changes the context in which the QR code or user code is displayed in such a way that the user is likely to scan the QR code or use the user code when completing the authorization.
-- (E) The QR code or user code is displayed in a context chosen by the attacker and the user is tricked into scanning the QR code 
+- (E) The QR code or user code is displayed in a context chosen by the attacker and the user is tricked into scanning the QR code
 or enter the user code on the authorization device.
-- (D) The user authenticates to the Authorization Server before granting authorization. 
-- (E) The Authorization Server issues tokens or grants authorization to the initiating device, which is under the attackers control, to access the users resources and the attacker gains access to the resources and possibly any authorization artefacts like access and refresh tokens.
+- (F) The user authenticates to the Authorization Server before granting authorization.
+- (G) The Authorization Server issues tokens or grants authorization to the initiating device, which is under the attackers control, to access the users resources and the attacker gains access to the resources and possibly any authorization artefacts like access and refresh tokens.
+
+The unauthenticated channel may also be exploited in variations of the above scenario where the user initiates the flow and is then tricked into sending the QR code or user code to the attacker. In these flows, the user is already authenticated and they request a QR code or user code to transfer a session or obtain some other privilege such as joining a device to a network. The attacker then proceeds to exploit the unauthenticated channel by using social engineering techniques to trick the user into initiating a flow and send the QR code or user code to the attacker, which they can then use to obtain the privileges that would have been assigned to the user.
 
 The following examples illustrate these attacks in practical settings and show how the unauthenticated channel is exploited by attackers who can copy the QR codes and user codes, change the context in which they are presented using social engineering techniques and mislead end-users into granting consent to avail of services, access data and make payments.
 
@@ -248,9 +253,10 @@ An attacker obtains a list of user identifiers for a financial institution and t
 An attacker creates a message to all employees of a company, claiming to be from a trusted technology provider investigating a suspected security breach. They ask employees to send them the QR code typically used to join a new device to the network, along with detailed steps on how to obtain the QR code. The employee, eager to assist, initiates the process to add a new mobile device to the network. They authenticate to the network and obtain a QR code. They send the QR code to the attacker. The attacker scans the QR code and adds their own device to the network. They use this device access as an entry point and perform lateral moves to obtain additional privileges and access to restricted resources.
 
 ## Example B6: Illicit Onboarding
-An attacker initiates an employee onboarding flow and obtains a QR code from the onboarding portal to invoke a wallet and present a verifiable credential attesting to a new employee's identity. The attacker obtains a list of potential new employees and sends an e-mail informing them that it is time to present proof of their background check or government issued ID. The new employee scans the QR code, invokes their wallet and presents their credentials. Once the credentials are presented, the employee's account is activated. The employee portal accessed by the attacker obtained the QR code displays a message to the attacker with instructions on how to access their account.
+An attacker initiates an employee onboarding flow and obtains a QR code from the onboarding portal to invoke a wallet and present a verifiable credential attesting to a new employee's identity. The attacker obtains a list of potential new employees and sends an e-mail informing them that it is time to present proof of their background check or government issued ID. The new employee scans the QR code, invokes their wallet and presents their credentials. Once the credentials are presented, the employee's account is activated. The employee portal accessed by the attacker to obtain the QR code displays a message to the attacker with instructions on how to access their account.
 
-## Example B6: Illicit Session Transfer
+## Example B7: Illicit session transfer
+An attacker creates a message to all employees of a company, claiming to be from a trusted technology provider investigating a suspected security breach. They ask employees to send them the QR code typically used to transfer a session. The employee, eager to assist, initiates the process to transfer a session. They authenticate  and obtain a QR code and then send the QR code to the attacker. The attacker scans the QR code with their mobile phone and access the users data and resources.
 
 ## Example B7: Account takeover
 An attacker wants to use some website which requires presentation of a verifiable credential for authentication. The attacker creates a phishing website which will in real time show log-in QR Codes from the original website and present these to the victim. The attacker tries to get the victim to use the phishing website using an e-mail campaign etc. The victim scans the QR code on the phishing website, invokes their wallet and presents their credentials. Once the credentials are presented, the original session from the attackers device is updated with the victim's session. 
@@ -266,12 +272,12 @@ Cross-device flows that are subject to the attacks described earlier, typically 
 
 1.	The attacker can initiate the flow and manipulate the context of an authorization request.
     a.	E.g. the attacker can obtain a QR code or user code, or can request an authentication/authorization decision from the user.
-2.	The interaction between the initiating device and authentication device is unauthenticated. 
+2.	The interaction between the initiating device and authentication device is unauthenticated.
     a.	E.g. it is left ot the user to decide if the QR code, user code or authentication request is being presented in a legitimate context
 
 A number of protocols that have been standardized, or are in the process of being standardized that share these characteristics include:
 
-- IETF OAuth 2.0 Device Authorization Grant ([@RFC8628]): A standard to enable authorization on devices with constrained input capabilities (smart TVs, printers, kiosks). In this protocol, the user code or QR code is displayed on the initiating device and entered on a second device (e.g., a mobile phone).  
+- IETF OAuth 2.0 Device Authorization Grant ([@RFC8628]): A standard to enable authorization on devices with constrained input capabilities (smart TVs, printers, kiosks). In this protocol, the user code or QR code is displayed on the initiating device and entered on a second device (e.g., a mobile phone).
 
 - Open ID Foundation Client Initiated Back-Channel Authentication (CIBA) [@CIBA]: A standard developed in the OpenID Foundation that allows a device or service (e.g., a personal computer, Smart TV, Kiosk) to request the OpenID Provider to initiate an authentication flow if it knows a valid identifier for the user. The user completes the authentication flow using a second device (e.g., a mobile phone). In this flow the user does not scan a QR code or obtain a user code from the initiating device, but is instead contacted by the OpenID Provider to complete the authentication using a push notification, e-mail, text message or any other suitable mechanism.
 
@@ -279,14 +285,14 @@ A number of protocols that have been standardized, or are in the process of bein
 
 - Self-Issued OpenID Provider v2 (SIOP V2): A standard that allows end-user to present self-attested or third party attested attributes when used with Opend ID for Verifiable Credential protocols. The user scans a QR code presented by the relying party to initiate the flow.
 
-Cross-device protocols should not be used for same-device scenarios. If the initiating device and authorization device is the same device protocols like OpenID Connect Core [@OpenID.Core] and OAuth 2.0 Authorization Code Grant as defined in [@RFC6749] are more appropriate. 
+Cross-device protocols should not be used for same-device scenarios. If the initiating device and authorization device is the same device, protocols like OpenID Connect Core [@OpenID.Core] and OAuth 2.0 Authorization Code Grant as defined in [@RFC6749] are more appropriate. If a protocol supports both same-device and cross-device modes (e.g. [@OpenID.SIOPV2]), the cross-device mode should not be used for same-device scenarios. If an implementor decides to use a cross-device protocol or a protocol with a cross-device mode in a same-device scenario, the mitigations recommended in this document should be implemented to reduce the risks that the unauthenticated channel is exploited.
 
 # Mitigating Against Cross-Device Flow Attacks
 The unauthenticated channel between the initiating device and the authenticating device allows attackers to change the context in which the authorization request is presented to the user. This shifts responsibility of "authenticating" the channel between the two devices to the end-user. End users have "expertise elsewhere" and are typically not security experts and don't understand the protocols and systems they interact with. As a result, end-users are poorly equipped to authenticate the channel between the two devices. Mitigations should focus on:
 
 1.	Minimizing reliance on the user to make decisions to authenticate the channel.
 2.	Providing better information with which to make decisions to authenticate the channel.
-3.	Recovering from incorrect channel authentication decisions by users. 
+3.	Recovering from incorrect channel authentication decisions by users.
 
 To achieve the above outcomes, mitigating the exploits of cross-device flows require a three-pronged approach:
 
@@ -323,7 +329,7 @@ use a VPN to simulate a shared network or spoof a GNSS position. For
 example, the attacker can try to request the location of the end-user's
 authorization device through browser APIs and then simulate the same
 location on his initiating device using standard debugging features
-available on many platforms. 
+available on many platforms.
 
 ### Short Lived/Timebound Codes
 The impact of an attack can be reduced by making codes short lived. If an attacker obtains a short-lived token, the duration during which the unauthenticated channel can be exploited is reduced, potentially increasing the cost of a successful attack.
@@ -332,16 +338,19 @@ The impact of an attack can be reduced by making codes short lived. If an attack
 By enforcing one-time use or limited use of user or QR codes, the authorization server can limit the impact of attacks where the same user code or QR code is sent to multiple victims. One-time use may be achieved by including a nonce or date-stamp in the QR code which is validated by the authorization server when the user scans the QR code.
 
 ### Unique Codes
-By issuing unique user or QR codes, an authorization server can detect if the same codes are being repeatedly submitted. This may be interpreted as anomalous behavior and the authorizations server may choose to decline issuing access and refresh tokens or deploy other risk mitigations if it detects the same codes being presented repeatedly.
+By issuing unique user or QR codes, an authorization server can detect if the same codes are being repeatedly submitted. This may be interpreted as anomalous behavior and the authorizations server may choose to decline issuing access and refresh tokens if it detects the same codes being presented repeatedly. This may be achieved by maintaining a deny list that contains QR codes or user codes that were previously used. The authorization server may use a sliding window eqaul to lifetime of a token if short lived/timebound tokens are used (see [Short Lived/Timebound Codes](#Short Lived/Timebound Codes)). This will limit the size of the deny list.
 
 ### Content Filtering
 Attackers exploit the unauthenticated channel by changing the context of the user code or QR code and then sending a message to a user (e-mail, text, instant messaging etc). By deploying content filtering (e.g., anti-spam filter), these messages can be blocked and prevented from reaching the end-users. It may be possible to fine-tune content filtering solutions to detect artifacts like QR codes or user codes that are being reused in multiple messages to disrupt spray attacks.
 
+### Detect and remediate
+The authorization server may be able to detect misuse of the codes due to repeated use as described in [Unique Codes](#Unique Codes), as an input from a content filtering engine as described in [Content Filtering](#Content Filtering), or through other mechanisms such as reports from end users. If an authorization server determines that a user code or QR code is being used in an attack it may choose to invalidate all tokens issued in response to these codes and make that information available through a token introspection endpoint (see [@RFC7662]. In addition it may notify resource servers to stop accepting these tokens or to terminate existing sessions associated with these tokens using Continious Access Evaluation Protocol (CAEP) messages [@CAEP] using the Shared Signals and Events (SSE) [@SSE] framework or an equivalent notification system.
+
 ### Trusted Devices
-If an attacker is unable to initiate the protocol, they are unable to obtain a QR code or user code that can be leveraged for the attacks described in this document. By restricting the protocol to only be executed on devices trusted by the authorization server, it prevents attackers from using arbitrary devices, or by mimicking devices to initiate the protocol. Trusted devices include devices that are pre-registered with the authorization server or are subject to device management policies. Device management policies may enforce patching, version updates, on-device anti-malware deployment, revocation status and device location amongst others. Trusted devices may have their identities rooted in hardware (e.g., a TPM or equivalent technology). By only allowing trusted devices to initiate cross-device flows, it requires the attacker to have access to such a device and maintain access in a way that does not result in the device's trust status from being revoked. 
+If an attacker is unable to initiate the protocol, they are unable to obtain a QR code or user code that can be leveraged for the attacks described in this document. By restricting the protocol to only be executed on devices trusted by the authorization server, it prevents attackers from using arbitrary devices, or by mimicking devices to initiate the protocol. Trusted devices include devices that are pre-registered with the authorization server or are subject to device management policies. Device management policies may enforce patching, version updates, on-device anti-malware deployment, revocation status and device location amongst others. Trusted devices may have their identities rooted in hardware (e.g., a TPM or equivalent technology). By only allowing trusted devices to initiate cross-device flows, it requires the attacker to have access to such a device and maintain access in a way that does not result in the device's trust status from being revoked.
 
 ### Trusted Networks
-An attacker can be prevented from initiating a cross device flow protocol by only allowing the protocol to be initiated on a trusted network or within a security perimeter (e.g., a corporate network). A trusted network may be defined as a set of IP addresses and joining the network is subject to security controls managed by the network operator, which may include only allowinfg trusted devices on the network, device management, user authentication and physical access policies and systems. By limiting protocol initiation to a specific network, the attacker needs to have access to a device on the network. 
+An attacker can be prevented from initiating a cross device flow protocol by only allowing the protocol to be initiated on a trusted network or within a security perimeter (e.g., a corporate network). A trusted network may be defined as a set of IP addresses and joining the network is subject to security controls managed by the network operator, which may include only allowinfg trusted devices on the network, device management, user authentication and physical access policies and systems. By limiting protocol initiation to a specific network, the attacker needs to have access to a device on the network.
 
 ### Limited Scopes
 Authorization servers may choose to limit the scopes they include in access tokens issued through cross-device flows where the unauthenticated channel between two devices are susceptible to being exploited. Including limited scopes lessens the impact in case of a successful attack. The decision about which scopes are included may be further refined based on whether the protocol is initiated on a trusted device or the user's location relative to the initiating device.
@@ -350,26 +359,22 @@ Authorization servers may choose to limit the scopes they include in access toke
 Another mitigation strategy includes limiting the life of the access and refresh tokens. The lifetime can be lengthened or shortened, depending on the user's location, the resources they are trying to access or whether they are using a trusted device. Short lived tokens do not prevent or disrupt the attack, but serve as a remedial mechanism in case the attack succeeded.
 
 ### Rate Limits
-An attacker that engages in a scaled spray attack needs to request a large number of user codes (see exploit example 1) or initiate a large number of authorization requests (see exploit example 2) in a short period of time. An authorization server can apply rate limits to minimize the number of requests it would accept from a client in a limited time period. 
+An attacker that engages in a scaled spray attack needs to request a large number of user codes (see exploit example 1) or initiate a large number of authorization requests (see exploit example 2) in a short period of time. An authorization server can apply rate limits to minimize the number of requests it would accept from a client in a limited time period.
 
 ### Sender Constrained Tokens
-Sender constrained tokens limit the impact of a successful attack by preventing the tokens from being moved from the device on which the attack was successfully executed. This makes attacks where an attacker gathers a large number of access and refresh tokens on a single device and then sells them for profit more difficult, since the attacker would also have to export the cryptographic keys used to sender constrain the tokens or be able to access them an generate signatures for future use. If the attack is being executed on a trusted device to a device with anti-malware, any attempts to exfiltrate tokens or keys may be detected and the device's trust status may be changed. Using hardware keys for sender constraining tokens will further reduce the ability of the attacker to move tokens to another device. 
+Sender constrained tokens limit the impact of a successful attack by preventing the tokens from being moved from the device on which the attack was successfully executed. This makes attacks where an attacker gathers a large number of access and refresh tokens on a single device and then sells them for profit more difficult, since the attacker would also have to export the cryptographic keys used to sender constrain the tokens or be able to access them an generate signatures for future use. If the attack is being executed on a trusted device to a device with anti-malware, any attempts to exfiltrate tokens or keys may be detected and the device's trust status may be changed. Using hardware keys for sender constraining tokens will further reduce the ability of the attacker to move tokens to another device.
 
 ### User Experience
-The user experience should preserve the context within which the protocols were initiated and communicate this clearly to the user when they are asked to authorize, authenticate or present a credential. In preserving the context, it should be clear to the user who invoked the flow, why it was invoked and what the consequence of completing the authorization, authentication or credential presentation. The user experience should reinforce the message that unless the user initiated the authorization request, or was expecting it, they should decline the request.  
+The user experience should preserve the context within which the protocols were initiated and communicate this clearly to the user when they are asked to authorize, authenticate or present a credential. In preserving the context, it should be clear to the user who invoked the flow, why it was invoked and what the consequence of completing the authorization, authentication or credential presentation. The user experience should reinforce the message that unless the user initiated the authorization request, or was expecting it, they should decline the request.
 
-It should be clear to the user how to decline the request. To avoid accidental authorization grants, the "decline" option may be the default option or given similar prominence in the user experience as the "grant" option. 
+It should be clear to the user how to decline the request. To avoid accidental authorization grants, the "decline" option may be the default option or given similar prominence in the user experience as the "grant" option.
 
 This information may be communicated graphically or in a simple message (e.g., "It looks like you are trying to access your files on a digital whiteboard in your city center office. Click here to grant access to your files. If you are not trying to access your files, you should decline this request and notify the security department").
 
 The service may provide out-of-band reinforcement to the user on the context and conditions under which an authorization grant may be requested. For example if the service provider does not send e-mails with QR codes requesting users to grant authorization, this may be reinforced in marketing messages, in-app experiences and through anti-fraud awareness campaigns.
 
 ### Authenticated flow
-Use cross device authentication after a successful phishing resistant authentication. The unauthenticated channel between the initiating and authenticating device allows attackers to obtain a QR code. When the QR Code is presented after a successful phishing resistant authentication, this prevents the attack from being initiated.
-
-Scenario
-
-A user would like to verify an identity on a web application using an identity stored on a separate mobile device in a phishing resistant way. Using verifiable credentials from a secure and trusted wallet and presenting this to a trusted verifier service would be an example of this. The flow is initialized using a QR Code created inside a secure session on the target service after a phishing resistant authentication. The verifier could validate the identity from the authenticated session where the QR Code is presented, and the identity sent in the verifiable credential. 
+By requiring a user to authenticate on the initiating device with a phishing resistant authentication method before initiating a cross-device flow, the server can prevent an attacker from initiating a cross-device flow and obtaining QR codes or user codes. This prevents the attacker from obtaining a QR code or user code that they can use to mislead an unsuspecting user. This requires that the initiating device has sufficient input capabilities to support a phishing resistant authentication mechanism. Note that this does not prevent the attacks described in [Example B5: Illicit Network Join](#Example B5: Illicit Network Join) and [Example B7: Illicit Session Transfer](#Example B7: Illicit Session Transfer) and it is recommended that additional mitigations described in this document is used if the cross-device flows are used in scenarios such as [Example A5: Add a device to a network](##Example A5: Add a device to a network) and [Example A7: Transfer a session](#Example A7: Transfer a session).
 
 ### Practical Mitigation Summary
 The practical mitigations described in this section can prevent the attacks from being initiated, disrupt attacks once they start or reduce the impact or remediate an attack if it succeeds. When combining one or more of these mitigations the overall security profile of a cross-device flow improves significantly. The following table provides a summary view of these mitigations:
@@ -379,7 +384,10 @@ The practical mitigations described in this section can prevent the attacks from
 |:-----------------------------|:-------:|:-------:|:-------:|
 |Establish Proximity           |    X    |    X    |         |
 |Short Lived/Timebound Codes   |         |    X    |         |
+|One-Time or Limited Use Codes |         |    X    |         |
+|Unique Codes                  |         |    X    |         |
 |Content Filtering             |         |    X    |         |
+|Detect and remediate          |         |         |    X    |
 |Trusted Devices               |    X    |         |         |
 |Trusted Networks              |    X    |         |         |
 |Limited Scopes                |         |         |    X    |
@@ -391,14 +399,14 @@ The practical mitigations described in this section can prevent the attacks from
 Table: Practical Mitigation Summary
 
 ## Protocol selection
-Some cross-device protocols are more susceptible to the exploits described in this document than others. In this section we will compare three different protocols in terms of their susceptibility to exploits focused on the unauthenticated channel, the prerequisites to implement and deploy them along with guidance on when it is appropriate to use them.
+Some cross-device protocols are more susceptible to the exploits described in this document than others. In this section we will compare three different cross-device protocols in terms of their susceptibility to exploits focused on the unauthenticated channel, the prerequisites to implement and deploy them along with guidance on when it is appropriate to use them.
 
-### IETF OAuth 2.0 Device Authorization Grant [@RFC8628]: 
-#### Description 
-A standard to enable authorization on devices with constrained input capabilities (smart TVs, printers, kiosks). In this protocol, the user code or QR code is displayed or made available on the initiating device (smart TV) and entered on a second device (e.g., a mobile phone). 
+### IETF OAuth 2.0 Device Authorization Grant [@RFC8628]:
+#### Description
+A standard to enable authorization on devices with constrained input capabilities (smart TVs, printers, kiosks). In this protocol, the user code or QR code is displayed or made available on the initiating device (smart TV) and entered on a second device (e.g., a mobile phone).
 
-#### Susceptibility 
-There are several reports in the public domain outlining how the unauthenticated channel may be exploited to execute an illicit consent grant attack. 
+#### Susceptibility
+There are several reports in the public domain outlining how the unauthenticated channel may be exploited to execute an illicit consent grant attack.
 
 #### Device capabilities
 There are no assumptions in the protocol about underlying capabilities of the device, making it a "least common denominator" protocol that is expected to work on the broadest set of devices and environments.
@@ -409,7 +417,7 @@ In addition to the security considerations section in the standard, it is recomm
 #### When to use
 Only use this protocol if other cross-device protocols are not viable due to device or system constraints. Avoid using if the protected resources are sensitive, high value or business critical. Always deploy additional mitigations like proximity or only allow with pre-registered devices. Do not use for same-device scenarios (e.g. if the initiating device and authorization device is the same device).
 
-### OpenID Foundation Client Initiated Back-Channel Authentication (CIBA): 
+### OpenID Foundation Client Initiated Back-Channel Authentication (CIBA):
 #### Description
 Client Initiated Back-Channel Authentication (CIBA) [@CIBA]: A standard developed in the OpenID Foundation that allows a device or service (e.g., a personal computer, Smart TV, Kiosk) to request the OpenID Provider to initiate an authentication flow if it knows a valid identifier for the user. The user completes the authentication flow using a second device (e.g., a mobile phone). In this flow the user does not scan a QR code or obtain a user code from the initiating device, but is instead contacted by the OpenID Provider to complete the authentication using a push notification, e-mail, text message or any other suitable mechanism.
 
@@ -425,7 +433,7 @@ In addition to the security considerations section in the standard, it is recomm
 #### When to use
 Use CIBA instead of Device Authorization Grant if it is possible for the initiating device to obtain a user identifier on the initiating device (e.g., through an input or selection mechanism) and if the Authorization Server can trigger an authorization on the authorization device. Do not use for same-device scenarios (e.g. if the initiating device and authorization device is the same device).
 
-### FIDO2/WebAuthn 
+### FIDO2/WebAuthn
 #### Description
 FIDO2/WebAuthn is a stack of standards developed in the FIDO Alliance and W3C respectively which allow for origin-bound, phishing-resistant user authentication using asymmetric cryptography that can be invoked from a web browser or native client. Version 2.2 of the FIDO Client to Authenticator Protocol (CTAP) supports a new cross-device authentication protocol, called "hybrid", which enables an external device, such as a phone or tablet, to be used as a roaming authenticator for signing into the primary device, such as a personal computer. This is commonly called FIDO Cross-Device Authentication (CDA).
 
@@ -458,14 +466,14 @@ There are various different approaches to formal security analysis and each brin
 To ensure secure cross-device interactions, a formal analysis using the WIM therefore seems to be in order. Such an analysis should comprise a generic model for cross-device flows, potentially including different kinds of interactions. The aim of the analysis would be to evaluate the effectiveness of selected mitigation strategies. To the best of our knowledge, this would be the first study of this kind.
 
 # Conclusion
-Cross-device flows enable authorization on devices with limited input capabilities, allow for secure authentication when using public or shared devices, provide a path towards multi-factor authentication and provide the convenience of a single, portable credential store. 
+Cross-device flows enable authorization on devices with limited input capabilities, allow for secure authentication when using public or shared devices, provide a path towards multi-factor authentication and provide the convenience of a single, portable credential store.
 
-The popularity of cross-device flows attracted the attention of attackers that exploit the unauthenticated channel between the initiating and authentication/authorizing device using techniques commonly used in phishing attacks. These attacks allow attackers to harvest access and refresh tokens, rather than authentication credentials, resulting in access to resources even if the user used multi-factor authentication. 
+The popularity of cross-device flows attracted the attention of attackers that exploit the unauthenticated channel between the initiating and authentication/authorizing device using techniques commonly used in phishing attacks. These attacks allow attackers to harvest access and refresh tokens, rather than authentication credentials, resulting in access to resources even if the user used multi-factor authentication.
 
 To address these attacks, we propose a three pronged approach that includes the deployment of practical mitigations to safeguard protocols that are already deployed, provide guidance on when to use different protocols, including protocols that are not susceptible to these attacks, and the introduction of formal methods to evaluate the impact of mitigations and find additional issues.
 
 # Contributors
-We would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil Reddy Boreddy, Bjorn Hjelm, Joseph Heenan, Brian Campbell, Damien Bowden and others (please let us know, if you've been mistakenly omitted) for their valuable input, feedback and general support of this work.
+We would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil Reddy Boreddy, Bjorn Hjelm, Joseph Heenan, Brian Campbell, Damien Bowden, Kristina Yasuda and others (please let us know, if you've been mistakenly omitted) for their valuable input, feedback and general support of this work.
 
 {backmatter}
 
@@ -475,13 +483,29 @@ We would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil Reddy Bore
 
 
 
-   -00 
+   -00
 
    *  Initial draft adopted from document circulated to the OAuth Security Workshop Slack Channel
    *  Upload as draft-ietf-oauth-cross-device-security-best-practice-00
 
+   -01
+
+   *  Updated draft based on feedback from version circulated to OAuth working group
+   *  Upload as draft-ietf-oauth-cross-device-security-best-practice-01
+
+
+   -02
+
+   *  Minor edits and typos
+   *  Upload as draft-ietf-oauth-cross-device-security-best-practice-02
+
+     -02
+
+   *  Minor edits and typos
+   *  Corrected Figure 2 (incorrect numbering on diagram)
+
    [[ pre Working Group Adoption: ]]
-   
+
 
 
 <reference anchor="OpenID.Core" target="http://openid.net/specs/openid-connect-core-1_0.html">
@@ -570,7 +594,7 @@ We would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil Reddy Bore
 
 <reference anchor="Exploit5" target="https://www.secureworks.com/blog/oauths-device-code-flow-abused-in-phishing-attacks">
   <front>
-    <title>OAuth’s Device Code Flow Abused in Phishing Attacks</title>
+    <title>OAuth's Device Code Flow Abused in Phishing Attacks</title>
     <author>
       <organization></organization>
     </author>
@@ -595,5 +619,56 @@ We would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil Reddy Bore
       <organization></organization>
     </author>
     <date year="2021" month="August"/>
+  </front>
+</reference>
+
+<reference anchor="SSE" target="https://openid.net/specs/openid-sse-framework-1_0-01.html">
+  <front>
+    <title>OpenID Shared Signals and Events Framework Specification 1.0</title>
+    <author initials="A." surname="Tulshibagwale" fullname="Atul Tulshibagwale">
+      <organization>Google</organization>
+    </author>
+    <author initials="T." surname="Cappalli" fullname="Tim Cappalli">
+      <organization>Microsoft</organization>
+    </author>
+    <author initials="M." surname="Scurtescu" fullname="Marius Scurtescu">
+      <organization>Coinbase</organization>
+    </author>
+    <author initials="A." surname="Backman" fullname="Annabelle Backman">
+      <organization>Amazon</organization>
+    </author>
+    <author initials="J." surname="Bradley" fullname="John Bradley">
+      <organization>Yubico</organization>
+    </author>
+    <date year="2021" month="June"/>
+  </front>
+</reference>
+
+<reference anchor="CAEP" target="https://openid.net/specs/openid-caep-specification-1_0-01.html">
+  <front>
+    <title>OpenID Continuous Access Evaluation Profile 1.0 - draft 01</title>
+    <author initials="A." surname="Tulshibagwale" fullname="Atul Tulshibagwale">
+      <organization>Google</organization>
+    </author>
+    <author initials="T." surname="Cappalli" fullname="Tim Cappalli">
+      <organization>Microsoft</organization>
+    </author>
+    <date year="2021" month="June"/>
+  </front>
+</reference>
+
+<reference anchor="OpenID.SIOPV2" target="https://bitbucket.org/openid/connect/src/master/openid-connect-self-issued-v2/openid-connect-self-issued-v2-1_0.md">
+  <front>
+    <title>Self-Issued OpenID Provider v2</title>
+    <author initials="K." surname="Yasuda" fullname="Kristina Yasuda">
+      <organization>Microsoft</organization>
+    </author>
+    <author initials="M." surname="Jones" fullname="Michael B. Jones">
+      <organization>Microsoft</organization>
+    </author>
+    <author initials="T." surname="Lodderstedt" fullname="Torsten Lodderstedt">
+      <organization>yes.com</organization>
+    </author>
+    <date year="2022" month="November"/>
   </front>
 </reference>
