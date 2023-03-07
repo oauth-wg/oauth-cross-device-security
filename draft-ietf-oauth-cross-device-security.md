@@ -139,7 +139,7 @@ the initiating device is responsible for initiating authorization on
 the authorization device via a backchannel with the authroization server.
 For example 
 
-##User Transferred Flow
+## User Transferred Flow
 A typical example of a cross-device flow that relies on the user copying 
 information from the initiating device to the authorization device 
 is shown below:
@@ -172,7 +172,7 @@ or enters the user code on the authorization device
 - (D) The user authenticates to the authorization server before granting authorization.
 - (E) The Authorization Server issues tokens or grants authorization to the initiating device to access the user's resources.
 
-##Client Transferred
+## Client Transferred
 The figure below shows an example of the client requesting the authorization server 
 to initiate an authorization on the user's authorization device via the 
 backchannel.
@@ -215,7 +215,7 @@ authorization, including a push notification to a dedicated app on a mobile phon
 or sending a text message with a link to an endpoint where the user
 can authenticate and authorize and action.
 
-## Cross-device flow examples
+## Examples of cross-device flows
 Examples of cross-device flow scenarios include:
 
 ### Example A1: Authorize access to a video streaming service
@@ -242,6 +242,7 @@ An employee is signed into an application on their personal computer and wants t
 # Cross-Device Flow Exploits
 The benefits of cross-device flows is compelling and is seeing adoption for a range of consumer and enterprise scenarios such as those listed above. To ensure the user and service provider enjoy the benefits of using their mobile phones as authentication and authorization devices, the interaction between the two devices needs to be secure.
 
+## User Transferred Flow
 A common action in these cross-device flows is to present the user with a QR code or a user code on the initiating device (e.g., Smart TV) and scanned or entered on the authorization device (the mobile phone). When the user scans the code or copies the user code, they do so without any proof that the QR code or user code is being displayed in the place or context intended by the service provider. It is up to the user's judgment to decide on whether they can trust the QR code or user code. In effect the user is asked to compensate for the absence of an authenticated channel between the initiating device (smart TV) and the device on which the authentication/authorization will take place (the mobile phone).
 
 Attackers exploit this absence of an authenticated channel between the two devices by obtaining QR codes or user codes (e.g., by initiating the authorization flows). They then use social engineering techniques to change the context in which authorization is requested to trick end-users to scan the QR code or enter it on their mobile devices. Once the end-user performs the authorization on the mobile device, the attacker who initiated the authentication or authorization request obtains access to the users resources. These attacks are also known as illicit consent grant attacks. The figure below shows an example of such an attack.
@@ -290,6 +291,10 @@ or enter the user code on the authorization device.
 
 The unauthenticated channel may also be exploited in variations of the above scenario where the user initiates the flow and is then tricked into sending the QR code or user code to the attacker. In these flows, the user is already authenticated and they request a QR code or user code to transfer a session or obtain some other privilege such as joining a device to a network. The attacker then proceeds to exploit the unauthenticated channel by using social engineering techniques to trick the user into initiating a flow and send the QR code or user code to the attacker, which they can then use to obtain the privileges that would have been assigned to the user.
 
+## Client Transferred
+TBD - add attack description
+
+## Examples of cross-device flow exploits
 The following examples illustrate these attacks in practical settings and show how the unauthenticated channel is exploited by attackers who can copy the QR codes and user codes, change the context in which they are presented using social engineering techniques and mislead end-users into granting consent to avail of services, access data and make payments.
 
 ## Example B1: Illicit access to a video streaming service
