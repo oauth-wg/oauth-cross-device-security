@@ -110,7 +110,39 @@ In a cross-device flow, a user starts a scenario on the initiating device
 (e.g., a smart TV) and then uses an authorization device (e.g., a smartphone) to
 authorize access to a resource (e.g., access to a streaming service).
 
-A typical example of a cross-device flow is shown below:
+Cross device flows have several benefits, including:
+
+- Authorization on devices with limited input capabilities: End-users can
+authorize devices with limited input capabilities to access content (e.g.,
+smart TVs, digital whiteboards, printers, etc).
+- Secure authentication on shared or public devices: End-users can perform
+authentication and authorization using a personally trusted device, without
+risk of disclosing their credentials to a public or shared device.
+- Ubiquitous multi-factor authentication: Enables a user to use multi-factor
+authentication, independent of the device on which the service is being
+accessed (e.g., a kiosk, smart TV or shared Personal Computer).
+- Convenience of a single, portable, credential store: Users can keep all
+their credentials in a mobile wallet or mobile phone that they already
+carry with them.
+
+There are two variants of cross-device flows, depending on how the session 
+between the initiating device and the authorization device is established.
+
+ - User transferred: In the first variant, the user initiates 
+the authroization process with the authorization server by copying 
+information from the initiating device to the authorization device, before 
+authorizing an action. For example user may read a code from the initiating 
+device and enter it on the authorization device, or they may scan a QR code 
+displayed in the initiating device with the authorization device. 
+- Client transferred: In the second variant, the OAuth client on
+the initiating device is responsible for initiating authorization on 
+the authorization device via a backchannel with the authroization server.
+For example 
+
+##User Transferred Flow
+A typical example of a cross-device flow that relies on the user copying 
+information from the initiating device to the authorization device 
+is shown below:
 ~~~ ascii-art
                               (B) Initiating Device
              +--------------+     Get QR/User Code  +---------------+
@@ -130,7 +162,7 @@ A typical example of a cross-device flow is shown below:
              |              | and Authorize Access  |               |
              +--------------+                       +---------------+
 ~~~
-Figure: Typical Cross Device Flows
+Figure: Cross Device Flows (User Transferred)
 
 - (A) The user takes an action on the initiating device by starting a purchase, adding a device to a network
 or connecting a service to the initiating device.
@@ -140,46 +172,71 @@ or enters the user code on the authorization device
 - (D) The user authenticates to the authorization server before granting authorization.
 - (E) The Authorization Server issues tokens or grants authorization to the initiating device to access the user's resources.
 
-In some variants of these flows, the user receives a push notification on
-their authenticating device that triggers the authorization flow, removing
-the need to scan a QR code or enter a user code manually.
+##Client Transferred
+The figure below shows an example of the client requesting the authorization server 
+to initiate an authorization on the user's authorization device via the 
+backchannel.
 
-Cross device flows have several benefits, including:
+~~~ ascii-art
+                              (B) Backchannel Authorization
+             +--------------+     Request           +---------------+
+(A)User  +---|  Initiating  |<--------------------->|               |
+   Start |   |   Device     |(E) Grant Authorization| Authorization |
+   Flow  +-->|              |<--------------------->|     Server    |
+             +--------------+                       |               |
+                                                    |               |
+                                                    |               |
+                                                    |               |
+                                                    |               |
+(D)User                                             |               |
+  Authorize  +--------------+                       |               |
+  Action +---| Authorization|                       |               |
+         |   |    Device    |<--------------------->|               |
+         +-->|              |(C) Request User       |               |
+             |              |    Authorization      |               |
+             +--------------+                       +---------------+
+~~~
+Figure: Cross Device Flows (Client Transferred)
 
-- Authorization on devices with limited input capabilities: End-users can
-authorize devices with limited input capabilities to access content (e.g.,
-smart TVs, digital whiteboards, printers, etc).
-- Secure authentication on shared or public devices: End-users can perform
-authentication and authorization using a personally trusted device, without
-risk of disclosing their credentials to a public or shared device.
-- Ubiquitous multi-factor authentication: Enables a user to use multi-factor
-authentication, independent of the device on which the service is being
-accessed (e.g., a kiosk, smart TV or shared Personal Computer).
-- Convenience of a single, portable, credential store: Users can keep all
-their credentials in a mobile wallet or mobile phone that they already
-carry with them.
+- (A) The user takes an action on the initiating device by starting a 
+purchase, adding a device to a network or connecting a service to the 
+initiating device.
+- (B) The client on the initiating device requests user authorization
+on the backchannel from the authorization server.
+- (C) The authorization server requests the authorization from the user
+on the user's device.
+- (D) The user authenticates to the authorization server before 
+granting authorization on their device.
+- (E) The Authorization Server issues tokens or grants authorization to 
+the initiating device to access the user's resources.
 
+The Authorization Server may use a variety of mechanisms to request user 
+authorization, including a push notification to a dedicated app on a mobile phone, 
+or sending a text message with a link to an endpoint where the user
+can authenticate and authorize and action.
+
+## Cross-device flow examples
 Examples of cross-device flow scenarios include:
 
-## Example A1: Authorize access to a video streaming service
+### Example A1: Authorize access to a video streaming service
 An end-user sets up a new smart TV and wants to connect it to their favorite streaming service. The TV displays a QR code that the user scans with their mobile phone. The user is redirected to the streaming service provider's web page and asked to enter their credentials to authorize the smart TV to access the streaming service. The user enters their credentials and grants authorization, after which the streaming service is available on the smart TV.
 
-## Example A2: Authorize access to productivity services
+### Example A2: Authorize access to productivity services
 An employee wants to access their files on an interactive whiteboard in a conference room. The interactive whiteboard displays a URL and a code. The user enters the URL on their personal computer and is prompted for the code. Once they enter the code, the user is asked to authenticate and authorize the interactive whiteboard to access their files. The user enters their credentials and authorizes the transaction and the interactive whiteboard retrieves their files and allows the user to interact with the content.
 
-## Example A3: Authorize use of a bike sharing scheme
+### Example A3: Authorize use of a bike sharing scheme
 An end-user wants to rent a bicycle from a bike sharing scheme. The bicycles are locked in bike racks on sidewalks throughout a city. To unlock and use a bike, the user scans a QR code on the bike using their mobile phone. Scanning the QR code redirects the user to the bike sharing scheme's authorization page where the user authenticates and authorizes payment for renting the bike. Once authorized, the bike sharing service unlocks the bike, allowing the user to use it to cycle around the city.
 
-## Example A4: Authorize a financial transaction
+### Example A4: Authorize a financial transaction
 An end-user makes an online purchase. Before completing the purchase, they get a notification on their mobile phone, asking them to authorize the transaction. The user opens their app and authenticates to the service before authorizing the transaction.
 
-## Example A5: Add a device to a network.
+### Example A5: Add a device to a network.
 An employee is issued with a personal computer that is already joined to a network. The employee wants to add their mobile phone to the network to allow it to access corporate data and services (e.g., files and e-mail). The personal computer displays a QR code, which the employee scans with their mobile phone. The mobile phone is joined to the network and the employee can start accessing corporate data and services on their mobile device.
 
-## Example A6: Remote onboarding
+### Example A6: Remote onboarding
 A new employee is directed to an onboarding portal to provide additional information to confirm their identity on their first day with their new employer. Before activating the employee's account, the onboarding portal requests that the employee present a government issued ID, proof of a background check and proof of their qualifications. The onboarding portal displays a QR code, which the user scans with their mobile phone. Scanning the QR code invokes the employee's wallet on their mobile phone, and the employee is asked to present digital versions of an identity document (e.g., a driving license), proof of a background check by an identity verifier, and proof of their qualifications. The employee authorizes the release of the credentials and after completing the onboarding process, their account is activated.
 
-## Example A7: Transfer a session
+### Example A7: Transfer a session
 An employee is signed into an application on their personal computer and wants to bootstrap the mobile application on their mobile phone. The employee initiates the cross-device flow and is shown a QR code in their application. The employee launches the mobile application on their phone and scans the QR code which results in the user being signed into the application on the mobile phone.
 
 # Cross-Device Flow Exploits
