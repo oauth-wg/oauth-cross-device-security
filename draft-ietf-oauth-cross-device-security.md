@@ -537,28 +537,29 @@ We would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil Reddy Bore
 
 
 
-   -00
 
-   *  Initial draft adopted from document circulated to the OAuth Security Workshop Slack Channel
-   *  Upload as draft-ietf-oauth-cross-device-security-best-practice-00
 
    -01
 
-   *  Updated draft based on feedback from version circulated to OAuth working group
-   *  Upload as draft-ietf-oauth-cross-device-security-best-practice-01
+   *  Restructured document to distinguish between user transferred and client backchannel transferred cross device flows
 
+
+   [[ pre Working Group Adoption: ]]
 
    -02
 
    *  Minor edits and typos
    *  Upload as draft-ietf-oauth-cross-device-security-best-practice-02
 
-     -02
+   -01
 
-   *  Minor edits and typos
-   *  Corrected Figure 2 (incorrect numbering on diagram)
+   *  Updated draft based on feedback from version circulated to OAuth working group
+   *  Upload as draft-ietf-oauth-cross-device-security-best-practice-01
 
-   [[ pre Working Group Adoption: ]]
+   -00
+
+   *  Initial draft adopted from document circulated to the OAuth Security Workshop Slack Channel
+   *  Upload as draft-ietf-oauth-cross-device-security-best-practice-00
 
 
 
