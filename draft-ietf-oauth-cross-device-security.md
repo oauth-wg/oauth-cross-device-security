@@ -367,6 +367,9 @@ An attacker initiates an employee onboarding flow and obtains a QR code from the
 ## Example B7: Illicit session transfer
 An attacker creates a message to all employees of a company, claiming to be from a trusted technology provider investigating a suspected security breach. They ask employees to send them the QR code typically used to transfer a session. The employee, eager to assist, initiates the process to transfer a session. They authenticate  and obtain a QR code and then send the QR code to the attacker. The attacker scans the QR code with their mobile phone and access the users data and resources.
 
+## Example B8: Account takeover
+An attacker wants to use some website which requires presentation of a verifiable credential for authentication. The attacker creates a phishing website which will in real time capture log-in QR Codes from the original website and present these to the victim. The attacker tries to get the victim to use the phishing website using an e-mail campaign etc. The victim scans the QR code on the phishing website, invokes their wallet and presents their credentials. Once the credentials are presented, the original session from the attackers device is authenticated with the victim's credentials.
+
 ## Out of Scope
 
 In all of the attack scenarios listed above, a user is tricked or exploited. For other attacks, where the user is willingly colluding with the attacker, the security implications and potential mitigations are very different. For example, a cooperating user can bypass software mitigations on his device, share access to hardware tokens with the attacker, and install additional devices to forward radio signals to trick proximity checks.
