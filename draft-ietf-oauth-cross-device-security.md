@@ -125,8 +125,9 @@ accessed (e.g., a kiosk, smart TV or shared Personal Computer).
 their credentials in a mobile wallet or mobile phone that they already
 carry with them.
 
-There are three variants of cross-device flows, depending on how the session 
-between the Initiating Device and the Authorization Device is established.
+There are three cross-device flow patterns for transferring the 
+authorization request between the Initiating Device to the 
+Authorization Device. 
 
  - User transferred: In the first variant, the user initiates 
 the authroization process with the authorization server by copying 
@@ -175,6 +176,8 @@ or enters the user code on the authorization device
 - (D) The user authenticates to the authorization server before granting authorization.
 - (E) The Authorization Server issues tokens or grants authorization to the initiating device to access the user's resources.
 
+The Device Authorization Grant ([@RFC8628]) follows this pattern.
+
 ## Client Transferred
 The figure below shows an example of the client requesting the authorization server 
 to initiate an authorization on the user's authorization device via the 
@@ -217,6 +220,8 @@ The Authorization Server may use a variety of mechanisms to request user
 authorization, including a push notification to a dedicated app on a mobile phone, 
 or sending a text message with a link to an endpoint where the user
 can authenticate and authorize and action.
+
+The Client Initiated Backchannel Authentication [@CIBA] follows this pattern.
 
 ## Hybrid 
 The figure below shows an example of the client requesting the authorization server 
