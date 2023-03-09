@@ -226,7 +226,7 @@ Figure: Cross Device Flows (Hybrid)
 - (D) The user enters the access code on the Initiating Device.
 - (E) The Authorization Server issues tokens or grants authorization to the initiating device to access the user's resources.
 
-The Authorization Server may choose to authenticate the user before sending the access code. The access code may be delivered as a text message or through a mobile application. 
+The Authorization Server may choose to authenticate the user before sending the access code. The access code may be delivered as a text message or through a mobile application.
 
 ## Examples of cross-device flows
 Examples of cross-device flow scenarios include:
