@@ -122,6 +122,24 @@ accessed (e.g., a kiosk, smart TV or shared Personal Computer).
 their credentials in a mobile wallet or mobile phone that they already
 carry with them.
 
+There are three cross-device flow patterns for transferring the 
+authorization request between the Initiating Device to the 
+Authorization Device. 
+
+ - User transferred: In the first variant, the user initiates 
+the authroization process with the authorization server by copying 
+information from the initiating device to the authorization device, before 
+authorizing an action. For example user may read a code from the initiating 
+device and enter it on the authorization device, or they may scan a QR code 
+displayed in the initiating device with the authorization device. 
+- Client transferred: In the second variant, the OAuth client on
+the initiating device is responsible for initiating authorization on 
+the authorization device via a backchannel with the authroization server.
+- Hybrid: In the third variant, the OAuth client on the initiating device 
+triggers the authorization request via a backchannel with the Authorization 
+Server. An access code is displayed on the Authorization device, which the
+user enters on the initiating device.
+
 ## Examples of cross-device flows
 Examples of cross-device flow scenarios include:
 
