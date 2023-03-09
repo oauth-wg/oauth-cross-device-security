@@ -88,8 +88,8 @@ In order to defend against these attacks, this document outlines three potential
 channel exploits, deploy practical mitigations.
 2. Select protocols that are not susceptible to unauthenticated channel exploits
 when possible.
-3. Conduct formal analysis of cross-device flows to assess susceptibility to
-    these attacks and the effectiveness of the proposed mitigations.
+3. Conduct formal analysis of cross-device flows to assess susceptibility to 
+these attacks and the effectiveness of the proposed mitigations.
 
 ## Conventions and Terminology
 
@@ -143,41 +143,6 @@ triggers the authorization request via a backchannel with the Authorization
 Server. An access code is displayed on the Authorization device, which the
 user enters on the initiating device.
 
-## User Transferred Flow
-An example of a cross-device flow that relies on the user copying 
-information from the Initiating Device to the Authorization Device 
-is shown below:
-~~~ ascii-art
-                              (B) Initiating Device
-             +--------------+     Get QR/User Code  +---------------+
-(A)User  +---|  Initiating  |<--------------------->|               |
-   Start |   |   Device     |(E) Grant Authorization| Authorization |
-   Flow  +-->|              |<--------------------->|     Server    |
-             +--------------+                       |               |
-                    |                               |               |
-                    | (C) Scan QR code              |               |
-                    |         or                    |               |
-                    |   enter User Code             |               |
-                    v                               |               |
-             +--------------+                       |               |
-             | Authorization|                       |               |
-             |    Device    |<--------------------->|               |
-             |              |(D) User Authenticates |               |
-             |              | and Authorize Access  |               |
-             +--------------+                       +---------------+
-~~~
-Figure: Cross Device Flows (User Transferred)
-
-- (A) The user takes an action on the initiating device by starting a purchase, adding a device to a network
-or connecting a service to the initiating device.
-- (B) The initiating device retrieves a QR code or user code from an authorization server
-- (C) The QR code or user code is displayed on the initiating device where the user scans the QR code
-or enters the user code on the authorization device
-- (D) The user authenticates to the authorization server before granting authorization.
-- (E) The Authorization Server issues tokens or grants authorization to the initiating device to access the user's resources.
-
-The Device Authorization Grant ([@RFC8628]) follows this pattern.
-
 
 ## Examples of cross-device flows
 Examples of cross-device flow scenarios include:
@@ -198,7 +163,19 @@ An end-user makes an online purchase. Before completing the purchase, they get a
 An employee is issued with a personal computer that is already joined to a network. The employee wants to add their mobile phone to the network to allow it to access corporate data and services (e.g., files and e-mail). The personal computer displays a QR code, which the employee scans with their mobile phone. The mobile phone is joined to the network and the employee can start accessing corporate data and services on their mobile device.
 
 ### Example A6: Remote onboarding (User Transfer)
-A new employee is directed to an onboarding portal to provide additional information to confirm their identity on their first day with their new employer. Before activating the employee's account, the onboarding portal requests that the employee present a government issued ID, proof of a background check and proof of their qualifications. The onboarding portal displays a QR code, which the user scans with their mobile phone. Scanning the QR code invokes the employee's wallet on their mobile phone, and the employee is asked to present digital versions of an identity document (e.g., a driving license), proof of a background check by an identity verifier, and proof of their qualifications. The employee authorizes the release of the credentials and after completing the onboarding process, their account is activated.
+A new employee is directed to an onboarding portal to provide 
+additional information to confirm their identity on their first 
+day with their new employer. Before activating the employee's 
+account, the onboarding portal requests that the employee present 
+a government issued ID, proof of a background check and proof of 
+their qualifications. The onboarding portal displays a QR code, 
+which the user scans with their mobile phone. Scanning the QR 
+code invokes the employee's wallet on their mobile phone, and the 
+employee is asked to present digital versions of an identity 
+document (e.g., a driving license), proof of a background check 
+by an identity verifier, and proof of their qualifications. The 
+employee authorizes the release of the credentials and after 
+completing the onboarding process, their account is activated.
 
 ### Example A7: Transfer a session (User Transfer)
 An employee is signed into an application on their personal computer and wants to bootstrap the mobile application on their mobile phone. The employee initiates the cross-device flow and is shown a QR code in their application. The employee launches the mobile application on their phone and scans the QR code which results in the user being signed into the application on the mobile phone.
