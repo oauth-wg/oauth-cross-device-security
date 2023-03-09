@@ -128,7 +128,7 @@ There are three cross-device flow patterns for transferring the authorization re
 - Client transferred: In the second variant, the OAuth client on the initiating device is responsible for initiating authorization on the authorization device via a backchannel with the authroization server.
 - Hybrid: In the third variant, the OAuth client on the initiating device triggers the authorization request via a backchannel with the Authorization Server. An access code is displayed on the Authorization device, which the user enters on the initiating device.
 
-## User Transferred Flow
+## User Transferred Pattern
 An example of a cross-device flow that relies on the user copying information from the Initiating Device to the Authorization Device is shown below:
 
 ~~~ ascii-art
@@ -162,7 +162,7 @@ or enters the user code on the authorization device.
 
 The Device Authorization Grant ([@RFC8628]) follows this pattern.
 
-## Client Transferred
+## Client Transferred Pattern
 The figure below shows an example of the client requesting the authorization server to initiate an authorization on the user's authorization device via the backchannel.
 
 ~~~ ascii-art
@@ -195,6 +195,38 @@ Figure: Cross Device Flows (Client Transferred)
 The Authorization Server may use a variety of mechanisms to request user authorization, including a push notification to a dedicated app on a mobile phone, or sending a text message with a link to an endpoint where the user can authenticate and authorize and action.
 
 The Client Initiated Backchannel Authentication [@CIBA] follows this pattern.
+
+## Hybrid Pattern
+The figure below shows an example of the client requesting the authorization server to initiate an authorization on the user's authorization device via the backchannel.
+
+~~~ ascii-art
+                              (B) Backchannel Authorization
+             +--------------+     Request           +---------------+
+(A)User  +---|  Initiating  |<--------------------->|               |
+   Start |   |   Device     |(E) Grant Authorization| Authorization |
+   Flow  +-->|              |<--------------------->|     Server    |
+             +--------------+                       |               |
+                    ^                               |               |
+                    | (D)User Enters                |               |
+                    |    Access Code                |               |
+                    |                               |               |
+                    |                               |               |
+             +--------------+                       |               |
+             | Authorization|                       |               |
+             |    Device    |<--------------------->|               |
+             |              |(C) Send Access Code   |               |
+             |              |                       |               |
+             +--------------+                       +---------------+
+~~~
+Figure: Cross Device Flows (Hybrid)
+
+- (A) The user takes an action on the initiating device by starting a purchase, adding a device to a network or connecting a service to the initiating device.
+- (B) The client on the initiating device requests user authorization on the backchannel from the authorization server.
+- (C) The authorization server sends an access code to the Authorization Device.
+- (D) The user enters the access code on the Initiating Device.
+- (E) The Authorization Server issues tokens or grants authorization to the initiating device to access the user's resources.
+
+The Authorization Server may choose to authenticate the user before sending the access code. The access code may be delivered as a text message or through a mobile application. 
 
 ## Examples of cross-device flows
 Examples of cross-device flow scenarios include:
