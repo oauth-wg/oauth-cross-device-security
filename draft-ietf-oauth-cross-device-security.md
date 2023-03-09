@@ -124,7 +124,7 @@ carry with them.
 
 There are three cross-device flow patterns for transferring the authorization request between the Initiating Device to the Authorization Device.
 
-- User transferred: In the first variant, the user initiates the authroization process with the authorization server by copying information from the initiating device to the authorization device, before authorizing an action. For example user may read a code from the initiating device and enter it on the authorization device, or they may scan a QR code displayed in the initiating device with the authorization device.
+- User transferred: In the first variant, the user initiates the authorization process with the authorization server by copying information from the initiating device to the authorization device, before authorizing an action. For example the user may read a code displayed on the initiating device and enter it on the authorization device, or they may scan a QR code displayed in the initiating device with the authorization device.
 - Client transferred: In the second variant, the OAuth client on the initiating device is responsible for initiating authorization on the authorization device via a backchannel with the authroization server.
 - Hybrid: In the third variant, the OAuth client on the initiating device triggers the authorization request via a backchannel with the Authorization Server. An access code is displayed on the Authorization device, which the user enters on the initiating device.
 
@@ -197,7 +197,7 @@ The Authorization Server may use a variety of mechanisms to request user authori
 The Client Initiated Backchannel Authentication [@CIBA] follows this pattern.
 
 ## Hybrid Pattern
-The figure below shows an example of the client requesting the authorization server to initiate an authorization on the user's authorization device via the backchannel.
+The figure below shows an example of the client requesting the authorization server to initiate an authorization request via the backchannel.
 
 ~~~ ascii-art
                               (B) Backchannel Authorization
@@ -293,7 +293,7 @@ Attackers exploit this absence of an authenticated channel between the two devic
            |              | and Authorize Access  |               |
            +--------------+                       +---------------+
 ~~~
-Figure: Attacker Initiated Cross Device Flow Exploit
+Figure: Attacker Initiated Cross Device Flow Exploit (User Transferred Pattern)
 
 - (A) The attacker initiates the protocol on the initiating device (or by mimicking the initiating device) by starting a purchase, adding a device to a network
 or connecting a service to the initiating device.
@@ -306,9 +306,73 @@ or enter the user code on the authorization device.
 - (G) The Authorization Server issues tokens or grants authorization to the initiating device, which is under the attackers control, to access the users resources and the attacker gains access to the resources and possibly any authorization artefacts like access and refresh tokens.
 
 ## Client Transferred
-TBD - add attack description
+
+~~~ ascii-art
+                              (C) Backchannel Authorization
+             +--------------+     Request           +---------------+
+             |  Attackers   |<--------------------->|               |
+             |  Initiating  |(F) Grant Authorization| Authorization |
+             |  Device      |<--------------------->|     Server    |
+             +--------------+                       |               |
+               ^                                    |               |
+  (B) Attacker |                                    |               |
+      Start    |                                    |               |
+      Flow     |                                    |               |
+             +--------------+                       |               |
+             |              |                       |               |
+             |   Attacker   |                       |               |
+             |              |                       |               |
+             |              |                       |               |
+             |              |                       |               |
+             +--------------+                       |               |
+                    |  (A) Attacker Sends           |               |
+                    |       Social Engineering      |               |
+                    |       Message                 |               |
+                    |                               |               |
+(E)User             v                               |               |
+  Authorize  +--------------+                       |               |
+  Action +---| Authorization|                       |               |
+         |   |    Device    |<--------------------->|               |
+         +-->|              |(D) Request User       |               |
+             |              |    Authorization      |               |
+             +--------------+                       +---------------+
+~~~
+Figure: Cross Device Flows (Client Transferred Pattern)
 
 ## Hybrid Pattern
+
+~~~ ascii-art
+                              (C) Backchannel Authorization
+             +--------------+     Request           +---------------+
+             |  Attackers   |<--------------------->|               |
+             |  Initiating  |(G) Grant Authorization| Authorization |
+             |  Device      |<--------------------->|     Server    |
+             +--------------+                       |               |
+               ^       ^                            |               |
+  (A) Attacker |       | (F) Attacker Forwards      |               |
+      Start    |       |     Access Code            |               |
+      Flow     |       |                            |               |
+             +--------------+                       |               |
+             |              |                       |               |
+             |   Attacker   |                       |               |
+             |              |                       |               |
+             |              |                       |               |
+             |              |                       |               |
+             +--------------+                       |               |
+                ^      |  (B) Attacker Sends        |               |
+(E) User        |      |      Social Engineering    |               |
+    Send        |      |      Message               |               |
+    Access Code |      |                            |               |
+                |      v                            |               |
+             +--------------+                       |               |
+             | Authorization|                       |               |
+             |    Device    |<--------------------->|               |
+             |              |(D) Send Access        |               |
+             |              |    Code               |               |
+             +--------------+                       +---------------+
+~~~
+Figure: Cross Device Flows (Hybrid Pattern)
+
 The unauthenticated channel may also be exploited in variations of the above scenario where the user initiates the flow and is then tricked into sending the QR code or user code to the attacker. In these flows, the user is already authenticated and they request a QR code or user code to transfer a session or obtain some other privilege such as joining a device to a network. The attacker then proceeds to exploit the unauthenticated channel by using social engineering techniques to trick the user into initiating a flow and send the QR code or user code to the attacker, which they can then use to obtain the privileges that would have been assigned to the user.
 
 ## Examples of cross-device flow exploits
@@ -546,12 +610,12 @@ To ensure secure cross-device interactions, a formal analysis using the WIM ther
 # Conclusion
 Cross-device flows enable authorization on devices with limited input capabilities, allow for secure authentication when using public or shared devices, provide a path towards multi-factor authentication and provide the convenience of a single, portable credential store.
 
-The popularity of cross-device flows attracted the attention of attackers that exploit the unauthenticated channel between the initiating and authentication/authorizing device using techniques commonly used in phishing attacks. These attacks allow attackers to harvest access and refresh tokens, rather than authentication credentials, resulting in access to resources even if the user used multi-factor authentication.
+The popularity of cross-device flows attracted the attention of attackers that exploit the unauthenticated channel between the initiating and authentication/authorizing device using techniques commonly used in phishing attacks. These attacks allow attackers to obtain access and refresh tokens, rather than authentication credentials, resulting in access to resources even if the user used multi-factor authentication.
 
 To address these attacks, we propose a three pronged approach that includes the deployment of practical mitigations to safeguard protocols that are already deployed, provide guidance on when to use different protocols, including protocols that are not susceptible to these attacks, and the introduction of formal methods to evaluate the impact of mitigations and find additional issues.
 
 # Contributors
-We would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil Reddy Boreddy, Bjorn Hjelm, Joseph Heenan, Brian Campbell, Damien Bowden, Kristina Yasuda and others (please let us know, if you've been mistakenly omitted) for their valuable input, feedback and general support of this work.
+We would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil Reddy Boreddy, Bjorn Hjelm, Joseph Heenan, Brian Campbell, Damien Bowden, Kristina Yasuda, Tim Würtele and others (please let us know, if you've been mistakenly omitted) for their valuable input, feedback and general support of this work.
 
 {backmatter}
 
