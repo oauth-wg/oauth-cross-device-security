@@ -103,10 +103,7 @@ This specification uses the terms "access token", "refresh token",
 "client" defined by The OAuth 2.0 Authorization Framework [@!RFC6749].
 
 # Cross Device Flow Concepts
-There are three cross-device flow patterns for transferring the 
-authorization request between the Initiating Device to the 
-Authorization Device. 
-
+There are three cross-device flow patterns for transferring the authorization request between the Initiating Device to the Authorization Device.
 
 ## Examples of cross-device flows
 Examples of cross-device flow scenarios include:
