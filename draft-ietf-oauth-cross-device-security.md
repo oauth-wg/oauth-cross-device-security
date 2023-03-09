@@ -223,47 +223,6 @@ can authenticate and authorize and action.
 
 The Client Initiated Backchannel Authentication [@CIBA] follows this pattern.
 
-## Hybrid 
-The figure below shows an example of the client requesting the authorization server 
-to initiate an authorization on the user's authorization device via the 
-backchannel.
-
-~~~ ascii-art
-                              (B) Backchannel Authorization
-             +--------------+     Request           +---------------+
-(A)User  +---|  Initiating  |<--------------------->|               |
-   Start |   |   Device     |(E) Grant Authorization| Authorization |
-   Flow  +-->|              |<--------------------->|     Server    |
-             +--------------+                       |               |
-                    ^                               |               |
-                    | (D)User Enters                |               |
-                    |    Access Code                |               |
-                    |                               |               |
-                    |                               |               |
-             +--------------+                       |               |
-             | Authorization|                       |               |
-             |    Device    |<--------------------->|               |
-             |              |(C) Send Access Code   |               |
-             |              |                       |               |
-             +--------------+                       +---------------+
-~~~
-Figure: Cross Device Flows (Hybrid)
-
-- (A) The user takes an action on the initiating device by starting a 
-purchase, adding a device to a network or connecting a service to the 
-initiating device.
-- (B) The client on the initiating device requests user authorization
-on the backchannel from the authorization server.
-- (C) The authorization server sends an access code to the Authorization
-Device.
-- (D) The user enters the access code on the Initiating Device.
-- (E) The Authorization Server issues tokens or grants authorization to 
-the initiating device to access the user's resources.
-
-The Authorization Server may choose to authenticate the user before
-sending the access code. The access code may be delivered as a text message 
-or through a mobile application. 
-
 ## Examples of cross-device flows
 Examples of cross-device flow scenarios include:
 
