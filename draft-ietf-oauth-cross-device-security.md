@@ -82,14 +82,11 @@ selling them. These attacks are effective even when multi-factor authentication
 is deployed, since the attacker's aim is not to capture and replay the credentials,
 but rather to persuade the user to grant authorization.
 
-In order to defend against these attacks, this document outlines three potential responses:
+In order to defend against these attacks, this document outlines three responses:
 
-1. For protocols that are susceptible to unauthenticated
-channel exploits, deploy practical mitigations.
-2. Select protocols that are not susceptible to unauthenticated channel exploits
-when possible.
-3. Conduct formal analysis of cross-device flows to assess susceptibility to 
-these attacks and the effectiveness of the proposed mitigations.
+1. For protocols that are susceptible to unauthenticated channel exploits, deploy practical mitigations.
+3. Select protocols that are not susceptible to unauthenticated channel exploits when possible.
+3. Conduct formal analysis of cross-device flows to assess susceptibility to these attacks and the effectiveness of the proposed mitigations.
 
 ## Conventions and Terminology
 
@@ -144,19 +141,7 @@ An end-user makes an online purchase. Before completing the purchase, they get a
 An employee is issued with a personal computer that is already joined to a network. The employee wants to add their mobile phone to the network to allow it to access corporate data and services (e.g., files and e-mail). The personal computer displays a QR code, which the employee scans with their mobile phone. The mobile phone is joined to the network and the employee can start accessing corporate data and services on their mobile device.
 
 ### Example A6: Remote onboarding (User Transfer)
-A new employee is directed to an onboarding portal to provide 
-additional information to confirm their identity on their first 
-day with their new employer. Before activating the employee's 
-account, the onboarding portal requests that the employee present 
-a government issued ID, proof of a background check and proof of 
-their qualifications. The onboarding portal displays a QR code, 
-which the user scans with their mobile phone. Scanning the QR 
-code invokes the employee's wallet on their mobile phone, and the 
-employee is asked to present digital versions of an identity 
-document (e.g., a driving license), proof of a background check 
-by an identity verifier, and proof of their qualifications. The 
-employee authorizes the release of the credentials and after 
-completing the onboarding process, their account is activated.
+A new employee is directed to an onboarding portal to provide additional information to confirm their identity on their first day with their new employer. Before activating the employee's account, the onboarding portal requests that the employee present a government issued ID, proof of a background check and proof of their qualifications. The onboarding portal displays a QR code, which the user scans with their mobile phone. Scanning the QR code invokes the employee's wallet on their mobile phone, and the employee is asked to present digital versions of an identity document (e.g., a driving license), proof of a background check by an identity verifier, and proof of their qualifications. The employee authorizes the release of the credentials and after completing the onboarding process, their account is activated.
 
 ### Example A7: Transfer a session (User Transfer)
 An employee is signed into an application on their personal computer and wants to bootstrap the mobile application on their mobile phone. The employee initiates the cross-device flow and is shown a QR code in their application. The employee launches the mobile application on their phone and scans the QR code which results in the user being signed into the application on the mobile phone.
