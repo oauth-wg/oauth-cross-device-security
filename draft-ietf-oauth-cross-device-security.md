@@ -105,43 +105,6 @@ This specification uses the terms "access token", "refresh token",
 # Cross Device Flow Concepts
 
 
-## User Transferred Flow
-An example of a cross-device flow that relies on the user copying 
-information from the Initiating Device to the Authorization Device 
-is shown below:
-~~~ ascii-art
-                              (B) Initiating Device
-             +--------------+     Get QR/User Code  +---------------+
-(A)User  +---|  Initiating  |<--------------------->|               |
-   Start |   |   Device     |(E) Grant Authorization| Authorization |
-   Flow  +-->|              |<--------------------->|     Server    |
-             +--------------+                       |               |
-                    |                               |               |
-                    | (C) Scan QR code              |               |
-                    |         or                    |               |
-                    |   enter User Code             |               |
-                    v                               |               |
-             +--------------+                       |               |
-             | Authorization|                       |               |
-             |    Device    |<--------------------->|               |
-             |              |(D) User Authenticates |               |
-             |              | and Authorize Access  |               |
-             +--------------+                       +---------------+
-~~~
-Figure: Cross Device Flows (User Transferred)
-
-- (A) The user takes an action on the initiating device by starting a purchase, adding a device to a network
-or connecting a service to the initiating device.
-- (B) The initiating device retrieves a QR code or user code from an authorization server
-- (C) The QR code or user code is displayed on the initiating device where the user scans the QR code
-or enters the user code on the authorization device
-- (D) The user authenticates to the authorization server before granting authorization.
-- (E) The Authorization Server issues tokens or grants authorization to the initiating device to access the user's resources.
-
-The Device Authorization Grant ([@RFC8628]) follows this pattern.
-
-
-
 ## Examples of cross-device flows
 Examples of cross-device flow scenarios include:
 
