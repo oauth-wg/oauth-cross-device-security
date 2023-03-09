@@ -178,50 +178,6 @@ or enters the user code on the authorization device
 
 The Device Authorization Grant ([@RFC8628]) follows this pattern.
 
-## Client Transferred
-The figure below shows an example of the client requesting the authorization server 
-to initiate an authorization on the user's authorization device via the 
-backchannel.
-
-~~~ ascii-art
-                              (B) Backchannel Authorization
-             +--------------+     Request           +---------------+
-(A)User  +---|  Initiating  |<--------------------->|               |
-   Start |   |   Device     |(E) Grant Authorization| Authorization |
-   Flow  +-->|              |<--------------------->|     Server    |
-             +--------------+                       |               |
-                                                    |               |
-                                                    |               |
-                                                    |               |
-                                                    |               |
-(D)User                                             |               |
-  Authorize  +--------------+                       |               |
-  Action +---| Authorization|                       |               |
-         |   |    Device    |<--------------------->|               |
-         +-->|              |(C) Request User       |               |
-             |              |    Authorization      |               |
-             +--------------+                       +---------------+
-~~~
-Figure: Cross Device Flows (Client Transferred)
-
-- (A) The user takes an action on the initiating device by starting a 
-purchase, adding a device to a network or connecting a service to the 
-initiating device.
-- (B) The client on the initiating device requests user authorization
-on the backchannel from the authorization server.
-- (C) The authorization server requests the authorization from the user
-on the user's device.
-- (D) The user authenticates to the authorization server before 
-granting authorization on their device.
-- (E) The Authorization Server issues tokens or grants authorization to 
-the initiating device to access the user's resources.
-
-The Authorization Server may use a variety of mechanisms to request user 
-authorization, including a push notification to a dedicated app on a mobile phone, 
-or sending a text message with a link to an endpoint where the user
-can authenticate and authorize and action.
-
-The Client Initiated Backchannel Authentication [@CIBA] follows this pattern.
 
 ## Examples of cross-device flows
 Examples of cross-device flow scenarios include:
