@@ -122,10 +122,6 @@ accessed (e.g., a kiosk, smart TV or shared Personal Computer).
 their credentials in a mobile wallet or mobile phone that they already
 carry with them.
 
-There are three cross-device flow patterns for transferring the 
-authorization request between the Initiating Device to the 
-Authorization Device. 
-
 ## User Transferred Flow
 An example of a cross-device flow that relies on the user copying 
 information from the Initiating Device to the Authorization Device 
