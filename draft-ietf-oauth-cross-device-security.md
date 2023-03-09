@@ -103,24 +103,7 @@ This specification uses the terms "access token", "refresh token",
 "client" defined by The OAuth 2.0 Authorization Framework [@!RFC6749].
 
 # Cross Device Flow Concepts
-In a cross-device flow, a user starts a scenario on the initiating device
-(e.g., a smart TV) and then uses an authorization device (e.g., a smartphone) to
-authorize access to a resource (e.g., access to a streaming service).
 
-Cross device flows have several benefits, including:
-
-- Authorization on devices with limited input capabilities: End-users can
-authorize devices with limited input capabilities to access content (e.g.,
-smart TVs, digital whiteboards, printers, etc).
-- Secure authentication on shared or public devices: End-users can perform
-authentication and authorization using a personally trusted device, without
-risk of disclosing their credentials to a public or shared device.
-- Ubiquitous multi-factor authentication: Enables a user to use multi-factor
-authentication, independent of the device on which the service is being
-accessed (e.g., a kiosk, smart TV or shared Personal Computer).
-- Convenience of a single, portable, credential store: Users can keep all
-their credentials in a mobile wallet or mobile phone that they already
-carry with them.
 
 ## User Transferred Flow
 An example of a cross-device flow that relies on the user copying 
