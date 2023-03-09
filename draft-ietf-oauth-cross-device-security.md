@@ -262,7 +262,7 @@ the initiating device to access the user's resources.
 
 The Authorization Server may choose to authenticate the user before
 sending the access code. The access code may be delivered as a text message 
-or though a mobile application. 
+or through a mobile application. 
 
 ## Examples of cross-device flows
 Examples of cross-device flow scenarios include:
