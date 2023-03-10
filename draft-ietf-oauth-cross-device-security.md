@@ -306,7 +306,7 @@ or enter the user code on the authorization device.
 - (G) The Authorization Server issues tokens or grants authorization to the initiating device, which is under the attackers control, to access the users resources and the attacker gains access to the resources and possibly any authorization artefacts like access and refresh tokens.
 
 ## Client Transferred Pattern
-In the client transferred pattern, the client instructs the authorization server to authetnicate the user and obtain authorization for an action. This may happen as a result of user interaction with the initiating device, but may also be triggered without the users direct interaction with the initiating device. 
+In the client transferred pattern, the client instructs the authorization server to authetnicate the user and obtain authorization for an action. This may happen as a result of user interaction with the initiating device, but may also be triggered without the users direct interaction with the initiating device.
 
 Attackers exploit this lack of context by using social engineering techniques to prime the user for an authorization request and thereby trick them into granting authroization. The social engineering techniques range in sophistication from messages misrepresenting the reason for receiving an authroizations requests through to triggering a large volume of requests at an inconvenient time for the user, in the hope that the user will grant authroization to make the requests stop. The figure below shows an example of such an attack.
 
