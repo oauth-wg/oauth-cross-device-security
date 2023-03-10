@@ -350,9 +350,7 @@ Figure: Attacker Initiated Cross Device Flow Exploit (Client Transferred Pattern
 - (G) The Authorization Server issues tokens or grants authorization to the initiating device, which is under the attackers control. The attacker gains access to the users resources and possibly any authorization artefacts like access and refresh tokens.
 
 ## Hybrid Pattern
-In cross device flows that follow the Hybrid Pattern, the client initiates the authorizations request, but the user stil has to transfer the authorization code to the inititing device.  The authorization request may happen as a result of user interaction with the initiating device, but may also be triggered without the users direct interaction with the initiating device. 
-
-
+In cross device flows that follow the Hybrid Pattern, the client initiates the authorizations request, but the user stil has to transfer the authorization code to the inititing device.  The authorization request may happen as a result of user interaction with the initiating device, but may also be triggered without the users direct interaction with the initiating device.
 
 ~~~ ascii-art
                               (C) Backchannel Authorization
@@ -374,7 +372,7 @@ In cross device flows that follow the Hybrid Pattern, the client initiates the a
              +--------------+                       |               |
 (B) Attacker    |       ^   (E) User                |               |
     Sends       |       |       Send                |               |
-    Social      |       |       Access Code         |               |   
+    Social      |       |       Access Code         |               |
     Engineering |       |                           |               |
     Message     |       |                           |               |
                 v       |                           |               |
