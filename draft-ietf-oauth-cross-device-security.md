@@ -305,7 +305,10 @@ or enter the user code on the authorization device.
 - (F) The user authenticates to the Authorization Server before granting authorization.
 - (G) The Authorization Server issues tokens or grants authorization to the initiating device, which is under the attackers control, to access the users resources and the attacker gains access to the resources and possibly any authorization artefacts like access and refresh tokens.
 
-## Client Transferred
+## Client Transferred Pattern
+In the client transferred pattern, the client instructs the authorization server to authetnicate the user and obtain authorization for an action. This may happen as a result of user interaction with the initiating device, but may also be triggered without the users direct interaction with the initiating device. 
+
+Attackers exploit this lack of context by using social engineering techniques to prime the user for an authorization request and thereby trick them into granting authroization. The social engineering techniques range in sophistication from messages misrepresenting the reason for receiving an authroizations requests through to triggering a large volume of requests at an inconvenient time for the user, in the hope that the user will grant authroization to make the requests stop. The figure below shows an example of such an attack.
 
 ~~~ ascii-art
                               (C) Backchannel Authorization
@@ -327,7 +330,7 @@ or enter the user code on the authorization device.
              +--------------+                       |               |
                     |  (A) Attacker Sends           |               |
                     |       Social Engineering      |               |
-                    |       Message                 |               |
+                    |       Message to User         |               |
                     |                               |               |
 (E)User             v                               |               |
   Authorize  +--------------+                       |               |
@@ -337,9 +340,19 @@ or enter the user code on the authorization device.
              |              |    Authorization      |               |
              +--------------+                       +---------------+
 ~~~
-Figure: Cross Device Flows (Client Transferred Pattern)
+Figure: Attacker Initiated Cross Device Flow Exploit (Client Transferred Pattern)
+
+- (A) The attacker sends a social engineering message to prepare the user for the upcoming authroization (optional).
+- (B) The attacker initiates the protocol on the initiating device (or by mimicking the initiating device) by starting a purchase, adding a device to a network or accessing a service on the initiating device.
+- (C) The client on the initiating device requests user authorization on the backchannel from the authorization server.
+- (D) The authorization server requests the authorization from the user on the user's device.
+- (E) The user authenticates to the authorization server before granting authorization on their device.
+- (G) The Authorization Server issues tokens or grants authorization to the initiating device, which is under the attackers control. The attacker gains access to the users resources and possibly any authorization artefacts like access and refresh tokens.
 
 ## Hybrid Pattern
+In cross device flows that follow the Hybrid Pattern, the client initiates the authorizations request, but the user stil has to transfer the authorization code to the inititing device.  The authorization request may happen as a result of user interaction with the initiating device, but may also be triggered without the users direct interaction with the initiating device. 
+
+
 
 ~~~ ascii-art
                               (C) Backchannel Authorization
@@ -359,11 +372,12 @@ Figure: Cross Device Flows (Client Transferred Pattern)
              |              |                       |               |
              |              |                       |               |
              +--------------+                       |               |
-                ^      |  (B) Attacker Sends        |               |
-(E) User        |      |      Social Engineering    |               |
-    Send        |      |      Message               |               |
-    Access Code |      |                            |               |
-                |      v                            |               |
+(B) Attacker    |       ^   (E) User                |               |
+    Sends       |       |       Send                |               |
+    Social      |       |       Access Code         |               |   
+    Engineering |       |                           |               |
+    Message     |       |                           |               |
+                v       |                           |               |
              +--------------+                       |               |
              | Authorization|                       |               |
              |    Device    |<--------------------->|               |
