@@ -306,7 +306,7 @@ or enter the user code on the authorization device.
 - (G) The Authorization Server issues tokens or grants authorization to the initiating device, which is under the attackers control, to access the users resources and the attacker gains access to the resources and possibly any authorization artefacts like access and refresh tokens.
 
 ## Client Transferred Pattern
-In the client transferred pattern, the client instructs the authorization server to authetnicate the user and obtain authorization for an action. This may happen as a result of user interaction with the initiating device, but may also be triggered without the users direct interaction with the initiating device.
+In the client transferred pattern, the client instructs the authorization server to authetnicate the user and obtain authorization for an action. This may happen as a result of user interaction with the initiating device, but may also be triggered without the users direct interaction with the initiating device, resulting in an authorization request presented to the user without context of why or who triggered the request.
 
 Attackers exploit this lack of context by using social engineering techniques to prime the user for an authorization request and thereby trick them into granting authroization. The social engineering techniques range in sophistication from messages misrepresenting the reason for receiving an authroizations requests through to triggering a large volume of requests at an inconvenient time for the user, in the hope that the user will grant authroization to make the requests stop. The figure below shows an example of such an attack.
 
@@ -352,6 +352,8 @@ Figure: Attacker Initiated Cross Device Flow Exploit (Client Transferred Pattern
 ## Hybrid Pattern
 In cross device flows that follow the Hybrid Pattern, the client initiates the authorizations request, but the user stil has to transfer the authorization code to the inititing device.  The authorization request may happen as a result of user interaction with the initiating device, but may also be triggered without the users direct interaction with the initiating device.
 
+Attackers exploit the hybrid patter by combining the social engineering techniques used to set context for users and tricking users into providing them with access codes sent to their phones. These attacks are very similar to phishing attacks, except that the attacker also has the ability to trigger the authroization request to be sent to the user directly by the Authorization server. 
+
 ~~~ ascii-art
                               (C) Backchannel Authorization
              +--------------+     Request           +---------------+
@@ -360,7 +362,7 @@ In cross device flows that follow the Hybrid Pattern, the client initiates the a
              |  Device      |<--------------------->|     Server    |
              +--------------+                       |               |
                ^       ^                            |               |
-  (A) Attacker |       | (F) Attacker Forwards      |               |
+  (B) Attacker |       | (F) Attacker Forwards      |               |
       Start    |       |     Access Code            |               |
       Flow     |       |                            |               |
              +--------------+                       |               |
@@ -370,7 +372,7 @@ In cross device flows that follow the Hybrid Pattern, the client initiates the a
              |              |                       |               |
              |              |                       |               |
              +--------------+                       |               |
-(B) Attacker    |       ^   (E) User                |               |
+(A) Attacker    |       ^   (E) User                |               |
     Sends       |       |       Send                |               |
     Social      |       |       Access Code         |               |
     Engineering |       |                           |               |
@@ -383,7 +385,15 @@ In cross device flows that follow the Hybrid Pattern, the client initiates the a
              |              |    Code               |               |
              +--------------+                       +---------------+
 ~~~
-Figure: Cross Device Flows (Hybrid Pattern)
+Figure: Attacker Initiated Cross Device Flow Exploit (Hybrid Pattern)
+
+- (A) The attacker sends a social engineering message to prime the user for the authorization request they just received, along with instructions on what to do with the access code they received.
+- (B) The attacker initiates the protocol on the initiating device (or by mimicking the initiating device) by starting a purchase, adding a device to a network or accessing a service on the initiating device.
+- (C) The client on the initiating device requests user authorization on the backchannel from the authorization server.
+- (D) The authorization server sends an access code to the user's device (the access code may be presented as a QR code, or text message).
+- (E) The user sends the access code to the attacker.
+- (F) The attacker enters the access code on the Initiating Device.
+- (G) The Authorization Server issues tokens or grants authorization to the initiating device, which is under the attackers control. The attacker gains access to the users resources and possibly any authorization artefacts like access and refresh tokens.
 
 The unauthenticated channel may also be exploited in variations of the above scenario where the user initiates the flow and is then tricked into sending the QR code or user code to the attacker. In these flows, the user is already authenticated and they request a QR code or user code to transfer a session or obtain some other privilege such as joining a device to a network. The attacker then proceeds to exploit the unauthenticated channel by using social engineering techniques to trick the user into initiating a flow and send the QR code or user code to the attacker, which they can then use to obtain the privileges that would have been assigned to the user.
 
@@ -475,24 +485,26 @@ The unauthenticated channel between the initiating and authenticating device all
 
 - Geo-location: Proximity can be established by comparing geo-location information derived from global navigation satellite-system (GNSS) co-ordinates or geolocation lookup of IP addresses and comparing proximity. Due to inaccuracies, this may require restrictions to be at a more granular level (e.g., same city, country, region or continent). Similar to the shared network checks, these checks may be performed by the authorization server or on the users device, provided that the information encoded in a QR code is integrity protected using a digital signature.
 
-Note: There are scenarios that require that an authorization takes place in a different location than the one in which the transaction is authorized. For example, there may be a primary and secondary credit card holder and both can initiate transactions, but only the primary holder can authorize it. There is no guarantee that the primary and secondary holders are in the same location at the time of the authorization. In such cases, proximity may be an indicator of risk and the system may deploy additional controls (e.g., transaction value limits, transaction velocity limits) or use the proximity information as input to a risk management system.
+Dependig on the risk profile and the threat model in which as system is operating, it mey be neccesary to user mor than one mechanism to establish proximity to raise the bar for any potential attackers.
 
-Depending on how the proximity check is performed, an attacker may be
-able to circumvent the protection relatively easily: The attacker can
-use a VPN to simulate a shared network or spoof a GNSS position. For
-example, the attacker can try to request the location of the end-user's
-authorization device through browser APIs and then simulate the same
-location on his initiating device using standard debugging features
-available on many platforms.
+Note: There are scenarios that require that an authorization takes place in a different location than the one in which the transaction is authorized. For example, there may be a primary and secondary credit card holder and both can initiate transactions, but only the primary holder can authorize it. There is no guarantee that the primary and secondary holders are in the same location at the time of the authorization. In such cases, proximity may be an indicator of risk and the system may deploy additional controls (e.g., transaction value limits, transaction velocity limits) or use the proximity information as input to a risk management system. 
 
-### Short Lived/Timebound Codes
-The impact of an attack can be reduced by making codes short lived. If an attacker obtains a short-lived token, the duration during which the unauthenticated channel can be exploited is reduced, potentially increasing the cost of a successful attack.
+**Limitations:** Proximity mechanisms raises the bar for an attack. However, depending on how the proximity check is performed, an attacker may be able to circumvent the protection: The attacker can use a VPN to simulate a shared network or spoof a GNSS position. For example, the attacker can try to request the location of the end-user's authorization device through browser APIs and then simulate the same location on his initiating device using standard debugging features available on many platforms. 
+
+### Short Lived/Timebound User Codes
+The impact of an attack can be reduced by making user codes short lived. If an attacker obtains a short-lived code, the duration during which the unauthenticated channel can be exploited is reduced, potentially increasing the cost of a successful attack.
+
+**Limitations:** There is a practical limit to how short a user code can be valid due to network latency and user experience limitations (time taken to enter a code, or incorrectly entering a code). 
 
 ### One-Time or Limited Use Codes
-By enforcing one-time use or limited use of user or QR codes, the authorization server can limit the impact of attacks where the same user code or QR code is sent to multiple victims. One-time use may be achieved by including a nonce or date-stamp in the QR code which is validated by the authorization server when the user scans the QR code.
+By enforcing one-time use or limited use of user or QR codes, the authorization server can limit the impact of attacks where the same user code or QR code is sent to multiple victims. One-time use may be achieved by including a nonce or date-stamp in the user code or QR code which is validated by the authorization server when the user scans the QR code against a list of previously issued codes. 
+
+**Limitations:** Enforcing one-time use may be difficult in large globally distributed systems with low latency requirements, in which case short lived tokens may be more practical. One-time use codes may also have an impact on the user experience. For example, a user may enter a code, but their session may be interrupted before the access request is completed. If the code is a one-time use code, they would need to restart the session and obtain a new code since they won't be allowed to enter the same code a second time. As a result, it may be practical to allow the same code to be presented a small number of times.
 
 ### Unique Codes
 By issuing unique user or QR codes, an authorization server can detect if the same codes are being repeatedly submitted. This may be interpreted as anomalous behavior and the authorizations server may choose to decline issuing access and refresh tokens if it detects the same codes being presented repeatedly. This may be achieved by maintaining a deny list that contains QR codes or user codes that were previously used. The authorization server may use a sliding window eqaul to lifetime of a token if short lived/timebound tokens are used (see [Short Lived/Timebound Codes](#Short Lived/Timebound Codes)). This will limit the size of the deny list.
+
+**Limitations:** Maintaining a deny list of previously redeemed codes, even for a sliding window, may have an impact on the latency of globally distributed systems. One alternative is to segment user codes by geography or region and maintain local deny lists.
 
 ### Content Filtering
 Attackers exploit the unauthenticated channel by changing the context of the user code or QR code and then sending a message to a user (e-mail, text, instant messaging etc). By deploying content filtering (e.g., anti-spam filter), these messages can be blocked and prevented from reaching the end-users. It may be possible to fine-tune content filtering solutions to detect artifacts like QR codes or user codes that are being reused in multiple messages to disrupt spray attacks.
