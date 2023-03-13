@@ -673,27 +673,33 @@ We would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil Reddy Bore
 
    -01
 
-   *  Restructured document to distinguish between user transferred and client backchannel transferred cross device flows
+   *  Added additional diagrams and descriptions to distinguish between different cross-device flow patterns.
+   *  Added short description on limitations of each mitiagtion.
+   *  Added acknowledgement of additional contributors.
+   *  Fixed document history format.
 
+   -00 (Working Group Draft)
 
-   [[ pre Working Group Adoption: ]]
+   *  Initial WG revision (content unchanged from draft-kasselman-cross-device-security-03)
 
-   -02
+   -03 draft-kasselman-cross-device-security
+
+   *  Minor edits and typos
+
+   -02 draft-kasselman-cross-device-security
 
    *  Minor edits and typos
    *  Upload as draft-ietf-oauth-cross-device-security-best-practice-02
 
-   -01
+   -01 draft-kasselman-cross-device-security
 
    *  Updated draft based on feedback from version circulated to OAuth working group
    *  Upload as draft-ietf-oauth-cross-device-security-best-practice-01
 
-   -00
+   -00 draft-kasselman-cross-device-security
 
    *  Initial draft adopted from document circulated to the OAuth Security Workshop Slack Channel
    *  Upload as draft-ietf-oauth-cross-device-security-best-practice-00
-
-
 
 <reference anchor="OpenID.Core" target="http://openid.net/specs/openid-connect-core-1_0.html">
   <front>
