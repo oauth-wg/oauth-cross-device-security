@@ -400,30 +400,30 @@ The unauthenticated channel may also be exploited in variations of the above sce
 ## Examples of Cross-Device Flow Exploits
 The following examples illustrate these attacks in practical settings and show how the unauthenticated channel is exploited by attackers who can copy the QR codes and user codes, change the context in which they are presented using social engineering techniques and mislead end-users into granting consent to avail of services, access data and make payments.
 
-## Example B1: Illicit Access to a Video Streaming Service (User Transferred Pattern)
+### Example B1: Illicit Access to a Video Streaming Service (User Transferred Pattern)
 An attacker obtains a smart TV and attempts to access an online streaming service. The smart TV obtains a QR code from the authorization server and displays it on screen. The attacker copies the QR code and embeds it in an e-mail that is sent to a large number of recipients. The e-mail contains a message stating that the streaming service wants to thank them for their loyal support and by scanning the QR code, they will be able to add a bonus device to their account for no charge. One of the recipients open the e-mail and scan the QR code to register for early access to premium content. The users perform multi-factor authentication, and when asked if they want a new device to be added to their account, they authorize the action. The attacker's device is now authorized to access the content and obtains an access and refresh token. The access token allows the attacker to access content and the refresh token allows the attacker to obtain fresh tokens whenever the access token expires.
 
 The attacker scales up the attack by emulating a new smart TV, obtaining multiple QR codes and widening the audience it sends the QR code to. Whenever a recipient scans the QR code and authorizes the addition of a new device, the attacker obtains an access and refresh token, which they sell for a profit.
 
-## Example B2: Illicit Access to Productivity Services (User Transferred Pattern)
+### Example B2: Illicit Access to Productivity Services (User Transferred Pattern)
 An attacker emulates an enterprise application (e.g., an interactive whiteboard) and initiates a cross-device flow by requesting a user code and URL from the authorization server. The attacker obtains a list of potential victims and sends an e-mail informing users that their files will be deleted within 24 hours if they don't follow the link, enter the user code and authenticate. The e-mail reminds them that this is the third time that they have been notified and their last opportunity to prevent deletion of their work files. One or more employees respond by following the URL, entering the code and performing multi-factor authentication. Once these employees authorized access, the attacker obtains access and refresh tokens from the authorization server and uses it to access the users files, perform lateral attacks to obtain access to other information and continuously refresh the session by requesting new access tokens. These tokens may be exfiltrated and sold to third parties.
 
-## Example B3: Illicit Access to Physical Assets (User Transferred Pattern)
+### Example B3: Illicit Access to Physical Assets (User Transferred Pattern)
 An attacker copies a QR code from a bicycle locked in a bike rack in a city, prints it on a label and places the label on a bicycle at the other end of the bike rack. A customer approaches the bike that contains the replicated QR code and scans the code and authenticates before authorizing payment for renting the bicycle. The bike rack unlocks the bike containing the original QR code and the attacker removes the bicycle before cycling down the street while the customer is left frustrated that the bike they were trying to use is not being unlocked [@NYC.Bike]. The customer proceeds to unlock another bicycle and lodges a complaint with the bike renting company.
 
-## Example B4: Illicit Transaction Authorization (Client Transferred Pattern)
+### Example B4: Illicit Transaction Authorization (Client Transferred Pattern)
 An attacker obtains a list of user identifiers for a financial institution and triggers a transaction request for each of the users on the list. The financial institution's authorization server sends push notifications to each of the users, requesting authorization of a transaction. The vast majority of users ignore the request to authorize the transaction, but a small percentage grants authorization by approving the transaction.
 
-## Example B5: Illicit Network Join (Hybrid Pattern)
+### Example B5: Illicit Network Join (Hybrid Pattern)
 An attacker creates a message to all employees of a company, claiming to be from a trusted technology provider investigating a suspected security breach. They ask employees to send them the QR code typically used to join a new device to the network, along with detailed steps on how to obtain the QR code. The employee, eager to assist, initiates the process to add a new mobile device to the network. They authenticate to the network and obtain a QR code. They send the QR code to the attacker. The attacker scans the QR code and adds their own device to the network. They use this device access as an entry point and perform lateral moves to obtain additional privileges and access to restricted resources.
 
-## Example B6: Illicit Onboarding (User Transferred Pattern)
+### Example B6: Illicit Onboarding (User Transferred Pattern)
 An attacker initiates an employee onboarding flow and obtains a QR code from the onboarding portal to invoke a wallet and present a verifiable credential attesting to a new employee's identity. The attacker obtains a list of potential new employees and sends an e-mail informing them that it is time to present proof of their background check or government issued ID. The new employee scans the QR code, invokes their wallet and presents their credentials. Once the credentials are presented, the employee's account is activated. The employee portal accessed by the attacker to obtain the QR code displays a message to the attacker with instructions on how to access their account.
 
-## Example B7: Illicit Session Transfer (Hybrid Pattern)
+### Example B7: Illicit Session Transfer (Hybrid Pattern)
 An attacker creates a message to all employees of a company, claiming to be from the company's IT service provider. They claim that they are trying to resolve an application performance issue and ask employees to send them the QR code typically used to transfer a session. The employee, eager to assist, initiates the process to transfer a session. They authenticate and obtain a QR code and then send the QR code to the attacker. The attacker scans the QR code with their mobile phone and access the users data and resources.
 
-## Example B8: Account Takeover (User Transferred Pattern)
+### Example B8: Account Takeover (User Transferred Pattern)
 An attacker wants to use some website which requires presentation of a verifiable credential for authentication. The attacker creates a phishing website which will in real time capture log-in QR Codes from the original website and present these to the victim. The attacker tries to get the victim to use the phishing website using an e-mail campaign etc. The victim scans the QR code on the phishing website, invokes their wallet and presents their credentials. Once the credentials are presented, the original session from the attackers device is authenticated with the victim's credentials.
 
 ## Out of Scope
