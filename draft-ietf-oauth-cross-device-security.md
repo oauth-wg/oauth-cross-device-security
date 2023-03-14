@@ -231,28 +231,28 @@ The Authorization Server may choose to authenticate the user before sending the 
 ## Examples of Cross-Device Flows
 Examples of cross-device flow scenarios include:
 
-### Example A1: Authorize access to a video streaming service (User Transfer)
+### Example A1: Authorize Access to a Video Streaming Service (User Transfer)
 An end-user sets up a new smart TV and wants to connect it to their favorite streaming service. The TV displays a QR code that the user scans with their mobile phone. The user is redirected to the streaming service provider's web page and asked to enter their credentials to authorize the smart TV to access the streaming service. The user enters their credentials and grants authorization, after which the streaming service is available on the smart TV.
 
-### Example A2: Authorize access to productivity services (User Transfer)
+### Example A2: Authorize Access to Productivity Services (User Transfer)
 An employee wants to access their files on an interactive whiteboard in a conference room. The interactive whiteboard displays a URL and a code. The user enters the URL on their personal computer and is prompted for the code. Once they enter the code, the user is asked to authenticate and authorize the interactive whiteboard to access their files. The user enters their credentials and authorizes the transaction and the interactive whiteboard retrieves their files and allows the user to interact with the content.
 
-### Example A3: Authorize use of a bike sharing scheme (User Transfer)
+### Example A3: Authorize Use of a Bike Sharing Scheme (User Transfer)
 An end-user wants to rent a bicycle from a bike sharing scheme. The bicycles are locked in bike racks on sidewalks throughout a city. To unlock and use a bike, the user scans a QR code on the bike using their mobile phone. Scanning the QR code redirects the user to the bike sharing scheme's authorization page where the user authenticates and authorizes payment for renting the bike. Once authorized, the bike sharing service unlocks the bike, allowing the user to use it to cycle around the city.
 
-### Example A4: Authorize a financial transaction (Client Transfer)
+### Example A4: Authorize a Financial Transaction (Client Transfer)
 An end-user makes an online purchase. Before completing the purchase, they get a notification on their mobile phone, asking them to authorize the transaction. The user opens their app and authenticates to the service before authorizing the transaction.
 
-### Example A5: Add a device to a network (Hybrid)
+### Example A5: Add a Device to a Network (Hybrid)
 An employee is issued with a personal computer that is already joined to a network. The employee wants to add their mobile phone to the network to allow it to access corporate data and services (e.g., files and e-mail). The personal computer displays a QR code, which the employee scans with their mobile phone. The mobile phone is joined to the network and the employee can start accessing corporate data and services on their mobile device.
 
-### Example A6: Remote onboarding (User Transfer)
+### Example A6: Remote Onboarding (User Transfer)
 A new employee is directed to an onboarding portal to provide additional information to confirm their identity on their first day with their new employer. Before activating the employee's account, the onboarding portal requests that the employee present a government issued ID, proof of a background check and proof of their qualifications. The onboarding portal displays a QR code, which the user scans with their mobile phone. Scanning the QR code invokes the employee's wallet on their mobile phone, and the employee is asked to present digital versions of an identity document (e.g., a driving license), proof of a background check by an identity verifier, and proof of their qualifications. The employee authorizes the release of the credentials and after completing the onboarding process, their account is activated.
 
 ### Example A7: Transfer a session (Hybrid)
 An employee is signed into an application on their personal computer and wants to bootstrap the mobile application on their mobile phone. The employee initiates the cross-device flow and is shown a QR code in their application. The employee launches the mobile application on their phone and scans the QR code which results in the user being signed into the application on the mobile phone.
 
-### Example A8: Access a productivity application (Hybrid)
+### Example A8: Access a Productivity Application (Hybrid)
 A user is accessing a Computer Aid Design (CAD) application. When accessing the application, an access code is sent to the user's mobile phone. The user views the access code on their phone and enters it in the CAD application, after which the CAD application displays the user's most recent designs.
 
 # Cross-Device Flow Exploits
