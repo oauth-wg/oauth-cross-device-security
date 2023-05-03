@@ -125,7 +125,7 @@ carry with them.
 There are three cross-device flow patterns for transferring the authorization request between the Initiating Device to the Authorization Device.
 
 - User transferred: In the first variant, the user initiates the authorization process with the authorization server by copying information from the initiating device to the authorization device, before authorizing an action. For example the user may read a code displayed on the initiating device and enter it on the authorization device, or they may scan a QR code displayed in the initiating device with the authorization device.
-- Client transferred: In the second variant, the OAuth client on the initiating device is responsible for initiating authorization on the authorization device via a backchannel with the authorization server.
+- Backchannel Transferred Session Pattern: In the second variant, the OAuth client on the Initiating Device is responsible for transferring the session and initiating authorization on the Authorization Device via a backchannel with the Authorization Server.
 - Hybrid: In the third variant, the OAuth client on the Initiating Device triggers the authorization request via a backchannel with the Authorization Server. An access code is displayed on the Authorization Device, which the user enters on the Initiating Device.
 
 ## User Transferred Pattern
@@ -162,8 +162,8 @@ or enters the user code on the authorization device.
 
 The Device Authorization Grant ([@RFC8628]) follows this pattern.
 
-## Client Transferred Pattern
-The figure below shows an example of the client requesting the authorization server to initiate an authorization on the user's authorization device via the backchannel.
+## Backchannel Transferred Session Pattern
+The Client Initiated Backchannel Authentication [@CIBA] transfers the session on the backchannel with the Authroization Server to request authorization on the Authroization Device. The figure below shows an example of this flow.
 
 ~~~ ascii-art
                               (B) Backchannel Authorization
@@ -184,17 +184,15 @@ The figure below shows an example of the client requesting the authorization ser
              |              |    Authorization      |               |
              +--------------+                       +---------------+
 ~~~
-Figure: Cross Device Flows (Client Transferred)
+Figure: Cross Device Flows (Backchannel Transferred Session Patterns)
 
-- (A) The user takes an action on the initiating device by starting a purchase, adding a device to a network or connecting a service to the initiating device.
-- (B) The client on the initiating device requests user authorization on the backchannel from the authorization server.
-- (C) The authorization server requests the authorization from the user on the user's device.
-- (D) The user authenticates to the authorization server before granting authorization on their device.
-- (E) The Authorization Server issues tokens or grants authorization to the initiating device to access the user's resources.
+- (A) The user takes an action on the Initiating Device by starting a purchase, adding a device to a network or connecting a service to the Initiating Device.
+- (B) The client on the Initiating Device requests user authorization on the backchannel from the authorization server.
+- (C) The authorization server requests the authorization from the user on the user's Authroization Device.
+- (D) The user authenticates to the Authorization Server before using their device to grant authorization.
+- (E) The Authorization Server issues tokens or grants authorization to the Initiating Device to access the user's resources.
 
 The Authorization Server may use a variety of mechanisms to request user authorization, including a push notification to a dedicated app on a mobile phone, or sending a text message with a link to an endpoint where the user can authenticate and authorize an action.
-
-The Client Initiated Backchannel Authentication [@CIBA] follows this pattern.
 
 ## Hybrid Pattern
 The figure below shows an example of the client requesting the authorization server to initiate an authorization request via the backchannel.
@@ -240,7 +238,7 @@ An employee wants to access their files on an interactive whiteboard in a confer
 ### Example A3: Authorize Use of a Bike Sharing Scheme (User Transfer)
 An end-user wants to rent a bicycle from a bike sharing scheme. The bicycles are locked in bike racks on sidewalks throughout a city. To unlock and use a bike, the user scans a QR code on the bike using their mobile phone. Scanning the QR code redirects the user to the bike sharing scheme's authorization page where the user authenticates and authorizes payment for renting the bike. Once authorized, the bike sharing service unlocks the bike, allowing the user to use it to cycle around the city.
 
-### Example A4: Authorize a Financial Transaction (Client Transfer)
+### Example A4: Authorize a Financial Transaction (Backchannel Transferred Session Pattern)
 An end-user makes an online purchase. Before completing the purchase, they get a notification on their mobile phone, asking them to authorize the transaction. The user opens their app and authenticates to the service before authorizing the transaction.
 
 ### Example A5: Add a Device to a Network (Hybrid)
@@ -305,10 +303,10 @@ or enter the user code on the authorization device.
 - (F) The user authenticates to the Authorization Server before granting authorization.
 - (G) The Authorization Server issues tokens or grants authorization to the initiating device, which is under the attacker's control, to access the user's resources. The attacker gains access to the resources and possibly any authorization artifacts like access and refresh tokens.
 
-## Client Transferred Pattern
-In the client transferred pattern, the client instructs the authorization server to authenticate the user and obtain authorization for an action. This may happen as a result of user interaction with the initiating device, but may also be triggered without the users direct interaction with the initiating device, resulting in an authorization request presented to the user without context of why or who triggered the request.
+## Backchannel Transferred Session Pattern
+In the backchannel transferred session pattern, the client requests the authorization server to authenticate the user and obtain authorization for an action. This may happen as a result of user interaction with the Initiating Device, but may also be triggered without the users direct interaction with the Initiating Device, resulting in an authorization request presented to the user without context of why or who triggered the request.
 
-Attackers exploit this lack of context by using social engineering techniques to prime the user for an authorization request and thereby trick them into granting authorization. The social engineering techniques range in sophistication from messages misrepresenting the reason for receiving an authorization request to triggering a large volume of requests at an inconvenient time for the user, in the hope that the user will grant authorization to make the requests stop. The figure below shows an example of such an attack.
+Attackers exploit this lack of context by using social engineering techniques to prime the user for an authorization request and thereby trick them into granting authorization. The social engineering techniques range in sophistication from messages misrepresenting the reason for receiving an authorization request, to triggering a large volume of requests at an inconvenient time for the user, in the hope that the user will grant authorization to make the requests stop. The figure below shows an example of such an attack.
 
 ~~~ ascii-art
                               (C) Backchannel Authorization
@@ -340,14 +338,14 @@ Attackers exploit this lack of context by using social engineering techniques to
              |              |    Authorization      |               |
              +--------------+                       +---------------+
 ~~~
-Figure: Attacker Initiated Cross Device Flow Exploit (Client Transferred Pattern)
+Figure: Attacker Initiated Cross Device Flow Exploit (Backchannel Transferred Session Pattern)
 
 - (A) The attacker sends a social engineering message to prepare the user for the upcoming authorization (optional).
-- (B) The attacker initiates the protocol on the initiating device (or by mimicking the initiating device) by starting a purchase, adding a device to a network or accessing a service on the initiating device.
-- (C) The client on the initiating device requests user authorization on the backchannel from the authorization server.
-- (D) The authorization server requests the authorization from the user on the user's device.
+- (B) The attacker initiates the protocol on the Initiating Device (or by mimicking the initiating device) by starting a purchase, adding a device to a network or accessing a service on the Initiating Device.
+- (C) The client on the Initiating Device requests user authorization on the backchannel from the Authorization Server.
+- (D) The Authorization Server requests the authorization from the user on the user's device.
 - (E) The user authenticates to the authorization server before granting authorization on their device.
-- (G) The Authorization Server issues tokens or grants authorization to the initiating device, which is under the attacker's control. The attacker gains access to the user's resources and possibly any authorization artifacts like access and refresh tokens.
+- (G) The Authorization Server issues tokens or grants authorization to the Initiating Device, which is under the attacker's control. The attacker gains access to the user's resources and possibly any authorization artifacts like access and refresh tokens.
 
 ## Hybrid Pattern
 In cross-device flows that follow the Hybrid Pattern, the client initiates the authorization request, but the user still has to transfer the authorization code to the initiating device.  The authorization request may happen as a result of user interaction with the initiating device, but may also be triggered without the user's direct interaction with the initiating device.
@@ -411,7 +409,7 @@ An attacker emulates an enterprise application (e.g., an interactive whiteboard)
 ### Example B3: Illicit Access to Physical Assets (User Transferred Pattern)
 An attacker copies a QR code from a bicycle locked in a bike rack in a city, prints it on a label and places the label on a bicycle at the other end of the bike rack. A customer approaches the bike that contains the replicated QR code and scans the code and authenticates before authorizing payment for renting the bicycle. The bike rack unlocks the bike containing the original QR code and the attacker removes the bicycle before cycling down the street while the customer is left frustrated that the bike they were trying to use is not being unlocked [@NYC.Bike]. The customer proceeds to unlock another bicycle and lodges a complaint with the bike renting company.
 
-### Example B4: Illicit Transaction Authorization (Client Transferred Pattern)
+### Example B4: Illicit Transaction Authorization (Backchannel Transferred Session Pattern)
 An attacker obtains a list of user identifiers for a financial institution and triggers a transaction request for each of the users on the list. The financial institution's authorization server sends push notifications to each of the users, requesting authorization of a transaction. The vast majority of users ignore the request to authorize the transaction, but a small percentage grants authorization by approving the transaction.
 
 ### Example B5: Illicit Network Join (Hybrid Pattern)
@@ -539,7 +537,7 @@ Another mitigation strategy includes limiting the life of the access and refresh
 **Limitations:** Short lived tokens reduces the time window during which an attacker can benefit from a successful attack. This is most effective for access tokens. However, once an attacker obtains a refresh token, they can continue to request new access tokens, as well as refresh tokens. Forcing the expiry of refresh tokens may cause the user to re-authorize an action more frequently, which results in a negative user experience.
 
 ### Rate Limits
-An attacker that engages in a scaled spray attack needs to request a large number of user codes (see exploit [Example B1](#Example B1: Illicit access to a video streaming service (User Transferred Pattern))) or initiate a large number of authorization requests (see exploit [Example B4](#Example B4: Illicit Transaction Authorization (Client Transferred Pattern))) in a short period of time. An authorization server can apply rate limits to minimize the number of requests it would accept from a client in a limited time period.
+An attacker that engages in a scaled spray attack needs to request a large number of user codes (see exploit [Example B1](#Example B1: Illicit access to a video streaming service (User Transferred Pattern))) or initiate a large number of authorization requests (see exploit [Example B4](#Example B4: Illicit Transaction Authorization (Backchannel Transferred Session Pattern))) in a short period of time. An authorization server can apply rate limits to minimize the number of requests it would accept from a client in a limited time period.
 
 **Limitations:** Rate limits are effective at slowing an attacker down and help to degrade spray attacks, but do not prevent more targeted attacks that are executed with lower volumes and velocity. Therefore, it should be used along with other techniques to provide a defence-in-depth against cross-device attacks.
 
