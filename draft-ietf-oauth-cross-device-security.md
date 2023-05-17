@@ -188,7 +188,7 @@ Figure: Cross Device Flows (Backchannel Transferred Session Patterns)
 
 - (A) The user takes an action on the Initiating Device by starting a purchase, adding a device to a network or connecting a service to the Initiating Device.
 - (B) The client on the Initiating Device requests user authorization on the backchannel from the authorization server.
-- (C) The authorization server requests the authorization from the user on the user's Authroization Device.
+- (C) The authorization server requests the authorization from the user on the user's Authorization Device.
 - (D) The user authenticates to the Authorization Server before using their device to grant authorization.
 - (E) The Authorization Server issues tokens or grants authorization to the Initiating Device to access the user's resources.
 
