@@ -299,7 +299,7 @@ Figure: Attacker Initiated Cross Device Flow Exploit (User Transferred Session D
 - (D) The attacker changes the context in which the QR code or user code is displayed in such a way that the user is likely to scan the QR code or use the user code when completing the authorization.
 - (E) The QR code or user code is displayed in a context chosen by the attacker and the user is tricked into scanning the QR code or enter the user code on the Authorization Device.
 - (F) The user authenticates to the Authorization Server before granting authorization.
-- (G) The Authorization Server issues tokens or grants authorization to the Initiating Device, which is under the attacker's control, to access the user's resources. The attacker gains access to the resources and any authorization artifacts like access and refresh tokens, which may be used in future exploits.
+- (G) The Authorization Server issues tokens or grants authorization to the Initiating Device, which is under the attacker's control, to access the user's resources. The attacker gains access to the resources and any authorization artifacts (like access and refresh tokens) which may be used in future exploits.
 
 ## Client Transferred Pattern
 In the client transferred pattern, the client instructs the authorization server to authenticate the user and obtain authorization for an action. This may happen as a result of user interaction with the initiating device, but may also be triggered without the users direct interaction with the initiating device, resulting in an authorization request presented to the user without context of why or who triggered the request.
