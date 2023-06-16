@@ -125,7 +125,7 @@ carry with them.
 There are three cross-device flow patterns for transferring the authorization request between the Initiating Device to the Authorization Device.
 
 - User-Transferred Session Data Pattern: In the first variant, the user initiates the authorization process with the authorization server by copying information from the initiating device to the authorization device, before authorizing an action. For example the user may read a code displayed on the initiating device and enter it on the authorization device, or they may scan a QR code displayed in the Initiating Device with the Authorization Device.
-- Client transferred: In the second variant, the OAuth client on the initiating device is responsible for initiating authorization on the authorization device via a backchannel with the authorization server.
+- Backchannel-Transferred Session Pattern: In the second variant, the OAuth client on the Initiating Device is responsible for transferring the session and initiating authorization on the Authorization Device via a backchannel with the Authorization Server. For example the user may attempt an online purchase on an Initiating Device (e.g. a personal computer) and receive an authorization request on their Authentication Device (e.g. mobile phone). 
 - Hybrid: In the third variant, the OAuth client on the Initiating Device triggers the authorization request via a backchannel with the Authorization Server. An access code is displayed on the Authorization Device, which the user enters on the Initiating Device.
 
 ## User-Transferred Session Data Pattern
@@ -534,7 +534,7 @@ Another mitigation strategy includes limiting the life of the access and refresh
 **Limitations:** Short lived tokens reduces the time window during which an attacker can benefit from a successful attack. This is most effective for access tokens. However, once an attacker obtains a refresh token, they can continue to request new access tokens, as well as refresh tokens. Forcing the expiry of refresh tokens may cause the user to re-authorize an action more frequently, which results in a negative user experience.
 
 ### Rate Limits
-An attacker that engages in a scaled spray attack needs to request a large number of user codes (see exploit [Example B1](#Example B1: Illicit access to a video streaming service (User-Transferred Session Data Pattern))) or initiate a large number of authorization requests (see exploit [Example B4](#Example B4: Illicit Transaction Authorization (Client Transferred Pattern))) in a short period of time. An authorization server can apply rate limits to minimize the number of requests it would accept from a client in a limited time period.
+An attacker that engages in a scaled spray attack needs to request a large number of user codes (see exploit [Example B1](#Example B1: Illicit access to a video streaming service (User-Transferred Session Data Pattern))) or initiate a large number of authorization requests (see exploit [Example B4](#Example B4: Illicit Transaction Authorization (Backchannel Transferred Session Pattern))) in a short period of time. An authorization server can apply rate limits to minimize the number of requests it would accept from a client in a limited time period.
 
 **Limitations:** Rate limits are effective at slowing an attacker down and help to degrade spray attacks, but do not prevent more targeted attacks that are executed with lower volumes and velocity. Therefore, it should be used along with other techniques to provide a defence-in-depth against cross-device attacks.
 
