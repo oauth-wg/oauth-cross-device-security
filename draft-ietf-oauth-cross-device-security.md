@@ -332,8 +332,8 @@ Attackers exploit this lack of context by using social engineering techniques to
   Action +---| Authorization|                       |               |
          |   |    Device    |<--------------------->|               |
          +-->|              |(D) Request User       |               |
-             |              |    Authorization      |               |
-             +--------------+                       +---------------+
+             |              |    Authentication and |               |
+             +--------------+    Authorization      +---------------+
 ~~~
 Figure: Attacker Initiated Cross Device Flow Exploit (Backchannel Transferred Session Pattern)
 
@@ -344,7 +344,7 @@ Figure: Attacker Initiated Cross Device Flow Exploit (Backchannel Transferred Se
 - (E) The user authenticates to the authorization server before granting authorization on their device.
 - (G) The Authorization Server issues tokens or grants authorization to the Initiating Device, which is under the attacker's control. The attacker gains access to the user's resources and possibly any authorization artifacts like access and refresh tokens.
 
-## User-Transferred Authorization Data Pattern Pattern
+## User-Transferred Authorization Data Pattern
 In cross-device flows that follow the user-transferred authorization data pattern, the client on the Initiating Device initiates the authorization request, but the user still has to transfer the authorization code to the Initiating Device.  The authorization request may happen as a result of user interaction with the Initiating Device, but may also be triggered without the user's direct interaction with the Initiating Device.
 
 Attackers exploit the user-transferred authorization data pattern by combining the social engineering techniques used to set context for users and tricking users into providing them with access codes sent to their phones. These attacks are very similar to phishing attacks, except that the attacker also has the ability to trigger the authorization request to be sent to the user directly by the Authorization Server.
