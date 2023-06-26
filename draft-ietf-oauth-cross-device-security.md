@@ -126,7 +126,7 @@ There are three cross-device flow patterns for transferring the authorization re
 
 - User-Transferred Session Data Pattern: In the first variant, the user initiates the authorization process with the authorization server by copying information from the initiating device to the authorization device, before authorizing an action. For example the user may read a code displayed on the initiating device and enter it on the authorization device, or they may scan a QR code displayed in the Initiating Device with the Authorization Device.
 - Client transferred: In the second variant, the OAuth client on the initiating device is responsible for initiating authorization on the authorization device via a backchannel with the authorization server.
-- Hybrid: In the third variant, the OAuth client on the Initiating Device triggers the authorization request via a backchannel with the Authorization Server. An access code is displayed on the Authorization Device, which the user enters on the Initiating Device.
+- User-Transferred Authorization Data Pattern: In the third variant, the OAuth client on the Initiating Device triggers the authorization request via a backchannel with the Authorization Server. Authorization data (e.g. an access code) is displayed on the Authorization Device, which the user enters on the Initiating Device.
 
 ## User-Transferred Session Data Pattern
 The Device Authorization Grant ([@RFC8628])is an example of a cross-device flow that relies on the user copying information from the Initiating Device to the Authorization Device. The figure below shows a typical example of this flow:
