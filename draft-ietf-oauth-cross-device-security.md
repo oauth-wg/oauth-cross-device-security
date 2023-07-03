@@ -56,10 +56,10 @@ and engineers implementing cross-device flows.
 # Introduction {#Introduction}
 Cross-device flows enable a user to initiate an authorization flow on
 one device (the Initiating Device) and then use a second, personally
-trusted, device (Authorization Device) to authorize the Initiating 
-Device to access a resource (e.g., access to a service). The Device 
-Authorization Grant ([@RFC8628]) and Client Initiated Backchannel 
-Authentication [@CIBA] are two examples of popular cross-device flows. 
+trusted, device (Authorization Device) to authorize the Initiating
+Device to access a resource (e.g., access to a service). The Device
+Authorization Grant ([@RFC8628]) and Client Initiated Backchannel
+Authentication [@CIBA] are two examples of popular cross-device flows.
 
 These flows are increasingly popular and typically involve using a mobile
 phone to scan a QR code or enter a user code displayed on an Initiating
@@ -111,7 +111,7 @@ This specification uses the terms "access token", "refresh token",
 # Cross Device Flow Concepts
 In a cross-device flow, a user starts a scenario on the Initiating Device
 (e.g., a smart TV) and then uses an Authorization Device (e.g., a smartphone) to
-authorize access to a resource (e.g., access to a streaming service) on 
+authorize access to a resource (e.g., access to a streaming service) on
 the Initiating Device.
 
 Cross device flows have several benefits, including:
