@@ -673,7 +673,7 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
    * Fixed typos and grammar edits
    * Introduced Cross-Device Consent Phishing as a label for the types of attacks described in this document.
    * Capitalised Initiating Device and Authorization Device
-   * Capitalised SHOULD, RECOMMENDED and MAY when applied to actions the Authroization Server, Resource Server or Client may implement.
+   * Capitalised SHOULD, RECOMMENDED and MAY when applied to actions the Authorization Server, Resource Server or Client may implement.
 
 
    -01
