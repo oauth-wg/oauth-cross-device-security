@@ -72,10 +72,10 @@ Cross-Device Consent Phishing (CDCP) attacks exploits the unauthenticated channe
 between the Initiating Device and Authroization Device using social engineering
 techniques to to gain unauhtorized access to the victims data. Several publications
 have emerged in the public domain ([@Exploit1], [@Exploit2], [@Exploit3], [@Exploit4],
-[@Exploit5], [@Exploit6]), describing how the unauthenticated channel can be 
+[@Exploit5], [@Exploit6]), describing how the unauthenticated channel can be
 exploited using social engineering techniques borrowed from phishing. Unlike traditional
 phishing attacks, these attacks don't harvest credentials. Instead, they skip the
-step of collecting credentials by persuading users to grant authorization using 
+step of collecting credentials by persuading users to grant authorization using
 their Authorization Devices.
 
 Once the user grants authorization, the attacker has access to the user's
