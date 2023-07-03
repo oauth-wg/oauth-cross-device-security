@@ -69,8 +69,8 @@ a QR code, user code, or the authorization request pushed to their authorization
 device.
 
 Cross-Device Consent Phishing (CDCP) attacks exploits the unauthenticated channel
-between the Initiating Device and Authroization Device using social engineering
-techniques to to gain unauhtorized access to the victims data. Several publications
+between the Initiating Device and Authorization Device using social engineering
+techniques to to gain unauthorized access to the victims data. Several publications
 have emerged in the public domain ([@Exploit1], [@Exploit2], [@Exploit3], [@Exploit4],
 [@Exploit5], [@Exploit6]), describing how the unauthenticated channel can be
 exploited using social engineering techniques borrowed from phishing. Unlike traditional
