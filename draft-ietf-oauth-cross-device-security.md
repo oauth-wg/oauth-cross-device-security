@@ -106,12 +106,12 @@ This specification uses the terms "access token", "refresh token",
 "grant type", "access token request", "access token response", and
 "client" defined by The OAuth 2.0 Authorization Framework [@!RFC6749].
 
-# Cross Device Flow Concepts
+# Cross-Device Flow Concepts
 In a cross-device flow, a user starts a scenario on the Initiating Device
 (e.g., a smart TV) and then uses an Authorization Device (e.g., a smartphone) to
 authorize access to a resource (e.g., access to a streaming service).
 
-Cross device flows have several benefits, including:
+Cross-device flows have several benefits, including:
 
 - Authorization on devices with limited input capabilities: End-users can
 authorize devices with limited input capabilities to access content (e.g.,
@@ -154,7 +154,7 @@ The Device Authorization Grant ([@RFC8628])is an example of a cross-device flow 
              |              | and Authorize Access  |               |
              +--------------+                       +---------------+
 ~~~
-Figure: Cross Device Flows (User-Transferred Session Data Pattern)
+Figure: Cross-Device Flows: User-Transferred Session Data Pattern
 
 - (A) The user takes an action on the Initiating Device by starting a purchase, adding a device to a network
 or connecting a service to the Initiating Device.
@@ -186,7 +186,7 @@ The Client Initiated Backchannel Authentication [@CIBA] transfers the session on
              |              |    Authorization      |               |
              +--------------+                       +---------------+
 ~~~
-Figure: Cross Device Flows (Backchannel Transferred Session Patterns)
+Figure: Cross-Device Flows: Backchannel Transferred Session Pattern
 
 - (A) The user takes an action on the Initiating Device by starting a purchase, adding a device to a network or connecting a service to the Initiating Device.
 - (B) The client on the Initiating Device requests user authorization on the backchannel from the authorization server.
@@ -219,7 +219,7 @@ Examples of the user-transferred authorization data pattern includes flows in wh
              |              |                       |               |
              +--------------+                       +---------------+
 ~~~
-Figure: Cross Device Flows (User-Transferred Authorization Data Pattern)
+Figure: Cross-Device Flow: User-Transferred Authorization Data Pattern
 
 - (A) The user takes an action on the Initiating Device by starting a purchase, adding a device to a network or connecting a service to the Initiating Device.
 - (B) The client on the Initiating Device requests user authorization on the backchannel from the authorization server.
@@ -521,7 +521,7 @@ If an attacker is unable to initiate the protocol, they are unable to obtain a Q
 **Limitations:** An attacker may still be able to obtain access to a trusted device and use it to initiate authorization requests, making it necessary to apply additional controls and integrating with other threat detection and management systems that can detect suspicious behaviour such as repeated requests to initiate authorization or high volume of service activation on the same device.
 
 ### Trusted Networks
-An attacker can be prevented from initiating a cross device flow protocol by only allowing the protocol to be initiated on a trusted network or within a security perimeter (e.g., a corporate network). A trusted network may be defined as a set of IP addresses and joining the network is subject to security controls managed by the network operator, which may include only allowing trusted devices on the network, device management, user authentication and physical access policies and systems. By limiting protocol initiation to a specific network, the attacker needs to have access to a device on the network.
+An attacker can be prevented from initiating a cross-device flow protocol by only allowing the protocol to be initiated on a trusted network or within a security perimeter (e.g., a corporate network). A trusted network may be defined as a set of IP addresses and joining the network is subject to security controls managed by the network operator, which may include only allowing trusted devices on the network, device management, user authentication and physical access policies and systems. By limiting protocol initiation to a specific network, the attacker needs to have access to a device on the network.
 
 **Limitations:** Network level controls may not always be feasible, especially when dealing with consumer scenarios where the network may not be under control of the service provider. Even if it is possible to deploy network level controls, it should be used in conjunction with other controls outlined in this document to achieve defence in-depth.
 
@@ -635,10 +635,10 @@ Both the Initiating Device and the authenticator require BLE support. The Initia
 FIDO Cross-Device Authentication (CDA) establishes proximity through the use of BLE, reducing the need for additional mitigations. An implementer may still choose to implement additional mitigation as described in this document.
 
 #### When to Use
-FIDO2/WebAuthn should be used for cross-device authentication scenarios whenever the devices are capable of doing so. It may be used as an authentication method with the Authorization Code Grant [@RFC6749] and PKCE [@RFC7663], to grant authorization to an Initiating Device (e.g., Smart TV or interactive whiteboard) using a mobile phone as the authenticating device. This combination of FIDO2/WebAuthn and Authorization Code Flow with PKCE enables cross device authorization flows, without the risks posed by the Device Authorization Grant [@RFC8628].
+FIDO2/WebAuthn should be used for cross-device authentication scenarios whenever the devices are capable of doing so. It may be used as an authentication method with the Authorization Code Grant [@RFC6749] and PKCE [@RFC7663], to grant authorization to an Initiating Device (e.g., Smart TV or interactive whiteboard) using a mobile phone as the authenticating device. This combination of FIDO2/WebAuthn and Authorization Code Flow with PKCE enables cross-device authorization flows, without the risks posed by the Device Authorization Grant [@RFC8628].
 
 ### Protocol Selection Summary
-The FIDO Cross-Device Authentication (CDA) flow provides the best protection against attacks on the unauthenticated channel for cross device flows. It can be combined with OAuth 2.0 and OpenID Connect protocols for standards -based authorization and authentication flows. If FIDO2/WebAuthn support is not available, Client Initiated Backchannel Authentication (CIBA) provides an alternative, provided that there is a channel through which the authorization server can contact the end user. Examples of such a channel include device push notifications, e-mail or text messages which the user can access from their device. If CIBA is used, additional mitigations to enforce proximity and initiate transactions from trusted devices or trusted networks should be considered. The OAuth 2.0 Device Authorization Grant provides the most flexibility and has the lowest requirements on devices used, but it is recommended that it is only used when additional mitigations are deployed to prevent attacks that exploit the unauthenticated channel between devices.
+The FIDO Cross-Device Authentication (CDA) flow provides the best protection against attacks on the unauthenticated channel for cross-device flows. It can be combined with OAuth 2.0 and OpenID Connect protocols for standards -based authorization and authentication flows. If FIDO2/WebAuthn support is not available, Client Initiated Backchannel Authentication (CIBA) provides an alternative, provided that there is a channel through which the authorization server can contact the end user. Examples of such a channel include device push notifications, e-mail or text messages which the user can access from their device. If CIBA is used, additional mitigations to enforce proximity and initiate transactions from trusted devices or trusted networks should be considered. The OAuth 2.0 Device Authorization Grant provides the most flexibility and has the lowest requirements on devices used, but it is recommended that it is only used when additional mitigations are deployed to prevent attacks that exploit the unauthenticated channel between devices.
 
 ## Foundational Pillars
 Experience with web authorization and authentication protocols such as OAuth and OpenID Connect has shown that securing these protocols can be hard. The major reason for this is that the landscape in which they are operating - the web infrastructure with browsers, servers, and the underlying network - is complex, diverse, and ever-evolving.
@@ -673,6 +673,7 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
    * Fixed typos and grammar edits
    * Introduced Cross-Device Consent Phishing as a label for the types of attacks described in this document.
    * Capitalised Initiating Device and Authorization Device
+   * Adopted consistent use of hyphenation in using "cross-device"
 
 
    -01
