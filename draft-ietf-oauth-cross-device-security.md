@@ -89,7 +89,7 @@ but rather to persuade the user to grant authorization.
 In order to defend against these attacks, this document outlines three responses:
 
 1. For protocols that are susceptible to Cross-Device Consent Phishing exploits, deploy practical mitigations.
-3. Select protocols that are more resitant to Cross-Device Consent Phishing exploits when possible.
+3. Select protocols that are more resistant to Cross-Device Consent Phishing exploits when possible.
 3. Conduct formal analysis of cross-device flows to assess susceptibility to these attacks and the effectiveness of the proposed mitigations.
 
 ## Conventions and Terminology
