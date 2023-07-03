@@ -60,19 +60,23 @@ trusted, device (Authorization Device) to authorize access to a resource
 (e.g., access to a service).
 
 These flows are increasingly popular and typically involve using a mobile
-phone to scan a QR code or enter a user code displayed on an initiating
-device (e.g., Smart TV, Kiosk, Personal Computer etc).
+phone to scan a QR code or enter a user code displayed on an Initiating
+Device (e.g., Smart TV, Kiosk, Personal Computer etc).
 
 The channel between the Initiating Device and the Authorization Device is
 unauthenticated and relies on the user's judgment to decide whether to trust
 a QR code, user code, or the authorization request pushed to their authorization
 device.
 
-Several publications have emerged in the public domain ([@Exploit1], [@Exploit2], [@Exploit3], [@Exploit4], [@Exploit5], [@Exploit6]), describing how
-the unauthenticated channel can be exploited using social engineering techniques
-borrowed from phishing. Unlike traditional phishing attacks, these attacks don't
-harvest credentials. Instead, they skip the step of collecting credentials by
-persuading users to grant authorization using their Authorization Devices.
+Cross-Device Consent Phishing (CDCP) attacks exploit the unauthenticated channel
+between the Initiating Device and Authorization Device using social engineering
+techniques to to gain unauthorized access to the victims data. Several publications
+have emerged in the public domain ([@Exploit1], [@Exploit2], [@Exploit3], [@Exploit4],
+[@Exploit5], [@Exploit6]), describing how the unauthenticated channel can be
+exploited using social engineering techniques borrowed from phishing. Unlike traditional
+phishing attacks, these attacks don't harvest credentials. Instead, they skip the
+step of collecting credentials by persuading users to grant authorization using
+their Authorization Devices.
 
 Once the user grants authorization, the attacker has access to the user's
 resources and in some cases is able to collect access and refresh tokens. Once in
@@ -84,8 +88,8 @@ but rather to persuade the user to grant authorization.
 
 In order to defend against these attacks, this document outlines three responses:
 
-1. For protocols that are susceptible to unauthenticated channel exploits, deploy practical mitigations.
-3. Select protocols that are not susceptible to unauthenticated channel exploits when possible.
+1. For protocols that are susceptible to Cross-Device Consent Phishing exploits, deploy practical mitigations.
+3. Select protocols that are more resistant to Cross-Device Consent Phishing exploits when possible.
 3. Conduct formal analysis of cross-device flows to assess susceptibility to these attacks and the effectiveness of the proposed mitigations.
 
 ## Conventions and Terminology
@@ -253,7 +257,7 @@ An employee is signed into an application on their personal computer and wants t
 A user is accessing a Computer Aid Design (CAD) application. When accessing the application, an access code is sent to the user's mobile phone. The user views the access code on their phone and enters it in the CAD application, after which the CAD application displays the user's most recent designs.
 
 # Cross-Device Flow Exploits
-Attackers exploit cross-device flows by initiating an authorization flow on the Initiating Device and then use social engineering techniques to change the context in which the request is presented to the user in order to trick them into granting authorization on the Authorization Device. The attacker is able to change the context of the authorization request because the channel between the Initiating Device and the Authorizing Device is unauthenticated. These attacks are also known as illicit consent grant attacks.
+Attackers exploit cross-device flows by initiating an authorization flow on the Initiating Device and then use social engineering techniques to change the context in which the request is presented to the user in order to convince them to grant authorization on the Authorization Device. The attacker is able to change the context of the authorization request because the channel between the Initiating Device and the Authorizing Device is unauthenticated. These attacks are also known as Cross-Device Consent Phishing (CDCP) attacks.
 
 ## User-Transferred Session Data Pattern Exploits
 A common action in cross-device flows is to present the user with a QR code or a user code on the Initiating Device (e.g., Smart TV) which is then scanned or entered on the Authorization Device (the mobile phone). When the user scans the code or copies the user code, they do so without any proof that the QR code or user code is being displayed in the place or context intended by the service provider. It is up to the user to decide whether they should trust the QR code or user code. In effect the user is asked to compensate for the absence of an authenticated channel between the Initiating Device (e.g., smart TV) and the Authorizing Device (e.g., the mobile phone).
@@ -290,7 +294,7 @@ Attackers exploit this absence of an authenticated channel between the two devic
            |              | and Authorize Access  |               |
            +--------------+                       +---------------+
 ~~~
-Figure: Attacker Initiated Cross Device Flow Exploit (User-Transferred Session Data Pattern)
+Figure: Cross-Device Consent Phishing: User-Transferred Session Data Pattern
 
 - (A) The attacker initiates the protocol on the Initiating Device (or mimicks the Initiating Device) by starting a purchase, adding a device to a network or connecting a service to the Initiating Device.
 - (B) The Initiating Device retrieves a QR code or user code from an Authorization Server
@@ -335,7 +339,7 @@ Attackers exploit this lack of context by using social engineering techniques to
              |              |    Authorization      |               |
              +--------------+                       +---------------+
 ~~~
-Figure: Attacker Initiated Cross Device Flow Exploit (Backchannel Transferred Session Pattern)
+Figure: Cross-Device Consent Phishing: Backchannel Transferred Session Pattern
 
 - (A) The attacker sends a social engineering message to prepare the user for the upcoming authorization (optional).
 - (B) The attacker initiates the protocol on the Initiating Device (or by mimicking the Initiating Device) by starting a purchase, adding a device to a network or accessing a service on the Initiating Device.
@@ -380,7 +384,7 @@ Attackers exploit the user-transferred authorization data pattern by combining t
              |              |    Code               |               |
              +--------------+                       +---------------+
 ~~~
-Figure: Attacker Initiated Cross Device Flow Exploit (User-Transferred Authorization Data Pattern)
+Figure: Cross-Device Consent Phishing: User-Transferred Authorization Data Pattern
 
 - (A) The attacker sends a social engineering message to prime the user for the authorization request they are about to receive, including instructions on what to do with the access code once they receive it.
 - (B) The attacker initiates the protocol on the Initiating Device (or by mimicking the Initiating Device) by starting a purchase, adding a device to a network or accessing a service on the Initiating Device.
@@ -392,7 +396,7 @@ Figure: Attacker Initiated Cross Device Flow Exploit (User-Transferred Authoriza
 
 The unauthenticated channel may also be exploited in variations of the above scenario where the user (as opposed tot he attacker) initiates the flow and is then tricked into sending the authorization data (e.g. access code) to the attacker. In these flows, the user is already authenticated and they request authroization data to transfer a session or obtain some other privilege such as joining a device to a network. The authorization data may be represented as a QR code o text message. The attacker then proceeds to exploit the unauthenticated channel by using social engineering techniques to trick the user into initiating a flow and send the QR code or user code to the attacker, which the attacker use to obtain the privileges that would have been assigned to the user.
 
-## Examples of Cross-Device Flow Exploits
+## Examples of Cross-Device Consent Phishing Attacks
 The following examples illustrate these attacks in practical settings and show how the unauthenticated channel is exploited by attackers who can copy the QR codes and user codes, change the context in which they are presented using social engineering techniques and mislead end-users into granting consent to avail of services, access data and make payments.
 
 ### Example B1: Illicit access to a video streaming service (User-Transferred Session Data Pattern)
@@ -415,7 +419,6 @@ An attacker creates a message to all employees of a company, claiming to be from
 ### Example B6: Illicit Onboarding (User-Transferred Session Data Pattern)
 An attacker initiates an employee onboarding flow and obtains a QR code from the onboarding portal to invoke a wallet and present a verifiable credential attesting to a new employee's identity. The attacker obtains a list of potential new employees and sends an e-mail informing them that it is time to present proof of their background check or government issued ID. The new employee scans the QR code, invokes their wallet and presents their credentials. Once the credentials are presented, the employee's account is activated. The employee portal accessed by the attacker to obtain the QR code displays a message to the attacker with instructions on how to access their account.
 
-
 ### Example B7: Illicit Session Transfer (User-Transferred Authorization Data Pattern)
 An attacker creates a message to all employees of a company, claiming to be from the company's IT service provider. They claim that they are trying to resolve an application performance issue and ask employees to send them the QR code typically used to transfer a session. The employee, eager to assist, initiates the process to transfer a session. They authenticate and obtain a QR code and then send the QR code to the attacker. The attacker scans the QR code with their mobile phone and access the users data and resources.
 
@@ -423,7 +426,7 @@ An attacker creates a message to all employees of a company, claiming to be from
 An attacker wants to use some website which requires presentation of a verifiable credential for authentication. The attacker creates a phishing website which will in real time capture log-in QR Codes from the original website and present these to the victim. The attacker tries to get the victim to use the phishing website using an e-mail campaign etc. The victim scans the QR code on the phishing website, invokes their wallet and presents their credentials. Once the credentials are presented, the original session from the attackers device is authenticated with the victim's credentials.
 
 ### Out of Scope
-In all of the attack scenarios listed above, a user is tricked or exploited. For other attacks, where the user is willingly colluding with the attacker, the security implications and potential mitigations are very different. For example, a cooperating user can bypass software mitigations on their device, share access to hardware tokens with the attacker, and install additional devices to forward radio signals to trick proximity checks.
+In all of the attack scenarios listed above, a user is tricked or exploited. For other attacks, where the user is willingly colluding with the attacker, the threat model, security implications and potential mitigations are very different. For example, a cooperating user can bypass software mitigations on their device, share access to hardware tokens with the attacker, and install additional devices to forward radio signals to circumvent proximity checks.
 
 This document only considers scenarios where a user does not collude with an attacker.
 
@@ -454,7 +457,7 @@ The unauthenticated channel between the Initiating Device and the authenticating
 2.	Providing better information with which to make decisions to authenticate the channel.
 3.	Recovering from incorrect channel authentication decisions by users.
 
-To achieve the above outcomes, mitigating the exploits of cross-device flows require a three-pronged approach:
+To achieve the above outcomes, mitigating against Cross-Device Consent Phishing attacks require a three-pronged approach:
 
 1.	Secure deployed protocols with practical mitigations.
 2.	Adopt or develop more secure protocols where possible.
@@ -462,13 +465,13 @@ To achieve the above outcomes, mitigating the exploits of cross-device flows req
 
 ## Practical Mitigations
 
-A number of protocols that enable cross-device flows that are susceptible to illicit consent grant attacks are already deployed. The security profile of these protocols can be improved through practical mitigations that provide defense in depth that either:
+A number of protocols that enable cross-device flows that are susceptible to Cross-Device Consent Phishing attacks are already deployed. The security profile of these protocols can be improved through practical mitigations that provide defense in depth that either:
 
 1.	Prevents the attack from being initiated.
 2.	Disrupts the attack once it is initiated.
 3.	Remediates or reduces the impact if the attack succeeds.
 
-It is recommended that one or more of the mitigations are applied whenever implementing a cross-device flow. Every mitigation provides an additional layer of security that makes it harder to initiate the attack, disrupts attacks when in process or reduces the impact of a successful attack.
+It is recommended that one or more of the mitigations are applied whenever implementing a cross-device flow. Every mitigation provides an additional layer of security that makes it harder to initiate the attack, disrupts attacks in progress or reduces the impact of a successful attack.
 
 ### Establish Proximity
 The unauthenticated channel between the initiating and authenticating device allows attackers to obtain a QR code or user code in one location and display in another location. Establishing proximity between the location of the Initiating Device and the authentication device limits an attacker's ability to launch attacks by sending the user or QR codes to large numbers of users across the globe. There are a couple of ways to establish proximity:
@@ -589,7 +592,7 @@ Some cross-device protocols are more susceptible to the exploits described in th
 A standard to enable authorization on devices with constrained input capabilities (smart TVs, printers, kiosks). In this protocol, the user code or QR code is displayed or made available on the Initiating Device (smart TV) and entered on a second device (e.g., a mobile phone).
 
 #### Susceptibility
-There are several reports in the public domain outlining how the unauthenticated channel may be exploited to execute an illicit consent grant attack.
+There are several reports in the public domain outlining how the unauthenticated channel may be exploited to execute a Cross-Device Consent Phishing attack ([@Exploit1], [@Exploit2], [@Exploit3], [@Exploit4], [@Exploit5], [@Exploit6]).
 
 #### Device Capabilities
 There are no assumptions in the protocol about underlying capabilities of the device, making it a "least common denominator" protocol that is expected to work on the broadest set of devices and environments.
@@ -668,6 +671,8 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
    -latest
 
    * Fixed typos and grammar edits
+   * Introduced Cross-Device Consent Phishing as a label for the types of attacks described in this document.
+   * Capitalised Initiating Device and Authorization Device
 
 
    -01
