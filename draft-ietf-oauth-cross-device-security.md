@@ -68,7 +68,7 @@ unauthenticated and relies on the user's judgment to decide whether to trust
 a QR code, user code, or the authorization request pushed to their authorization
 device.
 
-Cross-Device Consent Phishing (CDCP) attacks exploits the unauthenticated channel
+Cross-Device Consent Phishing (CDCP) attacks exploit the unauthenticated channel
 between the Initiating Device and Authorization Device using social engineering
 techniques to to gain unauthorized access to the victims data. Several publications
 have emerged in the public domain ([@Exploit1], [@Exploit2], [@Exploit3], [@Exploit4],
