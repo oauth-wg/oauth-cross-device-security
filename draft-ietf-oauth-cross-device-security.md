@@ -286,8 +286,8 @@ Attackers exploit this absence of an authenticated channel between the two devic
            |              |     Context           |               |
            +--------------+                       |               |
                   | (E) User is convinced by the  |               |
-                  |     attacker and scan QR code |               |
-                  |     or enter User Code        |               |
+                  |     attacker and scans QR code|               |
+                  |     or enters User Code       |               |
                   v                               |               |
            +--------------+                       |               |
            |   End User   |                       |               |
