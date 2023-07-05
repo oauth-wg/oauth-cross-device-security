@@ -303,7 +303,7 @@ Figure: Cross-Device Consent Phishing: User-Transferred Session Data Pattern
 - (B) The Initiating Device retrieves a QR code or user code from an Authorization Server
 - (C) The attacker copies the QR code or user code
 - (D) The attacker changes the context in which the QR code or user code is displayed in such a way that the user is likely to scan the QR code or use the user code when completing the authorization. For example, the attacker could craft an email that includes the user code or QR code and send it to the user. The email might encourage the user to scan the QR code or enter the user code by suggesting that doing so would grant them a reward through a loyalty program or prevent the loss of their data.
-- (E) The QR code or user code is displayed to the user in a context chosen by the attacker. The user is convinced by the attacker's effort and scan the QR code or enter the user code on the Authorization Device.
+- (E) The QR code or user code is displayed to the user in a context chosen by the attacker. The user is convinced by the attacker's effort and scans the QR code or enters the user code on the Authorization Device.
 - (F) The user authenticates to the Authorization Server before granting authorization.
 - (G) The Authorization Server issues tokens or grants authorization to the Initiating Device, which is under the attacker's control, to access the user's resources. The attacker gains access to the resources and any authorization artifacts (like access and refresh tokens) which may be used in future exploits.
 
