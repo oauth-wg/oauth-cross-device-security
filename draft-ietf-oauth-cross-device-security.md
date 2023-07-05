@@ -128,9 +128,9 @@ carry with them.
 
 There are three cross-device flow patterns for transferring the authorization request between the Initiating Device to the Authorization Device.
 
-- User-Transferred Session Data Pattern: In the first variant, the user initiates the authorization process with the authorization server by copying information from the Initiating Device to the Authorization Device, before authorizing an action. For example the user may read a code displayed on the Initiating Device and enter it on the Authorization Device, or they may scan a QR code displayed in the Initiating Device with the Authorization Device.
-- Backchannel-Transferred Session Pattern: In the second variant, the OAuth client on the Initiating Device is responsible for transferring the session and initiating authorization on the Authorization Device via a backchannel with the Authorization Server. For example the user may attempt an online purchase on an Initiating Device (e.g. a personal computer) and receive an authorization request on their Authentication Device (e.g. mobile phone).
-- User-Transferred Authorization Data Pattern: In the third variant, the OAuth client on the Initiating Device triggers the authorization request via a backchannel with the Authorization Server. Authorization data (e.g. an access code) is displayed on the Authorization Device, which the user enters on the Initiating Device.
+- User-Transferred Session Data Pattern: In the first variant, the user initiates the authorization process with the authorization server by copying information from the Initiating Device to the Authorization Device, before authorizing an action. By transferring the data from the Initiating Device to the Authorization Device, the user transfers the authorization session. For example the user may read a code displayed on the Initiating Device and enter it on the Authorization Device, or they may scan a QR code displayed in the Initiating Device with the Authorization Device. The Device Authorization Grant ([@RFC8628]) is an example of a cross-device flow that follow this pattern.
+- Backchannel-Transferred Session Pattern: In the second variant, the OAuth client on the Initiating Device is responsible for transferring the session and initiating authorization on the Authorization Device via a backchannel with the Authorization Server. For example the user may attempt an online purchase on an Initiating Device (e.g. a personal computer) and receive an authorization request on their Authentication Device (e.g. mobile phone). The Client Initiated Backchannel Authentication [@CIBA] is an example of a cross-device flow that follow this pattern.
+- User-Transferred Authorization Data Pattern: In the third variant, the OAuth client on the Initiating Device triggers the authorization request via a backchannel with the Authorization Server. Authorization data (e.g. an access code) is displayed on the Authorization Device, which the user enters on the Initiating Device. For example the user may attempt to access data in an enterprise application and receive an authorization code on their Authentication Device (e.g. mobile phone) that they enter on Initiating Device.
 
 ## User-Transferred Session Data Pattern
 The Device Authorization Grant ([@RFC8628])is an example of a cross-device flow that relies on the user copying information from the Initiating Device to the Authorization Device. The figure below shows a typical example of this flow:
@@ -671,8 +671,9 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
    -latest
 
    * Fixed typos and grammar edits
-   * Introduced Cross-Device Consent Phishing as a label for the types of attacks described in this document.
    * Capitalised Initiating Device and Authorization Device
+   * Introduced Cross-Device Consent Phishing as a label for the types of attacks described in this document.
+   * Updated labels for different types of flows (User-Transferred Session Data Pattern, Backchannel-Transferred Session Pattern, User-Transferred Authorization Data Pattern)
    * Adopted consistent use of hyphenation in using "cross-device"
 
 
