@@ -133,7 +133,7 @@ There are three cross-device flow patterns for transferring the authorization re
 
 - User-Transferred Session Data Pattern: In the first pattern, the user initiates the authorization process with the authorization server by copying information from the Initiating Device to the Authorization Device, before authorizing an action. By transferring the data from the Initiating Device to the Authorization Device, the user transfers the authorization session. For example the user may read a code displayed on the Initiating Device and enter it on the Authorization Device, or they may scan a QR code displayed in the Initiating Device with the Authorization Device. The Device Authorization Grant ([@RFC8628]) is an example of a cross-device flow that follow this pattern.
 - Backchannel-Transferred Session Pattern: In the second pattern, the OAuth client on the Initiating Device is responsible for transferring the session and initiating authorization on the Authorization Device via a backchannel with the Authorization Server. For example the user may attempt an online purchase on an Initiating Device (e.g. a personal computer) and receive an authorization request on their Authentication Device (e.g. mobile phone). The Client Initiated Backchannel Authentication [@CIBA] is an example of a cross-device flow that follow this pattern.
-- User-Transferred Authorization Data Pattern: In the third pattern, the OAuth client on the Initiating Device triggers the authorization request via a backchannel with the Authorization Server. Authorization data (e.g. an authorization code) is displayed on the Authorization Device, which the user enters on the Initiating Device. For example the user may attempt to access data in an enterprise application and receive an authorization code on their Authentication Device (e.g. mobile phone) that they enter on Initiating Device.
+- User-Transferred Authorization Data Pattern: In the third pattern, the OAuth client on the Initiating Device triggers the authorization request via a backchannel with the Authorization Server. Authorization data (e.g. a 6 digit authorization code) is displayed on the Authorization Device, which the user enters on the Initiating Device. For example the user may attempt to access data in an enterprise application and receive a 6 digit authorization code on their Authentication Device (e.g. mobile phone) that they enter on Initiating Device.
 
 ## User-Transferred Session Data Pattern
 The Device Authorization Grant ([@RFC8628]) is an example of a cross-device flow that relies on the user copying information from the Initiating Device to the Authorization Device. The figure below shows a typical example of this flow:
@@ -200,7 +200,7 @@ Figure: Cross-Device Flows: Backchannel Transferred Session Pattern
 The Authorization Server may use a variety of mechanisms to request user authorization, including a push notification to a dedicated app on a mobile phone, or sending a text message with a link to an endpoint where the user can authenticate and authorize an action.
 
 ## User-Transferred Authorization Data Pattern
-Examples of the user-transferred authorization data pattern includes flows in which the Initiating Device requests the Authorization Server to send a one time access code (e.g. as a text message or e-mail) to the Authorization Device. Once the Authroization Device receives the code, the user enters it on the Initiating Device. The Initiatng Device presents it back to the Authroization Server for validation before gaining access to the user's resources. The figure below shows an example of this flow.
+Examples of the user-transferred authorization data pattern includes flows in which the Initiating Device requests the Authorization Server to send authorization data (e.g. a 6 digit authorization code in a text message or e-mail) to the Authorization Device. Once the Authorization Device receives the authroization data, the user enters it on the Initiating Device. The Initiatng Device presents it back to the Authorization Server for validation before gaining access to the user's resources. The figure below shows an example of this flow.
 
 
 ~~~ ascii-art
@@ -212,25 +212,25 @@ Examples of the user-transferred authorization data pattern includes flows in wh
              +--------------+                       |               |
                     ^                               |               |
                     | (D)User Enters                |               |
-                    |    Access Code                |               |
+                    |    Authorization Data         |               |
                     |                               |               |
                     |                               |               |
              +--------------+                       |               |
              | Authorization|                       |               |
              |    Device    |<--------------------->|               |
-             |              |(C) Send Access Code   |               |
-             |              |                       |               |
+             |              |(C) Send Authorization |               |
+             |              |    Data               |               |
              +--------------+                       +---------------+
 ~~~
 Figure: Cross-Device Flow: User-Transferred Authorization Data Pattern
 
 - (A) The user takes an action on the Initiating Device by starting a purchase, adding a device to a network or connecting a service to the Initiating Device.
 - (B) The client on the Initiating Device requests user authorization on the backchannel from the authorization server.
-- (C) The authorization server sends an access code to the Authorization Device.
-- (D) The user enters the access code on the Initiating Device.
+- (C) The authorization server sends authorization data (e.g. a 6 digit authorization code) to the Authorization Device.
+- (D) The user enters the authorization data (e.g. the 6 digit authorization code) on the Initiating Device.
 - (E) The Authorization Server issues tokens or grants authorization to the Initiating Device to access the user's resources.
 
-The Authorization Server may choose to authenticate the user before sending the access code. The access code may be delivered as a text message or through a mobile application.
+The Authorization Server may choose to authenticate the user before sending the authorization data. The authorization data may be delivered as a text message or through a mobile application.
 
 ## Examples of Cross-Device Flows
 Examples of cross-device flow scenarios include:
@@ -257,7 +257,7 @@ A new employee is directed to an onboarding portal to provide additional informa
 An employee is signed into an application on their personal computer and wants to bootstrap the mobile application on their mobile phone. The employee initiates the cross-device flow and is shown a QR code in their application. The employee launches the mobile application on their phone and scans the QR code which results in the user being signed into the application on the mobile phone.
 
 ### Example A8: Access a Productivity Application (User-Transferred Authorization Data Pattern)
-A user is accessing a Computer Aid Design (CAD) application. When accessing the application, an access code is sent to the user's mobile phone. The user views the access code on their phone and enters it in the CAD application, after which the CAD application displays the user's most recent designs.
+A user is accessing a Computer Aid Design (CAD) application. When accessing the application, authroization data in the form of a 6 digit authorization code is sent to the user's mobile phone. The user views the 6 digit authorization code on their phone and enters it in the CAD application, after which the CAD application displays the user's most recent designs.
 
 # Cross-Device Flow Exploits
 Attackers exploit cross-device flows by initiating an authorization flow on the Initiating Device and then use social engineering techniques to change the context in which the request is presented to the user in order to convince them to grant authorization on the Authorization Device. The attacker is able to change the context of the authorization request because the channel between the Initiating Device and the Authorizing Device is unauthenticated. These attacks are also known as Cross-Device Consent Phishing (CDCP) attacks.
@@ -392,7 +392,7 @@ Figure: Cross-Device Consent Phishing: User-Transferred Authorization Data Patte
 - (A) The attacker sends a social engineering message to prime the user for the authorization request they are about to receive, including instructions on what to do with the authorization data once they receive it.
 - (B) The attacker initiates the protocol on the Initiating Device (or by mimicking the Initiating Device) by starting a purchase, adding a device to a network or accessing a service on the Initiating Device.
 - (C) The client on the Initiating Device requests user authorization on the backchannel from the Authorization Server.
-- (D) The Authorization Server sends authroization data (e.g. a 6 digit authorization code) to the user's Authorization Device (the authorization data may be presented as a QR code, or text message).
+- (D) The Authorization Server sends authorization data (e.g. a 6 digit authorization code) to the user's Authorization Device (the authorization data may be presented as a QR code, or text message).
 - (E) The user is convinced by the social engineering message received in and forwards the authorization data (e.g. a 6 digit authorization code) to the attacker.
 - (F) The attacker enters the authorization data (e.g. a 6 digit authorization code) on the Initiating Device.
 - (G) The Authorization Server grants authorization and issues access and refresh tokens to the Initiating Device, which is under the attacker's control. On completion of the exploit, the attacker gains access to the user's resources.
