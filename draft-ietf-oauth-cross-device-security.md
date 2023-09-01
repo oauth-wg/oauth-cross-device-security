@@ -548,19 +548,14 @@ Sender-constrained tokens limit the impact of a successful attack by preventing 
 
 **Limitations:** Sender-constrained tokens, especially sender-constrained tokens that require proof-of-posession, raise the bar for executing the attack and profiting from exfiltrating tokens. Although a software proof-of-posession key is better than no proof-of-posession key, an attacker may still exfiltrate the software key. Hardware keys are harder to exfiltrate, but come with additional implementation complexity. An attacker that controls the Initiating Device may still be able to excercise the key, even if it is in hardware. Consequently the main protection derived from sender-constrained tokens is preventing tokens from being moved from the Initiating Device to another device, thereby making it harder sell stolen tokens and profit from the attack.
 
-### User Education
-Research shows that user education is effective in reducing the risk of phishing attacks [@Baki2023]. The service provider MAY educate users on the risks of cross-device consent phishing and provide out-of-band reinforcement to the user on the context and conditions under which an authorization grant may be requested. For example if the service provider does not send e-mails with QR codes requesting users to grant authorization, this may be reinforced in marketing messages and anti-fraud awareness campaigns. The service provider MAY also choose to reinforce these user education messages through in-app experiences.
-
-**Limitations:** Although user education helps to raise awareness and reduce the overall risk to users, it is insufficient on its own to mitigate cross-device consent phishing attacks and it SHOULD be used in conjunction with other controls described in this document.
-
 ### User Experience
 The user experience SHOULD preserve the context within which the protocols were initiated and communicate this clearly to the user when they are asked to authorize, authenticate or present a credential. In preserving the context, it SHOULD be clear to the user who invoked the flow, why it was invoked and what the consequence of completing the authorization, authentication or credential presentation. The user experience SHOULD reinforce the message that unless the user initiated the authorization request, or was expecting it, they should decline the request.
 
 It SHOULD be clear to the user how to decline the request. To avoid accidental authorization grants, the "decline" option SHOULD be the default option or given similar prominence in the user experience as the "grant" option.
 
-The user experience MAY include information to further educate the user on cross-device consent phishing attacks and reinforce the conditions under which authorization grants may be requested. This information may be reinforced through other communication channels as part of marketing or anti-fraud awareness campaigns.
-
 This information may be communicated graphically or in a simple message (e.g., "It looks like you are trying to access your files on a digital whiteboard in your city center office. Click here to grant access to your files. If you are not trying to access your files, you should decline this request and notify the security department").
+
+The service may provide out-of-band reinforcement to the user on the context and conditions under which an authorization grant may be requested. For example if the service provider does not send e-mails with QR codes requesting users to grant authorization, this may be reinforced in marketing messages, in-app experiences and through anti-fraud awareness campaigns.
 
 **Limitations:** Improvements to user experience on their own is unlikely to be sufficient and SHOULD be used in conjunction with other controls described in this document.
 
@@ -587,7 +582,6 @@ The practical mitigations described in this section can prevent the attacks from
 |Short Lived Tokens            |         |         |    X    |
 |Rate Limits                   |    X    |    X    |         |
 |Sender-Constrained Tokens     |         |         |    X    |
-|User Education                |    X    |         |         |
 |User Experience               |    X    |         |         |
 |Authenticated flow            |    X    |         |         |
 Table: Practical Mitigation Summary
@@ -670,7 +664,7 @@ The popularity of cross-device flows attracted the attention of attackers that e
 To address these attacks, we propose a three pronged approach that includes the deployment of practical mitigations to safeguard protocols that are already deployed, provide guidance on when to use different protocols, including protocols that are not susceptible to these attacks, and the introduction of formal methods to evaluate the impact of mitigations and find additional issues.
 
 # Contributors
-The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil Reddy Boreddy, Bjorn Hjelm, Joseph Heenan, Brian Campbell, Damien Bowden, Kristina Yasuda, Tim Würtele, Karsten Meyer zu Selhausen, Maryam Mehrnezhad and others (please let us know, if you've been mistakenly omitted) for their valuable input, feedback and general support of this work.
+The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil Reddy Boreddy, Bjorn Hjelm, Joseph Heenan, Brian Campbell, Damien Bowden, Kristina Yasuda, Tim Würtele, Karsten Meyer zu Selhausen and others (please let us know, if you've been mistakenly omitted) for their valuable input, feedback and general support of this work.
 
 {backmatter}
 
@@ -678,15 +672,12 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
 
    [[ To be removed from the final specification ]]
 
+
    -latest
-   * Introduced normative SHOULD, RECOMMENDED and MAY when applied to actions the Authorization Server, Resource Server or Client may implement.
-   * Added User Education as a standalone mitigation.
-   * Added Maryam Mehrnezhad to the contributors list.
-     
-   -02
 
    * Fixed typos and grammar edits
    * Capitalised Initiating Device and Authorization Device
+   * Introduced normative SHOULD, RECOMMENDED and MAY when applied to actions the Authorization Server, Resource Server or Client may implement.
    * Introduced Cross-Device Consent Phishing as a label for the types of attacks described in this document.
    * Updated labels for different types of flows (User-Transferred Session Data Pattern, Backchannel-Transferred Session Pattern, User-Transferred Authorization Data Pattern)
    * Adopted consistent use of hyphenation in using "cross-device"
@@ -898,22 +889,5 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
   </front>
   <seriesInfo name="IEEE" value="802.15.4-2020"/>
   <annotation>This standard defines the physical layer and media access control for low-rate wireless personal area networks (LR-WPANs) and is maintained by the IEEE 802.15 working group.</annotation>
-</reference>
-
-<reference anchor="Baki2023" target="https://doi.org/10.1109/TDSC.2022.3151103">
-  <front>
-    <title>Sixteen Years of Phishing User Studies: What Have We Learned?</title>
-    <author initials="S." surname="Baki">
-      <organization>IEEE Transactions on Dependable and Secure Computing</organization>
-    </author>
-    <author initials="R. M." surname="Verma">
-      <organization>IEEE Transactions on Dependable and Secure Computing</organization>
-    </author>
-    <date year="2023"/>
-  </front>
-  <seriesInfo name="Volume" value="20"/>
-  <seriesInfo name="Number" value="2"/>
-  <seriesInfo name="Pages" value="1200-1212"/>
-  <format type="doi">10.1109/TDSC.2022.3151103</format>
 </reference>
 
