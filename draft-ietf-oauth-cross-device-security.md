@@ -685,7 +685,7 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
    * Added Maryam Mehrnezhad to the contributors list.
 
    -02
-   
+
    * Fixed typos and grammar edits
    * Capitalised Initiating Device and Authorization Device
    * Introduced Cross-Device Consent Phishing as a label for the types of attacks described in this document.
