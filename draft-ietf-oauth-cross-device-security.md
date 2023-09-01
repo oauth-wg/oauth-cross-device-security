@@ -682,7 +682,7 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
    -latest
    * Introduced normative SHOULD, RECOMMENDED and MAY when applied to actions the Authorization Server, Resource Server or Client may implement.
    * Added User Education as a standalone mitigation.
-   * Added Maryam Mehrnezhad to the contributors list. 
+   * Added Maryam Mehrnezhad to the contributors list.
 
    -02
    
