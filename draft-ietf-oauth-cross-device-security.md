@@ -571,27 +571,33 @@ By requiring a user to authenticate on the Initiating Device with a phishing res
 
 **Limitations:** Starting with an authenticated flow does not prevent the attacks described in [Example B5: Illicit Network Join](#Example B5: Illicit Network Join (User-Transferred Authorization Data Pattern)) and [Example B7: Illicit Session Transfer](#Example B7: Illicit session transfer (User-Transferred Authorization Data Pattern)) and it is RECOMMENDED that additional mitigations described in this document is used if the cross-device flows are used in scenarios such as [Example A5: Add a device to a network](#Example A5: Add a device to a network (User-Transferred Authorization Data Pattern)) and [Example A7: Transfer a session](#Example A7: Transfer a session (User-Transferred Authorization Data Pattern)).
 
+### Request Initiation Verification
+The user MAY be asked to verify if they initiated an authentication or authorization request by sending a one-time password (OTP) or PIN to the user's Authorization Device and asking them to enter it on the Initiating Device to confirm the request. If the request was initiated without the users' consent, they would receive an OTP or PIN out of context which may raise suspicion for the user. In addition, they would not have information on where to enter the OTP or PIN. The user experience on the Authorization Device MAY reinforce the risk of receiving an out-of-context OTP or PIN and provide information to the user on how to report an unauthorized authentication or authorization request.
+
+**Limitations:** The additional verification step may reduce the overall usability of the system as it is one more thing users need to do right. Attackers may combine traditional phishing attacks and target users who respond to those messages with an interactive attack that sets the expectation with the user that they will have to provide the OTP or PIN, in addition to granting authorization for the request.
+
 ### Practical Mitigation Summary
 The practical mitigations described in this section can prevent the attacks from being initiated, disrupt attacks once they start or reduce the impact or remediate an attack if it succeeds. When combining one or more of these mitigations the overall security profile of a cross-device flow improves significantly. The following table provides a summary view of these mitigations:
 
 
-|        Mitigation            | Prevent | Disrupt | Recover |
-|:-----------------------------|:-------:|:-------:|:-------:|
-|Establish Proximity           |    X    |    X    |         |
-|Short Lived/Timebound Codes   |         |    X    |         |
-|One-Time or Limited Use Codes |         |    X    |         |
-|Unique Codes                  |         |    X    |         |
-|Content Filtering             |         |    X    |         |
-|Detect and remediate          |         |         |    X    |
-|Trusted Devices               |    X    |         |         |
-|Trusted Networks              |    X    |         |         |
-|Limited Scopes                |         |         |    X    |
-|Short Lived Tokens            |         |         |    X    |
-|Rate Limits                   |    X    |    X    |         |
-|Sender-Constrained Tokens     |         |         |    X    |
-|User Education                |    X    |         |         |
-|User Experience               |    X    |         |         |
-|Authenticated flow            |    X    |         |         |
+|        Mitigation              | Prevent | Disrupt | Recover |
+|:-------------------------------|:-------:|:-------:|:-------:|
+|Establish Proximity             |    X    |    X    |         |
+|Short Lived/Timebound Codes     |         |    X    |         |
+|One-Time or Limited Use Codes   |         |    X    |         |
+|Unique Codes                    |         |    X    |         |
+|Content Filtering               |         |    X    |         |
+|Detect and remediate            |         |         |    X    |
+|Trusted Devices                 |    X    |         |         |
+|Trusted Networks                |    X    |         |         |
+|Limited Scopes                  |         |         |    X    |
+|Short Lived Tokens              |         |         |    X    |
+|Rate Limits                     |    X    |    X    |         |
+|Sender-Constrained Tokens       |         |         |    X    |
+|User Education                  |    X    |         |         |
+|User Experience                 |    X    |         |         |
+|Authenticated flow              |    X    |         |         |
+|Request Initiation Verification |         |    X    |         |
 Table: Practical Mitigation Summary
 
 ## Protocol Selection
