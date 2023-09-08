@@ -666,9 +666,25 @@ As is the case with other kinds of protocols, it can be easy to overlook vulnera
 
 There are two major strengths of formal analysis: First, finding new vulnerabilities does not require creativity - i.e., new classes of attacks can be uncovered even if no one thought of these attacks before. In a faithful model, vulnerabilities become clear during the proof process or even earlier. Second, formal analysis can exclude the existence of any attacks within the boundaries of the model (e.g., the protocol layers modeled, the level of detail and functionalities covered, the assumed attacker capabilities, and the formalized security goals). As a downside, there is usually a gap between the model (which necessarily abstracts away from details) and implementations. In other words, implementations can introduce flaws where the model does not have any. Nonetheless, for protocol standards, formal analysis can help to ensure that the specification is secure when implemented correctly.
 
-There are various different approaches to formal security analysis and each brings its own strengths and weaknesses. For example, models differ in the level of detail in which they can capture a protocol (granularity, expressiveness), in the kind of statements they can produce, and whether the proofs can be assisted by tools or have to be performed manually. One of the most successfully used approaches is the so-called Web Infrastructure Model (WIM), a model specifically designed for the analysis of web authentication and authorization protocols. While it is a manual (pen-and-paper) model, it captures details of browsers and web interactions in unprecedented detail. Using the WIM, previously unknown flaws in OAuth, OpenID Connect, and FAPI were discovered.
+There are various different approaches to formal security analysis and each brings its own strengths and weaknesses. For example, models differ in the level of detail in which they can capture a protocol (granularity, expressiveness), in the kind of statements they can produce, and whether the proofs can be assisted by tools or have to be performed manually. 
 
-To ensure secure cross-device interactions, a formal analysis using the WIM therefore seems to be in order. Such an analysis should comprise a generic model for cross-device flows, potentially including different kinds of interactions. The aim of the analysis would be to evaluate the effectiveness of selected mitigation strategies. To the best of our knowledge, this would be the first study of this kind.
+The following works have been identified as relevant to the analysis of cross-device flows:
+
+ * In "Formal analysis of self-issued OpenID providers" [@Bauer2022], the
+   protocol of [@OpenID.SIOPV2] was analyzed using the Web Infrastructure Model
+   (WIM). The WIM is specifically designed for the analysis of web
+   authentication and authorization protocols. While it is a manual
+   (pen-and-paper) model, it captures details of browsers and web interactions
+   to a degree that is hard to match in automated models. In previous works,
+   previously unknown flaws in OAuth, OpenID Connect, and FAPI were discovered
+   using the WIM. In the analysis of a cross-device SIOP V2 flow in
+   [@Bauer20022], the request replay attack already described in Section 13.3 of
+   [@OpenID.SIOPV2] was confirmed in the model. A mitigation was implemented
+   based on a so-called Cross-Device Stub, essentially a component that serves
+   to link the two devices before the protocol flow starts. The mitigation was
+   shown to be effective in the model.
+(...) 
+
 
 # Conclusion
 Cross-device flows enable authorization on devices with limited input capabilities, allow for secure authentication when using public or shared devices, provide a path towards multi-factor authentication and, provide the convenience of a single, portable credential store.
@@ -924,4 +940,13 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
   <seriesInfo name="Number" value="2"/>
   <seriesInfo name="Pages" value="1200-1212"/>
   <format type="doi">10.1109/TDSC.2022.3151103</format>
+</reference>
+
+<reference anchor="Bauer2022" target="https://elib.uni-stuttgart.de/handle/11682/12417">
+  <front>
+    <title>https://elib.uni-stuttgart.de/handle/11682/12417</title>
+    <author initials="C." surname="Bauer">
+    </author>
+    <date year="2022">
+ </front>
 </reference>
