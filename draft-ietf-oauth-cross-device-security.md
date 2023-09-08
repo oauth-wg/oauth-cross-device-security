@@ -54,21 +54,26 @@ and engineers implementing cross-device flows.
 {mainmatter}
 
 # Introduction {#Introduction}
-Cross-device flows enable a user to initiate an authorization flow on
+Cross-device flows allows a user to start a flow on an Initiating Device (e.g. a SmartTV) and then transfer the session to continue it on a second device (a mobile phone). The second device may be used to access the service that was running on the first device, or the user may perform an action on the second device to complete a task such as authenticating or granting authorization, before passing control back to the first device.
+
+These flows typically involve using a mobile phone to scan a QR code
+or enter a user code displayed on an Initiating Device (e.g., Smart
+TV, Kiosk, Personal Computer etc).
+
+When the user is required to scan a QR code or enter a user code, the channel between the Initiating Device and the second device is unauthenticated. It is up to the user to decide whether to trust the QR code or user code. This lack of an authenticated channel may be exploited by attackers to gain unauthorised access to a users resources.
+
+## Service Transfer
+Service Transfer flows enable a user to transfer access to a service or network from an authorized Initiating Device to a second device such as a mobile phone. The session transfer may preserve state information, including authentication state, to the second device to avoid additional configuration and optimise the user experience. These flows are often used to add new devices to a network, onboard customers to a mobile application from a service accessed by the Initiating Device.
+
+## Cross-Device Authorization
+Cross-device authorization flows enable a user to initiate an authorization flow on
 one device (the Initiating Device) and then use a second, personally
 trusted, device (Authorization Device) to authorize the Initiating
 Device to access a resource (e.g., access to a service). The Device
 Authorization Grant ([@RFC8628]) and Client Initiated Backchannel
 Authentication [@CIBA] are two examples of popular cross-device flows.
 
-These flows typically involve using a mobile phone to scan a QR code
-or enter a user code displayed on an Initiating Device (e.g., Smart
-TV, Kiosk, Personal Computer etc).
-
-The channel between the Initiating Device and the Authorization Device is
-unauthenticated. It is up to the user to decide whether to trust
-a QR code, user code, or the authorization request pushed to their Authorization
-Device.
+In these cross-device authroization flows, the channel between the Initiating Device and the Authorization Device is unauthenticated. It is up to the user to decide whether to trust a QR code, user code, or the authorization request pushed to their Authorization Device.
 
 Cross-Device Consent Phishing (CDCP) attacks exploit the unauthenticated channel
 between the Initiating Device and Authorization Device using social engineering
