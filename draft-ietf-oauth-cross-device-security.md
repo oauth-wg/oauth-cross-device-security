@@ -941,7 +941,7 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
     <author initials="G." surname="Sciarretta" fullname="Giada Sciarretta"/>
     <date year="2020"/>
   </front>
-  <seriesInfo name="Proceedings of the Tenth ACM Conference on Data and Application Security and Privacy (CODASPY '20)" />
+  <seriesInfo name="IEEE" value="Proceedings of the Tenth ACM Conference on Data and Application Security and Privacy (CODASPY '20)" />
   <organization>Association for Computing Machinery</organization>
   <address>New York, NY, USA</address>
   <pages>223–234</pages>
@@ -956,6 +956,6 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
     <author initials="S." surname="Ranise" fullname="Silvio Ranise"/>
     <date year="2023"/>
   </front>
-  <seriesInfo name="IEEE Transactions on Dependable and Secure Computing (TDSC)" />
+  <seriesInfo name="IEEE" value="IEEE Transactions on Dependable and Secure Computing (TDSC)" />
   <organization>IEEE</organization>
 </reference>
