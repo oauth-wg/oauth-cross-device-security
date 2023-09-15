@@ -73,7 +73,7 @@ Device to access a resource (e.g., access to a service). The Device
 Authorization Grant ([@RFC8628]) and Client Initiated Backchannel
 Authentication [@CIBA] are two examples of popular cross-device flows.
 
-In these cross-device authroization flows, the channel between the Initiating Device and the Authorization Device is unauthenticated. It is up to the user to decide whether to trust a QR code, user code, or the authorization request pushed to their Authorization Device.
+In these cross-device authorization flows, the channel between the Initiating Device and the Authorization Device is unauthenticated. It is up to the user to decide whether to trust a QR code, user code, or the authorization request pushed to their Authorization Device.
 
 Cross-Device Consent Phishing (CDCP) attacks exploit the unauthenticated channel
 between the Initiating Device and Authorization Device using social engineering
