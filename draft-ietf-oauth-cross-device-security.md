@@ -576,28 +576,34 @@ The user MAY be asked to verify if they initiated an authentication or authoriza
 
 **Limitations:** The additional verification step may reduce the overall usability of the system as it is one more thing users need to do right. Attackers may combine traditional phishing attacks and target users who respond to those messages with an interactive attack that sets the expectation with the user that they will have to provide the OTP or PIN, in addition to granting authorization for the request.
 
+## Request Binding with Out-of-Band Data
+In the User-Transferred Session Data Pattern, users MAY enter out-of-band information on the Initiating Device to start the authorization process. The out-of-band data entered by the user MAY then be included in the QR code which is displayed on the Initiating Device. When the QR code is scanned by the Authorizing Device, the out-of-band data is verified by the user or by the Authorizing Device. The out-of-ban data could be any attribute that the user or Authorizing Device can retrieve during the authorization process. Examples inlcude a serial number, one-time password or PIN, location or any other data that the user or the Authorizing Device can recall or retrieve during the authorization process ([@MPRCS2020], [@PCRSM2023]).
+
+**Limitations:** A sophistacted attacker may include an additional step in their attack where they create a phishing attack that gathers the out-of-band data from the user before initiating the authorisation request. The additional step could also have a negative impact on the usability level of the solution.
+
 ### Practical Mitigation Summary
 The practical mitigations described in this section can prevent the attacks from being initiated, disrupt attacks once they start or reduce the impact or remediate an attack if it succeeds. When combining one or more of these mitigations the overall security profile of a cross-device flow improves significantly. The following table provides a summary view of these mitigations:
 
 
-|        Mitigation              | Prevent | Disrupt | Recover |
-|:-------------------------------|:-------:|:-------:|:-------:|
-|Establish Proximity             |    X    |    X    |         |
-|Short Lived/Timebound Codes     |         |    X    |         |
-|One-Time or Limited Use Codes   |         |    X    |         |
-|Unique Codes                    |         |    X    |         |
-|Content Filtering               |         |    X    |         |
-|Detect and remediate            |         |         |    X    |
-|Trusted Devices                 |    X    |         |         |
-|Trusted Networks                |    X    |         |         |
-|Limited Scopes                  |         |         |    X    |
-|Short Lived Tokens              |         |         |    X    |
-|Rate Limits                     |    X    |    X    |         |
-|Sender-Constrained Tokens       |         |         |    X    |
-|User Education                  |    X    |         |         |
-|User Experience                 |    X    |         |         |
-|Authenticated flow              |    X    |         |         |
-|Request Initiation Verification |         |    X    |         |
+|        Mitigation                    | Prevent | Disrupt | Recover |
+|:-------------------------------------|:-------:|:-------:|:-------:|
+|Establish Proximity                   |    X    |    X    |         |
+|Short Lived/Timebound Codes           |         |    X    |         |
+|One-Time or Limited Use Codes         |         |    X    |         |
+|Unique Codes                          |         |    X    |         |
+|Content Filtering                     |         |    X    |         |
+|Detect and remediate                  |         |         |    X    |
+|Trusted Devices                       |    X    |         |         |
+|Trusted Networks                      |    X    |         |         |
+|Limited Scopes                        |         |         |    X    |
+|Short Lived Tokens                    |         |         |    X    |
+|Rate Limits                           |    X    |    X    |         |
+|Sender-Constrained Tokens             |         |         |    X    |
+|User Education                        |    X    |         |         |
+|User Experience                       |    X    |         |         |
+|Authenticated flow                    |    X    |         |         |
+|Request Initiation Verification       |         |    X    |         |
+|Request Binding with Out-of-Band Data |         |    X    |         |
 Table: Practical Mitigation Summary
 
 ## Protocol Selection
@@ -924,4 +930,32 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
   <seriesInfo name="Number" value="2"/>
   <seriesInfo name="Pages" value="1200-1212"/>
   <format type="doi">10.1109/TDSC.2022.3151103</format>
+</reference>
+
+<reference anchor="MPRCS2020" target="https://doi.org/10.1145/3374664.3375727">
+  <front>
+    <title>The Good, the Bad and the (Not So) Ugly of Out-of-Band Authentication with eID Cards and Push Notifications: Design, Formal and Risk Analysis</title>
+    <author initials="M." surname="Pernpruner" fullname="Marco Pernpruner"/>
+    <author initials="R." surname="Carbone" fullname="Roberto Carbone"/>
+    <author initials="S." surname="Ranise" fullname="Silvio Ranise"/>
+    <author initials="G." surname="Sciarretta" fullname="Giada Sciarretta"/>
+    <date year="2020"/>
+  </front>
+  <seriesInfo name="Proceedings of the Tenth ACM Conference on Data and Application Security and Privacy (CODASPY '20)" />
+  <organization>Association for Computing Machinery</organization>
+  <address>New York, NY, USA</address>
+  <pages>223–234</pages>
+</reference>
+
+<reference anchor="PCRSM2023" target="https://doi.org/10.1109/TDSC.2023.3296210">
+  <front>
+    <title>An Automated Multi-Layered Methodology to Assist the Secure and Risk-Aware Design of Multi-Factor Authentication Protocols</title>
+    <author initials="M." surname="Pernpruner" fullname="Marco Pernpruner"/>
+    <author initials="R." surname="Carbone" fullname="Roberto Carbone"/>
+    <author initials="G." surname="Sciarretta" fullname="Giada Sciarretta"/>
+    <author initials="S." surname="Ranise" fullname="Silvio Ranise"/>
+    <date year="2023"/>
+  </front>
+  <seriesInfo name="IEEE Transactions on Dependable and Secure Computing (TDSC)" />
+  <organization>IEEE</organization>
 </reference>
