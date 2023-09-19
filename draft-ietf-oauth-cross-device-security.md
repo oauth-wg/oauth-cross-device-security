@@ -135,7 +135,7 @@ There are three cross-device flow patterns for transferring the authorization re
 - Backchannel-Transferred Session Pattern: In the second pattern, the OAuth client on the Initiating Device is responsible for transferring the session and initiating authorization on the Authorization Device via a backchannel with the Authorization Server. For example the user may attempt an online purchase on an Initiating Device (e.g. a personal computer) and receive an authorization request on their Authentication Device (e.g. mobile phone). The Client Initiated Backchannel Authentication [@CIBA] is an example of a cross-device flow that follow this pattern.
 - User-Transferred Authorization Data Pattern: In the third pattern, the OAuth client on the Initiating Device triggers the authorization request via a backchannel with the Authorization Server. Authorization data (e.g. a 6 digit authorization code) is displayed on the Authorization Device, which the user enters on the Initiating Device. For example the user may attempt to access data in an enterprise application and receive a 6 digit authorization code on their Authentication Device (e.g. mobile phone) that they enter on Initiating Device.
 
-## User-Transferred Session Data Pattern
+## User-Transferred Session Data Pattern {#utsdp}
 The Device Authorization Grant ([@RFC8628]) is an example of a cross-device flow that relies on the user copying information from the Initiating Device to the Authorization Device. The figure below shows a typical example of this flow:
 
 ~~~ ascii-art
@@ -167,7 +167,7 @@ or enters the user code on the Authorization Device.
 - (D) The user authenticates to the Authorization Server before granting authorization.
 - (E) The Authorization Server issues tokens or grants authorization to the Initiating Device to access the user's resources.
 
-## Backchannel-Transferred Session Pattern
+## Backchannel-Transferred Session Pattern {#btsp}
 The Client Initiated Backchannel Authentication [@CIBA] transfers the session on the backchannel with the Authorization Server to request authorization on the Authorization Device. The figure below shows an example of this flow.
 
 ~~~ ascii-art
@@ -199,7 +199,7 @@ Figure: Cross-Device Flows: Backchannel-Transferred Session Pattern
 
 The Authorization Server may use a variety of mechanisms to request user authorization, including a push notification to a dedicated app on a mobile phone, or sending a text message with a link to an endpoint where the user can authenticate and authorize an action.
 
-## User-Transferred Authorization Data Pattern
+## User-Transferred Authorization Data Pattern {#utadp}
 Examples of the user-transferred authorization data pattern includes flows in which the Initiating Device requests the Authorization Server to send authorization data (e.g. a 6 digit authorization code in a text message or e-mail) to the Authorization Device. Once the Authorization Device receives the authorization data, the user enters it on the Initiating Device. The Initiating Device presents it back to the Authorization Server for validation before gaining access to the user's resources. The figure below shows an example of this flow.
 
 
@@ -518,7 +518,7 @@ The authorization server may be able to detect misuse of the codes due to repeat
 
 **Limitations:** Detection and remediation requires that resource servers are integrated with security eventing systems or token introspection services. This may not always be practical for existing systems and may need to be targeted to the most critical resource services in an environment.
 
-### Trusted Devices
+### Trusted Devices {#trusted_devices}
 If an attacker is unable to initiate the protocol, they are unable to obtain a QR code or user code that can be leveraged for the attacks described in this document. By restricting the protocol to only be executed on devices trusted by the authorization server, it prevents attackers from using arbitrary devices, or by mimicking devices to initiate the protocol. Trusted devices include devices that are pre-registered with the authorization server or are subject to device management policies. Device management policies may enforce patching, version updates, on-device anti-malware deployment, revocation status and device location amongst others. Trusted devices may have their identities rooted in hardware (e.g., a TPM or equivalent technology). By only allowing trusted devices to initiate cross-device flows, it requires the attacker to have access to such a device and maintain access in a way that does not result in the device's trust status from being revoked.
 
 **Limitations:** An attacker may still be able to obtain access to a trusted device and use it to initiate authorization requests, making it necessary to apply additional controls and integrating with other threat detection and management systems that can detect suspicious behaviour such as repeated requests to initiate authorization or high volume of service activation on the same device.
@@ -548,7 +548,7 @@ Sender-constrained tokens limit the impact of a successful attack by preventing 
 
 **Limitations:** Sender-constrained tokens, especially sender-constrained tokens that require proof-of-posession, raise the bar for executing the attack and profiting from exfiltrating tokens. Although a software proof-of-posession key is better than no proof-of-posession key, an attacker may still exfiltrate the software key. Hardware keys are harder to exfiltrate, but come with additional implementation complexity. An attacker that controls the Initiating Device may still be able to excercise the key, even if it is in hardware. Consequently the main protection derived from sender-constrained tokens is preventing tokens from being moved from the Initiating Device to another device, thereby making it harder sell stolen tokens and profit from the attack.
 
-### User Education
+### User Education {#user_education}
 Research shows that user education is effective in reducing the risk of phishing attacks [@Baki2023]. The service provider MAY educate users on the risks of cross-device consent phishing and provide out-of-band reinforcement to the user on the context and conditions under which an authorization grant may be requested. For example, if the service provider does not send e-mails with QR codes requesting users to grant authorization, this may be reinforced in marketing messages and anti-fraud awareness campaigns. The service provider MAY also choose to reinforce these user education messages through in-app experiences.
 
 **Limitations:** Although user education helps to raise awareness and reduce the overall risk to users, it is insufficient on its own to mitigate cross-device consent phishing attacks. In particular, carefully designed phishing attacks can be practically indistinguishable from benign authorization flows even for well-trained users. User education SHOULD therefore be used in conjunction with other controls described in this document.
@@ -580,24 +580,24 @@ The user MAY be asked to verify if they initiated an authentication or authoriza
 The practical mitigations described in this section can prevent the attacks from being initiated, disrupt attacks once they start or reduce the impact or remediate an attack if it succeeds. When combining one or more of these mitigations the overall security profile of a cross-device flow improves significantly. The following table provides a summary view of these mitigations:
 
 
-|        Mitigation              | Prevent | Disrupt | Recover |
-|:-------------------------------|:-------:|:-------:|:-------:|
-|Establish Proximity             |    X    |    X    |         |
-|Short Lived/Timebound Codes     |         |    X    |         |
-|One-Time or Limited Use Codes   |         |    X    |         |
-|Unique Codes                    |         |    X    |         |
-|Content Filtering               |         |    X    |         |
-|Detect and remediate            |         |         |    X    |
-|Trusted Devices                 |    X    |         |         |
-|Trusted Networks                |    X    |         |         |
-|Limited Scopes                  |         |         |    X    |
-|Short Lived Tokens              |         |         |    X    |
-|Rate Limits                     |    X    |    X    |         |
-|Sender-Constrained Tokens       |         |         |    X    |
-|User Education                  |    X    |         |         |
-|User Experience                 |    X    |         |         |
-|Authenticated flow              |    X    |         |         |
-|Request Initiation Verification |         |    X    |         |
+| Mitigation                      | Prevent | Disrupt | Recover |
+| :------------------------------ | :-----: | :-----: | :-----: |
+| Establish Proximity             |    X    |    X    |         |
+| Short Lived/Timebound Codes     |         |    X    |         |
+| One-Time or Limited Use Codes   |         |    X    |         |
+| Unique Codes                    |         |    X    |         |
+| Content Filtering               |         |    X    |         |
+| Detect and remediate            |         |         |    X    |
+| Trusted Devices                 |    X    |         |         |
+| Trusted Networks                |    X    |         |         |
+| Limited Scopes                  |         |         |    X    |
+| Short Lived Tokens              |         |         |    X    |
+| Rate Limits                     |    X    |    X    |         |
+| Sender-Constrained Tokens       |         |         |    X    |
+| User Education                  |    X    |         |         |
+| User Experience                 |    X    |         |         |
+| Authenticated flow              |    X    |         |         |
+| Request Initiation Verification |         |    X    |         |
 Table: Practical Mitigation Summary
 
 ## Protocol Selection
@@ -666,7 +666,7 @@ As is the case with other kinds of protocols, it can be easy to overlook vulnera
 
 There are two major strengths of formal analysis: First, finding new vulnerabilities does not require creativity - i.e., new classes of attacks can be uncovered even if no one thought of these attacks before. In a faithful model, vulnerabilities become clear during the proof process or even earlier. Second, formal analysis can exclude the existence of any attacks within the boundaries of the model (e.g., the protocol layers modeled, the level of detail and functionalities covered, the assumed attacker capabilities, and the formalized security goals). As a downside, there is usually a gap between the model (which necessarily abstracts away from details) and implementations. In other words, implementations can introduce flaws where the model does not have any. Nonetheless, for protocol standards, formal analysis can help to ensure that the specification is secure when implemented correctly.
 
-There are various different approaches to formal security analysis and each brings its own strengths and weaknesses. For example, models differ in the level of detail in which they can capture a protocol (granularity, expressiveness), in the kind of statements they can produce, and whether the proofs can be assisted by tools or have to be performed manually. 
+There are various different approaches to formal security analysis and each brings its own strengths and weaknesses. For example, models differ in the level of detail in which they can capture a protocol (granularity, expressiveness), in the kind of statements they can produce, and whether the proofs can be assisted by tools or have to be performed manually.
 
 The following works have been identified as relevant to the analysis of cross-device flows:
 
@@ -678,12 +678,34 @@ The following works have been identified as relevant to the analysis of cross-de
    to a degree that is hard to match in automated models. In previous works,
    previously unknown flaws in OAuth, OpenID Connect, and FAPI were discovered
    using the WIM. In the analysis of a cross-device SIOP V2 flow in
-   [@Bauer20022], the request replay attack already described in Section 13.3 of
+   [@Bauer2022], the request replay attack already described in Section 13.3 of
    [@OpenID.SIOPV2] was confirmed in the model. A mitigation was implemented
    based on a so-called Cross-Device Stub, essentially a component that serves
-   to link the two devices before the protocol flow starts. The mitigation was
-   shown to be effective in the model.
-(...) 
+   to link the two devices before the protocol flow starts. This essentially
+   creates a trusted device relationship as described in (#trusted_devices). The
+   mitigation was shown to be effective in the model.
+ * In "Security analysis of the Grant Negotiation and Authorization Protocol"
+   [@Helmschmidt2022], an analysis of a draft of the Grant Negotiation and
+   Authorization Protocol (GNAP) [@I-D.ietf-gnap-core-protocol] was performed
+   using the Web Infrastructure Model. The same attack as in [@Bauer2022] was
+   found to apply to GNAP as well. In this case, a model of a "careful user"
+   (see (#user_education)) was used to show that the attack can be
+   prevented (at least in theory) by the user.
+ * In "The Good, the Bad and the (Not So) Ugly of Out-of-Band Authentication
+   with EID Cards and Push Notifications: Design, Formal and Risk Analysis"
+   [@Pernpruner2020], Pernpruner et al. formally analysed a protocol relying on
+   push notifications delivered to an out-of-band device to approve the
+   authentication attempt on the primary device, as in the
+   Backchannel-Transferred Session Pattern. The analysis was performed using the
+   specification language ASLan++ and the model checker SATMC. (TODO: Add
+   references to mitigations once included in the draft.)
+ * In "An Automated Multi-Layered Methodology to Assist the Secure and
+   Risk-Aware Design of Multi-Factor Authentication Protocols"
+   [@Pernpruner2023], a protocol relying on a QR code to be read by a secondary
+   device to approve the authentication attempt on the primary device was
+   formally analyzed (User-Transferred Session Data Pattern, (#utsdp)). (TODO:
+   Add references to mitigations once included in the draft.)
+
 
 
 # Conclusion
@@ -707,6 +729,7 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
    * Introduced normative SHOULD, RECOMMENDED and MAY when applied to actions the Authorization Server, Resource Server or Client may implement.
    * Added User Education as a standalone mitigation.
    * Added Maryam Mehrnezhad to the contributors list.
+   * Expanded section on formal analysis to include completed research projects.
 
    -02
 
@@ -944,9 +967,43 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
 
 <reference anchor="Bauer2022" target="https://elib.uni-stuttgart.de/handle/11682/12417">
   <front>
-    <title>https://elib.uni-stuttgart.de/handle/11682/12417</title>
+    <title>Formal analysis of self-issued OpenID providers</title>
     <author initials="C." surname="Bauer">
     </author>
-    <date year="2022">
+    <date year="2022"/>
  </front>
+</reference>
+
+<reference anchor="Helmschmidt2022" target="https://elib.uni-stuttgart.de/handle/11682/12220">
+  <front>
+    <title>Security analysis of the Grant Negotiation and Authorization Protocol</title>
+    <author initials="F." surname="Helmschmidt">
+    </author>
+    <date year="2022"/>
+ </front>
+</reference>
+
+<reference anchor="Pernpruner2020" target="https://doi.org/10.1145/3374664.3375727">
+  <front>
+    <title>The Good, the Bad and the (Not So) Ugly of Out-of-Band Authentication with EID Cards and Push Notifications: Design, Formal and Risk Analysis</title>
+    <author fullname="Marco Pernpruner" surname="Pernpruner"/>
+    <author fullname="Roberto Carbone" surname="Carbone"/>
+    <author fullname="Silvio Ranise" surname="Ranise"/>
+    <author fullname="Giada Sciarretta" surname="Sciarretta"/>
+    <date year="2020"/>
+  </front>
+  <seriesInfo name="DOI" value="10.1145/3374664.3375727" />
+</reference>
+
+<reference anchor="Pernpruner2023">
+  <front>
+    <title>An Automated Multi-Layered Methodology to Assist the Secure and Risk-Aware Design of Multi-Factor Authentication Protocols</title>
+    <author fullname="Marco Pernpruner" surname="Pernpruner"/>
+    <author fullname="Roberto Carbone" surname="Carbone"/>
+    <author fullname="Giada Sciarretta" surname="Sciarretta"/>
+    <author fullname="Silvio Ranise" surname="Ranise"/>
+    <date year="2023"/>
+    <seriesInfo name="Journal" value="IEEE Transactions on Dependable and Secure Computing" />
+  </front>
+  <seriesInfo name="DOI" value="10.1109/TDSC.2023.3296210" />
 </reference>
