@@ -691,14 +691,7 @@ The following works have been identified as relevant to the analysis of cross-de
    found to apply to GNAP as well. In this case, a model of a "careful user"
    (see (#user_education)) was used to show that the attack can be
    prevented (at least in theory) by the user.
- * In "The Good, the Bad and the (Not So) Ugly of Out-of-Band Authentication
-   with EID Cards and Push Notifications: Design, Formal and Risk Analysis"
-   [@Pernpruner2020], Pernpruner et al. formally analysed a protocol relying on
-   push notifications delivered to an out-of-band device to approve the
-   authentication attempt on the primary device, as in the
-   Backchannel-Transferred Session Pattern. The analysis was performed using the
-   specification language ASLan++ and the model checker SATMC. (TODO: Add
-   references to mitigations once included in the draft.)
+ * In "The Good, the Bad and the (Not So) Ugly of Out-of-Band Authentication with eID Cards and Push Notifications: Design, Formal and Risk Analysis" [@Pernpruner2020], Pernpruner et al. formally analysed an authentication protocol relying on push notifications delivered to an out-of-band device to approve the authentication attempt on the primary device (Backchannel-Transferred Session Pattern, (#btsp)). The analysis was performed using the specification language ASLan++ and the model checker SATMC. According to the results of the analysis, they identified and defined the category of *implicit attacks*, which manage to deceive users into approving a malicious authentication attempt through social engineering techniques, thus not compromising all the authentication factors involved; these attacks are aligned with the definition of Cross-Device Consent Phishing (CDCP) attacks. (TODO: Add references to mitigations once included in the draft.)
  * In "An Automated Multi-Layered Methodology to Assist the Secure and
    Risk-Aware Design of Multi-Factor Authentication Protocols"
    [@Pernpruner2023], a protocol relying on a QR code to be read by a secondary
