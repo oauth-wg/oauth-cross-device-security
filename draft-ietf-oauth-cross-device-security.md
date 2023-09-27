@@ -692,12 +692,7 @@ The following works have been identified as relevant to the analysis of cross-de
    (see (#user_education)) was used to show that the attack can be
    prevented (at least in theory) by the user.
  * In "The Good, the Bad and the (Not So) Ugly of Out-of-Band Authentication with eID Cards and Push Notifications: Design, Formal and Risk Analysis" [@Pernpruner2020], Pernpruner et al. formally analysed an authentication protocol relying on push notifications delivered to an out-of-band device to approve the authentication attempt on the primary device (Backchannel-Transferred Session Pattern, (#btsp)). The analysis was performed using the specification language ASLan++ and the model checker SATMC. According to the results of the analysis, they identified and defined the category of *implicit attacks*, which manage to deceive users into approving a malicious authentication attempt through social engineering techniques, thus not compromising all the authentication factors involved; these attacks are aligned with the definition of Cross-Device Consent Phishing (CDCP) attacks. (TODO: Add references to mitigations once included in the draft.)
- * In "An Automated Multi-Layered Methodology to Assist the Secure and
-   Risk-Aware Design of Multi-Factor Authentication Protocols"
-   [@Pernpruner2023], a protocol relying on a QR code to be read by a secondary
-   device to approve the authentication attempt on the primary device was
-   formally analyzed (User-Transferred Session Data Pattern, (#utsdp)). (TODO:
-   Add references to mitigations once included in the draft.)
+ * In "An Automated Multi-Layered Methodology to Assist the Secure and Risk-Aware Design of Multi-Factor Authentication Protocols" [@Pernpruner2023], Pernpruner et al. defined a multi-layered methodology to analyse multi-factor authentication protocols at different levels of granularity. They leveraged their methodology to formally analyse a protocol relying on a QR code that has to be scanned on a secondary device to approve the authentication attempt on the primary device (User-Transferred Session Data Pattern, (#utsdp)). Given the results of the analysis, they proposed some practical mitigations either to prevent or reduce the risk of successful attacks. (TODO: Add references to mitigations once included in the draft.)
 
 
 
