@@ -58,7 +58,7 @@ Cross-device flows enable a user to initiate an authorization flow on
 one device where the service will be consumed (the Consumption Device)
 and then use a second, personally trusted, device (Authorization Device)
 to authorize the Consumption Device to access a resource (e.g., access
-to a service). The Device Authorization Grant ([@RFC8628]) and Client 
+to a service). The Device Authorization Grant ([@RFC8628]) and Client
 Initiated Backchannel Authentication [@CIBA] are two examples of popular
 cross-device flows.
 
