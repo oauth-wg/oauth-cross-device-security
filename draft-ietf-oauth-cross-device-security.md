@@ -579,7 +579,7 @@ The user MAY be asked to verify if they initiated an authentication or authoriza
 
 **Limitations:** The additional verification step may reduce the overall usability of the system as it is one more thing users need to do right. Attackers may combine traditional phishing attacks and target users who respond to those messages with an interactive attack that sets the expectation with the user that they will have to provide the OTP or PIN, in addition to granting authorization for the request.
 
-## Request Binding with Out-of-Band Data
+### Request Binding with Out-of-Band Data
 In the User-Transferred Session Data Pattern, users MAY enter out-of-band information on the Consumption Device to start the authorization process. The out-of-band data entered by the user MAY then be included in the QR code which is displayed on the Consumption Device. When the QR code is scanned by the Authorization Device, the out-of-band data is verified by the user or by the Authorization Device. The out-of-band data could be any attribute that the user or Authorization Device can retrieve during the authorization process. Examples include a serial number, one-time password or PIN, location or any other data that the user or the Authorization Device can recall or retrieve during the authorization process ([@MPRCS2020], [@PCRSM2023]).
 
 **Limitations:** A sophistacted attacker may include an additional step in their attack where they create a phishing attack that gathers the out-of-band data from the user before initiating the authorisation request. The additional step could also have a negative impact on the usability level of the solution.
