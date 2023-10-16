@@ -713,6 +713,7 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
    * Added Maryam Mehrnezhad, Marco Pernpruner and Giada Sciarretta to the contributors list.
    * Added Request Binding with Out-of-Band Data as an additional mitigation.
    * Adopted the OpenID Foundation terminology from [@CIBA] and changed Initiating Device to Consumption Device
+   * Added Fake Helpdesk and Consent Request Overload examples
 
    -02
 
