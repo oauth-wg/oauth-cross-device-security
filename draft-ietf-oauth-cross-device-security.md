@@ -97,7 +97,7 @@ The session may be transferred by showing the user a session transfer code on th
 
 The session transfer may preserve state information, including authentication state, to the second device to avoid additional configuration and optimise the user experience. These flows are often used to add new devices to a network, onboard customers to a mobile application or to provision new credentials (e.g. [@OpenID.SIOPV2]).
 
-In these cross-device session transfer flows, the channel between the Authorization Device and the Consumption Device is unauthenticated. 
+In these cross-device session transfer flows, the channel between the Authorization Device and the Consumption Device is unauthenticated.
 
 Cross-Device Session Phishing (CDSP) attacks exploit the unauthenticated channel
 between the Authorization Device and Consumption Device by using social engineering
