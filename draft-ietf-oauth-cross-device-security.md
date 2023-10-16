@@ -54,26 +54,27 @@ and engineers implementing cross-device flows.
 {mainmatter}
 
 # Introduction {#Introduction}
-Cross-device flows enable a user to initiate an authorization flow on
-one device where the service will be consumed (the Consumption Device)
-and then use a second, personally trusted, device (Authorization Device)
-to authorize the Consumption Device to access a resource (e.g., access
-to a service). The Device Authorization Grant ([@RFC8628]) and Client
-Initiated Backchannel Authentication [@CIBA] are two examples of popular
-cross-device flows.
+Cross-device flows allows a user to start a flow on one device (e.g. a SmartTV) and then transfer the session to continue it on a second device (a mobile phone). The second device may be used to access the service that was running on the first device, or the user may perform an action on the second device to complete a task such as authenticating or granting authorization, before passing control back to the first device.
 
 These flows typically involve using a mobile phone to scan a QR code
-or enter a user code displayed on an Consumption Device (e.g., Smart
+or enter a user code displayed on the first device (e.g., Smart
 TV, Kiosk, Personal Computer etc).
 
-The channel between the Consumption Device and the Authorization Device is
-unauthenticated. It is up to the user to decide whether to trust
-a QR code, user code, or the authorization request pushed to their Authorization
-Device.
+When the user is required to scan a QR code or enter a user code, the channel between the first and second device is unauthenticated. It is up to the user to decide whether to trust the QR code or user code. This lack of an authenticated channel may be exploited by attackers to gain unauthorised access to a users' resources.
+
+## Cross-Device Authorization
+Cross-device authorization flows enable a user to initiate an authorization
+flow on one device (the Consumption Device) and then use a second, personally
+trusted, device (Authorization Device) to authorize the Consumption
+Device to access a resource (e.g., access to a service). The Device
+Authorization Grant ([@RFC8628]) and Client Initiated Backchannel
+Authentication [@CIBA] are two examples of popular cross-device flows.
+
+In these cross-device authorization flows, the channel between the Consumption Device and the Authorization Device is unauthenticated. It is up to the user to decide whether to trust a QR code, user code, or the authorization request pushed to their Authorization Device.
 
 Cross-Device Consent Phishing (CDCP) attacks exploit the unauthenticated channel
 between the Consumption Device and Authorization Device using social engineering
-techniques to to gain unauthorized access to the user's data. Several publications
+techniques to gain unauthorized access to the user's data. Several publications
 have emerged in the public domain ([@Exploit1], [@Exploit2], [@Exploit3], [@Exploit4],
 [@Exploit5], [@Exploit6]), describing how the unauthenticated channel can be
 exploited using social engineering techniques borrowed from phishing. Unlike traditional
@@ -89,10 +90,25 @@ selling them. These attacks are effective even when multi-factor authentication
 is deployed, since the attacker's aim is not to capture and replay the credentials,
 but rather to persuade the user to grant authorization.
 
-In order to defend against these attacks, this document outlines three responses:
+## Cross-Device Service Transfer
+Service Transfer flows enable a user to transfer access to a service or network from a device on which the user is already authenticated to a second device such as a mobile phone. In these flows the user is authenticated and then authorizes the session transfer on the Authorization Device (e.g. a personal computer, web portal or application) and transfers the session to the Consumption Device (e.g. a mobile phone or portable device).
 
-1. For protocols that are susceptible to Cross-Device Consent Phishing exploits, deploy practical mitigations.
-3. Select protocols that are more resistant to Cross-Device Consent Phishing exploits when possible.
+The session may be transferred by showing the user a session transfer code on the Authorization Device, which is then entered on the Consumption Device. This flow may be streamlined by rendering the session transfer code as a QR code on the Authorization Device and scanned by the Consumption Device.
+
+The session transfer may preserve state information, including authentication state, to the second device to avoid additional configuration and optimise the user experience. These flows are often used to add new devices to a network, onboard customers to a mobile application or to provision new credentials (e.g. [@OpenID.SIOPV2]).
+
+In these cross-device session transfer flows, the channel between the Authorization Device and the Consumption Device is unauthenticated. 
+
+Cross-Device Session Phishing (CDSP) attacks exploit the unauthenticated channel
+between the Authorization Device and Consumption Device by using social engineering
+techniques to convince the user to send the session transfer code to the attacker.
+These attacks borrows techniques from traditional phishing attacks, but instead of collecting passwords, they collect session transfer codes and other artefacts that allow them to setup a session and then use it to access a users data.
+
+## Defending against cross-device attacks
+In order to defend against Cross-Device Consent Phishing and Cross-Device Session Phishing attacks, this document outlines three responses:
+
+1. For protocols that are susceptible to these exploits, deploy practical mitigations.
+3. Select protocols that are more resistant to these exploits when possible.
 3. Conduct formal analysis of cross-device flows to assess susceptibility to these attacks and the effectiveness of the proposed mitigations.
 
 ## Conventions and Terminology
