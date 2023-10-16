@@ -260,6 +260,9 @@ An employee is signed into an application on their personal computer and wants t
 ### Example A8: Access a Productivity Application (User-Transferred Authorization Data Pattern)
 A user is accessing a Computer Aid Design (CAD) application. When accessing the application, authorization data in the form of a 6 digit authorization code is sent to the user's mobile phone. The user views the 6 digit authorization code on their phone and enters it in the CAD application, after which the CAD application displays the user's most recent designs.
 
+### Example A9: Administer a system (Backchannel-Transferred Session Pattern)
+A network administrator wants to access an adminstration portal used to configure network assets and deploy new applications. When attempting to access the service, the network administrator receives a notification in an app on their mobile device, requesting them to confirm access to the portal. The network administrator approves the request on their mobile phone and is granted access to the portal.
+
 # Cross-Device Flow Exploits
 Attackers exploit cross-device flows by initiating an authorization flow on the Consumption Device and then use social engineering techniques to change the context in which the request is presented to the user in order to convince them to grant authorization on the Authorization Device. The attacker is able to change the context of the authorization request because the channel between the Consumption Device and the Authorization Device is unauthenticated. These attacks are also known as Cross-Device Consent Phishing (CDCP) attacks.
 
@@ -431,6 +434,9 @@ An attacker creates a message to all employees of a company, claiming to be from
 
 ### Example B8: Account Takeover (User-Transferred Session Data Pattern)
 An attacker wants to use some website which requires presentation of a verifiable credential for authentication. The attacker creates a phishing website which will in real time capture log-in QR Codes from the original website and present these to the user. The attacker tries to get the user to use the phishing website using an e-mail campaign etc. The user scans the QR code on the phishing website, invokes their digital wallet and presents their credentials. Once the credentials are presented, the original session from the attackers device is authorized with the user's credentials.
+
+### Example B9: Illicit Access to Administration Capabilities Through Consent Request Overload (Backchannel-Transferred Session Pattern)
+An attacker attempts to access an adminstration portal repeatedly, generating a stream of authorization requests to the network administrator. The attempts are timed to occur while the administrator is asleep. The administrator is woken by the incoming requests on their phone, and, in an attempt to stop the notifications, they accidentally approve access and the attacker gains access to the portal.
 
 ### Out of Scope
 In all of the attack scenarios listed above, a user is misled or exploited. For other attacks, where the user is willingly colluding with the attacker, the threat model, security implications and potential mitigations are very different. For example, a cooperating user can bypass software mitigations on their device, share access to hardware tokens with the attacker, and install additional devices to forward radio signals to circumvent proximity checks.
