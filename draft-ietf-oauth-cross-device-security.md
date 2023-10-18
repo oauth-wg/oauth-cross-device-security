@@ -290,13 +290,13 @@ Session  |   |              |     Context           |               |
 ~~~
 Figure: Cross-Device Flows: Session Transfer Pattern
 
-- (A) The user is authenticated on the Authorization Device and authorizes the transfer of the session to the Consumption device. 
+- (A) The user is authenticated on the Authorization Device and authorizes the transfer of the session to the Consumption device.
 - (B) The client on the Authorization Device requests a session transfer code from the Authorization Server.
 - (C) The Authorization Server responds with a session transfer code, which may be rendered as a QR code on the Authorization Device.
 - (D) The user scans the QR code with the Consumption Device (e.g. their mobile phone), or  enters the session transfer code on the target Consumption Device.
 - (E) The client on the Consumption Device presents the session transfer code to the Authorization Server.
 - (F) The Authorization Server verifies the session transfer code and retrieves the session context information needed to resume the session on the Consumption Device.
-- (G) The user resumes the session and is able to access the information on the Consumption Device that they authroized on the Authorization Device.
+- (G) The user resumes the session and is able to access the information on the Consumption Device that they authorized on the Authorization Device.
 
 ## Examples of Cross-Device Flows
 Examples of cross-device flow scenarios include:
@@ -331,9 +331,9 @@ A network administrator wants to access an adminstration portal used to configur
 # Cross-Device Flow Exploits
 Attackers exploit the absence of an authenticated channel between the two devices used in a cross-device flow by using social engineering techniques typicaly used in phishing attacks.
 
-In cross-device authorization flows the attacker uses these social engineering techniques by changing the context in which the authroization request is presented to convince the user to grant authorization when they shouldn't. These attacks are also known as Cross-Device Consent Phishing (CDCP) attacks.
+In cross-device authorization flows the attacker uses these social engineering techniques by changing the context in which the authorization request is presented to convince the user to grant authorization when they shouldn't. These attacks are also known as Cross-Device Consent Phishing (CDCP) attacks.
 
-In cross-device session transfer flows the attacker uses these social engineering techniques to convince the user to initiate a session transfer and send them a session transfer code. Once the attacker is in posession of this session transfer code, they present it to the Authroization Server to transfer the session and access the users resources. These attacks are referred to as Cross-Device Session Phishing (CDSP) attacks.
+In cross-device session transfer flows the attacker uses these social engineering techniques to convince the user to initiate a session transfer and send them a session transfer code. Once the attacker is in posession of this session transfer code, they present it to the Authorization Server to transfer the session and access the users resources. These attacks are referred to as Cross-Device Session Phishing (CDSP) attacks.
 
 ## Cross-Device Authorization Flow Exploits
 Attackers exploit cross-device authorization flows by initiating an authorization flow on the Consumption Device and then use social engineering techniques to change the context in which the request is presented to the user in order to convince them to grant authorization on the Authorization Device. The attacker is able to change the context of the authorization request because the channel between the Consumption Device and the Authorization Device is unauthenticated. These attacks are also known as Cross-Device Consent Phishing (CDCP) attacks.
@@ -511,8 +511,8 @@ Attackers exploit cross-device session transfer flows by using social engineerin
 ~~~
 Figure: Cross-Device Flows: Session Transfer Pattern Exploit
 
-- (A) The attacker sends a social engineering message to that convinces the the user that they should authorize a session transfer including instructions on what to do with the QR code or session transfer code once they receive it. 
-- (B) The user is authenticated on their Authorization Device and authorizes the transfer of the session to the Consumption device. 
+- (A) The attacker sends a social engineering message to that convinces the the user that they should authorize a session transfer including instructions on what to do with the QR code or session transfer code once they receive it.
+- (B) The user is authenticated on their Authorization Device and authorizes the transfer of the session to the Consumption device.
 - (C) The client on the Authorization Device requests a session transfer code from the Authorization Server.
 - (D) The Authorization Server responds with a session transfer code, which may be rendered as a QR code on the Authorization Device.
 - (E) The user sends the QR code or session transfer code to the attacker, following the instructions they received in step (A).
