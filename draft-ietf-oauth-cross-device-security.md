@@ -157,18 +157,7 @@ There are three cross-device flow patterns for transferring the authorization re
 - Backchannel-Transferred Session Pattern: In the second pattern, the OAuth client on the Consumption Device is responsible for transferring the session and initiating authorization on the Authorization Device via a backchannel with the Authorization Server. For example the user may attempt an online purchase on a Consumption Device (e.g. a personal computer) and receive an authorization request on their Authentication Device (e.g. mobile phone). The Client Initiated Backchannel Authentication [@CIBA] is an example of a cross-device flow that follow this pattern.
 - User-Transferred Authorization Data Pattern: In the third pattern, the OAuth client on the Consumption Device triggers the authorization request via a backchannel with the Authorization Server. Authorization data (e.g. a 6 digit authorization code) is displayed on the Authorization Device, which the user transfers to Consumption Device (e.g., by manually entering it). For example the user may attempt to access data in an enterprise application and receive a 6 digit authorization code on their Authentication Device (e.g. mobile phone) that they enter on Consumption Device.
 
-## Cross-Device Session Transfer
-In a cross-device service transfer flow a user is authenticated and then authorizes the session transfer on one device, referred to as the Authorization Device (e.g. a personal computer, web portal or application), and transfers the session to the device where they will continue to consume the session, referred to as the Consumption Device (e.g. a mobile phone or portable device).
-
-Cross-device session transfer flows enables users to transfer state information, including the authentication and authorization state of the current session to a second device without having to re-enter configuration, authentication or authorization information. This allwos users to seamlessly:
-
-* Add new devices to a network.
-* Onboard to a mobile application.
-* Provision new credentials (e.g. [@OpenID.SIOPV2]).
-
-# Cross-Device Authorization Patterns
-
-## User-Transferred Session Data Pattern
+### User-Transferred Session Data Pattern
 The Device Authorization Grant ([@RFC8628]) is an example of a cross-device flow that relies on the user copying information from the Consumption Device to the Authorization Device. The figure below shows a typical example of this flow:
 
 ~~~ ascii-art
@@ -200,7 +189,7 @@ or enters the user code on the Authorization Device.
 - (D) The user authenticates to the Authorization Server before granting authorization.
 - (E) The Authorization Server issues tokens or grants authorization to the Consumption Device to access the user's resources.
 
-## Backchannel-Transferred Session Pattern
+### Backchannel-Transferred Session Pattern
 The Client Initiated Backchannel Authentication [@CIBA] transfers the session on the backchannel with the Authorization Server to request authorization on the Authorization Device. The figure below shows an example of this flow.
 
 ~~~ ascii-art
@@ -232,7 +221,7 @@ Figure: Cross-Device Flows: Backchannel-Transferred Session Pattern
 
 The Authorization Server may use a variety of mechanisms to request user authorization, including a push notification to a dedicated app on a mobile phone, or sending a text message with a link to an endpoint where the user can authenticate and authorize an action.
 
-## User-Transferred Authorization Data Pattern
+### User-Transferred Authorization Data Pattern
 Examples of the user-transferred authorization data pattern includes flows in which the Consumption Device requests the Authorization Server to send authorization data (e.g. a 6 digit authorization code in a text message or e-mail) to the Authorization Device. Once the Authorization Device receives the authorization data, the user enters it on the Consumption Device. The Consumption Device sends the authorization data back to the Authorization Server for validation before gaining access to the user's resources. The figure below shows an example of this flow.
 
 
@@ -265,6 +254,50 @@ Figure: Cross-Device Flow: User-Transferred Authorization Data Pattern
 
 The Authorization Server may choose to authenticate the user before sending the authorization data. The authorization data may be delivered as a text message or through a mobile application.
 
+## Cross-Device Session Transfer
+In a cross-device service transfer flow a user is authenticated and then authorizes the session transfer on one device, referred to as the Authorization Device (e.g. a personal computer, web portal or application), and transfers the session to the device where they will continue to consume the session, referred to as the Consumption Device (e.g. a mobile phone or portable device).
+
+Cross-device session transfer flows enables users to transfer state information, including the authentication and authorization state of the current session to a second device without having to re-enter configuration, authentication or authorization information. This allwos users to seamlessly:
+
+* Add new devices to a network.
+* Onboard to a mobile application.
+* Provision new credentials (e.g. [@OpenID.VCI]).
+
+### Cross-Device Session Transfer Pattern
+In this flow, the user is authenticated and starts the flow by authorizing the transfer of the session on the Authorization Device. The Authorization Device requests a session transfer code that may be rendered as a QRcode on the Authorization Device. When the user scans the QR code or enters it on the Consumption Device where they would like the session to continue, the Consumption Device presents it to the Authorization Server. The Authorization Server then transfers the session to the Consumption Device. This may include transferring authentication and authorization state to optimise the user experience. This type of flow is used for adding new devices to networks, bootstrapping new applications or provisioning new credentials. The Pre-Authorized Code Flow in ([@OpenID.VCI])) is an example of using this pattern to provision a new credential. The figure below shows an example of this flow.
+
+~~~ ascii-art
+                              (B) Session Transfer
+             +--------------+     Request           +---------------+
+(A)User  +---| Authorization|---------------------->|               |
+   Start |   |   Device     |(C) Session Transfer   |               |
+   Flow  |   |              |    Code               | Authorization |
+         +-->|              |<----------------------|     Server    |
+             +--------------+                       |               |
+                    |                               |               |
+                    | (D) Scan QR code              |               |
+                    |      or enter                 |               |
+                    | Session Transfer Code         |               |
+                    |                               |               |
+                    v         (E) Present Session   |               |
+             +--------------+     Transfer Code     |               |
+             | Consumption  |---------------------->|               |
+(G)User  +---|    Device    |                       |               |
+Resumes  |   |              | (F) Return Session    |               |
+Session  |   |              |     Context           |               |
+         +-->|              |<----------------------|               |
+             +--------------+                       +---------------+
+~~~
+Figure: Cross-Device Flows: Session Transfer Pattern
+
+- (A) The user is authenticated on the Authorization Device and authorizes the transfer of the session to the Consumption device. 
+- (B) The client on the Authorization Device requests a session transfer code from the Authorization Server.
+- (C) The Authorization Server responds with a session transfer code, which may be rendered as a QR code on the Authorization Device.
+- (D) The user scans the QR code with the Consumption Device (e.g. their mobile phone), or  enters the session transfer code on the target Consumption Device.
+- (E) The client on the Consumption Device presents the session transfer code to the Authorization Server.
+- (F) The Authorization Server verifies the session transfer code and retrieves the session context information needed to resume the session on the Consumption Device.
+- (G) The user resumes the session and is able to access the information on the Consumption Device that they authroized on the Authorization Device.
+
 ## Examples of Cross-Device Flows
 Examples of cross-device flow scenarios include:
 
@@ -280,13 +313,13 @@ An end-user wants to rent a bicycle from a bike sharing scheme. The bicycles are
 ### Example A4: Authorize a Financial Transaction (Backchannel-Transferred Session Pattern)
 An end-user makes an online purchase. Before completing the purchase, they get a notification on their mobile phone, asking them to authorize the transaction. The user opens their app and authenticates to the service before authorizing the transaction.
 
-### Example A5: Add a Device to a Network (User-Transferred Authorization Data Pattern)
+### Example A5: Add a Device to a Network (Session Transfer Pattern)
 An employee is issued with a personal computer that is already joined to a network. The employee wants to add their mobile phone to the network to allow it to access corporate data and services (e.g., files and e-mail). The employee is logged-in on the personal computer where they initiate the process of adding their mobile phone to the network. The personal computer displays a QR code which authorizes the user to join their mobile phone to the network. The employee scans the QR code with their mobile phone and the mobile phone is joined to the network. The employee can start accessing corporate data and services on their mobile device.
 
 ### Example A6: Remote Onboarding (User-Transferred Session Data Pattern)
 A new employee is directed to an onboarding portal to provide additional information to confirm their identity on their first day with their new employer. Before activating the employee's account, the onboarding portal requests that the employee present a government issued ID, proof of a background check and proof of their qualifications. The onboarding portal displays a QR code, which the user scans with their mobile phone. Scanning the QR code invokes the employee's digital wallet on their mobile phone, and the employee is asked to present digital versions of an identity document (e.g., a driving license), proof of a background check by an identity verifier, and proof of their qualifications. The employee authorizes the release of the credentials and after completing the onboarding process, their account is activated.
 
-### Example A7: Application Bootstrap (User-Transferred Authorization Data Pattern)
+### Example A7: Application Bootstrap (Session Transfer Pattern)
 An employee is signed into an application on their personal computer and wants to bootstrap the mobile application on their mobile phone. The employee initiates the cross-device flow and is shown a QR code in their application. The employee launches the mobile application on their phone and scans the QR code which results in the user being signed into the application on the mobile phone.
 
 ### Example A8: Access a Productivity Application (User-Transferred Authorization Data Pattern)
@@ -951,6 +984,22 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
       <organization>yes.com</organization>
     </author>
     <date year="2022" month="November"/>
+  </front>
+</reference>
+
+<reference anchor="OpenID.VCI" target="https://openid.net/specs/openid-connect-self-issued-v2-1_0.html">
+  <front>
+    <title>OpenID for Verifiable Credential Issuance</title>
+    <author initials="T." surname="Lodderstedt" fullname="Torsten Lodderstedt">
+      <organization>yes.com</organization>
+    </author>
+    <author initials="K." surname="Yasuda" fullname="Kristina Yasuda">
+      <organization>Microsoft</organization>
+    </author>
+    <author initials="T." surname="Looker" fullname="Tobias Looker">
+      <organization>Mattr</organization>
+    </author>
+    <date year="2023" month="October"/>
   </front>
 </reference>
 
