@@ -698,10 +698,10 @@ This information may be communicated graphically or in a simple message (e.g., "
 
 **Limitations:** Improvements to user experience on their own is unlikely to be sufficient and SHOULD be used in conjunction with other controls described in this document.
 
-### Authenticated flow
+### Authenticate-then-Inititiate
 By requiring a user to authenticate on the Consumption Device with a phishing resistant authentication method before initiating a cross-device flow, the server can prevent an attacker from initiating a cross-device flow and obtaining QR codes or user codes. This prevents the attacker from obtaining a QR code or user code that they can use to mislead an unsuspecting user. This requires that the Consumption Device has sufficient input capabilities to support a phishing resistant authentication mechanism, which may in itself negate the need for a cross-device flow.
 
-**Limitations:** Starting with an authenticated flow does not prevent the attacks described in [Example B5: Illicit Network Join](#Example B5: Illicit Network Join (User-Transferred Authorization Data Pattern)) and [Example B7: Illicit Session Transfer](#Example B7: Illicit session transfer (User-Transferred Authorization Data Pattern)) and it is RECOMMENDED that additional mitigations described in this document is used if the cross-device flows are used in scenarios such as [Example A5: Add a device to a network](#Example A5: Add a device to a network (User-Transferred Authorization Data Pattern)) and [Example A7: Transfer a session](#Example A7: Transfer a session (User-Transferred Authorization Data Pattern)).
+**Limitations:** Authenticating on the Consumption Device before starting a cross-device flow does not prevent the attacks described in [Example B5: Illicit Network Join](#Example B5: Illicit Network Join (User-Transferred Authorization Data Pattern)) and [Example B7: Illicit Session Transfer](#Example B7: Illicit session transfer (User-Transferred Authorization Data Pattern)) and it is RECOMMENDED that additional mitigations described in this document is used if the cross-device flows are used in scenarios such as [Example A5: Add a device to a network](#Example A5: Add a device to a network (User-Transferred Authorization Data Pattern)) and [Example A7: Transfer a session](#Example A7: Transfer a session (User-Transferred Authorization Data Pattern)).
 
 ### Request Initiation Verification
 The user MAY be asked to verify if they initiated an authentication or authorization request by sending a one-time password (OTP) or PIN to the user's Authorization Device and asking them to enter it on the Consumption Device to confirm the request. If the request was initiated without the users' consent, they would receive an OTP or PIN out of context which may raise suspicion for the user. In addition, they would not have information on where to enter the OTP or PIN. The user experience on the Authorization Device MAY reinforce the risk of receiving an out-of-context OTP or PIN and provide information to the user on how to report an unauthorized authentication or authorization request.
@@ -733,7 +733,7 @@ The practical mitigations described in this section can prevent the attacks from
 |Sender-Constrained Tokens             |         |         |    X    |
 |User Education                        |    X    |         |         |
 |User Experience                       |    X    |         |         |
-|Authenticated flow                    |    X    |         |         |
+|Authenticate-then-Inititiate          |    X    |         |         |
 |Request Initiation Verification       |         |    X    |         |
 |Request Binding with Out-of-Band Data |         |    X    |         |
 Table: Practical Mitigation Summary
@@ -832,6 +832,7 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
    * Added Request Binding with Out-of-Band Data as an additional mitigation.
    * Adopted the OpenID Foundation terminology from [@CIBA] and changed Initiating Device to Consumption Device
    * Added Fake Helpdesk and Consent Request Overload examples
+   * Replaced "Authenticated Flow" mitigation name with "Authenticate then Intitiate"
 
    -02
 
