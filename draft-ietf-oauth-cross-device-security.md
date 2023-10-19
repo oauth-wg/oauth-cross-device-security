@@ -60,7 +60,7 @@ These flows typically involve using a mobile phone to scan a QR code
 or enter a user code displayed on the first device (e.g., Smart
 TV, Kiosk, Personal Computer etc).
 
-When the user is required to scan a QR code or enter a user code, the channel between the first and second device is unauthenticated. It is up to the user to decide whether to trust the QR code or user code. This lack of an authenticated channel may be exploited by attackers to gain unauthorised access to a users' resources.
+When the user is required to scan a QR code or enter a user code, the channel between the first and second device is unauthenticated. It is up to the user to decide whether to trust the QR code or user code. This lack of an authenticated channel may be exploited by attackers to gain unauthorized access to a users' resources.
 
 ## Cross-Device Authorization
 Cross-device authorization flows enable a user to initiate an authorization
