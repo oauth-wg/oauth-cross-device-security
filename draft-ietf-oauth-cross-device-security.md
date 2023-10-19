@@ -95,7 +95,7 @@ Service transfer flows enable a user to transfer access to a service or network 
 
 The session may be transferred by showing the user a session transfer code on the Authorization Device, which is then entered on the Consumption Device. This flow may be streamlined by rendering the session transfer code as a QR code on the Authorization Device and scanned by the Consumption Device.
 
-The session transfer may preserve state information, including authentication state, to the second device to avoid additional configuration and optimise the user experience. These flows are often used to add new devices to a network, onboard customers to a mobile application or to provision new credentials (e.g. [@OpenID.SIOPV2]).
+The session transfer may preserve state information, including authentication state, to the second device to avoid additional configuration and optimise the user experience. These flows are often used to add new devices to a network, onboard customers to a mobile application or provision new credentials (e.g., [@OpenID.SIOPV2]).
 
 In these cross-device session transfer flows, the channel between the Authorization Device and the Consumption Device is unauthenticated.
 
