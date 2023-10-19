@@ -615,7 +615,7 @@ The practical mitigations described in this section can prevent the attacks from
 |Sender-Constrained Tokens             |         |         |    X    |
 |User Education                        |    X    |         |         |
 |User Experience                       |    X    |         |         |
-|Authenticate then Inititiate          |    X    |         |         |
+|Authenticate-then-Inititiate          |    X    |         |         |
 |Request Initiation Verification       |         |    X    |         |
 |Request Binding with Out-of-Band Data |         |    X    |         |
 Table: Practical Mitigation Summary
