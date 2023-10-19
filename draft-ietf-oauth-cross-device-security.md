@@ -832,7 +832,8 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
    * Added Request Binding with Out-of-Band Data as an additional mitigation.
    * Adopted the OpenID Foundation terminology from [@CIBA] and changed Initiating Device to Consumption Device
    * Added Fake Helpdesk and Consent Request Overload examples
-   * Replaced "Authenticated Flow" mitigation name with "Authenticate then Intitiate"
+   * Replaced "Authenticated Flow" mitigation name with "Authenticate-then-Intitiate"
+   * Added Cross-Device Session Transfer pattern
 
    -02
 
