@@ -91,7 +91,7 @@ is deployed, since the attacker's aim is not to capture and replay the credentia
 but rather to persuade the user to grant authorization.
 
 ## Cross-Device Service Transfer
-Service transfer flows enable a user to transfer access to a service or network from a device on which the user is already authenticated to a second device such as a mobile phone. In these flows the user is authenticated and then authorizes the session transfer on one device, referred to as the Authorization Device (e.g. a personal computer, web portal or application), and transfers the session to the device where the will continue to consume the session, referred to as the Consumption Device (e.g. a mobile phone or portable device).
+Service transfer flows enable a user to transfer access to a service or network from a device on which the user is already authenticated to a second device such as a mobile phone. In these flows the user is authenticated and then authorizes the session transfer on one device, referred to as the Authorization Device (e.g., a personal computer, web portal or application), and transfers the session to the device where they will continue to consume the session, referred to as the Consumption Device (e.g., a mobile phone or portable device).
 
 The session may be transferred by showing the user a session transfer code on the Authorization Device, which is then entered on the Consumption Device. This flow may be streamlined by rendering the session transfer code as a QR code on the Authorization Device and scanned by the Consumption Device.
 
