@@ -54,7 +54,7 @@ and engineers implementing cross-device flows.
 {mainmatter}
 
 # Introduction {#Introduction}
-Cross-device flows allows a user to start a flow on one device (e.g. a SmartTV) and then transfer the session to continue it on a second device (a mobile phone). The second device may be used to perform an action on the second device to complete a task such as authenticating or granting authorization, before passing control back to the first device, or to access the service that was running on the first device on the second device.
+Cross-device flows allows a user to start a flow on one device (e.g., a SmartTV) and then transfer the session to continue it on a second device (e.g., a mobile phone). The second device may be used to perform an action such as authenticating or granting authorization, before passing control back to the first device, or to access the service that was running on the first device on the second device.
 
 These flows typically involve using a mobile phone to scan a QR code
 or enter a user code displayed on the first device (e.g., Smart
