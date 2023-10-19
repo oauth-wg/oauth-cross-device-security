@@ -133,7 +133,7 @@ or enter a user code displayed on the first device (e.g., Smart
 TV, Kiosk, Personal Computer etc).
 
 ## Cross-Device Authorization
-In a cross-device authorization flow, a user attempts to access a service on one device, referred to as the Concumption Device, (e.g., a smart TV) and then uses a second device, referred to as the Authorization Device (e.g., a smartphone), to authorize access to a resource (e.g., access to a streaming service) on
+In a cross-device authorization flow, a user attempts to access a service on one device, referred to as the Consumption Device, (e.g., a smart TV) and then uses a second device, referred to as the Authorization Device (e.g., a smartphone), to authorize access to a resource (e.g., access to a streaming service) on
 the Consumption Device.
 
 Cross-device authorization flows have several benefits, including:
