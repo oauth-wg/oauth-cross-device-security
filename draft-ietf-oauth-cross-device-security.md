@@ -511,7 +511,7 @@ Attackers exploit cross-device session transfer flows by using social engineerin
 ~~~
 Figure: Cross-Device Flows: Session Transfer Pattern Exploit
 
-- (A) The attacker sends a social engineering message to that convinces the the user that they should authorize a session transfer including instructions on what to do with the QR code or session transfer code once they receive it.
+- (A) The attacker sends a social engineering message to that convinces the user that they should authorize a session transfer including instructions on what to do with the QR code or session transfer code once they receive it.
 - (B) The user is authenticated on their Authorization Device and authorizes the transfer of the session to the Consumption device.
 - (C) The client on the Authorization Device requests a session transfer code from the Authorization Server.
 - (D) The Authorization Server responds with a session transfer code, which may be rendered as a QR code on the Authorization Device.
