@@ -45,7 +45,7 @@ organization="Okta"
 .# Abstract
 
 This document describes threats against cross-device flows
-along with near term mitigations, protocol selection guidance
+along with near term mitigations, protocol selection guidance,
 and the analytical tools needed to evaluate the effectiveness of
 these mitigations. It serves as a security guide to system designers,
 architects, product managers, security specialists, fraud analysts
@@ -54,23 +54,21 @@ and engineers implementing cross-device flows.
 {mainmatter}
 
 # Introduction {#Introduction}
-Cross-device flows allow a user to start a flow on one device (e.g., a SmartTV) and then transfer the session to continue it on a second device (e.g., a mobile phone). The second device may be used to perform an action such as authenticating or granting authorization, before passing control back to the first device, or to access the service that was running on the first device on the second device.
+Protocol flows that span multiple end-user devices are in widespread use today. These flows are often referred to as cross-device flows. A common example is a user that uses their mobile phone to scan a QR code from their SmartTV, giving an app on the TV access to their video streaming service. Besides QR codes, other mechanisms are often used such as PIN codes that the user has to enter on one of the devices, or push notifications to a mobile app that the user has to approve.
 
-These flows typically involve using a mobile phone to scan a QR code
-or enter a user code displayed on the first device (e.g., Smart
-TV, Kiosk, Personal Computer etc).
+In all cases, it is up to the user to decide whether to grant the authorization or not. However, the transfer the QR code or PIN are transferred via an unauthorized channel and the user cannot always decide in which context an authorization is requested. This may be exploited by attackers to gain unauthorized access to a user's resources.
 
-When the user is required to scan a QR code or enter a user code, the channel between the first and second device is unauthenticated. It is up to the user to decide whether to trust the QR code or user code. This lack of an authenticated channel may be exploited by attackers to gain unauthorized access to a user's resources.
+To accommodate the various nuances of cross-device flows, this document distinguished between cases where the cross-device flow is used to authorize access to a resource (cross-device authorization flows) and cases where the cross-device flow is used to transfer an existing session (cross-device session transfer flows).
 
 ## Cross-Device Authorization
 Cross-device authorization flows enable a user to initiate an authorization
 flow on one device (the Consumption Device) and then use a second, personally
 trusted, device (Authorization Device) to authorize the Consumption
 Device to access a resource (e.g., access to a service). The Device
-Authorization Grant ([@RFC8628]) and Client Initiated Backchannel
-Authentication [@CIBA] are two examples of popular cross-device flows.
+Authorization Grant [@RFC8628] and Client-Initiated Backchannel
+Authentication [@CIBA] are two examples of popular cross-device authorization flows.
 
-In these cross-device authorization flows, the channel between the Consumption Device and the Authorization Device is unauthenticated. It is up to the user to decide whether to trust a QR code, user code, or the authorization request pushed to their Authorization Device.
+In these flows, it is the user's decision whether to continue the session by scanning a QR code, entering a user code, or accepting an authorization request pushed to their Authorization Device.
 
 Cross-Device Consent Phishing (CDCP) attacks exploit the unauthenticated channel
 between the Consumption Device and Authorization Device using social engineering
@@ -90,12 +88,12 @@ selling them. These attacks are effective even when multi-factor authentication
 is deployed, since the attacker's aim is not to capture and replay the credentials,
 but rather to persuade the user to grant authorization.
 
-## Cross-Device Service Transfer
-Service transfer flows enable a user to transfer access to a service or network from a device on which the user is already authenticated to a second device such as a mobile phone. In these flows the user is authenticated and then authorizes the session transfer on one device, referred to as the Authorization Device (e.g., a personal computer, web portal or application), and transfers the session to the device where they will continue to consume the session, referred to as the Consumption Device (e.g., a mobile phone or portable device).
+## Cross-Device Session Transfer
+Session transfer flows enable a user to transfer access to a service or network from a device on which the user is already authenticated to a second device such as a mobile phone. In these flows, the user is authenticated and then authorizes the session transfer on one device, referred to as the Authorization Device (e.g., a personal computer, web portal or application), and transfers the session to the device where they will continue to consume the session, referred to as the Consumption Device (e.g., a mobile phone or portable device).
 
 The session may be transferred by showing the user a session transfer code on the Authorization Device, which is then entered on the Consumption Device. This flow may be streamlined by rendering the session transfer code as a QR code on the Authorization Device and scanned by the Consumption Device.
 
-The session transfer may preserve state information, including authentication state, to the second device to avoid additional configuration and optimise the user experience. These flows are often used to add new devices to a network, onboard customers to a mobile application or provision new credentials (e.g., [@OpenID.SIOPV2]).
+The session transfer may preserve state information, including authentication state, to the second device to avoid additional configuration and optimize the user experience. These flows are often used to add new devices to a network, onboard customers to a mobile application, or provision new credentials (e.g., [@OpenID.SIOPV2]).
 
 In these cross-device session transfer flows, the channel between the Authorization Device and the Consumption Device is unauthenticated.
 
@@ -121,16 +119,15 @@ appear in all capitals, as shown here.
 
 This specification uses the terms "access token", "refresh token",
 "authorization server", "resource server", "authorization endpoint",
-"authorization request", "authorization response", "token endpoint",
-"grant type", "access token request", "access token response", and
+"authorization request", and
 "client" defined by The OAuth 2.0 Authorization Framework [@!RFC6749].
 
-# Cross-Device Flow Concepts
-Cross-device flows allow a user to start a flow on one device (e.g., a SmartTV) and then transfer the session to continue it on a second device (e.g., a mobile phone). The second device may be used to perform an action on the second device to complete a task such as authenticating or granting authorization, before passing control back to the first device, or to access the service that was running on the first device on the second device.
+# Cross-Device Flow Patterns
+Cross-device flows allow a user to start a flow on one device (e.g., a SmartTV) and then transfer the session to continue it on a second device (e.g., a mobile phone). The second device may be used to access the service that was running on the first device, or to perform an action such as authenticating or granting authorization before passing control back to the first device.
 
 These flows typically involve using a mobile phone to scan a QR code
 or enter a user code displayed on the first device (e.g., Smart
-TV, Kiosk, Personal Computer etc).
+TV, Kiosk, Personal Computer etc.).
 
 ## Cross-Device Authorization
 In a cross-device authorization flow, a user attempts to access a service on one device, referred to as the Consumption Device, (e.g., a smart TV) and then uses a second device, referred to as the Authorization Device (e.g., a smartphone), to authorize access to a resource (e.g., access to a streaming service) on
@@ -156,6 +153,8 @@ There are three cross-device flow patterns for transferring the authorization re
 - User-Transferred Session Data Pattern: In the first pattern, the user initiates the authorization process with the authorization server by copying information from the Consumption Device to the Authorization Device, before authorizing an action. By transferring the data from the Consumption Device to the Authorization Device, the user transfers the authorization session. For example the user may read a code displayed on the Consumption Device and enter it on the Authorization Device, or they may scan a QR code displayed on the Consumption Device with the Authorization Device. The Device Authorization Grant ([@RFC8628]) is an example of a cross-device flow that follow this pattern.
 - Backchannel-Transferred Session Pattern: In the second pattern, the OAuth client on the Consumption Device is responsible for transferring the session and initiating authorization on the Authorization Device via a backchannel with the Authorization Server. For example the user may attempt an online purchase on a Consumption Device (e.g. a personal computer) and receive an authorization request on their Authentication Device (e.g. mobile phone). The Client Initiated Backchannel Authentication [@CIBA] is an example of a cross-device flow that follow this pattern.
 - User-Transferred Authorization Data Pattern: In the third pattern, the OAuth client on the Consumption Device triggers the authorization request via a backchannel with the Authorization Server. Authorization data (e.g. a 6 digit authorization code) is displayed on the Authorization Device, which the user transfers to Consumption Device (e.g., by manually entering it). For example the user may attempt to access data in an enterprise application and receive a 6 digit authorization code on their Authentication Device (e.g. mobile phone) that they enter on Consumption Device.
+
+In these flows, it is the user's decision whether to continue the session by scanning a QR code, entering a user code, or accepting an authorization request pushed to their Authorization Device.
 
 ### User-Transferred Session Data Pattern
 The Device Authorization Grant ([@RFC8628]) is an example of a cross-device flow that relies on the user copying information from the Consumption Device to the Authorization Device. The figure below shows a typical example of this flow:
@@ -255,13 +254,9 @@ Figure: Cross-Device Flow: User-Transferred Authorization Data Pattern
 The Authorization Server may choose to authenticate the user before sending the authorization data. The authorization data may be delivered as a text message or through a mobile application.
 
 ## Cross-Device Session Transfer
-In a cross-device service transfer flow, a user is authenticated and then authorizes the session transfer on one device, referred to as the Authorization Device (e.g., a personal computer, web portal or application), and transfers the session to the device where they will continue to consume the session, referred to as the Consumption Device (e.g., a mobile phone or portable device).
+Session transfer flows enable a user to transfer access to a service or network from a device on which the user is already authenticated to a second device such as a mobile phone. In these flows, the user is authenticated and then authorizes the session transfer on one device, referred to as the Authorization Device (e.g., a personal computer, web portal or application), and transfers the session to the device where they will continue to consume the session, referred to as the Consumption Device (e.g., a mobile phone or portable device).
 
-Cross-device session transfer flows enables users to transfer state information, including the authentication and authorization state of the current session to a second device without having to re-enter configuration, authentication or authorization information. This allows users to seamlessly:
-
-* Add new devices to a network.
-* Onboard to a mobile application.
-* Provision new credentials (e.g. [@OpenID.VCI]).
+The session transfer may preserve state information, including authentication state, to the second device to avoid additional configuration and optimize the user experience. These flows are often used to add new devices to a network, onboard customers to a mobile application, or provision new credentials (e.g., [@OpenID.SIOPV2]).
 
 ### Cross-Device Session Transfer Pattern
 In this flow, the user is authenticated and starts the flow by authorizing the transfer of the session on the Authorization Device. The Authorization Device requests a session transfer code that may be rendered as a QR code on the Authorization Device. When the user scans the QR code or enters it on the Consumption Device where they would like the session to continue, the Consumption Device presents it to the Authorization Server. The Authorization Server then transfers the session to the Consumption Device. This may include transferring authentication and authorization state to optimise the user experience. This type of flow is used for adding new devices to networks, bootstrapping new applications or provisioning new credentials. The Pre-Authorized Code Flow in ([@OpenID.VCI])) is an example of using this pattern to provision a new credential. The figure below shows an example of this flow.
