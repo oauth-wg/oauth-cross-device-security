@@ -492,7 +492,7 @@ Attackers exploit cross-device session transfer flows by using social engineerin
              |              |                       |               |
              |              |                       |               |
              +--------------+                       |               |
-(A)Attacker scans   |                               |               |
+(F)Attacker scans   |                               |               |
    QR code or enters|                               |               |
    Session Transfer |                               |               |
    Code             v         (G) Present Session   |               |
@@ -514,7 +514,7 @@ Figure: Cross-Device Flows: Session Transfer Pattern Exploit
 - (F) Once the attacker receives the QR code, they scan it or enter it on their own Consumption Device.
 - (G) The client on the Consumption Device presents the session transfer code to the Authorization Server.
 - (H) The Authorization Server verifies the session transfer code and retrieves the session context information needed to resume the session on the Consumption Device.
-- (I) The attacker resumes the session on their own Consumption device and is able to access the information that the user authorized on their Authorization Device in step (B).
+- (I) The attacker resumes the session on their own Consumption Device and is able to access the information that the user authorized on their Authorization Device in step (B).
 
 ## Examples of Cross-Device Flow Exploits
 The following examples illustrate these attacks in practical settings and show how the unauthenticated channel is exploited by attackers who can copy the QR codes and user codes, change the context in which they are presented using social engineering techniques and mislead end-users into granting consent to avail of services, access data and make payments.
