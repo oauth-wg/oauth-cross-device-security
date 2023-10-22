@@ -66,7 +66,7 @@ flow on one device (the Consumption Device) and then use a second, personally
 trusted, device (Authorization Device) to authorize the Consumption
 Device to access a resource (e.g., access to a service). The Device
 Authorization Grant [@RFC8628] and Client-Initiated Backchannel
-Authentication [@CIBA] are two examples of popular cross-device flows.
+Authentication [@CIBA] are two examples of popular cross-device authorization flows.
 
 In these flows, it is the user's decision whether to continue the session by scanning a QR code, entering a user code, or accepting an authorization request pushed to their Authorization Device.
 
