@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-06T01:11:46.719726+00:00",
+  "timestamp": "2024-02-08T01:10:37.527114+00:00",
   "repo": "oauth-wg/oauth-cross-device-security",
   "labels": [
     {
@@ -1339,7 +1339,7 @@
         },
         {
           "author": "panva",
-          "authorAssociation": "COLLABORATOR",
+          "authorAssociation": "MEMBER",
           "body": "Thank you Daniel, I will do my review first thing monday morning.",
           "createdAt": "2022-10-14T14:12:39Z",
           "updatedAt": "2022-10-14T14:12:39Z"
@@ -1380,7 +1380,7 @@
             "abbreviatedOid": "ad34b19"
           },
           "author": "panva",
-          "authorAssociation": "COLLABORATOR",
+          "authorAssociation": "MEMBER",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2022-10-17T09:12:30Z",
@@ -1409,7 +1409,7 @@
       "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/5",
       "state": "MERGED",
       "author": "panva",
-      "authorAssociation": "COLLABORATOR",
+      "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "",
