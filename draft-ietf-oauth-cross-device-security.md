@@ -45,18 +45,18 @@ organization="Okta"
 .# Abstract
 
 This document describes threats against cross-device flows
-along with near term mitigations, protocol selection guidance,
-and the analytical tools needed to evaluate the effectiveness of
-these mitigations. It serves as a security guide to system designers,
-architects, product managers, security specialists, fraud analysts
-and engineers implementing cross-device flows.
+along with practical mitigations, protocol selection guidance,
+and a summary of formal analysis results identified as relevant to
+the security of cross-device flows. It serves as a security guide
+to system designers, architects, product managers, security
+specialists, fraud analysts and engineers implementing cross-device flows.
 
 {mainmatter}
 
 # Introduction {#Introduction}
 Protocol flows that span multiple end-user devices are in widespread use today. These flows are often referred to as cross-device flows. A common example is a user that uses their mobile phone to scan a QR code from their SmartTV, giving an app on the TV access to their video streaming service. Besides QR codes, other mechanisms are often used such as PIN codes that the user has to enter on one of the devices, or push notifications to a mobile app that the user has to approve.
 
-In all cases, it is up to the user to decide whether to grant the authorization or not. However, the transfer the QR code or PIN are transferred via an unauthorized channel and the user cannot always decide in which context an authorization is requested. This may be exploited by attackers to gain unauthorized access to a user's resources.
+In all cases, it is up to the user to decide whether to grant authorization or not. However, the QR code or PIN are transferred via an unauthorized channel, leaving it up to the user to decide in which context an authorization is requested. This may be exploited by attackers to gain unauthorized access to a user's resources.
 
 To accommodate the various nuances of cross-device flows, this document distinguished between cases where the cross-device flow is used to authorize access to a resource (cross-device authorization flows) and cases where the cross-device flow is used to transfer an existing session (cross-device session transfer flows).
 
@@ -103,11 +103,11 @@ techniques to convince the user to send the session transfer code to the attacke
 These attacks borrow techniques from traditional phishing attacks, but instead of collecting passwords, attackers collect session transfer codes and other artefacts that allow them to setup a session and then use it to access a user's data.
 
 ## Defending Against Cross-Device Attacks
-In order to defend against Cross-Device Consent Phishing and Cross-Device Session Phishing attacks, this document outlines three responses:
+This document provides guidance to implementers to defend against Cross-Device Consent Phishing and Cross-Device Session Phishing attacks. This guidance includes:
 
-1. For protocols that are susceptible to these exploits, deploy practical mitigations ((#practical-mitigations)).
-3. Select protocols that are more resistant to these exploits when possible ((#protocol-selection)).
-3. Conduct formal analysis of cross-device flows to assess susceptibility to these attacks and the effectiveness of the proposed mitigations ((#foundational-pillars)).
+1. Practical mitigations for suceptible protocols ((#practical-mitigations)).
+2. Protocol selection guidance to avoid using susceptible protocols ((#protocol-selection)).
+3. Results from formal analysis of suceptible protocols ((#foundational-pillars)).
 
 ## Conventions and Terminology
 
@@ -122,7 +122,20 @@ This specification uses the terms "access token", "refresh token",
 "authorization request", and
 "client" defined by The OAuth 2.0 Authorization Framework [@!RFC6749].
 
-# Cross-Device Flow Patterns
+# Best Practices
+This section describes the set of security mechanisms and measures to secure cross-device protools against Cross-Device Cosnsent Phishing and Cross-Device Session Phishing attacks that the OAuth working group considers best practices at the time of writing. 
+
+1. Implementers MUST perform a risk assessment before implementing cross-device flows, weighing the risks from Cross-Device Cosnsent Phishing and Cross-Device Session Phishing attacks against benefits for users.
+2. Implementers SHOULD avoid cross-device flows if risks cannot be sufficiently mitigated.
+3. Implementers must follow the guidance provided in (#protocol-selection) for protocol selection.
+4. Implementers MUST implement practical mitigations as listed in (#practical-mitigations) that is appropriate for the use case, architecture, and selected protocols.
+5. Implementers SHOULD implement proximity checks as defined in (#establish-proximity) if possible.
+
+These best practices applies to the Device Authorization Grant ([@RFC8628]) as well as other cross-device protocols such as the Client Initiated Backchannel Authentication [@CIBA], Self-Issued OpenID Provider v2 [@OpenID.SIOPV2], the Pre-Authorized Code Flow in ([@OpenID.VCI]) and other cross-device protocols that relies on the user to authenticate the channel between devices. 
+
+(#cross-device-flow-patterns) provides details about susceptible protocols and (#cross-device-flow-exploits) provides attack descriptions. (#practical-mitigations) provides details about the security mechanisms and mitigations, (protocol-selection) provides protocol selection guidance and (#foundational-pillars) provides details from formal analysis of protocols that apply to cross device flows.
+
+# Cross-Device Flow Patterns {#cross-device-flow-patterns}
 Cross-device flows allow a user to start a flow on one device (e.g., a SmartTV) and then transfer the session to continue it on a second device (e.g., a mobile phone). The second device may be used to access the service that was running on the first device, or to perform an action such as authenticating or granting authorization before potentially passing control back to the first device.
 
 These flows typically involve using a mobile phone to scan a QR code
@@ -323,7 +336,7 @@ A user is accessing a Computer Aid Design (CAD) application. When accessing the 
 ### Example A9: Administer a System (Backchannel-Transferred Session Pattern)
 A network administrator wants to access an adminstration portal used to configure network assets and deploy new applications. When attempting to access the service, the network administrator receives a notification in an app on their mobile device, requesting them to confirm access to the portal. The network administrator approves the request on their mobile phone and is granted access to the portal.
 
-# Cross-Device Flow Exploits
+# Cross-Device Flow Exploits {#cross-device-flow-exploits}
 Attackers exploit the absence of an authenticated channel between the two devices used in a cross-device flow by using social engineering techniques typicaly used in phishing attacks.
 
 In cross-device authorization flows the attacker uses these social engineering techniques by changing the context in which the authorization request is presented to convince the user to grant authorization when they shouldn't. These attacks are also known as Cross-Device Consent Phishing (CDCP) attacks.
@@ -599,7 +612,7 @@ A number of protocols that enable cross-device flows that are susceptible to Cro
 
 It is RECOMMENDED that one or more of the mitigations are applied whenever implementing a cross-device flow. Every mitigation provides an additional layer of security that makes it harder to initiate the attack, disrupts attacks in progress or reduces the impact of a successful attack.
 
-### Establish Proximity
+### Establish Proximity {#establish-proximity}
 The unauthenticated channel between the Consumption Device and Authorization Device allows attackers to obtain a QR code or user code in one location and display it in another location. Consequently, proximity-enforced cross-device flows are more resistant to Cross-Device Consent Phishing attacks than proximity-less cross-device flows. Establishing proximity between the location of the Consumption Device and the Authorization Device limits an attacker's ability to launch attacks by sending the user or QR codes to large numbers of users that are geographically distributed. There are a couple of ways to establish proximity:
 
 - Physical connectivity: This is a good indicator of proximity, but requires specific ports, cables and hardware and may be challenging from a user experience perspective or may not be possible in certain settings (e.g., when USB ports are blocked or removed for security purposes). Physical connectivity may be better suited to dedicated hardware like FIDO devices that can be used with protocols that are resistant to the exploits described in this document.
