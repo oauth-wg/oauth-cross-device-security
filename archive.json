@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-11T01:16:45.718099+00:00",
+  "timestamp": "2024-02-13T01:12:11.235339+00:00",
   "repo": "oauth-wg/oauth-cross-device-security",
   "labels": [
     {
@@ -1258,7 +1258,7 @@
       "labels": [],
       "body": "Incl. originInfo",
       "createdAt": "2023-09-08T09:39:21Z",
-      "updatedAt": "2023-11-08T15:06:55Z",
+      "updatedAt": "2024-02-12T09:47:09Z",
       "closedAt": null,
       "comments": [
         {
@@ -1267,6 +1267,13 @@
           "body": "As discussed at IETF 1118: Reference to openid4vp should be enough.",
           "createdAt": "2023-11-08T15:06:55Z",
           "updatedAt": "2023-11-08T15:06:55Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@danielfett we already reference SIOP, should we extend and add references to OpenID4VP in the same places as we reference SIOP, or do we need new sections?",
+          "createdAt": "2024-02-12T09:47:08Z",
+          "updatedAt": "2024-02-12T09:47:08Z"
         }
       ]
     },
@@ -4685,6 +4692,32 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 117,
+      "id": "PR_kwDOHK26QM5mn60S",
+      "title": "Provide actionable guidance on how to use this document",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/117",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Adding actionable guidance based on feedback from IETF 118 (see #116 ).",
+      "createdAt": "2024-02-12T11:14:23Z",
+      "updatedAt": "2024-02-12T20:01:02Z",
+      "baseRepository": "oauth-wg/oauth-cross-device-security",
+      "baseRefName": "main",
+      "baseRefOid": "ed6e1705cc4c019aca3a9d5c2c20deb49403117f",
+      "headRepository": "oauth-wg/oauth-cross-device-security",
+      "headRefName": "PieterKas-patch-38",
+      "headRefOid": "b9a10fb018cff5709204ab9d14e23ef3e3a5c2be",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
