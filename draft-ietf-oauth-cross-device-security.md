@@ -833,6 +833,10 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
    [[ To be removed from the final specification ]]
 
    -latest
+   
+   * Added section to provide actionable guidance to implementors on how to use this document.
+
+   -04
 
    * Corrected formatting issue that prevented history from showing correctly.
 
