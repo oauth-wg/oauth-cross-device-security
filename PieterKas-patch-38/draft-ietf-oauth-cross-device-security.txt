@@ -263,10 +263,10 @@ Table of Contents
    Cross-Device Consent Phishing and Cross-Device Session Phishing
    attacks.  This guidance includes:
 
-   1.  Practical mitigations for suceptible protocols (Section 6.1).
+   1.  Practical mitigations for susceptible protocols (Section 6.1).
    2.  Protocol selection guidance to avoid using susceptible protocols
        (Section 6.2).
-   3.  Results from formal analysis of suceptible protocols
+   3.  Results from formal analysis of susceptible protocols
        (Section 6.3).
 
 1.4.  Conventions and Terminology
@@ -2225,6 +2225,11 @@ Appendix A.  Document History
    [[ To be removed from the final specification ]]
 
    -latest
+
+   *  Added section to provide actionable guidance to implementors on
+      how to use this document.
+
+   -04
 
    *  Corrected formatting issue that prevented history from showing
       correctly.
