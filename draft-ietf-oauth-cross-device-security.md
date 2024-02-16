@@ -157,7 +157,7 @@ There are three cross-device flow patterns for transferring the authorization re
 In all of these flows, it is the user's decision whether to continue the session by scanning a QR code, entering a user code, or accepting an authorization request pushed to their Authorization Device.
 
 ### User-Transferred Session Data Pattern
-The Device Authorization Grant ([@RFC8628]) is an example of a cross-device flow that relies on the user copying information from the Consumption Device to the Authorization Device. The figure below shows a typical example of this flow:
+The Device Authorization Grant ([@RFC8628]) is an example of a cross-device flow that relies on the user copying information from the Consumption Device to the Authorization Device by either entering data manually or scanning a QR code. The figure below shows a typical example of this flow:
 
 ~~~ ascii-art
                               (B) Consumption Device
@@ -562,7 +562,7 @@ Cross-device flows that are subject to the attacks described earlier typically s
 1.	The attacker can initiate the flow and manipulate the context of an authorization request.
     E.g., the attacker can obtain a QR code or user code, or can request an authentication/authorization decision from the user.
 2.	The interaction between the Consumption Device and Authorization Device is unauthenticated.
-    E.g., it is left to the user to decide if the QR code, user code or authentication request is being presented in a legitimate context
+    E.g., it is left to the user to decide if the QR code, user code or authentication request is being presented in a legitimate context.
 
 A number of protocols that have been standardized, or are in the process of being standardized that share these characteristics include:
 
@@ -570,7 +570,7 @@ A number of protocols that have been standardized, or are in the process of bein
 
 - **Open ID Foundation Client Initiated Back-Channel Authentication (CIBA) [@CIBA]:** A standard developed in the OpenID Foundation that allows a device or service (e.g., a personal computer, Smart TV, Kiosk) to request the OpenID Provider to initiate an authentication flow if it knows a valid identifier for the user. The user completes the authentication flow using a second device (e.g., a mobile phone). In this flow the user does not scan a QR code or obtain a user code from the Consumption Device, but is instead contacted by the OpenID Provider to complete the authentication using a push notification, e-mail, text message or any other suitable mechanism.
 
-- **OpenID for Verifiable Credential Protocol Suite (Issuance, Presentation):** The OpenID for Verifiable Credentials enables cross-device scenarios by allowing users to scan QR codes to retrieve credentials (Issuance) or present credentials (Presentation). The QR code is presented on a device that initiates the flow.
+- **OpenID for Verifiable Credential Protocol Suite (Issuance, Presentation):** The OpenID for Verifiable Credentials enables cross-device scenarios by allowing users to scan QR codes to retrieve credentials (Issuance - see [@OpenID.VCI]) or present credentials (Presentation - see [@OpenID.VCP]). The QR code is presented on a device that initiates the flow.
 
 - **Self-Issued OpenID Provider v2 (SIOP V2):** A standard that allows end-user to present self-attested or third party attested attributes when used with OpenID for Verifiable Credential protocols. The user scans a QR code presented by the relying party to initiate the flow.
 
@@ -1041,7 +1041,7 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
   </front>
 </reference>
 
-<reference anchor="OpenID.VCI" target="https://openid.net/specs/openid-connect-self-issued-v2-1_0.html">
+<reference anchor="OpenID.VCI" target="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">
   <front>
     <title>OpenID for Verifiable Credential Issuance</title>
     <author initials="T." surname="Lodderstedt" fullname="Torsten Lodderstedt">
@@ -1057,6 +1057,25 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
   </front>
 </reference>
 
+<reference anchor="OpenID.VCP" target="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">
+  <front>
+    <title>OpenID for Verifiable Credential Presentations</title>
+    <author initials="O." surname="Terbu" fullname="Oliver Terbu">
+      <organization>Mattr</organization>
+    </author>
+    <author initials="T." surname="Lodderstedt" fullname="Torsten Lodderstedt">
+      <organization>sprind.org</organization>
+    </author>
+    <author initials="K." surname="Yasuda" fullname="Kristina Yasuda">
+      <organization>Microsoft</organization>
+    </author>
+    <author initials="T." surname="Looker" fullname="Tobias Looker">
+      <organization>Mattr</organization>
+    </author>
+    <date year="2023" month="November"/>
+  </front>
+</reference>
+        
 <reference anchor="IEEE802154" target="https://standards.ieee.org/standard/802_15_4-2020.html">
   <front>
     <title>IEEE Std 802.15.4-2020: IEEE Standard for Low-Rate Wireless Networks</title>
