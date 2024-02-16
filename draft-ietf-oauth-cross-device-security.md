@@ -107,7 +107,7 @@ This document provides guidance to implementers to defend against Cross-Device C
 
 1. Practical mitigations for suceptible protocols ((#practical-mitigations)).
 2. Protocol selection guidance to avoid using susceptible protocols ((#protocol-selection)).
-3. Results from formal analysis of suceptible protocols ((#foundational-pillars)).
+3. Results from formal analysis of susceptible protocols ((#foundational-pillars)).
 
 ## Conventions and Terminology
 
