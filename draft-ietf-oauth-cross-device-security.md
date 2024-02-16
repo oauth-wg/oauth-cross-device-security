@@ -1075,7 +1075,7 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
     <date year="2023" month="November"/>
   </front>
 </reference>
-        
+
 <reference anchor="IEEE802154" target="https://standards.ieee.org/standard/802_15_4-2020.html">
   <front>
     <title>IEEE Std 802.15.4-2020: IEEE Standard for Low-Rate Wireless Networks</title>
