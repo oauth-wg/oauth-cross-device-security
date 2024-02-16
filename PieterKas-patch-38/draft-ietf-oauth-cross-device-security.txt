@@ -298,7 +298,7 @@ Table of Contents
    3.  Implementers SHOULD follow the guidance provided in Section 6.2
        for protocol selection.
    4.  Implementers MUST implement practical mitigations as listed in
-       Section 6.1 that is appropriate for the use case, architecture,
+       Section 6.1 that are appropriate for the use case, architecture,
        and selected protocols.
    5.  Implementers SHOULD implement proximity checks as defined in
        Section 6.1.1 if possible.
