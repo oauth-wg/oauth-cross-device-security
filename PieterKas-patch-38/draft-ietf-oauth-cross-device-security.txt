@@ -295,8 +295,8 @@ Table of Contents
        benefits for users.
    2.  Implementers SHOULD avoid cross-device flows if risks cannot be
        sufficiently mitigated.
-   3.  Implementers must follow the guidance provided in Section 6.2 for
-       protocol selection.
+   3.  Implementers SHOULD follow the guidance provided in Section 6.2
+       for protocol selection.
    4.  Implementers MUST implement practical mitigations as listed in
        Section 6.1 that is appropriate for the use case, architecture,
        and selected protocols.
