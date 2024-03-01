@@ -562,7 +562,7 @@ Cross-device flows that are subject to the attacks described earlier typically s
 1.	The attacker can initiate the flow and manipulate the context of an authorization request.
     E.g., the attacker can obtain a QR code or user code, or can request an authentication/authorization decision from the user.
 2.	The interaction between the Consumption Device and Authorization Device is unauthenticated.
-    E.g., it is left to the user to decide if the QR code, user code or authentication request is being presented in a legitimate context.
+    I.e., it is left to the user to decide if the QR code, user code, or authentication request is being presented in a legitimate context.
 
 A number of protocols that have been standardized, or are in the process of being standardized that share these characteristics include:
 
