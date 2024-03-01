@@ -822,6 +822,7 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
    -latest
 
    * Corrected formatting issue that prevented history from showing correctly.
+   * Added reference to OpenID for Verifiable Credential Presentation.
 
    -03
 
