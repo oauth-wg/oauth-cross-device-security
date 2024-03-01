@@ -131,7 +131,7 @@ This section describes the set of security mechanisms and measures to secure cro
 4. Implementers MUST implement practical mitigations as listed in (#practical-mitigations) that are appropriate for the use case, architecture, and selected protocols.
 5. Implementers SHOULD implement proximity checks as defined in (#establish-proximity) if possible.
 
-These best practices apply to the Device Authorization Grant ([@RFC8628]) as well as other cross-device protocols such as the Client Initiated Backchannel Authentication [@CIBA], Self-Issued OpenID Provider v2 [@OpenID.SIOPV2], OpenID for Verifiable Presentations [@OpenID.VCP], the Pre-Authorized Code Flow in ([@OpenID.VCI]) and other cross-device protocols that rely on the user to authenticate the channel between devices.
+These best practices apply to the Device Authorization Grant ([@RFC8628]) as well as other cross-device protocols such as the Client Initiated Backchannel Authentication [@CIBA], Self-Issued OpenID Provider v2 [@OpenID.SIOPV2], OpenID for Verifiable Presentations [@OpenID.VP], the Pre-Authorized Code Flow in ([@OpenID.VCI]) and other cross-device protocols that rely on the user to authenticate the channel between devices.
 
 (#cross-device-flow-patterns) provides details about susceptible protocols and (#cross-device-flow-exploits) provides attack descriptions. (#practical-mitigations) provides details about the security mechanisms and mitigations, (protocol-selection) provides protocol selection guidance and (#foundational-pillars) provides details from formal analysis of protocols that apply to cross device flows.
 
@@ -167,9 +167,7 @@ There are three cross-device flow patterns for transferring the authorization re
 - **Backchannel-Transferred Session Pattern:** In the second pattern, the OAuth client on the Consumption Device is responsible for transferring the session and initiating authorization on the Authorization Device via a backchannel with the Authorization Server. For example the user may attempt an online purchase on a Consumption Device (e.g., a personal computer) and receive an authorization request on their Authentication Device (e.g., mobile phone). The Client Initiated Backchannel Authentication [@CIBA] is an example of a cross-device flow that follow this pattern.
 - **User-Transferred Authorization Data Pattern:** In the third pattern, the OAuth client on the Consumption Device triggers the authorization request via a backchannel with the Authorization Server. Authorization data (e.g., a 6 digit authorization code) is displayed on the Authorization Device, which the user transfers to Consumption Device (e.g., by manually entering it). For example the user may attempt to access data in an enterprise application and receive a 6 digit authorization code on their Authentication Device (e.g., mobile phone) that they enter on Consumption Device.
 
-In all of these flows, it is the user's decision whether to continue the session by scanning a QR code, entering a user code, or accepting an authorization request pushed to their Authorization Device.
-
-### User-Transferred Session Data Pattern
+### User-Transferred Session Data Pattern {#utsdp}
 The Device Authorization Grant ([@RFC8628]) is an example of a cross-device flow that relies on the user copying information from the Consumption Device to the Authorization Device by either entering data manually or scanning a QR code. The figure below shows a typical example of this flow:
 
 ~~~ ascii-art
@@ -201,7 +199,8 @@ or enters the user code on the Authorization Device.
 - (D) The user authenticates to the Authorization Server before granting authorization.
 - (E) The Authorization Server issues tokens or grants authorization to the Consumption Device to access the user's resources.
 
-### Backchannel-Transferred Session Pattern
+### Backchannel-Transferred Session Pattern {#btsp}
+
 The Client Initiated Backchannel Authentication [@CIBA] transfers the session on the backchannel with the Authorization Server to request authorization on the Authorization Device. The figure below shows an example of this flow.
 
 ~~~ ascii-art
@@ -233,7 +232,7 @@ Figure: Cross-Device Flows: Backchannel-Transferred Session Pattern
 
 The Authorization Server may use a variety of mechanisms to request user authorization, including a push notification to a dedicated app on a mobile phone, or sending a text message with a link to an endpoint where the user can authenticate and authorize an action.
 
-### User-Transferred Authorization Data Pattern
+### User-Transferred Authorization Data Pattern {#utadp}
 Examples of the user-transferred authorization data pattern include flows in which the Consumption Device requests the Authorization Server to send authorization data (e.g., a 6 digit authorization code in a text message or e-mail) to the Authorization Device. Once the Authorization Device receives the authorization data, the user enters it on the Consumption Device. The Consumption Device sends the authorization data back to the Authorization Server for validation before gaining access to the user's resources. The figure below shows an example of this flow.
 
 
@@ -583,7 +582,7 @@ A number of protocols that have been standardized, or are in the process of bein
 
 - **Open ID Foundation Client Initiated Back-Channel Authentication (CIBA) [@CIBA]:** A standard developed in the OpenID Foundation that allows a device or service (e.g., a personal computer, Smart TV, Kiosk) to request the OpenID Provider to initiate an authentication flow if it knows a valid identifier for the user. The user completes the authentication flow using a second device (e.g., a mobile phone). In this flow the user does not scan a QR code or obtain a user code from the Consumption Device, but is instead contacted by the OpenID Provider to complete the authentication using a push notification, e-mail, text message or any other suitable mechanism.
 
-- **OpenID for Verifiable Credential Protocol Suite (Issuance, Presentation):** The OpenID for Verifiable Credentials enables cross-device scenarios by allowing users to scan QR codes to retrieve credentials (Issuance - see [@OpenID.VCI]) or present credentials (Presentation - see [@OpenID.VCP]). The QR code is presented on a device that initiates the flow.
+- **OpenID for Verifiable Credential Protocol Suite (Issuance, Presentation):** The OpenID for Verifiable Credentials enables cross-device scenarios by allowing users to scan QR codes to retrieve credentials (Issuance - see [@OpenID.VCI]) or present credentials (Presentation - see [@OpenID.VP]). The QR code is presented on a device that initiates the flow.
 
 - **Self-Issued OpenID Provider v2 (SIOP V2):** A standard that allows end-user to present self-attested or third party attested attributes when used with OpenID for Verifiable Credential protocols. The user scans a QR code presented by the relying party to initiate the flow.
 
@@ -654,7 +653,7 @@ The authorization server may be able to detect misuse of the codes due to repeat
 
 **Limitations:** Detection and remediation requires that resource servers are integrated with security eventing systems or token introspection services. This may not always be practical for existing systems and may need to be targeted to the most critical resource services in an environment.
 
-### Trusted Devices
+### Trusted Devices {#trusted_devices}
 If an attacker is unable to initiate the protocol, they are unable to obtain a QR code or user code that can be leveraged for the attacks described in this document. By restricting the protocol to only be executed on devices trusted by the authorization server, it prevents attackers from using arbitrary devices, or by mimicking devices to initiate the protocol.
 
 Authorization Servers MAY use different mechanisms to establish which devices it trusts. This includes limiting cross-device flows to specific device types such as intractive whiteboards or smart TVs, pre-registering devices with the authorization server or only allow cross-device flows on devices managed through device management systems. Device management systems may enforce policies that govern patching, version updates, on-device anti-malware deployment, revocation status and device location amongst others. Trusted devices MAY have their identities rooted in hardware (e.g., a TPM or equivalent technology).
@@ -688,8 +687,8 @@ Sender-constrained tokens limit the impact of a successful attack by preventing 
 
 **Limitations:** Sender-constrained tokens, especially sender-constrained tokens that require proof-of-posession, raise the bar for executing the attack and profiting from exfiltrating tokens. Although a software proof-of-posession key is better than no proof-of-posession key, an attacker may still exfiltrate the software key. Hardware keys are harder to exfiltrate, but come with additional implementation complexity. An attacker that controls the Consumption Device may still be able to excercise the key, even if it is in hardware. Consequently the main protection derived from sender-constrained tokens is preventing tokens from being moved from the Consumption Device to another device, thereby making it harder sell stolen tokens and profit from the attack.
 
-### User Education
-Research shows that user education is effective in reducing the risk of phishing attacks [@Baki2023]. The service provider MAY educate users on the risks of cross-device consent phishing and provide out-of-band reinforcement to the user on the context and conditions under which an authorization grant may be requested. For example, if the service provider does not send e-mails with QR codes requesting users to grant authorization, this may be reinforced in marketing messages and anti-fraud awareness campaigns. The service provider MAY also choose to reinforce these user education messages through in-app experiences.
+### User Education {#user_education}
+Research shows that user education is effective in reducing the risk of phishing attacks [@Baki2023]. The service provider MAY educate users on the risks of cross-device consent phishing and provide out-of-band reinforcement to the user on the context and conditions under which an authorization grant may be requested. For example, if the service provider does not send e-mails with QR codes requesting users to grant authorization, this may be reinforced in marketing messages and anti-fraud awareness campaigns. The service provider MAY also choose to reinforce these user education messages through in-app experiences. In [@PCRSM2023], it is proposed to advise users to verify the trustworthiness of the source of a QR code, for instance by checking that the connection is protected through TLS or by verifying that the URL really belongs to the Authorization Server.
 
 **Limitations:** Although user education helps to raise awareness and reduce the overall risk to users, it is insufficient on its own to mitigate cross-device consent phishing attacks. In particular, carefully designed phishing attacks can be practically indistinguishable from benign authorization flows even for well-trained users. User education SHOULD therefore be used in conjunction with other controls described in this document.
 
@@ -716,10 +715,10 @@ The user MAY be asked to verify if they initiated an authentication or authoriza
 
 **Limitations:** The additional verification step may reduce the overall usability of the system as it is one more thing users need to do right. Attackers may combine traditional phishing attacks and target users who respond to those messages with an interactive attack that sets the expectation with the user that they will have to provide the OTP or PIN, in addition to granting authorization for the request.
 
-### Request Binding with Out-of-Band Data
+### Request Binding with Out-of-Band Data {#request-binding}
 In the User-Transferred Session Data Pattern, users MAY enter out-of-band information on the Consumption Device to start the authorization process. The out-of-band data entered by the user MAY then be included in the QR code which is displayed on the Consumption Device. When the QR code is scanned by the Authorization Device, the out-of-band data is verified by the user or by the Authorization Device. The out-of-band data could be any attribute that the user or Authorization Device can retrieve during the authorization process. Examples include a serial number, one-time password or PIN, location or any other data that the user or the Authorization Device can recall or retrieve during the authorization process ([@MPRCS2020], [@PCRSM2023]).
 
-**Limitations:** A sophistacted attacker may include an additional step in their attack where they create a phishing attack that gathers the out-of-band data from the user before initiating the authorisation request. The additional step could also have a negative impact on the usability level of the solution.
+**Limitations:** A sophistacted attacker may include an additional step in their attack where they create a phishing attack that gathers the out-of-band data from the user before initiating the authorization request. The additional step could also have a negative impact on the usability level of the solution.
 
 ### Practical Mitigation Summary
 The practical mitigations described in this section can prevent the attacks from being initiated, disrupt attacks once they start or reduce the impact or remediate an attack if it succeeds. When combining one or more of these mitigations the overall security profile of a cross-device flow improves significantly. The following table provides a summary view of these mitigations:
@@ -744,6 +743,7 @@ The practical mitigations described in this section can prevent the attacks from
 | Authenticate-then-Inititiate          |    X    |         |         |
 | Request Initiation Verification       |         |    X    |         |
 | Request Binding with Out-of-Band Data |         |    X    |         |
+
 Table: Practical Mitigation Summary
 
 ## Protocol Selection {#protocol-selection}
@@ -812,9 +812,61 @@ As is the case with other kinds of protocols, it can be easy to overlook vulnera
 
 There are two major strengths of formal analysis: First, finding new vulnerabilities does not require creativity - i.e., new classes of attacks can be uncovered even if no one thought of these attacks before. In a faithful model, vulnerabilities become clear during the proof process or even earlier. Second, formal analysis can exclude the existence of any attacks within the boundaries of the model (e.g., the protocol layers modeled, the level of detail and functionalities covered, the assumed attacker capabilities, and the formalized security goals). As a downside, there is usually a gap between the model (which necessarily abstracts away from details) and implementations. In other words, implementations can introduce flaws where the model does not have any. Nonetheless, for protocol standards, formal analysis can help to ensure that the specification is secure when implemented correctly.
 
-There are various different approaches to formal security analysis and each brings its own strengths and weaknesses. For example, models differ in the level of detail in which they can capture a protocol (granularity, expressiveness), in the kind of statements they can produce, and whether the proofs can be assisted by tools or have to be performed manually. One of the most successfully used approaches is the so-called Web Infrastructure Model (WIM), a model specifically designed for the analysis of web authentication and authorization protocols. While it is a manual (pen-and-paper) model, it captures details of browsers and web interactions in unprecedented detail. Using the WIM, previously unknown flaws in OAuth, OpenID Connect, and FAPI were discovered.
+There are various different approaches to formal security analysis and each brings its own strengths and weaknesses. For example, models differ in the level of detail in which they can capture a protocol (granularity, expressiveness), in the kind of statements they can produce, and whether the proofs can be assisted by tools or have to be performed manually.
 
-To ensure secure cross-device interactions, a formal analysis using the WIM therefore seems to be in order. Such an analysis should comprise a generic model for cross-device flows, potentially including different kinds of interactions. The aim of the analysis would be to evaluate the effectiveness of selected mitigation strategies. To the best of our knowledge, this would be the first study of this kind.
+The following works have been identified as relevant to the analysis of cross-device flows:
+
+ * In "Formal analysis of self-issued OpenID providers" [@Bauer2022],
+   the protocol of [@OpenID.SIOPV2] was analyzed using the Web
+   Infrastructure Model (WIM). The WIM is specifically designed for the
+   analysis of web authentication and authorization protocols. While it
+   is a manual (pen-and-paper) model, it captures details of browsers
+   and web interactions to a degree that is hard to match in automated
+   models. In previous works, previously unknown flaws in OAuth, OpenID
+   Connect, and FAPI were discovered using the WIM. In the analysis of a
+   cross-device SIOP V2 flow in [@Bauer2022], the request replay attack
+   already described in Section 13.3 of [@OpenID.SIOPV2] was confirmed
+   in the model. A mitigation was implemented based on a so-called
+   Cross-Device Stub, essentially a component that serves to link the
+   two devices before the protocol flow starts. This can be seen as an
+   implementation of a trusted device relationship as described in
+   (#trusted_devices). The mitigation was shown to be effective in the
+   model.
+ * In "Security analysis of the Grant Negotiation and Authorization
+   Protocol" [@Helmschmidt2022], an analysis of a draft of the Grant
+   Negotiation and Authorization Protocol (GNAP)
+   [@I-D.ietf-gnap-core-protocol] was performed using the Web
+   Infrastructure Model. The same attack as in [@Bauer2022] was found to
+   apply to GNAP as well. In this case, a model of a "careful user" (see
+   (#user_education)) was used to show that the attack can be prevented
+   (at least in theory) by the user.
+ * In "The Good, the Bad and the (Not So) Ugly of Out-of-Band
+   Authentication with eID Cards and Push Notifications: Design, Formal
+   and Risk Analysis" [@MPRCS2020], Pernpruner et al. formally
+   analysed an authentication protocol relying on push notifications
+   delivered to an out-of-band device to approve the authentication
+   attempt on the primary device (Backchannel-Transferred Session
+   Pattern, (#btsp)). The analysis was performed using the specification
+   language ASLan++ and the model checker SATMC. According to the
+   results of the analysis, they identified and defined the category of
+   *implicit attacks*, which manage to deceive users into approving a
+   malicious authentication attempt through social engineering
+   techniques, thus not compromising all the authentication factors
+   involved; these attacks are aligned with the definition of
+   Cross-Device Consent Phishing (CDCP) attacks.
+ * In "An Automated Multi-Layered Methodology to Assist the Secure and
+   Risk-Aware Design of Multi-Factor Authentication Protocols"
+   [@PCRSM2023], Pernpruner et al. defined a multi-layered methodology
+   to analyze multi-factor authentication protocols at different levels
+   of granularity. They leveraged their methodology to formally analyze
+   a protocol relying on a QR code that has to be scanned on a secondary
+   device to approve the authentication attempt on the primary device
+   (User-Transferred Session Data Pattern, (#utsdp)). Given the results
+   of the analysis, they proposed some practical mitigations either to
+   prevent or reduce the risk of successful attacks, such as those
+   described in (#user_education) and (#request-binding).
+
+
 
 # Conclusion
 Cross-device flows enable authorization on devices with limited input capabilities, allow for secure authentication when using public or shared devices, provide a path towards multi-factor authentication and, provide the convenience of a single, portable credential store.
@@ -832,14 +884,15 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
 
    [[ To be removed from the final specification ]]
 
-   -latest
+   -05
 
    * Added section to provide actionable guidance to implementers on how to use this document.
+   * Expanded section on formal analysis to include completed research projects.
+   * Added reference to OpenID for Verifiable Presentations.
 
    -04
 
    * Corrected formatting issue that prevented history from showing correctly.
-   * Added reference to OpenID for Verifiable Credential Presentation.
 
    -03
 
@@ -1075,7 +1128,7 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
   </front>
 </reference>
 
-<reference anchor="OpenID.VCP" target="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">
+<reference anchor="OpenID.VP" target="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">
   <front>
     <title>OpenID for Verifiable Credential Presentations</title>
     <author initials="O." surname="Terbu" fullname="Oliver Terbu">
@@ -1119,6 +1172,24 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
   <seriesInfo name="Number" value="2"/>
   <seriesInfo name="Pages" value="1200-1212"/>
   <format type="doi">10.1109/TDSC.2022.3151103</format>
+</reference>
+
+<reference anchor="Bauer2022" target="https://elib.uni-stuttgart.de/handle/11682/12417">
+  <front>
+    <title>Formal analysis of self-issued OpenID providers</title>
+    <author initials="C." surname="Bauer">
+    </author>
+    <date year="2022"/>
+ </front>
+</reference>
+
+<reference anchor="Helmschmidt2022" target="https://elib.uni-stuttgart.de/handle/11682/12220">
+  <front>
+    <title>Security analysis of the Grant Negotiation and Authorization Protocol</title>
+    <author initials="F." surname="Helmschmidt">
+    </author>
+    <date year="2022"/>
+ </front>
 </reference>
 
 <reference anchor="MPRCS2020" target="https://doi.org/10.1145/3374664.3375727">
