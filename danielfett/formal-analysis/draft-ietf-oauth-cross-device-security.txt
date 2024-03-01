@@ -307,7 +307,7 @@ Table of Contents
    ([RFC8628]) as well as other cross-device protocols such as the
    Client Initiated Backchannel Authentication [CIBA], Self-Issued
    OpenID Provider v2 [OpenID.SIOPV2], OpenID for Verifiable
-   Presentations [OpenID.VCP], the Pre-Authorized Code Flow in
+   Presentations [OpenID.VP], the Pre-Authorized Code Flow in
    ([OpenID.VCI]) and other cross-device protocols that rely on the user
    to authenticate the channel between devices.
 
@@ -1274,7 +1274,7 @@ Table of Contents
       Presentation):* The OpenID for Verifiable Credentials enables
       cross-device scenarios by allowing users to scan QR codes to
       retrieve credentials (Issuance - see [OpenID.VCI]) or present
-      credentials (Presentation - see [OpenID.VCP]).  The QR code is
+      credentials (Presentation - see [OpenID.VP]).  The QR code is
       presented on a device that initiates the flow.
 
    *  *Self-Issued OpenID Provider v2 (SIOP V2):* A standard that allows
@@ -1666,7 +1666,7 @@ Table of Contents
    experiences.  In [PCRSM2023], it is proposed to advise users to
    verify the trustworthiness of the source of a QR code, for instance
    by checking that the connection is protected through TLS or by
-   verifying that the URL really belongs to the Authorization Server
+   verifying that the URL really belongs to the Authorization Server.
 
    *Limitations:* Although user education helps to raise awareness and
    reduce the overall risk to users, it is insufficient on its own to
@@ -2240,7 +2240,7 @@ Table of Contents
               <https://openid.net/specs/openid-4-verifiable-credential-
               issuance-1_0.html>.
 
-   [OpenID.VCP]
+   [OpenID.VP]
               Terbu, O., Lodderstedt, T., Yasuda, K., and T. Looker,
               "OpenID for Verifiable Credential Presentations", November
               2023, <https://openid.net/specs/openid-4-verifiable-
