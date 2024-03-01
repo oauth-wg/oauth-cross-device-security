@@ -675,7 +675,7 @@ Sender-constrained tokens limit the impact of a successful attack by preventing 
 **Limitations:** Sender-constrained tokens, especially sender-constrained tokens that require proof-of-posession, raise the bar for executing the attack and profiting from exfiltrating tokens. Although a software proof-of-posession key is better than no proof-of-posession key, an attacker may still exfiltrate the software key. Hardware keys are harder to exfiltrate, but come with additional implementation complexity. An attacker that controls the Consumption Device may still be able to excercise the key, even if it is in hardware. Consequently the main protection derived from sender-constrained tokens is preventing tokens from being moved from the Consumption Device to another device, thereby making it harder sell stolen tokens and profit from the attack.
 
 ### User Education {#user_education}
-Research shows that user education is effective in reducing the risk of phishing attacks [@Baki2023]. The service provider MAY educate users on the risks of cross-device consent phishing and provide out-of-band reinforcement to the user on the context and conditions under which an authorization grant may be requested. For example, if the service provider does not send e-mails with QR codes requesting users to grant authorization, this may be reinforced in marketing messages and anti-fraud awareness campaigns. The service provider MAY also choose to reinforce these user education messages through in-app experiences.
+Research shows that user education is effective in reducing the risk of phishing attacks [@Baki2023]. The service provider MAY educate users on the risks of cross-device consent phishing and provide out-of-band reinforcement to the user on the context and conditions under which an authorization grant may be requested. For example, if the service provider does not send e-mails with QR codes requesting users to grant authorization, this may be reinforced in marketing messages and anti-fraud awareness campaigns. The service provider MAY also choose to reinforce these user education messages through in-app experiences. In [@PCRSM2023], it is proposed to advise users to verify the trustworthiness of the source of a QR code, for instance by checking that the connection is protected through TLS or by verifying that the URL really belongs to the Authorization Server
 
 **Limitations:** Although user education helps to raise awareness and reduce the overall risk to users, it is insufficient on its own to mitigate cross-device consent phishing attacks. In particular, carefully designed phishing attacks can be practically indistinguishable from benign authorization flows even for well-trained users. User education SHOULD therefore be used in conjunction with other controls described in this document.
 
@@ -702,10 +702,10 @@ The user MAY be asked to verify if they initiated an authentication or authoriza
 
 **Limitations:** The additional verification step may reduce the overall usability of the system as it is one more thing users need to do right. Attackers may combine traditional phishing attacks and target users who respond to those messages with an interactive attack that sets the expectation with the user that they will have to provide the OTP or PIN, in addition to granting authorization for the request.
 
-### Request Binding with Out-of-Band Data
+### Request Binding with Out-of-Band Data {#request-binding}
 In the User-Transferred Session Data Pattern, users MAY enter out-of-band information on the Consumption Device to start the authorization process. The out-of-band data entered by the user MAY then be included in the QR code which is displayed on the Consumption Device. When the QR code is scanned by the Authorization Device, the out-of-band data is verified by the user or by the Authorization Device. The out-of-band data could be any attribute that the user or Authorization Device can retrieve during the authorization process. Examples include a serial number, one-time password or PIN, location or any other data that the user or the Authorization Device can recall or retrieve during the authorization process ([@MPRCS2020], [@PCRSM2023]).
 
-**Limitations:** A sophistacted attacker may include an additional step in their attack where they create a phishing attack that gathers the out-of-band data from the user before initiating the authorisation request. The additional step could also have a negative impact on the usability level of the solution.
+**Limitations:** A sophistacted attacker may include an additional step in their attack where they create a phishing attack that gathers the out-of-band data from the user before initiating the authorization request. The additional step could also have a negative impact on the usability level of the solution.
 
 ### Practical Mitigation Summary
 The practical mitigations described in this section can prevent the attacks from being initiated, disrupt attacks once they start or reduce the impact or remediate an attack if it succeeds. When combining one or more of these mitigations the overall security profile of a cross-device flow improves significantly. The following table provides a summary view of these mitigations:
@@ -803,29 +803,55 @@ There are various different approaches to formal security analysis and each brin
 
 The following works have been identified as relevant to the analysis of cross-device flows:
 
- * In "Formal analysis of self-issued OpenID providers" [@Bauer2022], the
-   protocol of [@OpenID.SIOPV2] was analyzed using the Web Infrastructure Model
-   (WIM). The WIM is specifically designed for the analysis of web
-   authentication and authorization protocols. While it is a manual
-   (pen-and-paper) model, it captures details of browsers and web interactions
-   to a degree that is hard to match in automated models. In previous works,
-   previously unknown flaws in OAuth, OpenID Connect, and FAPI were discovered
-   using the WIM. In the analysis of a cross-device SIOP V2 flow in
-   [@Bauer2022], the request replay attack already described in Section 13.3 of
-   [@OpenID.SIOPV2] was confirmed in the model. A mitigation was implemented
-   based on a so-called Cross-Device Stub, essentially a component that serves
-   to link the two devices before the protocol flow starts. This essentially
-   creates a trusted device relationship as described in (#trusted_devices). The
-   mitigation was shown to be effective in the model.
- * In "Security analysis of the Grant Negotiation and Authorization Protocol"
-   [@Helmschmidt2022], an analysis of a draft of the Grant Negotiation and
-   Authorization Protocol (GNAP) [@I-D.ietf-gnap-core-protocol] was performed
-   using the Web Infrastructure Model. The same attack as in [@Bauer2022] was
-   found to apply to GNAP as well. In this case, a model of a "careful user"
-   (see (#user_education)) was used to show that the attack can be
-   prevented (at least in theory) by the user.
- * In "The Good, the Bad and the (Not So) Ugly of Out-of-Band Authentication with eID Cards and Push Notifications: Design, Formal and Risk Analysis" [@Pernpruner2020], Pernpruner et al. formally analysed an authentication protocol relying on push notifications delivered to an out-of-band device to approve the authentication attempt on the primary device (Backchannel-Transferred Session Pattern, (#btsp)). The analysis was performed using the specification language ASLan++ and the model checker SATMC. According to the results of the analysis, they identified and defined the category of *implicit attacks*, which manage to deceive users into approving a malicious authentication attempt through social engineering techniques, thus not compromising all the authentication factors involved; these attacks are aligned with the definition of Cross-Device Consent Phishing (CDCP) attacks. (TODO: Add references to mitigations once included in the draft.)
- * In "An Automated Multi-Layered Methodology to Assist the Secure and Risk-Aware Design of Multi-Factor Authentication Protocols" [@Pernpruner2023], Pernpruner et al. defined a multi-layered methodology to analyse multi-factor authentication protocols at different levels of granularity. They leveraged their methodology to formally analyse a protocol relying on a QR code that has to be scanned on a secondary device to approve the authentication attempt on the primary device (User-Transferred Session Data Pattern, (#utsdp)). Given the results of the analysis, they proposed some practical mitigations either to prevent or reduce the risk of successful attacks. (TODO: Add references to mitigations once included in the draft.)
+ * In "Formal analysis of self-issued OpenID providers" [@Bauer2022],
+   the protocol of [@OpenID.SIOPV2] was analyzed using the Web
+   Infrastructure Model (WIM). The WIM is specifically designed for the
+   analysis of web authentication and authorization protocols. While it
+   is a manual (pen-and-paper) model, it captures details of browsers
+   and web interactions to a degree that is hard to match in automated
+   models. In previous works, previously unknown flaws in OAuth, OpenID
+   Connect, and FAPI were discovered using the WIM. In the analysis of a
+   cross-device SIOP V2 flow in [@Bauer2022], the request replay attack
+   already described in Section 13.3 of [@OpenID.SIOPV2] was confirmed
+   in the model. A mitigation was implemented based on a so-called
+   Cross-Device Stub, essentially a component that serves to link the
+   two devices before the protocol flow starts. This can be seen as an
+   implementation of a trusted device relationship as described in
+   (#trusted_devices). The mitigation was shown to be effective in the
+   model.
+ * In "Security analysis of the Grant Negotiation and Authorization
+   Protocol" [@Helmschmidt2022], an analysis of a draft of the Grant
+   Negotiation and Authorization Protocol (GNAP)
+   [@I-D.ietf-gnap-core-protocol] was performed using the Web
+   Infrastructure Model. The same attack as in [@Bauer2022] was found to
+   apply to GNAP as well. In this case, a model of a "careful user" (see
+   (#user_education)) was used to show that the attack can be prevented
+   (at least in theory) by the user.
+ * In "The Good, the Bad and the (Not So) Ugly of Out-of-Band
+   Authentication with eID Cards and Push Notifications: Design, Formal
+   and Risk Analysis" [@MPRCS2020], Pernpruner et al. formally
+   analysed an authentication protocol relying on push notifications
+   delivered to an out-of-band device to approve the authentication
+   attempt on the primary device (Backchannel-Transferred Session
+   Pattern, (#btsp)). The analysis was performed using the specification
+   language ASLan++ and the model checker SATMC. According to the
+   results of the analysis, they identified and defined the category of
+   *implicit attacks*, which manage to deceive users into approving a
+   malicious authentication attempt through social engineering
+   techniques, thus not compromising all the authentication factors
+   involved; these attacks are aligned with the definition of
+   Cross-Device Consent Phishing (CDCP) attacks.
+ * In "An Automated Multi-Layered Methodology to Assist the Secure and
+   Risk-Aware Design of Multi-Factor Authentication Protocols"
+   [@PCRSM2023], Pernpruner et al. defined a multi-layered methodology
+   to analyze multi-factor authentication protocols at different levels
+   of granularity. They leveraged their methodology to formally analyze
+   a protocol relying on a QR code that has to be scanned on a secondary
+   device to approve the authentication attempt on the primary device
+   (User-Transferred Session Data Pattern, (#utsdp)). Given the results
+   of the analysis, they proposed some practical mitigations either to
+   prevent or reduce the risk of successful attacks, such as those
+   described in (#user_education) and (#request-binding).
 
 
 
@@ -1127,31 +1153,6 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
     </author>
     <date year="2022"/>
  </front>
-</reference>
-
-<reference anchor="Pernpruner2020" target="https://doi.org/10.1145/3374664.3375727">
-  <front>
-    <title>The Good, the Bad and the (Not So) Ugly of Out-of-Band Authentication with EID Cards and Push Notifications: Design, Formal and Risk Analysis</title>
-    <author fullname="Marco Pernpruner" surname="Pernpruner"/>
-    <author fullname="Roberto Carbone" surname="Carbone"/>
-    <author fullname="Silvio Ranise" surname="Ranise"/>
-    <author fullname="Giada Sciarretta" surname="Sciarretta"/>
-    <date year="2020"/>
-  </front>
-  <seriesInfo name="DOI" value="10.1145/3374664.3375727" />
-</reference>
-
-<reference anchor="Pernpruner2023">
-  <front>
-    <title>An Automated Multi-Layered Methodology to Assist the Secure and Risk-Aware Design of Multi-Factor Authentication Protocols</title>
-    <author fullname="Marco Pernpruner" surname="Pernpruner"/>
-    <author fullname="Roberto Carbone" surname="Carbone"/>
-    <author fullname="Giada Sciarretta" surname="Sciarretta"/>
-    <author fullname="Silvio Ranise" surname="Ranise"/>
-    <date year="2023"/>
-    <seriesInfo name="Journal" value="IEEE Transactions on Dependable and Secure Computing" />
-  </front>
-  <seriesInfo name="DOI" value="10.1109/TDSC.2023.3296210" />
 </reference>
 
 <reference anchor="MPRCS2020" target="https://doi.org/10.1145/3374664.3375727">
