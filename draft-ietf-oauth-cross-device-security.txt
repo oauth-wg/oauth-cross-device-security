@@ -5,10 +5,10 @@
 Web Authorization Protocol                                  P. Kasselman
 Internet-Draft                                                 Microsoft
 Intended status: Best Current Practice                           D. Fett
-Expires: 24 April 2024                                          Authlete
+Expires: 2 September 2024                                       Authlete
                                                                F. Skokan
                                                                     Okta
-                                                         22 October 2023
+                                                            1 March 2024
 
 
            Cross-Device Flows: Security Best Current Practice
@@ -49,11 +49,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 24 April 2024.
+   This Internet-Draft will expire on 2 September 2024.
 
 Copyright Notice
 
-   Copyright (c) 2023 IETF Trust and the persons identified as the
+   Copyright (c) 2024 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -265,10 +265,8 @@ Table of Contents
 
    1.  For protocols that are susceptible to these exploits, deploy
        practical mitigations (Section 5.1).
-
    2.  Select protocols that are more resistant to these exploits when
        possible (Section 5.2).
-
    3.  Conduct formal analysis of cross-device flows to assess
        susceptibility to these attacks and the effectiveness of the
        proposed mitigations (Section 5.3).
@@ -314,17 +312,14 @@ Table of Contents
       users can authorize devices with limited input capabilities to
       access content (e.g., smart TVs, digital whiteboards, printers,
       etc).
-
    *  Secure authentication on shared or public devices: End-users can
       perform authentication and authorization using a personally
       trusted device, without risk of disclosing their credentials to a
       public or shared device.
-
    *  Ubiquitous multi-factor authentication: Enables a user to use
       multi-factor authentication, independent of the device on which
       the service is being accessed (e.g., a kiosk, smart TV or shared
       Personal Computer).
-
    *  Convenience of a single, portable, credential store: Users can
       keep all their credentials in a mobile wallet or mobile phone that
       they already carry with them.
@@ -345,7 +340,6 @@ Table of Contents
       the Authorization Device.  The Device Authorization Grant
       ([RFC8628]) is an example of a cross-device flow that follow this
       pattern.
-
    *  *Backchannel-Transferred Session Pattern:* In the second pattern,
       the OAuth client on the Consumption Device is responsible for
       transferring the session and initiating authorization on the
@@ -355,7 +349,6 @@ Table of Contents
       authorization request on their Authentication Device (e.g., mobile
       phone).  The Client Initiated Backchannel Authentication [CIBA] is
       an example of a cross-device flow that follow this pattern.
-
    *  *User-Transferred Authorization Data Pattern:* In the third
       pattern, the OAuth client on the Consumption Device triggers the
       authorization request via a backchannel with the Authorization
@@ -375,8 +368,9 @@ Table of Contents
 
    The Device Authorization Grant ([RFC8628]) is an example of a cross-
    device flow that relies on the user copying information from the
-   Consumption Device to the Authorization Device.  The figure below
-   shows a typical example of this flow:
+   Consumption Device to the Authorization Device by either entering
+   data manually or scanning a QR code.  The figure below shows a
+   typical example of this flow:
 
                                  (B) Consumption Device
                 +--------------+     Get QR/User Code  +---------------+
@@ -401,17 +395,13 @@ Table of Contents
    *  (A) The user takes an action on the Consumption Device by starting
       a purchase, adding a device to a network or connecting a service
       to the Consumption Device.
-
    *  (B) The Consumption Device retrieves a QR code or user code from
       an Authorization Server.
-
    *  (C) The QR code or user code is displayed on the Consumption
       Device where the user scans the QR code or enters the user code on
       the Authorization Device.
-
    *  (D) The user authenticates to the Authorization Server before
       granting authorization.
-
    *  (E) The Authorization Server issues tokens or grants authorization
       to the Consumption Device to access the user's resources.
 
@@ -445,16 +435,12 @@ Table of Contents
    *  (A) The user takes an action on the Consumption Device by starting
       a purchase, adding a device to a network or connecting a service
       to the Consumption Device.
-
    *  (B) The client on the Consumption Device requests user
       authorization on the backchannel from the Authorization Server.
-
    *  (C) The Authorization Server requests the authorization from the
       user on the user's Authorization Device.
-
    *  (D) The user authenticates to the Authorization Server before
       using their device to grant authorization.
-
    *  (E) The Authorization Server issues tokens or grants authorization
       to the Consumption Device to access the user's resources.
 
@@ -499,16 +485,12 @@ Table of Contents
    *  (A) The user takes an action on the Consumption Device by starting
       a purchase, adding a device to a network or connecting a service
       to the Consumption Device.
-
    *  (B) The client on the Consumption Device requests user
       authorization on the backchannel from the Authorization Server.
-
    *  (C) The Authorization Server sends authorization data (e.g., a 6
       digit authorization code) to the Authorization Device.
-
    *  (D) The user enters the authorization data (e.g., the 6 digit
       authorization code) on the Consumption Device.
-
    *  (E) The Authorization Server issues tokens or grants authorization
       to the Consumption Device to access the user's resources.
 
@@ -577,25 +559,19 @@ Table of Contents
 
    *  (A) The user is authenticated on the Authorization Device and
       authorizes the transfer of the session to the Consumption device.
-
    *  (B) The client on the Authorization Device requests a session
       transfer code from the Authorization Server.
-
    *  (C) The Authorization Server responds with a session transfer
       code, which may be rendered as a QR code on the Authorization
       Device.
-
    *  (D) The user scans the QR code with the Consumption Device (e.g.,
       their mobile phone), or enters the session transfer code on the
       target Consumption Device.
-
    *  (E) The client on the Consumption Device presents the session
       transfer code to the Authorization Server.
-
    *  (F) The Authorization Server verifies the session transfer code
       and retrieves the session context information needed to resume the
       session on the Consumption Device.
-
    *  (G) The user resumes the session and is able to access the
       information on the Consumption Device that they authorized on the
       Authorization Device.
@@ -799,12 +775,9 @@ Table of Contents
       (or mimicks the Consumption Device) by starting a purchase, adding
       a device to a network or connecting a service to the Consumption
       Device.
-
    *  (B) The Consumption Device retrieves a QR code or user code from
       an Authorization Server.
-
    *  (C) The attacker copies the QR code or user code.
-
    *  (D) The attacker changes the context in which the QR code or user
       code is displayed in such a way that the user is likely to scan
       the QR code or use the user code when completing the
@@ -814,15 +787,12 @@ Table of Contents
       the user code by suggesting that doing so would grant them a
       reward through a loyalty program or prevent the loss of their
       data.
-
    *  (E) The QR code or user code is displayed to the user in a context
       chosen by the attacker.  The user is convinced by the attacker's
       effort and scans the QR code or enters the user code on the
       Authorization Device.
-
    *  (F) The user authenticates to the Authorization Server before
       granting authorization.
-
    *  (G) The Authorization Server issues tokens or grants authorization
       to the Consumption Device, which is under the attacker's control,
       to access the user's resources.  The attacker gains access to the
@@ -882,21 +852,16 @@ Table of Contents
 
    *  (A) The attacker sends a social engineering message to prepare the
       user for the upcoming authorization (optional).
-
    *  (B) The attacker initiates the protocol on the Consumption Device
       (or by mimicking the Consumption Device) by starting a purchase,
       adding a device to a network or accessing a service on the
       Consumption Device.
-
    *  (C) The client on the Consumption Device requests user
       authorization on the backchannel from the Authorization Server.
-
    *  (D) The Authorization Server requests the authorization from the
       user on the user's device.
-
    *  (E) The user authenticates to the authorization server before
       granting authorization on their device.
-
    *  (G) The Authorization Server issues tokens or grants authorization
       to the Consumption Device, which is under the attacker's control.
       The attacker gains access to the user's resources and possibly any
@@ -959,27 +924,21 @@ Table of Contents
       user for the authorization request they are about to receive,
       including instructions on what to do with the authorization data
       once they receive it.
-
    *  (B) The attacker initiates the protocol on the Consumption Device
       (or by mimicking the Consumption Device) by starting a purchase,
       adding a device to a network or accessing a service on the
       Consumption Device.
-
    *  (C) The client on the Consumption Device requests user
       authorization on the backchannel from the Authorization Server.
-
    *  (D) The Authorization Server sends authorization data (e.g., a 6
       digit authorization code) to the user's Authorization Device (the
       authorization data may be presented as a QR code, or text
       message).
-
    *  (E) The user is convinced by the social engineering message
       received in step (A) and forwards the authorization data (e.g., a
       6 digit authorization code) to the attacker.
-
    *  (F) The attacker enters the authorization data (e.g., a 6 digit
       authorization code) on the Consumption Device.
-
    *  (G) The Authorization Server grants authorization and issues
       access and refresh tokens to the Consumption Device, which is
       under the attacker's control.  On completion of the exploit, the
@@ -1047,30 +1006,22 @@ Table of Contents
       convinces the user that they should authorize a session transfer
       including instructions on what to do with the QR code or session
       transfer code once they receive it.
-
    *  (B) The user is authenticated on their Authorization Device and
       authorizes the transfer of the session to the Consumption Device.
-
    *  (C) The client on the Authorization Device requests a session
       transfer code from the Authorization Server.
-
    *  (D) The Authorization Server responds with a session transfer
       code, which may be rendered as a QR code on the Authorization
       Device.
-
    *  (E) The user sends the QR code or session transfer code to the
       attacker, following the instructions they received in step (A).
-
    *  (F) Once the attacker receives the QR code, they scan it or enter
       it on their own Consumption Device.
-
    *  (G) The client on the Consumption Device presents the session
       transfer code to the Authorization Server.
-
    *  (H) The Authorization Server verifies the session transfer code
       and retrieves the session context information needed to resume the
       session on the Consumption Device.
-
    *  (I) The attacker resumes the session on their own Consumption
       Device and is able to access the information that the user
       authorized on their Authorization Device in step (B).
@@ -1263,11 +1214,10 @@ Table of Contents
        an authorization request.  E.g., the attacker can obtain a QR
        code or user code, or can request an authentication/authorization
        decision from the user.
-
    2.  The interaction between the Consumption Device and Authorization
-       Device is unauthenticated.  E.g., it is left to the user to
-       decide if the QR code, user code or authentication request is
-       being presented in a legitimate context
+       Device is unauthenticated.  I.e., it is left to the user to
+       decide if the QR code, user code, or authentication request is
+       being presented in a legitimate context.
 
    A number of protocols that have been standardized, or are in the
    process of being standardized that share these characteristics
@@ -1294,9 +1244,9 @@ Table of Contents
    *  *OpenID for Verifiable Credential Protocol Suite (Issuance,
       Presentation):* The OpenID for Verifiable Credentials enables
       cross-device scenarios by allowing users to scan QR codes to
-      retrieve credentials (Issuance) or present credentials
-      (Presentation).  The QR code is presented on a device that
-      initiates the flow.
+      retrieve credentials (Issuance - see [OpenID.VCI]) or present
+      credentials (Presentation - see [OpenID.VCP]).  The QR code is
+      presented on a device that initiates the flow.
 
    *  *Self-Issued OpenID Provider v2 (SIOP V2):* A standard that allows
       end-user to present self-attested or third party attested
@@ -1330,10 +1280,8 @@ Table of Contents
 
    1.  Minimizing reliance on the user to make decisions to authenticate
        the channel.
-
    2.  Providing better information with which to make decisions to
        authenticate the channel.
-
    3.  Recovering from incorrect channel authentication decisions by
        users.
 
@@ -1341,10 +1289,8 @@ Table of Contents
    Consent Phishing attacks require a three-pronged approach:
 
    1.  Reduce risks of deployed protocols with practical mitigations.
-
    2.  Adopt or develop protocols that are less susceptible to these
        attacks where possible.
-
    3.  Provide analytical tools to assess vulnerabilities and
        effectiveness of mitigations.
 
@@ -1357,9 +1303,7 @@ Table of Contents
    either:
 
    1.  Prevents the attack from being initiated.
-
    2.  Disrupts the attack once it is initiated.
-
    3.  Remediates or reduces the impact if the attack succeeds.
 
    It is RECOMMENDED that one or more of the mitigations are applied
@@ -2121,7 +2065,8 @@ Table of Contents
 8.  Informative References
 
    [Baki2023] Baki, S. and R. M. Verma, "Sixteen Years of Phishing User
-              Studies: What Have We Learned?", Pages 1200-1212, 2023,
+              Studies: What Have We Learned?", Volume 20, Number 2,
+              Pages 1200-1212, 2023,
               <https://doi.org/10.1109/TDSC.2022.3151103>.
 
    [CAEP]     Tulshibagwale, A. and T. Cappalli, "OpenID Continuous
@@ -2166,6 +2111,9 @@ Table of Contents
               Standard for Low-Rate Wireless Networks",
               IEEE 802.15.4-2020, 2020,
               <https://standards.ieee.org/standard/802_15_4-2020.html>.
+              This standard defines the physical layer and media access
+              control for low-rate wireless personal area networks (LR-
+              WPANs) and is maintained by the IEEE 802.15 working group.
 
    [MPRCS2020]
               Pernpruner, M., Carbone, R., Ranise, S., and G.
@@ -2197,8 +2145,14 @@ Table of Contents
    [OpenID.VCI]
               Lodderstedt, T., Yasuda, K., and T. Looker, "OpenID for
               Verifiable Credential Issuance", October 2023,
-              <https://openid.net/specs/openid-connect-self-issued-
-              v2-1_0.html>.
+              <https://openid.net/specs/openid-4-verifiable-credential-
+              issuance-1_0.html>.
+
+   [OpenID.VCP]
+              Terbu, O., Lodderstedt, T., Yasuda, K., and T. Looker,
+              "OpenID for Verifiable Credential Presentations", November
+              2023, <https://openid.net/specs/openid-4-verifiable-
+              presentations-1_0.html>.
 
    [PCRSM2023]
               Pernpruner, M., Carbone, R., Sciarretta, G., and S.
@@ -2249,65 +2203,48 @@ Appendix A.  Document History
 
    *  Corrected formatting issue that prevented history from showing
       correctly.
+   *  Added reference to OpenID for Verifiable Credential Presentation.
 
    -03
 
    *  Introduced normative SHOULD, RECOMMENDED and MAY when applied to
       actions the Authorization Server, Resource Server or Client may
       implement.
-
    *  Added User Education as a standalone mitigation.
-
    *  Added Maryam Mehrnezhad, Marco Pernpruner and Giada Sciarretta to
       the contributors list.
-
    *  Added Request Binding with Out-of-Band Data as an additional
       mitigation.
-
    *  Adopted the OpenID Foundation terminology from [CIBA] and changed
       Initiating Device to Consumption Device
-
    *  Added Fake Helpdesk and Consent Request Overload examples
-
    *  Replaced "Authenticated Flow" mitigation name with "Authenticate-
       then-Intitiate"
-
    *  Added Cross-Device Session Transfer pattern
 
    -02
 
    *  Fixed typos and grammar edits
-
    *  Capitalised Initiating Device and Authorization Device
-
    *  Introduced Cross-Device Consent Phishing as a label for the types
       of attacks described in this document.
-
    *  Updated labels for different types of flows (User-Transferred
       Session Data Pattern, Backchannel-Transferred Session Pattern,
       User-Transferred Authorization Data Pattern)
-
    *  Adopted consistent use of hyphenation in using "cross-device"
-
    *  Consistent use of "Authorization Device"
-
    *  Update Reference to Secure Signals Framework to reflect name
       change from Secure Signals and Events
-
    *  Described difference between proximity enforced and proximity-less
       cross-device flows
-
    *  General editorial pass
 
    -01
 
    *  Added additional diagrams and descriptions to distinguish between
       different cross-device flow patterns.
-
    *  Added short description on limitations of each mitigation.
-
    *  Added acknowledgement of additional contributors.
-
    *  Fixed document history format.
 
    -00 (Working Group Draft)
@@ -2322,21 +2259,18 @@ Appendix A.  Document History
    -02 draft-kasselman-cross-device-security
 
    *  Minor edits and typos
-
    *  Upload as draft-ietf-oauth-cross-device-security-best-practice-02
 
    -01 draft-kasselman-cross-device-security
 
    *  Updated draft based on feedback from version circulated to OAuth
       working group
-
    *  Upload as draft-ietf-oauth-cross-device-security-best-practice-01
 
    -00 draft-kasselman-cross-device-security
 
    *  Initial draft adopted from document circulated to the OAuth
       Security Workshop Slack Channel
-
    *  Upload as draft-ietf-oauth-cross-device-security-best-practice-00
 
 Authors' Addresses
