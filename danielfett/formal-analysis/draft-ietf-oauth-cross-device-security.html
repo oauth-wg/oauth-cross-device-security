@@ -16,13 +16,13 @@ these mitigations. It serves as a security guide to system designers,
 architects, product managers, security specialists, fraud analysts
 and engineers implementing cross-device flows. 
     " name="description">
-<meta content="xml2rfc 3.19.2" name="generator">
+<meta content="xml2rfc 3.19.4" name="generator">
 <meta content="security" name="keyword">
 <meta content="oauth2" name="keyword">
 <meta content="best current practice" name="keyword">
 <meta content="draft-ietf-oauth-cross-device-security-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.19.2
+  xml2rfc 3.19.4
     Python 3.11.6
     ConfigArgParse 1.7
     google-i18n-address 3.1.0
@@ -1034,11 +1034,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">CDFS</td>
-<td class="right">February 2024</td>
+<td class="right">March 2024</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Kasselman, et al.</td>
-<td class="center">Expires 19 August 2024</td>
+<td class="center">Expires 2 September 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1051,12 +1051,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-oauth-cross-device-security-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-02-16" class="published">16 February 2024</time>
+<time datetime="2024-03-01" class="published">1 March 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Best Current Practice</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-08-19">19 August 2024</time></dd>
+<dd class="expires"><time datetime="2024-09-02">2 September 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1114,7 +1114,7 @@ and engineers implementing cross-device flows.<a href="#section-abstract-1" clas
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 19 August 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 2 September 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -2368,7 +2368,7 @@ E.g., it is left to the user to decide if the QR code, user code or authenticati
           <h4 id="name-user-education">
 <a href="#section-5.1.13" class="section-number selfRef">5.1.13. </a><a href="#name-user-education" class="section-name selfRef">User Education</a>
           </h4>
-<p id="section-5.1.13-1">Research shows that user education is effective in reducing the risk of phishing attacks <span>[<a href="#Baki2023" class="cite xref">Baki2023</a>]</span>. The service provider MAY educate users on the risks of cross-device consent phishing and provide out-of-band reinforcement to the user on the context and conditions under which an authorization grant may be requested. For example, if the service provider does not send e-mails with QR codes requesting users to grant authorization, this may be reinforced in marketing messages and anti-fraud awareness campaigns. The service provider MAY also choose to reinforce these user education messages through in-app experiences.<a href="#section-5.1.13-1" class="pilcrow">¶</a></p>
+<p id="section-5.1.13-1">Research shows that user education is effective in reducing the risk of phishing attacks <span>[<a href="#Baki2023" class="cite xref">Baki2023</a>]</span>. The service provider MAY educate users on the risks of cross-device consent phishing and provide out-of-band reinforcement to the user on the context and conditions under which an authorization grant may be requested. For example, if the service provider does not send e-mails with QR codes requesting users to grant authorization, this may be reinforced in marketing messages and anti-fraud awareness campaigns. The service provider MAY also choose to reinforce these user education messages through in-app experiences. In <span>[<a href="#PCRSM2023" class="cite xref">PCRSM2023</a>]</span>, it is proposed to advise users to verify the trustworthiness of the source of a QR code, for instance by checking that the connection is protected through TLS or by verifying that the URL really belongs to the Authorization Server<a href="#section-5.1.13-1" class="pilcrow">¶</a></p>
 <p id="section-5.1.13-2"><strong>Limitations:</strong> Although user education helps to raise awareness and reduce the overall risk to users, it is insufficient on its own to mitigate cross-device consent phishing attacks. In particular, carefully designed phishing attacks can be practically indistinguishable from benign authorization flows even for well-trained users. User education SHOULD therefore be used in conjunction with other controls described in this document.<a href="#section-5.1.13-2" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -2403,13 +2403,13 @@ E.g., it is left to the user to decide if the QR code, user code or authenticati
 <p id="section-5.1.16-2"><strong>Limitations:</strong> The additional verification step may reduce the overall usability of the system as it is one more thing users need to do right. Attackers may combine traditional phishing attacks and target users who respond to those messages with an interactive attack that sets the expectation with the user that they will have to provide the OTP or PIN, in addition to granting authorization for the request.<a href="#section-5.1.16-2" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="request-binding-with-out-of-band-data">
+<div id="request-binding">
 <section id="section-5.1.17">
           <h4 id="name-request-binding-with-out-of">
 <a href="#section-5.1.17" class="section-number selfRef">5.1.17. </a><a href="#name-request-binding-with-out-of" class="section-name selfRef">Request Binding with Out-of-Band Data</a>
           </h4>
 <p id="section-5.1.17-1">In the User-Transferred Session Data Pattern, users MAY enter out-of-band information on the Consumption Device to start the authorization process. The out-of-band data entered by the user MAY then be included in the QR code which is displayed on the Consumption Device. When the QR code is scanned by the Authorization Device, the out-of-band data is verified by the user or by the Authorization Device. The out-of-band data could be any attribute that the user or Authorization Device can retrieve during the authorization process. Examples include a serial number, one-time password or PIN, location or any other data that the user or the Authorization Device can recall or retrieve during the authorization process (<span>[<a href="#MPRCS2020" class="cite xref">MPRCS2020</a>]</span>, <span>[<a href="#PCRSM2023" class="cite xref">PCRSM2023</a>]</span>).<a href="#section-5.1.17-1" class="pilcrow">¶</a></p>
-<p id="section-5.1.17-2"><strong>Limitations:</strong> A sophistacted attacker may include an additional step in their attack where they create a phishing attack that gathers the out-of-band data from the user before initiating the authorisation request. The additional step could also have a negative impact on the usability level of the solution.<a href="#section-5.1.17-2" class="pilcrow">¶</a></p>
+<p id="section-5.1.17-2"><strong>Limitations:</strong> A sophistacted attacker may include an additional step in their attack where they create a phishing attack that gathers the out-of-band data from the user before initiating the authorization request. The additional step could also have a negative impact on the usability level of the solution.<a href="#section-5.1.17-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="practical-mitigation-summary">
@@ -2708,32 +2708,58 @@ E.g., it is left to the user to decide if the QR code, user code or authenticati
 <p id="section-5.3-4">There are various different approaches to formal security analysis and each brings its own strengths and weaknesses. For example, models differ in the level of detail in which they can capture a protocol (granularity, expressiveness), in the kind of statements they can produce, and whether the proofs can be assisted by tools or have to be performed manually.<a href="#section-5.3-4" class="pilcrow">¶</a></p>
 <p id="section-5.3-5">The following works have been identified as relevant to the analysis of cross-device flows:<a href="#section-5.3-5" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="section-5.3-6.1">In "Formal analysis of self-issued OpenID providers" <span>[<a href="#Bauer2022" class="cite xref">Bauer2022</a>]</span>, the
-protocol of <span>[<a href="#OpenID.SIOPV2" class="cite xref">OpenID.SIOPV2</a>]</span> was analyzed using the Web Infrastructure Model
-(WIM). The WIM is specifically designed for the analysis of web
-authentication and authorization protocols. While it is a manual
-(pen-and-paper) model, it captures details of browsers and web interactions
-to a degree that is hard to match in automated models. In previous works,
-previously unknown flaws in OAuth, OpenID Connect, and FAPI were discovered
-using the WIM. In the analysis of a cross-device SIOP V2 flow in
-<span>[<a href="#Bauer2022" class="cite xref">Bauer2022</a>]</span>, the request replay attack already described in Section 13.3 of
-<span>[<a href="#OpenID.SIOPV2" class="cite xref">OpenID.SIOPV2</a>]</span> was confirmed in the model. A mitigation was implemented
-based on a so-called Cross-Device Stub, essentially a component that serves
-to link the two devices before the protocol flow starts. This essentially
-creates a trusted device relationship as described in <a href="#trusted_devices" class="auto internal xref">Section 5.1.7</a>. The
-mitigation was shown to be effective in the model.<a href="#section-5.3-6.1" class="pilcrow">¶</a>
+<li class="compact" id="section-5.3-6.1">In "Formal analysis of self-issued OpenID providers" <span>[<a href="#Bauer2022" class="cite xref">Bauer2022</a>]</span>,
+the protocol of <span>[<a href="#OpenID.SIOPV2" class="cite xref">OpenID.SIOPV2</a>]</span> was analyzed using the Web
+Infrastructure Model (WIM). The WIM is specifically designed for the
+analysis of web authentication and authorization protocols. While it
+is a manual (pen-and-paper) model, it captures details of browsers
+and web interactions to a degree that is hard to match in automated
+models. In previous works, previously unknown flaws in OAuth, OpenID
+Connect, and FAPI were discovered using the WIM. In the analysis of a
+cross-device SIOP V2 flow in <span>[<a href="#Bauer2022" class="cite xref">Bauer2022</a>]</span>, the request replay attack
+already described in Section 13.3 of <span>[<a href="#OpenID.SIOPV2" class="cite xref">OpenID.SIOPV2</a>]</span> was confirmed
+in the model. A mitigation was implemented based on a so-called
+Cross-Device Stub, essentially a component that serves to link the
+two devices before the protocol flow starts. This can be seen as an
+implementation of a trusted device relationship as described in
+<a href="#trusted_devices" class="auto internal xref">Section 5.1.7</a>. The mitigation was shown to be effective in the
+model.<a href="#section-5.3-6.1" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-5.3-6.2">In "Security analysis of the Grant Negotiation and Authorization Protocol"
-<span>[<a href="#Helmschmidt2022" class="cite xref">Helmschmidt2022</a>]</span>, an analysis of a draft of the Grant Negotiation and
-Authorization Protocol (GNAP) <span>[<a href="#I-D.ietf-gnap-core-protocol" class="cite xref">I-D.ietf-gnap-core-protocol</a>]</span> was performed
-using the Web Infrastructure Model. The same attack as in <span>[<a href="#Bauer2022" class="cite xref">Bauer2022</a>]</span> was
-found to apply to GNAP as well. In this case, a model of a "careful user"
-(see <a href="#user_education" class="auto internal xref">Section 5.1.13</a>) was used to show that the attack can be
-prevented (at least in theory) by the user.<a href="#section-5.3-6.2" class="pilcrow">¶</a>
+          <li class="compact" id="section-5.3-6.2">In "Security analysis of the Grant Negotiation and Authorization
+Protocol" <span>[<a href="#Helmschmidt2022" class="cite xref">Helmschmidt2022</a>]</span>, an analysis of a draft of the Grant
+Negotiation and Authorization Protocol (GNAP)
+<span>[<a href="#I-D.ietf-gnap-core-protocol" class="cite xref">I-D.ietf-gnap-core-protocol</a>]</span> was performed using the Web
+Infrastructure Model. The same attack as in <span>[<a href="#Bauer2022" class="cite xref">Bauer2022</a>]</span> was found to
+apply to GNAP as well. In this case, a model of a "careful user" (see
+<a href="#user_education" class="auto internal xref">Section 5.1.13</a>) was used to show that the attack can be prevented
+(at least in theory) by the user.<a href="#section-5.3-6.2" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-5.3-6.3">In "The Good, the Bad and the (Not So) Ugly of Out-of-Band Authentication with eID Cards and Push Notifications: Design, Formal and Risk Analysis" <span>[<a href="#Pernpruner2020" class="cite xref">Pernpruner2020</a>]</span>, Pernpruner et al. formally analysed an authentication protocol relying on push notifications delivered to an out-of-band device to approve the authentication attempt on the primary device (Backchannel-Transferred Session Pattern, <a href="#btsp" class="auto internal xref">Section 2.1.2</a>). The analysis was performed using the specification language ASLan++ and the model checker SATMC. According to the results of the analysis, they identified and defined the category of <em>implicit attacks</em>, which manage to deceive users into approving a malicious authentication attempt through social engineering techniques, thus not compromising all the authentication factors involved; these attacks are aligned with the definition of Cross-Device Consent Phishing (CDCP) attacks. (TODO: Add references to mitigations once included in the draft.)<a href="#section-5.3-6.3" class="pilcrow">¶</a>
+          <li class="compact" id="section-5.3-6.3">In "The Good, the Bad and the (Not So) Ugly of Out-of-Band
+Authentication with eID Cards and Push Notifications: Design, Formal
+and Risk Analysis" <span>[<a href="#MPRCS2020" class="cite xref">MPRCS2020</a>]</span>, Pernpruner et al. formally
+analysed an authentication protocol relying on push notifications
+delivered to an out-of-band device to approve the authentication
+attempt on the primary device (Backchannel-Transferred Session
+Pattern, <a href="#btsp" class="auto internal xref">Section 2.1.2</a>). The analysis was performed using the specification
+language ASLan++ and the model checker SATMC. According to the
+results of the analysis, they identified and defined the category of
+<em>implicit attacks</em>, which manage to deceive users into approving a
+malicious authentication attempt through social engineering
+techniques, thus not compromising all the authentication factors
+involved; these attacks are aligned with the definition of
+Cross-Device Consent Phishing (CDCP) attacks.<a href="#section-5.3-6.3" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-5.3-6.4">In "An Automated Multi-Layered Methodology to Assist the Secure and Risk-Aware Design of Multi-Factor Authentication Protocols" <span>[<a href="#Pernpruner2023" class="cite xref">Pernpruner2023</a>]</span>, Pernpruner et al. defined a multi-layered methodology to analyse multi-factor authentication protocols at different levels of granularity. They leveraged their methodology to formally analyse a protocol relying on a QR code that has to be scanned on a secondary device to approve the authentication attempt on the primary device (User-Transferred Session Data Pattern, <a href="#utsdp" class="auto internal xref">Section 2.1.1</a>). Given the results of the analysis, they proposed some practical mitigations either to prevent or reduce the risk of successful attacks. (TODO: Add references to mitigations once included in the draft.)<a href="#section-5.3-6.4" class="pilcrow">¶</a>
+          <li class="compact" id="section-5.3-6.4">In "An Automated Multi-Layered Methodology to Assist the Secure and
+Risk-Aware Design of Multi-Factor Authentication Protocols"
+<span>[<a href="#PCRSM2023" class="cite xref">PCRSM2023</a>]</span>, Pernpruner et al. defined a multi-layered methodology
+to analyze multi-factor authentication protocols at different levels
+of granularity. They leveraged their methodology to formally analyze
+a protocol relying on a QR code that has to be scanned on a secondary
+device to approve the authentication attempt on the primary device
+(User-Transferred Session Data Pattern, <a href="#utsdp" class="auto internal xref">Section 2.1.1</a>). Given the results
+of the analysis, they proposed some practical mitigations either to
+prevent or reduce the risk of successful attacks, such as those
+described in <a href="#user_education" class="auto internal xref">Section 5.1.13</a> and <a href="#request-binding" class="auto internal xref">Section 5.1.17</a>.<a href="#section-5.3-6.4" class="pilcrow">¶</a>
 </li>
         </ul>
 </section>
@@ -2839,14 +2865,6 @@ prevented (at least in theory) by the user.<a href="#section-5.3-6.2" class="pil
 <dt id="PCRSM2023">[PCRSM2023]</dt>
       <dd>
 <span class="refAuthor">Pernpruner, M.</span>, <span class="refAuthor">Carbone, R.</span>, <span class="refAuthor">Sciarretta, G.</span>, and <span class="refAuthor">S. Ranise</span>, <span class="refTitle">"An Automated Multi-Layered Methodology to Assist the Secure and Risk-Aware Design of Multi-Factor Authentication Protocols"</span>, <span class="seriesInfo">IEEE IEEE Transactions on Dependable and Secure Computing (TDSC)</span>, <time datetime="2023" class="refDate">2023</time>, <span>&lt;<a href="https://doi.org/10.1109/TDSC.2023.3296210">https://doi.org/10.1109/TDSC.2023.3296210</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="Pernpruner2020">[Pernpruner2020]</dt>
-      <dd>
-<span class="refAuthor">Pernpruner, M.</span>, <span class="refAuthor">Carbone, R.</span>, <span class="refAuthor">Ranise, S.</span>, and <span class="refAuthor">G. Sciarretta</span>, <span class="refTitle">"The Good, the Bad and the (Not So) Ugly of Out-of-Band Authentication with EID Cards and Push Notifications: Design, Formal and Risk Analysis"</span>, <span class="seriesInfo">DOI 10.1145/3374664.3375727</span>, <time datetime="2020" class="refDate">2020</time>, <span>&lt;<a href="https://doi.org/10.1145/3374664.3375727">https://doi.org/10.1145/3374664.3375727</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="Pernpruner2023">[Pernpruner2023]</dt>
-      <dd>
-<span class="refAuthor">Pernpruner, M.</span>, <span class="refAuthor">Carbone, R.</span>, <span class="refAuthor">Sciarretta, G.</span>, and <span class="refAuthor">S. Ranise</span>, <span class="refTitle">"An Automated Multi-Layered Methodology to Assist the Secure and Risk-Aware Design of Multi-Factor Authentication Protocols"</span>, <span class="seriesInfo">DOI 10.1109/TDSC.2023.3296210</span>, <time datetime="2023" class="refDate">2023</time>, <span>&lt;<a href="https://doi.org/10.1109/TDSC.2023.3296210">https://doi.org/10.1109/TDSC.2023.3296210</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC2119">[RFC2119]</dt>
       <dd>

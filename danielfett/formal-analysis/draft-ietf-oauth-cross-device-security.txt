@@ -5,10 +5,10 @@
 Web Authorization Protocol                                  P. Kasselman
 Internet-Draft                                                 Microsoft
 Intended status: Best Current Practice                           D. Fett
-Expires: 19 August 2024                                         Authlete
+Expires: 2 September 2024                                       Authlete
                                                                F. Skokan
                                                                     Okta
-                                                        16 February 2024
+                                                            1 March 2024
 
 
            Cross-Device Flows: Security Best Current Practice
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 19 August 2024.
+   This Internet-Draft will expire on 2 September 2024.
 
 Copyright Notice
 
@@ -1629,7 +1629,10 @@ Table of Contents
    to grant authorization, this may be reinforced in marketing messages
    and anti-fraud awareness campaigns.  The service provider MAY also
    choose to reinforce these user education messages through in-app
-   experiences.
+   experiences.  In [PCRSM2023], it is proposed to advise users to
+   verify the trustworthiness of the source of a QR code, for instance
+   by checking that the connection is protected through TLS or by
+   verifying that the URL really belongs to the Authorization Server
 
    *Limitations:* Although user education helps to raise awareness and
    reduce the overall risk to users, it is insufficient on its own to
@@ -1742,7 +1745,7 @@ Table of Contents
 
    *Limitations:* A sophistacted attacker may include an additional step
    in their attack where they create a phishing attack that gathers the
-   out-of-band data from the user before initiating the authorisation
+   out-of-band data from the user before initiating the authorization
    request.  The additional step could also have a negative impact on
    the usability level of the solution.
 
@@ -2030,9 +2033,9 @@ Table of Contents
       [OpenID.SIOPV2] was confirmed in the model.  A mitigation was
       implemented based on a so-called Cross-Device Stub, essentially a
       component that serves to link the two devices before the protocol
-      flow starts.  This essentially creates a trusted device
-      relationship as described in Section 5.1.7.  The mitigation was
-      shown to be effective in the model.
+      flow starts.  This can be seen as an implementation of a trusted
+      device relationship as described in Section 5.1.7.  The mitigation
+      was shown to be effective in the model.
    *  In "Security analysis of the Grant Negotiation and Authorization
       Protocol" [Helmschmidt2022], an analysis of a draft of the Grant
       Negotiation and Authorization Protocol (GNAP)
@@ -2043,32 +2046,31 @@ Table of Contents
       prevented (at least in theory) by the user.
    *  In "The Good, the Bad and the (Not So) Ugly of Out-of-Band
       Authentication with eID Cards and Push Notifications: Design,
-      Formal and Risk Analysis" [Pernpruner2020], Pernpruner et al.
-      formally analysed an authentication protocol relying on push
-      notifications delivered to an out-of-band device to approve the
-      authentication attempt on the primary device (Backchannel-
-      Transferred Session Pattern, Section 2.1.2).  The analysis was
-      performed using the specification language ASLan++ and the model
-      checker SATMC.  According to the results of the analysis, they
-      identified and defined the category of _implicit attacks_, which
-      manage to deceive users into approving a malicious authentication
-      attempt through social engineering techniques, thus not
-      compromising all the authentication factors involved; these
-      attacks are aligned with the definition of Cross-Device Consent
-      Phishing (CDCP) attacks.  (TODO: Add references to mitigations
-      once included in the draft.)
+      Formal and Risk Analysis" [MPRCS2020], Pernpruner et al. formally
+      analysed an authentication protocol relying on push notifications
+      delivered to an out-of-band device to approve the authentication
+      attempt on the primary device (Backchannel-Transferred Session
+      Pattern, Section 2.1.2).  The analysis was performed using the
+      specification language ASLan++ and the model checker SATMC.
+      According to the results of the analysis, they identified and
+      defined the category of _implicit attacks_, which manage to
+      deceive users into approving a malicious authentication attempt
+      through social engineering techniques, thus not compromising all
+      the authentication factors involved; these attacks are aligned
+      with the definition of Cross-Device Consent Phishing (CDCP)
+      attacks.
    *  In "An Automated Multi-Layered Methodology to Assist the Secure
       and Risk-Aware Design of Multi-Factor Authentication Protocols"
-      [Pernpruner2023], Pernpruner et al. defined a multi-layered
-      methodology to analyse multi-factor authentication protocols at
-      different levels of granularity.  They leveraged their methodology
-      to formally analyse a protocol relying on a QR code that has to be
+      [PCRSM2023], Pernpruner et al. defined a multi-layered methodology
+      to analyze multi-factor authentication protocols at different
+      levels of granularity.  They leveraged their methodology to
+      formally analyze a protocol relying on a QR code that has to be
       scanned on a secondary device to approve the authentication
       attempt on the primary device (User-Transferred Session Data
       Pattern, Section 2.1.1).  Given the results of the analysis, they
       proposed some practical mitigations either to prevent or reduce
-      the risk of successful attacks.  (TODO: Add references to
-      mitigations once included in the draft.)
+      the risk of successful attacks, such as those described in
+      Section 5.1.13 and Section 5.1.17.
 
 6.  Conclusion
 
@@ -2211,21 +2213,6 @@ Table of Contents
               Authentication Protocols", IEEE IEEE Transactions on
               Dependable and Secure Computing (TDSC), 2023,
               <https://doi.org/10.1109/TDSC.2023.3296210>.
-
-   [Pernpruner2020]
-              Pernpruner, M., Carbone, R., Ranise, S., and G.
-              Sciarretta, "The Good, the Bad and the (Not So) Ugly of
-              Out-of-Band Authentication with EID Cards and Push
-              Notifications: Design, Formal and Risk Analysis",
-              DOI 10.1145/3374664.3375727, 2020,
-              <https://doi.org/10.1145/3374664.3375727>.
-
-   [Pernpruner2023]
-              Pernpruner, M., Carbone, R., Sciarretta, G., and S.
-              Ranise, "An Automated Multi-Layered Methodology to Assist
-              the Secure and Risk-Aware Design of Multi-Factor
-              Authentication Protocols", DOI 10.1109/TDSC.2023.3296210,
-              2023, <https://doi.org/10.1109/TDSC.2023.3296210>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
