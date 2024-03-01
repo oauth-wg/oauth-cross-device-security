@@ -307,7 +307,7 @@ Table of Contents
    ([RFC8628]) as well as other cross-device protocols such as the
    Client Initiated Backchannel Authentication [CIBA], Self-Issued
    OpenID Provider v2 [OpenID.SIOPV2], OpenID for Verifiable
-   Presentations [OpenID.VCP], the Pre-Authorized Code Flow in
+   Presentations [OpenID.VP], the Pre-Authorized Code Flow in
    ([OpenID.VCI]) and other cross-device protocols that rely on the user
    to authenticate the channel between devices.
 
@@ -392,10 +392,6 @@ Table of Contents
       application and receive a 6 digit authorization code on their
       Authentication Device (e.g., mobile phone) that they enter on
       Consumption Device.
-
-   In all of these flows, it is the user's decision whether to continue
-   the session by scanning a QR code, entering a user code, or accepting
-   an authorization request pushed to their Authorization Device.
 
 3.1.1.  User-Transferred Session Data Pattern
 
@@ -1278,7 +1274,7 @@ Table of Contents
       Presentation):* The OpenID for Verifiable Credentials enables
       cross-device scenarios by allowing users to scan QR codes to
       retrieve credentials (Issuance - see [OpenID.VCI]) or present
-      credentials (Presentation - see [OpenID.VCP]).  The QR code is
+      credentials (Presentation - see [OpenID.VP]).  The QR code is
       presented on a device that initiates the flow.
 
    *  *Self-Issued OpenID Provider v2 (SIOP V2):* A standard that allows
@@ -1667,7 +1663,10 @@ Table of Contents
    to grant authorization, this may be reinforced in marketing messages
    and anti-fraud awareness campaigns.  The service provider MAY also
    choose to reinforce these user education messages through in-app
-   experiences.
+   experiences.  In [PCRSM2023], it is proposed to advise users to
+   verify the trustworthiness of the source of a QR code, for instance
+   by checking that the connection is protected through TLS or by
+   verifying that the URL really belongs to the Authorization Server.
 
    *Limitations:* Although user education helps to raise awareness and
    reduce the overall risk to users, it is insufficient on its own to
@@ -1780,7 +1779,7 @@ Table of Contents
 
    *Limitations:* A sophistacted attacker may include an additional step
    in their attack where they create a phishing attack that gathers the
-   out-of-band data from the user before initiating the authorisation
+   out-of-band data from the user before initiating the authorization
    request.  The additional step could also have a negative impact on
    the usability level of the solution.
 
@@ -1832,7 +1831,9 @@ Table of Contents
      | Band Data                       |         |         |         |
      +---------------------------------+---------+---------+---------+
 
-                   Table 1: Practical Mitigation Summary
+                                  Table 1
+
+   Table: Practical Mitigation Summary
 
 6.2.  Protocol Selection
 
@@ -2048,21 +2049,62 @@ Table of Contents
    models differ in the level of detail in which they can capture a
    protocol (granularity, expressiveness), in the kind of statements
    they can produce, and whether the proofs can be assisted by tools or
-   have to be performed manually.  One of the most successfully used
-   approaches is the so-called Web Infrastructure Model (WIM), a model
-   specifically designed for the analysis of web authentication and
-   authorization protocols.  While it is a manual (pen-and-paper) model,
-   it captures details of browsers and web interactions in unprecedented
-   detail.  Using the WIM, previously unknown flaws in OAuth, OpenID
-   Connect, and FAPI were discovered.
+   have to be performed manually.
 
-   To ensure secure cross-device interactions, a formal analysis using
-   the WIM therefore seems to be in order.  Such an analysis should
-   comprise a generic model for cross-device flows, potentially
-   including different kinds of interactions.  The aim of the analysis
-   would be to evaluate the effectiveness of selected mitigation
-   strategies.  To the best of our knowledge, this would be the first
-   study of this kind.
+   The following works have been identified as relevant to the analysis
+   of cross-device flows:
+
+   *  In "Formal analysis of self-issued OpenID providers" [Bauer2022],
+      the protocol of [OpenID.SIOPV2] was analyzed using the Web
+      Infrastructure Model (WIM).  The WIM is specifically designed for
+      the analysis of web authentication and authorization protocols.
+      While it is a manual (pen-and-paper) model, it captures details of
+      browsers and web interactions to a degree that is hard to match in
+      automated models.  In previous works, previously unknown flaws in
+      OAuth, OpenID Connect, and FAPI were discovered using the WIM.  In
+      the analysis of a cross-device SIOP V2 flow in [Bauer2022], the
+      request replay attack already described in Section 13.3 of
+      [OpenID.SIOPV2] was confirmed in the model.  A mitigation was
+      implemented based on a so-called Cross-Device Stub, essentially a
+      component that serves to link the two devices before the protocol
+      flow starts.  This can be seen as an implementation of a trusted
+      device relationship as described in Section 6.1.7.  The mitigation
+      was shown to be effective in the model.
+   *  In "Security analysis of the Grant Negotiation and Authorization
+      Protocol" [Helmschmidt2022], an analysis of a draft of the Grant
+      Negotiation and Authorization Protocol (GNAP)
+      [I-D.ietf-gnap-core-protocol] was performed using the Web
+      Infrastructure Model.  The same attack as in [Bauer2022] was found
+      to apply to GNAP as well.  In this case, a model of a "careful
+      user" (see Section 6.1.13) was used to show that the attack can be
+      prevented (at least in theory) by the user.
+   *  In "The Good, the Bad and the (Not So) Ugly of Out-of-Band
+      Authentication with eID Cards and Push Notifications: Design,
+      Formal and Risk Analysis" [MPRCS2020], Pernpruner et al. formally
+      analysed an authentication protocol relying on push notifications
+      delivered to an out-of-band device to approve the authentication
+      attempt on the primary device (Backchannel-Transferred Session
+      Pattern, Section 3.1.2).  The analysis was performed using the
+      specification language ASLan++ and the model checker SATMC.
+      According to the results of the analysis, they identified and
+      defined the category of _implicit attacks_, which manage to
+      deceive users into approving a malicious authentication attempt
+      through social engineering techniques, thus not compromising all
+      the authentication factors involved; these attacks are aligned
+      with the definition of Cross-Device Consent Phishing (CDCP)
+      attacks.
+   *  In "An Automated Multi-Layered Methodology to Assist the Secure
+      and Risk-Aware Design of Multi-Factor Authentication Protocols"
+      [PCRSM2023], Pernpruner et al. defined a multi-layered methodology
+      to analyze multi-factor authentication protocols at different
+      levels of granularity.  They leveraged their methodology to
+      formally analyze a protocol relying on a QR code that has to be
+      scanned on a secondary device to approve the authentication
+      attempt on the primary device (User-Transferred Session Data
+      Pattern, Section 3.1.1).  Given the results of the analysis, they
+      proposed some practical mitigations either to prevent or reduce
+      the risk of successful attacks, such as those described in
+      Section 6.1.13 and Section 6.1.17.
 
 7.  Conclusion
 
@@ -2102,6 +2144,11 @@ Table of Contents
               Pages 1200-1212, 2023,
               <https://doi.org/10.1109/TDSC.2022.3151103>.
 
+   [Bauer2022]
+              Bauer, C., "Formal analysis of self-issued OpenID
+              providers", 2022,
+              <https://elib.uni-stuttgart.de/handle/11682/12417>.
+
    [CAEP]     Tulshibagwale, A. and T. Cappalli, "OpenID Continuous
               Access Evaluation Profile 1.0 - draft 01", June 2021,
               <https://openid.net/specs/openid-caep-specification-
@@ -2138,6 +2185,18 @@ Table of Contents
               OAuth 2.0 device code flow", August 2022,
               <https://www.helpnetsecurity.com/2022/08/11/squarephish-
               video/>.
+
+   [Helmschmidt2022]
+              Helmschmidt, F., "Security analysis of the Grant
+              Negotiation and Authorization Protocol", 2022,
+              <https://elib.uni-stuttgart.de/handle/11682/12220>.
+
+   [I-D.ietf-gnap-core-protocol]
+              Richer, J. and F. Imbault, "Grant Negotiation and
+              Authorization Protocol", Work in Progress, Internet-Draft,
+              draft-ietf-gnap-core-protocol-18, 10 February 2024,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-gnap-
+              core-protocol-18>.
 
    [IEEE802154]
               Engineers, I. O. E. A. E., "IEEE Std 802.15.4-2020: IEEE
@@ -2181,7 +2240,7 @@ Table of Contents
               <https://openid.net/specs/openid-4-verifiable-credential-
               issuance-1_0.html>.
 
-   [OpenID.VCP]
+   [OpenID.VP]
               Terbu, O., Lodderstedt, T., Yasuda, K., and T. Looker,
               "OpenID for Verifiable Credential Presentations", November
               2023, <https://openid.net/specs/openid-4-verifiable-
@@ -2232,16 +2291,18 @@ Appendix A.  Document History
 
    [[ To be removed from the final specification ]]
 
-   -latest
+   -05
 
    *  Added section to provide actionable guidance to implementers on
       how to use this document.
+   *  Expanded section on formal analysis to include completed research
+      projects.
+   *  Added reference to OpenID for Verifiable Presentations.
 
    -04
 
    *  Corrected formatting issue that prevented history from showing
       correctly.
-   *  Added reference to OpenID for Verifiable Credential Presentation.
 
    -03
 
