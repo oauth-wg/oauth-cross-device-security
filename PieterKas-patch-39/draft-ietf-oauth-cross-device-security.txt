@@ -2203,6 +2203,7 @@ Appendix A.  Document History
 
    *  Corrected formatting issue that prevented history from showing
       correctly.
+   *  Added reference to OpenID for Verifiable Credential Presentation.
 
    -03
 
