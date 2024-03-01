@@ -884,21 +884,21 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
 
    [[ To be removed from the final specification ]]
 
-   -latest
+   -05
 
    * Added section to provide actionable guidance to implementers on how to use this document.
+   * Expanded section on formal analysis to include completed research projects.
+   * Added reference to OpenID for Verifiable Presentations.
 
    -04
 
    * Corrected formatting issue that prevented history from showing correctly.
-   * Added reference to OpenID for Verifiable Credential Presentation.
 
    -03
 
    * Introduced normative SHOULD, RECOMMENDED and MAY when applied to actions the Authorization Server, Resource Server or Client may implement.
    * Added User Education as a standalone mitigation.
    * Added Maryam Mehrnezhad, Marco Pernpruner and Giada Sciarretta to the contributors list.
-   * Expanded section on formal analysis to include completed research projects.
    * Added Request Binding with Out-of-Band Data as an additional mitigation.
    * Adopted the OpenID Foundation terminology from [@CIBA] and changed Initiating Device to Consumption Device
    * Added Fake Helpdesk and Consent Request Overload examples
