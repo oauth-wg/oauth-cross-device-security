@@ -5,10 +5,10 @@
 Web Authorization Protocol                                  P. Kasselman
 Internet-Draft                                                 Microsoft
 Intended status: Best Current Practice                           D. Fett
-Expires: 19 August 2024                                         Authlete
+Expires: 2 September 2024                                       Authlete
                                                                F. Skokan
                                                                     Okta
-                                                        16 February 2024
+                                                            1 March 2024
 
 
            Cross-Device Flows: Security Best Current Practice
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 19 August 2024.
+   This Internet-Draft will expire on 2 September 2024.
 
 Copyright Notice
 
@@ -1215,8 +1215,8 @@ Table of Contents
        code or user code, or can request an authentication/authorization
        decision from the user.
    2.  The interaction between the Consumption Device and Authorization
-       Device is unauthenticated.  E.g., it is left to the user to
-       decide if the QR code, user code or authentication request is
+       Device is unauthenticated.  I.e., it is left to the user to
+       decide if the QR code, user code, or authentication request is
        being presented in a legitimate context.
 
    A number of protocols that have been standardized, or are in the
