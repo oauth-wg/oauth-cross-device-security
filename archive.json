@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-29T01:10:45.727806+00:00",
+  "timestamp": "2024-03-03T01:14:59.781576+00:00",
   "repo": "oauth-wg/oauth-cross-device-security",
   "labels": [
     {
@@ -1223,7 +1223,7 @@
       "id": "I_kwDOHK26QM5wensk",
       "title": "Rewrite formal analysis section",
       "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/97",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "danielfett",
       "authorAssociation": "MEMBER",
       "assignees": [
@@ -1232,8 +1232,8 @@
       "labels": [],
       "body": "As discussed in the editor's call, the formal analysis section ([5.3. ](https://drafts.oauth.net/oauth-cross-device-security/draft-ietf-oauth-cross-device-security.html#section-5.3)[Foundational Pillars](https://drafts.oauth.net/oauth-cross-device-security/draft-ietf-oauth-cross-device-security.html#name-foundational-pillars)) should be rewritten from its current form to include recent analysis efforts, including the following:\r\n\r\n* The DY* analysis ongoing in Stuttgart - first results available no earlier than November\r\n* The OpenID4VC analysis performed by Fabian - first public version no earlier than ~November\r\n* https://elib.uni-stuttgart.de/handle/11682/12417 (mitigation: cross-device stub)\r\n* https://elib.uni-stuttgart.de/handle/11682/12220 (to solve the issue, assumed that user is careful and can detect the attack)\r\n* https://doi.org/10.1145/3374664.3375727 (\"we formally analysed a protocol relying on push notifications delivered to an out-of-band device to approve the authentication attempt on the primary device (defined as Backchannel-Transferred Session Pattern in the draft)\")\r\n* https://doi.org/10.1109/TDSC.2023.3296210 (\"we formally analysed a protocol relying on a QR code to be read by the secondary device to approve the authentication attempt on the primary device (defined as User-Transferred Session Data Pattern in the draft)\")",
       "createdAt": "2023-09-08T06:59:10Z",
-      "updatedAt": "2023-11-28T20:23:57Z",
-      "closedAt": null,
+      "updatedAt": "2024-03-01T09:39:38Z",
+      "closedAt": "2024-03-01T09:39:38Z",
       "comments": [
         {
           "author": "danielfett",
@@ -1249,7 +1249,7 @@
       "id": "I_kwDOHK26QM5wfieJ",
       "title": "Reference ISO mdl",
       "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/100",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "danielfett",
       "authorAssociation": "MEMBER",
       "assignees": [
@@ -1258,8 +1258,8 @@
       "labels": [],
       "body": "Incl. originInfo",
       "createdAt": "2023-09-08T09:39:21Z",
-      "updatedAt": "2024-02-12T09:47:09Z",
-      "closedAt": null,
+      "updatedAt": "2024-03-01T09:40:19Z",
+      "closedAt": "2024-03-01T09:40:19Z",
       "comments": [
         {
           "author": "danielfett",
@@ -1274,6 +1274,13 @@
           "body": "@danielfett we already reference SIOP, should we extend and add references to OpenID4VP in the same places as we reference SIOP, or do we need new sections?",
           "createdAt": "2024-02-12T09:47:08Z",
           "updatedAt": "2024-02-12T09:47:08Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "This was done in PR #119 ",
+          "createdAt": "2024-03-01T09:40:19Z",
+          "updatedAt": "2024-03-01T09:40:19Z"
         }
       ]
     },
@@ -1314,31 +1321,39 @@
       "id": "I_kwDOHK26QM5-wy-j",
       "title": "More concrete normative requirements",
       "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/116",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "danielfett",
       "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "We should add more concrete normative guidance for implementers. For example:\r\n\r\n- Implementers MUST perform a risk assessment before implementing cross-device flows, weighing the risks (from these attacks) against benefits for users.\r\n- SHOULD avoid cross-device flows if risks cannot be sufficiently mitigated.\r\n- must follow the guidance provided in Section 5.2.4 for protocol selection (\u2192 we could pull 5.2.4 into this section here)\r\n- MUST implement mitigations appropriate for the use case, architecture, and selected protocols (as listed in Section 5.1)\r\n- SHOULD implement proximity checks as defined in Section 5.1.1 if possible\r\n",
       "createdAt": "2024-02-09T08:58:07Z",
-      "updatedAt": "2024-02-09T08:58:07Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2024-03-01T09:41:05Z",
+      "closedAt": "2024-03-01T09:41:04Z",
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Addressed in PR #117 ",
+          "createdAt": "2024-03-01T09:41:04Z",
+          "updatedAt": "2024-03-01T09:41:04Z"
+        }
+      ]
     },
     {
       "number": 118,
       "id": "I_kwDOHK26QM5_cXQP",
       "title": "Add references to VC Presentation specs",
       "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/118",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "PieterKas",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Add reference to VC presenation specs in section 4 and section 2.2.1",
       "createdAt": "2024-02-16T08:49:24Z",
-      "updatedAt": "2024-02-16T12:10:28Z",
-      "closedAt": null,
+      "updatedAt": "2024-03-01T09:40:17Z",
+      "closedAt": "2024-03-01T09:40:17Z",
       "comments": [
         {
           "author": "PieterKas",
@@ -1346,6 +1361,13 @@
           "body": "Only adding references to section 4. Adding this in section 2.2.1 will be confusing, even though a QR code is being scanned in these protocols, unlike device code flow, the session does not revert back to the consumption device.",
           "createdAt": "2024-02-16T12:10:27Z",
           "updatedAt": "2024-02-16T12:10:27Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Addressed in PR #119 ",
+          "createdAt": "2024-03-01T09:40:17Z",
+          "updatedAt": "2024-03-01T09:40:17Z"
         }
       ]
     }
@@ -3637,24 +3659,26 @@
       "id": "PR_kwDOHK26QM5Z2pEf",
       "title": "Rewriting the formal methods section",
       "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/98",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "danielfett",
       "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "As discussed in Issue #97 ",
       "createdAt": "2023-09-08T08:46:17Z",
-      "updatedAt": "2024-02-16T08:55:57Z",
+      "updatedAt": "2024-03-01T09:39:30Z",
       "baseRepository": "oauth-wg/oauth-cross-device-security",
       "baseRefName": "main",
-      "baseRefOid": "ed6e1705cc4c019aca3a9d5c2c20deb49403117f",
+      "baseRefOid": "7c090bbd2e604bba49a9ad5d71df9952ad507179",
       "headRepository": "oauth-wg/oauth-cross-device-security",
       "headRefName": "danielfett/formal-analysis",
-      "headRefOid": "b92d095a149339abe972759925d31a1d090f8be7",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "323d00b0eacf26e4fc5a6bbf6e61d810c0d7090f",
+      "closedAt": "2024-03-01T09:39:30Z",
+      "mergedAt": "2024-03-01T09:39:30Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "f41314199f93c21a555ab93fad3379b093b457d7"
+      },
       "comments": [
         {
           "author": "danielfett",
@@ -4722,24 +4746,26 @@
       "id": "PR_kwDOHK26QM5mn60S",
       "title": "Provide actionable guidance on how to use this document",
       "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/117",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "PieterKas",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Adding actionable guidance based on feedback from IETF 118 (see #116 ).",
       "createdAt": "2024-02-12T11:14:23Z",
-      "updatedAt": "2024-02-16T08:59:19Z",
+      "updatedAt": "2024-03-01T09:26:48Z",
       "baseRepository": "oauth-wg/oauth-cross-device-security",
       "baseRefName": "main",
       "baseRefOid": "ed6e1705cc4c019aca3a9d5c2c20deb49403117f",
       "headRepository": "oauth-wg/oauth-cross-device-security",
       "headRefName": "PieterKas-patch-38",
-      "headRefOid": "8246beb95b77ff518f114446eed72517dfe8316d",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "a3243ef1fc451b1f05b475bed7eca2b4929fd7c2",
+      "closedAt": "2024-03-01T09:26:48Z",
+      "mergedAt": "2024-03-01T09:26:48Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "7c090bbd2e604bba49a9ad5d71df9952ad507179"
+      },
       "comments": [
         {
           "author": "danielfett",
@@ -4882,6 +4908,66 @@
           "createdAt": "2024-02-16T08:59:19Z",
           "updatedAt": "2024-02-16T08:59:19Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOHK26QM5x3-QM",
+          "commit": {
+            "abbreviatedOid": "8246beb"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-03-01T07:31:33Z",
+          "updatedAt": "2024-03-01T07:31:34Z",
+          "comments": [
+            {
+              "originalPosition": 85,
+              "body": "```suggestion\r\n   * Added section to provide actionable guidance to implementers on how to use this document.\r\n```",
+              "createdAt": "2024-03-01T07:31:34Z",
+              "updatedAt": "2024-03-01T07:31:34Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOHK26QM5x3-Zt",
+          "commit": {
+            "abbreviatedOid": "8246beb"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-03-01T07:32:03Z",
+          "updatedAt": "2024-03-01T07:32:03Z",
+          "comments": [
+            {
+              "originalPosition": 55,
+              "body": "In line with the other PR, do you like to mention VP here?",
+              "createdAt": "2024-03-01T07:32:03Z",
+              "updatedAt": "2024-03-01T07:32:03Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOHK26QM5x4qjP",
+          "commit": {
+            "abbreviatedOid": "8246beb"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-03-01T09:25:02Z",
+          "updatedAt": "2024-03-01T09:25:02Z",
+          "comments": [
+            {
+              "originalPosition": 55,
+              "body": "```suggestion\r\nThese best practices apply to the Device Authorization Grant ([@RFC8628]) as well as other cross-device protocols such as the Client Initiated Backchannel Authentication [@CIBA], Self-Issued OpenID Provider v2 [@OpenID.SIOPV2], OpenID for Verifiable Presentations [@OpenID.VCP], the Pre-Authorized Code Flow in ([@OpenID.VCI]) and other cross-device protocols that rely on the user to authenticate the channel between devices.\r\n```",
+              "createdAt": "2024-03-01T09:25:02Z",
+              "updatedAt": "2024-03-01T09:25:03Z"
+            }
+          ]
         }
       ]
     },
@@ -4890,26 +4976,57 @@
       "id": "PR_kwDOHK26QM5nFKy7",
       "title": "Added reference for Verifiable Credential Presentation to section 4",
       "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/119",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "PieterKas",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "See issue #118 ",
       "createdAt": "2024-02-16T12:11:53Z",
-      "updatedAt": "2024-02-16T12:13:28Z",
+      "updatedAt": "2024-03-01T09:21:15Z",
       "baseRepository": "oauth-wg/oauth-cross-device-security",
       "baseRefName": "main",
       "baseRefOid": "ed6e1705cc4c019aca3a9d5c2c20deb49403117f",
       "headRepository": "oauth-wg/oauth-cross-device-security",
       "headRefName": "PieterKas-patch-39",
-      "headRefOid": "f1673334a058b50030d8e5cfb38a53724120dc72",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
-      "comments": [],
-      "reviews": []
+      "headRefOid": "50d7e0b3719a237f8b33bee3f18af756c7c9f47e",
+      "closedAt": "2024-03-01T09:21:15Z",
+      "mergedAt": "2024-03-01T09:21:15Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "5c686ae252cac509f85d32f1362407d71e8bbd70"
+      },
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Closing issue #118 ",
+          "createdAt": "2024-03-01T09:20:57Z",
+          "updatedAt": "2024-03-01T09:20:57Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHK26QM5x39Be",
+          "commit": {
+            "abbreviatedOid": "f167333"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "Looks good to me, one small editorial change.",
+          "createdAt": "2024-03-01T07:27:14Z",
+          "updatedAt": "2024-03-01T07:29:25Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "```suggestion\r\n    I.e., it is left to the user to decide if the QR code, user code, or authentication request is being presented in a legitimate context.\r\n```",
+              "createdAt": "2024-03-01T07:27:14Z",
+              "updatedAt": "2024-03-01T07:29:25Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
