@@ -5,10 +5,10 @@
 Web Authorization Protocol                                  P. Kasselman
 Internet-Draft                                                 Microsoft
 Intended status: Best Current Practice                           D. Fett
-Expires: 2 September 2024                                       Authlete
+Expires: 12 September 2024                                      Authlete
                                                                F. Skokan
                                                                     Okta
-                                                            1 March 2024
+                                                           11 March 2024
 
 
            Cross-Device Flows: Security Best Current Practice
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 2 September 2024.
+   This Internet-Draft will expire on 12 September 2024.
 
 Copyright Notice
 
@@ -290,7 +290,7 @@ Table of Contents
    group considers best practices at the time of writing.
 
    1.  Implementers MUST perform a risk assessment before implementing
-       cross-device flows, weighing the risks from Cross-Device Cosnsent
+       cross-device flows, weighing the risks from Cross-Device Consent
        Phishing and Cross-Device Session Phishing attacks against
        benefits for users.
    2.  Implementers SHOULD avoid cross-device flows if risks cannot be
@@ -2194,9 +2194,9 @@ Table of Contents
    [I-D.ietf-gnap-core-protocol]
               Richer, J. and F. Imbault, "Grant Negotiation and
               Authorization Protocol", Work in Progress, Internet-Draft,
-              draft-ietf-gnap-core-protocol-18, 10 February 2024,
-              <https://datatracker.ietf.org/doc/html/draft-ietf-gnap-
-              core-protocol-18>.
+              draft-ietf-gnap-core-protocol-19, 9 March 2024,
+              <https://datatracker.ietf.org/api/v1/doc/document/draft-
+              ietf-gnap-core-protocol/>.
 
    [IEEE802154]
               Engineers, I. O. E. A. E., "IEEE Std 802.15.4-2020: IEEE
