@@ -884,6 +884,10 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
 
    [[ To be removed from the final specification ]]
 
+   -latest
+
+   * Corrected typos.
+
    -05
 
    * Added section to provide actionable guidance to implementers on how to use this document.
