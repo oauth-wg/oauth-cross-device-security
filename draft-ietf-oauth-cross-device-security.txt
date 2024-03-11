@@ -2291,6 +2291,10 @@ Appendix A.  Document History
 
    [[ To be removed from the final specification ]]
 
+   -latest
+
+   *  Corrected typos.
+
    -05
 
    *  Added section to provide actionable guidance to implementers on
