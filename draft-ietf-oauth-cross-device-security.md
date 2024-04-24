@@ -887,7 +887,7 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
     -latest
 
     * Clarified origin of QR Code
-    
+
    -06
 
    * Corrected typos.
