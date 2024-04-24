@@ -886,6 +886,10 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
 
    -latest
 
+   * Added CTAP 2.2 Draft
+
+   -06
+
    * Corrected typos.
 
    -05
