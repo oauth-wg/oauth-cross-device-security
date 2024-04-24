@@ -1224,7 +1224,7 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
   <organization>IEEE</organization>
 </reference>
 
-<reference anchor="CTAP22Draft" target="https://doi.org/10.1109/TDSC.2023.3296210">
+<reference anchor="CTAP22Draft" target="[https://fidoalliance.org/specs/fido-v2.2-rd-20230321/fido-client-to-authenticator-protocol-v2.2-rd-20230321.pdf"]>
   <front>
     <title>Client to Authenticator Protocol (CTAP)</title>
     <author initials="J." surname="Bradley" fullname="John Bradley">
@@ -1247,5 +1247,4 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
     </author>
  <date year="2023", month="March"/>
  </front>
-  <organization>FIDO Alliance</organization>
 </reference>
