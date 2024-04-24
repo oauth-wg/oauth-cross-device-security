@@ -2294,6 +2294,10 @@ Appendix A.  Document History
 
    -latest
 
+   * Clarified origin of QR Code
+
+   -06
+
    *  Corrected typos.
 
    -05
