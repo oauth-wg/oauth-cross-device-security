@@ -263,7 +263,7 @@ Figure: Cross-Device Flow: User-Transferred Authorization Data Pattern
 - (D) The user enters the authorization data (e.g., the 6 digit authorization code) on the Consumption Device.
 - (E) The Authorization Server issues tokens or grants authorization to the Consumption Device to access the user's resources.
 
-The Authorization Server may choose to authenticate the user before sending the authorization data. 
+The Authorization Server may choose to authenticate the user before sending the authorization data.
 
 ## Cross-Device Session Transfer
 Session transfer flows enable a user to transfer access to a service or network from a device on which the user is already authenticated to a second device such as a mobile phone. In these flows, the user is authenticated and then authorizes the session transfer on one device, referred to as the Authorization Device (e.g., a personal computer, web portal or application), and transfers the session to the device where they will continue to consume the session, referred to as the Consumption Device (e.g., a mobile phone or portable device).
