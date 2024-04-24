@@ -2301,6 +2301,10 @@ Appendix A.  Document History
 
    -latest
 
+   *  Added CTAP 2.2 Draft
+
+   -06
+
    *  Corrected typos.
 
    -05
