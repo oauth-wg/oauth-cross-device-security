@@ -2294,6 +2294,10 @@ Appendix A.  Document History
 
    -latest
 
+   *  Made diagram description clearer
+
+   -06
+
    *  Corrected typos.
 
    -05
