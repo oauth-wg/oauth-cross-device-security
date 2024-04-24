@@ -793,7 +793,7 @@ If the user chooses to keep their authenticator linked with the main device, the
 The Cross-Device Authentication flow proves proximity by leveraging BLE advertisements for service establishment, significantly reducing the susceptibility to any of the exploits described in Examples 1-6.
 
 #### Device Capabilities
-Both the Consumption Device and the authenticator require BLE support. The Consumption Device must support both FIDO2/WebAuthn, specifically CTAP 2.2 with hybrid transport. The mobile phone must support CTAP 2.2+ to be used as a cross-device authenticator.
+Both the Consumption Device and the authenticator require BLE support. The Consumption Device must support both FIDO2/WebAuthn, specifically CTAP 2.2 with hybrid transport [@CTAP22Draft]. The mobile phone must support CTAP 2.2 or greater to be used as a cross-device authenticator.
 
 #### Mitigations
 FIDO Cross-Device Authentication (CDA) establishes proximity through the use of BLE, reducing the need for additional mitigations. An implementer MAY still choose to implement additional mitigation as described in this document.
@@ -1222,4 +1222,30 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
   </front>
   <seriesInfo name="IEEE" value="IEEE Transactions on Dependable and Secure Computing (TDSC)" />
   <organization>IEEE</organization>
+</reference>
+
+<reference anchor="CTAP22Draft" target="https://doi.org/10.1109/TDSC.2023.3296210">
+  <front>
+    <title>Client to Authenticator Protocol (CTAP)</title>
+    <author initials="J." surname="Bradley" fullname="John Bradley">
+        <organization>Yubico</organization>
+    </author>
+    <author initials="J." surname="Hodges" fullname="Jeff Hodges">
+        <organization>Google</organization>
+    </author>
+    <author initials="M." surname="Jones" fullname="Michael B. Jones">
+        <organization>Microsoft</organization>
+    </author>
+    <author initials="A." surname="Kumar" fullname="Akshay Kumar">
+        <organization>Microsoft</organization>
+    </author>
+    <author initials="R." surname="Lindemann" fullname="Rolf Lindemann">
+        <organization>Nok Nok Labs</organization>
+    </author>
+    <author initials="S." surname="Verrept" fullname="Johan Verrept">
+        <organization>OneSpan</organization>
+    </author>
+ <date year="2023", month="March"/>
+ </front>
+  <organization>FIDO Alliance</organization>
 </reference>
