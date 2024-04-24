@@ -886,6 +886,10 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
 
    -latest
 
+   * Updated examples to be consistent
+
+   -06
+
    * Corrected typos.
 
    -05
