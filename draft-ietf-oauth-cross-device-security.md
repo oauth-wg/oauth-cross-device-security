@@ -1245,6 +1245,6 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
     <author initials="S." surname="Verrept" fullname="Johan Verrept">
         <organization>OneSpan</organization>
     </author>
- <date year="2023", month="March"/>
+ <date year="2023" month="March"/>
  </front>
 </reference>
