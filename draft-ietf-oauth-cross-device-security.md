@@ -558,7 +558,7 @@ An attacker initiates an employee onboarding flow and obtains a QR code from the
 An attacker creates a message to all employees of a company, claiming to be from the company's IT service provider. They claim that they are trying to resolve an application performance issue and ask employees to send them the QR code typically used to transfer a session. The employee, eager to assist, initiates the process to transfer a session. They authenticate and obtain a QR code and then send the QR code to the attacker. The attacker scans the QR code with their mobile phone and access the users data and resources.
 
 ### Example B8: Account Takeover (User-Transferred Session Data Pattern)
-An attacker wants to use some website which requires presentation of a verifiable credential for authentication. The attacker creates a phishing website which will in real time capture log-in QR Codes from the original website and present these to the user. The attacker tries to get the user to use the phishing website using an e-mail campaign etc. The user scans the QR code on the phishing website, invokes their digital wallet and presents their credentials. Once the credentials are presented, the original session from the attackers device is authorized with the user's credentials.
+An attacker wants to use some website which requires presentation of a verifiable credential for authentication. The attacker creates a phishing website which will in real time capture log-in QR Codes from the original website and present these to the user. The attacker tries to get the user to use the phishing website by sending messages by e-mail or other messaging technologies. The user scans the QR code on the phishing website, invokes their digital wallet and presents their credentials. Once the credentials are presented, the original session from the attackers device is authorized with the user's credentials.
 
 ### Example B9: Illicit Access to Administration Capabilities Through Consent Request Overload (Backchannel-Transferred Session Pattern)
 An attacker attempts to access an adminstration portal repeatedly, generating a stream of authorization requests to the network administrator. The attempts are timed to occur while the administrator is asleep. The administrator is woken by the incoming requests on their phone, and, in an attempt to stop the notifications, they accidentally approve access and the attacker gains access to the portal.
@@ -876,7 +876,7 @@ The popularity of cross-device flows attracted the attention of attackers that e
 To address these attacks, we propose a three pronged approach that includes the deployment of practical mitigations to safeguard protocols that are already deployed, provide guidance on when to use different protocols, including protocols that are not susceptible to these attacks, and the introduction of formal methods to evaluate the impact of mitigations and find additional issues.
 
 # Contributors
-The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil Reddy Boreddy, Bjorn Hjelm, Joseph Heenan, Brian Campbell, Damien Bowden, Kristina Yasuda, Tim Würtele, Karsten Meyer zu Selhausen, Maryam Mehrnezhad, Marco Pernpruner, Giada Sciarretta and others (please let us know, if you've been mistakenly omitted) for their valuable input, feedback and general support of this work.
+The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil Reddy Boreddy, Bjorn Hjelm, Joseph Heenan, Brian Campbell, Damien Bowden, Kristina Yasuda, Tim Würtele, Karsten Meyer zu Selhausen, Maryam Mehrnezhad, Marco Pernpruner, Giada Sciarretta, Dean H. Saxe and others (please let us know, if you've been mistakenly omitted) for their valuable input, feedback and general support of this work.
 
 {backmatter}
 
@@ -885,6 +885,10 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
    [[ To be removed from the final specification ]]
 
    -latest
+
+   * Editorial update.
+
+    -05
 
    * Corrected typos.
 
