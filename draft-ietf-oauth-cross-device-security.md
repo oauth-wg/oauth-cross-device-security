@@ -884,7 +884,11 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
 
    [[ To be removed from the final specification ]]
 
-   -latest
+    -latest
+
+    * Clarification of FIDO\WebAuthn section 
+
+   -06
 
    * Corrected typos.
 
