@@ -196,7 +196,7 @@ or connecting a service to the Consumption Device.
 - (B) The Consumption Device retrieves a QR code or user code from an Authorization Server.
 - (C) The QR code or user code is displayed on the Consumption Device where the user scans the QR code
 or enters the user code on the Authorization Device.
-- (D) The user authenticates to the Authorization Server before granting authorization.
+- (D) If the user is unauthenticated, they authenticate to the Authorization Server before granting authorization.
 - (E) The Authorization Server issues tokens or grants authorization to the Consumption Device to access the user's resources.
 
 ### Backchannel-Transferred Session Pattern {#btsp}
@@ -227,7 +227,7 @@ Figure: Cross-Device Flows: Backchannel-Transferred Session Pattern
 - (A) The user takes an action on the Consumption Device by starting a purchase, adding a device to a network or connecting a service to the Consumption Device.
 - (B) The client on the Consumption Device requests user authorization on the backchannel from the Authorization Server.
 - (C) The Authorization Server requests the authorization from the user on the user's Authorization Device.
-- (D) The user authenticates to the Authorization Server before using their device to grant authorization.
+- (D) If the user is unauthenticated, they authenticate to the Authorization Server before using their device to grant authorization.
 - (E) The Authorization Server issues tokens or grants authorization to the Consumption Device to access the user's resources.
 
 The Authorization Server may use a variety of mechanisms to request user authorization, including a push notification to a dedicated app on a mobile phone, or sending a text message with a link to an endpoint where the user can authenticate and authorize an action.
@@ -895,6 +895,10 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
     -05
 
    * Updated examples to be consistent
+
+   -06
+
+   * Made diagram description clearer
 
    -06
 
