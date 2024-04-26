@@ -2293,6 +2293,10 @@ Appendix A.  Document History
 
    -latest
 
+   * Consistent use of "smart TV"
+
+   -06
+
    *  Corrected typos.
 
    -05
