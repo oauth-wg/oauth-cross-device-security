@@ -1975,8 +1975,9 @@ Table of Contents
 
    Both the Consumption Device and the authenticator require BLE
    support.  The Consumption Device must support both FIDO2/WebAuthn,
-   specifically CTAP 2.2 with hybrid transport.  The mobile phone must
-   support CTAP 2.2+ to be used as a cross-device authenticator.
+   specifically CTAP 2.2 with hybrid transport [CTAP22Draft].  The
+   mobile phone must support CTAP 2.2 or greater to be used as a cross-
+   device authenticator.
 
 6.2.3.4.  Mitigations
 
@@ -2165,6 +2166,13 @@ Table of Contents
               <https://openid.net/specs/openid-client-initiated-
               backchannel-authentication-core-1_0.html>.
 
+   [CTAP22Draft]
+              Bradley, J., Hodges, J., Jones, M., Kumar, A., Lindemann,
+              R., and S. Verrept, "Client to Authenticator Protocol
+              (CTAP)", March 2023, <https://fidoalliance.org/specs/fido-
+              v2.2-rd-20230321/fido-client-to-authenticator-protocol-
+              v2.2-rd-20230321.pdf>.
+
    [Exploit1] Cooke, B., "The Art of the Device Code Phish", July 2021,
               <https://0xboku.com/2021/07/12/ArtOfDeviceCodePhish.html>.
 
@@ -2311,6 +2319,10 @@ Appendix A.  Document History
    -06
 
    *  Made diagram description clearer
+
+   -06
+
+   *  Added CTAP 2.2 Draft
 
    -06
 
