@@ -886,6 +886,10 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
 
    -latest
 
+    * Consistent use of "smart TV"
+
+   -06
+
    * Corrected typos.
 
    -05
