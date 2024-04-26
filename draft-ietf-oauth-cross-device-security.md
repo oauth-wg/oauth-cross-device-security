@@ -586,7 +586,7 @@ A number of protocols that have been standardized, or are in the process of bein
 
 - **Self-Issued OpenID Provider v2 (SIOP V2):** A standard that allows end-user to present self-attested or third party attested attributes when used with OpenID for Verifiable Credential protocols. The user scans a QR code presented by the relying party to initiate the flow.
 
-Cross-device protocols SHOULD not be used for same-device scenarios. If the Consumption Device and Authorization Device are the same device, protocols like OpenID Connect Core [@OpenID.Core] and OAuth 2.0 Authorization Code Grant as defined in [@RFC6749] are more appropriate. If a protocol supports both same-device and cross-device modes (e.g., [@OpenID.SIOPV2]), the cross-device mode SHOULD not be used for same-device scenarios. If an implementor decides to use a cross-device protocol or a protocol with a cross-device mode in a same-device scenario, the mitigations recommended in this document SHOULD be implemented to reduce the risks that the unauthenticated channel is exploited.
+Cross-device protocols SHOULD not be used for same-device scenarios. If the Consumption Device and Authorization Device are the same device, protocols like OpenID Connect Core [@OpenID.Core] and OAuth 2.0 Authorization Code Grant as defined in [@RFC6749] are more appropriate. If a protocol supports both same-device and cross-device modes (e.g., [@OpenID.SIOPV2]), the cross-device mode SHOULD not be used for same-device scenarios. An authorization server MAY choose to block cross-device protocols used in same-device scenarios if it detects that the same device is used. An authorization Server may use techniques such as device fingerprinting, network address or other techniques to detect if a cross-device protocol is being used on the same device. If an implementor decides to use a cross-device protocol or a protocol with a cross-device mode in a same-device scenario, the mitigations recommended in this document SHOULD be implemented to reduce the risks that the unauthenticated channel is exploited.
 
 # Mitigating Against Cross-Device Flow Attacks
 The unauthenticated channel between the Consumption Device and the Authorization Device allows attackers to change the context in which the authorization request is presented to the user. This shifts responsibility of authenticating the channel between the two devices to the end-user. End-users have "expertise elsewhere" and are typically not security experts and don't understand the protocols and systems they interact with. As a result, end-users are poorly equipped to authenticate the channel between the two devices. Mitigations should focus on:
@@ -876,7 +876,7 @@ The popularity of cross-device flows attracted the attention of attackers that e
 To address these attacks, we propose a three pronged approach that includes the deployment of practical mitigations to safeguard protocols that are already deployed, provide guidance on when to use different protocols, including protocols that are not susceptible to these attacks, and the introduction of formal methods to evaluate the impact of mitigations and find additional issues.
 
 # Contributors
-The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil Reddy Boreddy, Bjorn Hjelm, Joseph Heenan, Brian Campbell, Damien Bowden, Kristina Yasuda, Tim Würtele, Karsten Meyer zu Selhausen, Maryam Mehrnezhad, Marco Pernpruner, Giada Sciarretta, Dean H. Saxe and others (please let us know, if you've been mistakenly omitted) for their valuable input, feedback and general support of this work.
+The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil Reddy Boreddy, Bjorn Hjelm, Joseph Heenan, Brian Campbell, Damien Bowden, Kristina Yasuda, Tim Würtele, Karsten Meyer zu Selhausen, Maryam Mehrnezhad, Marco Pernpruner, Giada Sciarretta, Dean H. Saxe, Roy Williams and others (please let us know, if you've been mistakenly omitted) for their valuable input, feedback and general support of this work.
 
 {backmatter}
 
@@ -892,6 +892,8 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
    * Updated examples to be consistent.
    * Made diagram description clearer.
    * Added CTAP 2.2 Draft.
+   * Added Roy Williams to acknowledgements
+   * Clarified that authorization servers can detect 
 
    -06
 
