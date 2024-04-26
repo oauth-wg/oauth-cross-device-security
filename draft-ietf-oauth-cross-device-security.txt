@@ -5,10 +5,10 @@
 Web Authorization Protocol                                  P. Kasselman
 Internet-Draft                                                 Microsoft
 Intended status: Best Current Practice                           D. Fett
-Expires: 12 September 2024                                      Authlete
+Expires: 28 October 2024                                        Authlete
                                                                F. Skokan
                                                                     Okta
-                                                           11 March 2024
+                                                           26 April 2024
 
 
            Cross-Device Flows: Security Best Current Practice
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 12 September 2024.
+   This Internet-Draft will expire on 28 October 2024.
 
 Copyright Notice
 
@@ -1203,11 +1203,12 @@ Table of Contents
    a verifiable credential for authentication.  The attacker creates a
    phishing website which will in real time capture log-in QR Codes from
    the original website and present these to the user.  The attacker
-   tries to get the user to use the phishing website using an e-mail
-   campaign etc.  The user scans the QR code on the phishing website,
-   invokes their digital wallet and presents their credentials.  Once
-   the credentials are presented, the original session from the
-   attackers device is authorized with the user's credentials.
+   tries to get the user to use the phishing website by sending messages
+   by e-mail or other messaging technologies.  The user scans the QR
+   code on the phishing website, invokes their digital wallet and
+   presents their credentials.  Once the credentials are presented, the
+   original session from the attackers device is authorized with the
+   user's credentials.
 
 4.3.10.  Example B9: Illicit Access to Administration Capabilities
          Through Consent Request Overload (Backchannel-Transferred
@@ -2133,9 +2134,10 @@ Table of Contents
    The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian
    Frei, Nikhil Reddy Boreddy, Bjorn Hjelm, Joseph Heenan, Brian
    Campbell, Damien Bowden, Kristina Yasuda, Tim Würtele, Karsten Meyer
-   zu Selhausen, Maryam Mehrnezhad, Marco Pernpruner, Giada Sciarretta
-   and others (please let us know, if you've been mistakenly omitted)
-   for their valuable input, feedback and general support of this work.
+   zu Selhausen, Maryam Mehrnezhad, Marco Pernpruner, Giada Sciarretta,
+   Dean H.  Saxe and others (please let us know, if you've been
+   mistakenly omitted) for their valuable input, feedback and general
+   support of this work.
 
 9.  Informative References
 
@@ -2194,9 +2196,9 @@ Table of Contents
    [I-D.ietf-gnap-core-protocol]
               Richer, J. and F. Imbault, "Grant Negotiation and
               Authorization Protocol", Work in Progress, Internet-Draft,
-              draft-ietf-gnap-core-protocol-19, 9 March 2024,
-              <https://datatracker.ietf.org/api/v1/doc/document/draft-
-              ietf-gnap-core-protocol/>.
+              draft-ietf-gnap-core-protocol-20, 19 March 2024,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-gnap-
+              core-protocol-20>.
 
    [IEEE802154]
               Engineers, I. O. E. A. E., "IEEE Std 802.15.4-2020: IEEE
@@ -2292,6 +2294,10 @@ Appendix A.  Document History
    [[ To be removed from the final specification ]]
 
    -latest
+
+   *  Editorial update.
+
+      -05
 
    *  Corrected typos.
 
