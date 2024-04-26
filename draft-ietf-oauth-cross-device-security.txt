@@ -613,12 +613,13 @@ Table of Contents
         Transferred Session Data Pattern)
 
    An end-user sets up a new smart TV and wants to connect it to their
-   favorite streaming service.  The TV displays a QR code that the user
-   scans with their mobile phone.  The user is redirected to the
-   streaming service provider's web page and asked to enter their
-   credentials to authorize the smart TV to access the streaming
-   service.  The user enters their credentials and grants authorization,
-   after which the streaming service is available on the smart TV.
+   favorite streaming service.  The streaming service displays a QR code
+   on the TV that the user scans with their mobile phone.  The user is
+   redirected to the streaming service provider's web page and asked to
+   enter their credentials to authorize the smart TV to access the
+   streaming service.  The user enters their credentials and grants
+   authorization, after which the streaming service is available on the
+   smart TV.
 
 3.3.2.  Example A2: Authorize Access to Productivity Services (User-
         Transferred Session Data Pattern)
@@ -1068,10 +1069,10 @@ Table of Contents
         Transferred Session Data Pattern)
 
    An attacker obtains a smart TV and attempts to access an online
-   streaming service.  The smart TV obtains a QR code from the
-   authorization server and displays it on screen.  The attacker copies
-   the QR code and embeds it in an e-mail that is sent to a large number
-   of recipients.  The e-mail contains a message stating that the
+   streaming service.  The smart TV obtains a QR code from the streaming
+   service authorization server and displays it on screen.  The attacker
+   copies the QR code and embeds it in an e-mail that is sent to a large
+   number of recipients.  The e-mail contains a message stating that the
    streaming service wants to thank them for their loyal support and by
    scanning the QR code, they will be able to add a bonus device to
    their account for no charge.  One of the recipients open the e-mail
@@ -2294,6 +2295,10 @@ Appendix A.  Document History
    [[ To be removed from the final specification ]]
 
    -latest
+
+   * Clarified origin of QR Code
+
+   -06
 
    *  Editorial update.
 
