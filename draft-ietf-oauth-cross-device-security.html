@@ -2691,7 +2691,7 @@ I.e., it is left to the user to decide if the QR code, user code, or authenticat
             <h5 id="name-device-capabilities-3">
 <a href="#section-6.2.3.3" class="section-number selfRef">6.2.3.3. </a><a href="#name-device-capabilities-3" class="section-name selfRef">Device Capabilities</a>
             </h5>
-<p id="section-6.2.3.3-1">Both the Consumption Device and the authenticator require BLE support. The Consumption Device must support both FIDO2/WebAuthn, specifically CTAP 2.2 with hybrid transport. The mobile phone must support CTAP 2.2+ to be used as a cross-device authenticator.<a href="#section-6.2.3.3-1" class="pilcrow">¶</a></p>
+<p id="section-6.2.3.3-1">Both the Consumption Device and the authenticator require BLE support. The Consumption Device must support both FIDO2/WebAuthn, specifically CTAP 2.2 with hybrid transport <span>[<a href="#CTAP22Draft" class="cite xref">CTAP22Draft</a>]</span>. The mobile phone must support CTAP 2.2 or greater to be used as a cross-device authenticator.<a href="#section-6.2.3.3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="mitigations-2">
@@ -2830,6 +2830,10 @@ described in <a href="#user_education" class="auto internal xref">Section 6.1.13
       <dd>
 <span class="refAuthor">Fernandez, G.</span>, <span class="refAuthor">Walter, F.</span>, <span class="refAuthor">Nennker, A.</span>, <span class="refAuthor">Tonge, D.</span>, and <span class="refAuthor">B. Campbell</span>, <span class="refTitle">"OpenID Connect Client-Initiated Backchannel Authentication Flow - Core 1.0"</span>, <time datetime="2021-09" class="refDate">September 2021</time>, <span>&lt;<a href="https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html">https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="CTAP22Draft">[CTAP22Draft]</dt>
+      <dd>
+<span class="refAuthor">Bradley, J.</span>, <span class="refAuthor">Hodges, J.</span>, <span class="refAuthor">Jones, M.</span>, <span class="refAuthor">Kumar, A.</span>, <span class="refAuthor">Lindemann, R.</span>, and <span class="refAuthor">S. Verrept</span>, <span class="refTitle">"Client to Authenticator Protocol (CTAP)"</span>, <time datetime="2023-03" class="refDate">March 2023</time>, <span>&lt;<a href="https://fidoalliance.org/specs/fido-v2.2-rd-20230321/fido-client-to-authenticator-protocol-v2.2-rd-20230321.pdf">https://fidoalliance.org/specs/fido-v2.2-rd-20230321/fido-client-to-authenticator-protocol-v2.2-rd-20230321.pdf</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="Exploit1">[Exploit1]</dt>
       <dd>
 <span class="refAuthor">Cooke, B.</span>, <span class="refTitle">"The Art of the Device Code Phish"</span>, <time datetime="2021-07" class="refDate">July 2021</time>, <span>&lt;<a href="https://0xboku.com/2021/07/12/ArtOfDeviceCodePhish.html">https://0xboku.com/2021/07/12/ArtOfDeviceCodePhish.html</a>&gt;</span>. </dd>
@@ -2955,103 +2959,108 @@ described in <a href="#user_education" class="auto internal xref">Section 6.1.13
       </ul>
 <p id="appendix-A-7">-06<a href="#appendix-A-7" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-A-8.1">Corrected typos.<a href="#appendix-A-8.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-A-8.1">Added CTAP 2.2 Draft<a href="#appendix-A-8.1" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-A-9">-05<a href="#appendix-A-9" class="pilcrow">¶</a></p>
+<p id="appendix-A-9">-06<a href="#appendix-A-9" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-A-10.1">Added section to provide actionable guidance to implementers on how to use this document.<a href="#appendix-A-10.1" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-A-10.2">Expanded section on formal analysis to include completed research projects.<a href="#appendix-A-10.2" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-A-10.3">Added reference to OpenID for Verifiable Presentations.<a href="#appendix-A-10.3" class="pilcrow">¶</a>
+<li class="compact" id="appendix-A-10.1">Corrected typos.<a href="#appendix-A-10.1" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-A-11">-04<a href="#appendix-A-11" class="pilcrow">¶</a></p>
+<p id="appendix-A-11">-05<a href="#appendix-A-11" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-A-12.1">Corrected formatting issue that prevented history from showing correctly.<a href="#appendix-A-12.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-A-12.1">Added section to provide actionable guidance to implementers on how to use this document.<a href="#appendix-A-12.1" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-A-12.2">Expanded section on formal analysis to include completed research projects.<a href="#appendix-A-12.2" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-A-12.3">Added reference to OpenID for Verifiable Presentations.<a href="#appendix-A-12.3" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-A-13">-03<a href="#appendix-A-13" class="pilcrow">¶</a></p>
+<p id="appendix-A-13">-04<a href="#appendix-A-13" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-A-14.1">Introduced normative SHOULD, RECOMMENDED and MAY when applied to actions the Authorization Server, Resource Server or Client may implement.<a href="#appendix-A-14.1" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-A-14.2">Added User Education as a standalone mitigation.<a href="#appendix-A-14.2" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-A-14.3">Added Maryam Mehrnezhad, Marco Pernpruner and Giada Sciarretta to the contributors list.<a href="#appendix-A-14.3" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-A-14.4">Added Request Binding with Out-of-Band Data as an additional mitigation.<a href="#appendix-A-14.4" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-A-14.5">Adopted the OpenID Foundation terminology from <span>[<a href="#CIBA" class="cite xref">CIBA</a>]</span> and changed Initiating Device to Consumption Device<a href="#appendix-A-14.5" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-A-14.6">Added Fake Helpdesk and Consent Request Overload examples<a href="#appendix-A-14.6" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-A-14.7">Replaced "Authenticated Flow" mitigation name with "Authenticate-then-Intitiate"<a href="#appendix-A-14.7" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-A-14.8">Added Cross-Device Session Transfer pattern<a href="#appendix-A-14.8" class="pilcrow">¶</a>
+<li class="compact" id="appendix-A-14.1">Corrected formatting issue that prevented history from showing correctly.<a href="#appendix-A-14.1" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-A-15">-02<a href="#appendix-A-15" class="pilcrow">¶</a></p>
+<p id="appendix-A-15">-03<a href="#appendix-A-15" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-A-16.1">Fixed typos and grammar edits<a href="#appendix-A-16.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-A-16.1">Introduced normative SHOULD, RECOMMENDED and MAY when applied to actions the Authorization Server, Resource Server or Client may implement.<a href="#appendix-A-16.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-A-16.2">Capitalised Initiating Device and Authorization Device<a href="#appendix-A-16.2" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-A-16.2">Added User Education as a standalone mitigation.<a href="#appendix-A-16.2" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-A-16.3">Introduced Cross-Device Consent Phishing as a label for the types of attacks described in this document.<a href="#appendix-A-16.3" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-A-16.3">Added Maryam Mehrnezhad, Marco Pernpruner and Giada Sciarretta to the contributors list.<a href="#appendix-A-16.3" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-A-16.4">Updated labels for different types of flows (User-Transferred Session Data Pattern, Backchannel-Transferred Session Pattern, User-Transferred Authorization Data Pattern)<a href="#appendix-A-16.4" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-A-16.4">Added Request Binding with Out-of-Band Data as an additional mitigation.<a href="#appendix-A-16.4" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-A-16.5">Adopted consistent use of hyphenation in using "cross-device"<a href="#appendix-A-16.5" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-A-16.5">Adopted the OpenID Foundation terminology from <span>[<a href="#CIBA" class="cite xref">CIBA</a>]</span> and changed Initiating Device to Consumption Device<a href="#appendix-A-16.5" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-A-16.6">Consistent use of "Authorization Device"<a href="#appendix-A-16.6" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-A-16.6">Added Fake Helpdesk and Consent Request Overload examples<a href="#appendix-A-16.6" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-A-16.7">Update Reference to Secure Signals Framework to reflect name change from Secure Signals and Events<a href="#appendix-A-16.7" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-A-16.7">Replaced "Authenticated Flow" mitigation name with "Authenticate-then-Intitiate"<a href="#appendix-A-16.7" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-A-16.8">Described difference between proximity enforced and proximity-less cross-device flows<a href="#appendix-A-16.8" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-A-16.9">General editorial pass<a href="#appendix-A-16.9" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-A-16.8">Added Cross-Device Session Transfer pattern<a href="#appendix-A-16.8" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-A-17">-01<a href="#appendix-A-17" class="pilcrow">¶</a></p>
+<p id="appendix-A-17">-02<a href="#appendix-A-17" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-A-18.1">Added additional diagrams and descriptions to distinguish between different cross-device flow patterns.<a href="#appendix-A-18.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-A-18.1">Fixed typos and grammar edits<a href="#appendix-A-18.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-A-18.2">Added short description on limitations of each mitigation.<a href="#appendix-A-18.2" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-A-18.2">Capitalised Initiating Device and Authorization Device<a href="#appendix-A-18.2" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-A-18.3">Added acknowledgement of additional contributors.<a href="#appendix-A-18.3" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-A-18.3">Introduced Cross-Device Consent Phishing as a label for the types of attacks described in this document.<a href="#appendix-A-18.3" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-A-18.4">Fixed document history format.<a href="#appendix-A-18.4" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-A-18.4">Updated labels for different types of flows (User-Transferred Session Data Pattern, Backchannel-Transferred Session Pattern, User-Transferred Authorization Data Pattern)<a href="#appendix-A-18.4" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-A-18.5">Adopted consistent use of hyphenation in using "cross-device"<a href="#appendix-A-18.5" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-A-18.6">Consistent use of "Authorization Device"<a href="#appendix-A-18.6" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-A-18.7">Update Reference to Secure Signals Framework to reflect name change from Secure Signals and Events<a href="#appendix-A-18.7" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-A-18.8">Described difference between proximity enforced and proximity-less cross-device flows<a href="#appendix-A-18.8" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-A-18.9">General editorial pass<a href="#appendix-A-18.9" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-A-19">-00 (Working Group Draft)<a href="#appendix-A-19" class="pilcrow">¶</a></p>
+<p id="appendix-A-19">-01<a href="#appendix-A-19" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-A-20.1">Initial WG revision (content unchanged from draft-kasselman-cross-device-security-03)<a href="#appendix-A-20.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-A-20.1">Added additional diagrams and descriptions to distinguish between different cross-device flow patterns.<a href="#appendix-A-20.1" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-A-20.2">Added short description on limitations of each mitigation.<a href="#appendix-A-20.2" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-A-20.3">Added acknowledgement of additional contributors.<a href="#appendix-A-20.3" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-A-20.4">Fixed document history format.<a href="#appendix-A-20.4" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-A-21">-03 draft-kasselman-cross-device-security<a href="#appendix-A-21" class="pilcrow">¶</a></p>
+<p id="appendix-A-21">-00 (Working Group Draft)<a href="#appendix-A-21" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-A-22.1">Minor edits and typos<a href="#appendix-A-22.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-A-22.1">Initial WG revision (content unchanged from draft-kasselman-cross-device-security-03)<a href="#appendix-A-22.1" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-A-23">-02 draft-kasselman-cross-device-security<a href="#appendix-A-23" class="pilcrow">¶</a></p>
+<p id="appendix-A-23">-03 draft-kasselman-cross-device-security<a href="#appendix-A-23" class="pilcrow">¶</a></p>
 <ul class="compact">
 <li class="compact" id="appendix-A-24.1">Minor edits and typos<a href="#appendix-A-24.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-A-24.2">Upload as draft-ietf-oauth-cross-device-security-best-practice-02<a href="#appendix-A-24.2" class="pilcrow">¶</a>
+      </ul>
+<p id="appendix-A-25">-02 draft-kasselman-cross-device-security<a href="#appendix-A-25" class="pilcrow">¶</a></p>
+<ul class="compact">
+<li class="compact" id="appendix-A-26.1">Minor edits and typos<a href="#appendix-A-26.1" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-A-26.2">Upload as draft-ietf-oauth-cross-device-security-best-practice-02<a href="#appendix-A-26.2" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-A-25">-01 draft-kasselman-cross-device-security<a href="#appendix-A-25" class="pilcrow">¶</a></p>
+<p id="appendix-A-27">-01 draft-kasselman-cross-device-security<a href="#appendix-A-27" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-A-26.1">Updated draft based on feedback from version circulated to OAuth working group<a href="#appendix-A-26.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-A-28.1">Updated draft based on feedback from version circulated to OAuth working group<a href="#appendix-A-28.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-A-26.2">Upload as draft-ietf-oauth-cross-device-security-best-practice-01<a href="#appendix-A-26.2" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-A-28.2">Upload as draft-ietf-oauth-cross-device-security-best-practice-01<a href="#appendix-A-28.2" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-A-27">-00 draft-kasselman-cross-device-security<a href="#appendix-A-27" class="pilcrow">¶</a></p>
+<p id="appendix-A-29">-00 draft-kasselman-cross-device-security<a href="#appendix-A-29" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-A-28.1">Initial draft adopted from document circulated to the OAuth Security Workshop Slack Channel<a href="#appendix-A-28.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-A-30.1">Initial draft adopted from document circulated to the OAuth Security Workshop Slack Channel<a href="#appendix-A-30.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-A-28.2">Upload as draft-ietf-oauth-cross-device-security-best-practice-00<a href="#appendix-A-28.2" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-A-30.2">Upload as draft-ietf-oauth-cross-device-security-best-practice-00<a href="#appendix-A-30.2" class="pilcrow">¶</a>
 </li>
       </ul>
 </section>
