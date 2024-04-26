@@ -2295,6 +2295,10 @@ Appendix A.  Document History
 
    -latest
 
+   * Clarification of FIDO\WebAuthn section.
+
+   -06
+
    *  Corrected typos.
 
    -05
