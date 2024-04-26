@@ -1989,8 +1989,9 @@ Table of Contents
 6.2.3.5.  When to Use
 
    FIDO2/WebAuthn SHOULD be used for cross-device authentication
-   scenarios whenever the devices are capable of doing so.  It MAY be
-   used as an authentication method with the Authorization Code Grant
+   scenarios whenever the devices are capable of doing so and a suitable
+   FIDO credential is not available on the consumption device.  It MAY
+   be used as an authentication method with the Authorization Code Grant
    [RFC6749] and PKCE [RFC7663], to grant authorization to an
    Consumption Device (e.g., Smart TV or interactive whiteboard) using a
    mobile phone as the authenticating device.  This combination of
@@ -2306,23 +2307,13 @@ Appendix A.  Document History
 
    -latest
 
-   * Clarified origin of QR Code
-
-   -06
-
+   *  Updated langugage in section on FIDO to allow for use of FIDO keys
+      on consumption devices.
+   *  Clarified origin of QR Code.
    *  Editorial update.
-
-      -05
-
-   *  Updated examples to be consistent
-
-   -06
-
-   *  Made diagram description clearer
-
-   -06
-
-   *  Added CTAP 2.2 Draft
+   *  Updated examples to be consistent.
+   *  Made diagram description clearer.
+   *  Added CTAP 2.2 Draft.
 
    -06
 
