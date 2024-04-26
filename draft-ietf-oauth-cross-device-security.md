@@ -892,6 +892,7 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
    * Updated examples to be consistent.
    * Made diagram description clearer.
    * Added CTAP 2.2 Draft.
+   * Added additional guidance on geolocation inaccuracies. 
 
    -06
 
