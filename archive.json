@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-04-25T00:22:40.922265+00:00",
+  "timestamp": "2024-04-28T00:23:42.622437+00:00",
   "repo": "oauth-wg/oauth-cross-device-security",
   "labels": [
     {
@@ -1424,79 +1424,111 @@
       "id": "I_kwDOHK26QM6GpISN",
       "title": "Add verbiage to diagrams",
       "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/124",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "PieterKas",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Feedback from Dean Saxe on WGLC\r\n\r\n1. When describing the visuals documenting the flows, there is a step that includes \u201cThe user authenticates to the authorization server\u201d.  In each case this should include verbiage to indicate that this is only necessary if the user is unauthenticated, e.g. \u201cIf unauthenticated, the user authenticates to the authorization server\u2026\u201d.  Specific sections include 3.1.1, 3.1.2, 4.1.1, 4.1.2\r\n\r\nhttps://mailarchive.ietf.org/arch/msg/oauth/T9XDSCqvVWPQAjDHjkH9iOQXsOo/\r\n",
       "createdAt": "2024-04-23T13:45:34Z",
-      "updatedAt": "2024-04-23T13:45:34Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2024-04-26T14:26:17Z",
+      "closedAt": "2024-04-26T14:26:17Z",
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Addressed #134  ",
+          "createdAt": "2024-04-26T14:26:17Z",
+          "updatedAt": "2024-04-26T14:26:17Z"
+        }
+      ]
     },
     {
       "number": 125,
       "id": "I_kwDOHK26QM6GpJC_",
       "title": "Make examples consistent for Section 3.1.3",
       "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/125",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "PieterKas",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "WCLC Feedback from Dean Saxe\r\n\r\n2.\tSection 3.1.3 the final sentence notes the authorization data may be delivered as a text message or via a mobile app.  This is inconsistent with the methods mentioned in the first paragraph, which includes email and text messages.  I suggest being clear that these are example mechanisms and not a full list of mechanisms by which codes can be delivered.  \r\n\r\nhttps://mailarchive.ietf.org/arch/msg/oauth/T9XDSCqvVWPQAjDHjkH9iOQXsOo/",
       "createdAt": "2024-04-23T13:46:56Z",
-      "updatedAt": "2024-04-23T13:46:56Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2024-04-26T14:24:39Z",
+      "closedAt": "2024-04-26T14:24:39Z",
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "addressed in #133 ",
+          "createdAt": "2024-04-26T14:24:39Z",
+          "updatedAt": "2024-04-26T14:24:39Z"
+        }
+      ]
     },
     {
       "number": 126,
       "id": "I_kwDOHK26QM6GpJwl",
       "title": "Clarify origin of QR Code",
       "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/126",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "PieterKas",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Feedback from Dean Saxe on WGLC\r\n\r\n3.\tSection 3.3.1 the first sentence should note that the QR code is associated with the particular service (Netflix, AppleTV, Disney+).  Readers could assume that the QR codes originate from the TV manufacturer\u2019s service alone as written.\r\n\r\nhttps://mailarchive.ietf.org/arch/msg/oauth/T9XDSCqvVWPQAjDHjkH9iOQXsOo/",
       "createdAt": "2024-04-23T13:48:10Z",
-      "updatedAt": "2024-04-23T13:48:10Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2024-04-26T14:31:02Z",
+      "closedAt": "2024-04-26T14:31:02Z",
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Adressed in #132 ",
+          "createdAt": "2024-04-26T14:31:02Z",
+          "updatedAt": "2024-04-26T14:31:02Z"
+        }
+      ]
     },
     {
       "number": 127,
       "id": "I_kwDOHK26QM6GpK4l",
       "title": "Editorial updates",
       "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/127",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "PieterKas",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Feedback from Dean Saxe on WGLC\r\n\r\n4.\tSection 4.3.9 reads, \u201c\u2026 using an e-mail campaign etc.\u201d  Should this be rewritten, \u201cusing an e-mail campaign, for example.\u201d?\r\n\r\nhttps://mailarchive.ietf.org/arch/msg/oauth/T9XDSCqvVWPQAjDHjkH9iOQXsOo/",
       "createdAt": "2024-04-23T13:50:16Z",
-      "updatedAt": "2024-04-23T13:50:16Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2024-04-26T14:23:18Z",
+      "closedAt": "2024-04-26T14:23:18Z",
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Fixed in #130 ",
+          "createdAt": "2024-04-26T14:23:18Z",
+          "updatedAt": "2024-04-26T14:23:18Z"
+        }
+      ]
     },
     {
       "number": 128,
       "id": "I_kwDOHK26QM6GpL6l",
       "title": "FIDO Reference update",
       "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/128",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "PieterKas",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Feedback from Dean Saxe\r\n\r\n5.\tSection 6.2.3 discusses FIDO CTAP 2.2.  This document is still in [review draft 01](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Ffidoalliance.org%2Fspecifications%2Fdownload%2F&data=05%7C02%7Cpieter.kasselman%40microsoft.com%7Cfbc8b121fefa4c8b392a08dc62f52987%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C638494052428586136%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C0%7C%7C%7C&sdata=yhVKWG%2B2tTcvtauy31hymSGwjJz05FFUXl7Etma4rtg%3D&reserved=0).  We should note that the document is not final as of today.\r\n\r\nhttps://mailarchive.ietf.org/arch/msg/oauth/T9XDSCqvVWPQAjDHjkH9iOQXsOo/",
       "createdAt": "2024-04-23T13:52:07Z",
-      "updatedAt": "2024-04-24T18:41:12Z",
-      "closedAt": null,
+      "updatedAt": "2024-04-26T14:27:06Z",
+      "closedAt": "2024-04-26T14:27:06Z",
       "comments": [
         {
           "author": "PieterKas",
@@ -1504,6 +1536,13 @@
           "body": "@dhs-aws do you have an estimate for when this document is progressing from draft status?",
           "createdAt": "2024-04-24T18:41:11Z",
           "updatedAt": "2024-04-24T18:41:11Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Addressed in #135 ",
+          "createdAt": "2024-04-26T14:27:06Z",
+          "updatedAt": "2024-04-26T14:27:06Z"
         }
       ]
     },
@@ -1512,16 +1551,24 @@
       "id": "I_kwDOHK26QM6GpNQW",
       "title": "Update Guidance on using FIDO",
       "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/129",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "PieterKas",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Feedback from Dean Saxe during WGLC\r\n\t\r\n6. Section 6.2.3.5 could be softened a bit.  The first sentence should include, \u201c\u2026 and a suitable FIDO credential is not available on the consumption device.\u201d  In most patterns, this mechanism is used to bootstrap a new credential on the device, rather than using this mechanism for authN every time.\r\n\r\nhttps://mailarchive.ietf.org/arch/msg/oauth/T9XDSCqvVWPQAjDHjkH9iOQXsOo/",
       "createdAt": "2024-04-23T13:54:31Z",
-      "updatedAt": "2024-04-23T13:54:31Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2024-04-26T14:30:40Z",
+      "closedAt": "2024-04-26T14:30:39Z",
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Adressed in #136 ",
+          "createdAt": "2024-04-26T14:30:39Z",
+          "updatedAt": "2024-04-26T14:30:39Z"
+        }
+      ]
     },
     {
       "number": 131,
@@ -1536,6 +1583,38 @@
       "body": "Consider removing the use of etc with either concrete examples or replace with text.",
       "createdAt": "2024-04-24T13:01:28Z",
       "updatedAt": "2024-04-24T13:01:28Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 137,
+      "id": "I_kwDOHK26QM6G91Dk",
+      "title": "Consistent use of Smart TV",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/137",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "From WGLC\r\n\r\nNit: \"SmartTV\" and \"Smart TV\" are used interchangeably throughout the doc. No preference on which one is used, but should be consistent.\r\n\r\nhttps://mailarchive.ietf.org/arch/msg/oauth/3u0V89D3EVL40-jhaPzTI6EkSq4/\r\n\r\n@timcappalli ",
+      "createdAt": "2024-04-25T19:36:07Z",
+      "updatedAt": "2024-04-25T19:36:07Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 138,
+      "id": "I_kwDOHK26QM6G92Ef",
+      "title": "Editorial updates for FIDO Section",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/138",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "From WGLC\r\n\r\n6.2.3.1 \r\n\r\nCurrent text: \"supports a new cross-device authentication protocol, called \"hybrid\"\"\r\nProposed text: \"supports a new cross-device transport protocol, called \"hybrid transports\"\r\n\r\nPropose adding the following at the end of the first paragraph: \"CTAP 2.2 hybrid transports is implemented by the client and authenticator platforms.\"\r\n\r\nCurrent text: \"The main device and authenticator\"\r\nProposed text: \"The main device (CTAP client) and authenticator\"\r\n\r\nCurrent text: \"The user will receive a push notification on the authenticator.\"\r\nProposed text: \"The user will typically receive a push notification on the device serving as the FIDO authenticator.\"\r\n\r\n6.2.3.3\r\nCurrent text: \"Both the Consumption Device and the authenticator require BLE support.\"\r\nProposed text: \"Both the Consumption Device and the authenticator require BLE support and also need access to the internet\"\r\n\r\ns/hybrid transport/hybrid transports\r\n\r\nCurrent text: \"The mobile phone must support CTAP 2.2+ to be used as a cross-device authenticator.\"\r\nProposed text: \"The device serving as the FIDO authenticator must support CTAP 2.2+ to be used as a cross-device authenticator.\"\r\n\r\nsee: https://datatracker.ietf.org/doc/draft-ietf-oauth-identity-chaining/01/\r\n\r\n@timcappalli\r\n\r\n",
+      "createdAt": "2024-04-25T19:39:08Z",
+      "updatedAt": "2024-04-25T19:39:08Z",
       "closedAt": null,
       "comments": []
     }
@@ -5229,24 +5308,26 @@
       "id": "PR_kwDOHK26QM5thFFi",
       "title": "Editorial update",
       "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/130",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "PieterKas",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Adressing feedback in issue #127",
       "createdAt": "2024-04-23T19:50:24Z",
-      "updatedAt": "2024-04-24T19:18:41Z",
+      "updatedAt": "2024-04-26T14:22:35Z",
       "baseRepository": "oauth-wg/oauth-cross-device-security",
       "baseRefName": "main",
       "baseRefOid": "a7f4f8ca6ebb185b4f0b5ec0f4e8dd8740645260",
       "headRepository": "oauth-wg/oauth-cross-device-security",
       "headRefName": "PieterKas-patch-41",
       "headRefOid": "3873812cbdaac1457467fe89061a30a55c9e7a8d",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-04-26T14:22:35Z",
+      "mergedAt": "2024-04-26T14:22:35Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "55b5e2854c41a6106e98e1bec053395a2b22b02d"
+      },
       "comments": [
         {
           "author": "PieterKas",
@@ -5277,24 +5358,26 @@
       "id": "PR_kwDOHK26QM5tnHtY",
       "title": "Clarify Example A1",
       "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/132",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "PieterKas",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Addresses feedback in issue #126 \r\n\r\n@dhs-aws",
       "createdAt": "2024-04-24T14:31:15Z",
-      "updatedAt": "2024-04-24T19:35:40Z",
+      "updatedAt": "2024-04-26T14:23:58Z",
       "baseRepository": "oauth-wg/oauth-cross-device-security",
       "baseRefName": "main",
       "baseRefOid": "a7f4f8ca6ebb185b4f0b5ec0f4e8dd8740645260",
       "headRepository": "oauth-wg/oauth-cross-device-security",
       "headRefName": "PieterKas-patch-42",
       "headRefOid": "263b3cbbf8401b09942a4c4cf8b657fe287b1c3d",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-04-26T14:23:58Z",
+      "mergedAt": "2024-04-26T14:23:57Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "ea58c3678c18bbc29fa3138fa00cea7d3aadca37"
+      },
       "comments": [],
       "reviews": [
         {
@@ -5317,24 +5400,26 @@
       "id": "PR_kwDOHK26QM5tnSjI",
       "title": "Made examples more consistent",
       "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/133",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "PieterKas",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Addresses issue #125\r\n\r\n@dhs-aws",
       "createdAt": "2024-04-24T14:53:24Z",
-      "updatedAt": "2024-04-24T19:25:39Z",
+      "updatedAt": "2024-04-26T14:25:03Z",
       "baseRepository": "oauth-wg/oauth-cross-device-security",
       "baseRefName": "main",
       "baseRefOid": "a7f4f8ca6ebb185b4f0b5ec0f4e8dd8740645260",
       "headRepository": "oauth-wg/oauth-cross-device-security",
       "headRefName": "PieterKas-patch-43",
       "headRefOid": "bb5caf03be3ead7fb86b328a7934b8f157ec6f0d",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-04-26T14:25:03Z",
+      "mergedAt": "2024-04-26T14:25:03Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "ce7688338b8263e36547ac2f72daa3cc5ba20379"
+      },
       "comments": [],
       "reviews": [
         {
@@ -5370,24 +5455,26 @@
       "id": "PR_kwDOHK26QM5tozwu",
       "title": "Update verbiage in diagrams",
       "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/134",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "PieterKas",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Addresses issue #124 \r\n\r\n@dhs-aws",
       "createdAt": "2024-04-24T18:40:00Z",
-      "updatedAt": "2024-04-24T19:57:29Z",
+      "updatedAt": "2024-04-26T14:25:48Z",
       "baseRepository": "oauth-wg/oauth-cross-device-security",
       "baseRefName": "main",
       "baseRefOid": "a7f4f8ca6ebb185b4f0b5ec0f4e8dd8740645260",
       "headRepository": "oauth-wg/oauth-cross-device-security",
       "headRefName": "PieterKas-patch-44",
       "headRefOid": "dfded2d3a0558759209f4cc492dd9281bc45757e",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-04-26T14:25:48Z",
+      "mergedAt": "2024-04-26T14:25:48Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "71a3fa989385446e5c0e19a93aa7baf5791da8e5"
+      },
       "comments": [],
       "reviews": [
         {
@@ -5410,24 +5497,26 @@
       "id": "PR_kwDOHK26QM5to7Li",
       "title": "Added reference to CTAP 2.2 Draft",
       "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/135",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "PieterKas",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Added a reference to the CTAP 2.2 draft as suggested in issue #128 \r\n\r\n@dhs-aws",
       "createdAt": "2024-04-24T18:59:10Z",
-      "updatedAt": "2024-04-24T19:57:42Z",
+      "updatedAt": "2024-04-26T14:26:36Z",
       "baseRepository": "oauth-wg/oauth-cross-device-security",
       "baseRefName": "main",
       "baseRefOid": "a7f4f8ca6ebb185b4f0b5ec0f4e8dd8740645260",
       "headRepository": "oauth-wg/oauth-cross-device-security",
       "headRefName": "PieterKas-patch-45",
       "headRefOid": "9284529e38c0c61a0861b08e09148cf5312e9975",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-04-26T14:26:36Z",
+      "mergedAt": "2024-04-26T14:26:36Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "8fea3f18e8d6d064bcbdc8ae12e90f77d89abc3d"
+      },
       "comments": [],
       "reviews": [
         {
@@ -5450,24 +5539,26 @@
       "id": "PR_kwDOHK26QM5tpPNp",
       "title": "Updated FIDO Section",
       "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/136",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "PieterKas",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Addressed issue #129 \r\n\r\n@dhs-aws @timcappalli",
       "createdAt": "2024-04-24T19:46:07Z",
-      "updatedAt": "2024-04-24T19:57:53Z",
+      "updatedAt": "2024-04-26T14:30:13Z",
       "baseRepository": "oauth-wg/oauth-cross-device-security",
       "baseRefName": "main",
-      "baseRefOid": "a7f4f8ca6ebb185b4f0b5ec0f4e8dd8740645260",
+      "baseRefOid": "8fea3f18e8d6d064bcbdc8ae12e90f77d89abc3d",
       "headRepository": "oauth-wg/oauth-cross-device-security",
       "headRefName": "PieterKas-patch-46",
-      "headRefOid": "b4653a6c84144a044cd1a6312b0ac71d2fbcfa56",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "b6ec00054f84969f533c4b8c122e55d54623fdbc",
+      "closedAt": "2024-04-26T14:30:13Z",
+      "mergedAt": "2024-04-26T14:30:13Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "8d1576b6b59218efe746b67fb2d3076d12236a2e"
+      },
       "comments": [],
       "reviews": [
         {
@@ -5481,6 +5572,166 @@
           "body": "",
           "createdAt": "2024-04-24T19:57:53Z",
           "updatedAt": "2024-04-24T19:57:53Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 139,
+      "id": "PR_kwDOHK26QM5t2FWP",
+      "title": "Consistent use of smart TV",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/139",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Addresses issue #137 \r\n\r\n@timcappalli",
+      "createdAt": "2024-04-26T13:45:14Z",
+      "updatedAt": "2024-04-26T13:59:28Z",
+      "baseRepository": "oauth-wg/oauth-cross-device-security",
+      "baseRefName": "main",
+      "baseRefOid": "a7f4f8ca6ebb185b4f0b5ec0f4e8dd8740645260",
+      "headRepository": "oauth-wg/oauth-cross-device-security",
+      "headRefName": "PieterKas-patch-47",
+      "headRefOid": "c7387b6a0a2fc6f59824f4a69721a7a0f60adfb7",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHK26QM54tPb4",
+          "commit": {
+            "abbreviatedOid": "c7387b6"
+          },
+          "author": "panva",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-04-26T13:59:28Z",
+          "updatedAt": "2024-04-26T13:59:28Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 140,
+      "id": "PR_kwDOHK26QM5t2PxH",
+      "title": "Editorial updates for FIDO section",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/140",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Addresses issue #138 \r\n\r\n@timcappalli",
+      "createdAt": "2024-04-26T14:10:14Z",
+      "updatedAt": "2024-04-26T14:21:23Z",
+      "baseRepository": "oauth-wg/oauth-cross-device-security",
+      "baseRefName": "main",
+      "baseRefOid": "a7f4f8ca6ebb185b4f0b5ec0f4e8dd8740645260",
+      "headRepository": "oauth-wg/oauth-cross-device-security",
+      "headRefName": "PieterKas-patch-48",
+      "headRefOid": "bab602006dd38cb4aff216a1799f327594b61a22",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHK26QM54tZCY",
+          "commit": {
+            "abbreviatedOid": "0fcfb9f"
+          },
+          "author": "panva",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-04-26T14:16:36Z",
+          "updatedAt": "2024-04-26T14:16:36Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 141,
+      "id": "PR_kwDOHK26QM5t3_MK",
+      "title": "Clarify authz server role",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/141",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Clarify the authorization server's role in detecting if a cross-device protocol is being used in a same-device scenario. See issue #122\r\n\r\n@roywill",
+      "createdAt": "2024-04-26T19:20:02Z",
+      "updatedAt": "2024-04-26T20:14:36Z",
+      "baseRepository": "oauth-wg/oauth-cross-device-security",
+      "baseRefName": "main",
+      "baseRefOid": "8d1576b6b59218efe746b67fb2d3076d12236a2e",
+      "headRepository": "oauth-wg/oauth-cross-device-security",
+      "headRefName": "PieterKas-patch-49",
+      "headRefOid": "f22b09ef1e1270b7da5a583e46732f81dfc3e543",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHK26QM54vzyA",
+          "commit": {
+            "abbreviatedOid": "f22b09e"
+          },
+          "author": "roywill",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-04-26T20:14:36Z",
+          "updatedAt": "2024-04-26T20:14:36Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 142,
+      "id": "PR_kwDOHK26QM5t4HDb",
+      "title": "Added guidance on geo-location inaccuracies",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/142",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Added guidance on GNSS and IP location inaccuracies (see issue #123).\r\n\r\ncc @roywill",
+      "createdAt": "2024-04-26T19:48:45Z",
+      "updatedAt": "2024-04-26T20:16:50Z",
+      "baseRepository": "oauth-wg/oauth-cross-device-security",
+      "baseRefName": "main",
+      "baseRefOid": "8d1576b6b59218efe746b67fb2d3076d12236a2e",
+      "headRepository": "oauth-wg/oauth-cross-device-security",
+      "headRefName": "PieterKas-patch-50",
+      "headRefOid": "09760d7734de1923420c993db769a597dc88b864",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHK26QM54v0cA",
+          "commit": {
+            "abbreviatedOid": "09760d7"
+          },
+          "author": "roywill",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-04-26T20:16:50Z",
+          "updatedAt": "2024-04-26T20:16:50Z",
           "comments": []
         }
       ]
