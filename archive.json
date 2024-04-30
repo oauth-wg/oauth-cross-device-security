@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-04-28T00:23:42.622437+00:00",
+  "timestamp": "2024-04-30T00:20:39.566226+00:00",
   "repo": "oauth-wg/oauth-cross-device-security",
   "labels": [
     {
@@ -1615,6 +1615,22 @@
       "body": "From WGLC\r\n\r\n6.2.3.1 \r\n\r\nCurrent text: \"supports a new cross-device authentication protocol, called \"hybrid\"\"\r\nProposed text: \"supports a new cross-device transport protocol, called \"hybrid transports\"\r\n\r\nPropose adding the following at the end of the first paragraph: \"CTAP 2.2 hybrid transports is implemented by the client and authenticator platforms.\"\r\n\r\nCurrent text: \"The main device and authenticator\"\r\nProposed text: \"The main device (CTAP client) and authenticator\"\r\n\r\nCurrent text: \"The user will receive a push notification on the authenticator.\"\r\nProposed text: \"The user will typically receive a push notification on the device serving as the FIDO authenticator.\"\r\n\r\n6.2.3.3\r\nCurrent text: \"Both the Consumption Device and the authenticator require BLE support.\"\r\nProposed text: \"Both the Consumption Device and the authenticator require BLE support and also need access to the internet\"\r\n\r\ns/hybrid transport/hybrid transports\r\n\r\nCurrent text: \"The mobile phone must support CTAP 2.2+ to be used as a cross-device authenticator.\"\r\nProposed text: \"The device serving as the FIDO authenticator must support CTAP 2.2+ to be used as a cross-device authenticator.\"\r\n\r\nsee: https://datatracker.ietf.org/doc/draft-ietf-oauth-identity-chaining/01/\r\n\r\n@timcappalli\r\n\r\n",
       "createdAt": "2024-04-25T19:39:08Z",
       "updatedAt": "2024-04-25T19:39:08Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 143,
+      "id": "I_kwDOHK26QM6HKR-B",
+      "title": "Fix conference and journal name in some references",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/143",
+      "state": "OPEN",
+      "author": "marcopernpruner",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "The following references need to be fixed:\r\n\r\n- `MPRCS2020`: the title of the proceedings in which the paper has been published currently appears as \"IEEE Proceedings of the Tenth ACM Conference on Data and Application Security and Privacy\". However, it should be \"Proceedings of the Tenth ACM Conference on Data and Application Security and Privacy\", since the conference is not IEEE.\r\n- `PCRSM2023`: the name of the journal in which the paper has been published currently appears as \"IEEE IEEE Transactions on Dependable and Secure Computing\" (double \"IEEE\").",
+      "createdAt": "2024-04-28T14:54:22Z",
+      "updatedAt": "2024-04-28T14:54:22Z",
       "closedAt": null,
       "comments": []
     }
