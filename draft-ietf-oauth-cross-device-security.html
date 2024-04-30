@@ -2279,7 +2279,7 @@ I.e., it is left to the user to decide if the QR code, user code, or authenticat
               <p id="section-6.1.1-2.3.1">Shared network: Device proximity can be inferred by verifying that both devices are on the same network. This check may be performed by the authorization server by comparing the network addresses of the device where the code is displayed (Consumption Device) with that of the Authorization Device. Alternatively the check can be performed on the device, provided that the network address is available. This could be achieved if the authorization server encodes the Consumption Device's network address in the QR code and uses a digital signature to prevent tampering with the code. This does require the wallet to be aware of the countermeasure and effectively enforce it.<a href="#section-6.1.1-2.3.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-6.1.1-2.4">
-              <p id="section-6.1.1-2.4.1">Geo-location: Proximity can be established by comparing geo-location information derived from global navigation satellite-system (GNSS) co-ordinates or geolocation lookup of IP addresses and comparing proximity. Due to inaccuracies, this may require restrictions to be at a more granular level (e.g., same city, country, region or continent). Similar to the shared network checks, these checks may be performed by the authorization server or on the users device, provided that the information encoded in a QR code is integrity protected using a digital signature.<a href="#section-6.1.1-2.4.1" class="pilcrow">¶</a></p>
+              <p id="section-6.1.1-2.4.1">Geolocation: Proximity can be established by comparing geo-location information derived from global navigation satellite-system (GNSS) co-ordinates or geolocation lookup of IP addresses and comparing proximity. Geolocation based on GNSS may vary in accuracy depending on the users location, and when mapped to national or regional boundaries may show a Consumption and Authorization device in different locations if those devices are close to a border. Since relative position is more important than absolute location, implementations should consider relative location to both devices rather than absolute location when determining proximity. Geolocation based on IP addresses may be inaccurate along regional or national borders due to overlapping coverage by different network providers from the respective regions. This may result in the Consumption device being mapped to one region, while the Authorization device may be on another network from another provider and mapped to another region. These inaccuracies may require restrictions to be at a more granular level (e.g., same city, country, region or continent). Similar to the shared network checks, these checks may be performed by the authorization server or on the users device, provided that the information encoded in a QR code is integrity protected using a digital signature.<a href="#section-6.1.1-2.4.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 <p id="section-6.1.1-3">Depending on the risk profile and the threat model in which a system is operating, it MAY be necessary to use more than one mechanism to establish proximity to raise the bar for any potential attackers.<a href="#section-6.1.1-3" class="pilcrow">¶</a></p>
@@ -2953,9 +2953,11 @@ described in <a href="#user_education" class="auto internal xref">Section 6.1.13
 </li>
         <li class="compact" id="appendix-A-3.6">Added CTAP 2.2 Draft.<a href="#appendix-A-3.6" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-A-3.7">Added Roy Williams to acknowledgements<a href="#appendix-A-3.7" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-A-3.7">Added additional guidance on geolocation inaccuracies.<a href="#appendix-A-3.7" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-A-3.8">Clarified that authorization servers can detect<a href="#appendix-A-3.8" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-A-3.8">Added Roy Williams to acknowledgements<a href="#appendix-A-3.8" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-A-3.9">Clarified that authorization servers can detect<a href="#appendix-A-3.9" class="pilcrow">¶</a>
 </li>
       </ul>
 <p id="appendix-A-4">-06<a href="#appendix-A-4" class="pilcrow">¶</a></p>
