@@ -1964,20 +1964,21 @@ Table of Contents
    user authentication using asymmetric cryptography that can be invoked
    from a web browser or native client.  Version 2.2 of the FIDO Client
    to Authenticator Protocol (CTAP) supports a new cross-device
-   authentication protocol, called "hybrid", which enables an external
-   device, such as a phone or tablet, to be used as a roaming
+   authentication protocol, called "hybrid transports", which enables an
+   external device, such as a phone or tablet, to be used as a roaming
    authenticator for signing into the primary device, such as a personal
    computer.  This is commonly called FIDO Cross-Device Authentication
-   (CDA).
+   (CDA).  CTAP 2.2 hybrid transports is implemented by the client and
+   authenticator platforms.
 
    When a user wants to authenticate using their mobile device
    (authenticator) for the first time, they need to link their
    authenticator to their main device.  This is done using a scan of a
    QR code.  When the authenticator scans the QR code, the device sends
    an encrypted BLE advertisement containing keying material and a
-   tunnel ID.  The main device and authenticator both establish
-   connections to the web service, and the normal CTAP protocol exchange
-   occurs.
+   tunnel ID.  The main device (CTAP client) and authenticator both
+   establish connections to the web service, and the normal CTAP
+   protocol exchange occurs.
 
    If the user chooses to keep their authenticator linked with the main
    device, the QR code link step is not necessary for subsequent use.
@@ -1991,11 +1992,11 @@ Table of Contents
 
 6.2.3.3.  Device Capabilities
 
-   Both the Consumption Device and the authenticator require BLE
-   support.  The Consumption Device must support both FIDO2/WebAuthn,
-   specifically CTAP 2.2 with hybrid transport [CTAP22Draft].  The
-   mobile phone must support CTAP 2.2 or greater to be used as a cross-
-   device authenticator.
+   Both the Consumption Device and the authenticator require BLE support
+   and access to the internet.  The Consumption Device must support both
+   FIDO2/WebAuthn, specifically CTAP 2.2 with hybrid transports
+   [CTAP22Draft].  The device serving as the FIDO authenticator must
+   support CTAP 2.2 or later to be used as a cross-device authenticator.
 
 6.2.3.4.  Mitigations
 
@@ -2008,14 +2009,14 @@ Table of Contents
 
    FIDO2/WebAuthn SHOULD be used for cross-device authentication
    scenarios whenever the devices are capable of doing so and a suitable
-   FIDO credential is not available on the consumption device.  It MAY
+   FIDO credential is not available on the Consumption Device.  It MAY
    be used as an authentication method with the Authorization Code Grant
-   [RFC6749] and PKCE [RFC7663], to grant authorization to an
-   Consumption Device (e.g., smart TV or interactive whiteboard) using a
-   mobile phone as the authenticating device.  This combination of
-   FIDO2/WebAuthn and Authorization Code Flow with PKCE enables cross
-   device authorization flows, without the risks posed by the Device
-   Authorization Grant [RFC8628].
+   [RFC6749] and PKCE [RFC7663], to grant authorization to a Consumption
+   Device (e.g., smart TV or interactive whiteboard) using a device
+   serving as the FIDO authenticator (e.g. a mobile phone) for
+   authentication.  This combination of FIDO2/WebAuthn and Authorization
+   Code Flow with PKCE enables cross device authorization flows, without
+   the risks posed by the Device Authorization Grant [RFC8628].
 
 6.2.4.  Protocol Selection Summary
 
@@ -2325,6 +2326,7 @@ Appendix A.  Document History
 
    -latest
 
+   *  Clarification of FIDO\WebAuthn section.
    *  Updated langugage in section on FIDO to allow for use of FIDO keys
       on consumption devices.
    *  Clarified origin of QR Code.
@@ -2335,10 +2337,7 @@ Appendix A.  Document History
    *  Added additional guidance on geolocation inaccuracies.
    *  Added Roy Williams to acknowledgements
    *  Clarified that authorization servers can detect
-
-   -06
-
-   * Consistent use of "smart TV"
+   *  Consistent use of "smart TV"
 
    -06
 
