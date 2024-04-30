@@ -1219,7 +1219,7 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
     <author initials="G." surname="Sciarretta" fullname="Giada Sciarretta"/>
     <date year="2020"/>
   </front>
-  <value="Proceedings of the Tenth ACM Conference on Data and Application Security and Privacy (CODASPY '20)" />
+  <seriesInfo name="" value="Proceedings of the Tenth ACM Conference on Data and Application Security and Privacy (CODASPY '20)" />
   <organization>Association for Computing Machinery</organization>
   <address>New York, NY, USA</address>
   <pages>223–234</pages>
