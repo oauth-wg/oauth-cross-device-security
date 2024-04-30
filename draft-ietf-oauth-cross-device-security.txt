@@ -167,7 +167,7 @@ Table of Contents
    Protocol flows that span multiple end-user devices are in widespread
    use today.  These flows are often referred to as cross-device flows.
    A common example is a user that uses their mobile phone to scan a QR
-   code from their SmartTV, giving an app on the TV access to their
+   code from their smart TV, giving an app on the TV access to their
    video streaming service.  Besides QR codes, other mechanisms are
    often used such as PIN codes that the user has to enter on one of the
    devices, or push notifications to a mobile app that the user has to
@@ -320,7 +320,7 @@ Table of Contents
 3.  Cross-Device Flow Patterns
 
    Cross-device flows allow a user to start a flow on one device (e.g.,
-   a SmartTV) and then transfer the session to continue it on a second
+   a smart TV) and then transfer the session to continue it on a second
    device (e.g., a mobile phone).  The second device may be used to
    access the service that was running on the first device, or to
    perform an action such as authenticating or granting authorization
@@ -749,7 +749,7 @@ Table of Contents
 4.1.1.  User-Transferred Session Data Pattern Exploits
 
    A common action in cross-device flows is to present the user with a
-   QR code or a user code on the Consumption Device (e.g., Smart TV)
+   QR code or a user code on the Consumption Device (e.g., smart TV)
    which is then scanned or entered on the Authorization Device (the
    mobile phone).  When the user scans the code or copies the user code,
    they do so without any proof that the QR code or user code is being
@@ -1264,7 +1264,7 @@ Table of Contents
 
    *  *Open ID Foundation Client Initiated Back-Channel Authentication
       (CIBA) [CIBA]:* A standard developed in the OpenID Foundation that
-      allows a device or service (e.g., a personal computer, Smart TV,
+      allows a device or service (e.g., a personal computer, smart TV,
       Kiosk) to request the OpenID Provider to initiate an
       authentication flow if it knows a valid identifier for the user.
       The user completes the authentication flow using a second device
@@ -1914,7 +1914,7 @@ Table of Contents
 
    Client Initiated Back-Channel Authentication (CIBA) [CIBA]: A
    standard developed in the OpenID Foundation that allows a device or
-   service (e.g., a personal computer, Smart TV, Kiosk) to request the
+   service (e.g., a personal computer, smart TV, Kiosk) to request the
    OpenID Provider to initiate an authentication flow if it knows a
    valid identifier for the user.  The user completes the authentication
    flow using a second device (e.g., a mobile phone).  In this flow the
@@ -2011,7 +2011,7 @@ Table of Contents
    FIDO credential is not available on the consumption device.  It MAY
    be used as an authentication method with the Authorization Code Grant
    [RFC6749] and PKCE [RFC7663], to grant authorization to an
-   Consumption Device (e.g., Smart TV or interactive whiteboard) using a
+   Consumption Device (e.g., smart TV or interactive whiteboard) using a
    mobile phone as the authenticating device.  This combination of
    FIDO2/WebAuthn and Authorization Code Flow with PKCE enables cross
    device authorization flows, without the risks posed by the Device
@@ -2335,6 +2335,10 @@ Appendix A.  Document History
    *  Added additional guidance on geolocation inaccuracies.
    *  Added Roy Williams to acknowledgements
    *  Clarified that authorization servers can detect
+
+   -06
+
+   * Consistent use of "smart TV"
 
    -06
 
