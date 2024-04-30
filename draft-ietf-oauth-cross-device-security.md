@@ -1218,10 +1218,10 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
     <author initials="S." surname="Ranise" fullname="Silvio Ranise"/>
     <author initials="G." surname="Sciarretta" fullname="Giada Sciarretta"/>
     <date year="2020"/>
+    <organization>Association for Computing Machinery</organization>
+    <address>New York, NY, USA</address>
+    <pages>223–234</pages>
   </front>
-  <organization>Association for Computing Machinery</organization>
-  <address>New York, NY, USA</address>
-  <pages>223–234</pages>
 </reference>
 
 <reference anchor="PCRSM2023" target="https://doi.org/10.1109/TDSC.2023.3296210">
