@@ -2284,7 +2284,8 @@ Table of Contents
               Pernpruner, M., Carbone, R., Sciarretta, G., and S.
               Ranise, "An Automated Multi-Layered Methodology to Assist
               the Secure and Risk-Aware Design of Multi-Factor
-              Authentication Protocols", 2023,
+              Authentication Protocols, IEEE Transactions on Dependable
+              and Secure Computing (TDSC)", 2023,
               <https://doi.org/10.1109/TDSC.2023.3296210>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
