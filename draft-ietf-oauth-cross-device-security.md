@@ -1168,18 +1168,21 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
 <reference anchor="IEEE802154" target="https://standards.ieee.org/standard/802_15_4-2020.html">
   <front>
     <title>IEEE Std 802.15.4-2020: IEEE Standard for Low-Rate Wireless Networks</title>
+    <seriesInfo name="IEEE" value="802.15.4-2020"/>
     <author>
         <organization>Institute of Electrical and Electronics Engineers</organization>
     </author>
     <date year="2020"/>
   </front>
-  <seriesInfo name="IEEE" value="802.15.4-2020"/>
   <annotation>This standard defines the physical layer and media access control for low-rate wireless personal area networks (LR-WPANs) and is maintained by the IEEE 802.15 working group.</annotation>
 </reference>
 
 <reference anchor="Baki2023" target="https://doi.org/10.1109/TDSC.2022.3151103">
   <front>
     <title>Sixteen Years of Phishing User Studies: What Have We Learned?</title>
+    <seriesInfo name="Volume" value="20"/>
+    <seriesInfo name="Number" value="2"/>
+    <seriesInfo name="Pages" value="1200-1212"/>
     <author initials="S." surname="Baki">
       <organization>IEEE Transactions on Dependable and Secure Computing</organization>
     </author>
@@ -1187,9 +1190,6 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
       <organization>IEEE Transactions on Dependable and Secure Computing</organization>
     </author>
     <date year="2023"/>
-    <seriesInfo name="Volume" value="20"/>
-    <seriesInfo name="Number" value="2"/>
-    <seriesInfo name="Pages" value="1200-1212"/>
     <format type="doi">10.1109/TDSC.2022.3151103</format>
   </front>
 </reference>
