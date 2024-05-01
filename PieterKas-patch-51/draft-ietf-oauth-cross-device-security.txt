@@ -2231,9 +2231,9 @@ Table of Contents
               core-protocol-20>.
 
    [IEEE802154]
-              Engineers, I. O. E. A. E., "IEEE Std 802.15.4-2020: IEEE
-              Standard for Low-Rate Wireless Networks",
-              IEEE 802.15.4-2020, 2020,
+              Institute of Electrical and Electronics Engineers, "IEEE
+              Std 802.15.4-2020: IEEE Standard for Low-Rate Wireless
+              Networks", IEEE 802.15.4-2020, 2020,
               <https://standards.ieee.org/standard/802_15_4-2020.html>.
               This standard defines the physical layer and media access
               control for low-rate wireless personal area networks (LR-
