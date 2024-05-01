@@ -1183,11 +1183,14 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
     <seriesInfo name="Volume" value="20"/>
     <seriesInfo name="Number" value="2"/>
     <seriesInfo name="Pages" value="1200-1212"/>
+    <author>
+        <organization>IEEE Transactions on Dependable and Secure Computing</organization>
+    </author>
     <author initials="S." surname="Baki">
-      <organization>IEEE Transactions on Dependable and Secure Computing</organization>
+        <organization></organization>
     </author>
     <author initials="R. M." surname="Verma">
-      <organization>IEEE Transactions on Dependable and Secure Computing</organization>
+        <organization></organization>
     </author>
     <date year="2023"/>
     <format type="doi">10.1109/TDSC.2022.3151103</format>
@@ -1214,17 +1217,11 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
 
 <reference anchor="MPRCS2020" target="https://doi.org/10.1145/3374664.3375727">
   <front>
-    <title>The Good, the Bad and the (Not So) Ugly of Out-of-Band Authentication with eID Cards and Push Notifications: Design, Formal and Risk Analysis</title>
-    <seriesInfo name="Proceedings" value="Tenth ACM Conference on Data and Application Security and Privacy" />
-    <seriesInfo name="Pages" value="223–234"/>
+    <title>The Good, the Bad and the (Not So) Ugly of Out-of-Band Authentication with eID Cards and Push Notifications: Design, Formal and Risk Analysis, Proceedings of the Tenth ACM Conference on Data and Application Security and Privacy, Pages 223–234, Association for Computing Machinery</title>
     <author initials="M." surname="Pernpruner" fullname="Marco Pernpruner"/>
     <author initials="R." surname="Carbone" fullname="Roberto Carbone"/>
     <author initials="S." surname="Ranise" fullname="Silvio Ranise"/>
     <author initials="G." surname="Sciarretta" fullname="Giada Sciarretta"/>
-    <author>
-        <organization>Association for Computing Machinery</organization>
-        <address>New York, NY, USA</address>
-    </author>
     <date year="2020"/>
   </front>
 </reference>
