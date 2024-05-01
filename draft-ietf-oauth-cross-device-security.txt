@@ -2165,9 +2165,10 @@ Table of Contents
 
 9.  Informative References
 
-   [Baki2023] IEEE Transactions on Dependable and Secure Computing,
-              Baki, S., and R. M. Verma, "Sixteen Years of Phishing User
-              Studies: What Have We Learned?", 2023,
+   [Baki2023] Baki, S. and R. M. Verma, "Sixteen Years of Phishing User
+              Studies: What Have We Learned?, IEEE Transactions on
+              Dependable and Secure Computing, Volume 20, Number 2,
+              Pages 1200-1212", 2023,
               <https://doi.org/10.1109/TDSC.2022.3151103>.
 
    [Bauer2022]
