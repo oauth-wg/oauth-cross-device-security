@@ -1179,13 +1179,7 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
 
 <reference anchor="Baki2023" target="https://doi.org/10.1109/TDSC.2022.3151103">
   <front>
-    <title>Sixteen Years of Phishing User Studies: What Have We Learned?</title>
-    <seriesInfo name="Volume" value="20"/>
-    <seriesInfo name="Number" value="2"/>
-    <seriesInfo name="Pages" value="1200-1212"/>
-    <author>
-        <organization>IEEE Transactions on Dependable and Secure Computing</organization>
-    </author>
+    <title>Sixteen Years of Phishing User Studies: What Have We Learned?, IEEE Transactions on Dependable and Secure Computing, Volume 20, Number 2, Pages 1200-1212</title>
     <author initials="S." surname="Baki">
         <organization></organization>
     </author>
