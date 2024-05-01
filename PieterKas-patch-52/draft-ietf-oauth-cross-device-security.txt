@@ -2333,7 +2333,7 @@ Appendix A.  Document History
    *  Updated langugage in section on FIDO to allow for use of FIDO keys
       on consumption devices.
    *  Clarified origin of QR Code.
-   *  Editorial update.
+   *  Editorial updates
    *  Updated examples to be consistent.
    *  Made diagram description clearer.
    *  Added CTAP 2.2 Draft.
@@ -2341,6 +2341,7 @@ Appendix A.  Document History
    *  Added Roy Williams to acknowledgements
    *  Clarified that authorization servers can detect
    *  Consistent use of "smart TV"
+   *  Fixed references
 
    -06
 
