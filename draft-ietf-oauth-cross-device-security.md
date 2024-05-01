@@ -1225,7 +1225,7 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
         <organization>Association for Computing Machinery</organization>
         <address>New York, NY, USA</address>
     </author>
-    <date year="2020"/>    
+    <date year="2020"/>
   </front>
 </reference>
 
