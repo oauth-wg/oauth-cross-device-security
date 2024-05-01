@@ -1168,7 +1168,9 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
 <reference anchor="IEEE802154" target="https://standards.ieee.org/standard/802_15_4-2020.html">
   <front>
     <title>IEEE Std 802.15.4-2020: IEEE Standard for Low-Rate Wireless Networks</title>
-    <author fullname="Institute of Electrical and Electronics Engineers"/>
+    <author>
+        <organization>Institute of Electrical and Electronics Engineers</organization>
+    </author>
     <date year="2020"/>
   </front>
   <seriesInfo name="IEEE" value="802.15.4-2020"/>
@@ -1185,11 +1187,11 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
       <organization>IEEE Transactions on Dependable and Secure Computing</organization>
     </author>
     <date year="2023"/>
+    <seriesInfo name="Volume" value="20"/>
+    <seriesInfo name="Number" value="2"/>
+    <seriesInfo name="Pages" value="1200-1212"/>
+    <format type="doi">10.1109/TDSC.2022.3151103</format>
   </front>
-  <seriesInfo name="Volume" value="20"/>
-  <seriesInfo name="Number" value="2"/>
-  <seriesInfo name="Pages" value="1200-1212"/>
-  <format type="doi">10.1109/TDSC.2022.3151103</format>
 </reference>
 
 <reference anchor="Bauer2022" target="https://elib.uni-stuttgart.de/handle/11682/12417">
@@ -1218,11 +1220,11 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
     <author initials="S." surname="Ranise" fullname="Silvio Ranise"/>
     <author initials="G." surname="Sciarretta" fullname="Giada Sciarretta"/>
     <date year="2020"/>
+    <seriesInfo name="Proceedings" value="Tenth ACM Conference on Data and Application Security and Privacy" />
+    <organization>Association for Computing Machinery</organization>
+    <address>New York, NY, USA</address>
+    <pages>223–234</pages>
   </front>
-  <value="Proceedings of the Tenth ACM Conference on Data and Application Security and Privacy (CODASPY '20)" />
-  <organization>Association for Computing Machinery</organization>
-  <address>New York, NY, USA</address>
-  <pages>223–234</pages>
 </reference>
 
 <reference anchor="PCRSM2023" target="https://doi.org/10.1109/TDSC.2023.3296210">
@@ -1233,9 +1235,9 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
     <author initials="G." surname="Sciarretta" fullname="Giada Sciarretta"/>
     <author initials="S." surname="Ranise" fullname="Silvio Ranise"/>
     <date year="2023"/>
+    <seriesInfo name="IEEE" value="Transactions on Dependable and Secure Computing (TDSC)" />
+    <organization>IEEE</organization>
   </front>
-  <seriesInfo name="IEEE" value="Transactions on Dependable and Secure Computing (TDSC)" />
-  <organization>IEEE</organization>
 </reference>
 
 <reference anchor="CTAP22Draft" target="https://fidoalliance.org/specs/fido-v2.2-rd-20230321/fido-client-to-authenticator-protocol-v2.2-rd-20230321.pdf">
