@@ -140,7 +140,7 @@ Cross-device flows allow a user to start a flow on one device (e.g., a smart TV)
 
 These flows typically involve using a mobile phone to scan a QR code
 or enter a user code displayed on the first device (e.g., Smart
-TV, Kiosk, Personal Computer etc.).
+TV, Kiosk, Personal Computer or other electronic devices.).
 
 ## Cross-Device Authorization
 In a cross-device authorization flow, a user attempts to access a service on one device, referred to as the Consumption Device, (e.g., a smart TV) and then uses a second device, referred to as the Authorization Device (e.g., a smartphone), to authorize access to a resource (e.g., access to a streaming service) on
@@ -150,7 +150,7 @@ Cross-device authorization flows have several benefits, including:
 
 - Authorization on devices with limited input capabilities: End-users can
   authorize devices with limited input capabilities to access content (e.g.,
-  smart TVs, digital whiteboards, printers, etc).
+  smart TVs, digital whiteboards, printers or similarly constrained devices).
 - Secure authentication on shared or public devices: End-users can perform
   authentication and authorization using a personally trusted device, without
   risk of disclosing their credentials to a public or shared device.
@@ -644,9 +644,9 @@ By issuing unique user or QR codes, an authorization server can detect if the sa
 **Limitations:** Maintaining a deny list of previously redeemed codes, even for a sliding window, may have an impact on the latency of globally distributed systems. One alternative is to segment user codes by geography or region and maintain local deny lists.
 
 ### Content Filtering
-Attackers exploit the unauthenticated channel by changing the context of the user code or QR code and then sending a message to a user (e-mail, text, instant messaging etc). By deploying content filtering (e.g., anti-spam filter), these messages can be blocked and prevented from reaching the end-users. It may be possible to fine-tune content filtering solutions to detect artefacts like QR codes or user codes that are included in a message that is sent to multiple recipients in the expectation that at least one of the recipients will be convinced by the message and grant authorization to access restricted resources.
+Attackers exploit the unauthenticated channel by changing the context of the user code or QR code and then sending a message to a user (e-mail, text messaging, instant messaging or other communication mechanisms). By deploying content filtering (e.g., anti-spam filter), these messages can be blocked and prevented from reaching the end-users. It may be possible to fine-tune content filtering solutions to detect artefacts like QR codes or user codes that are included in a message that is sent to multiple recipients in the expectation that at least one of the recipients will be convinced by the message and grant authorization to access restricted resources.
 
-**Limitations:** Some scenarios may require legitimate re-transmission of user, QR and authorization data (e.g., retries). To prevent the disruption of legitimate scenarios, content filters may use a threshold and allow a limited number of messages with the same QR or user codes to be transmitted before interrupting the delivery of those messages. Content filtering may also be fragmented across multiple communications systems and channels (e-mail, messaging, text etc), making it harder to detect or interrupt attacks that are executed over multiple channels, unless here is a high degree of integration between content filtering systems.
+**Limitations:** Some scenarios may require legitimate re-transmission of user, QR and authorization data (e.g., retries). To prevent the disruption of legitimate scenarios, content filters may use a threshold and allow a limited number of messages with the same QR or user codes to be transmitted before interrupting the delivery of those messages. Content filtering may also be fragmented across multiple communications systems and communication channels (e-mail, text messaging, instant messaging or other communication mechanisms), making it harder to detect or interrupt attacks that are executed over multiple channels, unless here is a high degree of integration between content filtering systems.
 
 ### Detect and Remediate
 The authorization server may be able to detect misuse of the codes due to repeated use as described in [Unique Codes](#Unique Codes), as an input from a content filtering engine as described in [Content Filtering](#Content Filtering), or through other mechanisms such as reports from end-users. If an authorization server determines that a user code or QR code is being used in an attack it may choose to invalidate all tokens issued in response to these codes and make that information available through a token introspection endpoint (see [@RFC7662]). In addition it may notify resource servers to stop accepting these tokens or to terminate existing sessions associated with these tokens using Continuous Access Evaluation Protocol (CAEP) messages [@CAEP] using the Shared Signals Framework (SSF) [@SSF] framework or an equivalent notification system.
