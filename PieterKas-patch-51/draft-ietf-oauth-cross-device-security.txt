@@ -5,10 +5,10 @@
 Web Authorization Protocol                                  P. Kasselman
 Internet-Draft                                                 Microsoft
 Intended status: Best Current Practice                           D. Fett
-Expires: 1 November 2024                                        Authlete
+Expires: 2 November 2024                                        Authlete
                                                                F. Skokan
                                                                     Okta
-                                                           30 April 2024
+                                                              1 May 2024
 
 
            Cross-Device Flows: Security Best Current Practice
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 1 November 2024.
+   This Internet-Draft will expire on 2 November 2024.
 
 Copyright Notice
 
@@ -2166,8 +2166,7 @@ Table of Contents
 9.  Informative References
 
    [Baki2023] Baki, S. and R. M. Verma, "Sixteen Years of Phishing User
-              Studies: What Have We Learned?", Volume 20, Number 2,
-              Pages 1200-1212, 2023,
+              Studies: What Have We Learned?", 2023,
               <https://doi.org/10.1109/TDSC.2022.3151103>.
 
    [Bauer2022]
@@ -2281,8 +2280,7 @@ Table of Contents
               Pernpruner, M., Carbone, R., Sciarretta, G., and S.
               Ranise, "An Automated Multi-Layered Methodology to Assist
               the Secure and Risk-Aware Design of Multi-Factor
-              Authentication Protocols", IEEE Transactions on Dependable
-              and Secure Computing (TDSC), 2023,
+              Authentication Protocols", 2023,
               <https://doi.org/10.1109/TDSC.2023.3296210>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
