@@ -2165,7 +2165,8 @@ Table of Contents
 
 9.  Informative References
 
-   [Baki2023] Baki, S. and R. M. Verma, "Sixteen Years of Phishing User
+   [Baki2023] IEEE Transactions on Dependable and Secure Computing,
+              Baki, S., and R. M. Verma, "Sixteen Years of Phishing User
               Studies: What Have We Learned?", 2023,
               <https://doi.org/10.1109/TDSC.2022.3151103>.
 
@@ -2240,11 +2241,13 @@ Table of Contents
               WPANs) and is maintained by the IEEE 802.15 working group.
 
    [MPRCS2020]
-              Pernpruner, M., Carbone, R., Ranise, S., Sciarretta, G.,
-              and Association for Computing Machinery, "The Good, the
-              Bad and the (Not So) Ugly of Out-of-Band Authentication
-              with eID Cards and Push Notifications: Design, Formal and
-              Risk Analysis", 2020,
+              Pernpruner, M., Carbone, R., Ranise, S., and G.
+              Sciarretta, "The Good, the Bad and the (Not So) Ugly of
+              Out-of-Band Authentication with eID Cards and Push
+              Notifications: Design, Formal and Risk Analysis,
+              Proceedings of the Tenth ACM Conference on Data and
+              Application Security and Privacy, Pages 223–234,
+              Association for Computing Machinery", 2020,
               <https://doi.org/10.1145/3374664.3375727>.
 
    [NYC.Bike] Byrne, K.J., "Citi Bikes being swiped by joyriding
