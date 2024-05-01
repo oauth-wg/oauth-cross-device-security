@@ -1215,15 +1215,17 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
 <reference anchor="MPRCS2020" target="https://doi.org/10.1145/3374664.3375727">
   <front>
     <title>The Good, the Bad and the (Not So) Ugly of Out-of-Band Authentication with eID Cards and Push Notifications: Design, Formal and Risk Analysis</title>
+    <seriesInfo name="Proceedings" value="Tenth ACM Conference on Data and Application Security and Privacy" />
     <author initials="M." surname="Pernpruner" fullname="Marco Pernpruner"/>
     <author initials="R." surname="Carbone" fullname="Roberto Carbone"/>
     <author initials="S." surname="Ranise" fullname="Silvio Ranise"/>
     <author initials="G." surname="Sciarretta" fullname="Giada Sciarretta"/>
-    <date year="2020"/>
-    <seriesInfo name="Proceedings" value="Tenth ACM Conference on Data and Application Security and Privacy" />
-    <organization>Association for Computing Machinery</organization>
-    <address>New York, NY, USA</address>
-    <pages>223–234</pages>
+    <author>
+        <organization>Association for Computing Machinery</organization>
+        <address>New York, NY, USA</address>
+        <pages>223–234</pages>
+    </author>
+    <date year="2020"/>    
   </front>
 </reference>
 
