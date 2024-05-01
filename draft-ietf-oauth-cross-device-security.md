@@ -889,7 +889,7 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
    * Clarification of FIDO\WebAuthn section.
    * Updated langugage in section on FIDO to allow for use of FIDO keys on consumption devices.
    * Clarified origin of QR Code.
-   * Editorial update.
+   * Editorial updates
    * Updated examples to be consistent.
    * Made diagram description clearer.
    * Added CTAP 2.2 Draft.
@@ -897,6 +897,7 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
    * Added Roy Williams to acknowledgements
    * Clarified that authorization servers can detect
    * Consistent use of "smart TV"
+   * Fixed references
 
    -06
 
