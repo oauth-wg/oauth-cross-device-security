@@ -1228,14 +1228,12 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
 
 <reference anchor="PCRSM2023" target="https://doi.org/10.1109/TDSC.2023.3296210">
   <front>
-    <title>An Automated Multi-Layered Methodology to Assist the Secure and Risk-Aware Design of Multi-Factor Authentication Protocols</title>
+    <title>An Automated Multi-Layered Methodology to Assist the Secure and Risk-Aware Design of Multi-Factor Authentication Protocols, IEEE Transactions on Dependable and Secure Computing (TDSC)</title>
     <author initials="M." surname="Pernpruner" fullname="Marco Pernpruner"/>
     <author initials="R." surname="Carbone" fullname="Roberto Carbone"/>
     <author initials="G." surname="Sciarretta" fullname="Giada Sciarretta"/>
     <author initials="S." surname="Ranise" fullname="Silvio Ranise"/>
     <date year="2023"/>
-    <seriesInfo name="IEEE" value="Transactions on Dependable and Secure Computing (TDSC)" />
-    <organization>IEEE</organization>
   </front>
 </reference>
 
