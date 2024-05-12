@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-05-09T00:21:09.733037+00:00",
+  "timestamp": "2024-05-12T00:23:56.985661+00:00",
   "repo": "oauth-wg/oauth-cross-device-security",
   "labels": [
     {
@@ -5842,7 +5842,7 @@
       "labels": [],
       "body": "Added reference to the `request-verification` mitigation when describing `PCRSM2023`.",
       "createdAt": "2024-05-02T07:25:19Z",
-      "updatedAt": "2024-05-09T00:15:52Z",
+      "updatedAt": "2024-05-09T07:43:32Z",
       "baseRepository": "oauth-wg/oauth-cross-device-security",
       "baseRefName": "main",
       "baseRefOid": "5f6c1c0396c94c8ca176a938485fe9b1c0659575",
@@ -5860,6 +5860,13 @@
           "body": "@marcopernpruner I made one editorial change. If your OK with it, I will merge.",
           "createdAt": "2024-05-09T00:15:51Z",
           "updatedAt": "2024-05-09T00:15:51Z"
+        },
+        {
+          "author": "marcopernpruner",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> @marcopernpruner I made one editorial change. If your OK with it, I will merge.\r\n\r\nOk for me, thanks! @PieterKas",
+          "createdAt": "2024-05-09T07:43:31Z",
+          "updatedAt": "2024-05-09T07:43:31Z"
         }
       ],
       "reviews": []
