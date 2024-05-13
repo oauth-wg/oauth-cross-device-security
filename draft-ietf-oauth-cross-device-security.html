@@ -29,7 +29,7 @@ specialists, fraud analysts and engineers implementing cross-device flows.
     intervaltree 3.1.0
     Jinja2 3.1.2
     lxml 4.9.3
-    platformdirs 4.2.0
+    platformdirs 4.2.1
     pycountry 22.3.5
     PyYAML 6.0.1
     requests 2.31.0
@@ -1038,7 +1038,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Kasselman, et al.</td>
-<td class="center">Expires 2 November 2024</td>
+<td class="center">Expires 14 November 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1051,12 +1051,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-oauth-cross-device-security-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-05-01" class="published">1 May 2024</time>
+<time datetime="2024-05-13" class="published">13 May 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Best Current Practice</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-11-02">2 November 2024</time></dd>
+<dd class="expires"><time datetime="2024-11-14">14 November 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1114,7 +1114,7 @@ specialists, fraud analysts and engineers implementing cross-device flows.<a hre
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 2 November 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 14 November 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -2419,12 +2419,12 @@ I.e., it is left to the user to decide if the QR code, user code, or authenticat
 <p id="section-6.1.15-2"><strong>Limitations:</strong> Authenticating on the Consumption Device before starting a cross-device flow does not prevent the attacks described in <a href="#Example%20B5:%20Illicit%20Network%20Join%20(User-Transferred%20Authorization%20Data%20Pattern)">Example B5: Illicit Network Join</a> and <a href="#Example%20B7:%20Illicit%20session%20transfer%20(User-Transferred%20Authorization%20Data%20Pattern)">Example B7: Illicit Session Transfer</a> and it is RECOMMENDED that additional mitigations described in this document is used if the cross-device flows are used in scenarios such as <a href="#Example%20A5:%20Add%20a%20device%20to%20a%20network%20(User-Transferred%20Authorization%20Data%20Pattern)">Example A5: Add a device to a network</a> and <a href="#Example%20A7:%20Transfer%20a%20session%20(User-Transferred%20Authorization%20Data%20Pattern)">Example A7: Transfer a session</a>.<a href="#section-6.1.15-2" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="request-initiation-verification">
+<div id="request-verification">
 <section id="section-6.1.16">
           <h4 id="name-request-initiation-verifica">
 <a href="#section-6.1.16" class="section-number selfRef">6.1.16. </a><a href="#name-request-initiation-verifica" class="section-name selfRef">Request Initiation Verification</a>
           </h4>
-<p id="section-6.1.16-1">The user MAY be asked to verify if they initiated an authentication or authorization request by sending a one-time password (OTP) or PIN to the user's Authorization Device and asking them to enter it on the Consumption Device to confirm the request. If the request was initiated without the users' consent, they would receive an OTP or PIN out of context which may raise suspicion for the user. In addition, they would not have information on where to enter the OTP or PIN. The user experience on the Authorization Device MAY reinforce the risk of receiving an out-of-context OTP or PIN and provide information to the user on how to report an unauthorized authentication or authorization request.<a href="#section-6.1.16-1" class="pilcrow">¶</a></p>
+<p id="section-6.1.16-1">The user MAY be asked to confirm if they initiated an authentication or authorization request by sending a one-time password (OTP) or PIN to the user's Authorization Device and asking them to enter it on the Consumption Device to confirm the request. If the request was initiated without the users' consent, they would receive an OTP or PIN out of context which may raise suspicion for the user. In addition, they would not have information on where to enter the OTP or PIN. The user experience on the Authorization Device MAY reinforce the risk of receiving an out-of-context OTP or PIN and provide information to the user on how to report an unauthorized authentication or authorization request.<a href="#section-6.1.16-1" class="pilcrow">¶</a></p>
 <p id="section-6.1.16-2"><strong>Limitations:</strong> The additional verification step may reduce the overall usability of the system as it is one more thing users need to do right. Attackers may combine traditional phishing attacks and target users who respond to those messages with an interactive attack that sets the expectation with the user that they will have to provide the OTP or PIN, in addition to granting authorization for the request.<a href="#section-6.1.16-2" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -2784,7 +2784,8 @@ device to approve the authentication attempt on the primary device
 (User-Transferred Session Data Pattern, <a href="#utsdp" class="auto internal xref">Section 3.1.1</a>). Given the results
 of the analysis, they proposed some practical mitigations either to
 prevent or reduce the risk of successful attacks, such as those
-described in <a href="#user_education" class="auto internal xref">Section 6.1.13</a> and <a href="#request-binding" class="auto internal xref">Section 6.1.17</a>.<a href="#section-6.3-6.4" class="pilcrow">¶</a>
+described in <a href="#user_education" class="auto internal xref">Section 6.1.13</a>, <a href="#request-verification" class="auto internal xref">Section 6.1.16</a> and
+<a href="#request-binding" class="auto internal xref">Section 6.1.17</a>.<a href="#section-6.3-6.4" class="pilcrow">¶</a>
 </li>
         </ul>
 </section>
