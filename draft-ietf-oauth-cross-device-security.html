@@ -1505,7 +1505,7 @@ appear in all capitals, as shown here.<a href="#section-1.4-1" class="pilcrow">�
 <p id="section-3-1">Cross-device flows allow a user to start a flow on one device (e.g., a smart TV) and then transfer the session to continue it on a second device (e.g., a mobile phone). The second device may be used to access the service that was running on the first device, or to perform an action such as authenticating or granting authorization before potentially passing control back to the first device.<a href="#section-3-1" class="pilcrow">¶</a></p>
 <p id="section-3-2">These flows typically involve using a mobile phone to scan a QR code
 or enter a user code displayed on the first device (e.g., Smart
-TV, Kiosk, Personal Computer etc.).<a href="#section-3-2" class="pilcrow">¶</a></p>
+TV, Kiosk, Personal Computer or other electronic devices.).<a href="#section-3-2" class="pilcrow">¶</a></p>
 <div id="cross-device-authorization-1">
 <section id="section-3.1">
         <h3 id="name-cross-device-authorization-2">
@@ -1517,7 +1517,7 @@ the Consumption Device.<a href="#section-3.1-1" class="pilcrow">¶</a></p>
 <ul class="compact">
 <li class="compact" id="section-3.1-3.1">Authorization on devices with limited input capabilities: End-users can
 authorize devices with limited input capabilities to access content (e.g.,
-smart TVs, digital whiteboards, printers, etc).<a href="#section-3.1-3.1" class="pilcrow">¶</a>
+smart TVs, digital whiteboards, printers or similarly constrained devices).<a href="#section-3.1-3.1" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="section-3.1-3.2">Secure authentication on shared or public devices: End-users can perform
 authentication and authorization using a personally trusted device, without
@@ -2319,8 +2319,8 @@ I.e., it is left to the user to decide if the QR code, user code, or authenticat
           <h4 id="name-content-filtering">
 <a href="#section-6.1.5" class="section-number selfRef">6.1.5. </a><a href="#name-content-filtering" class="section-name selfRef">Content Filtering</a>
           </h4>
-<p id="section-6.1.5-1">Attackers exploit the unauthenticated channel by changing the context of the user code or QR code and then sending a message to a user (e-mail, text, instant messaging etc). By deploying content filtering (e.g., anti-spam filter), these messages can be blocked and prevented from reaching the end-users. It may be possible to fine-tune content filtering solutions to detect artefacts like QR codes or user codes that are included in a message that is sent to multiple recipients in the expectation that at least one of the recipients will be convinced by the message and grant authorization to access restricted resources.<a href="#section-6.1.5-1" class="pilcrow">¶</a></p>
-<p id="section-6.1.5-2"><strong>Limitations:</strong> Some scenarios may require legitimate re-transmission of user, QR and authorization data (e.g., retries). To prevent the disruption of legitimate scenarios, content filters may use a threshold and allow a limited number of messages with the same QR or user codes to be transmitted before interrupting the delivery of those messages. Content filtering may also be fragmented across multiple communications systems and channels (e-mail, messaging, text etc), making it harder to detect or interrupt attacks that are executed over multiple channels, unless here is a high degree of integration between content filtering systems.<a href="#section-6.1.5-2" class="pilcrow">¶</a></p>
+<p id="section-6.1.5-1">Attackers exploit the unauthenticated channel by changing the context of the user code or QR code and then sending a message to a user (e-mail, text messaging, instant messaging or other communication mechanisms). By deploying content filtering (e.g., anti-spam filter), these messages can be blocked and prevented from reaching the end-users. It may be possible to fine-tune content filtering solutions to detect artefacts like QR codes or user codes that are included in a message that is sent to multiple recipients in the expectation that at least one of the recipients will be convinced by the message and grant authorization to access restricted resources.<a href="#section-6.1.5-1" class="pilcrow">¶</a></p>
+<p id="section-6.1.5-2"><strong>Limitations:</strong> Some scenarios may require legitimate re-transmission of user, QR and authorization data (e.g., retries). To prevent the disruption of legitimate scenarios, content filters may use a threshold and allow a limited number of messages with the same QR or user codes to be transmitted before interrupting the delivery of those messages. Content filtering may also be fragmented across multiple communications systems and communication channels (e-mail, text messaging, instant messaging or other communication mechanisms), making it harder to detect or interrupt attacks that are executed over multiple channels, unless here is a high degree of integration between content filtering systems.<a href="#section-6.1.5-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="detect-and-remediate">
@@ -2948,7 +2948,7 @@ described in <a href="#user_education" class="auto internal xref">Section 6.1.13
 </li>
         <li class="compact" id="appendix-A-3.3">Clarified origin of QR Code.<a href="#appendix-A-3.3" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-A-3.4">Editorial update.<a href="#appendix-A-3.4" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-A-3.4">Editorial updates<a href="#appendix-A-3.4" class="pilcrow">¶</a>
 </li>
         <li class="compact" id="appendix-A-3.5">Updated examples to be consistent.<a href="#appendix-A-3.5" class="pilcrow">¶</a>
 </li>
@@ -2963,6 +2963,8 @@ described in <a href="#user_education" class="auto internal xref">Section 6.1.13
         <li class="compact" id="appendix-A-3.10">Clarified that authorization servers can detect<a href="#appendix-A-3.10" class="pilcrow">¶</a>
 </li>
         <li class="compact" id="appendix-A-3.11">Consistent use of "smart TV"<a href="#appendix-A-3.11" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-A-3.12">Fixed references<a href="#appendix-A-3.12" class="pilcrow">¶</a>
 </li>
       </ul>
 <p id="appendix-A-4">-06<a href="#appendix-A-4" class="pilcrow">¶</a></p>
