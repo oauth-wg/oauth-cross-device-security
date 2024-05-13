@@ -328,7 +328,7 @@ Table of Contents
 
    These flows typically involve using a mobile phone to scan a QR code
    or enter a user code displayed on the first device (e.g., Smart TV,
-   Kiosk, Personal Computer etc.).
+   Kiosk, Personal Computer or other electronic devices.).
 
 3.1.  Cross-Device Authorization
 
@@ -343,8 +343,8 @@ Table of Contents
 
    *  Authorization on devices with limited input capabilities: End-
       users can authorize devices with limited input capabilities to
-      access content (e.g., smart TVs, digital whiteboards, printers,
-      etc).
+      access content (e.g., smart TVs, digital whiteboards, printers or
+      similarly constrained devices).
    *  Secure authentication on shared or public devices: End-users can
       perform authentication and authorization using a personally
       trusted device, without risk of disclosing their credentials to a
@@ -1501,14 +1501,14 @@ Table of Contents
 
    Attackers exploit the unauthenticated channel by changing the context
    of the user code or QR code and then sending a message to a user
-   (e-mail, text, instant messaging etc).  By deploying content
-   filtering (e.g., anti-spam filter), these messages can be blocked and
-   prevented from reaching the end-users.  It may be possible to fine-
-   tune content filtering solutions to detect artefacts like QR codes or
-   user codes that are included in a message that is sent to multiple
-   recipients in the expectation that at least one of the recipients
-   will be convinced by the message and grant authorization to access
-   restricted resources.
+   (e-mail, text messaging, instant messaging or other communication
+   mechanisms).  By deploying content filtering (e.g., anti-spam
+   filter), these messages can be blocked and prevented from reaching
+   the end-users.  It may be possible to fine-tune content filtering
+   solutions to detect artefacts like QR codes or user codes that are
+   included in a message that is sent to multiple recipients in the
+   expectation that at least one of the recipients will be convinced by
+   the message and grant authorization to access restricted resources.
 
    *Limitations:* Some scenarios may require legitimate re-transmission
    of user, QR and authorization data (e.g., retries).  To prevent the
@@ -1516,10 +1516,11 @@ Table of Contents
    threshold and allow a limited number of messages with the same QR or
    user codes to be transmitted before interrupting the delivery of
    those messages.  Content filtering may also be fragmented across
-   multiple communications systems and channels (e-mail, messaging, text
-   etc), making it harder to detect or interrupt attacks that are
-   executed over multiple channels, unless here is a high degree of
-   integration between content filtering systems.
+   multiple communications systems and communication channels (e-mail,
+   text messaging, instant messaging or other communication mechanisms),
+   making it harder to detect or interrupt attacks that are executed
+   over multiple channels, unless here is a high degree of integration
+   between content filtering systems.
 
 6.1.6.  Detect and Remediate
 
@@ -2332,7 +2333,7 @@ Appendix A.  Document History
    *  Updated langugage in section on FIDO to allow for use of FIDO keys
       on consumption devices.
    *  Clarified origin of QR Code.
-   *  Editorial update.
+   *  Editorial updates
    *  Updated examples to be consistent.
    *  Made diagram description clearer.
    *  Added CTAP 2.2 Draft.
@@ -2340,6 +2341,7 @@ Appendix A.  Document History
    *  Added Roy Williams to acknowledgements
    *  Clarified that authorization servers can detect
    *  Consistent use of "smart TV"
+   *  Fixed references
 
    -06
 
