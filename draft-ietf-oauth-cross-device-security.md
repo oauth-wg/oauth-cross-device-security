@@ -705,7 +705,7 @@ The user experience MAY include information to further educate the user on cross
 
 **Limitations:** Improvements to user experience on their own is unlikely to be sufficient and SHOULD be used in conjunction with other controls described in this document.
 
-### Authenticate-then-Inititiate
+### Authenticate-then-Initiate
 By requiring a user to authenticate on the Consumption Device with a phishing resistant authentication method before initiating a cross-device flow, the server can prevent an attacker from initiating a cross-device flow and obtaining QR codes or user codes. This prevents the attacker from obtaining a QR code or user code that they can use to mislead an unsuspecting user. This requires that the Consumption Device has sufficient input capabilities to support a phishing resistant authentication mechanism, which may in itself negate the need for a cross-device flow.
 
 **Limitations:** Authenticating on the Consumption Device before starting a cross-device flow does not prevent the attacks described in [Example B5: Illicit Network Join](#Example B5: Illicit Network Join (User-Transferred Authorization Data Pattern)) and [Example B7: Illicit Session Transfer](#Example B7: Illicit session transfer (User-Transferred Authorization Data Pattern)) and it is RECOMMENDED that additional mitigations described in this document is used if the cross-device flows are used in scenarios such as [Example A5: Add a device to a network](#Example A5: Add a device to a network (User-Transferred Authorization Data Pattern)) and [Example A7: Transfer a session](#Example A7: Transfer a session (User-Transferred Authorization Data Pattern)).
@@ -740,7 +740,7 @@ The practical mitigations described in this section can prevent the attacks from
 | Sender-Constrained Tokens             |         |         |    X    |
 | User Education                        |    X    |         |         |
 | User Experience                       |    X    |         |         |
-| Authenticate-then-Inititiate          |    X    |         |         |
+| Authenticate-then-Initiate            |    X    |         |         |
 | Request Initiation Verification       |         |    X    |         |
 | Request Binding with Out-of-Band Data |         |    X    |         |
 
