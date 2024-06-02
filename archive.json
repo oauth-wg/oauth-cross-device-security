@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-05-30T00:22:13.018685+00:00",
+  "timestamp": "2024-06-02T00:24:08.258490+00:00",
   "repo": "oauth-wg/oauth-cross-device-security",
   "labels": [
     {
@@ -1641,6 +1641,22 @@
           "updatedAt": "2024-05-01T20:00:08Z"
         }
       ]
+    },
+    {
+      "number": 148,
+      "id": "I_kwDOHK26QM6KpUsf",
+      "title": "Do we want to mention the WICG browser api?",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/148",
+      "state": "OPEN",
+      "author": "danielfett",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-05-30T16:29:39Z",
+      "updatedAt": "2024-05-30T16:29:39Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
