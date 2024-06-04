@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-06-02T00:24:08.258490+00:00",
+  "timestamp": "2024-06-04T00:22:25.313347+00:00",
   "repo": "oauth-wg/oauth-cross-device-security",
   "labels": [
     {
@@ -5903,7 +5903,7 @@
       "labels": [],
       "body": "`Authenticate-then-Inititiate` -> `Authenticate-then-Initiate`",
       "createdAt": "2024-05-21T11:00:57Z",
-      "updatedAt": "2024-05-21T11:00:57Z",
+      "updatedAt": "2024-06-03T09:14:56Z",
       "baseRepository": "oauth-wg/oauth-cross-device-security",
       "baseRefName": "main",
       "baseRefOid": "b37f62d986b932a8b319faf77fd13ce13a813e8b",
@@ -5915,7 +5915,21 @@
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOHK26QM58xNk-",
+          "commit": {
+            "abbreviatedOid": "fa4f198"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-06-03T09:14:56Z",
+          "updatedAt": "2024-06-03T09:14:56Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
