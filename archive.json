@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-06-23T00:24:32.662619+00:00",
+  "timestamp": "2024-06-25T00:22:25.605077+00:00",
   "repo": "oauth-wg/oauth-cross-device-security",
   "labels": [
     {
@@ -1654,9 +1654,17 @@
       "labels": [],
       "body": "",
       "createdAt": "2024-05-30T16:29:39Z",
-      "updatedAt": "2024-05-30T16:29:39Z",
+      "updatedAt": "2024-06-24T09:09:53Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@danielfett can you add a bit more context on this API and why it should be included/referenced?",
+          "createdAt": "2024-06-24T09:09:51Z",
+          "updatedAt": "2024-06-24T09:09:51Z"
+        }
+      ]
     }
   ],
   "pulls": [
