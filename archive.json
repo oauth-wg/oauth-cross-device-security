@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-06-25T00:22:25.605077+00:00",
+  "timestamp": "2024-06-27T00:22:40.992439+00:00",
   "repo": "oauth-wg/oauth-cross-device-security",
   "labels": [
     {
@@ -1654,7 +1654,7 @@
       "labels": [],
       "body": "",
       "createdAt": "2024-05-30T16:29:39Z",
-      "updatedAt": "2024-06-24T09:09:53Z",
+      "updatedAt": "2024-06-26T20:44:48Z",
       "closedAt": null,
       "comments": [
         {
@@ -1663,6 +1663,27 @@
           "body": "@danielfett can you add a bit more context on this API and why it should be included/referenced?",
           "createdAt": "2024-06-24T09:09:51Z",
           "updatedAt": "2024-06-24T09:09:51Z"
+        },
+        {
+          "author": "jogu",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I can't remember when Daniel's back from holiday but as he opened this issue after a conversation we had perhaps I can usefully answer.\r\n\r\nIt's the API here:\r\n\r\nhttps://wicg.github.io/digital-credentials/\r\n\r\nThe reason to mention it would be that it solves the cross device security problem for OpenID for Verifiable Presentations, as it uses very similar mechanisms to the cross device passkey presentation by adding bluetooth proximity into the mix. Potentially it even means that if you're having trouble deciding between different possible ways of doing things the availability of the API might push you towards using OID4VP to get cross device security.\r\n\r\nThe main downside is that it's still under development so isn't technically stable nor widely available yet, but Apple & Google have demoed it working cross device between different OSes.",
+          "createdAt": "2024-06-26T15:22:44Z",
+          "updatedAt": "2024-06-26T15:22:44Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@jogu there is a section on protocol recommendations, as well as on proximity. What we might do is add a reference to this as an example of a protocol that establishes proximity via Bluetooth in one or more sections. Do you think that would be sufficient to address the issue?",
+          "createdAt": "2024-06-26T16:46:22Z",
+          "updatedAt": "2024-06-26T16:46:22Z"
+        },
+        {
+          "author": "jogu",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Yes, I think so. I had a read of the latest draft with this in mind, I think it might be worthy of mentions:\r\n\r\n1.  in Section 5 when introducing verifiable presentations standard that as well as the standard QR based flow there is a secure cross device flow using the browser API.\r\n2. in 6.1.1 around \"BLE presents another alternative for establishing proximity, but may present user experience challenges when setting up\" tacking on something like \"unless mediated by the OS\" or something like that as although the browser API cross based flow does use BLE it doesn't require the user to navigate the traditional device pairing flow that I think is being referred to here (to oversimplify, it combines QR codes with BLE and CTAP in a very similar to webauthn as is already described in section 6.2.3.1).\r\n3. In 6.2, a new subsection for OID4VP over browser API might be warranted.\r\n",
+          "createdAt": "2024-06-26T20:44:46Z",
+          "updatedAt": "2024-06-26T20:44:46Z"
         }
       ]
     }
