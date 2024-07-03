@@ -5,10 +5,10 @@
 Web Authorization Protocol                                  P. Kasselman
 Internet-Draft                                                 Microsoft
 Intended status: Best Current Practice                           D. Fett
-Expires: 14 November 2024                                       Authlete
+Expires: 4 January 2025                                         Authlete
                                                                F. Skokan
                                                                     Okta
-                                                             13 May 2024
+                                                             3 July 2024
 
 
            Cross-Device Flows: Security Best Current Practice
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 14 November 2024.
+   This Internet-Draft will expire on 4 January 2025.
 
 Copyright Notice
 
@@ -145,7 +145,7 @@ Table of Contents
        6.1.12. Sender-Constrained Tokens
        6.1.13. User Education
        6.1.14. User Experience
-       6.1.15. Authenticate-then-Inititiate
+       6.1.15. Authenticate-then-Initiate
        6.1.16. Request Initiation Verification
        6.1.17. Request Binding with Out-of-Band Data
        6.1.18. Practical Mitigation Summary
@@ -1738,7 +1738,7 @@ Table of Contents
    unlikely to be sufficient and SHOULD be used in conjunction with
    other controls described in this document.
 
-6.1.15.  Authenticate-then-Inititiate
+6.1.15.  Authenticate-then-Initiate
 
    By requiring a user to authenticate on the Consumption Device with a
    phishing resistant authentication method before initiating a cross-
@@ -1846,7 +1846,7 @@ Table of Contents
      +---------------------------------+---------+---------+---------+
      | User Experience                 |    X    |         |         |
      +---------------------------------+---------+---------+---------+
-     | Authenticate-then-Inititiate    |    X    |         |         |
+     | Authenticate-then-Initiate      |    X    |         |         |
      +---------------------------------+---------+---------+---------+
      | Request Initiation Verification |         |    X    |         |
      +---------------------------------+---------+---------+---------+
