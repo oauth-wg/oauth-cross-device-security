@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-07-02T00:22:51.315374+00:00",
+  "timestamp": "2024-07-04T00:22:36.928080+00:00",
   "repo": "oauth-wg/oauth-cross-device-security",
   "labels": [
     {
@@ -5925,24 +5925,26 @@
       "id": "PR_kwDOHK26QM5wEYuH",
       "title": "Fix typo on the Authenticate-then-Initiate mitigation",
       "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/147",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "marcopernpruner",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "`Authenticate-then-Inititiate` -> `Authenticate-then-Initiate`",
       "createdAt": "2024-05-21T11:00:57Z",
-      "updatedAt": "2024-06-03T09:14:56Z",
+      "updatedAt": "2024-07-03T08:59:47Z",
       "baseRepository": "oauth-wg/oauth-cross-device-security",
       "baseRefName": "main",
       "baseRefOid": "b37f62d986b932a8b319faf77fd13ce13a813e8b",
       "headRepository": "marcopernpruner/oauth-cross-device-security",
       "headRefName": "main",
       "headRefOid": "fa4f198cc4a3402cf7be1c350928c83bff4d373d",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-07-03T08:59:47Z",
+      "mergedAt": "2024-07-03T08:59:47Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "dfda711bde913c41f941d03bc807e0ebf5e91a16"
+      },
       "comments": [],
       "reviews": [
         {
