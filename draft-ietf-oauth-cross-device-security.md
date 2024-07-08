@@ -884,8 +884,10 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
 # Document History
 
    [[ To be removed from the final specification ]]
-
     -latest
+   * Editorial updates.
+
+    -07
 
    * Clarification of FIDO\WebAuthn section.
    * Updated langugage in section on FIDO to allow for use of FIDO keys on consumption devices.
