@@ -882,7 +882,6 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
 {backmatter}
 
 # Document History
-
    [[ To be removed from the final specification ]]
 
     -latest
