@@ -5,10 +5,10 @@
 Web Authorization Protocol                                  P. Kasselman
 Internet-Draft                                                 Microsoft
 Intended status: Best Current Practice                           D. Fett
-Expires: 4 January 2025                                         Authlete
+Expires: 9 January 2025                                         Authlete
                                                                F. Skokan
                                                                     Okta
-                                                             3 July 2024
+                                                             8 July 2024
 
 
            Cross-Device Flows: Security Best Current Practice
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 4 January 2025.
+   This Internet-Draft will expire on 9 January 2025.
 
 Copyright Notice
 
@@ -2325,9 +2325,10 @@ Table of Contents
 
 Appendix A.  Document History
 
-   [[ To be removed from the final specification ]]
+   [[ To be removed from the final specification ]] -latest * Editorial
+   updates.
 
-   -latest
+   -07
 
    *  Clarification of FIDO\WebAuthn section.
    *  Updated langugage in section on FIDO to allow for use of FIDO keys
