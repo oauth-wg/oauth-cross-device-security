@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-07-07T00:25:30.989624+00:00",
+  "timestamp": "2024-07-09T00:22:54.554686+00:00",
   "repo": "oauth-wg/oauth-cross-device-security",
   "labels": [
     {
@@ -5961,6 +5961,70 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 149,
+      "id": "PR_kwDOHK26QM50qlg2",
+      "title": "Update draft-ietf-oauth-cross-device-security.md",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/149",
+      "state": "MERGED",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Corrected typos.",
+      "createdAt": "2024-07-08T09:06:04Z",
+      "updatedAt": "2024-07-08T09:10:10Z",
+      "baseRepository": "oauth-wg/oauth-cross-device-security",
+      "baseRefName": "main",
+      "baseRefOid": "dfda711bde913c41f941d03bc807e0ebf5e91a16",
+      "headRepository": "oauth-wg/oauth-cross-device-security",
+      "headRefName": "PieterKas-patch-53",
+      "headRefOid": "5700c1881f188abf607c49c1631e74f63c0b3cf1",
+      "closedAt": "2024-07-08T09:10:10Z",
+      "mergedAt": "2024-07-08T09:10:10Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "858b0856ed92704c1fc16c4543f103844764094a"
+      },
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Updated history prior to release.",
+          "createdAt": "2024-07-08T09:10:05Z",
+          "updatedAt": "2024-07-08T09:10:05Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 150,
+      "id": "PR_kwDOHK26QM50qrf9",
+      "title": "Update draft-ietf-oauth-cross-device-security.md",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/150",
+      "state": "MERGED",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Editorial",
+      "createdAt": "2024-07-08T09:18:00Z",
+      "updatedAt": "2024-07-08T09:23:51Z",
+      "baseRepository": "oauth-wg/oauth-cross-device-security",
+      "baseRefName": "main",
+      "baseRefOid": "0077825992c3b4e1e58ad6d319912ca49cf83660",
+      "headRepository": "oauth-wg/oauth-cross-device-security",
+      "headRefName": "PieterKas-patch-54",
+      "headRefOid": "89ece1d51b277073ca7c755c65fc8115aa7ce184",
+      "closedAt": "2024-07-08T09:23:51Z",
+      "mergedAt": "2024-07-08T09:23:51Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "d25da4426ca1754b08f8f628be9e5438f593be65"
+      },
+      "comments": [],
+      "reviews": []
     }
   ]
 }
