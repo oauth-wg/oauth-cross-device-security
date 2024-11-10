@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-11-07T00:26:36.159198+00:00",
+  "timestamp": "2024-11-10T00:28:55.407399+00:00",
   "repo": "oauth-wg/oauth-cross-device-security",
   "labels": [
     {
@@ -2653,7 +2653,7 @@
       "baseRepository": "oauth-wg/oauth-cross-device-security",
       "baseRefName": "main",
       "baseRefOid": "b38ab98198930253982a6c148c4e228130b4504d",
-      "headRepository": "aaronpk/oauth-cross-device-security",
+      "headRepository": null,
       "headRefName": "main",
       "headRefOid": "eb1204674ecca2c5fdbb0cdd8941d666cce46f36",
       "closedAt": "2023-04-26T19:48:26Z",
