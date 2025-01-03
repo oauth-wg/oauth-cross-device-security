@@ -17,9 +17,9 @@ status = "bcp"
 initials="P."
 surname="Kasselman"
 fullname="Pieter Kasselman"
-organization="Microsoft"
+organization="SPIRL"
     [author.address]
-    email = "pieter.kasselman@microsoft.com"
+    email = "pieter@spirl.com"
 
 
 [[author]]
