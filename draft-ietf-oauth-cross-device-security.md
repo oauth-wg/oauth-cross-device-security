@@ -886,9 +886,7 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
 
    -latest
    * Affiliation change to allow publication to Datatracker.
-
-  -09
-   * No changes - re-published to avoid expiry while waiting on shepherd review.
+   * No content changes - re-published to avoid expiry while waiting on shepherd review.
 
     -08
    * Editorial updates.
