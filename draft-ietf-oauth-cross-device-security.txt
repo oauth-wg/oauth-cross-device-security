@@ -3,7 +3,7 @@
 
 
 Web Authorization Protocol                                  P. Kasselman
-Internet-Draft                                                 Microsoft
+Internet-Draft                                                     SPIRL
 Intended status: Best Current Practice                           D. Fett
 Expires: 7 July 2025                                            Authlete
                                                                F. Skokan
@@ -2449,8 +2449,8 @@ Appendix A.  Document History
 Authors' Addresses
 
    Pieter Kasselman
-   Microsoft
-   Email: pieter.kasselman@microsoft.com
+   SPIRL
+   Email: pieter@spirl.com
 
 
    Daniel Fett
