@@ -884,7 +884,10 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
 # Document History
    [[ To be removed from the final specification ]]
 
-    -latest
+   -latest
+   * No changes - re-published to avoid expiry while waiting on shepherd review.
+
+    -08
    * Editorial updates.
 
     -07
