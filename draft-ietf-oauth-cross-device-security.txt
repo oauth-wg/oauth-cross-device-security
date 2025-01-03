@@ -5,10 +5,10 @@
 Web Authorization Protocol                                  P. Kasselman
 Internet-Draft                                                 Microsoft
 Intended status: Best Current Practice                           D. Fett
-Expires: 9 January 2025                                         Authlete
+Expires: 7 July 2025                                            Authlete
                                                                F. Skokan
                                                                     Okta
-                                                             8 July 2024
+                                                          3 January 2025
 
 
            Cross-Device Flows: Security Best Current Practice
@@ -49,11 +49,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 9 January 2025.
+   This Internet-Draft will expire on 7 July 2025.
 
 Copyright Notice
 
-   Copyright (c) 2024 IETF Trust and the persons identified as the
+   Copyright (c) 2025 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -2327,7 +2327,10 @@ Appendix A.  Document History
 
    [[ To be removed from the final specification ]]
 
-   -latest
+   -latest * No changes - re-published to avoid expiry while waiting on
+   shepherd review.
+
+   -08
 
    *  Editorial updates.
 
