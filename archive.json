@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-03-23T00:31:35.044969+00:00",
+  "timestamp": "2025-03-25T00:31:55.533093+00:00",
   "repo": "oauth-wg/oauth-cross-device-security",
   "labels": [
     {
@@ -1686,6 +1686,54 @@
           "updatedAt": "2024-06-26T20:44:46Z"
         }
       ]
+    },
+    {
+      "number": 151,
+      "id": "I_kwDOHK26QM6vbqPW",
+      "title": "Shepherd Feedback: Clarify Authenticated Channel",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/151",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Hannes suggested we add a paragraph or sentence explaining the \"authenticated channel\" a little bit more. Currently we use the term, but only implies its meaning.",
+      "createdAt": "2025-03-24T13:25:34Z",
+      "updatedAt": "2025-03-24T13:25:34Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 152,
+      "id": "I_kwDOHK26QM6vbsMZ",
+      "title": "Shepherd Write-up: Add reference to FIDO/WebAuthn",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/152",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "We need to add an additional reference for FIDO/WebAuthn in the protocol recommendations section. Something to confirm with Tim Cappalli on the right references to use.",
+      "createdAt": "2025-03-24T13:28:25Z",
+      "updatedAt": "2025-03-24T13:28:39Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 153,
+      "id": "I_kwDOHK26QM6vbtFm",
+      "title": "Shepherd Feedback: Normative References",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/153",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "There are no normative references inthe document - we should move some off the non-normative references to the normative section",
+      "createdAt": "2025-03-24T13:29:41Z",
+      "updatedAt": "2025-03-24T13:29:53Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
