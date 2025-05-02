@@ -885,6 +885,9 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
    [[ To be removed from the final specification ]]
 
    -latest
+   * Shepherd feedback: Describe unauthenticated channel
+
+    -09
    * Affiliation change to allow publication to Datatracker.
    * No content changes - re-published to avoid expiry while waiting on shepherd review.
 
