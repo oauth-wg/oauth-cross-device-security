@@ -2335,11 +2335,16 @@ Appendix A.  Document History
 
    [[ To be removed from the final specification ]]
 
-   -latest * Affiliation change to allow publication to Datatracker.  *
-   No content changes - re-published to avoid expiry while waiting on
-   shepherd review.
+   -latest * Shepherd feedback: Describe unauthenticated channel
 
-   -08
+   -09
+
+   *  Affiliation change to allow publication to Datatracker.
+
+   *  No content changes - re-published to avoid expiry while waiting on
+      shepherd review.
+
+      -08
 
    *  Editorial updates.
 
