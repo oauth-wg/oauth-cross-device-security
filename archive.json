@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-04-01T00:34:03.492559+00:00",
+  "timestamp": "2025-05-04T00:34:19.471186+00:00",
   "repo": "oauth-wg/oauth-cross-device-security",
   "labels": [
     {
@@ -1715,9 +1715,17 @@
       "labels": [],
       "body": "We need to add an additional reference for FIDO/WebAuthn in the protocol recommendations section. Something to confirm with Tim Cappalli on the right references to use.",
       "createdAt": "2025-03-24T13:28:25Z",
-      "updatedAt": "2025-03-24T13:28:39Z",
+      "updatedAt": "2025-05-02T11:16:12Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@timcappalli what is the right reference to use to FIDO/WebAuthn in the protocol recommendation section?\n\nCurrently we have:\n\nBoth the Consumption Device and the authenticator require BLE support and access to the internet. The Consumption Device must support both FIDO2/WebAuthn, specifically CTAP 2.2 with hybrid transports [@CTAP22Draft]. The device serving as the FIDO authenticator must support CTAP 2.2 or later to be used as a cross-device authenticator.\n\nwith @CTAP22Draft pointing to\n\n\n<reference anchor=\"CTAP22Draft\" target=\"https://fidoalliance.org/specs/fido-v2.2-rd-20230321/fido-client-to-authenticator-protocol-v2.2-rd-20230321.pdf\">\n  <front>\n    <title>Client to Authenticator Protocol (CTAP)</title>\n    <author initials=\"J.\" surname=\"Bradley\" fullname=\"John Bradley\">\n        <organization>Yubico</organization>\n    </author>\n    <author initials=\"J.\" surname=\"Hodges\" fullname=\"Jeff Hodges\">\n        <organization>Google</organization>\n    </author>\n    <author initials=\"M.\" surname=\"Jones\" fullname=\"Michael B. Jones\">\n        <organization>Microsoft</organization>\n    </author>\n    <author initials=\"A.\" surname=\"Kumar\" fullname=\"Akshay Kumar\">\n        <organization>Microsoft</organization>\n    </author>\n    <author initials=\"R.\" surname=\"Lindemann\" fullname=\"Rolf Lindemann\">\n        <organization>Nok Nok Labs</organization>\n    </author>\n    <author initials=\"S.\" surname=\"Verrept\" fullname=\"Johan Verrept\">\n        <organization>OneSpan</organization>\n    </author>\n <date year=\"2023\" month=\"March\"/>\n </front>\n</reference>",
+          "createdAt": "2025-05-02T11:16:11Z",
+          "updatedAt": "2025-05-02T11:16:11Z"
+        }
+      ]
     },
     {
       "number": 153,
@@ -1731,9 +1739,17 @@
       "labels": [],
       "body": "There are no normative references inthe document - we should move some off the non-normative references to the normative section",
       "createdAt": "2025-03-24T13:29:41Z",
-      "updatedAt": "2025-03-24T13:29:53Z",
+      "updatedAt": "2025-05-02T11:37:09Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Candidates for inclusion as normative rather than informative:\n\n1. RFC 8628 (OAuth 2.0 Device Authorization Grant)\n2. CIBA (OpenID Connect Client-Initiated Backchannel Authentication Flow)\n3. RFC 6749 (The OAuth 2.0 Authorization Framework)\n4. RFC 7662 (OAuth 2.0 Token Introspection)\n5. CTAP22Draft (Client to Authenticator Protocol)\n6. IEEE802154 (IEEE Standard for Low-Rate Wireless Networks)\n7. CAEP (OpenID Continuous Access Evaluation Profile) and SSF (OpenID Shared Signals Framework Specification)\n",
+          "createdAt": "2025-05-02T11:37:08Z",
+          "updatedAt": "2025-05-02T11:37:08Z"
+        }
+      ]
     }
   ],
   "pulls": [
@@ -6073,6 +6089,86 @@
       },
       "comments": [],
       "reviews": []
+    },
+    {
+      "number": 154,
+      "id": "PR_kwDOHK26QM6UvWs5",
+      "title": "Shepherd Feedback - Added Definition of Authenticated Channel",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/154",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "See issue #151",
+      "createdAt": "2025-05-02T11:06:05Z",
+      "updatedAt": "2025-05-02T17:07:39Z",
+      "baseRepository": "oauth-wg/oauth-cross-device-security",
+      "baseRefName": "main",
+      "baseRefOid": "4987c73d98f7e2f2b5bc3e129fe808afb8012747",
+      "headRepository": "oauth-wg/oauth-cross-device-security",
+      "headRefName": "PieterKas-patch-55",
+      "headRefOid": "d6a54525fccc8e5bdcd83aa6e779ac788a82b28b",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHK26QM6no4EZ",
+          "commit": {
+            "abbreviatedOid": "d6a5452"
+          },
+          "author": "panva",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-05-02T17:07:39Z",
+          "updatedAt": "2025-05-02T17:07:39Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 155,
+      "id": "PR_kwDOHK26QM6UwLsr",
+      "title": "Update references for FIDO2/WebAuthn",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/155",
+      "state": "OPEN",
+      "author": "timcappalli",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Resolves #152 \r\n\r\n- updates references for FIDO2/WebAuthn\r\n- Wording tweaks to the FIDO2/WebAuthn paragraph to be more clear",
+      "createdAt": "2025-05-02T13:15:38Z",
+      "updatedAt": "2025-05-02T17:07:25Z",
+      "baseRepository": "oauth-wg/oauth-cross-device-security",
+      "baseRefName": "main",
+      "baseRefOid": "4987c73d98f7e2f2b5bc3e129fe808afb8012747",
+      "headRepository": "timcappalli/oauth-cross-device-security",
+      "headRefName": "main",
+      "headRefOid": "4f2b6465636257faead70930bcad04a291a4344a",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHK26QM6no3-g",
+          "commit": {
+            "abbreviatedOid": "4f2b646"
+          },
+          "author": "panva",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-05-02T17:07:25Z",
+          "updatedAt": "2025-05-02T17:07:25Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
