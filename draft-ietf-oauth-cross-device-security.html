@@ -16,20 +16,20 @@ the security of cross-device flows. It serves as a security guide
 to system designers, architects, product managers, security
 specialists, fraud analysts and engineers implementing cross-device flows. 
     " name="description">
-<meta content="xml2rfc 3.26.0" name="generator">
+<meta content="xml2rfc 3.28.1" name="generator">
 <meta content="security" name="keyword">
 <meta content="oauth2" name="keyword">
 <meta content="best current practice" name="keyword">
 <meta content="draft-ietf-oauth-cross-device-security-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.26.0
-    Python 3.12.8
+  xml2rfc 3.28.1
+    Python 3.12.10
     ConfigArgParse 1.7
     google-i18n-address 3.1.1
     intervaltree 3.1.0
-    Jinja2 3.1.5
+    Jinja2 3.1.6
     lxml 5.3.0
-    platformdirs 4.3.6
+    platformdirs 4.3.7
     pycountry 24.6.1
     PyYAML 6.0.2
     requests 2.32.3
@@ -444,7 +444,7 @@ dl {
     margin-bottom: 0;
   }
 }
-dl > dt {
+dl:not(.dlNewline) > dt {
   float: left;
   margin-right: 2ch;
   min-width: 8ch;
@@ -1053,11 +1053,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">CDFS</td>
-<td class="right">February 2025</td>
+<td class="right">May 2025</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Kasselman, et al.</td>
-<td class="center">Expires 14 August 2025</td>
+<td class="center">Expires 6 November 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1070,12 +1070,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-oauth-cross-device-security-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-02-10" class="published">10 February 2025</time>
+<time datetime="2025-05-05" class="published">5 May 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Best Current Practice</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-08-14">14 August 2025</time></dd>
+<dd class="expires"><time datetime="2025-11-06">6 November 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1133,7 +1133,7 @@ specialists, fraud analysts and engineers implementing cross-device flows.<a hre
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 14 August 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 6 November 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1426,7 +1426,7 @@ trusted, device (Authorization Device) to authorize the Consumption
 Device to access a resource (e.g., access to a service). The Device
 Authorization Grant <span>[<a href="#RFC8628" class="cite xref">RFC8628</a>]</span> and Client-Initiated Backchannel
 Authentication <span>[<a href="#CIBA" class="cite xref">CIBA</a>]</span> are two examples of popular cross-device authorization flows.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
-<p id="section-1.1-2">In these flows, it is the user's decision whether to continue the session by scanning a QR code, entering a user code, or accepting an authorization request pushed to their Authorization Device.<a href="#section-1.1-2" class="pilcrow">¶</a></p>
+<p id="section-1.1-2">In these flows, the Consumption Device and the Authorization Device are not directly connected and there is no technical mechanisms for the Authorization Device and Consumption Device to establish mutual authentication. It is left to the user to decide whether the source of the authorization request (the Consumption Device) should be trusted before they scan a QR code, enter a user code, or accept an authorization request pushed to their Authorization Device. The transfer of the authorization request and context between the Consumption Device and Authorization device is done over an unauthenticated channel. The only mitigation against this unauthenticated channel is the user's judgement.<a href="#section-1.1-2" class="pilcrow">¶</a></p>
 <p id="section-1.1-3">Cross-Device Consent Phishing (CDCP) attacks exploit the unauthenticated channel
 between the Consumption Device and Authorization Device using social engineering
 techniques to gain unauthorized access to the user's data. Several publications
@@ -2956,53 +2956,58 @@ described in <a href="#user_education" class="auto internal xref">Section 6.1.13
       </h2>
 <p id="appendix-A-1">[[ To be removed from the final specification ]]<a href="#appendix-A-1" class="pilcrow">¶</a></p>
 <p id="appendix-A-2">-latest
-   * Affiliation change to allow publication to Datatracker.
-   * No content changes - re-published to avoid expiry while waiting on shepherd review.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+   * Shepherd feedback: Describe unauthenticated channel<a href="#appendix-A-2" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="appendix-A-3">
-<pre>-08
+<pre>-09
 
 </pre><a href="#appendix-A-3" class="pilcrow">¶</a>
 </div>
 <ul class="normal">
-<li class="normal" id="appendix-A-4.1">
-          <p id="appendix-A-4.1.1">Editorial updates.<a href="#appendix-A-4.1.1" class="pilcrow">¶</a></p>
-<p id="appendix-A-4.1.2">-07<a href="#appendix-A-4.1.2" class="pilcrow">¶</a></p>
+<li class="normal" id="appendix-A-4.1">Affiliation change to allow publication to Datatracker.<a href="#appendix-A-4.1" class="pilcrow">¶</a>
 </li>
         <li class="normal" id="appendix-A-4.2">
-          <p id="appendix-A-4.2.1">Clarification of FIDO\WebAuthn section.<a href="#appendix-A-4.2.1" class="pilcrow">¶</a></p>
+          <p id="appendix-A-4.2.1">No content changes - re-published to avoid expiry while waiting on shepherd review.<a href="#appendix-A-4.2.1" class="pilcrow">¶</a></p>
+<p id="appendix-A-4.2.2">-08<a href="#appendix-A-4.2.2" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-A-4.3">
-          <p id="appendix-A-4.3.1">Updated langugage in section on FIDO to allow for use of FIDO keys on consumption devices.<a href="#appendix-A-4.3.1" class="pilcrow">¶</a></p>
+          <p id="appendix-A-4.3.1">Editorial updates.<a href="#appendix-A-4.3.1" class="pilcrow">¶</a></p>
+<p id="appendix-A-4.3.2">-07<a href="#appendix-A-4.3.2" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-A-4.4">
-          <p id="appendix-A-4.4.1">Clarified origin of QR Code.<a href="#appendix-A-4.4.1" class="pilcrow">¶</a></p>
+          <p id="appendix-A-4.4.1">Clarification of FIDO\WebAuthn section.<a href="#appendix-A-4.4.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-A-4.5">
-          <p id="appendix-A-4.5.1">Editorial updates<a href="#appendix-A-4.5.1" class="pilcrow">¶</a></p>
+          <p id="appendix-A-4.5.1">Updated langugage in section on FIDO to allow for use of FIDO keys on consumption devices.<a href="#appendix-A-4.5.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-A-4.6">
-          <p id="appendix-A-4.6.1">Updated examples to be consistent.<a href="#appendix-A-4.6.1" class="pilcrow">¶</a></p>
+          <p id="appendix-A-4.6.1">Clarified origin of QR Code.<a href="#appendix-A-4.6.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-A-4.7">
-          <p id="appendix-A-4.7.1">Made diagram description clearer.<a href="#appendix-A-4.7.1" class="pilcrow">¶</a></p>
+          <p id="appendix-A-4.7.1">Editorial updates<a href="#appendix-A-4.7.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-A-4.8">
-          <p id="appendix-A-4.8.1">Added CTAP 2.2 Draft.<a href="#appendix-A-4.8.1" class="pilcrow">¶</a></p>
+          <p id="appendix-A-4.8.1">Updated examples to be consistent.<a href="#appendix-A-4.8.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-A-4.9">
-          <p id="appendix-A-4.9.1">Added additional guidance on geolocation inaccuracies.<a href="#appendix-A-4.9.1" class="pilcrow">¶</a></p>
+          <p id="appendix-A-4.9.1">Made diagram description clearer.<a href="#appendix-A-4.9.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-A-4.10">
-          <p id="appendix-A-4.10.1">Added Roy Williams to acknowledgements<a href="#appendix-A-4.10.1" class="pilcrow">¶</a></p>
+          <p id="appendix-A-4.10.1">Added CTAP 2.2 Draft.<a href="#appendix-A-4.10.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-A-4.11">
-          <p id="appendix-A-4.11.1">Clarified that authorization servers can detect<a href="#appendix-A-4.11.1" class="pilcrow">¶</a></p>
+          <p id="appendix-A-4.11.1">Added additional guidance on geolocation inaccuracies.<a href="#appendix-A-4.11.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-A-4.12">
-          <p id="appendix-A-4.12.1">Consistent use of "smart TV"<a href="#appendix-A-4.12.1" class="pilcrow">¶</a></p>
+          <p id="appendix-A-4.12.1">Added Roy Williams to acknowledgements<a href="#appendix-A-4.12.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-A-4.13">
-          <p id="appendix-A-4.13.1">Fixed references<a href="#appendix-A-4.13.1" class="pilcrow">¶</a></p>
+          <p id="appendix-A-4.13.1">Clarified that authorization servers can detect<a href="#appendix-A-4.13.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-A-4.14">
+          <p id="appendix-A-4.14.1">Consistent use of "smart TV"<a href="#appendix-A-4.14.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-A-4.15">
+          <p id="appendix-A-4.15.1">Fixed references<a href="#appendix-A-4.15.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="appendix-A-5">-06<a href="#appendix-A-5" class="pilcrow">¶</a></p>
