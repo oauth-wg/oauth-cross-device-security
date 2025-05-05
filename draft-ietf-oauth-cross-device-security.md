@@ -793,7 +793,7 @@ If the user chooses to keep their authenticator linked with the main device, the
 The Cross-Device Authentication flow proves proximity by leveraging BLE advertisements for service establishment, significantly reducing the susceptibility to any of the exploits described in Examples 1-6.
 
 #### Device Capabilities
-Both the Consumption Device and the authenticator require BLE support and access to the internet. The Consumption Device must support both FIDO2/WebAuthn, specifically CTAP 2.2 with hybrid transports [@CTAP22Draft]. The device serving as the FIDO authenticator must support CTAP 2.2 or later to be used as a cross-device authenticator.
+Both the Consumption Device and the authenticator require BLE support and access to the internet. The Consumption Device must support both the WebAuthn API [@W3CWebAuthn] (or a platform-specific WebAuthn abstraction for native apps) and the FIDO Client to Authenticator Protocol (CTAP), specifically version 2.2 with hybrid transports [@FIDOCTAP22]. The device serving as the FIDO authenticator must also support CTAP 2.2 or later to be used as a cross-device authenticator.
 
 #### Mitigations
 FIDO Cross-Device Authentication (CDA) establishes proximity through the use of BLE, reducing the need for additional mitigations. An implementer MAY still choose to implement additional mitigation as described in this document.
@@ -1242,14 +1242,11 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
   </front>
 </reference>
 
-<reference anchor="CTAP22Draft" target="https://fidoalliance.org/specs/fido-v2.2-rd-20230321/fido-client-to-authenticator-protocol-v2.2-rd-20230321.pdf">
+<reference anchor="FIDOCTAP22" target="https://fidoalliance.org/specs/fido-v2.2-ps-20250228/fido-client-to-authenticator-protocol-v2.2-ps-20250228.html">
   <front>
     <title>Client to Authenticator Protocol (CTAP)</title>
     <author initials="J." surname="Bradley" fullname="John Bradley">
         <organization>Yubico</organization>
-    </author>
-    <author initials="J." surname="Hodges" fullname="Jeff Hodges">
-        <organization>Google</organization>
     </author>
     <author initials="M." surname="Jones" fullname="Michael B. Jones">
         <organization>Microsoft</organization>
@@ -1263,6 +1260,33 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
     <author initials="S." surname="Verrept" fullname="Johan Verrept">
         <organization>OneSpan</organization>
     </author>
- <date year="2023" month="March"/>
+    </author>
+    <author initials="D." surname="Waite" fullname="David Waite">
+        <organization>Ping Identity</organization>
+    </author>
+ <date year="2025" month="February"/>
+ </front>
+</reference>
+
+<reference anchor="W3CWebAuthn" target="https://www.w3.org/TR/2025/WD-webauthn-3-20250127/">
+  <front>
+    <title>Web Authentication: An API for accessing Public Key Credentials Level 3</title>
+    <author initials="T." surname="Cappalli" fullname="Tim Cappalli">
+        <organization>Okta</organization>
+    </author>
+    <author initials="M." surname="Jones" fullname="Michael B. Jones">
+        <organization>Microsoft</organization>
+    </author>
+    <author initials="A." surname="Kumar" fullname="Akshay Kumar">
+        <organization>Microsoft</organization>
+    </author>
+    <author initials="E." surname="Lundberg" fullname="Emil Lundberg">
+        <organization>Yubico</organization>
+    </author>
+    <author initials="M." surname="Miller" fullname="Matthew Miller">
+        <organization>Cisco</organization>
+    </author>
+    </author>
+ <date year="2025" month="January"/>
  </front>
 </reference>
