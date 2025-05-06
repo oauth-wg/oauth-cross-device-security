@@ -887,7 +887,7 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
    -latest
    * Shepherd feedback: Describe unauthenticated channel
    * Updated references for FIDO
-   * Seperated references between normative and informative 
+   * Seperated references between normative and informative
 
     -09
    * Affiliation change to allow publication to Datatracker.
