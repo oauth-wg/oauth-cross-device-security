@@ -886,6 +886,8 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
 
    -latest
    * Shepherd feedback: Describe unauthenticated channel
+   * Updated references for FIDO
+   * Seperated references between normative and informative 
 
     -09
    * Affiliation change to allow publication to Datatracker.
@@ -976,25 +978,82 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
    *  Initial draft adopted from document circulated to the OAuth Security Workshop Slack Channel
    *  Upload as draft-ietf-oauth-cross-device-security-best-practice-00
 
-<reference anchor="OpenID.Core" target="http://openid.net/specs/openid-connect-core-1_0.html">
+# Normative References
+RFC6749: # OAuth 2.0 Authorization Framework
+RFC8628: # OAuth 2.0 Device Authorization Grant
+RFC7662: # OAuth 2.0 Token Introspection
+
+<reference anchor="FIDOCTAP22" target="https://fidoalliance.org/specs/fido-v2.2-ps-20250228/fido-client-to-authenticator-protocol-v2.2-ps-20250228.html">
   <front>
-    <title>OpenID Connect Core 1.0</title>
-    <author initials="N." surname="Sakimura" fullname="Nat Sakimura">
-      <organization></organization>
-    </author>
+    <title>Client to Authenticator Protocol (CTAP)</title>
     <author initials="J." surname="Bradley" fullname="John Bradley">
-      <organization></organization>
+        <organization>Yubico</organization>
     </author>
-    <author initials="M.B." surname="Jones" fullname="Michael B. Jones">
-      <organization></organization>
+    <author initials="M." surname="Jones" fullname="Michael B. Jones">
+        <organization>Microsoft</organization>
     </author>
-    <author initials="B.d." surname="Medeiros" fullname="Breno de Medeiros">
-      <organization></organization>
+    <author initials="A." surname="Kumar" fullname="Akshay Kumar">
+        <organization>Microsoft</organization>
     </author>
-    <author initials="C." surname="Mortimore" fullname="Chuck Mortimore">
-      <organization></organization>
+    <author initials="R." surname="Lindemann" fullname="Rolf Lindemann">
+        <organization>Nok Nok Labs</organization>
     </author>
-    <date year="2014" month="November"/>
+    <author initials="S." surname="Verrept" fullname="Johan Verrept">
+        <organization>OneSpan</organization>
+    </author>
+    </author>
+    <author initials="D." surname="Waite" fullname="David Waite">
+        <organization>Ping Identity</organization>
+    </author>
+ <date year="2025" month="February"/>
+ </front>
+</reference>
+
+<reference anchor="W3CWebAuthn" target="https://www.w3.org/TR/2025/WD-webauthn-3-20250127/">
+  <front>
+    <title>Web Authentication: An API for accessing Public Key Credentials Level 3</title>
+    <author initials="T." surname="Cappalli" fullname="Tim Cappalli">
+        <organization>Okta</organization>
+    </author>
+    <author initials="M." surname="Jones" fullname="Michael B. Jones">
+        <organization>Microsoft</organization>
+    </author>
+    <author initials="A." surname="Kumar" fullname="Akshay Kumar">
+        <organization>Microsoft</organization>
+    </author>
+    <author initials="E." surname="Lundberg" fullname="Emil Lundberg">
+        <organization>Yubico</organization>
+    </author>
+    <author initials="M." surname="Miller" fullname="Matthew Miller">
+        <organization>Cisco</organization>
+    </author>
+    </author>
+ <date year="2025" month="January"/>
+ </front>
+</reference>
+
+<reference anchor="IEEE802154" target="https://standards.ieee.org/standard/802_15_4-2020.html">
+  <front>
+    <title>IEEE Std 802.15.4-2020: IEEE Standard for Low-Rate Wireless Networks</title>
+    <seriesInfo name="IEEE" value="802.15.4-2020"/>
+    <author>
+        <organization>Institute of Electrical and Electronics Engineers</organization>
+    </author>
+    <date year="2020"/>
+  </front>
+  <annotation>This standard defines the physical layer and media access control for low-rate wireless personal area networks (LR-WPANs) and is maintained by the IEEE 802.15 working group.</annotation>
+</reference>
+
+<reference anchor="CAEP" target="https://openid.net/specs/openid-caep-specification-1_0-01.html">
+  <front>
+    <title>OpenID Continuous Access Evaluation Profile 1.0 - draft 01</title>
+    <author initials="A." surname="Tulshibagwale" fullname="Atul Tulshibagwale">
+      <organization>Google</organization>
+    </author>
+    <author initials="T." surname="Cappalli" fullname="Tim Cappalli">
+      <organization>Microsoft</organization>
+    </author>
+    <date year="2021" month="June"/>
   </front>
 </reference>
 
@@ -1017,6 +1076,30 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
       <organization>Ping Identity</organization>
     </author>
     <date year="2021" month="September"/>
+  </front>
+</reference>
+
+# Informative References
+
+<reference anchor="OpenID.Core" target="http://openid.net/specs/openid-connect-core-1_0.html">
+  <front>
+    <title>OpenID Connect Core 1.0</title>
+    <author initials="N." surname="Sakimura" fullname="Nat Sakimura">
+      <organization></organization>
+    </author>
+    <author initials="J." surname="Bradley" fullname="John Bradley">
+      <organization></organization>
+    </author>
+    <author initials="M.B." surname="Jones" fullname="Michael B. Jones">
+      <organization></organization>
+    </author>
+    <author initials="B.d." surname="Medeiros" fullname="Breno de Medeiros">
+      <organization></organization>
+    </author>
+    <author initials="C." surname="Mortimore" fullname="Chuck Mortimore">
+      <organization></organization>
+    </author>
+    <date year="2014" month="November"/>
   </front>
 </reference>
 
@@ -1112,19 +1195,6 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
   </front>
 </reference>
 
-<reference anchor="CAEP" target="https://openid.net/specs/openid-caep-specification-1_0-01.html">
-  <front>
-    <title>OpenID Continuous Access Evaluation Profile 1.0 - draft 01</title>
-    <author initials="A." surname="Tulshibagwale" fullname="Atul Tulshibagwale">
-      <organization>Google</organization>
-    </author>
-    <author initials="T." surname="Cappalli" fullname="Tim Cappalli">
-      <organization>Microsoft</organization>
-    </author>
-    <date year="2021" month="June"/>
-  </front>
-</reference>
-
 <reference anchor="OpenID.SIOPV2" target="https://bitbucket.org/openid/connect/src/master/openid-connect-self-issued-v2/openid-connect-self-issued-v2-1_0.md">
   <front>
     <title>Self-Issued OpenID Provider v2</title>
@@ -1174,18 +1244,6 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
     </author>
     <date year="2023" month="November"/>
   </front>
-</reference>
-
-<reference anchor="IEEE802154" target="https://standards.ieee.org/standard/802_15_4-2020.html">
-  <front>
-    <title>IEEE Std 802.15.4-2020: IEEE Standard for Low-Rate Wireless Networks</title>
-    <seriesInfo name="IEEE" value="802.15.4-2020"/>
-    <author>
-        <organization>Institute of Electrical and Electronics Engineers</organization>
-    </author>
-    <date year="2020"/>
-  </front>
-  <annotation>This standard defines the physical layer and media access control for low-rate wireless personal area networks (LR-WPANs) and is maintained by the IEEE 802.15 working group.</annotation>
 </reference>
 
 <reference anchor="Baki2023" target="https://doi.org/10.1109/TDSC.2022.3151103">
@@ -1242,51 +1300,3 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
   </front>
 </reference>
 
-<reference anchor="FIDOCTAP22" target="https://fidoalliance.org/specs/fido-v2.2-ps-20250228/fido-client-to-authenticator-protocol-v2.2-ps-20250228.html">
-  <front>
-    <title>Client to Authenticator Protocol (CTAP)</title>
-    <author initials="J." surname="Bradley" fullname="John Bradley">
-        <organization>Yubico</organization>
-    </author>
-    <author initials="M." surname="Jones" fullname="Michael B. Jones">
-        <organization>Microsoft</organization>
-    </author>
-    <author initials="A." surname="Kumar" fullname="Akshay Kumar">
-        <organization>Microsoft</organization>
-    </author>
-    <author initials="R." surname="Lindemann" fullname="Rolf Lindemann">
-        <organization>Nok Nok Labs</organization>
-    </author>
-    <author initials="S." surname="Verrept" fullname="Johan Verrept">
-        <organization>OneSpan</organization>
-    </author>
-    </author>
-    <author initials="D." surname="Waite" fullname="David Waite">
-        <organization>Ping Identity</organization>
-    </author>
- <date year="2025" month="February"/>
- </front>
-</reference>
-
-<reference anchor="W3CWebAuthn" target="https://www.w3.org/TR/2025/WD-webauthn-3-20250127/">
-  <front>
-    <title>Web Authentication: An API for accessing Public Key Credentials Level 3</title>
-    <author initials="T." surname="Cappalli" fullname="Tim Cappalli">
-        <organization>Okta</organization>
-    </author>
-    <author initials="M." surname="Jones" fullname="Michael B. Jones">
-        <organization>Microsoft</organization>
-    </author>
-    <author initials="A." surname="Kumar" fullname="Akshay Kumar">
-        <organization>Microsoft</organization>
-    </author>
-    <author initials="E." surname="Lundberg" fullname="Emil Lundberg">
-        <organization>Yubico</organization>
-    </author>
-    <author initials="M." surname="Miller" fullname="Matthew Miller">
-        <organization>Cisco</organization>
-    </author>
-    </author>
- <date year="2025" month="January"/>
- </front>
-</reference>
