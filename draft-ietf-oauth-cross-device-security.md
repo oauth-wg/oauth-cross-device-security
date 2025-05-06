@@ -1001,7 +1001,6 @@ RFC7662: # OAuth 2.0 Token Introspection
     <author initials="S." surname="Verrept" fullname="Johan Verrept">
         <organization>OneSpan</organization>
     </author>
-    </author>
     <author initials="D." surname="Waite" fullname="David Waite">
         <organization>Ping Identity</organization>
     </author>
@@ -1026,7 +1025,6 @@ RFC7662: # OAuth 2.0 Token Introspection
     </author>
     <author initials="M." surname="Miller" fullname="Matthew Miller">
         <organization>Cisco</organization>
-    </author>
     </author>
  <date year="2025" month="January"/>
  </front>
