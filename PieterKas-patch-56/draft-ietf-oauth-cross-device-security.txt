@@ -160,8 +160,6 @@ Table of Contents
    8.  Contributors
    9.  Informative References
    Appendix A.  Document History
-   Appendix B.  Normative References
-   Appendix C.  Informative References
    Authors' Addresses
 
 1.  Introduction
@@ -2467,13 +2465,6 @@ Appendix A.  Document History
    *  Initial draft adopted from document circulated to the OAuth
       Security Workshop Slack Channel
    *  Upload as draft-ietf-oauth-cross-device-security-best-practice-00
-
-Appendix B.  Normative References
-
-   RFC6749: # OAuth 2.0 Authorization Framework RFC8628: # OAuth 2.0
-   Device Authorization Grant RFC7662: # OAuth 2.0 Token Introspection
-
-Appendix C.  Informative References
 
 Authors' Addresses
 
