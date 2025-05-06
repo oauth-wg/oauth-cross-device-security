@@ -978,11 +978,6 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
    *  Initial draft adopted from document circulated to the OAuth Security Workshop Slack Channel
    *  Upload as draft-ietf-oauth-cross-device-security-best-practice-00
 
-# Normative References
-RFC6749: # OAuth 2.0 Authorization Framework
-RFC8628: # OAuth 2.0 Device Authorization Grant
-RFC7662: # OAuth 2.0 Token Introspection
-
 <reference anchor="FIDOCTAP22" target="https://fidoalliance.org/specs/fido-v2.2-ps-20250228/fido-client-to-authenticator-protocol-v2.2-ps-20250228.html">
   <front>
     <title>Client to Authenticator Protocol (CTAP)</title>
@@ -1076,8 +1071,6 @@ RFC7662: # OAuth 2.0 Token Introspection
     <date year="2021" month="September"/>
   </front>
 </reference>
-
-# Informative References
 
 <reference anchor="OpenID.Core" target="http://openid.net/specs/openid-connect-core-1_0.html">
   <front>
