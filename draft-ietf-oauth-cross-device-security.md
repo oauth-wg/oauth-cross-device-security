@@ -120,7 +120,7 @@ appear in all capitals, as shown here.
 This specification uses the terms "access token", "refresh token",
 "authorization server", "resource server", "authorization endpoint",
 "authorization request", and
-"client" defined by The OAuth 2.0 Authorization Framework [@!RFC6749].
+"client" defined by The OAuth 2.0 Authorization Framework {{!RFC6749}}.
 
 # Best Practices
 This section describes the set of security mechanisms and measures to secure cross-device protools against Cross-Device Consent Phishing and Cross-Device Session Phishing attacks that the OAuth working group considers best practices at the time of writing.
@@ -586,7 +586,7 @@ A number of protocols that have been standardized, or are in the process of bein
 
 - **Self-Issued OpenID Provider v2 (SIOP V2):** A standard that allows end-user to present self-attested or third party attested attributes when used with OpenID for Verifiable Credential protocols. The user scans a QR code presented by the relying party to initiate the flow.
 
-Cross-device protocols SHOULD not be used for same-device scenarios. If the Consumption Device and Authorization Device are the same device, protocols like OpenID Connect Core [@OpenID.Core] and OAuth 2.0 Authorization Code Grant as defined in [@RFC6749] are more appropriate. If a protocol supports both same-device and cross-device modes (e.g., [@OpenID.SIOPV2]), the cross-device mode SHOULD not be used for same-device scenarios. An authorization server MAY choose to block cross-device protocols used in same-device scenarios if it detects that the same device is used. An authorization Server may use techniques such as device fingerprinting, network address or other techniques to detect if a cross-device protocol is being used on the same device. If an implementor decides to use a cross-device protocol or a protocol with a cross-device mode in a same-device scenario, the mitigations recommended in this document SHOULD be implemented to reduce the risks that the unauthenticated channel is exploited.
+Cross-device protocols SHOULD not be used for same-device scenarios. If the Consumption Device and Authorization Device are the same device, protocols like OpenID Connect Core [@OpenID.Core] and OAuth 2.0 Authorization Code Grant as defined in {{!RFC6749}} are more appropriate. If a protocol supports both same-device and cross-device modes (e.g., [@OpenID.SIOPV2]), the cross-device mode SHOULD not be used for same-device scenarios. An authorization server MAY choose to block cross-device protocols used in same-device scenarios if it detects that the same device is used. An authorization Server may use techniques such as device fingerprinting, network address or other techniques to detect if a cross-device protocol is being used on the same device. If an implementor decides to use a cross-device protocol or a protocol with a cross-device mode in a same-device scenario, the mitigations recommended in this document SHOULD be implemented to reduce the risks that the unauthenticated channel is exploited.
 
 # Mitigating Against Cross-Device Flow Attacks
 The unauthenticated channel between the Consumption Device and the Authorization Device allows attackers to change the context in which the authorization request is presented to the user. This shifts responsibility of authenticating the channel between the two devices to the end-user. End-users have "expertise elsewhere" and are typically not security experts and don't understand the protocols and systems they interact with. As a result, end-users are poorly equipped to authenticate the channel between the two devices. Mitigations should focus on:
@@ -799,7 +799,7 @@ Both the Consumption Device and the authenticator require BLE support and access
 FIDO Cross-Device Authentication (CDA) establishes proximity through the use of BLE, reducing the need for additional mitigations. An implementer MAY still choose to implement additional mitigation as described in this document.
 
 #### When to Use
-FIDO2/WebAuthn SHOULD be used for cross-device authentication scenarios whenever the devices are capable of doing so and a suitable FIDO credential is not available on the Consumption Device. It MAY be used as an authentication method with the Authorization Code Grant [@RFC6749] and PKCE [@RFC7663], to grant authorization to a Consumption Device (e.g., smart TV or interactive whiteboard) using a device serving as the FIDO authenticator (e.g. a mobile phone) for authentication. This combination of FIDO2/WebAuthn and Authorization Code Flow with PKCE enables cross device authorization flows, without the risks posed by the Device Authorization Grant [@RFC8628].
+FIDO2/WebAuthn SHOULD be used for cross-device authentication scenarios whenever the devices are capable of doing so and a suitable FIDO credential is not available on the Consumption Device. It MAY be used as an authentication method with the Authorization Code Grant {{!RFC6749}} and PKCE [@RFC7663], to grant authorization to a Consumption Device (e.g., smart TV or interactive whiteboard) using a device serving as the FIDO authenticator (e.g. a mobile phone) for authentication. This combination of FIDO2/WebAuthn and Authorization Code Flow with PKCE enables cross device authorization flows, without the risks posed by the Device Authorization Grant [@RFC8628].
 
 ### Protocol Selection Summary
 The FIDO Cross-Device Authentication (CDA) flow provides the best protection against attacks on the unauthenticated channel for cross device flows. It can be combined with OAuth 2.0 and OpenID Connect protocols for standards-based authorization and authentication flows. If FIDO2/WebAuthn support is not available, Client Initiated Backchannel Authentication (CIBA) provides an alternative, provided that there is a channel through which the authorization server can contact the end user. Examples of such a channel include device push notifications, e-mail or text messages which the user can access from their device. If CIBA is used, additional mitigations to enforce proximity and initiate transactions from trusted devices or trusted networks SHOULD be considered. The OAuth 2.0 Device Authorization Grant provides the most flexibility and has the lowest requirements on devices used, but it is RECOMMENDED that it is only used when additional mitigations are deployed to prevent attacks that exploit the unauthenticated channel between devices.
@@ -886,6 +886,8 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
 
    -latest
    * Shepherd feedback: Describe unauthenticated channel
+   * Updated references for FIDO
+   * Seperated references between normative and informative
 
     -09
    * Affiliation change to allow publication to Datatracker.
@@ -976,25 +978,75 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
    *  Initial draft adopted from document circulated to the OAuth Security Workshop Slack Channel
    *  Upload as draft-ietf-oauth-cross-device-security-best-practice-00
 
-<reference anchor="OpenID.Core" target="http://openid.net/specs/openid-connect-core-1_0.html">
+<reference anchor="FIDOCTAP22" target="https://fidoalliance.org/specs/fido-v2.2-ps-20250228/fido-client-to-authenticator-protocol-v2.2-ps-20250228.html">
   <front>
-    <title>OpenID Connect Core 1.0</title>
-    <author initials="N." surname="Sakimura" fullname="Nat Sakimura">
-      <organization></organization>
-    </author>
+    <title>Client to Authenticator Protocol (CTAP)</title>
     <author initials="J." surname="Bradley" fullname="John Bradley">
-      <organization></organization>
+        <organization>Yubico</organization>
     </author>
-    <author initials="M.B." surname="Jones" fullname="Michael B. Jones">
-      <organization></organization>
+    <author initials="M." surname="Jones" fullname="Michael B. Jones">
+        <organization>Microsoft</organization>
     </author>
-    <author initials="B.d." surname="Medeiros" fullname="Breno de Medeiros">
-      <organization></organization>
+    <author initials="A." surname="Kumar" fullname="Akshay Kumar">
+        <organization>Microsoft</organization>
     </author>
-    <author initials="C." surname="Mortimore" fullname="Chuck Mortimore">
-      <organization></organization>
+    <author initials="R." surname="Lindemann" fullname="Rolf Lindemann">
+        <organization>Nok Nok Labs</organization>
     </author>
-    <date year="2014" month="November"/>
+    <author initials="S." surname="Verrept" fullname="Johan Verrept">
+        <organization>OneSpan</organization>
+    </author>
+    <author initials="D." surname="Waite" fullname="David Waite">
+        <organization>Ping Identity</organization>
+    </author>
+ <date year="2025" month="February"/>
+ </front>
+</reference>
+
+<reference anchor="W3CWebAuthn" target="https://www.w3.org/TR/2025/WD-webauthn-3-20250127/">
+  <front>
+    <title>Web Authentication: An API for accessing Public Key Credentials Level 3</title>
+    <author initials="T." surname="Cappalli" fullname="Tim Cappalli">
+        <organization>Okta</organization>
+    </author>
+    <author initials="M." surname="Jones" fullname="Michael B. Jones">
+        <organization>Microsoft</organization>
+    </author>
+    <author initials="A." surname="Kumar" fullname="Akshay Kumar">
+        <organization>Microsoft</organization>
+    </author>
+    <author initials="E." surname="Lundberg" fullname="Emil Lundberg">
+        <organization>Yubico</organization>
+    </author>
+    <author initials="M." surname="Miller" fullname="Matthew Miller">
+        <organization>Cisco</organization>
+    </author>
+ <date year="2025" month="January"/>
+ </front>
+</reference>
+
+<reference anchor="IEEE802154" target="https://standards.ieee.org/standard/802_15_4-2020.html">
+  <front>
+    <title>IEEE Std 802.15.4-2020: IEEE Standard for Low-Rate Wireless Networks</title>
+    <seriesInfo name="IEEE" value="802.15.4-2020"/>
+    <author>
+        <organization>Institute of Electrical and Electronics Engineers</organization>
+    </author>
+    <date year="2020"/>
+  </front>
+  <annotation>This standard defines the physical layer and media access control for low-rate wireless personal area networks (LR-WPANs) and is maintained by the IEEE 802.15 working group.</annotation>
+</reference>
+
+<reference anchor="CAEP" target="https://openid.net/specs/openid-caep-specification-1_0-01.html">
+  <front>
+    <title>OpenID Continuous Access Evaluation Profile 1.0 - draft 01</title>
+    <author initials="A." surname="Tulshibagwale" fullname="Atul Tulshibagwale">
+      <organization>Google</organization>
+    </author>
+    <author initials="T." surname="Cappalli" fullname="Tim Cappalli">
+      <organization>Microsoft</organization>
+    </author>
+    <date year="2021" month="June"/>
   </front>
 </reference>
 
@@ -1017,6 +1069,28 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
       <organization>Ping Identity</organization>
     </author>
     <date year="2021" month="September"/>
+  </front>
+</reference>
+
+<reference anchor="OpenID.Core" target="http://openid.net/specs/openid-connect-core-1_0.html">
+  <front>
+    <title>OpenID Connect Core 1.0</title>
+    <author initials="N." surname="Sakimura" fullname="Nat Sakimura">
+      <organization></organization>
+    </author>
+    <author initials="J." surname="Bradley" fullname="John Bradley">
+      <organization></organization>
+    </author>
+    <author initials="M.B." surname="Jones" fullname="Michael B. Jones">
+      <organization></organization>
+    </author>
+    <author initials="B.d." surname="Medeiros" fullname="Breno de Medeiros">
+      <organization></organization>
+    </author>
+    <author initials="C." surname="Mortimore" fullname="Chuck Mortimore">
+      <organization></organization>
+    </author>
+    <date year="2014" month="November"/>
   </front>
 </reference>
 
@@ -1112,19 +1186,6 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
   </front>
 </reference>
 
-<reference anchor="CAEP" target="https://openid.net/specs/openid-caep-specification-1_0-01.html">
-  <front>
-    <title>OpenID Continuous Access Evaluation Profile 1.0 - draft 01</title>
-    <author initials="A." surname="Tulshibagwale" fullname="Atul Tulshibagwale">
-      <organization>Google</organization>
-    </author>
-    <author initials="T." surname="Cappalli" fullname="Tim Cappalli">
-      <organization>Microsoft</organization>
-    </author>
-    <date year="2021" month="June"/>
-  </front>
-</reference>
-
 <reference anchor="OpenID.SIOPV2" target="https://bitbucket.org/openid/connect/src/master/openid-connect-self-issued-v2/openid-connect-self-issued-v2-1_0.md">
   <front>
     <title>Self-Issued OpenID Provider v2</title>
@@ -1174,18 +1235,6 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
     </author>
     <date year="2023" month="November"/>
   </front>
-</reference>
-
-<reference anchor="IEEE802154" target="https://standards.ieee.org/standard/802_15_4-2020.html">
-  <front>
-    <title>IEEE Std 802.15.4-2020: IEEE Standard for Low-Rate Wireless Networks</title>
-    <seriesInfo name="IEEE" value="802.15.4-2020"/>
-    <author>
-        <organization>Institute of Electrical and Electronics Engineers</organization>
-    </author>
-    <date year="2020"/>
-  </front>
-  <annotation>This standard defines the physical layer and media access control for low-rate wireless personal area networks (LR-WPANs) and is maintained by the IEEE 802.15 working group.</annotation>
 </reference>
 
 <reference anchor="Baki2023" target="https://doi.org/10.1109/TDSC.2022.3151103">
@@ -1242,51 +1291,3 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
   </front>
 </reference>
 
-<reference anchor="FIDOCTAP22" target="https://fidoalliance.org/specs/fido-v2.2-ps-20250228/fido-client-to-authenticator-protocol-v2.2-ps-20250228.html">
-  <front>
-    <title>Client to Authenticator Protocol (CTAP)</title>
-    <author initials="J." surname="Bradley" fullname="John Bradley">
-        <organization>Yubico</organization>
-    </author>
-    <author initials="M." surname="Jones" fullname="Michael B. Jones">
-        <organization>Microsoft</organization>
-    </author>
-    <author initials="A." surname="Kumar" fullname="Akshay Kumar">
-        <organization>Microsoft</organization>
-    </author>
-    <author initials="R." surname="Lindemann" fullname="Rolf Lindemann">
-        <organization>Nok Nok Labs</organization>
-    </author>
-    <author initials="S." surname="Verrept" fullname="Johan Verrept">
-        <organization>OneSpan</organization>
-    </author>
-    </author>
-    <author initials="D." surname="Waite" fullname="David Waite">
-        <organization>Ping Identity</organization>
-    </author>
- <date year="2025" month="February"/>
- </front>
-</reference>
-
-<reference anchor="W3CWebAuthn" target="https://www.w3.org/TR/2025/WD-webauthn-3-20250127/">
-  <front>
-    <title>Web Authentication: An API for accessing Public Key Credentials Level 3</title>
-    <author initials="T." surname="Cappalli" fullname="Tim Cappalli">
-        <organization>Okta</organization>
-    </author>
-    <author initials="M." surname="Jones" fullname="Michael B. Jones">
-        <organization>Microsoft</organization>
-    </author>
-    <author initials="A." surname="Kumar" fullname="Akshay Kumar">
-        <organization>Microsoft</organization>
-    </author>
-    <author initials="E." surname="Lundberg" fullname="Emil Lundberg">
-        <organization>Yubico</organization>
-    </author>
-    <author initials="M." surname="Miller" fullname="Matthew Miller">
-        <organization>Cisco</organization>
-    </author>
-    </author>
- <date year="2025" month="January"/>
- </front>
-</reference>
