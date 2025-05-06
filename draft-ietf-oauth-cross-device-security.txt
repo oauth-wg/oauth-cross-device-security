@@ -288,7 +288,7 @@ Table of Contents
    This specification uses the terms "access token", "refresh token",
    "authorization server", "resource server", "authorization endpoint",
    "authorization request", and "client" defined by The OAuth 2.0
-   Authorization Framework {{!RFC6749}}.
+   Authorization Framework [RFC6749].
 
 2.  Best Practices
 
@@ -1298,7 +1298,7 @@ Table of Contents
    Cross-device protocols SHOULD not be used for same-device scenarios.
    If the Consumption Device and Authorization Device are the same
    device, protocols like OpenID Connect Core [OpenID.Core] and OAuth
-   2.0 Authorization Code Grant as defined in {{!RFC6749}} are more
+   2.0 Authorization Code Grant as defined in [RFC6749] are more
    appropriate.  If a protocol supports both same-device and cross-
    device modes (e.g., [OpenID.SIOPV2]), the cross-device mode SHOULD
    not be used for same-device scenarios.  An authorization server MAY
@@ -2022,9 +2022,9 @@ Table of Contents
    scenarios whenever the devices are capable of doing so and a suitable
    FIDO credential is not available on the Consumption Device.  It MAY
    be used as an authentication method with the Authorization Code Grant
-   {{!RFC6749}} and PKCE [RFC7663], to grant authorization to a
-   Consumption Device (e.g., smart TV or interactive whiteboard) using a
-   device serving as the FIDO authenticator (e.g. a mobile phone) for
+   [RFC6749] and PKCE [RFC7663], to grant authorization to a Consumption
+   Device (e.g., smart TV or interactive whiteboard) using a device
+   serving as the FIDO authenticator (e.g. a mobile phone) for
    authentication.  This combination of FIDO2/WebAuthn and Authorization
    Code Flow with PKCE enables cross device authorization flows, without
    the risks posed by the Device Authorization Grant [RFC8628].
@@ -2305,6 +2305,10 @@ Table of Contents
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
 
+   [RFC6749]  Hardt, D., Ed., "The OAuth 2.0 Authorization Framework",
+              RFC 6749, DOI 10.17487/RFC6749, October 2012,
+              <https://www.rfc-editor.org/info/rfc6749>.
+
    [RFC7662]  Richer, J., Ed., "OAuth 2.0 Token Introspection",
               RFC 7662, DOI 10.17487/RFC7662, October 2015,
               <https://www.rfc-editor.org/info/rfc7662>.
@@ -2339,9 +2343,7 @@ Appendix A.  Document History
 
    [[ To be removed from the final specification ]]
 
-   -latest * Shepherd feedback: Describe unauthenticated channel *
-   Updated references for FIDO * Seperated references between normative
-   and informative
+   -latest * Shepherd feedback: Describe unauthenticated channel
 
    -09
 
