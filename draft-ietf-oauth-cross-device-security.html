@@ -1057,7 +1057,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Kasselman, et al.</td>
-<td class="center">Expires 6 November 2025</td>
+<td class="center">Expires 7 November 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1070,12 +1070,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-oauth-cross-device-security-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-05-05" class="published">5 May 2025</time>
+<time datetime="2025-05-06" class="published">6 May 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Best Current Practice</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-11-06">6 November 2025</time></dd>
+<dd class="expires"><time datetime="2025-11-07">7 November 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1133,7 +1133,7 @@ specialists, fraud analysts and engineers implementing cross-device flows.<a hre
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 6 November 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 7 November 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1489,7 +1489,7 @@ appear in all capitals, as shown here.<a href="#section-1.4-1" class="pilcrow">�
 <p id="section-1.4-2">This specification uses the terms "access token", "refresh token",
 "authorization server", "resource server", "authorization endpoint",
 "authorization request", and
-"client" defined by The OAuth 2.0 Authorization Framework <span>[<a href="#RFC6749" class="cite xref">RFC6749</a>]</span>.<a href="#section-1.4-2" class="pilcrow">¶</a></p>
+"client" defined by The OAuth 2.0 Authorization Framework {{!RFC6749}}.<a href="#section-1.4-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -2240,7 +2240,7 @@ I.e., it is left to the user to decide if the QR code, user code, or authenticat
           <p id="section-5-4.4.1"><strong>Self-Issued OpenID Provider v2 (SIOP V2):</strong> A standard that allows end-user to present self-attested or third party attested attributes when used with OpenID for Verifiable Credential protocols. The user scans a QR code presented by the relying party to initiate the flow.<a href="#section-5-4.4.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="section-5-5">Cross-device protocols SHOULD not be used for same-device scenarios. If the Consumption Device and Authorization Device are the same device, protocols like OpenID Connect Core <span>[<a href="#OpenID.Core" class="cite xref">OpenID.Core</a>]</span> and OAuth 2.0 Authorization Code Grant as defined in <span>[<a href="#RFC6749" class="cite xref">RFC6749</a>]</span> are more appropriate. If a protocol supports both same-device and cross-device modes (e.g., <span>[<a href="#OpenID.SIOPV2" class="cite xref">OpenID.SIOPV2</a>]</span>), the cross-device mode SHOULD not be used for same-device scenarios. An authorization server MAY choose to block cross-device protocols used in same-device scenarios if it detects that the same device is used. An authorization Server may use techniques such as device fingerprinting, network address or other techniques to detect if a cross-device protocol is being used on the same device. If an implementor decides to use a cross-device protocol or a protocol with a cross-device mode in a same-device scenario, the mitigations recommended in this document SHOULD be implemented to reduce the risks that the unauthenticated channel is exploited.<a href="#section-5-5" class="pilcrow">¶</a></p>
+<p id="section-5-5">Cross-device protocols SHOULD not be used for same-device scenarios. If the Consumption Device and Authorization Device are the same device, protocols like OpenID Connect Core <span>[<a href="#OpenID.Core" class="cite xref">OpenID.Core</a>]</span> and OAuth 2.0 Authorization Code Grant as defined in {{!RFC6749}} are more appropriate. If a protocol supports both same-device and cross-device modes (e.g., <span>[<a href="#OpenID.SIOPV2" class="cite xref">OpenID.SIOPV2</a>]</span>), the cross-device mode SHOULD not be used for same-device scenarios. An authorization server MAY choose to block cross-device protocols used in same-device scenarios if it detects that the same device is used. An authorization Server may use techniques such as device fingerprinting, network address or other techniques to detect if a cross-device protocol is being used on the same device. If an implementor decides to use a cross-device protocol or a protocol with a cross-device mode in a same-device scenario, the mitigations recommended in this document SHOULD be implemented to reduce the risks that the unauthenticated channel is exploited.<a href="#section-5-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="mitigating-against-cross-device-flow-attacks">
@@ -2710,7 +2710,7 @@ I.e., it is left to the user to decide if the QR code, user code, or authenticat
             <h5 id="name-device-capabilities-3">
 <a href="#section-6.2.3.3" class="section-number selfRef">6.2.3.3. </a><a href="#name-device-capabilities-3" class="section-name selfRef">Device Capabilities</a>
             </h5>
-<p id="section-6.2.3.3-1">Both the Consumption Device and the authenticator require BLE support and access to the internet. The Consumption Device must support both FIDO2/WebAuthn, specifically CTAP 2.2 with hybrid transports <span>[<a href="#CTAP22Draft" class="cite xref">CTAP22Draft</a>]</span>. The device serving as the FIDO authenticator must support CTAP 2.2 or later to be used as a cross-device authenticator.<a href="#section-6.2.3.3-1" class="pilcrow">¶</a></p>
+<p id="section-6.2.3.3-1">Both the Consumption Device and the authenticator require BLE support and access to the internet. The Consumption Device must support both the WebAuthn API <span>[<a href="#W3CWebAuthn" class="cite xref">W3CWebAuthn</a>]</span> (or a platform-specific WebAuthn abstraction for native apps) and the FIDO Client to Authenticator Protocol (CTAP), specifically version 2.2 with hybrid transports <span>[<a href="#FIDOCTAP22" class="cite xref">FIDOCTAP22</a>]</span>. The device serving as the FIDO authenticator must also support CTAP 2.2 or later to be used as a cross-device authenticator.<a href="#section-6.2.3.3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="mitigations-2">
@@ -2726,7 +2726,7 @@ I.e., it is left to the user to decide if the QR code, user code, or authenticat
             <h5 id="name-when-to-use-3">
 <a href="#section-6.2.3.5" class="section-number selfRef">6.2.3.5. </a><a href="#name-when-to-use-3" class="section-name selfRef">When to Use</a>
             </h5>
-<p id="section-6.2.3.5-1">FIDO2/WebAuthn SHOULD be used for cross-device authentication scenarios whenever the devices are capable of doing so and a suitable FIDO credential is not available on the Consumption Device. It MAY be used as an authentication method with the Authorization Code Grant <span>[<a href="#RFC6749" class="cite xref">RFC6749</a>]</span> and PKCE <span>[<a href="#RFC7663" class="cite xref">RFC7663</a>]</span>, to grant authorization to a Consumption Device (e.g., smart TV or interactive whiteboard) using a device serving as the FIDO authenticator (e.g. a mobile phone) for authentication. This combination of FIDO2/WebAuthn and Authorization Code Flow with PKCE enables cross device authorization flows, without the risks posed by the Device Authorization Grant <span>[<a href="#RFC8628" class="cite xref">RFC8628</a>]</span>.<a href="#section-6.2.3.5-1" class="pilcrow">¶</a></p>
+<p id="section-6.2.3.5-1">FIDO2/WebAuthn SHOULD be used for cross-device authentication scenarios whenever the devices are capable of doing so and a suitable FIDO credential is not available on the Consumption Device. It MAY be used as an authentication method with the Authorization Code Grant {{!RFC6749}} and PKCE <span>[<a href="#RFC7663" class="cite xref">RFC7663</a>]</span>, to grant authorization to a Consumption Device (e.g., smart TV or interactive whiteboard) using a device serving as the FIDO authenticator (e.g. a mobile phone) for authentication. This combination of FIDO2/WebAuthn and Authorization Code Flow with PKCE enables cross device authorization flows, without the risks posed by the Device Authorization Grant <span>[<a href="#RFC8628" class="cite xref">RFC8628</a>]</span>.<a href="#section-6.2.3.5-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -2850,10 +2850,6 @@ described in <a href="#user_education" class="auto internal xref">Section 6.1.13
       <dd>
 <span class="refAuthor">Fernandez, G.</span>, <span class="refAuthor">Walter, F.</span>, <span class="refAuthor">Nennker, A.</span>, <span class="refAuthor">Tonge, D.</span>, and <span class="refAuthor">B. Campbell</span>, <span class="refTitle">"OpenID Connect Client-Initiated Backchannel Authentication Flow - Core 1.0"</span>, <time datetime="2021-09" class="refDate">September 2021</time>, <span>&lt;<a href="https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html">https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="CTAP22Draft">[CTAP22Draft]</dt>
-      <dd>
-<span class="refAuthor">Bradley, J.</span>, <span class="refAuthor">Hodges, J.</span>, <span class="refAuthor">Jones, M.</span>, <span class="refAuthor">Kumar, A.</span>, <span class="refAuthor">Lindemann, R.</span>, and <span class="refAuthor">S. Verrept</span>, <span class="refTitle">"Client to Authenticator Protocol (CTAP)"</span>, <time datetime="2023-03" class="refDate">March 2023</time>, <span>&lt;<a href="https://fidoalliance.org/specs/fido-v2.2-rd-20230321/fido-client-to-authenticator-protocol-v2.2-rd-20230321.pdf">https://fidoalliance.org/specs/fido-v2.2-rd-20230321/fido-client-to-authenticator-protocol-v2.2-rd-20230321.pdf</a>&gt;</span>. </dd>
-<dd class="break"></dd>
 <dt id="Exploit1">[Exploit1]</dt>
       <dd>
 <span class="refAuthor">Cooke, B.</span>, <span class="refTitle">"The Art of the Device Code Phish"</span>, <time datetime="2021-07" class="refDate">July 2021</time>, <span>&lt;<a href="https://0xboku.com/2021/07/12/ArtOfDeviceCodePhish.html">https://0xboku.com/2021/07/12/ArtOfDeviceCodePhish.html</a>&gt;</span>. </dd>
@@ -2877,6 +2873,10 @@ described in <a href="#user_education" class="auto internal xref">Section 6.1.13
 <dt id="Exploit6">[Exploit6]</dt>
       <dd>
 <span class="refTitle">"SquarePhish: Advanced phishing tool combines QR codes and OAuth 2.0 device code flow"</span>, <time datetime="2022-08" class="refDate">August 2022</time>, <span>&lt;<a href="https://www.helpnetsecurity.com/2022/08/11/squarephish-video/">https://www.helpnetsecurity.com/2022/08/11/squarephish-video/</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="FIDOCTAP22">[FIDOCTAP22]</dt>
+      <dd>
+<span class="refAuthor">Bradley, J.</span>, <span class="refAuthor">Jones, M.</span>, <span class="refAuthor">Kumar, A.</span>, <span class="refAuthor">Lindemann, R.</span>, <span class="refAuthor">Verrept, S.</span>, and <span class="refAuthor">D. Waite</span>, <span class="refTitle">"Client to Authenticator Protocol (CTAP)"</span>, <time datetime="2025-02" class="refDate">February 2025</time>, <span>&lt;<a href="https://fidoalliance.org/specs/fido-v2.2-ps-20250228/fido-client-to-authenticator-protocol-v2.2-ps-20250228.html">https://fidoalliance.org/specs/fido-v2.2-ps-20250228/fido-client-to-authenticator-protocol-v2.2-ps-20250228.html</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="Helmschmidt2022">[Helmschmidt2022]</dt>
       <dd>
@@ -2923,10 +2923,6 @@ described in <a href="#user_education" class="auto internal xref">Section 6.1.13
       <dd>
 <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="RFC6749">[RFC6749]</dt>
-      <dd>
-<span class="refAuthor">Hardt, D., Ed.</span>, <span class="refTitle">"The OAuth 2.0 Authorization Framework"</span>, <span class="seriesInfo">RFC 6749</span>, <span class="seriesInfo">DOI 10.17487/RFC6749</span>, <time datetime="2012-10" class="refDate">October 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6749">https://www.rfc-editor.org/info/rfc6749</a>&gt;</span>. </dd>
-<dd class="break"></dd>
 <dt id="RFC7662">[RFC7662]</dt>
       <dd>
 <span class="refAuthor">Richer, J., Ed.</span>, <span class="refTitle">"OAuth 2.0 Token Introspection"</span>, <span class="seriesInfo">RFC 7662</span>, <span class="seriesInfo">DOI 10.17487/RFC7662</span>, <time datetime="2015-10" class="refDate">October 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7662">https://www.rfc-editor.org/info/rfc7662</a>&gt;</span>. </dd>
@@ -2944,8 +2940,12 @@ described in <a href="#user_education" class="auto internal xref">Section 6.1.13
 <span class="refAuthor">Denniss, W.</span>, <span class="refAuthor">Bradley, J.</span>, <span class="refAuthor">Jones, M.</span>, and <span class="refAuthor">H. Tschofenig</span>, <span class="refTitle">"OAuth 2.0 Device Authorization Grant"</span>, <span class="seriesInfo">RFC 8628</span>, <span class="seriesInfo">DOI 10.17487/RFC8628</span>, <time datetime="2019-08" class="refDate">August 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8628">https://www.rfc-editor.org/info/rfc8628</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="SSF">[SSF]</dt>
-    <dd>
+      <dd>
 <span class="refAuthor">Tulshibagwale, A.</span>, <span class="refAuthor">Cappalli, T.</span>, <span class="refAuthor">Scurtescu, M.</span>, <span class="refAuthor">Backman, A.</span>, and <span class="refAuthor">J. Bradley</span>, <span class="refTitle">"OpenID Shared Signals and Events Framework Specification 1.0"</span>, <time datetime="2021-06" class="refDate">June 2021</time>, <span>&lt;<a href="https://openid.net/specs/openid-sse-framework-1_0-01.html">https://openid.net/specs/openid-sse-framework-1_0-01.html</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="W3CWebAuthn">[W3CWebAuthn]</dt>
+    <dd>
+<span class="refAuthor">Cappalli, T.</span>, <span class="refAuthor">Jones, M.</span>, <span class="refAuthor">Kumar, A.</span>, <span class="refAuthor">Lundberg, E.</span>, and <span class="refAuthor">M. Miller</span>, <span class="refTitle">"Web Authentication: An API for accessing Public Key Credentials Level 3"</span>, <time datetime="2025-01" class="refDate">January 2025</time>, <span>&lt;<a href="https://www.w3.org/TR/2025/WD-webauthn-3-20250127/">https://www.w3.org/TR/2025/WD-webauthn-3-20250127/</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
@@ -2956,7 +2956,9 @@ described in <a href="#user_education" class="auto internal xref">Section 6.1.13
       </h2>
 <p id="appendix-A-1">[[ To be removed from the final specification ]]<a href="#appendix-A-1" class="pilcrow">¶</a></p>
 <p id="appendix-A-2">-latest
-   * Shepherd feedback: Describe unauthenticated channel<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+   * Shepherd feedback: Describe unauthenticated channel
+   * Updated references for FIDO
+   * Seperated references between normative and informative<a href="#appendix-A-2" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="appendix-A-3">
 <pre>-09
 
