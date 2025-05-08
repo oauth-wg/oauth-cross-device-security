@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-05-06T00:30:53.294322+00:00",
+  "timestamp": "2025-05-08T00:31:09.638435+00:00",
   "repo": "oauth-wg/oauth-cross-device-security",
   "labels": [
     {
@@ -6173,6 +6173,88 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 156,
+      "id": "PR_kwDOHK26QM6VEfEE",
+      "title": "Split normative from informative references",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/156",
+      "state": "MERGED",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Split normative from informative references (shepherd feedback see #153",
+      "createdAt": "2025-05-06T09:22:37Z",
+      "updatedAt": "2025-05-06T10:11:22Z",
+      "baseRepository": "oauth-wg/oauth-cross-device-security",
+      "baseRefName": "main",
+      "baseRefOid": "fd97c879c70924c519890ce43734a81d262fd1a4",
+      "headRepository": "oauth-wg/oauth-cross-device-security",
+      "headRefName": "PieterKas-patch-56",
+      "headRefOid": "42344768d9c035d9eb9f6efe0427c1e08b51a4fb",
+      "closedAt": "2025-05-06T10:11:21Z",
+      "mergedAt": "2025-05-06T10:11:21Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "fa58d4e71c36bdbe78ecd13202470bf5a1f35d9b"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 157,
+      "id": "PR_kwDOHK26QM6VFJ_N",
+      "title": "Normative Reference Formatting",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/157",
+      "state": "CLOSED",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-05-06T10:22:28Z",
+      "updatedAt": "2025-05-06T10:23:40Z",
+      "baseRepository": "oauth-wg/oauth-cross-device-security",
+      "baseRefName": "main",
+      "baseRefOid": "fa58d4e71c36bdbe78ecd13202470bf5a1f35d9b",
+      "headRepository": "oauth-wg/oauth-cross-device-security",
+      "headRefName": "PieterKas-patch-57",
+      "headRefOid": "2b7f3220e6f25c6e110c1a0af9cc154ff0003077",
+      "closedAt": "2025-05-06T10:23:40Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 158,
+      "id": "PR_kwDOHK26QM6VFLLs",
+      "title": "Revert \"Split normative from informative references\"",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/158",
+      "state": "MERGED",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Reverts oauth-wg/oauth-cross-device-security#156",
+      "createdAt": "2025-05-06T10:24:16Z",
+      "updatedAt": "2025-05-06T10:26:27Z",
+      "baseRepository": "oauth-wg/oauth-cross-device-security",
+      "baseRefName": "main",
+      "baseRefOid": "fa58d4e71c36bdbe78ecd13202470bf5a1f35d9b",
+      "headRepository": "oauth-wg/oauth-cross-device-security",
+      "headRefName": "revert-156-PieterKas-patch-56",
+      "headRefOid": "73981e9287aeb13db388403333adba1d21eb7514",
+      "closedAt": "2025-05-06T10:26:27Z",
+      "mergedAt": "2025-05-06T10:26:27Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "79edca34a2c96a0f9884720fca2a0b4689ba2993"
+      },
+      "comments": [],
+      "reviews": []
     }
   ]
 }
