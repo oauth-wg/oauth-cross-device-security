@@ -977,7 +977,6 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
    *  Upload as draft-ietf-oauth-cross-device-security-best-practice-00
 
 <back>
-    
 <reference anchor="OpenID.Core" target="http://openid.net/specs/openid-connect-core-1_0.html">
   <front>
     <title>OpenID Connect Core 1.0</title>
