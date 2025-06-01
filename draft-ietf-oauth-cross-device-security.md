@@ -1,48 +1,48 @@
-%%%
-title = "Cross-Device Flows: Security Best Current Practice"
+---
+stand_alone: true
+ipr: trust200902
+cat: bcp
+submissiontype: IETF
+area: sec
+wg: oauth
+
+docname: draft-ietf-oauth-cross-device-security-latest
+
+title: Cross-Device Flows: Security Best Current Practice
 abbrev = "CDFS"
-ipr = "trust200902"
-area = "Security"
-workgroup = "Web Authorization Protocol"
-keyword = ["security", "oauth2", "best current practice"]
-
-[seriesInfo]
-name = "Internet-Draft"
-value = "draft-ietf-oauth-cross-device-security-latest"
-stream = "IETF"
-status = "bcp"
-
-
-[[author]]
-initials="P."
-surname="Kasselman"
-fullname="Pieter Kasselman"
-organization="SPIRL"
-    [author.address]
-    email = "pieter@spirl.com"
+lang: en
+kw: ["security", "oauth2", "best current practice"]
+# date: 2022-02-02 -- date is filled in automatically by xml2rfc if not given
+author:
+- name: Pieter Kasselmann
+  org: SPIRL
+  email: pieter@spirl.com
+- name: Daniel Fett
+  org: Authlete
+  email: mail@danielfett.de
+- name: FFilip Skokan
+  org: Okta
+  email: panva.ip@gmail.comv
 
 
-[[author]]
-initials="D."
-surname="Fett"
-fullname="Daniel Fett"
-organization="Authlete"
-    [author.address]
-    email = "mail@danielfett.de"
+normative:
+  RFC6749: # OAuth 2.0 Authorization Framework
+  RFC8693: # OAuth 2.0 Token Exchange
+  RFC7523: # JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants
+  RFC8707: # Resource Indicators for OAuth 2.0
+  RFC8414: # OAuth 2.0 Authorization Server Metadata
+  RFC8725: # JSON Web Token Best Current Practices
+  RFC2046: # Multipurpose Internet Mail Extensions (MIME) Part Two: Media Types
+  RFC6838: # Media Type Specifications and Registration Procedures
+  IANA.MediaTypes:
 
+informative:
 
-[[author]]
-initials="F."
-surname="Skokan"
-fullname="Filip Skokan"
-organization="Okta"
-    [author.address]
-    email = "panva.ip@gmail.com"
+  I-D.ietf-oauth-security-topics:
+  I-D.ietf-oauth-resource-metadata:
+  I-D.draft-ietf-oauth-v2-1:
 
-
-%%%
-
-.# Abstract
+--- abstract
 
 This document describes threats against cross-device flows
 along with practical mitigations, protocol selection guidance,
@@ -50,6 +50,8 @@ and a summary of formal analysis results identified as relevant to
 the security of cross-device flows. It serves as a security guide
 to system designers, architects, product managers, security
 specialists, fraud analysts and engineers implementing cross-device flows.
+
+--- middle
 
 {mainmatter}
 
