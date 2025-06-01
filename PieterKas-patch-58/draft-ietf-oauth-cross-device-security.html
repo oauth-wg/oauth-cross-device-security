@@ -29,7 +29,7 @@ specialists, fraud analysts and engineers implementing cross-device flows.
     intervaltree 3.1.0
     Jinja2 3.1.6
     lxml 5.3.0
-    platformdirs 4.3.7
+    platformdirs 4.3.8
     pycountry 24.6.1
     PyYAML 6.0.2
     requests 2.32.3
@@ -1053,11 +1053,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">CDFS</td>
-<td class="right">May 2025</td>
+<td class="right">June 2025</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Kasselman, et al.</td>
-<td class="center">Expires 3 November 2025</td>
+<td class="center">Expires 3 December 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1070,12 +1070,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-oauth-cross-device-security-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-05-02" class="published">2 May 2025</time>
+<time datetime="2025-06-01" class="published">1 June 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Best Current Practice</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-11-03">3 November 2025</time></dd>
+<dd class="expires"><time datetime="2025-12-03">3 December 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1133,7 +1133,7 @@ specialists, fraud analysts and engineers implementing cross-device flows.<a hre
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 3 November 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 3 December 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -2710,7 +2710,7 @@ I.e., it is left to the user to decide if the QR code, user code, or authenticat
             <h5 id="name-device-capabilities-3">
 <a href="#section-6.2.3.3" class="section-number selfRef">6.2.3.3. </a><a href="#name-device-capabilities-3" class="section-name selfRef">Device Capabilities</a>
             </h5>
-<p id="section-6.2.3.3-1">Both the Consumption Device and the authenticator require BLE support and access to the internet. The Consumption Device must support both FIDO2/WebAuthn, specifically CTAP 2.2 with hybrid transports <span>[<a href="#CTAP22Draft" class="cite xref">CTAP22Draft</a>]</span>. The device serving as the FIDO authenticator must support CTAP 2.2 or later to be used as a cross-device authenticator.<a href="#section-6.2.3.3-1" class="pilcrow">¶</a></p>
+<p id="section-6.2.3.3-1">Both the Consumption Device and the authenticator require BLE support and access to the internet. The Consumption Device must support both the WebAuthn API <span>[<a href="#W3CWebAuthn" class="cite xref">W3CWebAuthn</a>]</span> (or a platform-specific WebAuthn abstraction for native apps) and the FIDO Client to Authenticator Protocol (CTAP), specifically version 2.2 with hybrid transports <span>[<a href="#FIDOCTAP22" class="cite xref">FIDOCTAP22</a>]</span>. The device serving as the FIDO authenticator must also support CTAP 2.2 or later to be used as a cross-device authenticator.<a href="#section-6.2.3.3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="mitigations-2">
@@ -2850,10 +2850,6 @@ described in <a href="#user_education" class="auto internal xref">Section 6.1.13
       <dd>
 <span class="refAuthor">Fernandez, G.</span>, <span class="refAuthor">Walter, F.</span>, <span class="refAuthor">Nennker, A.</span>, <span class="refAuthor">Tonge, D.</span>, and <span class="refAuthor">B. Campbell</span>, <span class="refTitle">"OpenID Connect Client-Initiated Backchannel Authentication Flow - Core 1.0"</span>, <time datetime="2021-09" class="refDate">September 2021</time>, <span>&lt;<a href="https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html">https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="CTAP22Draft">[CTAP22Draft]</dt>
-      <dd>
-<span class="refAuthor">Bradley, J.</span>, <span class="refAuthor">Hodges, J.</span>, <span class="refAuthor">Jones, M.</span>, <span class="refAuthor">Kumar, A.</span>, <span class="refAuthor">Lindemann, R.</span>, and <span class="refAuthor">S. Verrept</span>, <span class="refTitle">"Client to Authenticator Protocol (CTAP)"</span>, <time datetime="2023-03" class="refDate">March 2023</time>, <span>&lt;<a href="https://fidoalliance.org/specs/fido-v2.2-rd-20230321/fido-client-to-authenticator-protocol-v2.2-rd-20230321.pdf">https://fidoalliance.org/specs/fido-v2.2-rd-20230321/fido-client-to-authenticator-protocol-v2.2-rd-20230321.pdf</a>&gt;</span>. </dd>
-<dd class="break"></dd>
 <dt id="Exploit1">[Exploit1]</dt>
       <dd>
 <span class="refAuthor">Cooke, B.</span>, <span class="refTitle">"The Art of the Device Code Phish"</span>, <time datetime="2021-07" class="refDate">July 2021</time>, <span>&lt;<a href="https://0xboku.com/2021/07/12/ArtOfDeviceCodePhish.html">https://0xboku.com/2021/07/12/ArtOfDeviceCodePhish.html</a>&gt;</span>. </dd>
@@ -2877,6 +2873,10 @@ described in <a href="#user_education" class="auto internal xref">Section 6.1.13
 <dt id="Exploit6">[Exploit6]</dt>
       <dd>
 <span class="refTitle">"SquarePhish: Advanced phishing tool combines QR codes and OAuth 2.0 device code flow"</span>, <time datetime="2022-08" class="refDate">August 2022</time>, <span>&lt;<a href="https://www.helpnetsecurity.com/2022/08/11/squarephish-video/">https://www.helpnetsecurity.com/2022/08/11/squarephish-video/</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="FIDOCTAP22">[FIDOCTAP22]</dt>
+      <dd>
+<span class="refAuthor">Bradley, J.</span>, <span class="refAuthor">Jones, M.</span>, <span class="refAuthor">Kumar, A.</span>, <span class="refAuthor">Lindemann, R.</span>, <span class="refAuthor">Verrept, S.</span>, and <span class="refAuthor">D. Waite</span>, <span class="refTitle">"Client to Authenticator Protocol (CTAP)"</span>, <time datetime="2025-02" class="refDate">February 2025</time>, <span>&lt;<a href="https://fidoalliance.org/specs/fido-v2.2-ps-20250228/fido-client-to-authenticator-protocol-v2.2-ps-20250228.html">https://fidoalliance.org/specs/fido-v2.2-ps-20250228/fido-client-to-authenticator-protocol-v2.2-ps-20250228.html</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="Helmschmidt2022">[Helmschmidt2022]</dt>
       <dd>
@@ -2944,8 +2944,12 @@ described in <a href="#user_education" class="auto internal xref">Section 6.1.13
 <span class="refAuthor">Denniss, W.</span>, <span class="refAuthor">Bradley, J.</span>, <span class="refAuthor">Jones, M.</span>, and <span class="refAuthor">H. Tschofenig</span>, <span class="refTitle">"OAuth 2.0 Device Authorization Grant"</span>, <span class="seriesInfo">RFC 8628</span>, <span class="seriesInfo">DOI 10.17487/RFC8628</span>, <time datetime="2019-08" class="refDate">August 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8628">https://www.rfc-editor.org/info/rfc8628</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="SSF">[SSF]</dt>
-    <dd>
+      <dd>
 <span class="refAuthor">Tulshibagwale, A.</span>, <span class="refAuthor">Cappalli, T.</span>, <span class="refAuthor">Scurtescu, M.</span>, <span class="refAuthor">Backman, A.</span>, and <span class="refAuthor">J. Bradley</span>, <span class="refTitle">"OpenID Shared Signals and Events Framework Specification 1.0"</span>, <time datetime="2021-06" class="refDate">June 2021</time>, <span>&lt;<a href="https://openid.net/specs/openid-sse-framework-1_0-01.html">https://openid.net/specs/openid-sse-framework-1_0-01.html</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="W3CWebAuthn">[W3CWebAuthn]</dt>
+    <dd>
+<span class="refAuthor">Cappalli, T.</span>, <span class="refAuthor">Jones, M.</span>, <span class="refAuthor">Kumar, A.</span>, <span class="refAuthor">Lundberg, E.</span>, and <span class="refAuthor">M. Miller</span>, <span class="refTitle">"Web Authentication: An API for accessing Public Key Credentials Level 3"</span>, <time datetime="2025-01" class="refDate">January 2025</time>, <span>&lt;<a href="https://www.w3.org/TR/2025/WD-webauthn-3-20250127/">https://www.w3.org/TR/2025/WD-webauthn-3-20250127/</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>

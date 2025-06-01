@@ -5,10 +5,10 @@
 Web Authorization Protocol                                  P. Kasselman
 Internet-Draft                                                     SPIRL
 Intended status: Best Current Practice                           D. Fett
-Expires: 3 November 2025                                        Authlete
+Expires: 3 December 2025                                        Authlete
                                                                F. Skokan
                                                                     Okta
-                                                              2 May 2025
+                                                             1 June 2025
 
 
            Cross-Device Flows: Security Best Current Practice
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 3 November 2025.
+   This Internet-Draft will expire on 3 December 2025.
 
 Copyright Notice
 
@@ -2003,8 +2003,10 @@ Table of Contents
 
    Both the Consumption Device and the authenticator require BLE support
    and access to the internet.  The Consumption Device must support both
-   FIDO2/WebAuthn, specifically CTAP 2.2 with hybrid transports
-   [CTAP22Draft].  The device serving as the FIDO authenticator must
+   the WebAuthn API [W3CWebAuthn] (or a platform-specific WebAuthn
+   abstraction for native apps) and the FIDO Client to Authenticator
+   Protocol (CTAP), specifically version 2.2 with hybrid transports
+   [FIDOCTAP22].  The device serving as the FIDO authenticator must also
    support CTAP 2.2 or later to be used as a cross-device authenticator.
 
 6.2.3.4.  Mitigations
@@ -2196,13 +2198,6 @@ Table of Contents
               <https://openid.net/specs/openid-client-initiated-
               backchannel-authentication-core-1_0.html>.
 
-   [CTAP22Draft]
-              Bradley, J., Hodges, J., Jones, M., Kumar, A., Lindemann,
-              R., and S. Verrept, "Client to Authenticator Protocol
-              (CTAP)", March 2023, <https://fidoalliance.org/specs/fido-
-              v2.2-rd-20230321/fido-client-to-authenticator-protocol-
-              v2.2-rd-20230321.pdf>.
-
    [Exploit1] Cooke, B., "The Art of the Device Code Phish", July 2021,
               <https://0xboku.com/2021/07/12/ArtOfDeviceCodePhish.html>.
 
@@ -2228,6 +2223,13 @@ Table of Contents
               OAuth 2.0 device code flow", August 2022,
               <https://www.helpnetsecurity.com/2022/08/11/squarephish-
               video/>.
+
+   [FIDOCTAP22]
+              Bradley, J., Jones, M., Kumar, A., Lindemann, R., Verrept,
+              S., and D. Waite, "Client to Authenticator Protocol
+              (CTAP)", February 2025, <https://fidoalliance.org/specs/
+              fido-v2.2-ps-20250228/fido-client-to-authenticator-
+              protocol-v2.2-ps-20250228.html>.
 
    [Helmschmidt2022]
               Helmschmidt, F., "Security analysis of the Grant
@@ -2330,6 +2332,12 @@ Table of Contents
               Framework Specification 1.0", June 2021,
               <https://openid.net/specs/openid-sse-framework-
               1_0-01.html>.
+
+   [W3CWebAuthn]
+              Cappalli, T., Jones, M., Kumar, A., Lundberg, E., and M.
+              Miller, "Web Authentication: An API for accessing Public
+              Key Credentials Level 3", January 2025,
+              <https://www.w3.org/TR/2025/WD-webauthn-3-20250127/>.
 
 Appendix A.  Document History
 
