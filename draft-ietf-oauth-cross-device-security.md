@@ -976,7 +976,8 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
    *  Initial draft adopted from document circulated to the OAuth Security Workshop Slack Channel
    *  Upload as draft-ietf-oauth-cross-device-security-best-practice-00
 
-<references title="Normative References">
+<back>
+    
 <reference anchor="OpenID.Core" target="http://openid.net/specs/openid-connect-core-1_0.html">
   <front>
     <title>OpenID Connect Core 1.0</title>
@@ -998,10 +999,7 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
     <date year="2014" month="November"/>
   </front>
 </reference>
-<references>
 
-
-<references title="Informative References">
 <reference anchor="CIBA" target="https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html">
   <front>
     <title>OpenID Connect Client-Initiated Backchannel Authentication Flow - Core 1.0</title>
@@ -1292,4 +1290,5 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
  <date year="2025" month="January"/>
  </front>
 </reference>
-<references>
+
+</back>
