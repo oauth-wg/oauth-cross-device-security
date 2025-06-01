@@ -5,10 +5,10 @@
 Web Authorization Protocol                                  P. Kasselman
 Internet-Draft                                                     SPIRL
 Intended status: Best Current Practice                           D. Fett
-Expires: 7 November 2025                                        Authlete
+Expires: 3 December 2025                                        Authlete
                                                                F. Skokan
                                                                     Okta
-                                                              6 May 2025
+                                                             1 June 2025
 
 
            Cross-Device Flows: Security Best Current Practice
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 7 November 2025.
+   This Internet-Draft will expire on 3 December 2025.
 
 Copyright Notice
 
