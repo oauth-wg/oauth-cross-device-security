@@ -25,21 +25,20 @@ author:
   email: panva.ip@gmail.comv
 
 normative:
-  RFC6749: # OAuth 2.0 Authorization Framework
-  RFC8693: # OAuth 2.0 Token Exchange
-  RFC7523: # JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants
-  RFC8707: # Resource Indicators for OAuth 2.0
-  RFC8414: # OAuth 2.0 Authorization Server Metadata
-  RFC8725: # JSON Web Token Best Current Practices
-  RFC2046: # Multipurpose Internet Mail Extensions (MIME) Part Two: Media Types
-  RFC6838: # Media Type Specifications and Registration Procedures
-  IANA.MediaTypes:
+ RFC6749: # OAuth 2.0 Authorization Framework
+ RFC8693: # OAuth 2.0 Token Exchange
+ RFC7523: # JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants
+ RFC8707: # Resource Indicators for OAuth 2.0
+ RFC8414: # OAuth 2.0 Authorization Server Metadata
+ RFC8725: # JSON Web Token Best Current Practices
+ RFC2046: # Multipurpose Internet Mail Extensions (MIME) Part Two: Media Types
+ RFC6838: # Media Type Specifications and Registration Procedures
+ IANA.MediaTypes:
 
 informative:
-
-  I-D.ietf-oauth-security-topics:
-  I-D.ietf-oauth-resource-metadata:
-  I-D.draft-ietf-oauth-v2-1:
+ I-D.ietf-oauth-security-topics:
+ I-D.ietf-oauth-resource-metadata:
+ I-D.draft-ietf-oauth-v2-1:
 
 --- abstract
 
