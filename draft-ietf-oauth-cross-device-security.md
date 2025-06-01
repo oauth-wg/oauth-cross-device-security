@@ -30,7 +30,7 @@ organization="Authlete"
     [author.address]
     email = "mail@danielfett.de"
 
-[[author]]Add commentMore actions
+[[author]]
 initials="F."
 surname="Skokan"
 fullname="Filip Skokan"
