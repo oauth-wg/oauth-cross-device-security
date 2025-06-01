@@ -8,7 +8,7 @@ wg: oauth
 
 docname: draft-ietf-oauth-cross-device-security-latest
 
-title: Cross-Device Flows: Security Best Current Practice
+title: "Cross-Device Flows: Security Best Current Practice"
 abbrev = "CDFS"
 lang: en
 kw: ["security", "oauth2", "best current practice"]
