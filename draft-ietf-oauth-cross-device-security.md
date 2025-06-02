@@ -20,9 +20,9 @@ author:
 - name: Daniel Fett
   org: Authlete
   email: mail@danielfett.de
-- name: FFilip Skokan
+- name: Filip Skokan
   org: Okta
-  email: panva.ip@gmail.comv
+  email: panva.ip@gmail.com
 
 normative:
  RFC6749: # OAuth 2.0 Authorization Framework
