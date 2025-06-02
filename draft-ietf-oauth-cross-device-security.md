@@ -1012,28 +1012,6 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
   </front>
 </reference>
 
-<reference anchor="CIBA" target="https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html">
-  <front>
-    <title>OpenID Connect Client-Initiated Backchannel Authentication Flow - Core 1.0</title>
-    <author initials="G." surname="Fernandez" fullname="Gonzalo Fernandez Rodriguez">
-      <organization>Telefonica</organization>
-    </author>
-    <author initials="F." surname="Walter" fullname="Florian Walter">
-      <organization>Deutsche Telekom AG</organization>
-    </author>
-    <author initials="A" surname="Nennker" fullname="Axel Nennker">
-      <organization>Deutsche Telekom AG</organization>
-    </author>
-    <author initials="D." surname="Tonge" fullname="Dave Tonge">
-      <organization>Moneyhub</organization>
-    </author>
-    <author initials="B." surname="Campbell" fullname="Brian Campbell">
-      <organization>Ping Identity</organization>
-    </author>
-    <date year="2021" month="September"/>
-  </front>
-</reference>
-
 <reference anchor="Exploit1" target="https://0xboku.com/2021/07/12/ArtOfDeviceCodePhish.html">
   <front>
     <title>The Art of the Device Code Phish</title>
