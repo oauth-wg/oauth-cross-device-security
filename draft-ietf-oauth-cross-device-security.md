@@ -52,6 +52,12 @@ normative:
 
 informative:
  I-D.draft-ietf-oauth-v2-1:
+ Exploit1:
+  title: "The Art of the Device Code Phish"
+  author:
+   - name: Bobby Cooke
+  date: 2021-07
+  target: https://0xboku.com/2021/07/12/ArtOfDeviceCodePhish.html
 
 --- abstract
 
@@ -86,7 +92,7 @@ In these flows, the Consumption Device and the Authorization Device are not dire
 Cross-Device Consent Phishing (CDCP) attacks exploit the unauthenticated channel
 between the Consumption Device and Authorization Device using social engineering
 techniques to gain unauthorized access to the user's data. Several publications
-have emerged in the public domain ([@Exploit1], [@Exploit2], [@Exploit3], [@Exploit4],
+have emerged in the public domain ({{Exploit1}}, [@Exploit2], [@Exploit3], [@Exploit4],
 [@Exploit5], [@Exploit6]), describing how the unauthenticated channel can be
 exploited using social engineering techniques borrowed from phishing. Unlike traditional
 phishing attacks, these attacks don't harvest credentials. Instead, they skip the
@@ -767,7 +773,7 @@ Some cross-device protocols are more susceptible to the exploits described in th
 A standard to enable authorization on devices with constrained input capabilities (smart TVs, printers, kiosks). In this protocol, the user code or QR code is displayed or made available on the Consumption Device (smart TV) and entered on a second device (e.g., a mobile phone).
 
 #### Susceptibility
-There are several reports in the public domain outlining how the unauthenticated channel may be exploited to execute a Cross-Device Consent Phishing attack ([@Exploit1], [@Exploit2], [@Exploit3], [@Exploit4], [@Exploit5], [@Exploit6]).
+There are several reports in the public domain outlining how the unauthenticated channel may be exploited to execute a Cross-Device Consent Phishing attack ({{Exploit1}}, [@Exploit2], [@Exploit3], [@Exploit4], [@Exploit5], [@Exploit6]).
 
 #### Device Capabilities
 There are no assumptions in the protocol about underlying capabilities of the device, making it a "least common denominator" protocol that is expected to work on the broadest set of devices and environments.
@@ -1008,16 +1014,6 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
       <organization></organization>
     </author>
     <date year="2014" month="November"/>
-  </front>
-</reference>
-
-<reference anchor="Exploit1" target="https://0xboku.com/2021/07/12/ArtOfDeviceCodePhish.html">
-  <front>
-    <title>The Art of the Device Code Phish</title>
-    <author initials="B." surname="Cooke" fullname="Bobby Cooke">
-      <organization></organization>
-    </author>
-    <date year="2021" month="July"/>
   </front>
 </reference>
 
