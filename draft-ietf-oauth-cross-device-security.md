@@ -33,6 +33,7 @@ normative:
  RFC8725: # JSON Web Token Best Current Practices
  RFC2046: # Multipurpose Internet Mail Extensions (MIME) Part Two: Media Types
  RFC6838: # Media Type Specifications and Registration Procedures
+ RFC8628: # OAuth 2.0 Device Authorization Grant
  CIBA:
     title: "OpenID Connect Client-Initiated Backchannel Authentication Flow - Core 1.0"
     author:
@@ -79,7 +80,7 @@ Cross-device authorization flows enable a user to initiate an authorization
 flow on one device (the Consumption Device) and then use a second, personally
 trusted, device (Authorization Device) to authorize the Consumption
 Device to access a resource (e.g., access to a service). The Device
-Authorization Grant [@RFC8628] and Client-Initiated Backchannel
+Authorization Grant {{RFC8628}} and Client-Initiated Backchannel
 Authentication {{CIBA}} are two examples of popular cross-device authorization flows.
 
 In these flows, the Consumption Device and the Authorization Device are not directly connected and there is no technical mechanisms for the Authorization Device and Consumption Device to establish mutual authentication. It is left to the user to decide whether the source of the authorization request (the Consumption Device) should be trusted before they scan a QR code, enter a user code, or accept an authorization request pushed to their Authorization Device. The transfer of the authorization request and context between the Consumption Device and Authorization device is done over an unauthenticated channel. The only mitigation against this unauthenticated channel is the user's judgement.
@@ -145,7 +146,7 @@ This section describes the set of security mechanisms and measures to secure cro
 4. Implementers MUST implement practical mitigations as listed in (#practical-mitigations) that are appropriate for the use case, architecture, and selected protocols.
 5. Implementers SHOULD implement proximity checks as defined in (#establish-proximity) if possible.
 
-These best practices apply to the Device Authorization Grant ([@RFC8628]) as well as other cross-device protocols such as the Client Initiated Backchannel Authentication {{CIBA}}, Self-Issued OpenID Provider v2 [@OpenID.SIOPV2], OpenID for Verifiable Presentations [@OpenID.VP], the Pre-Authorized Code Flow in ([@OpenID.VCI]) and other cross-device protocols that rely on the user to authenticate the channel between devices.
+These best practices apply to the Device Authorization Grant ({{RFC8628}}) as well as other cross-device protocols such as the Client Initiated Backchannel Authentication {{CIBA}}, Self-Issued OpenID Provider v2 [@OpenID.SIOPV2], OpenID for Verifiable Presentations [@OpenID.VP], the Pre-Authorized Code Flow in ([@OpenID.VCI]) and other cross-device protocols that rely on the user to authenticate the channel between devices.
 
 (#cross-device-flow-patterns) provides details about susceptible protocols and (#cross-device-flow-exploits) provides attack descriptions. (#practical-mitigations) provides details about the security mechanisms and mitigations, (protocol-selection) provides protocol selection guidance and (#foundational-pillars) provides details from formal analysis of protocols that apply to cross device flows.
 
@@ -177,12 +178,12 @@ Cross-device authorization flows have several benefits, including:
 
 There are three cross-device flow patterns for transferring the authorization request between the Consumption Device to the Authorization Device.
 
-- **User-Transferred Session Data Pattern:** In the first pattern, the user initiates the authorization process with the authorization server by copying information from the Consumption Device to the Authorization Device, before authorizing an action. By transferring the data from the Consumption Device to the Authorization Device, the user transfers the authorization session. For example the user may read a code displayed on the Consumption Device and enter it on the Authorization Device, or they may scan a QR code displayed on the Consumption Device with the Authorization Device. The Device Authorization Grant ([@RFC8628]) is an example of a cross-device flow that follow this pattern.
+- **User-Transferred Session Data Pattern:** In the first pattern, the user initiates the authorization process with the authorization server by copying information from the Consumption Device to the Authorization Device, before authorizing an action. By transferring the data from the Consumption Device to the Authorization Device, the user transfers the authorization session. For example the user may read a code displayed on the Consumption Device and enter it on the Authorization Device, or they may scan a QR code displayed on the Consumption Device with the Authorization Device. The Device Authorization Grant ({{RFC8628}}) is an example of a cross-device flow that follow this pattern.
 - **Backchannel-Transferred Session Pattern:** In the second pattern, the OAuth client on the Consumption Device is responsible for transferring the session and initiating authorization on the Authorization Device via a backchannel with the Authorization Server. For example the user may attempt an online purchase on a Consumption Device (e.g., a personal computer) and receive an authorization request on their Authentication Device (e.g., mobile phone). The Client Initiated Backchannel Authentication {{CIBA}} is an example of a cross-device flow that follow this pattern.
 - **User-Transferred Authorization Data Pattern:** In the third pattern, the OAuth client on the Consumption Device triggers the authorization request via a backchannel with the Authorization Server. Authorization data (e.g., a 6 digit authorization code) is displayed on the Authorization Device, which the user transfers to Consumption Device (e.g., by manually entering it). For example the user may attempt to access data in an enterprise application and receive a 6 digit authorization code on their Authentication Device (e.g., mobile phone) that they enter on Consumption Device.
 
 ### User-Transferred Session Data Pattern {#utsdp}
-The Device Authorization Grant ([@RFC8628]) is an example of a cross-device flow that relies on the user copying information from the Consumption Device to the Authorization Device by either entering data manually or scanning a QR code. The figure below shows a typical example of this flow:
+The Device Authorization Grant ({{RFC8628}}) is an example of a cross-device flow that relies on the user copying information from the Consumption Device to the Authorization Device by either entering data manually or scanning a QR code. The figure below shows a typical example of this flow:
 
 ~~~ ascii-art
                               (B) Consumption Device
@@ -592,7 +593,7 @@ Cross-device flows that are subject to the attacks described earlier typically s
 
 A number of protocols that have been standardized, or are in the process of being standardized that share these characteristics include:
 
-- **IETF OAuth 2.0 Device Authorization Grant ([@RFC8628]):** A standard to enable authorization on devices with constrained input capabilities (smart TVs, printers, kiosks). In this protocol, the user code or QR code is displayed on the Consumption Device and entered on a second device (e.g., a mobile phone).
+- **IETF OAuth 2.0 Device Authorization Grant ({{RFC8628}}):** A standard to enable authorization on devices with constrained input capabilities (smart TVs, printers, kiosks). In this protocol, the user code or QR code is displayed on the Consumption Device and entered on a second device (e.g., a mobile phone).
 
 - **Open ID Foundation Client Initiated Back-Channel Authentication (CIBA) {{CIBA}}:** A standard developed in the OpenID Foundation that allows a device or service (e.g., a personal computer, smart TV, Kiosk) to request the OpenID Provider to initiate an authentication flow if it knows a valid identifier for the user. The user completes the authentication flow using a second device (e.g., a mobile phone). In this flow the user does not scan a QR code or obtain a user code from the Consumption Device, but is instead contacted by the OpenID Provider to complete the authentication using a push notification, e-mail, text message or any other suitable mechanism.
 
@@ -763,7 +764,7 @@ Table: Practical Mitigation Summary
 ## Protocol Selection {#protocol-selection}
 Some cross-device protocols are more susceptible to the exploits described in this document than others. In this section we will compare three different cross-device protocols in terms of their susceptibility to exploits focused on the unauthenticated channel, the prerequisites to implement and deploy them, along with guidance on when it is appropriate to use them.
 
-### IETF OAuth 2.0 Device Authorization Grant [@RFC8628]:
+### IETF OAuth 2.0 Device Authorization Grant {{RFC8628}}:
 #### Description
 A standard to enable authorization on devices with constrained input capabilities (smart TVs, printers, kiosks). In this protocol, the user code or QR code is displayed or made available on the Consumption Device (smart TV) and entered on a second device (e.g., a mobile phone).
 
@@ -813,7 +814,7 @@ Both the Consumption Device and the authenticator require BLE support and access
 FIDO Cross-Device Authentication (CDA) establishes proximity through the use of BLE, reducing the need for additional mitigations. An implementer MAY still choose to implement additional mitigation as described in this document.
 
 #### When to Use
-FIDO2/WebAuthn SHOULD be used for cross-device authentication scenarios whenever the devices are capable of doing so and a suitable FIDO credential is not available on the Consumption Device. It MAY be used as an authentication method with the Authorization Code Grant [@RFC6749] and PKCE [@RFC7663], to grant authorization to a Consumption Device (e.g., smart TV or interactive whiteboard) using a device serving as the FIDO authenticator (e.g. a mobile phone) for authentication. This combination of FIDO2/WebAuthn and Authorization Code Flow with PKCE enables cross device authorization flows, without the risks posed by the Device Authorization Grant [@RFC8628].
+FIDO2/WebAuthn SHOULD be used for cross-device authentication scenarios whenever the devices are capable of doing so and a suitable FIDO credential is not available on the Consumption Device. It MAY be used as an authentication method with the Authorization Code Grant [@RFC6749] and PKCE [@RFC7663], to grant authorization to a Consumption Device (e.g., smart TV or interactive whiteboard) using a device serving as the FIDO authenticator (e.g. a mobile phone) for authentication. This combination of FIDO2/WebAuthn and Authorization Code Flow with PKCE enables cross device authorization flows, without the risks posed by the Device Authorization Grant {{RFC8628}}.
 
 ### Protocol Selection Summary
 The FIDO Cross-Device Authentication (CDA) flow provides the best protection against attacks on the unauthenticated channel for cross device flows. It can be combined with OAuth 2.0 and OpenID Connect protocols for standards-based authorization and authentication flows. If FIDO2/WebAuthn support is not available, Client Initiated Backchannel Authentication (CIBA) provides an alternative, provided that there is a channel through which the authorization server can contact the end user. Examples of such a channel include device push notifications, e-mail or text messages which the user can access from their device. If CIBA is used, additional mitigations to enforce proximity and initiate transactions from trusted devices or trusted networks SHOULD be considered. The OAuth 2.0 Device Authorization Grant provides the most flexibility and has the lowest requirements on devices used, but it is RECOMMENDED that it is only used when additional mitigations are deployed to prevent attacks that exploit the unauthenticated channel between devices.
