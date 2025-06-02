@@ -51,8 +51,6 @@ normative:
     target: https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html
 
 informative:
- I-D.ietf-oauth-security-topics:
- I-D.ietf-oauth-resource-metadata:
  I-D.draft-ietf-oauth-v2-1:
 
 --- abstract
