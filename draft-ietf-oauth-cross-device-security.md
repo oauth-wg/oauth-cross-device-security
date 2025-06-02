@@ -34,6 +34,21 @@ normative:
  RFC2046: # Multipurpose Internet Mail Extensions (MIME) Part Two: Media Types
  RFC6838: # Media Type Specifications and Registration Procedures
  IANA.MediaTypes:
+ CIBA:
+    title: "OpenID Connect Client-Initiated Backchannel Authentication Flow - Core 1.0"
+    author:
+      - name: Gonzalo Fernandez Rodriguez
+        org: Telefonica
+      - name: Florian Walter
+        org: Deutsche Telekom AG
+      - name: Axel Nennker
+        org: Deutsche Telekom AG
+      - name: Dave Tonge
+        org: Moneyhub
+      - name: Brian Campbell
+        org: Ping Identity
+    date: 2021-09
+    target: https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html
 
 informative:
  I-D.ietf-oauth-security-topics:
