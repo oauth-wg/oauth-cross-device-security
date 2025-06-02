@@ -33,7 +33,6 @@ normative:
  RFC8725: # JSON Web Token Best Current Practices
  RFC2046: # Multipurpose Internet Mail Extensions (MIME) Part Two: Media Types
  RFC6838: # Media Type Specifications and Registration Procedures
- IANA.MediaTypes:
  CIBA:
     title: "OpenID Connect Client-Initiated Backchannel Authentication Flow - Core 1.0"
     author:
