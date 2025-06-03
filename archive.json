@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-05-08T00:31:09.638435+00:00",
+  "timestamp": "2025-06-03T00:32:51.198496+00:00",
   "repo": "oauth-wg/oauth-cross-device-security",
   "labels": [
     {
@@ -6255,6 +6255,147 @@
       },
       "comments": [],
       "reviews": []
+    },
+    {
+      "number": 159,
+      "id": "PR_kwDOHK26QM6YfOgw",
+      "title": "Normative/Informative reference split",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/159",
+      "state": "CLOSED",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-06-01T16:03:30Z",
+      "updatedAt": "2025-06-01T16:19:30Z",
+      "baseRepository": "oauth-wg/oauth-cross-device-security",
+      "baseRefName": "main",
+      "baseRefOid": "79edca34a2c96a0f9884720fca2a0b4689ba2993",
+      "headRepository": "oauth-wg/oauth-cross-device-security",
+      "headRefName": "PieterKas-patch-58",
+      "headRefOid": "1fc8ffd6e377f4ce5db75818c5bb454922935198",
+      "closedAt": "2025-06-01T16:19:30Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 160,
+      "id": "PR_kwDOHK26QM6Yfc7l",
+      "title": "Formatting",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/160",
+      "state": "MERGED",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-06-01T17:00:36Z",
+      "updatedAt": "2025-06-01T17:03:09Z",
+      "baseRepository": "oauth-wg/oauth-cross-device-security",
+      "baseRefName": "main",
+      "baseRefOid": "195fad7c4b08fa0e106a2122f240421bbeca1836",
+      "headRepository": "oauth-wg/oauth-cross-device-security",
+      "headRefName": "PieterKas-patch-59",
+      "headRefOid": "8b5f6b0185d05e71b8099b584052ebc90378ffe9",
+      "closedAt": "2025-06-01T17:03:09Z",
+      "mergedAt": "2025-06-01T17:03:09Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "3ddd93aac75d75e77d6de9b7aecb7d042634cf27"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 161,
+      "id": "PR_kwDOHK26QM6Yfe3c",
+      "title": "Informative/Normative split",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/161",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-06-01T17:04:58Z",
+      "updatedAt": "2025-06-02T22:53:14Z",
+      "baseRepository": "oauth-wg/oauth-cross-device-security",
+      "baseRefName": "main",
+      "baseRefOid": "3ddd93aac75d75e77d6de9b7aecb7d042634cf27",
+      "headRepository": "oauth-wg/oauth-cross-device-security",
+      "headRefName": "PieterKas-patch-60",
+      "headRefOid": "784c6893cec5efa5e9a3b1b70c799a266424b7ae",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHK26QM6sIhCs",
+          "commit": {
+            "abbreviatedOid": "6a123d2"
+          },
+          "author": "panva",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-06-02T11:16:18Z",
+          "updatedAt": "2025-06-02T11:16:18Z",
+          "comments": [
+            {
+              "originalPosition": 69,
+              "body": "```suggestion\r\n- name: Filip Skokan\r\n  org: Okta\r\n  email: panva.ip@gmail.com\r\n```",
+              "createdAt": "2025-06-02T11:16:18Z",
+              "updatedAt": "2025-06-02T11:16:18Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOHK26QM6sIh_m",
+          "commit": {
+            "abbreviatedOid": "55b12f4"
+          },
+          "author": "panva",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-06-02T11:17:43Z",
+          "updatedAt": "2025-06-02T11:17:43Z",
+          "comments": [
+            {
+              "originalPosition": 99,
+              "body": "```suggestion\r\n I-D.ietf-oauth-resource-metadata:\r\n```\r\n\r\nThis is now RFC9728 - https://www.rfc-editor.org/rfc/rfc9728.html",
+              "createdAt": "2025-06-02T11:17:43Z",
+              "updatedAt": "2025-06-02T11:17:44Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOHK26QM6sIiOJ",
+          "commit": {
+            "abbreviatedOid": "55b12f4"
+          },
+          "author": "panva",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-06-02T11:18:07Z",
+          "updatedAt": "2025-06-02T11:18:08Z",
+          "comments": [
+            {
+              "originalPosition": 98,
+              "body": "```suggestion\r\n I-D.ietf-oauth-security-topics:\r\n```\r\n\r\nThis is now RFC9700 - https://www.rfc-editor.org/rfc/rfc9700.html",
+              "createdAt": "2025-06-02T11:18:08Z",
+              "updatedAt": "2025-06-02T11:18:08Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
