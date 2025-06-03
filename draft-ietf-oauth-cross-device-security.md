@@ -1,53 +1,74 @@
-%%%
-title = "Cross-Device Flows: Security Best Current Practice"
-abbrev = "CDFS"
-ipr = "trust200902"
-area = "Security"
-workgroup = "Web Authorization Protocol"
-keyword = ["security", "oauth2", "best current practice"]
+---
+stand_alone: true
+ipr: trust200902
+cat: bcp
+submissiontype: IETF
+area: sec
+wg: oauth
 
-[seriesInfo]
-name = "Internet-Draft"
-value = "draft-ietf-oauth-cross-device-security-latest"
-stream = "IETF"
-status = "bcp"
+docname: draft-ietf-oauth-cross-device-security-latest
 
+title: "Cross-Device Flows: Security Best Current Practice"
+abbrev: "CDFS"
+lang: en
+kw: ["security", "oauth2", "best current practice"]
+# date: 2022-02-02 -- date is filled in automatically by xml2rfc if not given
+author:
+- name: Pieter Kasselmann
+  org: SPIRL
+  email: pieter@spirl.com
+- name: Daniel Fett
+  org: Authlete
+  email: mail@danielfett.de
+- name: Filip Skokan
+  org: Okta
+  email: panva.ip@gmail.com
 
-[[author]]
-initials="P."
-surname="Kasselman"
-fullname="Pieter Kasselman"
-organization="SPIRL"
-    [author.address]
-    email = "pieter@spirl.com"
+normative:
+ RFC6749: # OAuth 2.0 Authorization Framework
+ RFC8693: # OAuth 2.0 Token Exchange
+ RFC7523: # JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants
+ RFC8707: # Resource Indicators for OAuth 2.0
+ RFC8414: # OAuth 2.0 Authorization Server Metadata
+ RFC8725: # JSON Web Token Best Current Practices
+ RFC2046: # Multipurpose Internet Mail Extensions (MIME) Part Two: Media Types
+ RFC6838: # Media Type Specifications and Registration Procedures
+ RFC8628: # OAuth 2.0 Device Authorization Grant
+ CIBA:
+    title: "OpenID Connect Client-Initiated Backchannel Authentication Flow - Core 1.0"
+    author:
+      - name: Gonzalo Fernandez Rodriguez
+        org: Telefonica
+      - name: Florian Walter
+        org: Deutsche Telekom AG
+      - name: Axel Nennker
+        org: Deutsche Telekom AG
+      - name: Dave Tonge
+        org: Moneyhub
+      - name: Brian Campbell
+        org: Ping Identity
+    date: 2021-09
+    target: https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html
 
+informative:
+ I-D.draft-ietf-oauth-v2-1:
+ Exploit1:
+  title: "The Art of the Device Code Phish"
+  author:
+   - name: Bobby Cooke
+  date: 2021-07
+  target: https://0xboku.com/2021/07/12/ArtOfDeviceCodePhish.html
 
-[[author]]
-initials="D."
-surname="Fett"
-fullname="Daniel Fett"
-organization="Authlete"
-    [author.address]
-    email = "mail@danielfett.de"
+--- abstract
 
-[[author]]
-initials="F."
-surname="Skokan"
-fullname="Filip Skokan"
-organization="Okta"
-    [author.address]
-    email = "panva.ip@gmail.com"
-
-
-%%%
-
-.# Abstract
 This document describes threats against cross-device flows
 along with practical mitigations, protocol selection guidance,
 and a summary of formal analysis results identified as relevant to
 the security of cross-device flows. It serves as a security guide
 to system designers, architects, product managers, security
 specialists, fraud analysts and engineers implementing cross-device flows.
+
+--- middle
 
 {mainmatter}
 
@@ -63,15 +84,15 @@ Cross-device authorization flows enable a user to initiate an authorization
 flow on one device (the Consumption Device) and then use a second, personally
 trusted, device (Authorization Device) to authorize the Consumption
 Device to access a resource (e.g., access to a service). The Device
-Authorization Grant [@RFC8628] and Client-Initiated Backchannel
-Authentication [@CIBA] are two examples of popular cross-device authorization flows.
+Authorization Grant {{RFC8628}} and Client-Initiated Backchannel
+Authentication {{CIBA}} are two examples of popular cross-device authorization flows.
 
 In these flows, the Consumption Device and the Authorization Device are not directly connected and there is no technical mechanisms for the Authorization Device and Consumption Device to establish mutual authentication. It is left to the user to decide whether the source of the authorization request (the Consumption Device) should be trusted before they scan a QR code, enter a user code, or accept an authorization request pushed to their Authorization Device. The transfer of the authorization request and context between the Consumption Device and Authorization device is done over an unauthenticated channel. The only mitigation against this unauthenticated channel is the user's judgement.
 
 Cross-Device Consent Phishing (CDCP) attacks exploit the unauthenticated channel
 between the Consumption Device and Authorization Device using social engineering
 techniques to gain unauthorized access to the user's data. Several publications
-have emerged in the public domain ([@Exploit1], [@Exploit2], [@Exploit3], [@Exploit4],
+have emerged in the public domain ({{Exploit1}}, [@Exploit2], [@Exploit3], [@Exploit4],
 [@Exploit5], [@Exploit6]), describing how the unauthenticated channel can be
 exploited using social engineering techniques borrowed from phishing. Unlike traditional
 phishing attacks, these attacks don't harvest credentials. Instead, they skip the
@@ -129,7 +150,7 @@ This section describes the set of security mechanisms and measures to secure cro
 4. Implementers MUST implement practical mitigations as listed in (#practical-mitigations) that are appropriate for the use case, architecture, and selected protocols.
 5. Implementers SHOULD implement proximity checks as defined in (#establish-proximity) if possible.
 
-These best practices apply to the Device Authorization Grant ([@RFC8628]) as well as other cross-device protocols such as the Client Initiated Backchannel Authentication [@CIBA], Self-Issued OpenID Provider v2 [@OpenID.SIOPV2], OpenID for Verifiable Presentations [@OpenID.VP], the Pre-Authorized Code Flow in ([@OpenID.VCI]) and other cross-device protocols that rely on the user to authenticate the channel between devices.
+These best practices apply to the Device Authorization Grant ({{RFC8628}}) as well as other cross-device protocols such as the Client Initiated Backchannel Authentication {{CIBA}}, Self-Issued OpenID Provider v2 [@OpenID.SIOPV2], OpenID for Verifiable Presentations [@OpenID.VP], the Pre-Authorized Code Flow in ([@OpenID.VCI]) and other cross-device protocols that rely on the user to authenticate the channel between devices.
 
 (#cross-device-flow-patterns) provides details about susceptible protocols and (#cross-device-flow-exploits) provides attack descriptions. (#practical-mitigations) provides details about the security mechanisms and mitigations, (protocol-selection) provides protocol selection guidance and (#foundational-pillars) provides details from formal analysis of protocols that apply to cross device flows.
 
@@ -161,12 +182,12 @@ Cross-device authorization flows have several benefits, including:
 
 There are three cross-device flow patterns for transferring the authorization request between the Consumption Device to the Authorization Device.
 
-- **User-Transferred Session Data Pattern:** In the first pattern, the user initiates the authorization process with the authorization server by copying information from the Consumption Device to the Authorization Device, before authorizing an action. By transferring the data from the Consumption Device to the Authorization Device, the user transfers the authorization session. For example the user may read a code displayed on the Consumption Device and enter it on the Authorization Device, or they may scan a QR code displayed on the Consumption Device with the Authorization Device. The Device Authorization Grant ([@RFC8628]) is an example of a cross-device flow that follow this pattern.
-- **Backchannel-Transferred Session Pattern:** In the second pattern, the OAuth client on the Consumption Device is responsible for transferring the session and initiating authorization on the Authorization Device via a backchannel with the Authorization Server. For example the user may attempt an online purchase on a Consumption Device (e.g., a personal computer) and receive an authorization request on their Authentication Device (e.g., mobile phone). The Client Initiated Backchannel Authentication [@CIBA] is an example of a cross-device flow that follow this pattern.
+- **User-Transferred Session Data Pattern:** In the first pattern, the user initiates the authorization process with the authorization server by copying information from the Consumption Device to the Authorization Device, before authorizing an action. By transferring the data from the Consumption Device to the Authorization Device, the user transfers the authorization session. For example the user may read a code displayed on the Consumption Device and enter it on the Authorization Device, or they may scan a QR code displayed on the Consumption Device with the Authorization Device. The Device Authorization Grant ({{RFC8628}}) is an example of a cross-device flow that follow this pattern.
+- **Backchannel-Transferred Session Pattern:** In the second pattern, the OAuth client on the Consumption Device is responsible for transferring the session and initiating authorization on the Authorization Device via a backchannel with the Authorization Server. For example the user may attempt an online purchase on a Consumption Device (e.g., a personal computer) and receive an authorization request on their Authentication Device (e.g., mobile phone). The Client Initiated Backchannel Authentication {{CIBA}} is an example of a cross-device flow that follow this pattern.
 - **User-Transferred Authorization Data Pattern:** In the third pattern, the OAuth client on the Consumption Device triggers the authorization request via a backchannel with the Authorization Server. Authorization data (e.g., a 6 digit authorization code) is displayed on the Authorization Device, which the user transfers to Consumption Device (e.g., by manually entering it). For example the user may attempt to access data in an enterprise application and receive a 6 digit authorization code on their Authentication Device (e.g., mobile phone) that they enter on Consumption Device.
 
 ### User-Transferred Session Data Pattern {#utsdp}
-The Device Authorization Grant ([@RFC8628]) is an example of a cross-device flow that relies on the user copying information from the Consumption Device to the Authorization Device by either entering data manually or scanning a QR code. The figure below shows a typical example of this flow:
+The Device Authorization Grant ({{RFC8628}}) is an example of a cross-device flow that relies on the user copying information from the Consumption Device to the Authorization Device by either entering data manually or scanning a QR code. The figure below shows a typical example of this flow:
 
 ~~~ ascii-art
                               (B) Consumption Device
@@ -199,7 +220,7 @@ or enters the user code on the Authorization Device.
 
 ### Backchannel-Transferred Session Pattern {#btsp}
 
-The Client Initiated Backchannel Authentication [@CIBA] transfers the session on the backchannel with the Authorization Server to request authorization on the Authorization Device. The figure below shows an example of this flow.
+The Client Initiated Backchannel Authentication {{CIBA}} transfers the session on the backchannel with the Authorization Server to request authorization on the Authorization Device. The figure below shows an example of this flow.
 
 ~~~ ascii-art
                               (B) Backchannel Authorization
@@ -576,9 +597,9 @@ Cross-device flows that are subject to the attacks described earlier typically s
 
 A number of protocols that have been standardized, or are in the process of being standardized that share these characteristics include:
 
-- **IETF OAuth 2.0 Device Authorization Grant ([@RFC8628]):** A standard to enable authorization on devices with constrained input capabilities (smart TVs, printers, kiosks). In this protocol, the user code or QR code is displayed on the Consumption Device and entered on a second device (e.g., a mobile phone).
+- **IETF OAuth 2.0 Device Authorization Grant ({{RFC8628}}):** A standard to enable authorization on devices with constrained input capabilities (smart TVs, printers, kiosks). In this protocol, the user code or QR code is displayed on the Consumption Device and entered on a second device (e.g., a mobile phone).
 
-- **Open ID Foundation Client Initiated Back-Channel Authentication (CIBA) [@CIBA]:** A standard developed in the OpenID Foundation that allows a device or service (e.g., a personal computer, smart TV, Kiosk) to request the OpenID Provider to initiate an authentication flow if it knows a valid identifier for the user. The user completes the authentication flow using a second device (e.g., a mobile phone). In this flow the user does not scan a QR code or obtain a user code from the Consumption Device, but is instead contacted by the OpenID Provider to complete the authentication using a push notification, e-mail, text message or any other suitable mechanism.
+- **Open ID Foundation Client Initiated Back-Channel Authentication (CIBA) {{CIBA}}:** A standard developed in the OpenID Foundation that allows a device or service (e.g., a personal computer, smart TV, Kiosk) to request the OpenID Provider to initiate an authentication flow if it knows a valid identifier for the user. The user completes the authentication flow using a second device (e.g., a mobile phone). In this flow the user does not scan a QR code or obtain a user code from the Consumption Device, but is instead contacted by the OpenID Provider to complete the authentication using a push notification, e-mail, text message or any other suitable mechanism.
 
 - **OpenID for Verifiable Credential Protocol Suite (Issuance, Presentation):** The OpenID for Verifiable Credentials enables cross-device scenarios by allowing users to scan QR codes to retrieve credentials (Issuance - see [@OpenID.VCI]) or present credentials (Presentation - see [@OpenID.VP]). The QR code is presented on a device that initiates the flow.
 
@@ -637,7 +658,7 @@ By enforcing one-time use or limited use of user or QR codes, the authorization 
 **Limitations:** Enforcing one-time use may be difficult in large globally distributed systems with low latency requirements, in which case short lived tokens may be more practical. One-time use codes may also have an impact on the user experience. For example, a user may enter a code, but their session may be interrupted before the access request is completed. If the code is a one-time use code, they would need to restart the session and obtain a new code since they won't be allowed to enter the same code a second time. To avoid this, implementers MAY allow the same code to be presented a small number of times.
 
 ### Unique Codes
-By issuing unique user or QR codes, an authorization server can detect if the same codes are being repeatedly submitted. This may be interpreted as anomalous behavior and the authorization server MAY choose to decline issuing access and refresh tokens if it detects the same codes being presented repeatedly. This may be achieved by maintaining a deny list that contains QR codes or user codes that were previously used. The authorization server MAY use a sliding window equal to the lifetime of a token if short lived/timebound tokens are used (see [Short Lived/Timebound Codes](#Short Lived/Timebound Codes)). This will limit the size of the deny list.
+By issuing unique user or QR codes, an authorization server can detect if the same codes are being repeatedly submitted. This may be interpreted as anomalous behavior and the authorization server MAY choose to decline issuing access and refresh tokens if it detects the same codes being presented repeatedly. This may be achieved by maintaining a deny list that contains QR codes or user codes that were previously used. The authorization server MAY use a sliding window equal to the lifetime of a token if short lived/timebound tokens are used (see [Short Lived/Timebound Codes](#Short_Lived/Timebound_Codes)). This will limit the size of the deny list.
 
 **Limitations:** Maintaining a deny list of previously redeemed codes, even for a sliding window, may have an impact on the latency of globally distributed systems. One alternative is to segment user codes by geography or region and maintain local deny lists.
 
@@ -647,7 +668,7 @@ Attackers exploit the unauthenticated channel by changing the context of the use
 **Limitations:** Some scenarios may require legitimate re-transmission of user, QR and authorization data (e.g., retries). To prevent the disruption of legitimate scenarios, content filters may use a threshold and allow a limited number of messages with the same QR or user codes to be transmitted before interrupting the delivery of those messages. Content filtering may also be fragmented across multiple communications systems and communication channels (e-mail, text messaging, instant messaging or other communication mechanisms), making it harder to detect or interrupt attacks that are executed over multiple channels, unless here is a high degree of integration between content filtering systems.
 
 ### Detect and Remediate
-The authorization server may be able to detect misuse of the codes due to repeated use as described in [Unique Codes](#Unique Codes), as an input from a content filtering engine as described in [Content Filtering](#Content Filtering), or through other mechanisms such as reports from end-users. If an authorization server determines that a user code or QR code is being used in an attack it may choose to invalidate all tokens issued in response to these codes and make that information available through a token introspection endpoint (see [@RFC7662]). In addition it may notify resource servers to stop accepting these tokens or to terminate existing sessions associated with these tokens using Continuous Access Evaluation Protocol (CAEP) messages [@CAEP] using the Shared Signals Framework (SSF) [@SSF] framework or an equivalent notification system.
+The authorization server may be able to detect misuse of the codes due to repeated use as described in [Unique Codes](#Unique_Codes), as an input from a content filtering engine as described in [Content Filtering](#Content_Filtering), or through other mechanisms such as reports from end-users. If an authorization server determines that a user code or QR code is being used in an attack it may choose to invalidate all tokens issued in response to these codes and make that information available through a token introspection endpoint (see [@RFC7662]). In addition it may notify resource servers to stop accepting these tokens or to terminate existing sessions associated with these tokens using Continuous Access Evaluation Protocol (CAEP) messages [@CAEP] using the Shared Signals Framework (SSF) [@SSF] framework or an equivalent notification system.
 
 **Limitations:** Detection and remediation requires that resource servers are integrated with security eventing systems or token introspection services. This may not always be practical for existing systems and may need to be targeted to the most critical resource services in an environment.
 
@@ -676,7 +697,7 @@ Another mitigation strategy includes limiting the life of the access and refresh
 **Limitations:** Short lived tokens reduces the time window during which an attacker can benefit from a successful attack. This is most effective for access tokens. However, once an attacker obtains a refresh token, they can continue to request new access tokens, as well as refresh tokens. Forcing the expiry of refresh tokens may cause the user to re-authorize an action more frequently, which results in a negative user experience.
 
 ### Rate Limits
-An attacker that engages in a scaled attack may need to request a large number of user codes (see exploit [Example B1](#Example B1: Illicit access to a video streaming service (User-Transferred Session Data Pattern))) or initiate a large number of authorization requests (see exploit [Example B4](#Example B4: Illicit Transaction Authorization (Backchannel-Transferred Session Pattern))) in a short period of time. An authorization server MAY apply rate limits to minimize the number of requests it would accept from a client in a limited time period.
+An attacker that engages in a scaled attack may need to request a large number of user codes (see exploit [Example B1](#Example_B1:_Illicit_access_to_a_video_streaming_service_(User-Transferred_Session_Data_Pattern))) or initiate a large number of authorization requests (see exploit [Example B4](#Example_B4:_Illicit_Transaction_Authorization_(Backchannel-Transferred_Session_Pattern))) in a short period of time. An authorization server MAY apply rate limits to minimize the number of requests it would accept from a client in a limited time period.
 
 **Limitations:** Rate limits are effective at slowing an attacker down and help to degrade scaled attacks, but do not prevent more targeted attacks that are executed with lower volumes and velocity. Therefore, it should be used along with other techniques to provide a defence-in-depth defence against cross-device attacks.
 
@@ -706,7 +727,7 @@ The user experience MAY include information to further educate the user on cross
 ### Authenticate-then-Initiate
 By requiring a user to authenticate on the Consumption Device with a phishing resistant authentication method before initiating a cross-device flow, the server can prevent an attacker from initiating a cross-device flow and obtaining QR codes or user codes. This prevents the attacker from obtaining a QR code or user code that they can use to mislead an unsuspecting user. This requires that the Consumption Device has sufficient input capabilities to support a phishing resistant authentication mechanism, which may in itself negate the need for a cross-device flow.
 
-**Limitations:** Authenticating on the Consumption Device before starting a cross-device flow does not prevent the attacks described in [Example B5: Illicit Network Join](#Example B5: Illicit Network Join (User-Transferred Authorization Data Pattern)) and [Example B7: Illicit Session Transfer](#Example B7: Illicit session transfer (User-Transferred Authorization Data Pattern)) and it is RECOMMENDED that additional mitigations described in this document is used if the cross-device flows are used in scenarios such as [Example A5: Add a device to a network](#Example A5: Add a device to a network (User-Transferred Authorization Data Pattern)) and [Example A7: Transfer a session](#Example A7: Transfer a session (User-Transferred Authorization Data Pattern)).
+**Limitations:** Authenticating on the Consumption Device before starting a cross-device flow does not prevent the attacks described in [Example B5: Illicit Network Join](#Example_B5:_Illicit_Network_Join_(User-Transferred_Authorization_Data_Pattern)) and [Example B7: Illicit Application Bootstrap](#Example_B7:_Illicit_Application_Bootstrap_(Session_Transfer_Pattern_Exploit)) and it is RECOMMENDED that additional mitigations described in this document is used if the cross-device flows are used in scenarios such as [Example A5: Add a device to a network](#Example_A5:_Add_a_Device_to_a_Network_(Session_Transfer_Pattern)) and [Example A7: Application Bootstrap (Session Transfer Pattern)](#Example_A7:_Application_Bootstrap_(Session_Transfer_Pattern)).
 
 ### Request Initiation Verification {#request-verification}
 The user MAY be asked to confirm if they initiated an authentication or authorization request by sending a one-time password (OTP) or PIN to the user's Authorization Device and asking them to enter it on the Consumption Device to confirm the request. If the request was initiated without the users' consent, they would receive an OTP or PIN out of context which may raise suspicion for the user. In addition, they would not have information on where to enter the OTP or PIN. The user experience on the Authorization Device MAY reinforce the risk of receiving an out-of-context OTP or PIN and provide information to the user on how to report an unauthorized authentication or authorization request.
@@ -747,12 +768,12 @@ Table: Practical Mitigation Summary
 ## Protocol Selection {#protocol-selection}
 Some cross-device protocols are more susceptible to the exploits described in this document than others. In this section we will compare three different cross-device protocols in terms of their susceptibility to exploits focused on the unauthenticated channel, the prerequisites to implement and deploy them, along with guidance on when it is appropriate to use them.
 
-### IETF OAuth 2.0 Device Authorization Grant [@RFC8628]:
+### IETF OAuth 2.0 Device Authorization Grant {{RFC8628}}:
 #### Description
 A standard to enable authorization on devices with constrained input capabilities (smart TVs, printers, kiosks). In this protocol, the user code or QR code is displayed or made available on the Consumption Device (smart TV) and entered on a second device (e.g., a mobile phone).
 
 #### Susceptibility
-There are several reports in the public domain outlining how the unauthenticated channel may be exploited to execute a Cross-Device Consent Phishing attack ([@Exploit1], [@Exploit2], [@Exploit3], [@Exploit4], [@Exploit5], [@Exploit6]).
+There are several reports in the public domain outlining how the unauthenticated channel may be exploited to execute a Cross-Device Consent Phishing attack ({{Exploit1}}, [@Exploit2], [@Exploit3], [@Exploit4], [@Exploit5], [@Exploit6]).
 
 #### Device Capabilities
 There are no assumptions in the protocol about underlying capabilities of the device, making it a "least common denominator" protocol that is expected to work on the broadest set of devices and environments.
@@ -765,10 +786,10 @@ Only use this protocol if other cross-device protocols are not viable due to dev
 
 ### OpenID Foundation Client Initiated Back-Channel Authentication (CIBA):
 #### Description
-Client Initiated Back-Channel Authentication (CIBA) [@CIBA]: A standard developed in the OpenID Foundation that allows a device or service (e.g., a personal computer, smart TV, Kiosk) to request the OpenID Provider to initiate an authentication flow if it knows a valid identifier for the user. The user completes the authentication flow using a second device (e.g., a mobile phone). In this flow the user does not scan a QR code or obtain a user code from the Consumption Device, but is instead contacted by the OpenID Provider to complete the authentication using a push notification, e-mail, text message or any other suitable mechanism.
+Client Initiated Back-Channel Authentication (CIBA) {{CIBA}}: A standard developed in the OpenID Foundation that allows a device or service (e.g., a personal computer, smart TV, Kiosk) to request the OpenID Provider to initiate an authentication flow if it knows a valid identifier for the user. The user completes the authentication flow using a second device (e.g., a mobile phone). In this flow the user does not scan a QR code or obtain a user code from the Consumption Device, but is instead contacted by the OpenID Provider to complete the authentication using a push notification, e-mail, text message or any other suitable mechanism.
 
 #### Susceptibility
-Less susceptible to unauthenticated channel attacks, but still vulnerable to attackers who know or can guess the user identifier and initiate an attack as described in [Example B4: Illicit Transaction Authorization](#Example B4: Illicit Transaction Authorization (Backchannel-Transferred Session Pattern)).
+Less susceptible to unauthenticated channel attacks, but still vulnerable to attackers who know or can guess the user identifier and initiate an attack as described in [Example B4: Illicit Transaction Authorization](#Example_B4:_Illicit_Transaction_Authorization_(Backchannel-Transferred_Session_Pattern)).
 
 #### Device Capabilities
 There is no requirement on the Consumption Device to support specific hardware. The Authorization Device must be registered/associated with the user and it must be possible for the Authorization Server to trigger an authorization on this device.
@@ -797,7 +818,7 @@ Both the Consumption Device and the authenticator require BLE support and access
 FIDO Cross-Device Authentication (CDA) establishes proximity through the use of BLE, reducing the need for additional mitigations. An implementer MAY still choose to implement additional mitigation as described in this document.
 
 #### When to Use
-FIDO2/WebAuthn SHOULD be used for cross-device authentication scenarios whenever the devices are capable of doing so and a suitable FIDO credential is not available on the Consumption Device. It MAY be used as an authentication method with the Authorization Code Grant [@RFC6749] and PKCE [@RFC7663], to grant authorization to a Consumption Device (e.g., smart TV or interactive whiteboard) using a device serving as the FIDO authenticator (e.g. a mobile phone) for authentication. This combination of FIDO2/WebAuthn and Authorization Code Flow with PKCE enables cross device authorization flows, without the risks posed by the Device Authorization Grant [@RFC8628].
+FIDO2/WebAuthn SHOULD be used for cross-device authentication scenarios whenever the devices are capable of doing so and a suitable FIDO credential is not available on the Consumption Device. It MAY be used as an authentication method with the Authorization Code Grant [@RFC6749] and PKCE [@RFC7663], to grant authorization to a Consumption Device (e.g., smart TV or interactive whiteboard) using a device serving as the FIDO authenticator (e.g. a mobile phone) for authentication. This combination of FIDO2/WebAuthn and Authorization Code Flow with PKCE enables cross device authorization flows, without the risks posed by the Device Authorization Grant {{RFC8628}}.
 
 ### Protocol Selection Summary
 The FIDO Cross-Device Authentication (CDA) flow provides the best protection against attacks on the unauthenticated channel for cross device flows. It can be combined with OAuth 2.0 and OpenID Connect protocols for standards-based authorization and authentication flows. If FIDO2/WebAuthn support is not available, Client Initiated Backchannel Authentication (CIBA) provides an alternative, provided that there is a channel through which the authorization server can contact the end user. Examples of such a channel include device push notifications, e-mail or text messages which the user can access from their device. If CIBA is used, additional mitigations to enforce proximity and initiate transactions from trusted devices or trusted networks SHOULD be considered. The OAuth 2.0 Device Authorization Grant provides the most flexibility and has the lowest requirements on devices used, but it is RECOMMENDED that it is only used when additional mitigations are deployed to prevent attacks that exploit the unauthenticated channel between devices.
@@ -927,7 +948,7 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
    * Added User Education as a standalone mitigation.
    * Added Maryam Mehrnezhad, Marco Pernpruner and Giada Sciarretta to the contributors list.
    * Added Request Binding with Out-of-Band Data as an additional mitigation.
-   * Adopted the OpenID Foundation terminology from [@CIBA] and changed Initiating Device to Consumption Device
+   * Adopted the OpenID Foundation terminology from {{CIBA}} and changed Initiating Device to Consumption Device
    * Added Fake Helpdesk and Consent Request Overload examples
    * Replaced "Authenticated Flow" mitigation name with "Authenticate-then-Intitiate"
    * Added Cross-Device Session Transfer pattern
@@ -993,38 +1014,6 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
       <organization></organization>
     </author>
     <date year="2014" month="November"/>
-  </front>
-</reference>
-
-<reference anchor="CIBA" target="https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html">
-  <front>
-    <title>OpenID Connect Client-Initiated Backchannel Authentication Flow - Core 1.0</title>
-    <author initials="G." surname="Fernandez" fullname="Gonzalo Fernandez Rodriguez">
-      <organization>Telefonica</organization>
-    </author>
-    <author initials="F." surname="Walter" fullname="Florian Walter">
-      <organization>Deutsche Telekom AG</organization>
-    </author>
-    <author initials="A" surname="Nennker" fullname="Axel Nennker">
-      <organization>Deutsche Telekom AG</organization>
-    </author>
-    <author initials="D." surname="Tonge" fullname="Dave Tonge">
-      <organization>Moneyhub</organization>
-    </author>
-    <author initials="B." surname="Campbell" fullname="Brian Campbell">
-      <organization>Ping Identity</organization>
-    </author>
-    <date year="2021" month="September"/>
-  </front>
-</reference>
-
-<reference anchor="Exploit1" target="https://0xboku.com/2021/07/12/ArtOfDeviceCodePhish.html">
-  <front>
-    <title>The Art of the Device Code Phish</title>
-    <author initials="B." surname="Cooke" fullname="Bobby Cooke">
-      <organization></organization>
-    </author>
-    <date year="2021" month="July"/>
   </front>
 </reference>
 
