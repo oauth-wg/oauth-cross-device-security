@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-06-03T00:32:51.198496+00:00",
+  "timestamp": "2025-06-05T00:31:57.503225+00:00",
   "repo": "oauth-wg/oauth-cross-device-security",
   "labels": [
     {
@@ -6322,18 +6322,26 @@
       "labels": [],
       "body": "",
       "createdAt": "2025-06-01T17:04:58Z",
-      "updatedAt": "2025-06-02T22:53:14Z",
+      "updatedAt": "2025-06-03T15:11:02Z",
       "baseRepository": "oauth-wg/oauth-cross-device-security",
       "baseRefName": "main",
       "baseRefOid": "3ddd93aac75d75e77d6de9b7aecb7d042634cf27",
       "headRepository": "oauth-wg/oauth-cross-device-security",
       "headRefName": "PieterKas-patch-60",
-      "headRefOid": "784c6893cec5efa5e9a3b1b70c799a266424b7ae",
+      "headRefOid": "c2c9eadd3e29c65df382377c8a8946d4fbf332e4",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "panva",
+          "authorAssociation": "MEMBER",
+          "body": "Do we need to move all the `reference` elements?",
+          "createdAt": "2025-06-03T15:11:01Z",
+          "updatedAt": "2025-06-03T15:11:01Z"
+        }
+      ],
       "reviews": [
         {
           "id": "PRR_kwDOHK26QM6sIhCs",
