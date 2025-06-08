@@ -63,30 +63,35 @@ informative:
       - name: Bobby Cooke
   date: 2021-07
   target: https://0xboku.com/2021/07/12/ArtOfDeviceCodePhish.html
+
  Exploit2:
   title: "Microsoft 365 OAuth Device Code Flow and Phishing"
   author:
       - name: Daniel Min
   date: 2021-08
   target: https://www.optiv.com/insights/source-zero/blog/microsoft-365-oauth-device-code-flow-and-phishing
+
  Exploit3:
   title: "Introducing a new phishing technique for compromising Office 365 accounts"
   author:
       - name: Nestori Syynimaa
   date: 2020-10
   target: https://o365blog.com/post/phishing/#new-phishing-technique-device-code-authentication
+
  Exploit4:
   title: "New Phishing Attacks Exploiting OAuth Authentication Flows (DEFCON 29)"
   author:
    - name: Jenko Hwong
   date: 2021-08
   target: https://www.youtube.com/watch?v=9slRYvpKHp4
+
  Exploit5:
   title: "OAuth's Device Code Flow Abused in Phishing Attacks"
   author:
    - organization: "Secureworks Counter Threat Unit (CTU)"
   date: 2021-08
   target: https://www.secureworks.com/blog/oauths-device-code-flow-abused-in-phishing-attacks
+
  Exploit6:
   title: "SquarePhish: Advanced phishing tool combines QR codes and OAuth 2.0 device code flow"
   author:
@@ -94,12 +99,14 @@ informative:
    - name: Nevada Romsdah
   date: 2022-08
   target: https://www.helpnetsecurity.com/2022/08/11/squarephish-video/
+
  NYC.Bike:
   title: "Citi Bikes being swiped by joyriding scammers who have cracked the QR code"
   author:
    - name: Kerry J. Byrne
   date: 2021-08
   target: https://nypost.com/2021/08/07/citi-bikes-being-swiped-by-joyriding-scammers-who-have-cracked-the-qr-code/
+
  OpenID.SIOPV2:
   title: "Self-Issued OpenID Provider v2"
   author:
@@ -111,6 +118,7 @@ informative:
      org: yes.com
   date: 2022-11
   target: https://bitbucket.org/openid/connect/src/master/openid-connect-self-issued-v2/openid-connect-self-issued-v2-1_0.md
+
  OpenID.VP:
   title: "OpenID for Verifiable Credential Presentations"
   author:
@@ -124,6 +132,7 @@ informative:
      org: Mattr
   date: 2023-11
   target: https://openid.net/specs/openid-4-verifiable-presentations-1_0.html
+
  OpenID.VCI:
   title: "OpenID for Verifiable Credential Issuance"
   author:
@@ -135,22 +144,25 @@ informative:
      org: Mattr
   date: 2023-10
   target: https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html
+
  Bauer2022:
   title: "Formal analysis of self-issued OpenID providers"
   author:
    - name: C Bauer
   date: 2022
   target: https://elib.uni-stuttgart.de/handle/11682/12417
+
  OpenID.Core:
-  title: "OpenID for Verifiable Credential Presentations"
-  author:
-   - name: Nat Sakimura
-   - name: John Bradley
-   - name: Michael B. Jones
-   - name: Breno Medeiros
-   - name: Chuck Mortimore
-  date: 2014-11
-  target: http://openid.net/specs/openid-connect-core-1_0.html
+    title: OpenID Connect Core 1.0
+    target: https://openid.net/specs/openid-connect-core-1_0.html
+    date: November 8, 2014
+    author:
+      - ins: N. Sakimura
+      - ins: J. Bradley
+      - ins: M. Jones
+      - ins: B. de Medeiros
+      - ins: C. Mortimore
+
  IEEE802154:
   title: "IEEE Std 802.15.4-2020: IEEE Standard for Low-Rate Wireless Networks"
   author:
@@ -163,6 +175,7 @@ informative:
   target: "https://standards.ieee.org/standard/802_15_4-2020.html"
   annotation: >
     This standard defines the physical layer and media access control for low-rate wireless personal area networks (LR-WPANs) and is maintained by the IEEE 802.15 working group.
+
  W3CWebAuthn:
   title: "Web Authentication: An API for accessing Public Key Credentials Level 3"
   author:
@@ -188,6 +201,7 @@ informative:
       organization: "Cisco"
   date: 2025-01
   target: "https://www.w3.org/TR/2025/WD-webauthn-3-20250127/"
+
  FIDOCTAP22:
   title: "Client to Authenticator Protocol (CTAP)"
   author:
@@ -217,6 +231,7 @@ informative:
       organization: "Ping Identity"
   date: 2025-02
   target: "https://fidoalliance.org/specs/fido-v2.2-ps-20250228/fido-client-to-authenticator-protocol-v2.2-ps-20250228.html"
+
  PCRSM2023:
   title: "An Automated Multi-Layered Methodology to Assist the Secure and Risk-Aware Design of Multi-Factor Authentication Protocols, IEEE Transactions on Dependable and Secure Computing (TDSC)"
   author:
@@ -234,6 +249,7 @@ informative:
       fullname: "Silvio Ranise"
   date: 2023
   target: "https://doi.org/10.1109/TDSC.2023.3296210"
+
  MPRCS2020:
   title: "The Good, the Bad and the (Not So) Ugly of Out-of-Band Authentication with eID Cards and Push Notifications: Design, Formal and Risk Analysis, Proceedings of the Tenth ACM Conference on Data and Application Security and Privacy, Pages 223–234, Association for Computing Machinery"
   author:
@@ -251,6 +267,7 @@ informative:
       fullname: "Giada Sciarretta"
   date: 2020
   target: "https://doi.org/10.1145/3374664.3375727"
+
  Helmschmidt2022:
   title: "Security analysis of the Grant Negotiation and Authorization Protocol"
   author:
@@ -258,6 +275,7 @@ informative:
       surname: "Helmschmidt"
   date: 2022
   target: "https://elib.uni-stuttgart.de/handle/11682/12220"
+
  Baki2023:
   title: "Sixteen Years of Phishing User Studies: What Have We Learned?, IEEE Transactions on Dependable and Secure Computing, Volume 20, Number 2, Pages 1200–1212"
   author:
@@ -267,6 +285,7 @@ informative:
       surname: "Verma"
   date: 2023
   target: "https://doi.org/10.1109/TDSC.2022.3151103"
+
  CAEP:
   title: "OpenID Continuous Access Evaluation Profile 1.0 - draft 01"
   author:
@@ -280,6 +299,7 @@ informative:
       organization: "Microsoft"
   date: 2021-06
   target: "https://openid.net/specs/openid-caep-specification-1_0-01.html"
+
  SSF:
   title: "OpenID Shared Signals and Events Framework Specification 1.0"
   author:
