@@ -49,6 +49,7 @@ normative:
 
 
 informative:
+ RFC9635: # Grant Negotiation and Authorization Protocol (GNAP)
  Exploit1:
   title: "The Art of the Device Code Phish"
   author:
