@@ -28,6 +28,8 @@ normative:
  RFC6749: # OAuth 2.0 Authorization Framework
  RFC8693: # OAuth 2.0 Token Exchange
  RFC7523: # JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants
+ RFC7636: # Proof Key for Code Exchange by OAuth Public Clients
+ RFC8174: # Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words
  RFC8707: # Resource Indicators for OAuth 2.0
  RFC8414: # OAuth 2.0 Authorization Server Metadata
  RFC8725: # JSON Web Token Best Current Practices
@@ -52,27 +54,28 @@ normative:
 
 informative:
  I-D.draft-ietf-oauth-v2-1:
+ RFC7662: # OAuth 2.0 Token Introspection
  Exploit1:
   title: "The Art of the Device Code Phish"
   author:
-   - name: Bobby Cooke
+      - name: Bobby Cooke
   date: 2021-07
   target: https://0xboku.com/2021/07/12/ArtOfDeviceCodePhish.html
  Exploit2:
   title: "Microsoft 365 OAuth Device Code Flow and Phishing"
-  author: 
-   - name: Daniel Min
+  author:
+      - name: Daniel Min
   date: 2021-08
   target: https://www.optiv.com/insights/source-zero/blog/microsoft-365-oauth-device-code-flow-and-phishing
 Exploit3:
   title: "Introducing a new phishing technique for compromising Office 365 accounts"
-  author: 
-   - name: Nestori Syynimaa
+  author:
+      - name: Nestori Syynimaa
   date: 2020-10
   target: https://o365blog.com/post/phishing/#new-phishing-technique-device-code-authentication
 Exploit4:
   title: "New Phishing Attacks Exploiting OAuth Authentication Flows (DEFCON 29)"
-  author: 
+  author:
    - name: Jenko Hwong
   date: 2021-08
   target: https://www.youtube.com/watch?v=9slRYvpKHp4
@@ -89,6 +92,17 @@ Exploit6:
    - name: Nevada Romsdah
   date: 2022-08
   target: https://www.helpnetsecurity.com/2022/08/11/squarephish-video/
+OpenID.SIOPV2:
+  title: "Self-Issued OpenID Provider v2"
+  author:
+   - name: Kristina Yasuda
+     org: Microsoft
+   - name: Michael B. Jones
+     org: Microsoft
+   - name: Torsten Lodderstedt
+     org: yes.com
+  date: 2022-11
+  target: https://bitbucket.org/openid/connect/src/master/openid-connect-self-issued-v2/openid-connect-self-issued-v2-1_0.md
 
 --- abstract
 
@@ -143,7 +157,7 @@ Session transfer flows enable a user to transfer access to a service or network 
 
 The session may be transferred by showing the user a session transfer code on the Authorization Device, which is then entered on the Consumption Device. This flow may be streamlined by rendering the session transfer code as a QR code on the Authorization Device and scanned by the Consumption Device.
 
-The session transfer preserves state information, including authentication state, at the second device to avoid additional configuration and optimize the user experience. These flows are often used to add new devices to a network, onboard customers to a mobile application, or provision new credentials (e.g., [@OpenID.SIOPV2]).
+The session transfer preserves state information, including authentication state, at the second device to avoid additional configuration and optimize the user experience. These flows are often used to add new devices to a network, onboard customers to a mobile application, or provision new credentials (e.g., {{OpenID.SIOPV2}}).
 
 In these cross-device session transfer flows, the channel between the Authorization Device and the Consumption Device is unauthenticated.
 
@@ -164,13 +178,13 @@ This document provides guidance to implementers to defend against Cross-Device C
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL
 NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED",
 "MAY", and "OPTIONAL" in this document are to be interpreted as
-described in BCP 14 [@RFC2119] [@RFC8174] when, and only when, they
+described in BCP 14 [@RFC2119] {{RFC8174}} when, and only when, they
 appear in all capitals, as shown here.
 
 This specification uses the terms "access token", "refresh token",
 "authorization server", "resource server", "authorization endpoint",
 "authorization request", and
-"client" defined by The OAuth 2.0 Authorization Framework [@!RFC6749].
+"client" defined by The OAuth 2.0 Authorization Framework {{RFC6749}}.
 
 # Best Practices
 This section describes the set of security mechanisms and measures to secure cross-device protools against Cross-Device Consent Phishing and Cross-Device Session Phishing attacks that the OAuth working group considers best practices at the time of writing.
@@ -181,7 +195,7 @@ This section describes the set of security mechanisms and measures to secure cro
 4. Implementers MUST implement practical mitigations as listed in (#practical-mitigations) that are appropriate for the use case, architecture, and selected protocols.
 5. Implementers SHOULD implement proximity checks as defined in (#establish-proximity) if possible.
 
-These best practices apply to the Device Authorization Grant ({{RFC8628}}) as well as other cross-device protocols such as the Client Initiated Backchannel Authentication {{CIBA}}, Self-Issued OpenID Provider v2 [@OpenID.SIOPV2], OpenID for Verifiable Presentations [@OpenID.VP], the Pre-Authorized Code Flow in ([@OpenID.VCI]) and other cross-device protocols that rely on the user to authenticate the channel between devices.
+These best practices apply to the Device Authorization Grant ({{RFC8628}}) as well as other cross-device protocols such as the Client Initiated Backchannel Authentication {{CIBA}}, Self-Issued OpenID Provider v2 {{OpenID.SIOPV2}}, OpenID for Verifiable Presentations [@OpenID.VP], the Pre-Authorized Code Flow in ([@OpenID.VCI]) and other cross-device protocols that rely on the user to authenticate the channel between devices.
 
 (#cross-device-flow-patterns) provides details about susceptible protocols and (#cross-device-flow-exploits) provides attack descriptions. (#practical-mitigations) provides details about the security mechanisms and mitigations, (protocol-selection) provides protocol selection guidance and (#foundational-pillars) provides details from formal analysis of protocols that apply to cross device flows.
 
@@ -318,7 +332,7 @@ The Authorization Server may choose to authenticate the user before sending the 
 ## Cross-Device Session Transfer
 Session transfer flows enable a user to transfer access to a service or network from a device on which the user is already authenticated to a second device such as a mobile phone. In these flows, the user is authenticated and then authorizes the session transfer on one device, referred to as the Authorization Device (e.g., a personal computer, web portal or application), and transfers the session to the device where they will continue to consume the session, referred to as the Consumption Device (e.g., a mobile phone or portable device).
 
-The session transfer preserves state information, including authentication state, at the second device to avoid additional configuration and optimize the user experience. These flows are often used to add new devices to a network, onboard customers to a mobile application, or provision new credentials (e.g., [@OpenID.SIOPV2]).
+The session transfer preserves state information, including authentication state, at the second device to avoid additional configuration and optimize the user experience. These flows are often used to add new devices to a network, onboard customers to a mobile application, or provision new credentials (e.g., {{OpenID.SIOPV2}}).
 
 ### Cross-Device Session Transfer Pattern
 In this flow, the user is authenticated and starts the flow by authorizing the transfer of the session on the Authorization Device. The Authorization Device requests a session transfer code that may be rendered as a QR code on the Authorization Device. When the user scans the QR code or enters it on the Consumption Device where they would like the session to continue, the Consumption Device presents it to the Authorization Server. The Authorization Server then transfers the session to the Consumption Device. This may include transferring authentication and authorization state to optimize the user experience. This type of flow is used, for example, for adding new devices to networks, bootstrapping new applications, or provisioning new credentials. The Pre-Authorized Code Flow in ([@OpenID.VCI]) is an instance of using this pattern to provision a new credential. The figure below shows a typical flow.
@@ -636,7 +650,7 @@ A number of protocols that have been standardized, or are in the process of bein
 
 - **Self-Issued OpenID Provider v2 (SIOP V2):** A standard that allows end-user to present self-attested or third party attested attributes when used with OpenID for Verifiable Credential protocols. The user scans a QR code presented by the relying party to initiate the flow.
 
-Cross-device protocols SHOULD not be used for same-device scenarios. If the Consumption Device and Authorization Device are the same device, protocols like OpenID Connect Core [@OpenID.Core] and OAuth 2.0 Authorization Code Grant as defined in [@RFC6749] are more appropriate. If a protocol supports both same-device and cross-device modes (e.g., [@OpenID.SIOPV2]), the cross-device mode SHOULD not be used for same-device scenarios. An authorization server MAY choose to block cross-device protocols used in same-device scenarios if it detects that the same device is used. An authorization Server may use techniques such as device fingerprinting, network address or other techniques to detect if a cross-device protocol is being used on the same device. If an implementor decides to use a cross-device protocol or a protocol with a cross-device mode in a same-device scenario, the mitigations recommended in this document SHOULD be implemented to reduce the risks that the unauthenticated channel is exploited.
+Cross-device protocols SHOULD not be used for same-device scenarios. If the Consumption Device and Authorization Device are the same device, protocols like OpenID Connect Core [@OpenID.Core] and OAuth 2.0 Authorization Code Grant as defined in {{RFC6749}} are more appropriate. If a protocol supports both same-device and cross-device modes (e.g., {{OpenID.SIOPV2}}), the cross-device mode SHOULD not be used for same-device scenarios. An authorization server MAY choose to block cross-device protocols used in same-device scenarios if it detects that the same device is used. An authorization Server may use techniques such as device fingerprinting, network address or other techniques to detect if a cross-device protocol is being used on the same device. If an implementor decides to use a cross-device protocol or a protocol with a cross-device mode in a same-device scenario, the mitigations recommended in this document SHOULD be implemented to reduce the risks that the unauthenticated channel is exploited.
 
 # Mitigating Against Cross-Device Flow Attacks
 The unauthenticated channel between the Consumption Device and the Authorization Device allows attackers to change the context in which the authorization request is presented to the user. This shifts responsibility of authenticating the channel between the two devices to the end-user. End-users have "expertise elsewhere" and are typically not security experts and don't understand the protocols and systems they interact with. As a result, end-users are poorly equipped to authenticate the channel between the two devices. Mitigations should focus on:
@@ -849,7 +863,7 @@ Both the Consumption Device and the authenticator require BLE support and access
 FIDO Cross-Device Authentication (CDA) establishes proximity through the use of BLE, reducing the need for additional mitigations. An implementer MAY still choose to implement additional mitigation as described in this document.
 
 #### When to Use
-FIDO2/WebAuthn SHOULD be used for cross-device authentication scenarios whenever the devices are capable of doing so and a suitable FIDO credential is not available on the Consumption Device. It MAY be used as an authentication method with the Authorization Code Grant [@RFC6749] and PKCE [@RFC7663], to grant authorization to a Consumption Device (e.g., smart TV or interactive whiteboard) using a device serving as the FIDO authenticator (e.g. a mobile phone) for authentication. This combination of FIDO2/WebAuthn and Authorization Code Flow with PKCE enables cross device authorization flows, without the risks posed by the Device Authorization Grant {{RFC8628}}.
+FIDO2/WebAuthn SHOULD be used for cross-device authentication scenarios whenever the devices are capable of doing so and a suitable FIDO credential is not available on the Consumption Device. It MAY be used as an authentication method with the Authorization Code Grant {{RFC6749}} and PKCE [@RFC7636], to grant authorization to a Consumption Device (e.g., smart TV or interactive whiteboard) using a device serving as the FIDO authenticator (e.g. a mobile phone) for authentication. This combination of FIDO2/WebAuthn and Authorization Code Flow with PKCE enables cross device authorization flows, without the risks posed by the Device Authorization Grant {{RFC8628}}.
 
 ### Protocol Selection Summary
 The FIDO Cross-Device Authentication (CDA) flow provides the best protection against attacks on the unauthenticated channel for cross device flows. It can be combined with OAuth 2.0 and OpenID Connect protocols for standards-based authorization and authentication flows. If FIDO2/WebAuthn support is not available, Client Initiated Backchannel Authentication (CIBA) provides an alternative, provided that there is a channel through which the authorization server can contact the end user. Examples of such a channel include device push notifications, e-mail or text messages which the user can access from their device. If CIBA is used, additional mitigations to enforce proximity and initiate transactions from trusted devices or trusted networks SHOULD be considered. The OAuth 2.0 Device Authorization Grant provides the most flexibility and has the lowest requirements on devices used, but it is RECOMMENDED that it is only used when additional mitigations are deployed to prevent attacks that exploit the unauthenticated channel between devices.
@@ -867,7 +881,7 @@ There are various different approaches to formal security analysis and each brin
 The following works have been identified as relevant to the analysis of cross-device flows:
 
  * In "Formal analysis of self-issued OpenID providers" [@Bauer2022],
-   the protocol of [@OpenID.SIOPV2] was analyzed using the Web
+   the protocol of {{OpenID.SIOPV2}} was analyzed using the Web
    Infrastructure Model (WIM). The WIM is specifically designed for the
    analysis of web authentication and authorization protocols. While it
    is a manual (pen-and-paper) model, it captures details of browsers
@@ -875,7 +889,7 @@ The following works have been identified as relevant to the analysis of cross-de
    models. In previous works, previously unknown flaws in OAuth, OpenID
    Connect, and FAPI were discovered using the WIM. In the analysis of a
    cross-device SIOP V2 flow in [@Bauer2022], the request replay attack
-   already described in Section 13.3 of [@OpenID.SIOPV2] was confirmed
+   already described in Section 13.3 of {{OpenID.SIOPV2}} was confirmed
    in the model. A mitigation was implemented based on a so-called
    Cross-Device Stub, essentially a component that serves to link the
    two devices before the protocol flow starts. This can be seen as an
@@ -1091,22 +1105,6 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
       <organization>Microsoft</organization>
     </author>
     <date year="2021" month="June"/>
-  </front>
-</reference>
-
-<reference anchor="OpenID.SIOPV2" target="https://bitbucket.org/openid/connect/src/master/openid-connect-self-issued-v2/openid-connect-self-issued-v2-1_0.md">
-  <front>
-    <title>Self-Issued OpenID Provider v2</title>
-    <author initials="K." surname="Yasuda" fullname="Kristina Yasuda">
-      <organization>Microsoft</organization>
-    </author>
-    <author initials="M." surname="Jones" fullname="Michael B. Jones">
-      <organization>Microsoft</organization>
-    </author>
-    <author initials="T." surname="Lodderstedt" fullname="Torsten Lodderstedt">
-      <organization>yes.com</organization>
-    </author>
-    <date year="2022" month="November"/>
   </front>
 </reference>
 
