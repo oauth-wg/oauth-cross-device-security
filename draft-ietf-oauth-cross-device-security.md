@@ -49,7 +49,6 @@ normative:
 
 
 informative:
- RFC7662: # OAuth 2.0 Token Introspection
  Exploit1:
   title: "The Art of the Device Code Phish"
   author:
