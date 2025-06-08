@@ -147,9 +147,7 @@ informative:
    - name: Nat Sakimura
    - name: John Bradley
    - name: Michael B. Jones
-   - initials: "B. d. M."
-    surname: "de Medeiros"
-    fullname: "Breno de Medeiros"
+   - name: Breno Medeiros
    - name: Chuck Mortimore
   date: 2014-11
   target: http://openid.net/specs/openid-connect-core-1_0.html
