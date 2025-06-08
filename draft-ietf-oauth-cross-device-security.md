@@ -35,8 +35,6 @@ specialists, fraud analysts and engineers implementing cross-device flows.
 
 --- middle
 
-{mainmatter}
-
 # Introduction {#Introduction}
 Protocol flows that span multiple end-user devices are in widespread use today. These flows are often referred to as cross-device flows. A common example is a user that uses their mobile phone to scan a QR code from their smart TV, giving an app on the TV access to their video streaming service. Besides QR codes, other mechanisms are often used such as PIN codes that the user has to enter on one of the devices, or push notifications to a mobile app that the user has to approve.
 
