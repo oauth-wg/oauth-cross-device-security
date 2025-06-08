@@ -46,7 +46,44 @@ normative:
         org: Ping Identity
     date: 2021-09
     target: https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html
-
+ CAEP:
+  title: "OpenID Continuous Access Evaluation Profile 1.0 - draft 01"
+  author:
+    - initials: "A."
+      surname: "Tulshibagwale"
+      fullname: "Atul Tulshibagwale"
+      organization: "Google"
+    - initials: "T."
+      surname: "Cappalli"
+      fullname: "Tim Cappalli"
+      organization: "Microsoft"
+  date: 2021-06
+  target: "https://openid.net/specs/openid-caep-specification-1_0-01.html"
+ SSF:
+  title: "OpenID Shared Signals and Events Framework Specification 1.0"
+  author:
+    - initials: "A."
+      surname: "Tulshibagwale"
+      fullname: "Atul Tulshibagwale"
+      organization: "Google"
+    - initials: "T."
+      surname: "Cappalli"
+      fullname: "Tim Cappalli"
+      organization: "Microsoft"
+    - initials: "M."
+      surname: "Scurtescu"
+      fullname: "Marius Scurtescu"
+      organization: "Coinbase"
+    - initials: "A."
+      surname: "Backman"
+      fullname: "Annabelle Backman"
+      organization: "Amazon"
+    - initials: "J."
+      surname: "Bradley"
+      fullname: "John Bradley"
+      organization: "Yubico"
+  date: 2021-06
+  target: "https://openid.net/specs/openid-sse-framework-1_0-01.html"
 
 informative:
  RFC9635: # Grant Negotiation and Authorization Protocol (GNAP)
@@ -276,46 +313,6 @@ informative:
       surname: "Verma"
   date: 2023
   target: "https://doi.org/10.1109/TDSC.2022.3151103"
-
- CAEP:
-  title: "OpenID Continuous Access Evaluation Profile 1.0 - draft 01"
-  author:
-    - initials: "A."
-      surname: "Tulshibagwale"
-      fullname: "Atul Tulshibagwale"
-      organization: "Google"
-    - initials: "T."
-      surname: "Cappalli"
-      fullname: "Tim Cappalli"
-      organization: "Microsoft"
-  date: 2021-06
-  target: "https://openid.net/specs/openid-caep-specification-1_0-01.html"
-
- SSF:
-  title: "OpenID Shared Signals and Events Framework Specification 1.0"
-  author:
-    - initials: "A."
-      surname: "Tulshibagwale"
-      fullname: "Atul Tulshibagwale"
-      organization: "Google"
-    - initials: "T."
-      surname: "Cappalli"
-      fullname: "Tim Cappalli"
-      organization: "Microsoft"
-    - initials: "M."
-      surname: "Scurtescu"
-      fullname: "Marius Scurtescu"
-      organization: "Coinbase"
-    - initials: "A."
-      surname: "Backman"
-      fullname: "Annabelle Backman"
-      organization: "Amazon"
-    - initials: "J."
-      surname: "Bradley"
-      fullname: "John Bradley"
-      organization: "Yubico"
-  date: 2021-06
-  target: "https://openid.net/specs/openid-sse-framework-1_0-01.html"
 
 --- abstract
 
