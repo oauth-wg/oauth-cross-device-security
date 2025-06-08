@@ -23,25 +23,7 @@ author:
 - name: Filip Skokan
   org: Okta
   email: panva.ip@gmail.com
-
-normative:
- RFC2119: # Key words for use in RFCs to Indicate Requirement Levels
- RFC6749: # OAuth 2.0 Authorization Framework
- RFC8693: # OAuth 2.0 Token Exchange
- RFC7523: # JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants
- RFC7636: # Proof Key for Code Exchange by OAuth Public Clients
- RFC8174: # Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words
- RFC8707: # Resource Indicators for OAuth 2.0
- RFC8414: # OAuth 2.0 Authorization Server Metadata
- RFC8725: # JSON Web Token Best Current Practices
- RFC2046: # Multipurpose Internet Mail Extensions (MIME) Part Two: Media Types
- RFC6838: # Media Type Specifications and Registration Procedures
- RFC8628: # OAuth 2.0 Device Authorization Grant
- RFC9635: # Grant Negotiation and Authorization Protocol (GNAP)
-
-informative:
- RFC7662: # OAuth 2.0 Token Introspection
-
+  
 --- abstract
 
 This document describes threats against cross-device flows
