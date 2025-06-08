@@ -2263,6 +2263,17 @@ Table of Contents
               <https://openid.net/specs/openid-client-initiated-
               backchannel-authentication-core-1_0.html>.
 
+   [CAEP]     Tulshibagwale, A. and T. Cappalli, "OpenID Continuous
+              Access Evaluation Profile 1.0 - draft 01", June 2021,
+              <https://openid.net/specs/openid-caep-specification-
+              1_0-01.html>.
+
+   [SSF]      Tulshibagwale, A., Cappalli, T., Scurtescu, M., Backman,
+              A., and J. Bradley, "OpenID Shared Signals and Events
+              Framework Specification 1.0", June 2021,
+              <https://openid.net/specs/openid-sse-framework-
+              1_0-01.html>.
+
 9.2.  Informative References
 
    [RFC9635]  Richer, J., Ed. and F. Imbault, "Grant Negotiation and
@@ -2380,17 +2391,6 @@ Table of Contents
               Dependable and Secure Computing, Volume 20, Number 2,
               Pages 1200–1212", 2023,
               <https://doi.org/10.1109/TDSC.2022.3151103>.
-
-   [CAEP]     Tulshibagwale, A. and T. Cappalli, "OpenID Continuous
-              Access Evaluation Profile 1.0 - draft 01", June 2021,
-              <https://openid.net/specs/openid-caep-specification-
-              1_0-01.html>.
-
-   [SSF]      Tulshibagwale, A., Cappalli, T., Scurtescu, M., Backman,
-              A., and J. Bradley, "OpenID Shared Signals and Events
-              Framework Specification 1.0", June 2021,
-              <https://openid.net/specs/openid-sse-framework-
-              1_0-01.html>.
 
 Appendix A.  Document History
 
