@@ -30,6 +30,8 @@ normative:
  RFC7636: # Proof Key for Code Exchange by OAuth Public Clients
  RFC8174: # Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words
  RFC8628: # OAuth 2.0 Device Authorization Grant
+ RFC7662: # OAuth 2.0 Token Introspection
+
  CIBA:
     title: "OpenID Connect Client-Initiated Backchannel Authentication Flow - Core 1.0"
     author:
@@ -154,7 +156,6 @@ SSF:
   target: "https://openid.net/specs/openid-sse-framework-1_0-01.html"
 
 informative:
- RFC7662: # OAuth 2.0 Token Introspection
  RFC9635: # Grant Negotiation and Authorization Protocol (GNAP)
  Exploit1:
   title: "The Art of the Device Code Phish"
