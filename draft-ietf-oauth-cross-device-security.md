@@ -82,20 +82,20 @@ Exploit4:
   target: https://www.youtube.com/watch?v=9slRYvpKHp4
 Exploit5:
   title: "OAuth's Device Code Flow Abused in Phishing Attacks"
-  author: 
+  author:
    - name: Secureworks Counter Threat Unit (CTU) researchers
   date: 2021-08
   target: https://www.secureworks.com/blog/oauths-device-code-flow-abused-in-phishing-attacks
 Exploit6:
   title: "SquarePhish: Advanced phishing tool combines QR codes and OAuth 2.0 device code flow"
-  author: 
+  author:
    - name: Kam Talebzadeh
    - name: Nevada Romsdah
   date: 2022-08
   target: https://www.helpnetsecurity.com/2022/08/11/squarephish-video/
 NYC.Bike:
   title: "Citi Bikes being swiped by joyriding scammers who have cracked the QR code"
-  author: 
+  author:
    - name: Kerry J. Byrne
   date: 2021-08
   target: https://nypost.com/2021/08/07/citi-bikes-being-swiped-by-joyriding-scammers-who-have-cracked-the-qr-code/
