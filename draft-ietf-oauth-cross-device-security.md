@@ -84,7 +84,7 @@ normative:
       organization: "Yubico"
   date: 2021-06
   target: "https://openid.net/specs/openid-sse-framework-1_0-01.html"
-W3CWebAuthn:
+ W3CWebAuthn:
   title: "Web Authentication: An API for accessing Public Key Credentials Level 3"
   author:
     - initials: "T."
