@@ -23,7 +23,7 @@ author:
 - name: Filip Skokan
   org: Okta
   email: panva.ip@gmail.com
-  
+
 --- abstract
 
 This document describes threats against cross-device flows
