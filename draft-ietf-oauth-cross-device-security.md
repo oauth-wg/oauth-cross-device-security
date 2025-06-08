@@ -134,6 +134,12 @@ OpenID.VCI:
      org: Mattr
   date: 2023-10
   target: https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html
+Bauer2022:
+  title: "Formal analysis of self-issued OpenID providers"
+  author:
+   - name: C Bauer
+  date: 2022
+  target: https://elib.uni-stuttgart.de/handle/11682/12417
 
 --- abstract
 
@@ -977,7 +983,7 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
 {backmatter}
 
 # Document History
-   [[ To be removed from the final specification ]]
+   \[\[ To be removed from the final specification ]]
 
    -latest
    * Shepherd feedback: Describe unauthenticated channel
@@ -1153,15 +1159,6 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
     <date year="2023"/>
     <format type="doi">10.1109/TDSC.2022.3151103</format>
   </front>
-</reference>
-
-<reference anchor="Bauer2022" target="https://elib.uni-stuttgart.de/handle/11682/12417">
-  <front>
-    <title>Formal analysis of self-issued OpenID providers</title>
-    <author initials="C." surname="Bauer">
-    </author>
-    <date year="2022"/>
- </front>
 </reference>
 
 <reference anchor="Helmschmidt2022" target="https://elib.uni-stuttgart.de/handle/11682/12220">
