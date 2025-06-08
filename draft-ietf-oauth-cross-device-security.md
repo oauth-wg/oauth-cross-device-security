@@ -109,10 +109,6 @@ normative:
       organization: "Cisco"
   date: 2025-01
   target: "https://www.w3.org/TR/2025/WD-webauthn-3-20250127/"
-
-informative:
- RFC9635: # Grant Negotiation and Authorization Protocol (GNAP)
-
  FIDOCTAP22:
   title: "Client to Authenticator Protocol (CTAP)"
   author:
@@ -142,6 +138,9 @@ informative:
       organization: "Ping Identity"
   date: 2025-02
   target: "https://fidoalliance.org/specs/fido-v2.2-ps-20250228/fido-client-to-authenticator-protocol-v2.2-ps-20250228.html"
+
+informative:
+ RFC9635: # Grant Negotiation and Authorization Protocol (GNAP)
 
  Exploit1:
   title: "The Art of the Device Code Phish"
