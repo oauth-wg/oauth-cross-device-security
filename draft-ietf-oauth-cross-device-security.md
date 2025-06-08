@@ -339,8 +339,8 @@ In these flows, the Consumption Device and the Authorization Device are not dire
 Cross-Device Consent Phishing (CDCP) attacks exploit the unauthenticated channel
 between the Consumption Device and Authorization Device using social engineering
 techniques to gain unauthorized access to the user's data. Several publications
-have emerged in the public domain ({{Exploit1}}, {{EXploit2}}, {{EXploit3}}, {{EXploit4}},
-{{EXploit5}}, {{EXploit6}}), describing how the unauthenticated channel can be
+have emerged in the public domain ({{Exploit1}}, {{Exploit2}}, {{Exploit3}}, {{Exploit4}},
+{{Exploit5}}, {{Exploit6}}), describing how the unauthenticated channel can be
 exploited using social engineering techniques borrowed from phishing. Unlike traditional
 phishing attacks, these attacks don't harvest credentials. Instead, they skip the
 step of collecting credentials by persuading users to grant authorization using
@@ -897,7 +897,7 @@ Note: There are scenarios that require that an authorization takes place in a di
 ### Short Lived/Timebound QR or User Codes
 The impact of an attack can be reduced by making QR or user codes short lived. If an attacker obtains a short lived code, the duration during which the unauthenticated channel can be exploited is reduced, potentially increasing the cost of a successful attack.
 
-**Limitations:** There is a practical limit to how short a user code can be valid due to network latency and user experience limitations (time taken to enter a code, or incorrectly entering a code). More sophisticated Cross-Device Consent Phishing attacks counter the effectiveness of short lived codes by convincing a user to respond to a phishing e-mail and only request the QR or user code once the user clicks on the link in the phishing e-mail {{EXploit6}}.
+**Limitations:** There is a practical limit to how short a user code can be valid due to network latency and user experience limitations (time taken to enter a code, or incorrectly entering a code). More sophisticated Cross-Device Consent Phishing attacks counter the effectiveness of short lived codes by convincing a user to respond to a phishing e-mail and only request the QR or user code once the user clicks on the link in the phishing e-mail {{Exploit6}}.
 
 ### One-Time or Limited Use Codes
 By enforcing one-time use or limited use of user or QR codes, the authorization server can limit the impact of attacks where the same user code or QR code is sent to multiple victims. One-time use may be achieved by including a nonce or date-stamp in the user code or QR code which is validated by the authorization server when the user scans the QR code against a list of previously issued codes.
@@ -1020,7 +1020,7 @@ Some cross-device protocols are more susceptible to the exploits described in th
 A standard to enable authorization on devices with constrained input capabilities (smart TVs, printers, kiosks). In this protocol, the user code or QR code is displayed or made available on the Consumption Device (smart TV) and entered on a second device (e.g., a mobile phone).
 
 #### Susceptibility
-There are several reports in the public domain outlining how the unauthenticated channel may be exploited to execute a Cross-Device Consent Phishing attack ({{Exploit1}}, {{EXploit2}}, {{EXploit3}}, {{EXploit4}}, {{EXploit5}}, {{EXploit6}}).
+There are several reports in the public domain outlining how the unauthenticated channel may be exploited to execute a Cross-Device Consent Phishing attack ({{Exploit1}}, {{Exploit2}}, {{Exploit3}}, {{Exploit4}}, {{Exploit5}}, {{Exploit6}}).
 
 #### Device Capabilities
 There are no assumptions in the protocol about underlying capabilities of the device, making it a "least common denominator" protocol that is expected to work on the broadest set of devices and environments.
