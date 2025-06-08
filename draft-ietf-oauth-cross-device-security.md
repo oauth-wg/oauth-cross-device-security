@@ -1,13 +1,11 @@
 ---
-stand_alone: true
 ipr: trust200902
 cat: bcp
 submissiontype: IETF
-area: sec
-wg: oauth
+area: Security
+wg: OAuth Working Group
 
 docname: draft-ietf-oauth-cross-device-security-latest
-
 title: "Cross-Device Flows: Security Best Current Practice"
 abbrev: "CDFS"
 lang: en
