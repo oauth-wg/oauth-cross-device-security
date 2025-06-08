@@ -173,8 +173,7 @@ informative:
     - name: "IEEE"
       value: "802.15.4-2020"
   target: "https://standards.ieee.org/standard/802_15_4-2020.html"
-  annotation: >
-    This standard defines the physical layer and media access control for low-rate wireless personal area networks (LR-WPANs) and is maintained by the IEEE 802.15 working group.
+  annotation: This standard defines the physical layer and media access control for low-rate wireless personal area networks (LR-WPANs) and is maintained by the IEEE 802.15 working group.
 
  W3CWebAuthn:
   title: "Web Authentication: An API for accessing Public Key Credentials Level 3"
