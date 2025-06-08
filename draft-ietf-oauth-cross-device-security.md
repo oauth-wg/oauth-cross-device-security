@@ -58,6 +58,37 @@ informative:
    - name: Bobby Cooke
   date: 2021-07
   target: https://0xboku.com/2021/07/12/ArtOfDeviceCodePhish.html
+ Exploit2:
+  title: "Microsoft 365 OAuth Device Code Flow and Phishing"
+  author: 
+   - name: Daniel Min
+  date: 2021-08
+  target: https://www.optiv.com/insights/source-zero/blog/microsoft-365-oauth-device-code-flow-and-phishing
+Exploit3:
+  title: "Introducing a new phishing technique for compromising Office 365 accounts"
+  author: 
+   - name: Nestori Syynimaa
+  date: 2020-10
+  target: https://o365blog.com/post/phishing/#new-phishing-technique-device-code-authentication
+Exploit4:
+  title: "New Phishing Attacks Exploiting OAuth Authentication Flows (DEFCON 29)"
+  author: 
+   - name: Jenko Hwong
+  date: 2021-08
+  target: https://www.youtube.com/watch?v=9slRYvpKHp4
+Exploit5:
+  title: "OAuth's Device Code Flow Abused in Phishing Attacks"
+  author: 
+   - name: Secureworks Counter Threat Unit (CTU) researchers
+  date: 2021-08
+  target: https://www.secureworks.com/blog/oauths-device-code-flow-abused-in-phishing-attacks
+Exploit6:
+  title: "SquarePhish: Advanced phishing tool combines QR codes and OAuth 2.0 device code flow"
+  author: 
+   - name: Kam Talebzadeh
+   - name: Nevada Romsdah
+  date: 2022-08
+  target: https://www.helpnetsecurity.com/2022/08/11/squarephish-video/
 
 --- abstract
 
@@ -92,8 +123,8 @@ In these flows, the Consumption Device and the Authorization Device are not dire
 Cross-Device Consent Phishing (CDCP) attacks exploit the unauthenticated channel
 between the Consumption Device and Authorization Device using social engineering
 techniques to gain unauthorized access to the user's data. Several publications
-have emerged in the public domain ({{Exploit1}}, [@Exploit2], [@Exploit3], [@Exploit4],
-[@Exploit5], [@Exploit6]), describing how the unauthenticated channel can be
+have emerged in the public domain ({{Exploit1}}, {{EXploit2}}, {{EXploit3}}, {{EXploit4}},
+{{EXploit5}}, {{EXploit6}}), describing how the unauthenticated channel can be
 exploited using social engineering techniques borrowed from phishing. Unlike traditional
 phishing attacks, these attacks don't harvest credentials. Instead, they skip the
 step of collecting credentials by persuading users to grant authorization using
@@ -650,7 +681,7 @@ Note: There are scenarios that require that an authorization takes place in a di
 ### Short Lived/Timebound QR or User Codes
 The impact of an attack can be reduced by making QR or user codes short lived. If an attacker obtains a short lived code, the duration during which the unauthenticated channel can be exploited is reduced, potentially increasing the cost of a successful attack.
 
-**Limitations:** There is a practical limit to how short a user code can be valid due to network latency and user experience limitations (time taken to enter a code, or incorrectly entering a code). More sophisticated Cross-Device Consent Phishing attacks counter the effectiveness of short lived codes by convincing a user to respond to a phishing e-mail and only request the QR or user code once the user clicks on the link in the phishing e-mail [@Exploit6].
+**Limitations:** There is a practical limit to how short a user code can be valid due to network latency and user experience limitations (time taken to enter a code, or incorrectly entering a code). More sophisticated Cross-Device Consent Phishing attacks counter the effectiveness of short lived codes by convincing a user to respond to a phishing e-mail and only request the QR or user code once the user clicks on the link in the phishing e-mail {{EXploit6}}.
 
 ### One-Time or Limited Use Codes
 By enforcing one-time use or limited use of user or QR codes, the authorization server can limit the impact of attacks where the same user code or QR code is sent to multiple victims. One-time use may be achieved by including a nonce or date-stamp in the user code or QR code which is validated by the authorization server when the user scans the QR code against a list of previously issued codes.
@@ -773,7 +804,7 @@ Some cross-device protocols are more susceptible to the exploits described in th
 A standard to enable authorization on devices with constrained input capabilities (smart TVs, printers, kiosks). In this protocol, the user code or QR code is displayed or made available on the Consumption Device (smart TV) and entered on a second device (e.g., a mobile phone).
 
 #### Susceptibility
-There are several reports in the public domain outlining how the unauthenticated channel may be exploited to execute a Cross-Device Consent Phishing attack ({{Exploit1}}, [@Exploit2], [@Exploit3], [@Exploit4], [@Exploit5], [@Exploit6]).
+There are several reports in the public domain outlining how the unauthenticated channel may be exploited to execute a Cross-Device Consent Phishing attack ({{Exploit1}}, {{EXploit2}}, {{EXploit3}}, {{EXploit4}}, {{EXploit5}}, {{EXploit6}}).
 
 #### Device Capabilities
 There are no assumptions in the protocol about underlying capabilities of the device, making it a "least common denominator" protocol that is expected to work on the broadest set of devices and environments.
@@ -1017,55 +1048,6 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
   </front>
 </reference>
 
-<reference anchor="Exploit2" target="https://www.optiv.com/insights/source-zero/blog/microsoft-365-oauth-device-code-flow-and-phishing">
-  <front>
-    <title>Microsoft 365 OAuth Device Code Flow and Phishing</title>
-    <author>
-      <organization></organization>
-    </author>
-    <date year="2021" month="August"/>
-  </front>
-</reference>
-
-<reference anchor="Exploit3" target="https://o365blog.com/post/phishing/#new-phishing-technique-device-code-authentication">
-  <front>
-    <title>Introducing a new phishing technique for compromising Office 365 accounts</title>
-    <author initials="N." surname="Syynimaa " fullname="Nestori Syynimaa">
-      <organization></organization>
-    </author>
-    <date year="2020" month="October"/>
-  </front>
-</reference>
-
-<reference anchor="Exploit4" target="https://www.youtube.com/watch?v=9slRYvpKHp4">
-  <front>
-    <title>New Phishing Attacks Exploiting OAuth Authentication Flows (DEFCON 29)</title>
-    <author initials="J." surname="Hwong " fullname="Jenko Hwong">
-      <organization></organization>
-    </author>
-    <date year="2021" month="August"/>
-  </front>
-</reference>
-
-<reference anchor="Exploit5" target="https://www.secureworks.com/blog/oauths-device-code-flow-abused-in-phishing-attacks">
-  <front>
-    <title>OAuth's Device Code Flow Abused in Phishing Attacks</title>
-    <author>
-      <organization></organization>
-    </author>
-    <date year="2021" month="August"/>
-  </front>
-</reference>
-
-<reference anchor="Exploit6" target="https://www.helpnetsecurity.com/2022/08/11/squarephish-video/">
-  <front>
-    <title>SquarePhish: Advanced phishing tool combines QR codes and OAuth 2.0 device code flow</title>
-    <author>
-      <organization></organization>
-    </author>
-    <date year="2022" month="August"/>
-  </front>
-</reference>
 
 <reference anchor="NYC.Bike" target="https://nypost.com/2021/08/07/citi-bikes-being-swiped-by-joyriding-scammers-who-have-cracked-the-qr-code/">
   <front>
