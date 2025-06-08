@@ -140,6 +140,170 @@ Bauer2022:
    - name: C Bauer
   date: 2022
   target: https://elib.uni-stuttgart.de/handle/11682/12417
+OpenID.Core:
+  title: "OpenID for Verifiable Credential Presentations"
+  author:
+   - name: Nat Sakimura
+   - name: John Bradley
+   - name: Michael B. Jones
+   - name: Breno de Medeiros
+   - name: Chuck Mortimore
+  date: 2014-11
+  target: http://openid.net/specs/openid-connect-core-1_0.html
+IEEE802154:
+  title: "IEEE Std 802.15.4-2020: IEEE Standard for Low-Rate Wireless Networks"
+  author:
+    -
+      organization: "Institute of Electrical and Electronics Engineers"
+  date: 2020
+  seriesinfo:
+    - name: "IEEE"
+      value: "802.15.4-2020"
+  target: "https://standards.ieee.org/standard/802_15_4-2020.html"
+  annotation: >
+    This standard defines the physical layer and media access control for low-rate wireless personal area networks (LR-WPANs) and is maintained by the IEEE 802.15 working group.
+W3CWebAuthn:
+  title: "Web Authentication: An API for accessing Public Key Credentials Level 3"
+  author:
+    - initials: "T."
+      surname: "Cappalli"
+      fullname: "Tim Cappalli"
+      organization: "Okta"
+    - initials: "M."
+      surname: "Jones"
+      fullname: "Michael B. Jones"
+      organization: "Microsoft"
+    - initials: "A."
+      surname: "Kumar"
+      fullname: "Akshay Kumar"
+      organization: "Microsoft"
+    - initials: "E."
+      surname: "Lundberg"
+      fullname: "Emil Lundberg"
+      organization: "Yubico"
+    - initials: "M."
+      surname: "Miller"
+      fullname: "Matthew Miller"
+      organization: "Cisco"
+  date: 2025-01
+  target: "https://www.w3.org/TR/2025/WD-webauthn-3-20250127/"
+FIDOCTAP22:
+  title: "Client to Authenticator Protocol (CTAP)"
+  author:
+    - initials: "J."
+      surname: "Bradley"
+      fullname: "John Bradley"
+      organization: "Yubico"
+    - initials: "M."
+      surname: "Jones"
+      fullname: "Michael B. Jones"
+      organization: "Microsoft"
+    - initials: "A."
+      surname: "Kumar"
+      fullname: "Akshay Kumar"
+      organization: "Microsoft"
+    - initials: "R."
+      surname: "Lindemann"
+      fullname: "Rolf Lindemann"
+      organization: "Nok Nok Labs"
+    - initials: "S."
+      surname: "Verrept"
+      fullname: "Johan Verrept"
+      organization: "OneSpan"
+    - initials: "D."
+      surname: "Waite"
+      fullname: "David Waite"
+      organization: "Ping Identity"
+  date: 2025-02
+  target: "https://fidoalliance.org/specs/fido-v2.2-ps-20250228/fido-client-to-authenticator-protocol-v2.2-ps-20250228.html"
+PCRSM2023:
+  title: "An Automated Multi-Layered Methodology to Assist the Secure and Risk-Aware Design of Multi-Factor Authentication Protocols, IEEE Transactions on Dependable and Secure Computing (TDSC)"
+  author:
+    - initials: "M."
+      surname: "Pernpruner"
+      fullname: "Marco Pernpruner"
+    - initials: "R."
+      surname: "Carbone"
+      fullname: "Roberto Carbone"
+    - initials: "G."
+      surname: "Sciarretta"
+      fullname: "Giada Sciarretta"
+    - initials: "S."
+      surname: "Ranise"
+      fullname: "Silvio Ranise"
+  date: 2023
+  target: "https://doi.org/10.1109/TDSC.2023.3296210"
+MPRCS2020:
+  title: "The Good, the Bad and the (Not So) Ugly of Out-of-Band Authentication with eID Cards and Push Notifications: Design, Formal and Risk Analysis, Proceedings of the Tenth ACM Conference on Data and Application Security and Privacy, Pages 223–234, Association for Computing Machinery"
+  author:
+    - initials: "M."
+      surname: "Pernpruner"
+      fullname: "Marco Pernpruner"
+    - initials: "R."
+      surname: "Carbone"
+      fullname: "Roberto Carbone"
+    - initials: "S."
+      surname: "Ranise"
+      fullname: "Silvio Ranise"
+    - initials: "G."
+      surname: "Sciarretta"
+      fullname: "Giada Sciarretta"
+  date: 2020
+  target: "https://doi.org/10.1145/3374664.3375727"
+Helmschmidt2022:
+  title: "Security analysis of the Grant Negotiation and Authorization Protocol"
+  author:
+    - initials: "F."
+      surname: "Helmschmidt"
+  date: 2022
+  target: "https://elib.uni-stuttgart.de/handle/11682/12220"
+Baki2023:
+  title: "Sixteen Years of Phishing User Studies: What Have We Learned?, IEEE Transactions on Dependable and Secure Computing, Volume 20, Number 2, Pages 1200–1212"
+  author:
+    - initials: "S."
+      surname: "Baki"
+    - initials: "R. M."
+      surname: "Verma"
+  date: 2023
+  target: "https://doi.org/10.1109/TDSC.2022.3151103"
+CAEP:
+  title: "OpenID Continuous Access Evaluation Profile 1.0 - draft 01"
+  author:
+    - initials: "A."
+      surname: "Tulshibagwale"
+      fullname: "Atul Tulshibagwale"
+      organization: "Google"
+    - initials: "T."
+      surname: "Cappalli"
+      fullname: "Tim Cappalli"
+      organization: "Microsoft"
+  date: 2021-06
+  target: "https://openid.net/specs/openid-caep-specification-1_0-01.html"
+SSF:
+  title: "OpenID Shared Signals and Events Framework Specification 1.0"
+  author:
+    - initials: "A."
+      surname: "Tulshibagwale"
+      fullname: "Atul Tulshibagwale"
+      organization: "Google"
+    - initials: "T."
+      surname: "Cappalli"
+      fullname: "Tim Cappalli"
+      organization: "Microsoft"
+    - initials: "M."
+      surname: "Scurtescu"
+      fullname: "Marius Scurtescu"
+      organization: "Coinbase"
+    - initials: "A."
+      surname: "Backman"
+      fullname: "Annabelle Backman"
+      organization: "Amazon"
+    - initials: "J."
+      surname: "Bradley"
+      fullname: "John Bradley"
+      organization: "Yubico"
+  date: 2021-06
+  target: "https://openid.net/specs/openid-sse-framework-1_0-01.html"
 
 --- abstract
 
@@ -687,7 +851,7 @@ A number of protocols that have been standardized, or are in the process of bein
 
 - **Self-Issued OpenID Provider v2 (SIOP V2):** A standard that allows end-user to present self-attested or third party attested attributes when used with OpenID for Verifiable Credential protocols. The user scans a QR code presented by the relying party to initiate the flow.
 
-Cross-device protocols SHOULD not be used for same-device scenarios. If the Consumption Device and Authorization Device are the same device, protocols like OpenID Connect Core [@OpenID.Core] and OAuth 2.0 Authorization Code Grant as defined in {{RFC6749}} are more appropriate. If a protocol supports both same-device and cross-device modes (e.g., {{OpenID.SIOPV2}}), the cross-device mode SHOULD not be used for same-device scenarios. An authorization server MAY choose to block cross-device protocols used in same-device scenarios if it detects that the same device is used. An authorization Server may use techniques such as device fingerprinting, network address or other techniques to detect if a cross-device protocol is being used on the same device. If an implementor decides to use a cross-device protocol or a protocol with a cross-device mode in a same-device scenario, the mitigations recommended in this document SHOULD be implemented to reduce the risks that the unauthenticated channel is exploited.
+Cross-device protocols SHOULD not be used for same-device scenarios. If the Consumption Device and Authorization Device are the same device, protocols like OpenID Connect Core {{OpenID.Core}} and OAuth 2.0 Authorization Code Grant as defined in {{RFC6749}} are more appropriate. If a protocol supports both same-device and cross-device modes (e.g., {{OpenID.SIOPV2}}), the cross-device mode SHOULD not be used for same-device scenarios. An authorization server MAY choose to block cross-device protocols used in same-device scenarios if it detects that the same device is used. An authorization Server may use techniques such as device fingerprinting, network address or other techniques to detect if a cross-device protocol is being used on the same device. If an implementor decides to use a cross-device protocol or a protocol with a cross-device mode in a same-device scenario, the mitigations recommended in this document SHOULD be implemented to reduce the risks that the unauthenticated channel is exploited.
 
 # Mitigating Against Cross-Device Flow Attacks
 The unauthenticated channel between the Consumption Device and the Authorization Device allows attackers to change the context in which the authorization request is presented to the user. This shifts responsibility of authenticating the channel between the two devices to the end-user. End-users have "expertise elsewhere" and are typically not security experts and don't understand the protocols and systems they interact with. As a result, end-users are poorly equipped to authenticate the channel between the two devices. Mitigations should focus on:
@@ -717,7 +881,7 @@ The unauthenticated channel between the Consumption Device and Authorization Dev
 
 - Physical connectivity: This is a good indicator of proximity, but requires specific ports, cables and hardware and may be challenging from a user experience perspective or may not be possible in certain settings (e.g., when USB ports are blocked or removed for security purposes). Physical connectivity may be better suited to dedicated hardware like FIDO devices that can be used with protocols that are resistant to the exploits described in this document.
 
-- Wireless proximity: Near Field Communications (NFC), Bluetooth Low Energy (BLE), and Ultra Wideband (UWB) services can be used to prove proximity between the two devices. NFC technology is widely deployed in mobile phones as part of payment solutions, but NFC readers are less widely deployed. BLE presents another alternative for establishing proximity, but may present user experience challenges when setting up. UWB standards such as IEEE  802.15.4 and the IEEE 802.15.4z-2020 Amendment 1 enable secure ranging between devices and allow devices to establish proximity relative to each other [@IEEE802154].
+- Wireless proximity: Near Field Communications (NFC), Bluetooth Low Energy (BLE), and Ultra Wideband (UWB) services can be used to prove proximity between the two devices. NFC technology is widely deployed in mobile phones as part of payment solutions, but NFC readers are less widely deployed. BLE presents another alternative for establishing proximity, but may present user experience challenges when setting up. UWB standards such as IEEE  802.15.4 and the IEEE 802.15.4z-2020 Amendment 1 enable secure ranging between devices and allow devices to establish proximity relative to each other {{IEEE802154}}.
 
 - Shared network: Device proximity can be inferred by verifying that both devices are on the same network. This check may be performed by the authorization server by comparing the network addresses of the device where the code is displayed (Consumption Device) with that of the Authorization Device. Alternatively the check can be performed on the device, provided that the network address is available. This could be achieved if the authorization server encodes the Consumption Device's network address in the QR code and uses a digital signature to prevent tampering with the code. This does require the wallet to be aware of the countermeasure and effectively enforce it.
 
@@ -750,7 +914,7 @@ Attackers exploit the unauthenticated channel by changing the context of the use
 **Limitations:** Some scenarios may require legitimate re-transmission of user, QR and authorization data (e.g., retries). To prevent the disruption of legitimate scenarios, content filters may use a threshold and allow a limited number of messages with the same QR or user codes to be transmitted before interrupting the delivery of those messages. Content filtering may also be fragmented across multiple communications systems and communication channels (e-mail, text messaging, instant messaging or other communication mechanisms), making it harder to detect or interrupt attacks that are executed over multiple channels, unless here is a high degree of integration between content filtering systems.
 
 ### Detect and Remediate
-The authorization server may be able to detect misuse of the codes due to repeated use as described in [Unique Codes](#Unique_Codes), as an input from a content filtering engine as described in [Content Filtering](#Content_Filtering), or through other mechanisms such as reports from end-users. If an authorization server determines that a user code or QR code is being used in an attack it may choose to invalidate all tokens issued in response to these codes and make that information available through a token introspection endpoint (see {{RFC7662}}). In addition it may notify resource servers to stop accepting these tokens or to terminate existing sessions associated with these tokens using Continuous Access Evaluation Protocol (CAEP) messages [@CAEP] using the Shared Signals Framework (SSF) [@SSF] framework or an equivalent notification system.
+The authorization server may be able to detect misuse of the codes due to repeated use as described in [Unique Codes](#Unique_Codes), as an input from a content filtering engine as described in [Content Filtering](#Content_Filtering), or through other mechanisms such as reports from end-users. If an authorization server determines that a user code or QR code is being used in an attack it may choose to invalidate all tokens issued in response to these codes and make that information available through a token introspection endpoint (see {{RFC7662}}). In addition it may notify resource servers to stop accepting these tokens or to terminate existing sessions associated with these tokens using Continuous Access Evaluation Protocol (CAEP) messages {{CAEP}} using the Shared Signals Framework (SSF) {{SSF}} framework or an equivalent notification system.
 
 **Limitations:** Detection and remediation requires that resource servers are integrated with security eventing systems or token introspection services. This may not always be practical for existing systems and may need to be targeted to the most critical resource services in an environment.
 
@@ -789,7 +953,7 @@ Sender-constrained tokens limit the impact of a successful attack by preventing 
 **Limitations:** Sender-constrained tokens, especially sender-constrained tokens that require proof-of-posession, raise the bar for executing the attack and profiting from exfiltrating tokens. Although a software proof-of-posession key is better than no proof-of-posession key, an attacker may still exfiltrate the software key. Hardware keys are harder to exfiltrate, but come with additional implementation complexity. An attacker that controls the Consumption Device may still be able to excercise the key, even if it is in hardware. Consequently the main protection derived from sender-constrained tokens is preventing tokens from being moved from the Consumption Device to another device, thereby making it harder sell stolen tokens and profit from the attack.
 
 ### User Education {#user_education}
-Research shows that user education is effective in reducing the risk of phishing attacks [@Baki2023]. The service provider MAY educate users on the risks of cross-device consent phishing and provide out-of-band reinforcement to the user on the context and conditions under which an authorization grant may be requested. For example, if the service provider does not send e-mails with QR codes requesting users to grant authorization, this may be reinforced in marketing messages and anti-fraud awareness campaigns. The service provider MAY also choose to reinforce these user education messages through in-app experiences. In [@PCRSM2023], it is proposed to advise users to verify the trustworthiness of the source of a QR code, for instance by checking that the connection is protected through TLS or by verifying that the URL really belongs to the Authorization Server.
+Research shows that user education is effective in reducing the risk of phishing attacks {{Baki2023}}. The service provider MAY educate users on the risks of cross-device consent phishing and provide out-of-band reinforcement to the user on the context and conditions under which an authorization grant may be requested. For example, if the service provider does not send e-mails with QR codes requesting users to grant authorization, this may be reinforced in marketing messages and anti-fraud awareness campaigns. The service provider MAY also choose to reinforce these user education messages through in-app experiences. In {{PCRSM2023}}, it is proposed to advise users to verify the trustworthiness of the source of a QR code, for instance by checking that the connection is protected through TLS or by verifying that the URL really belongs to the Authorization Server.
 
 **Limitations:** Although user education helps to raise awareness and reduce the overall risk to users, it is insufficient on its own to mitigate cross-device consent phishing attacks. In particular, carefully designed phishing attacks can be practically indistinguishable from benign authorization flows even for well-trained users. User education SHOULD therefore be used in conjunction with other controls described in this document.
 
@@ -817,7 +981,7 @@ The user MAY be asked to confirm if they initiated an authentication or authoriz
 **Limitations:** The additional verification step may reduce the overall usability of the system as it is one more thing users need to do right. Attackers may combine traditional phishing attacks and target users who respond to those messages with an interactive attack that sets the expectation with the user that they will have to provide the OTP or PIN, in addition to granting authorization for the request.
 
 ### Request Binding with Out-of-Band Data {#request-binding}
-In the User-Transferred Session Data Pattern, users MAY enter out-of-band information on the Consumption Device to start the authorization process. The out-of-band data entered by the user MAY then be included in the QR code which is displayed on the Consumption Device. When the QR code is scanned by the Authorization Device, the out-of-band data is verified by the user or by the Authorization Device. The out-of-band data could be any attribute that the user or Authorization Device can retrieve during the authorization process. Examples include a serial number, one-time password or PIN, location or any other data that the user or the Authorization Device can recall or retrieve during the authorization process ([@MPRCS2020], [@PCRSM2023]).
+In the User-Transferred Session Data Pattern, users MAY enter out-of-band information on the Consumption Device to start the authorization process. The out-of-band data entered by the user MAY then be included in the QR code which is displayed on the Consumption Device. When the QR code is scanned by the Authorization Device, the out-of-band data is verified by the user or by the Authorization Device. The out-of-band data could be any attribute that the user or Authorization Device can retrieve during the authorization process. Examples include a serial number, one-time password or PIN, location or any other data that the user or the Authorization Device can recall or retrieve during the authorization process ({{MPRCS2020}}, {{PCRSM2023}}).
 
 **Limitations:** A sophistacted attacker may include an additional step in their attack where they create a phishing attack that gathers the out-of-band data from the user before initiating the authorization request. The additional step could also have a negative impact on the usability level of the solution.
 
@@ -894,7 +1058,7 @@ If the user chooses to keep their authenticator linked with the main device, the
 The Cross-Device Authentication flow proves proximity by leveraging BLE advertisements for service establishment, significantly reducing the susceptibility to any of the exploits described in Examples 1-6.
 
 #### Device Capabilities
-Both the Consumption Device and the authenticator require BLE support and access to the internet. The Consumption Device must support both the WebAuthn API [@W3CWebAuthn] (or a platform-specific WebAuthn abstraction for native apps) and the FIDO Client to Authenticator Protocol (CTAP), specifically version 2.2 with hybrid transports [@FIDOCTAP22]. The device serving as the FIDO authenticator must also support CTAP 2.2 or later to be used as a cross-device authenticator.
+Both the Consumption Device and the authenticator require BLE support and access to the internet. The Consumption Device must support both the WebAuthn API {{W3CWebAuthn}} (or a platform-specific WebAuthn abstraction for native apps) and the FIDO Client to Authenticator Protocol (CTAP), specifically version 2.2 with hybrid transports {{FIDOCTAP22}}. The device serving as the FIDO authenticator must also support CTAP 2.2 or later to be used as a cross-device authenticator.
 
 #### Mitigations
 FIDO Cross-Device Authentication (CDA) establishes proximity through the use of BLE, reducing the need for additional mitigations. An implementer MAY still choose to implement additional mitigation as described in this document.
@@ -934,7 +1098,7 @@ The following works have been identified as relevant to the analysis of cross-de
    (#trusted_devices). The mitigation was shown to be effective in the
    model.
  * In "Security analysis of the Grant Negotiation and Authorization
-   Protocol" [@Helmschmidt2022], an analysis of a draft of the Grant
+   Protocol" {{Helmschmidt2022}}, an analysis of a draft of the Grant
    Negotiation and Authorization Protocol (GNAP)
    [@I-D.ietf-gnap-core-protocol] was performed using the Web
    Infrastructure Model. The same attack as in {{Bauer2022}} was found to
@@ -943,7 +1107,7 @@ The following works have been identified as relevant to the analysis of cross-de
    (at least in theory) by the user.
  * In "The Good, the Bad and the (Not So) Ugly of Out-of-Band
    Authentication with eID Cards and Push Notifications: Design, Formal
-   and Risk Analysis" [@MPRCS2020], Pernpruner et al. formally
+   and Risk Analysis" {{MPRCS2020}}, Pernpruner et al. formally
    analysed an authentication protocol relying on push notifications
    delivered to an out-of-band device to approve the authentication
    attempt on the primary device (Backchannel-Transferred Session
@@ -957,7 +1121,7 @@ The following works have been identified as relevant to the analysis of cross-de
    Cross-Device Consent Phishing (CDCP) attacks.
  * In "An Automated Multi-Layered Methodology to Assist the Secure and
    Risk-Aware Design of Multi-Factor Authentication Protocols"
-   [@PCRSM2023], Pernpruner et al. defined a multi-layered methodology
+   {{PCRSM2023}}, Pernpruner et al. defined a multi-layered methodology
    to analyze multi-factor authentication protocols at different levels
    of granularity. They leveraged their methodology to formally analyze
    a protocol relying on a QR code that has to be scanned on a secondary
@@ -1077,164 +1241,15 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
    *  Initial draft adopted from document circulated to the OAuth Security Workshop Slack Channel
    *  Upload as draft-ietf-oauth-cross-device-security-best-practice-00
 
-<reference anchor="OpenID.Core" target="http://openid.net/specs/openid-connect-core-1_0.html">
-  <front>
-    <title>OpenID Connect Core 1.0</title>
-    <author initials="N." surname="Sakimura" fullname="Nat Sakimura">
-      <organization></organization>
-    </author>
-    <author initials="J." surname="Bradley" fullname="John Bradley">
-      <organization></organization>
-    </author>
-    <author initials="M.B." surname="Jones" fullname="Michael B. Jones">
-      <organization></organization>
-    </author>
-    <author initials="B.d." surname="Medeiros" fullname="Breno de Medeiros">
-      <organization></organization>
-    </author>
-    <author initials="C." surname="Mortimore" fullname="Chuck Mortimore">
-      <organization></organization>
-    </author>
-    <date year="2014" month="November"/>
-  </front>
-</reference>
 
 
-<reference anchor="SSF" target="https://openid.net/specs/openid-sse-framework-1_0-01.html">
-  <front>
-    <title>OpenID Shared Signals and Events Framework Specification 1.0</title>
-    <author initials="A." surname="Tulshibagwale" fullname="Atul Tulshibagwale">
-      <organization>Google</organization>
-    </author>
-    <author initials="T." surname="Cappalli" fullname="Tim Cappalli">
-      <organization>Microsoft</organization>
-    </author>
-    <author initials="M." surname="Scurtescu" fullname="Marius Scurtescu">
-      <organization>Coinbase</organization>
-    </author>
-    <author initials="A." surname="Backman" fullname="Annabelle Backman">
-      <organization>Amazon</organization>
-    </author>
-    <author initials="J." surname="Bradley" fullname="John Bradley">
-      <organization>Yubico</organization>
-    </author>
-    <date year="2021" month="June"/>
-  </front>
-</reference>
 
-<reference anchor="CAEP" target="https://openid.net/specs/openid-caep-specification-1_0-01.html">
-  <front>
-    <title>OpenID Continuous Access Evaluation Profile 1.0 - draft 01</title>
-    <author initials="A." surname="Tulshibagwale" fullname="Atul Tulshibagwale">
-      <organization>Google</organization>
-    </author>
-    <author initials="T." surname="Cappalli" fullname="Tim Cappalli">
-      <organization>Microsoft</organization>
-    </author>
-    <date year="2021" month="June"/>
-  </front>
-</reference>
 
-<reference anchor="IEEE802154" target="https://standards.ieee.org/standard/802_15_4-2020.html">
-  <front>
-    <title>IEEE Std 802.15.4-2020: IEEE Standard for Low-Rate Wireless Networks</title>
-    <seriesInfo name="IEEE" value="802.15.4-2020"/>
-    <author>
-        <organization>Institute of Electrical and Electronics Engineers</organization>
-    </author>
-    <date year="2020"/>
-  </front>
-  <annotation>This standard defines the physical layer and media access control for low-rate wireless personal area networks (LR-WPANs) and is maintained by the IEEE 802.15 working group.</annotation>
-</reference>
 
-<reference anchor="Baki2023" target="https://doi.org/10.1109/TDSC.2022.3151103">
-  <front>
-    <title>Sixteen Years of Phishing User Studies: What Have We Learned?, IEEE Transactions on Dependable and Secure Computing, Volume 20, Number 2, Pages 1200-1212</title>
-    <author initials="S." surname="Baki">
-        <organization></organization>
-    </author>
-    <author initials="R. M." surname="Verma">
-        <organization></organization>
-    </author>
-    <date year="2023"/>
-    <format type="doi">10.1109/TDSC.2022.3151103</format>
-  </front>
-</reference>
 
-<reference anchor="Helmschmidt2022" target="https://elib.uni-stuttgart.de/handle/11682/12220">
-  <front>
-    <title>Security analysis of the Grant Negotiation and Authorization Protocol</title>
-    <author initials="F." surname="Helmschmidt">
-    </author>
-    <date year="2022"/>
- </front>
-</reference>
 
-<reference anchor="MPRCS2020" target="https://doi.org/10.1145/3374664.3375727">
-  <front>
-    <title>The Good, the Bad and the (Not So) Ugly of Out-of-Band Authentication with eID Cards and Push Notifications: Design, Formal and Risk Analysis, Proceedings of the Tenth ACM Conference on Data and Application Security and Privacy, Pages 223–234, Association for Computing Machinery</title>
-    <author initials="M." surname="Pernpruner" fullname="Marco Pernpruner"/>
-    <author initials="R." surname="Carbone" fullname="Roberto Carbone"/>
-    <author initials="S." surname="Ranise" fullname="Silvio Ranise"/>
-    <author initials="G." surname="Sciarretta" fullname="Giada Sciarretta"/>
-    <date year="2020"/>
-  </front>
-</reference>
 
-<reference anchor="PCRSM2023" target="https://doi.org/10.1109/TDSC.2023.3296210">
-  <front>
-    <title>An Automated Multi-Layered Methodology to Assist the Secure and Risk-Aware Design of Multi-Factor Authentication Protocols, IEEE Transactions on Dependable and Secure Computing (TDSC)</title>
-    <author initials="M." surname="Pernpruner" fullname="Marco Pernpruner"/>
-    <author initials="R." surname="Carbone" fullname="Roberto Carbone"/>
-    <author initials="G." surname="Sciarretta" fullname="Giada Sciarretta"/>
-    <author initials="S." surname="Ranise" fullname="Silvio Ranise"/>
-    <date year="2023"/>
-  </front>
-</reference>
 
-<reference anchor="FIDOCTAP22" target="https://fidoalliance.org/specs/fido-v2.2-ps-20250228/fido-client-to-authenticator-protocol-v2.2-ps-20250228.html">
-  <front>
-    <title>Client to Authenticator Protocol (CTAP)</title>
-    <author initials="J." surname="Bradley" fullname="John Bradley">
-        <organization>Yubico</organization>
-    </author>
-    <author initials="M." surname="Jones" fullname="Michael B. Jones">
-        <organization>Microsoft</organization>
-    </author>
-    <author initials="A." surname="Kumar" fullname="Akshay Kumar">
-        <organization>Microsoft</organization>
-    </author>
-    <author initials="R." surname="Lindemann" fullname="Rolf Lindemann">
-        <organization>Nok Nok Labs</organization>
-    </author>
-    <author initials="S." surname="Verrept" fullname="Johan Verrept">
-        <organization>OneSpan</organization>
-    </author>
-    <author initials="D." surname="Waite" fullname="David Waite">
-        <organization>Ping Identity</organization>
-    </author>
- <date year="2025" month="February"/>
- </front>
-</reference>
 
-<reference anchor="W3CWebAuthn" target="https://www.w3.org/TR/2025/WD-webauthn-3-20250127/">
-  <front>
-    <title>Web Authentication: An API for accessing Public Key Credentials Level 3</title>
-    <author initials="T." surname="Cappalli" fullname="Tim Cappalli">
-        <organization>Okta</organization>
-    </author>
-    <author initials="M." surname="Jones" fullname="Michael B. Jones">
-        <organization>Microsoft</organization>
-    </author>
-    <author initials="A." surname="Kumar" fullname="Akshay Kumar">
-        <organization>Microsoft</organization>
-    </author>
-    <author initials="E." surname="Lundberg" fullname="Emil Lundberg">
-        <organization>Yubico</organization>
-    </author>
-    <author initials="M." surname="Miller" fullname="Matthew Miller">
-        <organization>Cisco</organization>
-    </author>
- <date year="2025" month="January"/>
- </front>
-</reference>
+
+
