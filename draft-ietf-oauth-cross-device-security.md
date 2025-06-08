@@ -824,7 +824,7 @@ An attacker emulates an enterprise application (e.g., an interactive whiteboard)
 ### Example B3: Illicit Access to Physical Assets (User-Transferred Session Data Pattern)
 An attacker copies a QR code from a bicycle locked in a bicycle rack in a city, prints it on a label and places the label on a bicycle at the other end of the bicycle rack. A customer approaches the bicycle that contains the replicated QR code and scans the code and authenticates before authorizing payment for renting the bicycle. The bicycle rack unlocks the bicycle containing the original QR code and the attacker removes the bicycle before cycling down the street while the customer is left frustrated that the bicycle they were trying to use is not being unlocked {{NYC.Bike}}. The customer proceeds to unlock another bicycle and lodges a complaint with the bicycle renting company.
 
-### Example B4.1: Illicit Transaction Authorization (Backchannel-Transferred Session Pattern) {#Example-B4}
+### Example B4.1: Illicit Transaction Authorization (Backchannel-Transferred Session Pattern) {#example-b4}
 An attacker obtains a list of user identifiers for a financial institution and triggers a transaction request for each of the users on the list. The financial institution's authorization server sends push notifications to each of the users, requesting authorization of a transaction. The vast majority of users ignore the request to authorize the transaction, but a small percentage grants authorization by approving the transaction.
 
 ### Example B4.2: Fake Helpdesk (Backchannel-Transferred Session Pattern)
@@ -960,7 +960,7 @@ Another mitigation strategy includes limiting the life of the access and refresh
 **Limitations:** Short lived tokens reduces the time window during which an attacker can benefit from a successful attack. This is most effective for access tokens. However, once an attacker obtains a refresh token, they can continue to request new access tokens, as well as refresh tokens. Forcing the expiry of refresh tokens may cause the user to re-authorize an action more frequently, which results in a negative user experience.
 
 ### Rate Limits
-An attacker that engages in a scaled attack may need to request a large number of user codes (see exploit [Example B1](#Example_B1:_Illicit_access_to_a_video_streaming_service_(User-Transferred_Session_Data_Pattern))) or initiate a large number of authorization requests (see exploit {{#Example-B4}}) in a short period of time. An authorization server MAY apply rate limits to minimize the number of requests it would accept from a client in a limited time period.
+An attacker that engages in a scaled attack may need to request a large number of user codes (see exploit [Example B1](#Example_B1:_Illicit_access_to_a_video_streaming_service_(User-Transferred_Session_Data_Pattern))) or initiate a large number of authorization requests (see exploit {{#example-b4}}) in a short period of time. An authorization server MAY apply rate limits to minimize the number of requests it would accept from a client in a limited time period.
 
 **Limitations:** Rate limits are effective at slowing an attacker down and help to degrade scaled attacks, but do not prevent more targeted attacks that are executed with lower volumes and velocity. Therefore, it should be used along with other techniques to provide a defence-in-depth defence against cross-device attacks.
 
@@ -1052,7 +1052,7 @@ Only use this protocol if other cross-device protocols are not viable due to dev
 Client Initiated Back-Channel Authentication (CIBA) {{CIBA}}: A standard developed in the OpenID Foundation that allows a device or service (e.g., a personal computer, smart TV, Kiosk) to request the OpenID Provider to initiate an authentication flow if it knows a valid identifier for the user. The user completes the authentication flow using a second device (e.g., a mobile phone). In this flow the user does not scan a QR code or obtain a user code from the Consumption Device, but is instead contacted by the OpenID Provider to complete the authentication using a push notification, e-mail, text message or any other suitable mechanism.
 
 #### Susceptibility
-Less susceptible to unauthenticated channel attacks, but still vulnerable to attackers who know or can guess the user identifier and initiate an attack as described in {{#Example-B4}}.
+Less susceptible to unauthenticated channel attacks, but still vulnerable to attackers who know or can guess the user identifier and initiate an attack as described in {{#example-b4}}.
 
 #### Device Capabilities
 There is no requirement on the Consumption Device to support specific hardware. The Authorization Device must be registered/associated with the user and it must be possible for the Authorization Server to trigger an authorization on this device.
