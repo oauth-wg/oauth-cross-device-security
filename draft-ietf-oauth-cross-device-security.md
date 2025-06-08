@@ -55,7 +55,6 @@ normative:
     target: https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html
 
 informative:
- I-D.draft-ietf-oauth-v2-1:
  RFC7662: # OAuth 2.0 Token Introspection
  Exploit1:
   title: "The Art of the Device Code Phish"
@@ -1259,9 +1258,6 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
 
    *  Initial draft adopted from document circulated to the OAuth Security Workshop Slack Channel
    *  Upload as draft-ietf-oauth-cross-device-security-best-practice-00
-
-
-
 
 
 
