@@ -37,6 +37,7 @@ normative:
  RFC2046: # Multipurpose Internet Mail Extensions (MIME) Part Two: Media Types
  RFC6838: # Media Type Specifications and Registration Procedures
  RFC8628: # OAuth 2.0 Device Authorization Grant
+ RFC9635: # Grant Negotiation and Authorization Protocol (GNAP)
  CIBA:
     title: "OpenID Connect Client-Initiated Backchannel Authentication Flow - Core 1.0"
     author:
@@ -1100,7 +1101,7 @@ The following works have been identified as relevant to the analysis of cross-de
  * In "Security analysis of the Grant Negotiation and Authorization
    Protocol" {{Helmschmidt2022}}, an analysis of a draft of the Grant
    Negotiation and Authorization Protocol (GNAP)
-   [@I-D.ietf-gnap-core-protocol] was performed using the Web
+   {{RFC9635}} was performed using the Web
    Infrastructure Model. The same attack as in {{Bauer2022}} was found to
    apply to GNAP as well. In this case, a model of a "careful user" (see
    (#user_education)) was used to show that the attack can be prevented
