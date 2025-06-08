@@ -917,7 +917,7 @@ There are various different approaches to formal security analysis and each brin
 
 The following works have been identified as relevant to the analysis of cross-device flows:
 
- * In "Formal analysis of self-issued OpenID providers" [@Bauer2022],
+ * In "Formal analysis of self-issued OpenID providers" {{Bauer2022}},
    the protocol of {{OpenID.SIOPV2}} was analyzed using the Web
    Infrastructure Model (WIM). The WIM is specifically designed for the
    analysis of web authentication and authorization protocols. While it
@@ -925,7 +925,7 @@ The following works have been identified as relevant to the analysis of cross-de
    and web interactions to a degree that is hard to match in automated
    models. In previous works, previously unknown flaws in OAuth, OpenID
    Connect, and FAPI were discovered using the WIM. In the analysis of a
-   cross-device SIOP V2 flow in [@Bauer2022], the request replay attack
+   cross-device SIOP V2 flow in {{Bauer2022}}, the request replay attack
    already described in Section 13.3 of {{OpenID.SIOPV2}} was confirmed
    in the model. A mitigation was implemented based on a so-called
    Cross-Device Stub, essentially a component that serves to link the
@@ -937,7 +937,7 @@ The following works have been identified as relevant to the analysis of cross-de
    Protocol" [@Helmschmidt2022], an analysis of a draft of the Grant
    Negotiation and Authorization Protocol (GNAP)
    [@I-D.ietf-gnap-core-protocol] was performed using the Web
-   Infrastructure Model. The same attack as in [@Bauer2022] was found to
+   Infrastructure Model. The same attack as in {{Bauer2022}} was found to
    apply to GNAP as well. In this case, a model of a "careful user" (see
    (#user_education)) was used to show that the attack can be prevented
    (at least in theory) by the user.
