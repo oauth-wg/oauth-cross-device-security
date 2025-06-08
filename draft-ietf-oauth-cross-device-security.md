@@ -837,9 +837,9 @@ This document only considers scenarios where a user does not collude with an att
 # Cross-Device Protocols and Standards
 Cross-device flows that are subject to the attacks described earlier typically share the following characteristics:
 
-1.	The attacker can initiate the flow and manipulate the context of an authorization request.
+1. The attacker can initiate the flow and manipulate the context of an authorization request.
     E.g., the attacker can obtain a QR code or user code, or can request an authentication/authorization decision from the user.
-2.	The interaction between the Consumption Device and Authorization Device is unauthenticated.
+2. The interaction between the Consumption Device and Authorization Device is unauthenticated.
     I.e., it is left to the user to decide if the QR code, user code, or authentication request is being presented in a legitimate context.
 
 A number of protocols that have been standardized, or are in the process of being standardized that share these characteristics include:
@@ -857,23 +857,23 @@ Cross-device protocols SHOULD not be used for same-device scenarios. If the Cons
 # Mitigating Against Cross-Device Flow Attacks
 The unauthenticated channel between the Consumption Device and the Authorization Device allows attackers to change the context in which the authorization request is presented to the user. This shifts responsibility of authenticating the channel between the two devices to the end-user. End-users have "expertise elsewhere" and are typically not security experts and don't understand the protocols and systems they interact with. As a result, end-users are poorly equipped to authenticate the channel between the two devices. Mitigations should focus on:
 
-1.	Minimizing reliance on the user to make decisions to authenticate the channel.
-2.	Providing better information with which to make decisions to authenticate the channel.
-3.	Recovering from incorrect channel authentication decisions by users.
+1. Minimizing reliance on the user to make decisions to authenticate the channel.
+2. Providing better information with which to make decisions to authenticate the channel.
+3. Recovering from incorrect channel authentication decisions by users.
 
 To achieve the above outcomes, mitigating against Cross-Device Consent Phishing attacks require a three-pronged approach:
 
-1.	Reduce risks of deployed protocols with practical mitigations.
-2.	Adopt or develop protocols that are less susceptible to these attacks where possible.
-3.	Provide analytical tools to assess vulnerabilities and effectiveness of mitigations.
+1. Reduce risks of deployed protocols with practical mitigations.
+2. Adopt or develop protocols that are less susceptible to these attacks where possible.
+3. Provide analytical tools to assess vulnerabilities and effectiveness of mitigations.
 
 ## Practical Mitigations {#practical-mitigations}
 
 A number of protocols that enable cross-device flows that are susceptible to Cross-Device Consent Phishing attacks are already deployed. The security profile of these protocols can be improved through practical mitigations that provide defense in depth that either:
 
-1.	Prevents the attack from being initiated.
-2.	Disrupts the attack once it is initiated.
-3.	Remediates or reduces the impact if the attack succeeds.
+1. Prevents the attack from being initiated.
+2. Disrupts the attack once it is initiated.
+3. Remediates or reduces the impact if the attack succeeds.
 
 It is RECOMMENDED that one or more of the mitigations are applied whenever implementing a cross-device flow. Every mitigation provides an additional layer of security that makes it harder to initiate the attack, disrupts attacks in progress or reduces the impact of a successful attack.
 
