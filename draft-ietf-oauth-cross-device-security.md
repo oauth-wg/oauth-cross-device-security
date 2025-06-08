@@ -93,6 +93,12 @@ Exploit6:
    - name: Nevada Romsdah
   date: 2022-08
   target: https://www.helpnetsecurity.com/2022/08/11/squarephish-video/
+NYC.Bike:
+  title: "Citi Bikes being swiped by joyriding scammers who have cracked the QR code"
+  author: 
+   - name: Kerry J. Byrne
+  date: 2021-08
+  target: https://nypost.com/2021/08/07/citi-bikes-being-swiped-by-joyriding-scammers-who-have-cracked-the-qr-code/
 OpenID.SIOPV2:
   title: "Self-Issued OpenID Provider v2"
   author:
@@ -117,6 +123,17 @@ OpenID.VP:
      org: Mattr
   date: 2023-11
   target: https://openid.net/specs/openid-4-verifiable-presentations-1_0.html
+OpenID.VCI:
+  title: "OpenID for Verifiable Credential Issuance"
+  author:
+   - name: Torsten Lodderstedt
+     org: yes.com
+   - name: Kristina Yasuda
+     org: Microsoft
+   - name: Tobias Looker
+     org: Mattr
+  date: 2023-10
+  target: https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html
 
 --- abstract
 
@@ -209,7 +226,7 @@ This section describes the set of security mechanisms and measures to secure cro
 4. Implementers MUST implement practical mitigations as listed in (#practical-mitigations) that are appropriate for the use case, architecture, and selected protocols.
 5. Implementers SHOULD implement proximity checks as defined in (#establish-proximity) if possible.
 
-These best practices apply to the Device Authorization Grant ({{RFC8628}}) as well as other cross-device protocols such as the Client Initiated Backchannel Authentication {{CIBA}}, Self-Issued OpenID Provider v2 {{OpenID.SIOPV2}}, OpenID for Verifiable Presentations {{OpenID.VP}}, the Pre-Authorized Code Flow in ([@OpenID.VCI]) and other cross-device protocols that rely on the user to authenticate the channel between devices.
+These best practices apply to the Device Authorization Grant ({{RFC8628}}) as well as other cross-device protocols such as the Client Initiated Backchannel Authentication {{CIBA}}, Self-Issued OpenID Provider v2 {{OpenID.SIOPV2}}, OpenID for Verifiable Presentations {{OpenID.VP}}, the Pre-Authorized Code Flow in ({{OpenID.VCI}}) and other cross-device protocols that rely on the user to authenticate the channel between devices.
 
 (#cross-device-flow-patterns) provides details about susceptible protocols and (#cross-device-flow-exploits) provides attack descriptions. (#practical-mitigations) provides details about the security mechanisms and mitigations, (protocol-selection) provides protocol selection guidance and (#foundational-pillars) provides details from formal analysis of protocols that apply to cross device flows.
 
@@ -349,7 +366,7 @@ Session transfer flows enable a user to transfer access to a service or network 
 The session transfer preserves state information, including authentication state, at the second device to avoid additional configuration and optimize the user experience. These flows are often used to add new devices to a network, onboard customers to a mobile application, or provision new credentials (e.g., {{OpenID.SIOPV2}}).
 
 ### Cross-Device Session Transfer Pattern
-In this flow, the user is authenticated and starts the flow by authorizing the transfer of the session on the Authorization Device. The Authorization Device requests a session transfer code that may be rendered as a QR code on the Authorization Device. When the user scans the QR code or enters it on the Consumption Device where they would like the session to continue, the Consumption Device presents it to the Authorization Server. The Authorization Server then transfers the session to the Consumption Device. This may include transferring authentication and authorization state to optimize the user experience. This type of flow is used, for example, for adding new devices to networks, bootstrapping new applications, or provisioning new credentials. The Pre-Authorized Code Flow in ([@OpenID.VCI]) is an instance of using this pattern to provision a new credential. The figure below shows a typical flow.
+In this flow, the user is authenticated and starts the flow by authorizing the transfer of the session on the Authorization Device. The Authorization Device requests a session transfer code that may be rendered as a QR code on the Authorization Device. When the user scans the QR code or enters it on the Consumption Device where they would like the session to continue, the Consumption Device presents it to the Authorization Server. The Authorization Server then transfers the session to the Consumption Device. This may include transferring authentication and authorization state to optimize the user experience. This type of flow is used, for example, for adding new devices to networks, bootstrapping new applications, or provisioning new credentials. The Pre-Authorized Code Flow in ({{OpenID.VCI}}) is an instance of using this pattern to provision a new credential. The figure below shows a typical flow.
 
 ~~~ ascii-art
                               (B) Session Transfer
@@ -618,7 +635,7 @@ The attacker scales up the attack by emulating a new smart TV, obtaining multipl
 An attacker emulates an enterprise application (e.g., an interactive whiteboard) and initiates a cross-device flow by requesting a user code and URL from the authorization server. The attacker obtains a list of potential victims and sends an e-mail informing users that their files will be deleted within 24 hours if they don't follow the link, enter the user code and authenticate. The e-mail reminds them that this is the third time that they have been notified and their last opportunity to prevent deletion of their work files. One or more employees respond by following the URL, entering the code and performing multi-factor authentication. Throughout the authentication experience, the user is interacting with a trusted user experience, re-enforcing the legitimacy of the request. Once these employees authorized access, the attacker obtains access and refresh tokens from the authorization server and uses it to access the users' files, perform lateral attacks to obtain access to other information and continuously refresh the session by requesting new access tokens. These tokens may be exfiltrated and sold to third parties.
 
 ### Example B3: Illicit Access to Physical Assets (User-Transferred Session Data Pattern)
-An attacker copies a QR code from a bicycle locked in a bicycle rack in a city, prints it on a label and places the label on a bicycle at the other end of the bicycle rack. A customer approaches the bicycle that contains the replicated QR code and scans the code and authenticates before authorizing payment for renting the bicycle. The bicycle rack unlocks the bicycle containing the original QR code and the attacker removes the bicycle before cycling down the street while the customer is left frustrated that the bicycle they were trying to use is not being unlocked [@NYC.Bike]. The customer proceeds to unlock another bicycle and lodges a complaint with the bicycle renting company.
+An attacker copies a QR code from a bicycle locked in a bicycle rack in a city, prints it on a label and places the label on a bicycle at the other end of the bicycle rack. A customer approaches the bicycle that contains the replicated QR code and scans the code and authenticates before authorizing payment for renting the bicycle. The bicycle rack unlocks the bicycle containing the original QR code and the attacker removes the bicycle before cycling down the street while the customer is left frustrated that the bicycle they were trying to use is not being unlocked {{NYC.BIKE}}. The customer proceeds to unlock another bicycle and lodges a complaint with the bicycle renting company.
 
 ### Example B4.1: Illicit Transaction Authorization (Backchannel-Transferred Session Pattern)
 An attacker obtains a list of user identifiers for a financial institution and triggers a transaction request for each of the users on the list. The financial institution's authorization server sends push notifications to each of the users, requesting authorization of a transaction. The vast majority of users ignore the request to authorize the transaction, but a small percentage grants authorization by approving the transaction.
@@ -660,7 +677,7 @@ A number of protocols that have been standardized, or are in the process of bein
 
 - **Open ID Foundation Client Initiated Back-Channel Authentication (CIBA) {{CIBA}}:** A standard developed in the OpenID Foundation that allows a device or service (e.g., a personal computer, smart TV, Kiosk) to request the OpenID Provider to initiate an authentication flow if it knows a valid identifier for the user. The user completes the authentication flow using a second device (e.g., a mobile phone). In this flow the user does not scan a QR code or obtain a user code from the Consumption Device, but is instead contacted by the OpenID Provider to complete the authentication using a push notification, e-mail, text message or any other suitable mechanism.
 
-- **OpenID for Verifiable Credential Protocol Suite (Issuance, Presentation):** The OpenID for Verifiable Credentials enables cross-device scenarios by allowing users to scan QR codes to retrieve credentials (Issuance - see [@OpenID.VCI]) or present credentials (Presentation - see {{OpenID.VP}}). The QR code is presented on a device that initiates the flow.
+- **OpenID for Verifiable Credential Protocol Suite (Issuance, Presentation):** The OpenID for Verifiable Credentials enables cross-device scenarios by allowing users to scan QR codes to retrieve credentials (Issuance - see {{OpenID.VCI}}) or present credentials (Presentation - see {{OpenID.VP}}). The QR code is presented on a device that initiates the flow.
 
 - **Self-Issued OpenID Provider v2 (SIOP V2):** A standard that allows end-user to present self-attested or third party attested attributes when used with OpenID for Verifiable Credential protocols. The user scans a QR code presented by the relying party to initiate the flow.
 
@@ -1077,16 +1094,6 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
 </reference>
 
 
-<reference anchor="NYC.Bike" target="https://nypost.com/2021/08/07/citi-bikes-being-swiped-by-joyriding-scammers-who-have-cracked-the-qr-code/">
-  <front>
-    <title>Citi Bikes being swiped by joyriding scammers who have cracked the QR code</title>
-    <author initials="K.J." surname="Byrne" fullname="Kerry J. Byrne">
-      <organization></organization>
-    </author>
-    <date year="2021" month="August"/>
-  </front>
-</reference>
-
 <reference anchor="SSF" target="https://openid.net/specs/openid-sse-framework-1_0-01.html">
   <front>
     <title>OpenID Shared Signals and Events Framework Specification 1.0</title>
@@ -1119,22 +1126,6 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
       <organization>Microsoft</organization>
     </author>
     <date year="2021" month="June"/>
-  </front>
-</reference>
-
-<reference anchor="OpenID.VCI" target="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">
-  <front>
-    <title>OpenID for Verifiable Credential Issuance</title>
-    <author initials="T." surname="Lodderstedt" fullname="Torsten Lodderstedt">
-      <organization>yes.com</organization>
-    </author>
-    <author initials="K." surname="Yasuda" fullname="Kristina Yasuda">
-      <organization>Microsoft</organization>
-    </author>
-    <author initials="T." surname="Looker" fullname="Tobias Looker">
-      <organization>Mattr</organization>
-    </author>
-    <date year="2023" month="October"/>
   </front>
 </reference>
 
