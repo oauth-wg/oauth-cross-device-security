@@ -84,7 +84,7 @@ informative:
  Exploit5:
   title: "OAuth's Device Code Flow Abused in Phishing Attacks"
   author:
-   - name: Secureworks Counter Threat Unit (CTU) researchers
+   - organization: "Secureworks Counter Threat Unit (CTU)"
   date: 2021-08
   target: https://www.secureworks.com/blog/oauths-device-code-flow-abused-in-phishing-attacks
  Exploit6:
@@ -147,7 +147,9 @@ informative:
    - name: Nat Sakimura
    - name: John Bradley
    - name: Michael B. Jones
-   - name: Breno de Medeiros
+   - initials: "B. d. M."
+    surname: "de Medeiros"
+    fullname: "Breno de Medeiros"
    - name: Chuck Mortimore
   date: 2014-11
   target: http://openid.net/specs/openid-connect-core-1_0.html
