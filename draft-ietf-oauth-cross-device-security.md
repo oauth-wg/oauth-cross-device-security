@@ -1155,7 +1155,9 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
    \[\[ To be removed from the final specification ]]
 
    -latest
-   * Shepherd feedback: Describe unauthenticated channel
+   * Shepherd feedback: Describe unauthenticated channel.
+   * Shepherd feedback: Seperate normative and informative references.
+   * Shepherd feedback: Update FIDO/WebAuthn references
 
     -09
    * Affiliation change to allow publication to Datatracker.
