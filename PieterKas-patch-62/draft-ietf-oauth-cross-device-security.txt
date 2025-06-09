@@ -5,10 +5,10 @@
 oauth                                                      P. Kasselmann
 Internet-Draft                                                     SPIRL
 Intended status: Best Current Practice                           D. Fett
-Expires: 10 December 2025                                       Authlete
+Expires: 11 December 2025                                       Authlete
                                                                F. Skokan
                                                                     Okta
-                                                             8 June 2025
+                                                             9 June 2025
 
 
            Cross-Device Flows: Security Best Current Practice
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 10 December 2025.
+   This Internet-Draft will expire on 11 December 2025.
 
 Copyright Notice
 
@@ -2287,6 +2287,13 @@ Table of Contents
               fido-v2.2-ps-20250228/fido-client-to-authenticator-
               protocol-v2.2-ps-20250228.html>.
 
+   [IEEE802154]
+              Institute of Electrical and Electronics Engineers, "IEEE
+              Std 802.15.4-2020: IEEE Standard for Low-Rate Wireless
+              Networks", {"name" => "IEEE", "value" =>
+              "802.15.4-2020"} , 2020,
+              <https://standards.ieee.org/standard/802_15_4-2020.html>.
+
 9.2.  Informative References
 
    [RFC9635]  Richer, J., Ed. and F. Imbault, "Grant Negotiation and
@@ -2355,13 +2362,6 @@ Table of Contents
               Sakimura, N., Bradley, J., Jones, M., de Medeiros, B., and
               C. Mortimore, "OpenID Connect Core 1.0", November 2014,
               <https://openid.net/specs/openid-connect-core-1_0.html>.
-
-   [IEEE802154]
-              Institute of Electrical and Electronics Engineers, "IEEE
-              Std 802.15.4-2020: IEEE Standard for Low-Rate Wireless
-              Networks", {"name" => "IEEE", "value" =>
-              "802.15.4-2020"} , 2020,
-              <https://standards.ieee.org/standard/802_15_4-2020.html>.
 
    [PCRSM2023]
               Pernpruner, M., Carbone, R., Sciarretta, G., and S.
