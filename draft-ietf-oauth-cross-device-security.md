@@ -138,6 +138,16 @@ normative:
       organization: "Ping Identity"
   date: 2025-02
   target: "https://fidoalliance.org/specs/fido-v2.2-ps-20250228/fido-client-to-authenticator-protocol-v2.2-ps-20250228.html"
+ IEEE802154:
+  title: "IEEE Std 802.15.4-2020: IEEE Standard for Low-Rate Wireless Networks"
+  author:
+    -
+      organization: "Institute of Electrical and Electronics Engineers"
+  date: 2020
+  seriesinfo:
+    - name: "IEEE"
+      value: "802.15.4-2020"
+  target: "https://standards.ieee.org/standard/802_15_4-2020.html"
 
 informative:
  RFC9635: # Grant Negotiation and Authorization Protocol (GNAP)
@@ -247,17 +257,6 @@ informative:
       - ins: M. Jones
       - ins: B. de Medeiros
       - ins: C. Mortimore
-
- IEEE802154:
-  title: "IEEE Std 802.15.4-2020: IEEE Standard for Low-Rate Wireless Networks"
-  author:
-    -
-      organization: "Institute of Electrical and Electronics Engineers"
-  date: 2020
-  seriesinfo:
-    - name: "IEEE"
-      value: "802.15.4-2020"
-  target: "https://standards.ieee.org/standard/802_15_4-2020.html"
 
  PCRSM2023:
   title: "An Automated Multi-Layered Methodology to Assist the Secure and Risk-Aware Design of Multi-Factor Authentication Protocols, IEEE Transactions on Dependable and Secure Computing (TDSC)"
