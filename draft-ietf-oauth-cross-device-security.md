@@ -27,17 +27,10 @@ author:
 normative:
  RFC2119: # Key words for use in RFCs to Indicate Requirement Levels
  RFC6749: # OAuth 2.0 Authorization Framework
- RFC8693: # OAuth 2.0 Token Exchange
- RFC7523: # JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants
  RFC7636: # Proof Key for Code Exchange by OAuth Public Clients
  RFC8174: # Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words
- RFC8707: # Resource Indicators for OAuth 2.0
- RFC8414: # OAuth 2.0 Authorization Server Metadata
- RFC8725: # JSON Web Token Best Current Practices
- RFC2046: # Multipurpose Internet Mail Extensions (MIME) Part Two: Media Types
- RFC6838: # Media Type Specifications and Registration Procedures
  RFC8628: # OAuth 2.0 Device Authorization Grant
- RFC9635: # Grant Negotiation and Authorization Protocol (GNAP)
+ RFC7662: # OAuth 2.0 Token Introspection
  CIBA:
     title: "OpenID Connect Client-Initiated Backchannel Authentication Flow - Core 1.0"
     author:
@@ -53,10 +46,112 @@ normative:
         org: Ping Identity
     date: 2021-09
     target: https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html
-
+ CAEP:
+  title: "OpenID Continuous Access Evaluation Profile 1.0 - draft 01"
+  author:
+    - initials: "A."
+      surname: "Tulshibagwale"
+      fullname: "Atul Tulshibagwale"
+      organization: "Google"
+    - initials: "T."
+      surname: "Cappalli"
+      fullname: "Tim Cappalli"
+      organization: "Microsoft"
+  date: 2021-06
+  target: "https://openid.net/specs/openid-caep-specification-1_0-01.html"
+ SSF:
+  title: "OpenID Shared Signals and Events Framework Specification 1.0"
+  author:
+    - initials: "A."
+      surname: "Tulshibagwale"
+      fullname: "Atul Tulshibagwale"
+      organization: "Google"
+    - initials: "T."
+      surname: "Cappalli"
+      fullname: "Tim Cappalli"
+      organization: "Microsoft"
+    - initials: "M."
+      surname: "Scurtescu"
+      fullname: "Marius Scurtescu"
+      organization: "Coinbase"
+    - initials: "A."
+      surname: "Backman"
+      fullname: "Annabelle Backman"
+      organization: "Amazon"
+    - initials: "J."
+      surname: "Bradley"
+      fullname: "John Bradley"
+      organization: "Yubico"
+  date: 2021-06
+  target: "https://openid.net/specs/openid-sse-framework-1_0-01.html"
+ W3CWebAuthn:
+  title: "Web Authentication: An API for accessing Public Key Credentials Level 3"
+  author:
+    - initials: "T."
+      surname: "Cappalli"
+      fullname: "Tim Cappalli"
+      organization: "Okta"
+    - initials: "M."
+      surname: "Jones"
+      fullname: "Michael B. Jones"
+      organization: "Microsoft"
+    - initials: "A."
+      surname: "Kumar"
+      fullname: "Akshay Kumar"
+      organization: "Microsoft"
+    - initials: "E."
+      surname: "Lundberg"
+      fullname: "Emil Lundberg"
+      organization: "Yubico"
+    - initials: "M."
+      surname: "Miller"
+      fullname: "Matthew Miller"
+      organization: "Cisco"
+  date: 2025-01
+  target: "https://www.w3.org/TR/2025/WD-webauthn-3-20250127/"
+ FIDOCTAP22:
+  title: "Client to Authenticator Protocol (CTAP)"
+  author:
+    - initials: "J."
+      surname: "Bradley"
+      fullname: "John Bradley"
+      organization: "Yubico"
+    - initials: "M."
+      surname: "Jones"
+      fullname: "Michael B. Jones"
+      organization: "Microsoft"
+    - initials: "A."
+      surname: "Kumar"
+      fullname: "Akshay Kumar"
+      organization: "Microsoft"
+    - initials: "R."
+      surname: "Lindemann"
+      fullname: "Rolf Lindemann"
+      organization: "Nok Nok Labs"
+    - initials: "S."
+      surname: "Verrept"
+      fullname: "Johan Verrept"
+      organization: "OneSpan"
+    - initials: "D."
+      surname: "Waite"
+      fullname: "David Waite"
+      organization: "Ping Identity"
+  date: 2025-02
+  target: "https://fidoalliance.org/specs/fido-v2.2-ps-20250228/fido-client-to-authenticator-protocol-v2.2-ps-20250228.html"
+ IEEE802154:
+  title: "IEEE Std 802.15.4-2020: IEEE Standard for Low-Rate Wireless Networks"
+  author:
+    -
+      organization: "Institute of Electrical and Electronics Engineers"
+  date: 2020
+  seriesinfo:
+    - name: "IEEE"
+      value: "802.15.4-2020"
+  target: "https://standards.ieee.org/standard/802_15_4-2020.html"
 
 informative:
- RFC7662: # OAuth 2.0 Token Introspection
+ RFC9635: # Grant Negotiation and Authorization Protocol (GNAP)
+
  Exploit1:
   title: "The Art of the Device Code Phish"
   author:
@@ -163,73 +258,6 @@ informative:
       - ins: B. de Medeiros
       - ins: C. Mortimore
 
- IEEE802154:
-  title: "IEEE Std 802.15.4-2020: IEEE Standard for Low-Rate Wireless Networks"
-  author:
-    -
-      organization: "Institute of Electrical and Electronics Engineers"
-  date: 2020
-  seriesinfo:
-    - name: "IEEE"
-      value: "802.15.4-2020"
-  target: "https://standards.ieee.org/standard/802_15_4-2020.html"
-
- W3CWebAuthn:
-  title: "Web Authentication: An API for accessing Public Key Credentials Level 3"
-  author:
-    - initials: "T."
-      surname: "Cappalli"
-      fullname: "Tim Cappalli"
-      organization: "Okta"
-    - initials: "M."
-      surname: "Jones"
-      fullname: "Michael B. Jones"
-      organization: "Microsoft"
-    - initials: "A."
-      surname: "Kumar"
-      fullname: "Akshay Kumar"
-      organization: "Microsoft"
-    - initials: "E."
-      surname: "Lundberg"
-      fullname: "Emil Lundberg"
-      organization: "Yubico"
-    - initials: "M."
-      surname: "Miller"
-      fullname: "Matthew Miller"
-      organization: "Cisco"
-  date: 2025-01
-  target: "https://www.w3.org/TR/2025/WD-webauthn-3-20250127/"
-
- FIDOCTAP22:
-  title: "Client to Authenticator Protocol (CTAP)"
-  author:
-    - initials: "J."
-      surname: "Bradley"
-      fullname: "John Bradley"
-      organization: "Yubico"
-    - initials: "M."
-      surname: "Jones"
-      fullname: "Michael B. Jones"
-      organization: "Microsoft"
-    - initials: "A."
-      surname: "Kumar"
-      fullname: "Akshay Kumar"
-      organization: "Microsoft"
-    - initials: "R."
-      surname: "Lindemann"
-      fullname: "Rolf Lindemann"
-      organization: "Nok Nok Labs"
-    - initials: "S."
-      surname: "Verrept"
-      fullname: "Johan Verrept"
-      organization: "OneSpan"
-    - initials: "D."
-      surname: "Waite"
-      fullname: "David Waite"
-      organization: "Ping Identity"
-  date: 2025-02
-  target: "https://fidoalliance.org/specs/fido-v2.2-ps-20250228/fido-client-to-authenticator-protocol-v2.2-ps-20250228.html"
-
  PCRSM2023:
   title: "An Automated Multi-Layered Methodology to Assist the Secure and Risk-Aware Design of Multi-Factor Authentication Protocols, IEEE Transactions on Dependable and Secure Computing (TDSC)"
   author:
@@ -283,46 +311,6 @@ informative:
       surname: "Verma"
   date: 2023
   target: "https://doi.org/10.1109/TDSC.2022.3151103"
-
- CAEP:
-  title: "OpenID Continuous Access Evaluation Profile 1.0 - draft 01"
-  author:
-    - initials: "A."
-      surname: "Tulshibagwale"
-      fullname: "Atul Tulshibagwale"
-      organization: "Google"
-    - initials: "T."
-      surname: "Cappalli"
-      fullname: "Tim Cappalli"
-      organization: "Microsoft"
-  date: 2021-06
-  target: "https://openid.net/specs/openid-caep-specification-1_0-01.html"
-
- SSF:
-  title: "OpenID Shared Signals and Events Framework Specification 1.0"
-  author:
-    - initials: "A."
-      surname: "Tulshibagwale"
-      fullname: "Atul Tulshibagwale"
-      organization: "Google"
-    - initials: "T."
-      surname: "Cappalli"
-      fullname: "Tim Cappalli"
-      organization: "Microsoft"
-    - initials: "M."
-      surname: "Scurtescu"
-      fullname: "Marius Scurtescu"
-      organization: "Coinbase"
-    - initials: "A."
-      surname: "Backman"
-      fullname: "Annabelle Backman"
-      organization: "Amazon"
-    - initials: "J."
-      surname: "Bradley"
-      fullname: "John Bradley"
-      organization: "Yubico"
-  date: 2021-06
-  target: "https://openid.net/specs/openid-sse-framework-1_0-01.html"
 
 --- abstract
 
