@@ -5,10 +5,10 @@
 oauth                                                      P. Kasselmann
 Internet-Draft                                                     SPIRL
 Intended status: Best Current Practice                           D. Fett
-Expires: 10 December 2025                                       Authlete
+Expires: 11 December 2025                                       Authlete
                                                                F. Skokan
                                                                     Okta
-                                                             8 June 2025
+                                                             9 June 2025
 
 
            Cross-Device Flows: Security Best Current Practice
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 10 December 2025.
+   This Internet-Draft will expire on 11 December 2025.
 
 Copyright Notice
 
@@ -2239,16 +2239,6 @@ Table of Contents
               RFC 6749, DOI 10.17487/RFC6749, October 2012,
               <https://www.rfc-editor.org/rfc/rfc6749>.
 
-   [RFC8693]  Jones, M., Nadalin, A., Campbell, B., Ed., Bradley, J.,
-              and C. Mortimore, "OAuth 2.0 Token Exchange", RFC 8693,
-              DOI 10.17487/RFC8693, January 2020,
-              <https://www.rfc-editor.org/rfc/rfc8693>.
-
-   [RFC7523]  Jones, M., Campbell, B., and C. Mortimore, "JSON Web Token
-              (JWT) Profile for OAuth 2.0 Client Authentication and
-              Authorization Grants", RFC 7523, DOI 10.17487/RFC7523, May
-              2015, <https://www.rfc-editor.org/rfc/rfc7523>.
-
    [RFC7636]  Sakimura, N., Ed., Bradley, J., and N. Agarwal, "Proof Key
               for Code Exchange by OAuth Public Clients", RFC 7636,
               DOI 10.17487/RFC7636, September 2015,
@@ -2258,39 +2248,14 @@ Table of Contents
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
 
-   [RFC8707]  Campbell, B., Bradley, J., and H. Tschofenig, "Resource
-              Indicators for OAuth 2.0", RFC 8707, DOI 10.17487/RFC8707,
-              February 2020, <https://www.rfc-editor.org/rfc/rfc8707>.
-
-   [RFC8414]  Jones, M., Sakimura, N., and J. Bradley, "OAuth 2.0
-              Authorization Server Metadata", RFC 8414,
-              DOI 10.17487/RFC8414, June 2018,
-              <https://www.rfc-editor.org/rfc/rfc8414>.
-
-   [RFC8725]  Sheffer, Y., Hardt, D., and M. Jones, "JSON Web Token Best
-              Current Practices", BCP 225, RFC 8725,
-              DOI 10.17487/RFC8725, February 2020,
-              <https://www.rfc-editor.org/rfc/rfc8725>.
-
-   [RFC2046]  Freed, N. and N. Borenstein, "Multipurpose Internet Mail
-              Extensions (MIME) Part Two: Media Types", RFC 2046,
-              DOI 10.17487/RFC2046, November 1996,
-              <https://www.rfc-editor.org/rfc/rfc2046>.
-
-   [RFC6838]  Freed, N., Klensin, J., and T. Hansen, "Media Type
-              Specifications and Registration Procedures", BCP 13,
-              RFC 6838, DOI 10.17487/RFC6838, January 2013,
-              <https://www.rfc-editor.org/rfc/rfc6838>.
-
    [RFC8628]  Denniss, W., Bradley, J., Jones, M., and H. Tschofenig,
               "OAuth 2.0 Device Authorization Grant", RFC 8628,
               DOI 10.17487/RFC8628, August 2019,
               <https://www.rfc-editor.org/rfc/rfc8628>.
 
-   [RFC9635]  Richer, J., Ed. and F. Imbault, "Grant Negotiation and
-              Authorization Protocol (GNAP)", RFC 9635,
-              DOI 10.17487/RFC9635, October 2024,
-              <https://www.rfc-editor.org/rfc/rfc9635>.
+   [RFC7662]  Richer, J., Ed., "OAuth 2.0 Token Introspection",
+              RFC 7662, DOI 10.17487/RFC7662, October 2015,
+              <https://www.rfc-editor.org/rfc/rfc7662>.
 
    [CIBA]     Rodriguez, G. F., Walter, F., Nennker, A., Tonge, D., and
               B. Campbell, "OpenID Connect Client-Initiated Backchannel
@@ -2298,11 +2263,43 @@ Table of Contents
               <https://openid.net/specs/openid-client-initiated-
               backchannel-authentication-core-1_0.html>.
 
+   [CAEP]     Tulshibagwale, A. and T. Cappalli, "OpenID Continuous
+              Access Evaluation Profile 1.0 - draft 01", June 2021,
+              <https://openid.net/specs/openid-caep-specification-
+              1_0-01.html>.
+
+   [SSF]      Tulshibagwale, A., Cappalli, T., Scurtescu, M., Backman,
+              A., and J. Bradley, "OpenID Shared Signals and Events
+              Framework Specification 1.0", June 2021,
+              <https://openid.net/specs/openid-sse-framework-
+              1_0-01.html>.
+
+   [W3CWebAuthn]
+              Cappalli, T., Jones, M., Kumar, A., Lundberg, E., and M.
+              Miller, "Web Authentication: An API for accessing Public
+              Key Credentials Level 3", January 2025,
+              <https://www.w3.org/TR/2025/WD-webauthn-3-20250127/>.
+
+   [FIDOCTAP22]
+              Bradley, J., Jones, M., Kumar, A., Lindemann, R., Verrept,
+              S., and D. Waite, "Client to Authenticator Protocol
+              (CTAP)", February 2025, <https://fidoalliance.org/specs/
+              fido-v2.2-ps-20250228/fido-client-to-authenticator-
+              protocol-v2.2-ps-20250228.html>.
+
+   [IEEE802154]
+              Institute of Electrical and Electronics Engineers, "IEEE
+              Std 802.15.4-2020: IEEE Standard for Low-Rate Wireless
+              Networks", {"name" => "IEEE", "value" =>
+              "802.15.4-2020"} , 2020,
+              <https://standards.ieee.org/standard/802_15_4-2020.html>.
+
 9.2.  Informative References
 
-   [RFC7662]  Richer, J., Ed., "OAuth 2.0 Token Introspection",
-              RFC 7662, DOI 10.17487/RFC7662, October 2015,
-              <https://www.rfc-editor.org/rfc/rfc7662>.
+   [RFC9635]  Richer, J., Ed. and F. Imbault, "Grant Negotiation and
+              Authorization Protocol (GNAP)", RFC 9635,
+              DOI 10.17487/RFC9635, October 2024,
+              <https://www.rfc-editor.org/rfc/rfc9635>.
 
    [Exploit1] Cooke, B., "The Art of the Device Code Phish", July 2021,
               <https://0xboku.com/2021/07/12/ArtOfDeviceCodePhish.html>.
@@ -2366,26 +2363,6 @@ Table of Contents
               C. Mortimore, "OpenID Connect Core 1.0", November 2014,
               <https://openid.net/specs/openid-connect-core-1_0.html>.
 
-   [IEEE802154]
-              Institute of Electrical and Electronics Engineers, "IEEE
-              Std 802.15.4-2020: IEEE Standard for Low-Rate Wireless
-              Networks", {"name" => "IEEE", "value" =>
-              "802.15.4-2020"} , 2020,
-              <https://standards.ieee.org/standard/802_15_4-2020.html>.
-
-   [W3CWebAuthn]
-              Cappalli, T., Jones, M., Kumar, A., Lundberg, E., and M.
-              Miller, "Web Authentication: An API for accessing Public
-              Key Credentials Level 3", January 2025,
-              <https://www.w3.org/TR/2025/WD-webauthn-3-20250127/>.
-
-   [FIDOCTAP22]
-              Bradley, J., Jones, M., Kumar, A., Lindemann, R., Verrept,
-              S., and D. Waite, "Client to Authenticator Protocol
-              (CTAP)", February 2025, <https://fidoalliance.org/specs/
-              fido-v2.2-ps-20250228/fido-client-to-authenticator-
-              protocol-v2.2-ps-20250228.html>.
-
    [PCRSM2023]
               Pernpruner, M., Carbone, R., Sciarretta, G., and S.
               Ranise, "An Automated Multi-Layered Methodology to Assist
@@ -2414,17 +2391,6 @@ Table of Contents
               Dependable and Secure Computing, Volume 20, Number 2,
               Pages 1200–1212", 2023,
               <https://doi.org/10.1109/TDSC.2022.3151103>.
-
-   [CAEP]     Tulshibagwale, A. and T. Cappalli, "OpenID Continuous
-              Access Evaluation Profile 1.0 - draft 01", June 2021,
-              <https://openid.net/specs/openid-caep-specification-
-              1_0-01.html>.
-
-   [SSF]      Tulshibagwale, A., Cappalli, T., Scurtescu, M., Backman,
-              A., and J. Bradley, "OpenID Shared Signals and Events
-              Framework Specification 1.0", June 2021,
-              <https://openid.net/specs/openid-sse-framework-
-              1_0-01.html>.
 
 Appendix A.  Document History
 
