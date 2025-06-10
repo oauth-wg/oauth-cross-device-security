@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-06-05T00:31:57.503225+00:00",
+  "timestamp": "2025-06-10T00:32:14.117184+00:00",
   "repo": "oauth-wg/oauth-cross-device-security",
   "labels": [
     {
@@ -1732,15 +1732,15 @@
       "id": "I_kwDOHK26QM6vbtFm",
       "title": "Shepherd Feedback: Normative References",
       "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/153",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "PieterKas",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "There are no normative references inthe document - we should move some off the non-normative references to the normative section",
       "createdAt": "2025-03-24T13:29:41Z",
-      "updatedAt": "2025-05-02T11:37:09Z",
-      "closedAt": null,
+      "updatedAt": "2025-06-09T02:34:28Z",
+      "closedAt": "2025-06-09T02:34:27Z",
       "comments": [
         {
           "author": "PieterKas",
@@ -1748,6 +1748,20 @@
           "body": "Candidates for inclusion as normative rather than informative:\n\n1. RFC 8628 (OAuth 2.0 Device Authorization Grant)\n2. CIBA (OpenID Connect Client-Initiated Backchannel Authentication Flow)\n3. RFC 6749 (The OAuth 2.0 Authorization Framework)\n4. RFC 7662 (OAuth 2.0 Token Introspection)\n5. CTAP22Draft (Client to Authenticator Protocol)\n6. IEEE802154 (IEEE Standard for Low-Rate Wireless Networks)\n7. CAEP (OpenID Continuous Access Evaluation Profile) and SSF (OpenID Shared Signals Framework Specification)\n",
           "createdAt": "2025-05-02T11:37:08Z",
           "updatedAt": "2025-05-02T11:37:08Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Also added WebAuthN and SSF as normative",
+          "createdAt": "2025-06-08T20:51:05Z",
+          "updatedAt": "2025-06-08T20:51:05Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Closed with PR #163 ",
+          "createdAt": "2025-06-09T02:34:27Z",
+          "updatedAt": "2025-06-09T02:34:27Z"
         }
       ]
     }
@@ -6315,24 +6329,26 @@
       "id": "PR_kwDOHK26QM6Yfe3c",
       "title": "Informative/Normative split",
       "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/161",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "PieterKas",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2025-06-01T17:04:58Z",
-      "updatedAt": "2025-06-03T15:11:02Z",
+      "updatedAt": "2025-06-08T12:48:07Z",
       "baseRepository": "oauth-wg/oauth-cross-device-security",
       "baseRefName": "main",
       "baseRefOid": "3ddd93aac75d75e77d6de9b7aecb7d042634cf27",
       "headRepository": "oauth-wg/oauth-cross-device-security",
       "headRefName": "PieterKas-patch-60",
-      "headRefOid": "c2c9eadd3e29c65df382377c8a8946d4fbf332e4",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "494aab2ae5eda18a097e7f64dc7985fb1d28ec33",
+      "closedAt": "2025-06-08T12:48:07Z",
+      "mergedAt": "2025-06-08T12:48:07Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "16d6a8c20eae5cf41c51fe826ecbb7f31bfbe9bb"
+      },
       "comments": [
         {
           "author": "panva",
@@ -6340,6 +6356,13 @@
           "body": "Do we need to move all the `reference` elements?",
           "createdAt": "2025-06-03T15:11:01Z",
           "updatedAt": "2025-06-03T15:11:01Z"
+        },
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> Do we need to move all the `reference` elements?\r\n\r\nI think we will have to, unless there is some other formatting trick.",
+          "createdAt": "2025-06-08T01:02:14Z",
+          "updatedAt": "2025-06-08T01:02:14Z"
         }
       ],
       "reviews": [
@@ -6404,6 +6427,60 @@
           ]
         }
       ]
+    },
+    {
+      "number": 162,
+      "id": "PR_kwDOHK26QM6ZmYI6",
+      "title": "Normative/Informative references",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/162",
+      "state": "CLOSED",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-06-08T21:02:18Z",
+      "updatedAt": "2025-06-08T21:47:01Z",
+      "baseRepository": "oauth-wg/oauth-cross-device-security",
+      "baseRefName": "main",
+      "baseRefOid": "fbc74545c822d7ed4fbc13dc0696c03eddaa9536",
+      "headRepository": "oauth-wg/oauth-cross-device-security",
+      "headRefName": "PieterKas-patch-61",
+      "headRefOid": "da956f8b961d13791f444c0d9297617252210f12",
+      "closedAt": "2025-06-08T21:47:01Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 163,
+      "id": "PR_kwDOHK26QM6ZmdGN",
+      "title": "Normative RFCs only",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/163",
+      "state": "MERGED",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-06-08T21:48:53Z",
+      "updatedAt": "2025-06-09T02:33:51Z",
+      "baseRepository": "oauth-wg/oauth-cross-device-security",
+      "baseRefName": "main",
+      "baseRefOid": "b96c0461973e3e45880b8d6faf7809a9f262b238",
+      "headRepository": "oauth-wg/oauth-cross-device-security",
+      "headRefName": "PieterKas-patch-62",
+      "headRefOid": "338c16b78b386aee6e4dbd7ff5b30c2321314064",
+      "closedAt": "2025-06-09T02:33:51Z",
+      "mergedAt": "2025-06-09T02:33:51Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "ddd78547e4213cdc7fa7ae6a55f38218964f6cb0"
+      },
+      "comments": [],
+      "reviews": []
     }
   ]
 }
