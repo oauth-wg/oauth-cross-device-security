@@ -5,10 +5,10 @@
 oauth                                                      P. Kasselmann
 Internet-Draft                                                     SPIRL
 Intended status: Best Current Practice                           D. Fett
-Expires: 11 December 2025                                       Authlete
+Expires: 15 December 2025                                       Authlete
                                                                F. Skokan
                                                                     Okta
-                                                             9 June 2025
+                                                            13 June 2025
 
 
            Cross-Device Flows: Security Best Current Practice
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 11 December 2025.
+   This Internet-Draft will expire on 15 December 2025.
 
 Copyright Notice
 
@@ -2275,17 +2275,18 @@ Table of Contents
               1_0-01.html>.
 
    [W3CWebAuthn]
-              Cappalli, T., Jones, M., Kumar, A., Lundberg, E., and M.
+              Cappalli, T., Jones, M.B., Kumar, A., Lundberg, E., and M.
               Miller, "Web Authentication: An API for accessing Public
               Key Credentials Level 3", January 2025,
               <https://www.w3.org/TR/2025/WD-webauthn-3-20250127/>.
 
    [FIDOCTAP22]
-              Bradley, J., Jones, M., Kumar, A., Lindemann, R., Verrept,
-              S., and D. Waite, "Client to Authenticator Protocol
-              (CTAP)", February 2025, <https://fidoalliance.org/specs/
-              fido-v2.2-ps-20250228/fido-client-to-authenticator-
-              protocol-v2.2-ps-20250228.html>.
+              Bradley, J., Jones, M.B., Kumar, A., Lindemann, R.,
+              Verrept, S., and D. Waite, "Client to Authenticator
+              Protocol (CTAP)", February 2025,
+              <https://fidoalliance.org/specs/fido-v2.2-ps-20250228/
+              fido-client-to-authenticator-protocol-v2.2-ps-
+              20250228.html>.
 
    [IEEE802154]
               Institute of Electrical and Electronics Engineers, "IEEE
@@ -2359,8 +2360,9 @@ Table of Contents
               <https://elib.uni-stuttgart.de/handle/11682/12417>.
 
    [OpenID.Core]
-              Sakimura, N., Bradley, J., Jones, M., de Medeiros, B., and
-              C. Mortimore, "OpenID Connect Core 1.0", November 2014,
+              Sakimura, N., Bradley, J., Jones, M. B., de Medeiros, B.,
+              and C. Mortimore, "OpenID Connect Core 1.0", November
+              2014,
               <https://openid.net/specs/openid-connect-core-1_0.html>.
 
    [PCRSM2023]
