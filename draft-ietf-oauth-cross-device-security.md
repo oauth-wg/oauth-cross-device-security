@@ -91,7 +91,7 @@ normative:
       surname: "Cappalli"
       fullname: "Tim Cappalli"
       organization: "Okta"
-    - initials: "M."
+    - initials: "M.B."
       surname: "Jones"
       fullname: "Michael B. Jones"
       organization: "Microsoft"
@@ -116,7 +116,7 @@ normative:
       surname: "Bradley"
       fullname: "John Bradley"
       organization: "Yubico"
-    - initials: "M."
+    - initials: "M.B."
       surname: "Jones"
       fullname: "Michael B. Jones"
       organization: "Microsoft"
@@ -254,7 +254,7 @@ informative:
     author:
       - ins: N. Sakimura
       - ins: J. Bradley
-      - ins: M. Jones
+      - ins: M.B. Jones
       - ins: B. de Medeiros
       - ins: C. Mortimore
 
@@ -1247,13 +1247,3 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
 
    *  Initial draft adopted from document circulated to the OAuth Security Workshop Slack Channel
    *  Upload as draft-ietf-oauth-cross-device-security-best-practice-00
-
-
-
-
-
-
-
-
-
-
