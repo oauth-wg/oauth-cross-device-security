@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-06-10T00:32:14.117184+00:00",
+  "timestamp": "2025-07-03T00:32:33.299941+00:00",
   "repo": "oauth-wg/oauth-cross-device-security",
   "labels": [
     {
@@ -1764,6 +1764,86 @@
           "updatedAt": "2025-06-09T02:34:27Z"
         }
       ]
+    },
+    {
+      "number": 164,
+      "id": "I_kwDOHK26QM6-fToB",
+      "title": "Editorial Updates",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/164",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "A few comments/nits:\n\nLinks in this section https://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#name-defending-against-cross-dev don't point to the correct anchor/aren't processed.\n\nIn the Examples section (3.3) there were some inconsistencies:\n\n- this section is \"Cross-Device Session Transfer Pattern\" rather than \"Session Transfer Pattern\": https://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#section-3.3.5 doing so makes it consistent with the other parenthesized pattern names, which all refer to the specific pattern name used above.\n- same issue with  https://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#section-3.3.7\n\nIn section 4.3, some of the parenthesized text doesn't tie back to the patterns:\n- this section: https://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#section-4.3.6\n- this section: https://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#section-4.3.8 \nThese are the only ones with the \"suffix\" exploit, everything else is a \"pattern\".\n\nTypo: https://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#section-5-5 has an upper case S in server: \"An authorization Server\" it should be lowercase for consistency.\n\nIn this section, https://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#name-mitigating-against-cross-de\nI'd modify this sentence:\n'End-users have \"expertise elsewhere\" and are typically not security experts and don't understand the protocols and systems they interact with.' to use commas\n'End-users have \"expertise elsewhere\", are typically not security experts, and don't understand the protocols and systems they interact with.'\n\nThis section has some extra hash marks:\nhttps://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#name-ietf-oauth-20-device-author . Saw the same with 6.2.2 and 6.2.3.\n\nThere are some busted internal anchor links here:  https://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#section-6.3-6.2.1\n\nThanks,\nDan",
+      "createdAt": "2025-07-02T13:11:47Z",
+      "updatedAt": "2025-07-02T13:11:47Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 165,
+      "id": "I_kwDOHK26QM6-fUS_",
+      "title": "Additional Info about shared network",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/165",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "In this section https://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#section-6.1.1-2.3.1 I'd add that the shared network check breaks down if the consumption device (TV) is on wifi and the authorization device (mobile phone) is on the mobile network, a common situation.\n",
+      "createdAt": "2025-07-02T13:12:34Z",
+      "updatedAt": "2025-07-02T13:12:34Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 166,
+      "id": "I_kwDOHK26QM6-fU2b",
+      "title": "Make Authorisation Server role explicit in establishing Proximity",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/166",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "\nIn this section: https://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#section-6.1.1-1\nWhen the doc suggests \"There are a couple of ways to establish proximity\" is it worth being explicit that the authorization server is the entity that is responsible for this? It is implied.\n\n",
+      "createdAt": "2025-07-02T13:13:20Z",
+      "updatedAt": "2025-07-02T13:13:20Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 167,
+      "id": "I_kwDOHK26QM6-fVYI",
+      "title": "Note which mitigations can be implemented by the authorisation server alone",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/167",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "The mitigations section was great! I wondered if it made sense to break mitigations out further between those that the authorization server can implement (limited scopes, short lived tokens) and those that require work across other systems (such as content filtering, trusted devices). An alternative might be including that info in the table in 6.1.18.",
+      "createdAt": "2025-07-02T13:14:02Z",
+      "updatedAt": "2025-07-02T13:14:02Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 168,
+      "id": "I_kwDOHK26QM6-fWf9",
+      "title": "Add acknowledgement for Dan Moore's contribution",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/168",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Dan Moore\u00a0<dan@fusionauth.io>\n\nHi folks,\n\nThis was a super useful document. I thought all the examples and delineations were very helpful in making a tough topic understandable.\n\nA few comments/nits:\n\nLinks in this section https://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#name-defending-against-cross-dev don't point to the correct anchor/aren't processed.\n\nIn the Examples section (3.3) there were some inconsistencies:\n\n- this section is \"Cross-Device Session Transfer Pattern\" rather than \"Session Transfer Pattern\": https://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#section-3.3.5 doing so makes it consistent with the other parenthesized pattern names, which all refer to the specific pattern name used above.\n- same issue with  https://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#section-3.3.7\n\nIn section 4.3, some of the parenthesized text doesn't tie back to the patterns:\n- this section: https://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#section-4.3.6\n- this section: https://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#section-4.3.8 \nThese are the only ones with the \"suffix\" exploit, everything else is a \"pattern\".\n\nTypo: https://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#section-5-5 has an upper case S in server: \"An authorization Server\" it should be lowercase for consistency.\n\nIn this section, https://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#name-mitigating-against-cross-de\nI'd modify this sentence:\n'End-users have \"expertise elsewhere\" and are typically not security experts and don't understand the protocols and systems they interact with.' to use commas\n'End-users have \"expertise elsewhere\", are typically not security experts, and don't understand the protocols and systems they interact with.'\n\nIn this section https://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#section-6.1.1-2.3.1 I'd add that the shared network check breaks down if the consumption device (TV) is on wifi and the authorization device (mobile phone) is on the mobile network, a common situation.\n\nIn this section: https://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#section-6.1.1-1\nWhen the doc suggests \"There are a couple of ways to establish proximity\" is it worth being explicit that the authorization server is the entity that is responsible for this? It is implied.\n\nThe mitigations section was great! I wondered if it made sense to break mitigations out further between those that the authorization server can implement (limited scopes, short lived tokens) and those that require work across other systems (such as content filtering, trusted devices). An alternative might be including that info in the table in 6.1.18.\n\nThis section has some extra hash marks:\nhttps://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#name-ietf-oauth-20-device-author . Saw the same with 6.2.2 and 6.2.3.\n\nThere are some busted internal anchor links here:  https://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#section-6.3-6.2.1\n\nThanks,\nDan",
+      "createdAt": "2025-07-02T13:15:38Z",
+      "updatedAt": "2025-07-02T13:15:38Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
