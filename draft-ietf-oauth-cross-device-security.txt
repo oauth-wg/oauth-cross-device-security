@@ -2411,8 +2411,8 @@ Appendix A.  Document History
 
    *  Fixed malformed labels
 
-   *  Clarfied common use case for phen and TVs to not use the same
-      network.
+   *  Clarfied common use case for when phone and TVs do not use the
+      same network.
 
    *  Clarified role of authorization server in establishing proximity.
 
