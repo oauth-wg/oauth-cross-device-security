@@ -2412,9 +2412,12 @@ Appendix A.  Document History
 
    *  Shepherd feedback: Update FIDO/WebAuthn references
 
-   -09 * Affiliation change to allow publication to Datatracker.  * No
-   content changes - re-published to avoid expiry while waiting on
-   shepherd review.
+   -09
+
+   *  Affiliation change to allow publication to Datatracker.
+
+   *  No content changes - re-published to avoid expiry while waiting on
+      shepherd review.
 
    -08
 
