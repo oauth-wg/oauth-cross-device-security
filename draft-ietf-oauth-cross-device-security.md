@@ -1161,9 +1161,9 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
    -latest
 
    * Fixed malformed labels
-   * Clarfied common use case for when phone and TVs do not use the same network.
+   * Clarified common use case for when phone and TVs do not use the same network.
    * Clarified role of authorization server in establishing proximity.
-   * Clarfied which mitigations can be implented by the authorization server only.
+   * Clarified which mitigations can be implented by the authorization server only.
    * Add Dan Moore to acknowledgements
 
    -10
