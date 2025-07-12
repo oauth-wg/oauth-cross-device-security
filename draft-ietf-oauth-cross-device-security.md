@@ -1159,21 +1159,24 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
 
 
    -latest
+
    * Fixed malformed labels
 
    -10
+
    * Shepherd feedback: Describe unauthenticated channel.
    * Shepherd feedback: Seperate normative and informative references.
    * Shepherd feedback: Update FIDO/WebAuthn references
 
-    -09
+   -09
    * Affiliation change to allow publication to Datatracker.
    * No content changes - re-published to avoid expiry while waiting on shepherd review.
 
-    -08
+   -08
+
    * Editorial updates.
 
-    -07
+   -07
 
    * Clarification of FIDO\WebAuthn section.
    * Updated langugage in section on FIDO to allow for use of FIDO keys on consumption devices.
