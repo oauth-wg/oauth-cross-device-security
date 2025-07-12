@@ -375,9 +375,9 @@ These attacks borrow techniques from traditional phishing attacks, but instead o
 ## Defending Against Cross-Device Attacks
 This document provides guidance to implementers to defend against Cross-Device Consent Phishing and Cross-Device Session Phishing attacks. This guidance includes:
 
-1. Practical mitigations for susceptible protocols ((#practical-mitigations)).
-2. Protocol selection guidance to avoid using susceptible protocols ((#protocol-selection)).
-3. Results from formal analysis of susceptible protocols ((#foundational-pillars)).
+1. Practical mitigations for susceptible protocols ({{practical-mitigations}}).
+2. Protocol selection guidance to avoid using susceptible protocols ({{protocol-selection}}).
+3. Results from formal analysis of susceptible protocols ({{foundational-pillars}}).
 
 ## Conventions and Terminology
 
@@ -397,13 +397,13 @@ This section describes the set of security mechanisms and measures to secure cro
 
 1. Implementers MUST perform a risk assessment before implementing cross-device flows, weighing the risks from Cross-Device Consent Phishing and Cross-Device Session Phishing attacks against benefits for users.
 2. Implementers SHOULD avoid cross-device flows if risks cannot be sufficiently mitigated.
-3. Implementers SHOULD follow the guidance provided in (#protocol-selection) for protocol selection.
-4. Implementers MUST implement practical mitigations as listed in (#practical-mitigations) that are appropriate for the use case, architecture, and selected protocols.
-5. Implementers SHOULD implement proximity checks as defined in (#establish-proximity) if possible.
+3. Implementers SHOULD follow the guidance provided in {{protocol-selection}} for protocol selection.
+4. Implementers MUST implement practical mitigations as listed in {{practical-mitigations}} that are appropriate for the use case, architecture, and selected protocols.
+5. Implementers SHOULD implement proximity checks as defined in {{establish-proximity}} if possible.
 
 These best practices apply to the Device Authorization Grant ({{RFC8628}}) as well as other cross-device protocols such as the Client Initiated Backchannel Authentication {{CIBA}}, Self-Issued OpenID Provider v2 {{OpenID.SIOPV2}}, OpenID for Verifiable Presentations {{OpenID.VP}}, the Pre-Authorized Code Flow in ({{OpenID.VCI}}) and other cross-device protocols that rely on the user to authenticate the channel between devices.
 
-(#cross-device-flow-patterns) provides details about susceptible protocols and (#cross-device-flow-exploits) provides attack descriptions. (#practical-mitigations) provides details about the security mechanisms and mitigations, (protocol-selection) provides protocol selection guidance and (#foundational-pillars) provides details from formal analysis of protocols that apply to cross device flows.
+{{cross-device-flow-patterns}} provides details about susceptible protocols and {{cross-device-flow-exploits}} provides attack descriptions. {{practical-mitigations}} provides details about the security mechanisms and mitigations, (protocol-selection) provides protocol selection guidance and {{foundational-pillars}} provides details from formal analysis of protocols that apply to cross device flows.
 
 # Cross-Device Flow Patterns {#cross-device-flow-patterns}
 Cross-device flows allow a user to start a flow on one device (e.g., a smart TV) and then transfer the session to continue it on a second device (e.g., a mobile phone). The second device may be used to access the service that was running on the first device, or to perform an action such as authenticating or granting authorization before potentially passing control back to the first device.
@@ -1020,6 +1020,7 @@ Table: Practical Mitigation Summary
 Some cross-device protocols are more susceptible to the exploits described in this document than others. In this section we will compare three different cross-device protocols in terms of their susceptibility to exploits focused on the unauthenticated channel, the prerequisites to implement and deploy them, along with guidance on when it is appropriate to use them.
 
 ### IETF OAuth 2.0 Device Authorization Grant {{RFC8628}}:
+
 #### Description
 A standard to enable authorization on devices with constrained input capabilities (smart TVs, printers, kiosks). In this protocol, the user code or QR code is displayed or made available on the Consumption Device (smart TV) and entered on a second device (e.g., a mobile phone).
 
@@ -1036,6 +1037,7 @@ In addition to the security considerations section in the standard, it is RECOMM
 Only use this protocol if other cross-device protocols are not viable due to device or system constraints. Avoid using if the protected resources are sensitive, high value, or business critical. Always deploy additional mitigations like proximity or only allow with pre-registered devices. Do not use for same-device scenarios (e.g., if the Consumption Device and Authorization Device is the same device).
 
 ### OpenID Foundation Client Initiated Back-Channel Authentication (CIBA):
+
 #### Description
 Client Initiated Back-Channel Authentication (CIBA) {{CIBA}}: A standard developed in the OpenID Foundation that allows a device or service (e.g., a personal computer, smart TV, Kiosk) to request the OpenID Provider to initiate an authentication flow if it knows a valid identifier for the user. The user completes the authentication flow using a second device (e.g., a mobile phone). In this flow the user does not scan a QR code or obtain a user code from the Consumption Device, but is instead contacted by the OpenID Provider to complete the authentication using a push notification, e-mail, text message or any other suitable mechanism.
 
@@ -1052,6 +1054,7 @@ In addition to the security considerations section in the standard, it is RECOMM
 Use CIBA instead of Device Authorization Grant if it is possible for the Consumption Device to obtain a user identifier on the Consumption Device (e.g., through an input or selection mechanism) and if the Authorization Server can trigger an authorization on the Authorization Device. Do not use for same-device scenarios (e.g., if the Consumption Device and Authorization Device is the same device).
 
 ### FIDO2/WebAuthn
+
 #### Description
 FIDO2/WebAuthn is a stack of standards developed in the FIDO Alliance and W3C respectively which allow for origin-bound, phishing-resistant user authentication using asymmetric cryptography that can be invoked from a web browser or native client. Version 2.2 of the FIDO Client to Authenticator Protocol (CTAP) supports a new cross-device authentication protocol, called "hybrid transports", which enables an external device, such as a phone or tablet, to be used as a roaming authenticator for signing into the primary device, such as a personal computer. This is commonly called FIDO Cross-Device Authentication (CDA). CTAP 2.2 hybrid transports is implemented by the client and authenticator platforms.
 
@@ -1100,7 +1103,7 @@ The following works have been identified as relevant to the analysis of cross-de
    Cross-Device Stub, essentially a component that serves to link the
    two devices before the protocol flow starts. This can be seen as an
    implementation of a trusted device relationship as described in
-   (#trusted_devices). The mitigation was shown to be effective in the
+   {{trusted_devices}}. The mitigation was shown to be effective in the
    model.
  * In "Security analysis of the Grant Negotiation and Authorization
    Protocol" {{Helmschmidt2022}}, an analysis of a draft of the Grant
@@ -1108,7 +1111,7 @@ The following works have been identified as relevant to the analysis of cross-de
    {{RFC9635}} was performed using the Web
    Infrastructure Model. The same attack as in {{Bauer2022}} was found to
    apply to GNAP as well. In this case, a model of a "careful user" (see
-   (#user_education)) was used to show that the attack can be prevented
+   {{user_education}} was used to show that the attack can be prevented
    (at least in theory) by the user.
  * In "The Good, the Bad and the (Not So) Ugly of Out-of-Band
    Authentication with eID Cards and Push Notifications: Design, Formal
@@ -1116,7 +1119,7 @@ The following works have been identified as relevant to the analysis of cross-de
    analysed an authentication protocol relying on push notifications
    delivered to an out-of-band device to approve the authentication
    attempt on the primary device (Backchannel-Transferred Session
-   Pattern, (#btsp)). The analysis was performed using the specification
+   Pattern, {{btsp}}). The analysis was performed using the specification
    language ASLan++ and the model checker SATMC. According to the
    results of the analysis, they identified and defined the category of
    *implicit attacks*, which manage to deceive users into approving a
@@ -1131,11 +1134,11 @@ The following works have been identified as relevant to the analysis of cross-de
    of granularity. They leveraged their methodology to formally analyze
    a protocol relying on a QR code that has to be scanned on a secondary
    device to approve the authentication attempt on the primary device
-   (User-Transferred Session Data Pattern, (#utsdp)). Given the results
+   (User-Transferred Session Data Pattern, {{utsdp}}). Given the results
    of the analysis, they proposed some practical mitigations either to
    prevent or reduce the risk of successful attacks, such as those
-   described in (#user_education), (#request-verification) and
-   (#request-binding).
+   described in {{user_education}}, {{request-verification}} and
+   {{request-binding}}.
 
 
 
@@ -1154,19 +1157,27 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
 # Document History
    \[\[ To be removed from the final specification ]]
 
+
    -latest
+
+   * Fixed malformed labels
+
+   -10
+
    * Shepherd feedback: Describe unauthenticated channel.
    * Shepherd feedback: Seperate normative and informative references.
    * Shepherd feedback: Update FIDO/WebAuthn references
 
-    -09
+   -09
+
    * Affiliation change to allow publication to Datatracker.
    * No content changes - re-published to avoid expiry while waiting on shepherd review.
 
-    -08
+   -08
+
    * Editorial updates.
 
-    -07
+   -07
 
    * Clarification of FIDO\WebAuthn section.
    * Updated langugage in section on FIDO to allow for use of FIDO keys on consumption devices.
