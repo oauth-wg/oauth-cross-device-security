@@ -1373,11 +1373,11 @@ Table of Contents
    Authorization Device allows attackers to change the context in which
    the authorization request is presented to the user.  This shifts
    responsibility of authenticating the channel between the two devices
-   to the end-user.  End-users have "expertise elsewhere" and are
-   typically not security experts and don't understand the protocols and
-   systems they interact with.  As a result, end-users are poorly
-   equipped to authenticate the channel between the two devices.
-   Mitigations should focus on:
+   to the end-user.  End-users have "expertise elsewhere", are typically
+   not security experts, and don't understand the protocols and systems
+   they interact with.  As a result, end-users are poorly equipped to
+   authenticate the channel between the two devices.  Mitigations should
+   focus on:
 
    1.  Minimizing reliance on the user to make decisions to authenticate
        the channel.
