@@ -2651,38 +2651,44 @@ Session  |   |              |     Context           |               |
           <h4 id="name-ietf-oauth-20-device-author">
 <a href="#section-6.2.1" class="section-number selfRef">6.2.1. </a><a href="#name-ietf-oauth-20-device-author" class="section-name selfRef">IETF OAuth 2.0 Device Authorization Grant <span class="cite xref">[RFC8628]</span>:</a>
           </h4>
-<p id="section-6.2.1-1">#### Description
-A standard to enable authorization on devices with constrained input capabilities (smart TVs, printers, kiosks). In this protocol, the user code or QR code is displayed or made available on the Consumption Device (smart TV) and entered on a second device (e.g., a mobile phone).<a href="#section-6.2.1-1" class="pilcrow">¶</a></p>
-<div id="susceptibility">
+<div id="description">
 <section id="section-6.2.1.1">
-            <h5 id="name-susceptibility">
-<a href="#section-6.2.1.1" class="section-number selfRef">6.2.1.1. </a><a href="#name-susceptibility" class="section-name selfRef">Susceptibility</a>
+            <h5 id="name-description">
+<a href="#section-6.2.1.1" class="section-number selfRef">6.2.1.1. </a><a href="#name-description" class="section-name selfRef">Description</a>
             </h5>
-<p id="section-6.2.1.1-1">There are several reports in the public domain outlining how the unauthenticated channel may be exploited to execute a Cross-Device Consent Phishing attack (<span>[<a href="#Exploit1" class="cite xref">Exploit1</a>]</span>, <span>[<a href="#Exploit2" class="cite xref">Exploit2</a>]</span>, <span>[<a href="#Exploit3" class="cite xref">Exploit3</a>]</span>, <span>[<a href="#Exploit4" class="cite xref">Exploit4</a>]</span>, <span>[<a href="#Exploit5" class="cite xref">Exploit5</a>]</span>, <span>[<a href="#Exploit6" class="cite xref">Exploit6</a>]</span>).<a href="#section-6.2.1.1-1" class="pilcrow">¶</a></p>
+<p id="section-6.2.1.1-1">A standard to enable authorization on devices with constrained input capabilities (smart TVs, printers, kiosks). In this protocol, the user code or QR code is displayed or made available on the Consumption Device (smart TV) and entered on a second device (e.g., a mobile phone).<a href="#section-6.2.1.1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="susceptibility">
+<section id="section-6.2.1.2">
+            <h5 id="name-susceptibility">
+<a href="#section-6.2.1.2" class="section-number selfRef">6.2.1.2. </a><a href="#name-susceptibility" class="section-name selfRef">Susceptibility</a>
+            </h5>
+<p id="section-6.2.1.2-1">There are several reports in the public domain outlining how the unauthenticated channel may be exploited to execute a Cross-Device Consent Phishing attack (<span>[<a href="#Exploit1" class="cite xref">Exploit1</a>]</span>, <span>[<a href="#Exploit2" class="cite xref">Exploit2</a>]</span>, <span>[<a href="#Exploit3" class="cite xref">Exploit3</a>]</span>, <span>[<a href="#Exploit4" class="cite xref">Exploit4</a>]</span>, <span>[<a href="#Exploit5" class="cite xref">Exploit5</a>]</span>, <span>[<a href="#Exploit6" class="cite xref">Exploit6</a>]</span>).<a href="#section-6.2.1.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="device-capabilities">
-<section id="section-6.2.1.2">
+<section id="section-6.2.1.3">
             <h5 id="name-device-capabilities">
-<a href="#section-6.2.1.2" class="section-number selfRef">6.2.1.2. </a><a href="#name-device-capabilities" class="section-name selfRef">Device Capabilities</a>
+<a href="#section-6.2.1.3" class="section-number selfRef">6.2.1.3. </a><a href="#name-device-capabilities" class="section-name selfRef">Device Capabilities</a>
             </h5>
-<p id="section-6.2.1.2-1">There are no assumptions in the protocol about underlying capabilities of the device, making it a "least common denominator" protocol that is expected to work on the broadest set of devices and environments.<a href="#section-6.2.1.2-1" class="pilcrow">¶</a></p>
+<p id="section-6.2.1.3-1">There are no assumptions in the protocol about underlying capabilities of the device, making it a "least common denominator" protocol that is expected to work on the broadest set of devices and environments.<a href="#section-6.2.1.3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="mitigations">
-<section id="section-6.2.1.3">
+<section id="section-6.2.1.4">
             <h5 id="name-mitigations">
-<a href="#section-6.2.1.3" class="section-number selfRef">6.2.1.3. </a><a href="#name-mitigations" class="section-name selfRef">Mitigations</a>
+<a href="#section-6.2.1.4" class="section-number selfRef">6.2.1.4. </a><a href="#name-mitigations" class="section-name selfRef">Mitigations</a>
             </h5>
-<p id="section-6.2.1.3-1">In addition to the security considerations section in the standard, it is RECOMMENDED that one or more of the mitigations outlined in this document be considered, especially mitigations that can help establish proximity or prevent attackers from obtaining QR or user codes.<a href="#section-6.2.1.3-1" class="pilcrow">¶</a></p>
+<p id="section-6.2.1.4-1">In addition to the security considerations section in the standard, it is RECOMMENDED that one or more of the mitigations outlined in this document be considered, especially mitigations that can help establish proximity or prevent attackers from obtaining QR or user codes.<a href="#section-6.2.1.4-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="when-to-use">
-<section id="section-6.2.1.4">
+<section id="section-6.2.1.5">
             <h5 id="name-when-to-use">
-<a href="#section-6.2.1.4" class="section-number selfRef">6.2.1.4. </a><a href="#name-when-to-use" class="section-name selfRef">When to use</a>
+<a href="#section-6.2.1.5" class="section-number selfRef">6.2.1.5. </a><a href="#name-when-to-use" class="section-name selfRef">When to use</a>
             </h5>
-<p id="section-6.2.1.4-1">Only use this protocol if other cross-device protocols are not viable due to device or system constraints. Avoid using if the protected resources are sensitive, high value, or business critical. Always deploy additional mitigations like proximity or only allow with pre-registered devices. Do not use for same-device scenarios (e.g., if the Consumption Device and Authorization Device is the same device).<a href="#section-6.2.1.4-1" class="pilcrow">¶</a></p>
+<p id="section-6.2.1.5-1">Only use this protocol if other cross-device protocols are not viable due to device or system constraints. Avoid using if the protected resources are sensitive, high value, or business critical. Always deploy additional mitigations like proximity or only allow with pre-registered devices. Do not use for same-device scenarios (e.g., if the Consumption Device and Authorization Device is the same device).<a href="#section-6.2.1.5-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>

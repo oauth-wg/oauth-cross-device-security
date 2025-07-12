@@ -1934,27 +1934,29 @@ Table of Contents
 
 6.2.1.  IETF OAuth 2.0 Device Authorization Grant [RFC8628]:
 
-   #### Description A standard to enable authorization on devices with
-   constrained input capabilities (smart TVs, printers, kiosks).  In
-   this protocol, the user code or QR code is displayed or made
-   available on the Consumption Device (smart TV) and entered on a
-   second device (e.g., a mobile phone).
+6.2.1.1.  Description
 
-6.2.1.1.  Susceptibility
+   A standard to enable authorization on devices with constrained input
+   capabilities (smart TVs, printers, kiosks).  In this protocol, the
+   user code or QR code is displayed or made available on the
+   Consumption Device (smart TV) and entered on a second device (e.g., a
+   mobile phone).
+
+6.2.1.2.  Susceptibility
 
    There are several reports in the public domain outlining how the
    unauthenticated channel may be exploited to execute a Cross-Device
    Consent Phishing attack ([Exploit1], [Exploit2], [Exploit3],
    [Exploit4], [Exploit5], [Exploit6]).
 
-6.2.1.2.  Device Capabilities
+6.2.1.3.  Device Capabilities
 
    There are no assumptions in the protocol about underlying
    capabilities of the device, making it a "least common denominator"
    protocol that is expected to work on the broadest set of devices and
    environments.
 
-6.2.1.3.  Mitigations
+6.2.1.4.  Mitigations
 
    In addition to the security considerations section in the standard,
    it is RECOMMENDED that one or more of the mitigations outlined in
@@ -1962,7 +1964,7 @@ Table of Contents
    establish proximity or prevent attackers from obtaining QR or user
    codes.
 
-6.2.1.4.  When to use
+6.2.1.5.  When to use
 
    Only use this protocol if other cross-device protocols are not viable
    due to device or system constraints.  Avoid using if the protected
