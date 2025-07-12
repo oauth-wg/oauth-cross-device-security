@@ -89,12 +89,12 @@ Table of Contents
                (User-Transferred Session Data Pattern)
        3.3.4.  Example A4: Authorize a Financial Transaction
                (Backchannel-Transferred Session Pattern)
-       3.3.5.  Example A5: Add a Device to a Network (Session Transfer
-               Pattern)
+       3.3.5.  Example A5: Add a Device to a Network (Cross-Device
+               Session Transfer Pattern)
        3.3.6.  Example A6: Remote Onboarding (User-Transferred Session
                Data Pattern)
-       3.3.7.  Example A7: Application Bootstrap (Session Transfer
-               Pattern)
+       3.3.7.  Example A7: Application Bootstrap (Cross-Device Session
+               Transfer Pattern)
        3.3.8.  Example A8: Access a Productivity Application
                (User-Transferred Authorization Data Pattern)
        3.3.9.  Example A9: Administer a System
@@ -116,12 +116,12 @@ Table of Contents
                (Backchannel-Transferred Session Pattern)
        4.3.5.  Example B4.2: Fake Helpdesk (Backchannel-Transferred
                Session Pattern)
-       4.3.6.  Example B5: Illicit Network Join (Session Transfer
-               Pattern Exploit)
+       4.3.6.  Example B5: Illicit Network Join (Cross-Device Session
+               Transfer Pattern)
        4.3.7.  Example B6: Illicit Onboarding (User-Transferred
                Session Data Pattern)
-       4.3.8.  Example B7: Illicit Application Bootstrap (Session
-               Transfer Pattern Exploit)
+       4.3.8.  Example B7: Illicit Application Bootstrap (Cross-Device
+               Session Transfer Pattern)
        4.3.9.  Example B8: Account Takeover (User-Transferred Session
                Data Pattern)
        4.3.10. Example B9: Illicit Access to Administration
@@ -440,7 +440,7 @@ Table of Contents
                 |              | and Authorize Access  |               |
                 +--------------+                       +---------------+
 
-   Figure: Cross-Device Flows: User-Transferred Session Data Pattern
+   Figure: User-Transferred Session Data Pattern
 
    *  (A) The user takes an action on the Consumption Device by starting
       a purchase, adding a device to a network or connecting a service
@@ -484,7 +484,7 @@ Table of Contents
                 |              |    Authorization      |               |
                 +--------------+                       +---------------+
 
-   Figure: Cross-Device Flows: Backchannel-Transferred Session Pattern
+   Figure: Backchannel-Transferred Session Pattern
 
    *  (A) The user takes an action on the Consumption Device by starting
       a purchase, adding a device to a network or connecting a service
@@ -538,8 +538,7 @@ Table of Contents
                 |              |    Data               |               |
                 +--------------+                       +---------------+
 
-   Figure: Cross-Device Flow: User-Transferred Authorization Data
-   Pattern
+   Figure: User-Transferred Authorization Data Pattern
 
    *  (A) The user takes an action on the Consumption Device by starting
       a purchase, adding a device to a network or connecting a service
@@ -619,7 +618,7 @@ Table of Contents
             +-->|              |<----------------------|               |
                 +--------------+                       +---------------+
 
-   Figure: Cross-Device Flows: Session Transfer Pattern
+   Figure: Cross-Dvice Session Transfer Pattern
 
    *  (A) The user is authenticated on the Authorization Device and
       authorizes the transfer of the session to the Consumption device.
@@ -694,7 +693,8 @@ Table of Contents
    to authorize the transaction.  The user opens their app and
    authenticates to the service before authorizing the transaction.
 
-3.3.5.  Example A5: Add a Device to a Network (Session Transfer Pattern)
+3.3.5.  Example A5: Add a Device to a Network (Cross-Device Session
+        Transfer Pattern)
 
    An employee is issued with a personal computer that is already joined
    to a network.  The employee wants to add their mobile phone to the
@@ -724,7 +724,8 @@ Table of Contents
    the release of the credentials and after completing the onboarding
    process, their account is activated.
 
-3.3.7.  Example A7: Application Bootstrap (Session Transfer Pattern)
+3.3.7.  Example A7: Application Bootstrap (Cross-Device Session Transfer
+        Pattern)
 
    An employee is signed into an application on their personal computer
    and wants to bootstrap the mobile application on their mobile phone.
@@ -839,8 +840,7 @@ Table of Contents
               |              | and Authorize Access  |               |
               +--------------+                       +---------------+
 
-   Figure: Cross-Device Consent Phishing: User-Transferred Session Data
-   Pattern Exploits
+   Figure: User-Transferred Session Data Pattern Exploits
 
    *  (A) The attacker initiates the protocol on the Consumption Device
       (or mimicks the Consumption Device) by starting a purchase, adding
@@ -924,8 +924,7 @@ Table of Contents
                 |              |    Authorization      |               |
                 +--------------+                       +---------------+
 
-   Figure: Cross-Device Consent Phishing: Backchannel-Transferred
-   Session Pattern Exploits
+   Figure: Backchannel-Transferred Session Pattern Exploits
 
    *  (A) The attacker sends a social engineering message to prepare the
       user for the upcoming authorization (optional).
@@ -999,8 +998,7 @@ Table of Contents
                 |              |    Data               |               |
                 +--------------+                       +---------------+
 
-   Figure: Cross-Device Consent Phishing: User-Transferred Authorization
-   Data Pattern Exploits
+   Figure: User-Transferred Authorization Data Pattern Exploits
 
    *  (A) The attacker sends a social engineering message to prime the
       user for the authorization request they are about to receive,
@@ -1088,7 +1086,7 @@ Table of Contents
     Session +-->|              |<----------------------|               |
                 +--------------+                       +---------------+
 
-   Figure: Cross-Device Flows: Session Transfer Pattern Exploit
+   Figure: Cross-Device Session Transfer Pattern Exploit
 
    *  (A) The attacker sends a social engineering message to that
       convinces the user that they should authorize a session transfer
@@ -1221,8 +1219,8 @@ Table of Contents
    additional authorization information to the attacker which enables
    the attacker to complete their attack and defraud the user.
 
-4.3.6.  Example B5: Illicit Network Join (Session Transfer Pattern
-        Exploit)
+4.3.6.  Example B5: Illicit Network Join (Cross-Device Session Transfer
+        Pattern)
 
    An attacker creates a message to all employees of a company, claiming
    to be from a trusted technology provider investigating a suspected
@@ -1251,8 +1249,8 @@ Table of Contents
    to obtain the QR code displays a message to the attacker with
    instructions on how to access their account.
 
-4.3.8.  Example B7: Illicit Application Bootstrap (Session Transfer
-        Pattern Exploit)
+4.3.8.  Example B7: Illicit Application Bootstrap (Cross-Device Session
+        Transfer Pattern)
 
    An attacker creates a message to all employees of a company, claiming
    to be from the company's IT service provider.  They claim that they
@@ -1360,7 +1358,7 @@ Table of Contents
    device modes (e.g., [OpenID.SIOPV2]), the cross-device mode SHOULD
    not be used for same-device scenarios.  An authorization server MAY
    choose to block cross-device protocols used in same-device scenarios
-   if it detects that the same device is used.  An authorization Server
+   if it detects that the same device is used.  An authorization server
    may use techniques such as device fingerprinting, network address or
    other techniques to detect if a cross-device protocol is being used
    on the same device.  If an implementor decides to use a cross-device
@@ -1375,11 +1373,11 @@ Table of Contents
    Authorization Device allows attackers to change the context in which
    the authorization request is presented to the user.  This shifts
    responsibility of authenticating the channel between the two devices
-   to the end-user.  End-users have "expertise elsewhere" and are
-   typically not security experts and don't understand the protocols and
-   systems they interact with.  As a result, end-users are poorly
-   equipped to authenticate the channel between the two devices.
-   Mitigations should focus on:
+   to the end-user.  End-users have "expertise elsewhere", are typically
+   not security experts, and don't understand the protocols and systems
+   they interact with.  As a result, end-users are poorly equipped to
+   authenticate the channel between the two devices.  Mitigations should
+   focus on:
 
    1.  Minimizing reliance on the user to make decisions to authenticate
        the channel.
