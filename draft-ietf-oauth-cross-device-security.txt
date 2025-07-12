@@ -1462,7 +1462,11 @@ Table of Contents
       encodes the Consumption Device's network address in the QR code
       and uses a digital signature to prevent tampering with the code.
       This does require the wallet to be aware of the countermeasure and
-      effectively enforce it.
+      effectively enforce it.  Note that it is common for a Consumption
+      Device (e.g., a TV) to use a Wi-Fi connection while the
+      Authorization Device (e.g., a phone) uses a mobile network.
+      Though physically in close proximity, they don't share a network,
+      so other proximity checks are needed.
 
    *  Geolocation: Proximity can be established by comparing geo-
       location information derived from global navigation satellite-
@@ -1470,7 +1474,7 @@ Table of Contents
       and comparing proximity.  Geolocation based on GNSS may vary in
       accuracy depending on the users location, and when mapped to
       national or regional boundaries may show a Consumption and
-      Authorization device in different locations if those devices are
+      Authorization Device in different locations if those devices are
       close to a border.  Since relative position is more important than
       absolute location, implementations should consider relative
       location to both devices rather than absolute location when
@@ -1478,7 +1482,7 @@ Table of Contents
       inaccurate along regional or national borders due to overlapping
       coverage by different network providers from the respective
       regions.  This may result in the Consumption device being mapped
-      to one region, while the Authorization device may be on another
+      to one region, while the Authorization Device may be on another
       network from another provider and mapped to another region.  These
       inaccuracies may require restrictions to be at a more granular
       level (e.g., same city, country, region or continent).  Similar to
@@ -2401,6 +2405,9 @@ Appendix A.  Document History
    -latest
 
    *  Fixed malformed labels
+
+   *  Clarfied common use case for phen and TVs to not use the same
+      network.
 
    -10
 
