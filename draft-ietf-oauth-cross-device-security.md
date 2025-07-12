@@ -1157,7 +1157,11 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
 # Document History
    \[\[ To be removed from the final specification ]]
 
+
    -latest
+   * Fixed malformed labels
+
+   -10
    * Shepherd feedback: Describe unauthenticated channel.
    * Shepherd feedback: Seperate normative and informative references.
    * Shepherd feedback: Update FIDO/WebAuthn references
