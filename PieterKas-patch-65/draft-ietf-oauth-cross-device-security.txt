@@ -1465,8 +1465,8 @@ Table of Contents
       effectively enforce it.  Note that it is common for a Consumption
       Device (e.g., a TV) to use a Wi-Fi connection while the
       Authorization Device (e.g., a phone) uses a mobile network.
-      Though physically close, they don't share a network, so other
-      proximity checks are needed.
+      Though physically in close proximity, they don't share a network,
+      so other proximity checks are needed.
 
    *  Geolocation: Proximity can be established by comparing geo-
       location information derived from global navigation satellite-
@@ -2405,6 +2405,9 @@ Appendix A.  Document History
    -latest
 
    *  Fixed malformed labels
+
+   *  Clarfied common use case for phen and TVs to not use the same
+      network.
 
    -10
 
