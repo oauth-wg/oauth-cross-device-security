@@ -117,11 +117,11 @@ Table of Contents
        4.3.5.  Example B4.2: Fake Helpdesk (Backchannel-Transferred
                Session Pattern)
        4.3.6.  Example B5: Illicit Network Join (Cross-Device Session
-               Transfer Pattern Exploit)
+               Transfer Pattern)
        4.3.7.  Example B6: Illicit Onboarding (User-Transferred
                Session Data Pattern)
        4.3.8.  Example B7: Illicit Application Bootstrap (Cross-Device
-               Session Transfer Pattern Exploit)
+               Session Transfer Pattern)
        4.3.9.  Example B8: Account Takeover (User-Transferred Session
                Data Pattern)
        4.3.10. Example B9: Illicit Access to Administration
@@ -1220,7 +1220,7 @@ Table of Contents
    the attacker to complete their attack and defraud the user.
 
 4.3.6.  Example B5: Illicit Network Join (Cross-Device Session Transfer
-        Pattern Exploit)
+        Pattern)
 
    An attacker creates a message to all employees of a company, claiming
    to be from a trusted technology provider investigating a suspected
@@ -1250,7 +1250,7 @@ Table of Contents
    instructions on how to access their account.
 
 4.3.8.  Example B7: Illicit Application Bootstrap (Cross-Device Session
-        Transfer Pattern Exploit)
+        Transfer Pattern)
 
    An attacker creates a message to all employees of a company, claiming
    to be from the company's IT service provider.  They claim that they
