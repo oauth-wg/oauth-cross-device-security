@@ -273,13 +273,13 @@ Table of Contents
    Cross-Device Consent Phishing and Cross-Device Session Phishing
    attacks.  This guidance includes:
 
-   1.  Practical mitigations for susceptible protocols Section 6.1.
+   1.  Practical mitigations for susceptible protocols (Section 6.1).
 
    2.  Protocol selection guidance to avoid using susceptible protocols
-       ((#protocol-selection)).
+       (Section 6.2).
 
    3.  Results from formal analysis of susceptible protocols
-       ((#foundational-pillars)).
+       (Section 6.3).
 
 1.4.  Conventions and Terminology
 
@@ -309,15 +309,15 @@ Table of Contents
    2.  Implementers SHOULD avoid cross-device flows if risks cannot be
        sufficiently mitigated.
 
-   3.  Implementers SHOULD follow the guidance provided in (#protocol-
-       selection) for protocol selection.
+   3.  Implementers SHOULD follow the guidance provided in Section 6.2
+       for protocol selection.
 
    4.  Implementers MUST implement practical mitigations as listed in
-       ((practical-mitigations)) that are appropriate for the use case,
-       architecture, and selected protocols.
+       Section 6.1 that are appropriate for the use case, architecture,
+       and selected protocols.
 
    5.  Implementers SHOULD implement proximity checks as defined in
-       (#establish-proximity) if possible.
+       Section 6.1.1 if possible.
 
    These best practices apply to the Device Authorization Grant
    ([RFC8628]) as well as other cross-device protocols such as the
@@ -327,13 +327,11 @@ Table of Contents
    ([OpenID.VCI]) and other cross-device protocols that rely on the user
    to authenticate the channel between devices.
 
-   (#cross-device-flow-patterns) provides details about susceptible
-   protocols and (#cross-device-flow-exploits) provides attack
-   descriptions. (practical-mitigations) provides details about the
+   Section 3 provides details about susceptible protocols and Section 4
+   provides attack descriptions.  Section 6.1 provides details about the
    security mechanisms and mitigations, (protocol-selection) provides
-   protocol selection guidance and (#foundational-pillars) provides
-   details from formal analysis of protocols that apply to cross device
-   flows.
+   protocol selection guidance and Section 6.3 provides details from
+   formal analysis of protocols that apply to cross device flows.
 
 3.  Cross-Device Flow Patterns
 
