@@ -1020,6 +1020,7 @@ Table: Practical Mitigation Summary
 Some cross-device protocols are more susceptible to the exploits described in this document than others. In this section we will compare three different cross-device protocols in terms of their susceptibility to exploits focused on the unauthenticated channel, the prerequisites to implement and deploy them, along with guidance on when it is appropriate to use them.
 
 ### IETF OAuth 2.0 Device Authorization Grant {{RFC8628}}:
+
 #### Description
 A standard to enable authorization on devices with constrained input capabilities (smart TVs, printers, kiosks). In this protocol, the user code or QR code is displayed or made available on the Consumption Device (smart TV) and entered on a second device (e.g., a mobile phone).
 
