@@ -871,7 +871,7 @@ To achieve the above outcomes, mitigating against Cross-Device Consent Phishing 
 2. Adopt or develop protocols that are less susceptible to these attacks where possible.
 3. Provide analytical tools to assess vulnerabilities and effectiveness of mitigations.
 
-## Practical Mitigations {#practical-mitigations}
+## Practical Mitigations
 
 A number of protocols that enable cross-device flows that are susceptible to Cross-Device Consent Phishing attacks are already deployed. The security profile of these protocols can be improved through practical mitigations that provide defense in depth that either:
 
