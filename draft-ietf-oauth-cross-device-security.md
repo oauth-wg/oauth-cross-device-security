@@ -375,7 +375,7 @@ These attacks borrow techniques from traditional phishing attacks, but instead o
 ## Defending Against Cross-Device Attacks
 This document provides guidance to implementers to defend against Cross-Device Consent Phishing and Cross-Device Session Phishing attacks. This guidance includes:
 
-1. Practical mitigations for susceptible protocols ((practical-mitigations)).
+1. Practical mitigations for susceptible protocols {{practical-mitigations}}.
 2. Protocol selection guidance to avoid using susceptible protocols ((#protocol-selection)).
 3. Results from formal analysis of susceptible protocols ((#foundational-pillars)).
 
