@@ -1103,7 +1103,7 @@ The following works have been identified as relevant to the analysis of cross-de
    Cross-Device Stub, essentially a component that serves to link the
    two devices before the protocol flow starts. This can be seen as an
    implementation of a trusted device relationship as described in
-   (#trusted_devices). The mitigation was shown to be effective in the
+   {{trusted_devices}}. The mitigation was shown to be effective in the
    model.
  * In "Security analysis of the Grant Negotiation and Authorization
    Protocol" {{Helmschmidt2022}}, an analysis of a draft of the Grant
@@ -1111,7 +1111,7 @@ The following works have been identified as relevant to the analysis of cross-de
    {{RFC9635}} was performed using the Web
    Infrastructure Model. The same attack as in {{Bauer2022}} was found to
    apply to GNAP as well. In this case, a model of a "careful user" (see
-   (#user_education)) was used to show that the attack can be prevented
+   {{user_education}} was used to show that the attack can be prevented
    (at least in theory) by the user.
  * In "The Good, the Bad and the (Not So) Ugly of Out-of-Band
    Authentication with eID Cards and Push Notifications: Design, Formal
@@ -1119,7 +1119,7 @@ The following works have been identified as relevant to the analysis of cross-de
    analysed an authentication protocol relying on push notifications
    delivered to an out-of-band device to approve the authentication
    attempt on the primary device (Backchannel-Transferred Session
-   Pattern, (#btsp)). The analysis was performed using the specification
+   Pattern, {{btsp}}). The analysis was performed using the specification
    language ASLan++ and the model checker SATMC. According to the
    results of the analysis, they identified and defined the category of
    *implicit attacks*, which manage to deceive users into approving a
@@ -1134,11 +1134,11 @@ The following works have been identified as relevant to the analysis of cross-de
    of granularity. They leveraged their methodology to formally analyze
    a protocol relying on a QR code that has to be scanned on a secondary
    device to approve the authentication attempt on the primary device
-   (User-Transferred Session Data Pattern, (#utsdp)). Given the results
+   (User-Transferred Session Data Pattern, {{utsdp}}). Given the results
    of the analysis, they proposed some practical mitigations either to
    prevent or reduce the risk of successful attacks, such as those
-   described in (#user_education), (#request-verification) and
-   (#request-binding).
+   described in {{user_education}}, {{request-verification}} and
+   {{request-binding}}.
 
 
 
