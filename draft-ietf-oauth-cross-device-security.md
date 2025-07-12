@@ -375,7 +375,7 @@ These attacks borrow techniques from traditional phishing attacks, but instead o
 ## Defending Against Cross-Device Attacks
 This document provides guidance to implementers to defend against Cross-Device Consent Phishing and Cross-Device Session Phishing attacks. This guidance includes:
 
-1. Practical mitigations for susceptible protocols ((#practical-mitigations)).
+1. Practical mitigations for susceptible protocols ((practical-mitigations)).
 2. Protocol selection guidance to avoid using susceptible protocols ((#protocol-selection)).
 3. Results from formal analysis of susceptible protocols ((#foundational-pillars)).
 
@@ -398,12 +398,12 @@ This section describes the set of security mechanisms and measures to secure cro
 1. Implementers MUST perform a risk assessment before implementing cross-device flows, weighing the risks from Cross-Device Consent Phishing and Cross-Device Session Phishing attacks against benefits for users.
 2. Implementers SHOULD avoid cross-device flows if risks cannot be sufficiently mitigated.
 3. Implementers SHOULD follow the guidance provided in (#protocol-selection) for protocol selection.
-4. Implementers MUST implement practical mitigations as listed in (#practical-mitigations) that are appropriate for the use case, architecture, and selected protocols.
+4. Implementers MUST implement practical mitigations as listed in ((practical-mitigations)) that are appropriate for the use case, architecture, and selected protocols.
 5. Implementers SHOULD implement proximity checks as defined in (#establish-proximity) if possible.
 
 These best practices apply to the Device Authorization Grant ({{RFC8628}}) as well as other cross-device protocols such as the Client Initiated Backchannel Authentication {{CIBA}}, Self-Issued OpenID Provider v2 {{OpenID.SIOPV2}}, OpenID for Verifiable Presentations {{OpenID.VP}}, the Pre-Authorized Code Flow in ({{OpenID.VCI}}) and other cross-device protocols that rely on the user to authenticate the channel between devices.
 
-(#cross-device-flow-patterns) provides details about susceptible protocols and (#cross-device-flow-exploits) provides attack descriptions. (#practical-mitigations) provides details about the security mechanisms and mitigations, (protocol-selection) provides protocol selection guidance and (#foundational-pillars) provides details from formal analysis of protocols that apply to cross device flows.
+(#cross-device-flow-patterns) provides details about susceptible protocols and (#cross-device-flow-exploits) provides attack descriptions. (practical-mitigations) provides details about the security mechanisms and mitigations, (protocol-selection) provides protocol selection guidance and (#foundational-pillars) provides details from formal analysis of protocols that apply to cross device flows.
 
 # Cross-Device Flow Patterns {#cross-device-flow-patterns}
 Cross-device flows allow a user to start a flow on one device (e.g., a smart TV) and then transfer the session to continue it on a second device (e.g., a mobile phone). The second device may be used to access the service that was running on the first device, or to perform an action such as authenticating or granting authorization before potentially passing control back to the first device.
