@@ -2400,17 +2400,27 @@ Appendix A.  Document History
 
    [[ To be removed from the final specification ]]
 
-   -latest * Fixed malformed labels
+   -latest
 
-   -10 * Shepherd feedback: Describe unauthenticated channel.  *
-   Shepherd feedback: Seperate normative and informative references.  *
-   Shepherd feedback: Update FIDO/WebAuthn references
+   *  Fixed malformed labels
 
--09    * Affiliation change to allow publication to Datatracker.    * No content changes - re-published to avoid expiry while waiting on shepherd review.
+   -10
 
--08    * Editorial updates.
+   *  Shepherd feedback: Describe unauthenticated channel.
 
--07
+   *  Shepherd feedback: Seperate normative and informative references.
+
+   *  Shepherd feedback: Update FIDO/WebAuthn references
+
+   -09 * Affiliation change to allow publication to Datatracker.  * No
+   content changes - re-published to avoid expiry while waiting on
+   shepherd review.
+
+   -08
+
+   *  Editorial updates.
+
+   -07
 
    *  Clarification of FIDO\WebAuthn section.
 
