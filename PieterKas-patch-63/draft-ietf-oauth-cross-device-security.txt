@@ -1976,31 +1976,33 @@ Table of Contents
 6.2.2.  OpenID Foundation Client Initiated Back-Channel Authentication
         (CIBA):
 
-   #### Description Client Initiated Back-Channel Authentication (CIBA)
-   [CIBA]: A standard developed in the OpenID Foundation that allows a
-   device or service (e.g., a personal computer, smart TV, Kiosk) to
-   request the OpenID Provider to initiate an authentication flow if it
-   knows a valid identifier for the user.  The user completes the
-   authentication flow using a second device (e.g., a mobile phone).  In
-   this flow the user does not scan a QR code or obtain a user code from
-   the Consumption Device, but is instead contacted by the OpenID
-   Provider to complete the authentication using a push notification,
-   e-mail, text message or any other suitable mechanism.
+6.2.2.1.  Description
 
-6.2.2.1.  Susceptibility
+   Client Initiated Back-Channel Authentication (CIBA) [CIBA]: A
+   standard developed in the OpenID Foundation that allows a device or
+   service (e.g., a personal computer, smart TV, Kiosk) to request the
+   OpenID Provider to initiate an authentication flow if it knows a
+   valid identifier for the user.  The user completes the authentication
+   flow using a second device (e.g., a mobile phone).  In this flow the
+   user does not scan a QR code or obtain a user code from the
+   Consumption Device, but is instead contacted by the OpenID Provider
+   to complete the authentication using a push notification, e-mail,
+   text message or any other suitable mechanism.
+
+6.2.2.2.  Susceptibility
 
    Less susceptible to unauthenticated channel attacks, but still
    vulnerable to attackers who know or can guess the user identifier and
    initiate an attack as described in Section 4.3.4.
 
-6.2.2.2.  Device Capabilities
+6.2.2.3.  Device Capabilities
 
    There is no requirement on the Consumption Device to support specific
    hardware.  The Authorization Device must be registered/associated
    with the user and it must be possible for the Authorization Server to
    trigger an authorization on this device.
 
-6.2.2.3.  Mitigations
+6.2.2.4.  Mitigations
 
    In addition to the security considerations section in the standard,
    it is RECOMMENDED that one or more of the mitigations outlined in
@@ -2008,7 +2010,7 @@ Table of Contents
    establish proximity or prevent attackers from initiating
    authorization requests.
 
-6.2.2.4.  When to Use
+6.2.2.5.  When to Use
 
    Use CIBA instead of Device Authorization Grant if it is possible for
    the Consumption Device to obtain a user identifier on the Consumption
@@ -2019,17 +2021,19 @@ Table of Contents
 
 6.2.3.  FIDO2/WebAuthn
 
-   #### Description FIDO2/WebAuthn is a stack of standards developed in
-   the FIDO Alliance and W3C respectively which allow for origin-bound,
-   phishing-resistant user authentication using asymmetric cryptography
-   that can be invoked from a web browser or native client.  Version 2.2
-   of the FIDO Client to Authenticator Protocol (CTAP) supports a new
-   cross-device authentication protocol, called "hybrid transports",
-   which enables an external device, such as a phone or tablet, to be
-   used as a roaming authenticator for signing into the primary device,
-   such as a personal computer.  This is commonly called FIDO Cross-
-   Device Authentication (CDA).  CTAP 2.2 hybrid transports is
-   implemented by the client and authenticator platforms.
+6.2.3.1.  Description
+
+   FIDO2/WebAuthn is a stack of standards developed in the FIDO Alliance
+   and W3C respectively which allow for origin-bound, phishing-resistant
+   user authentication using asymmetric cryptography that can be invoked
+   from a web browser or native client.  Version 2.2 of the FIDO Client
+   to Authenticator Protocol (CTAP) supports a new cross-device
+   authentication protocol, called "hybrid transports", which enables an
+   external device, such as a phone or tablet, to be used as a roaming
+   authenticator for signing into the primary device, such as a personal
+   computer.  This is commonly called FIDO Cross-Device Authentication
+   (CDA).  CTAP 2.2 hybrid transports is implemented by the client and
+   authenticator platforms.
 
    When a user wants to authenticate using their mobile device
    (authenticator) for the first time, they need to link their
@@ -2044,13 +2048,13 @@ Table of Contents
    device, the QR code link step is not necessary for subsequent use.
    The user will receive a push notification on the authenticator.
 
-6.2.3.1.  Susceptibility
+6.2.3.2.  Susceptibility
 
    The Cross-Device Authentication flow proves proximity by leveraging
    BLE advertisements for service establishment, significantly reducing
    the susceptibility to any of the exploits described in Examples 1-6.
 
-6.2.3.2.  Device Capabilities
+6.2.3.3.  Device Capabilities
 
    Both the Consumption Device and the authenticator require BLE support
    and access to the internet.  The Consumption Device must support both
@@ -2060,14 +2064,14 @@ Table of Contents
    [FIDOCTAP22].  The device serving as the FIDO authenticator must also
    support CTAP 2.2 or later to be used as a cross-device authenticator.
 
-6.2.3.3.  Mitigations
+6.2.3.4.  Mitigations
 
    FIDO Cross-Device Authentication (CDA) establishes proximity through
    the use of BLE, reducing the need for additional mitigations.  An
    implementer MAY still choose to implement additional mitigation as
    described in this document.
 
-6.2.3.4.  When to Use
+6.2.3.5.  When to Use
 
    FIDO2/WebAuthn SHOULD be used for cross-device authentication
    scenarios whenever the devices are capable of doing so and a suitable
