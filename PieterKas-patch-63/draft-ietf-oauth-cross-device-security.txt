@@ -273,8 +273,7 @@ Table of Contents
    Cross-Device Consent Phishing and Cross-Device Session Phishing
    attacks.  This guidance includes:
 
-   1.  Practical mitigations for susceptible protocols ((practical-
-       mitigations)).
+   1.  Practical mitigations for susceptible protocols Section 6.1.
 
    2.  Protocol selection guidance to avoid using susceptible protocols
        ((#protocol-selection)).
