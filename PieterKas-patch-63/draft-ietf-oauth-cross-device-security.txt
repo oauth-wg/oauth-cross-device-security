@@ -273,7 +273,7 @@ Table of Contents
    Cross-Device Consent Phishing and Cross-Device Session Phishing
    attacks.  This guidance includes:
 
-   1.  Practical mitigations for susceptible protocols ((#practical-
+   1.  Practical mitigations for susceptible protocols ((practical-
        mitigations)).
 
    2.  Protocol selection guidance to avoid using susceptible protocols
@@ -314,7 +314,7 @@ Table of Contents
        selection) for protocol selection.
 
    4.  Implementers MUST implement practical mitigations as listed in
-       (#practical-mitigations) that are appropriate for the use case,
+       ((practical-mitigations)) that are appropriate for the use case,
        architecture, and selected protocols.
 
    5.  Implementers SHOULD implement proximity checks as defined in
@@ -330,7 +330,7 @@ Table of Contents
 
    (#cross-device-flow-patterns) provides details about susceptible
    protocols and (#cross-device-flow-exploits) provides attack
-   descriptions. (#practical-mitigations) provides details about the
+   descriptions. (practical-mitigations) provides details about the
    security mechanisms and mitigations, (protocol-selection) provides
    protocol selection guidance and (#foundational-pillars) provides
    details from formal analysis of protocols that apply to cross device
