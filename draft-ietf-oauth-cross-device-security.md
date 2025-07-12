@@ -459,7 +459,7 @@ The Device Authorization Grant ({{RFC8628}}) is an example of a cross-device flo
              |              | and Authorize Access  |               |
              +--------------+                       +---------------+
 ~~~
-Figure: Cross-Device Flows: User-Transferred Session Data Pattern
+Figure: User-Transferred Session Data Pattern
 
 - (A) The user takes an action on the Consumption Device by starting a purchase, adding a device to a network
 or connecting a service to the Consumption Device.
@@ -492,7 +492,7 @@ The Client Initiated Backchannel Authentication {{CIBA}} transfers the session o
              |              |    Authorization      |               |
              +--------------+                       +---------------+
 ~~~
-Figure: Cross-Device Flows: Backchannel-Transferred Session Pattern
+Figure: Backchannel-Transferred Session Pattern
 
 - (A) The user takes an action on the Consumption Device by starting a purchase, adding a device to a network or connecting a service to the Consumption Device.
 - (B) The client on the Consumption Device requests user authorization on the backchannel from the Authorization Server.
@@ -525,7 +525,7 @@ Examples of the user-transferred authorization data pattern include flows in whi
              |              |    Data               |               |
              +--------------+                       +---------------+
 ~~~
-Figure: Cross-Device Flow: User-Transferred Authorization Data Pattern
+Figure: User-Transferred Authorization Data Pattern
 
 - (A) The user takes an action on the Consumption Device by starting a purchase, adding a device to a network or connecting a service to the Consumption Device.
 - (B) The client on the Consumption Device requests user authorization on the backchannel from the Authorization Server.
@@ -565,7 +565,7 @@ Session  |   |              |     Context           |               |
          +-->|              |<----------------------|               |
              +--------------+                       +---------------+
 ~~~
-Figure: Cross-Device Flows: Session Transfer Pattern
+Figure: Cross-Dvice Session Transfer Pattern
 
 - (A) The user is authenticated on the Authorization Device and authorizes the transfer of the session to the Consumption device.
 - (B) The client on the Authorization Device requests a session transfer code from the Authorization Server.
@@ -590,13 +590,13 @@ An end-user wants to rent a bicycle from a bike sharing scheme. The bicycles are
 ### Example A4: Authorize a Financial Transaction (Backchannel-Transferred Session Pattern)
 An end-user makes an online purchase. Before completing the purchase, they get a notification on their mobile phone, asking them to authorize the transaction. The user opens their app and authenticates to the service before authorizing the transaction.
 
-### Example A5: Add a Device to a Network (Session Transfer Pattern) {#example-a5}
+### Example A5: Add a Device to a Network (Cross-Device Session Transfer Pattern) {#example-a5}
 An employee is issued with a personal computer that is already joined to a network. The employee wants to add their mobile phone to the network to allow it to access corporate data and services (e.g., files and e-mail). The employee is logged-in on the personal computer where they initiate the process of adding their mobile phone to the network. The personal computer displays a QR code which authorizes the user to join their mobile phone to the network. The employee scans the QR code with their mobile phone and the mobile phone is joined to the network. The employee can start accessing corporate data and services on their mobile device.
 
 ### Example A6: Remote Onboarding (User-Transferred Session Data Pattern)
 A new employee is directed to an onboarding portal to provide additional information to confirm their identity on their first day with their new employer. Before activating the employee's account, the onboarding portal requests that the employee present a government issued ID, proof of a background check and proof of their qualifications. The onboarding portal displays a QR code, which the user scans with their mobile phone. Scanning the QR code invokes the employee's digital wallet on their mobile phone, and the employee is asked to present digital versions of an identity document (e.g., a driving license), proof of a background check by an identity verifier, and proof of their qualifications. The employee authorizes the release of the credentials and after completing the onboarding process, their account is activated.
 
-### Example A7: Application Bootstrap (Session Transfer Pattern) {#example-a7}
+### Example A7: Application Bootstrap (Cross-Device Session Transfer Pattern) {#example-a7}
 An employee is signed into an application on their personal computer and wants to bootstrap the mobile application on their mobile phone. The employee initiates the cross-device flow and is shown a QR code in their application. The employee launches the mobile application on their phone and scans the QR code which results in the user being signed into the application on the mobile phone.
 
 ### Example A8: Access a Productivity Application (User-Transferred Authorization Data Pattern)
@@ -650,7 +650,7 @@ Attackers exploit this absence of an authenticated channel between the two devic
            |              | and Authorize Access  |               |
            +--------------+                       +---------------+
 ~~~
-Figure: Cross-Device Consent Phishing: User-Transferred Session Data Pattern Exploits
+Figure: User-Transferred Session Data Pattern Exploits
 
 - (A) The attacker initiates the protocol on the Consumption Device (or mimicks the Consumption Device) by starting a purchase, adding a device to a network or connecting a service to the Consumption Device.
 - (B) The Consumption Device retrieves a QR code or user code from an Authorization Server.
@@ -695,7 +695,7 @@ Attackers exploit this lack of context by using social engineering techniques to
              |              |    Authorization      |               |
              +--------------+                       +---------------+
 ~~~
-Figure: Cross-Device Consent Phishing: Backchannel-Transferred Session Pattern Exploits
+Figure: Backchannel-Transferred Session Pattern Exploits
 
 - (A) The attacker sends a social engineering message to prepare the user for the upcoming authorization (optional).
 - (B) The attacker initiates the protocol on the Consumption Device (or by mimicking the Consumption Device) by starting a purchase, adding a device to a network or accessing a service on the Consumption Device.
@@ -740,7 +740,7 @@ Attackers exploit the user-transferred authorization data pattern by combining t
              |              |    Data               |               |
              +--------------+                       +---------------+
 ~~~
-Figure: Cross-Device Consent Phishing: User-Transferred Authorization Data Pattern Exploits
+Figure: User-Transferred Authorization Data Pattern Exploits
 
 - (A) The attacker sends a social engineering message to prime the user for the authorization request they are about to receive, including instructions on what to do with the authorization data once they receive it.
 - (B) The attacker initiates the protocol on the Consumption Device (or by mimicking the Consumption Device) by starting a purchase, adding a device to a network or accessing a service on the Consumption Device.
@@ -786,7 +786,7 @@ Attackers exploit cross-device session transfer flows by using social engineerin
  Session +-->|              |<----------------------|               |
              +--------------+                       +---------------+
 ~~~
-Figure: Cross-Device Flows: Session Transfer Pattern Exploit
+Figure: Cross-Device Session Transfer Pattern Exploit
 
 - (A) The attacker sends a social engineering message to that convinces the user that they should authorize a session transfer including instructions on what to do with the QR code or session transfer code once they receive it.
 - (B) The user is authenticated on their Authorization Device and authorizes the transfer of the session to the Consumption Device.
@@ -818,13 +818,13 @@ An attacker obtains a list of user identifiers for a financial institution and t
 ### Example B4.2: Fake Helpdesk (Backchannel-Transferred Session Pattern)
 An attacker obtains the contact information for a user and contacts them, pretending to be a representative of the user's financial institution. The attacker informs the user that there were a number of fraudulent transactions against their account and asks them to review these transactions by approving or rejecting them. The attacker then triggers a sequence of transactions. The user receives an authorization request for each transaction and declines them as they do not recognize them. The attacker then informs the user that they need to close the users account and transfer all the funds to a new account to prevent further fraudulent transactions. The user receives another authorization request which they approve, or provide additional authorization information to the attacker which enables the attacker to complete their attack and defraud the user.
 
-### Example B5: Illicit Network Join (Session Transfer Pattern Exploit) {#example-b5}
+### Example B5: Illicit Network Join (Cross-Device Session Transfer Pattern Exploit) {#example-b5}
 An attacker creates a message to all employees of a company, claiming to be from a trusted technology provider investigating a suspected security breach. They ask employees to send them the QR code typically used to join a new device to the network, along with detailed steps on how to obtain the QR code. The employee, eager to assist, initiates the process to add a new mobile device to the network. They authenticate to the network and obtain a QR code. They send the QR code to the attacker. The attacker scans the QR code and adds their own device to the network. They use this device access as an entry point and perform lateral moves to obtain additional privileges and access to restricted resources.
 
 ### Example B6: Illicit Onboarding (User-Transferred Session Data Pattern)
 An attacker initiates an employee onboarding flow and obtains a QR code from the onboarding portal to invoke a digital wallet and present a verifiable credential attesting to a new employee's identity. The attacker obtains a list of potential new employees and sends an e-mail informing them that it is time to present proof of their background check or government issued ID. The new employee scans the QR code, invokes their digital wallet and presents their credentials. Once the credentials are presented, the employee's account is activated. The employee portal accessed by the attacker to obtain the QR code displays a message to the attacker with instructions on how to access their account.
 
-### Example B7: Illicit Application Bootstrap (Session Transfer Pattern Exploit) {#Example-B7}
+### Example B7: Illicit Application Bootstrap (Cross-Device Session Transfer Pattern Exploit) {#Example-B7}
 An attacker creates a message to all employees of a company, claiming to be from the company's IT service provider. They claim that they are trying to resolve an application performance issue and ask employees to send them the QR code typically used to transfer a session. The employee, eager to assist, initiates the process to transfer a session. They authenticate and obtain a QR code and then send the QR code to the attacker. The attacker scans the QR code with their mobile phone and access the users data and resources.
 
 ### Example B8: Account Takeover (User-Transferred Session Data Pattern)
