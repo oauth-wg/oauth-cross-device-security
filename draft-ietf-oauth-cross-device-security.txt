@@ -1439,7 +1439,9 @@ Table of Contents
       removed for security purposes).  Physical connectivity may be
       better suited to dedicated hardware like FIDO devices that can be
       used with protocols that are resistant to the exploits described
-      in this document.
+      in this document.  The authorization server does not directly
+      establish proximity, but relies on the deployed system and
+      selected protocols and devices to establish proximity.
 
    *  Wireless proximity: Near Field Communications (NFC), Bluetooth Low
       Energy (BLE), and Ultra Wideband (UWB) services can be used to
@@ -1450,7 +1452,10 @@ Table of Contents
       experience challenges when setting up.  UWB standards such as IEEE
       802.15.4 and the IEEE 802.15.4z-2020 Amendment 1 enable secure
       ranging between devices and allow devices to establish proximity
-      relative to each other [IEEE802154].
+      relative to each other [IEEE802154].  The authorization server
+      does not directly establish proximity, but relies on the deployed
+      system and selected protocols and devices to establish proximity
+      using these wireless proximity protocols.
 
    *  Shared network: Device proximity can be inferred by verifying that
       both devices are on the same network.  This check may be performed
@@ -2408,6 +2413,8 @@ Appendix A.  Document History
 
    *  Clarfied common use case for phen and TVs to not use the same
       network.
+
+   *  Clarified role of authorization server in establishing proximity.
 
    -10
 
