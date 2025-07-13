@@ -1057,7 +1057,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Kasselmann, et al.</td>
-<td class="center">Expires 13 January 2026</td>
+<td class="center">Expires 14 January 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1070,12 +1070,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-oauth-cross-device-security-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-07-12" class="published">12 July 2025</time>
+<time datetime="2025-07-13" class="published">13 July 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Best Current Practice</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-01-13">13 January 2026</time></dd>
+<dd class="expires"><time datetime="2026-01-14">14 January 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1133,7 +1133,7 @@ specialists, fraud analysts and engineers implementing cross-device flows.<a hre
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 13 January 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 14 January 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -2369,7 +2369,7 @@ Session  |   |              |     Context           |               |
           <h4 id="name-short-lived-timebound-qr-or">
 <a href="#section-6.1.2" class="section-number selfRef">6.1.2. </a><a href="#name-short-lived-timebound-qr-or" class="section-name selfRef">Short Lived/Timebound QR or User Codes</a>
           </h4>
-<p id="section-6.1.2-1">The impact of an attack can be reduced by making QR or user codes short lived. If an attacker obtains a short lived code, the duration during which the unauthenticated channel can be exploited is reduced, potentially increasing the cost of a successful attack.<a href="#section-6.1.2-1" class="pilcrow">¶</a></p>
+<p id="section-6.1.2-1">The impact of an attack can be reduced by making QR or user codes short lived. If an attacker obtains a short lived code, the duration during which the unauthenticated channel can be exploited is reduced, potentially increasing the cost of a successful attack. This mitigation can be implemented on the authorization server without changes to other system components.<a href="#section-6.1.2-1" class="pilcrow">¶</a></p>
 <p id="section-6.1.2-2"><strong>Limitations:</strong> There is a practical limit to how short a user code can be valid due to network latency and user experience limitations (time taken to enter a code, or incorrectly entering a code). More sophisticated Cross-Device Consent Phishing attacks counter the effectiveness of short lived codes by convincing a user to respond to a phishing e-mail and only request the QR or user code once the user clicks on the link in the phishing e-mail <span>[<a href="#Exploit6" class="cite xref">Exploit6</a>]</span>.<a href="#section-6.1.2-2" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -2378,7 +2378,7 @@ Session  |   |              |     Context           |               |
           <h4 id="name-one-time-or-limited-use-cod">
 <a href="#section-6.1.3" class="section-number selfRef">6.1.3. </a><a href="#name-one-time-or-limited-use-cod" class="section-name selfRef">One-Time or Limited Use Codes</a>
           </h4>
-<p id="section-6.1.3-1">By enforcing one-time use or limited use of user or QR codes, the authorization server can limit the impact of attacks where the same user code or QR code is sent to multiple victims. One-time use may be achieved by including a nonce or date-stamp in the user code or QR code which is validated by the authorization server when the user scans the QR code against a list of previously issued codes.<a href="#section-6.1.3-1" class="pilcrow">¶</a></p>
+<p id="section-6.1.3-1">By enforcing one-time use or limited use of user or QR codes, the authorization server can limit the impact of attacks where the same user code or QR code is sent to multiple victims. One-time use may be achieved by including a nonce or date-stamp in the user code or QR code which is validated by the authorization server when the user scans the QR code against a list of previously issued codes. This mitigation can be implemented on the authorization server without changes to other system components.<a href="#section-6.1.3-1" class="pilcrow">¶</a></p>
 <p id="section-6.1.3-2"><strong>Limitations:</strong> Enforcing one-time use may be difficult in large globally distributed systems with low latency requirements, in which case short lived tokens may be more practical. One-time use codes may also have an impact on the user experience. For example, a user may enter a code, but their session may be interrupted before the access request is completed. If the code is a one-time use code, they would need to restart the session and obtain a new code since they won't be allowed to enter the same code a second time. To avoid this, implementers MAY allow the same code to be presented a small number of times.<a href="#section-6.1.3-2" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -2387,7 +2387,7 @@ Session  |   |              |     Context           |               |
           <h4 id="name-unique-codes">
 <a href="#section-6.1.4" class="section-number selfRef">6.1.4. </a><a href="#name-unique-codes" class="section-name selfRef">Unique Codes</a>
           </h4>
-<p id="section-6.1.4-1">By issuing unique user or QR codes, an authorization server can detect if the same codes are being repeatedly submitted. This may be interpreted as anomalous behavior and the authorization server MAY choose to decline issuing access and refresh tokens if it detects the same codes being presented repeatedly. This may be achieved by maintaining a deny list that contains QR codes or user codes that were previously used. The authorization server MAY use a sliding window equal to the lifetime of a token if short lived/timebound tokens are used (see <a href="#Short-Lived-Timebound-Codes" class="auto internal xref">Section 6.1.2</a>). This will limit the size of the deny list.<a href="#section-6.1.4-1" class="pilcrow">¶</a></p>
+<p id="section-6.1.4-1">By issuing unique user or QR codes, an authorization server can detect if the same codes are being repeatedly submitted. This may be interpreted as anomalous behavior and the authorization server MAY choose to decline issuing access and refresh tokens if it detects the same codes being presented repeatedly. This may be achieved by maintaining a deny list that contains QR codes or user codes that were previously used. The authorization server MAY use a sliding window equal to the lifetime of a token if short lived/timebound tokens are used (see <a href="#Short-Lived-Timebound-Codes" class="auto internal xref">Section 6.1.2</a>). This will limit the size of the deny list. This mitigation can be implemented on the authorization server without changes to other system components.<a href="#section-6.1.4-1" class="pilcrow">¶</a></p>
 <p id="section-6.1.4-2"><strong>Limitations:</strong> Maintaining a deny list of previously redeemed codes, even for a sliding window, may have an impact on the latency of globally distributed systems. One alternative is to segment user codes by geography or region and maintain local deny lists.<a href="#section-6.1.4-2" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -2425,7 +2425,7 @@ Session  |   |              |     Context           |               |
           <h4 id="name-trusted-networks">
 <a href="#section-6.1.8" class="section-number selfRef">6.1.8. </a><a href="#name-trusted-networks" class="section-name selfRef">Trusted Networks</a>
           </h4>
-<p id="section-6.1.8-1">An attacker can be prevented from initiating a cross-device flow protocol by only allowing the protocol to be initiated on a trusted network or within a security perimeter (e.g., a corporate network). A trusted network may be defined as a set of IP addresses and joining the network is subject to security controls managed by the network operator, which may include only allowing trusted devices on the network, device management, user authentication and physical access policies and systems. By limiting protocol initiation to a specific network, the attacker needs to have access to a device on the network.<a href="#section-6.1.8-1" class="pilcrow">¶</a></p>
+<p id="section-6.1.8-1">An attacker can be prevented from initiating a cross-device flow protocol by only allowing the protocol to be initiated on a trusted network or within a security perimeter (e.g., a corporate network). A trusted network may be defined as a set of IP addresses and joining the network is subject to security controls managed by the network operator, which may include only allowing trusted devices on the network, device management, user authentication and physical access policies and systems. By limiting protocol initiation to a specific network, the attacker needs to have access to a device on the network. This mitigation can be implemented on the authorization server without changes to other system components.<a href="#section-6.1.8-1" class="pilcrow">¶</a></p>
 <p id="section-6.1.8-2"><strong>Limitations:</strong> Network level controls may not always be feasible, especially when dealing with consumer scenarios where the network may not be under control of the service provider. Even if it is possible to deploy network level controls, it SHOULD be used in conjunction with other controls outlined in this document to achieve defence in-depth.<a href="#section-6.1.8-2" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -2434,7 +2434,7 @@ Session  |   |              |     Context           |               |
           <h4 id="name-limited-scopes">
 <a href="#section-6.1.9" class="section-number selfRef">6.1.9. </a><a href="#name-limited-scopes" class="section-name selfRef">Limited Scopes</a>
           </h4>
-<p id="section-6.1.9-1">Authorization servers MAY choose to limit the scopes they include in access tokens issued through cross-device flows where the unauthenticated channel between two devices are susceptible to being exploited. Including limited scopes lessens the impact in case of a successful attack. The decision about which scopes are included may be further refined based on whether the protocol is initiated on a trusted device or the user's location relative to the location of the Consumption Device.<a href="#section-6.1.9-1" class="pilcrow">¶</a></p>
+<p id="section-6.1.9-1">Authorization servers MAY choose to limit the scopes they include in access tokens issued through cross-device flows where the unauthenticated channel between two devices are susceptible to being exploited. Including limited scopes lessens the impact in case of a successful attack. The decision about which scopes are included may be further refined based on whether the protocol is initiated on a trusted device or the user's location relative to the location of the Consumption Device. This mitigation can be implemented on the authorization server without changes to other system components.<a href="#section-6.1.9-1" class="pilcrow">¶</a></p>
 <p id="section-6.1.9-2"><strong>Limitations:</strong> Limiting scopes reduces the impact of a compromise, but does not avoid it. It SHOULD be used in conjunction with other mitigations described in this document.<a href="#section-6.1.9-2" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -2443,7 +2443,7 @@ Session  |   |              |     Context           |               |
           <h4 id="name-short-lived-tokens">
 <a href="#section-6.1.10" class="section-number selfRef">6.1.10. </a><a href="#name-short-lived-tokens" class="section-name selfRef">Short Lived Tokens</a>
           </h4>
-<p id="section-6.1.10-1">Another mitigation strategy includes limiting the life of the access and refresh tokens. The lifetime can be lengthened or shortened, depending on the user's location, the resources they are trying to access or whether they are using a trusted device. Short lived tokens do not prevent or disrupt the attack, but serve as a remedial mechanism in case the attack succeeded.<a href="#section-6.1.10-1" class="pilcrow">¶</a></p>
+<p id="section-6.1.10-1">Another mitigation strategy includes limiting the life of the access and refresh tokens. The lifetime can be lengthened or shortened, depending on the user's location, the resources they are trying to access or whether they are using a trusted device. Short lived tokens do not prevent or disrupt the attack, but serve as a remedial mechanism in case the attack succeeded. This mitigation can be implemented on the authorization server without changes to other system components.<a href="#section-6.1.10-1" class="pilcrow">¶</a></p>
 <p id="section-6.1.10-2"><strong>Limitations:</strong> Short lived tokens reduces the time window during which an attacker can benefit from a successful attack. This is most effective for access tokens. However, once an attacker obtains a refresh token, they can continue to request new access tokens, as well as refresh tokens. Forcing the expiry of refresh tokens may cause the user to re-authorize an action more frequently, which results in a negative user experience.<a href="#section-6.1.10-2" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -3044,13 +3044,16 @@ described in <a href="#user_education" class="auto internal xref">Section 6.1.13
           <p id="appendix-A-3.1.1">Fixed malformed labels<a href="#appendix-A-3.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-A-3.2">
-          <p id="appendix-A-3.2.1">Clarfied common use case for when phone and TVs do not use the same network.<a href="#appendix-A-3.2.1" class="pilcrow">¶</a></p>
+          <p id="appendix-A-3.2.1">Clarified common use case for when phone and TVs do not use the same network.<a href="#appendix-A-3.2.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-A-3.3">
           <p id="appendix-A-3.3.1">Clarified role of authorization server in establishing proximity.<a href="#appendix-A-3.3.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-A-3.4">
-          <p id="appendix-A-3.4.1">Add Dan Moore to acknowledgements<a href="#appendix-A-3.4.1" class="pilcrow">¶</a></p>
+          <p id="appendix-A-3.4.1">Clarified which mitigations can be implented by the authorization server only.<a href="#appendix-A-3.4.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-A-3.5">
+          <p id="appendix-A-3.5.1">Add Dan Moore to acknowledgements<a href="#appendix-A-3.5.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="appendix-A-4">-10<a href="#appendix-A-4" class="pilcrow">¶</a></p>
