@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-07-06T00:36:14.078894+00:00",
+  "timestamp": "2025-07-13T00:37:23.470614+00:00",
   "repo": "oauth-wg/oauth-cross-device-security",
   "labels": [
     {
@@ -1770,31 +1770,39 @@
       "id": "I_kwDOHK26QM6-fToB",
       "title": "Editorial Updates",
       "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/164",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "PieterKas",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "A few comments/nits:\n\nLinks in this section https://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#name-defending-against-cross-dev don't point to the correct anchor/aren't processed.\n\nIn the Examples section (3.3) there were some inconsistencies:\n\n- this section is \"Cross-Device Session Transfer Pattern\" rather than \"Session Transfer Pattern\": https://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#section-3.3.5 doing so makes it consistent with the other parenthesized pattern names, which all refer to the specific pattern name used above.\n- same issue with  https://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#section-3.3.7\n\nIn section 4.3, some of the parenthesized text doesn't tie back to the patterns:\n- this section: https://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#section-4.3.6\n- this section: https://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#section-4.3.8 \nThese are the only ones with the \"suffix\" exploit, everything else is a \"pattern\".\n\nTypo: https://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#section-5-5 has an upper case S in server: \"An authorization Server\" it should be lowercase for consistency.\n\nIn this section, https://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#name-mitigating-against-cross-de\nI'd modify this sentence:\n'End-users have \"expertise elsewhere\" and are typically not security experts and don't understand the protocols and systems they interact with.' to use commas\n'End-users have \"expertise elsewhere\", are typically not security experts, and don't understand the protocols and systems they interact with.'\n\nThis section has some extra hash marks:\nhttps://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#name-ietf-oauth-20-device-author . Saw the same with 6.2.2 and 6.2.3.\n\nThere are some busted internal anchor links here:  https://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#section-6.3-6.2.1\n\nThanks,\nDan",
       "createdAt": "2025-07-02T13:11:47Z",
-      "updatedAt": "2025-07-02T13:11:47Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2025-07-12T17:01:01Z",
+      "closedAt": "2025-07-12T17:01:01Z",
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Adressed in #171 ",
+          "createdAt": "2025-07-12T17:01:01Z",
+          "updatedAt": "2025-07-12T17:01:01Z"
+        }
+      ]
     },
     {
       "number": 165,
       "id": "I_kwDOHK26QM6-fUS_",
       "title": "Additional Info about shared network",
       "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/165",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "PieterKas",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "In this section https://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#section-6.1.1-2.3.1 I'd add that the shared network check breaks down if the consumption device (TV) is on wifi and the authorization device (mobile phone) is on the mobile network, a common situation.\n",
       "createdAt": "2025-07-02T13:12:34Z",
-      "updatedAt": "2025-07-02T13:12:34Z",
-      "closedAt": null,
+      "updatedAt": "2025-07-12T17:23:14Z",
+      "closedAt": "2025-07-12T17:23:14Z",
       "comments": []
     },
     {
@@ -1802,16 +1810,24 @@
       "id": "I_kwDOHK26QM6-fU2b",
       "title": "Make Authorisation Server role explicit in establishing Proximity",
       "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/166",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "PieterKas",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "\nIn this section: https://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#section-6.1.1-1\nWhen the doc suggests \"There are a couple of ways to establish proximity\" is it worth being explicit that the authorization server is the entity that is responsible for this? It is implied.\n\n",
       "createdAt": "2025-07-02T13:13:20Z",
-      "updatedAt": "2025-07-02T13:13:20Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2025-07-12T17:54:53Z",
+      "closedAt": "2025-07-12T17:54:53Z",
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Establishing proximity is be done on a system level. The operator of the system is responsible for ensuring that proximity is established. An authorization server may perform some proximity checks (e.g. geolocation as already mentioned in the draft), but if the deployment uses passkeys for authentication, the authorization server depends on the FIDO protocols to establish proximity and is not directly involved.",
+          "createdAt": "2025-07-12T17:41:53Z",
+          "updatedAt": "2025-07-12T17:41:53Z"
+        }
+      ]
     },
     {
       "number": 167,
@@ -1834,15 +1850,15 @@
       "id": "I_kwDOHK26QM6-fWf9",
       "title": "Add acknowledgement for Dan Moore's contribution",
       "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/168",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "PieterKas",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Dan Moore\u00a0<dan@fusionauth.io>\n\nHi folks,\n\nThis was a super useful document. I thought all the examples and delineations were very helpful in making a tough topic understandable.\n\nA few comments/nits:\n\nLinks in this section https://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#name-defending-against-cross-dev don't point to the correct anchor/aren't processed.\n\nIn the Examples section (3.3) there were some inconsistencies:\n\n- this section is \"Cross-Device Session Transfer Pattern\" rather than \"Session Transfer Pattern\": https://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#section-3.3.5 doing so makes it consistent with the other parenthesized pattern names, which all refer to the specific pattern name used above.\n- same issue with  https://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#section-3.3.7\n\nIn section 4.3, some of the parenthesized text doesn't tie back to the patterns:\n- this section: https://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#section-4.3.6\n- this section: https://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#section-4.3.8 \nThese are the only ones with the \"suffix\" exploit, everything else is a \"pattern\".\n\nTypo: https://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#section-5-5 has an upper case S in server: \"An authorization Server\" it should be lowercase for consistency.\n\nIn this section, https://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#name-mitigating-against-cross-de\nI'd modify this sentence:\n'End-users have \"expertise elsewhere\" and are typically not security experts and don't understand the protocols and systems they interact with.' to use commas\n'End-users have \"expertise elsewhere\", are typically not security experts, and don't understand the protocols and systems they interact with.'\n\nIn this section https://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#section-6.1.1-2.3.1 I'd add that the shared network check breaks down if the consumption device (TV) is on wifi and the authorization device (mobile phone) is on the mobile network, a common situation.\n\nIn this section: https://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#section-6.1.1-1\nWhen the doc suggests \"There are a couple of ways to establish proximity\" is it worth being explicit that the authorization server is the entity that is responsible for this? It is implied.\n\nThe mitigations section was great! I wondered if it made sense to break mitigations out further between those that the authorization server can implement (limited scopes, short lived tokens) and those that require work across other systems (such as content filtering, trusted devices). An alternative might be including that info in the table in 6.1.18.\n\nThis section has some extra hash marks:\nhttps://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#name-ietf-oauth-20-device-author . Saw the same with 6.2.2 and 6.2.3.\n\nThere are some busted internal anchor links here:  https://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#section-6.3-6.2.1\n\nThanks,\nDan",
       "createdAt": "2025-07-02T13:15:38Z",
-      "updatedAt": "2025-07-02T13:15:38Z",
-      "closedAt": null,
+      "updatedAt": "2025-07-12T18:27:42Z",
+      "closedAt": "2025-07-12T18:27:42Z",
       "comments": []
     },
     {
@@ -1850,16 +1866,24 @@
       "id": "I_kwDOHK26QM6-1ez1",
       "title": "broken internal links",
       "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/169",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "jogu",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Just a heads up that there seem to be a whole bunch of broken internal links, e.g. in https://www.ietf.org/archive/id/draft-ietf-oauth-cross-device-security-10.html#section-1.3 and so on, searching for `(#` in the rendered html highlights them all:\n\n<img width=\"779\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3e5834cb-6837-4913-977d-c90faaca9f95\" />\n\nNot sure how it happened but seems it happened since draft 9 as that looks okay.",
       "createdAt": "2025-07-04T07:42:55Z",
-      "updatedAt": "2025-07-04T07:44:26Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2025-07-12T16:41:54Z",
+      "closedAt": "2025-07-12T16:41:54Z",
+      "comments": [
+        {
+          "author": "PieterKas",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Thank @jogu - I have created a PR and made the updates so the references now behave correctly. Thank you for finding and filing this. Working theory is that something changed when I did the big re-shuffle to split normative and non-normative references.",
+          "createdAt": "2025-07-12T16:27:32Z",
+          "updatedAt": "2025-07-12T16:27:32Z"
+        }
+      ]
     }
   ],
   "pulls": [
@@ -6574,6 +6598,206 @@
       "mergedBy": "PieterKas",
       "mergeCommit": {
         "oid": "ddd78547e4213cdc7fa7ae6a55f38218964f6cb0"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 170,
+      "id": "PR_kwDOHK26QM6eoeOB",
+      "title": "Fixing Labels",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/170",
+      "state": "MERGED",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-07-12T15:22:31Z",
+      "updatedAt": "2025-07-12T16:41:37Z",
+      "baseRepository": "oauth-wg/oauth-cross-device-security",
+      "baseRefName": "main",
+      "baseRefOid": "6e83ca17ae03eec3e4135705d3f5f657d12d5be9",
+      "headRepository": "oauth-wg/oauth-cross-device-security",
+      "headRefName": "PieterKas-patch-63",
+      "headRefOid": "ea2bbfeae1f5595082b92903516983bd1550fbff",
+      "closedAt": "2025-07-12T16:41:37Z",
+      "mergedAt": "2025-07-12T16:41:37Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "a32eb9b20f14717cda09891371cf959bf1cb812c"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 171,
+      "id": "PR_kwDOHK26QM6eoyxy",
+      "title": "Editorial Updates - Issue 164",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/171",
+      "state": "MERGED",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-07-12T16:53:00Z",
+      "updatedAt": "2025-07-12T17:00:32Z",
+      "baseRepository": "oauth-wg/oauth-cross-device-security",
+      "baseRefName": "main",
+      "baseRefOid": "a32eb9b20f14717cda09891371cf959bf1cb812c",
+      "headRepository": "oauth-wg/oauth-cross-device-security",
+      "headRefName": "PieterKas-patch-64",
+      "headRefOid": "01fea668c2424b3750e3bfe7faafab5c37224514",
+      "closedAt": "2025-07-12T17:00:32Z",
+      "mergedAt": "2025-07-12T17:00:32Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "35cb4a66b64299dddd6bf120976af225c85b1fc2"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 172,
+      "id": "PR_kwDOHK26QM6eo26b",
+      "title": "Devices not sharing a network",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/172",
+      "state": "MERGED",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-07-12T17:17:49Z",
+      "updatedAt": "2025-07-12T17:22:50Z",
+      "baseRepository": "oauth-wg/oauth-cross-device-security",
+      "baseRefName": "main",
+      "baseRefOid": "35cb4a66b64299dddd6bf120976af225c85b1fc2",
+      "headRepository": "oauth-wg/oauth-cross-device-security",
+      "headRefName": "PieterKas-patch-65",
+      "headRefOid": "914e9c45424cf426fd9e0fdb367c7136c58ab7bc",
+      "closedAt": "2025-07-12T17:22:50Z",
+      "mergedAt": "2025-07-12T17:22:50Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "9e8c122f1aa7383c0b44f1a7c99afaadac04cb1d"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 173,
+      "id": "PR_kwDOHK26QM6eo7tl",
+      "title": "Clarify authorization server role in establishing proximity",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/173",
+      "state": "MERGED",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-07-12T17:47:46Z",
+      "updatedAt": "2025-07-12T17:54:39Z",
+      "baseRepository": "oauth-wg/oauth-cross-device-security",
+      "baseRefName": "main",
+      "baseRefOid": "9e8c122f1aa7383c0b44f1a7c99afaadac04cb1d",
+      "headRepository": "oauth-wg/oauth-cross-device-security",
+      "headRefName": "PieterKas-patch-66",
+      "headRefOid": "5a20fe3fc2e7011d0a10d59327c021f00b77ef03",
+      "closedAt": "2025-07-12T17:54:39Z",
+      "mergedAt": "2025-07-12T17:54:39Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "28ac9eb1b07e6e2c5cd20958bc3480a37a239ee1"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 174,
+      "id": "PR_kwDOHK26QM6epCKU",
+      "title": "Authorization Server only mitigations",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/174",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "See issue #167",
+      "createdAt": "2025-07-12T18:24:01Z",
+      "updatedAt": "2025-07-12T20:02:38Z",
+      "baseRepository": "oauth-wg/oauth-cross-device-security",
+      "baseRefName": "main",
+      "baseRefOid": "84cd57ea0fe04e602cb18aee9d23a4db7d8ec5a8",
+      "headRepository": "oauth-wg/oauth-cross-device-security",
+      "headRefName": "PieterKas-patch-68",
+      "headRefOid": "d8bc71d907bfedd26df640a1f518eaf5aa9024f7",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOHK26QM6znmfs",
+          "commit": {
+            "abbreviatedOid": "22f5502"
+          },
+          "author": "panva",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-07-12T20:01:30Z",
+          "updatedAt": "2025-07-12T20:01:30Z",
+          "comments": [
+            {
+              "originalPosition": 46,
+              "body": "```suggestion\n   * Clarified common use case for when phone and TVs do not use the same network.\n   * Clarified role of authorization server in establishing proximity.\n   * Clarified which mitigations can be implented by the authorization server only.\n```",
+              "createdAt": "2025-07-12T20:01:30Z",
+              "updatedAt": "2025-07-12T20:01:59Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOHK26QM6znnIk",
+          "commit": {
+            "abbreviatedOid": "d8bc71d"
+          },
+          "author": "panva",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-07-12T20:02:38Z",
+          "updatedAt": "2025-07-12T20:02:38Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 175,
+      "id": "PR_kwDOHK26QM6epCgr",
+      "title": "Add Dan Moore to acknowledgement",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/pull/175",
+      "state": "MERGED",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "See issue #168",
+      "createdAt": "2025-07-12T18:26:42Z",
+      "updatedAt": "2025-07-12T18:27:31Z",
+      "baseRepository": "oauth-wg/oauth-cross-device-security",
+      "baseRefName": "main",
+      "baseRefOid": "9720e200e95db7f5d7e58ccb6d997957116d0667",
+      "headRepository": "oauth-wg/oauth-cross-device-security",
+      "headRefName": "PieterKas-patch-69",
+      "headRefOid": "cefe1e5b9225a265b25e4937d9f8ae69098c1e18",
+      "closedAt": "2025-07-12T18:27:31Z",
+      "mergedAt": "2025-07-12T18:27:31Z",
+      "mergedBy": "PieterKas",
+      "mergeCommit": {
+        "oid": "84cd57ea0fe04e602cb18aee9d23a4db7d8ec5a8"
       },
       "comments": [],
       "reviews": []
