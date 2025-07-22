@@ -5,10 +5,10 @@
 oauth                                                      P. Kasselmann
 Internet-Draft                                                     SPIRL
 Intended status: Best Current Practice                           D. Fett
-Expires: 19 December 2025                                       Authlete
+Expires: 23 January 2026                                        Authlete
                                                                F. Skokan
                                                                     Okta
-                                                            17 June 2025
+                                                            22 July 2025
 
 
            Cross-Device Flows: Security Best Current Practice
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 19 December 2025.
+   This Internet-Draft will expire on 23 January 2026.
 
 Copyright Notice
 
@@ -89,12 +89,12 @@ Table of Contents
                (User-Transferred Session Data Pattern)
        3.3.4.  Example A4: Authorize a Financial Transaction
                (Backchannel-Transferred Session Pattern)
-       3.3.5.  Example A5: Add a Device to a Network (Session Transfer
-               Pattern)
+       3.3.5.  Example A5: Add a Device to a Network (Cross-Device
+               Session Transfer Pattern)
        3.3.6.  Example A6: Remote Onboarding (User-Transferred Session
                Data Pattern)
-       3.3.7.  Example A7: Application Bootstrap (Session Transfer
-               Pattern)
+       3.3.7.  Example A7: Application Bootstrap (Cross-Device Session
+               Transfer Pattern)
        3.3.8.  Example A8: Access a Productivity Application
                (User-Transferred Authorization Data Pattern)
        3.3.9.  Example A9: Administer a System
@@ -116,12 +116,12 @@ Table of Contents
                (Backchannel-Transferred Session Pattern)
        4.3.5.  Example B4.2: Fake Helpdesk (Backchannel-Transferred
                Session Pattern)
-       4.3.6.  Example B5: Illicit Network Join (Session Transfer
-               Pattern Exploit)
+       4.3.6.  Example B5: Illicit Network Join (Cross-Device Session
+               Transfer Pattern)
        4.3.7.  Example B6: Illicit Onboarding (User-Transferred
                Session Data Pattern)
-       4.3.8.  Example B7: Illicit Application Bootstrap (Session
-               Transfer Pattern Exploit)
+       4.3.8.  Example B7: Illicit Application Bootstrap (Cross-Device
+               Session Transfer Pattern)
        4.3.9.  Example B8: Account Takeover (User-Transferred Session
                Data Pattern)
        4.3.10. Example B9: Illicit Access to Administration
@@ -273,14 +273,13 @@ Table of Contents
    Cross-Device Consent Phishing and Cross-Device Session Phishing
    attacks.  This guidance includes:
 
-   1.  Practical mitigations for susceptible protocols ((#practical-
-       mitigations)).
+   1.  Practical mitigations for susceptible protocols (Section 6.1).
 
    2.  Protocol selection guidance to avoid using susceptible protocols
-       ((#protocol-selection)).
+       (Section 6.2).
 
    3.  Results from formal analysis of susceptible protocols
-       ((#foundational-pillars)).
+       (Section 6.3).
 
 1.4.  Conventions and Terminology
 
@@ -310,15 +309,15 @@ Table of Contents
    2.  Implementers SHOULD avoid cross-device flows if risks cannot be
        sufficiently mitigated.
 
-   3.  Implementers SHOULD follow the guidance provided in (#protocol-
-       selection) for protocol selection.
+   3.  Implementers SHOULD follow the guidance provided in Section 6.2
+       for protocol selection.
 
    4.  Implementers MUST implement practical mitigations as listed in
-       (#practical-mitigations) that are appropriate for the use case,
-       architecture, and selected protocols.
+       Section 6.1 that are appropriate for the use case, architecture,
+       and selected protocols.
 
    5.  Implementers SHOULD implement proximity checks as defined in
-       (#establish-proximity) if possible.
+       Section 6.1.1 if possible.
 
    These best practices apply to the Device Authorization Grant
    ([RFC8628]) as well as other cross-device protocols such as the
@@ -328,13 +327,11 @@ Table of Contents
    ([OpenID.VCI]) and other cross-device protocols that rely on the user
    to authenticate the channel between devices.
 
-   (#cross-device-flow-patterns) provides details about susceptible
-   protocols and (#cross-device-flow-exploits) provides attack
-   descriptions. (#practical-mitigations) provides details about the
+   Section 3 provides details about susceptible protocols and Section 4
+   provides attack descriptions.  Section 6.1 provides details about the
    security mechanisms and mitigations, (protocol-selection) provides
-   protocol selection guidance and (#foundational-pillars) provides
-   details from formal analysis of protocols that apply to cross device
-   flows.
+   protocol selection guidance and Section 6.3 provides details from
+   formal analysis of protocols that apply to cross device flows.
 
 3.  Cross-Device Flow Patterns
 
@@ -443,7 +440,7 @@ Table of Contents
                 |              | and Authorize Access  |               |
                 +--------------+                       +---------------+
 
-   Figure: Cross-Device Flows: User-Transferred Session Data Pattern
+   Figure: User-Transferred Session Data Pattern
 
    *  (A) The user takes an action on the Consumption Device by starting
       a purchase, adding a device to a network or connecting a service
@@ -487,7 +484,7 @@ Table of Contents
                 |              |    Authorization      |               |
                 +--------------+                       +---------------+
 
-   Figure: Cross-Device Flows: Backchannel-Transferred Session Pattern
+   Figure: Backchannel-Transferred Session Pattern
 
    *  (A) The user takes an action on the Consumption Device by starting
       a purchase, adding a device to a network or connecting a service
@@ -541,8 +538,7 @@ Table of Contents
                 |              |    Data               |               |
                 +--------------+                       +---------------+
 
-   Figure: Cross-Device Flow: User-Transferred Authorization Data
-   Pattern
+   Figure: User-Transferred Authorization Data Pattern
 
    *  (A) The user takes an action on the Consumption Device by starting
       a purchase, adding a device to a network or connecting a service
@@ -622,7 +618,7 @@ Table of Contents
             +-->|              |<----------------------|               |
                 +--------------+                       +---------------+
 
-   Figure: Cross-Device Flows: Session Transfer Pattern
+   Figure: Cross-Dvice Session Transfer Pattern
 
    *  (A) The user is authenticated on the Authorization Device and
       authorizes the transfer of the session to the Consumption device.
@@ -697,7 +693,8 @@ Table of Contents
    to authorize the transaction.  The user opens their app and
    authenticates to the service before authorizing the transaction.
 
-3.3.5.  Example A5: Add a Device to a Network (Session Transfer Pattern)
+3.3.5.  Example A5: Add a Device to a Network (Cross-Device Session
+        Transfer Pattern)
 
    An employee is issued with a personal computer that is already joined
    to a network.  The employee wants to add their mobile phone to the
@@ -727,7 +724,8 @@ Table of Contents
    the release of the credentials and after completing the onboarding
    process, their account is activated.
 
-3.3.7.  Example A7: Application Bootstrap (Session Transfer Pattern)
+3.3.7.  Example A7: Application Bootstrap (Cross-Device Session Transfer
+        Pattern)
 
    An employee is signed into an application on their personal computer
    and wants to bootstrap the mobile application on their mobile phone.
@@ -842,8 +840,7 @@ Table of Contents
               |              | and Authorize Access  |               |
               +--------------+                       +---------------+
 
-   Figure: Cross-Device Consent Phishing: User-Transferred Session Data
-   Pattern Exploits
+   Figure: User-Transferred Session Data Pattern Exploits
 
    *  (A) The attacker initiates the protocol on the Consumption Device
       (or mimicks the Consumption Device) by starting a purchase, adding
@@ -927,8 +924,7 @@ Table of Contents
                 |              |    Authorization      |               |
                 +--------------+                       +---------------+
 
-   Figure: Cross-Device Consent Phishing: Backchannel-Transferred
-   Session Pattern Exploits
+   Figure: Backchannel-Transferred Session Pattern Exploits
 
    *  (A) The attacker sends a social engineering message to prepare the
       user for the upcoming authorization (optional).
@@ -1002,8 +998,7 @@ Table of Contents
                 |              |    Data               |               |
                 +--------------+                       +---------------+
 
-   Figure: Cross-Device Consent Phishing: User-Transferred Authorization
-   Data Pattern Exploits
+   Figure: User-Transferred Authorization Data Pattern Exploits
 
    *  (A) The attacker sends a social engineering message to prime the
       user for the authorization request they are about to receive,
@@ -1091,7 +1086,7 @@ Table of Contents
     Session +-->|              |<----------------------|               |
                 +--------------+                       +---------------+
 
-   Figure: Cross-Device Flows: Session Transfer Pattern Exploit
+   Figure: Cross-Device Session Transfer Pattern Exploit
 
    *  (A) The attacker sends a social engineering message to that
       convinces the user that they should authorize a session transfer
@@ -1224,8 +1219,8 @@ Table of Contents
    additional authorization information to the attacker which enables
    the attacker to complete their attack and defraud the user.
 
-4.3.6.  Example B5: Illicit Network Join (Session Transfer Pattern
-        Exploit)
+4.3.6.  Example B5: Illicit Network Join (Cross-Device Session Transfer
+        Pattern)
 
    An attacker creates a message to all employees of a company, claiming
    to be from a trusted technology provider investigating a suspected
@@ -1254,8 +1249,8 @@ Table of Contents
    to obtain the QR code displays a message to the attacker with
    instructions on how to access their account.
 
-4.3.8.  Example B7: Illicit Application Bootstrap (Session Transfer
-        Pattern Exploit)
+4.3.8.  Example B7: Illicit Application Bootstrap (Cross-Device Session
+        Transfer Pattern)
 
    An attacker creates a message to all employees of a company, claiming
    to be from the company's IT service provider.  They claim that they
@@ -1363,7 +1358,7 @@ Table of Contents
    device modes (e.g., [OpenID.SIOPV2]), the cross-device mode SHOULD
    not be used for same-device scenarios.  An authorization server MAY
    choose to block cross-device protocols used in same-device scenarios
-   if it detects that the same device is used.  An authorization Server
+   if it detects that the same device is used.  An authorization server
    may use techniques such as device fingerprinting, network address or
    other techniques to detect if a cross-device protocol is being used
    on the same device.  If an implementor decides to use a cross-device
@@ -1378,11 +1373,11 @@ Table of Contents
    Authorization Device allows attackers to change the context in which
    the authorization request is presented to the user.  This shifts
    responsibility of authenticating the channel between the two devices
-   to the end-user.  End-users have "expertise elsewhere" and are
-   typically not security experts and don't understand the protocols and
-   systems they interact with.  As a result, end-users are poorly
-   equipped to authenticate the channel between the two devices.
-   Mitigations should focus on:
+   to the end-user.  End-users have "expertise elsewhere", are typically
+   not security experts, and don't understand the protocols and systems
+   they interact with.  As a result, end-users are poorly equipped to
+   authenticate the channel between the two devices.  Mitigations should
+   focus on:
 
    1.  Minimizing reliance on the user to make decisions to authenticate
        the channel.
@@ -1444,7 +1439,9 @@ Table of Contents
       removed for security purposes).  Physical connectivity may be
       better suited to dedicated hardware like FIDO devices that can be
       used with protocols that are resistant to the exploits described
-      in this document.
+      in this document.  The authorization server does not directly
+      establish proximity, but relies on the deployed system and
+      selected protocols and devices to establish proximity.
 
    *  Wireless proximity: Near Field Communications (NFC), Bluetooth Low
       Energy (BLE), and Ultra Wideband (UWB) services can be used to
@@ -1455,7 +1452,10 @@ Table of Contents
       experience challenges when setting up.  UWB standards such as IEEE
       802.15.4 and the IEEE 802.15.4z-2020 Amendment 1 enable secure
       ranging between devices and allow devices to establish proximity
-      relative to each other [IEEE802154].
+      relative to each other [IEEE802154].  The authorization server
+      does not directly establish proximity, but relies on the deployed
+      system and selected protocols and devices to establish proximity
+      using these wireless proximity protocols.
 
    *  Shared network: Device proximity can be inferred by verifying that
       both devices are on the same network.  This check may be performed
@@ -1467,7 +1467,11 @@ Table of Contents
       encodes the Consumption Device's network address in the QR code
       and uses a digital signature to prevent tampering with the code.
       This does require the wallet to be aware of the countermeasure and
-      effectively enforce it.
+      effectively enforce it.  Note that it is common for a Consumption
+      Device (e.g., a TV) to use a Wi-Fi connection while the
+      Authorization Device (e.g., a phone) uses a mobile network.
+      Though physically in close proximity, they don't share a network,
+      so other proximity checks are needed.
 
    *  Geolocation: Proximity can be established by comparing geo-
       location information derived from global navigation satellite-
@@ -1475,7 +1479,7 @@ Table of Contents
       and comparing proximity.  Geolocation based on GNSS may vary in
       accuracy depending on the users location, and when mapped to
       national or regional boundaries may show a Consumption and
-      Authorization device in different locations if those devices are
+      Authorization Device in different locations if those devices are
       close to a border.  Since relative position is more important than
       absolute location, implementations should consider relative
       location to both devices rather than absolute location when
@@ -1483,7 +1487,7 @@ Table of Contents
       inaccurate along regional or national borders due to overlapping
       coverage by different network providers from the respective
       regions.  This may result in the Consumption device being mapped
-      to one region, while the Authorization device may be on another
+      to one region, while the Authorization Device may be on another
       network from another provider and mapped to another region.  These
       inaccuracies may require restrictions to be at a more granular
       level (e.g., same city, country, region or continent).  Similar to
@@ -1523,7 +1527,9 @@ Table of Contents
    The impact of an attack can be reduced by making QR or user codes
    short lived.  If an attacker obtains a short lived code, the duration
    during which the unauthenticated channel can be exploited is reduced,
-   potentially increasing the cost of a successful attack.
+   potentially increasing the cost of a successful attack.  This
+   mitigation can be implemented on the authorization server without
+   changes to other system components.
 
    *Limitations:* There is a practical limit to how short a user code
    can be valid due to network latency and user experience limitations
@@ -1540,7 +1546,9 @@ Table of Contents
    user code or QR code is sent to multiple victims.  One-time use may
    be achieved by including a nonce or date-stamp in the user code or QR
    code which is validated by the authorization server when the user
-   scans the QR code against a list of previously issued codes.
+   scans the QR code against a list of previously issued codes.  This
+   mitigation can be implemented on the authorization server without
+   changes to other system components.
 
    *Limitations:* Enforcing one-time use may be difficult in large
    globally distributed systems with low latency requirements, in which
@@ -1564,7 +1572,8 @@ Table of Contents
    were previously used.  The authorization server MAY use a sliding
    window equal to the lifetime of a token if short lived/timebound
    tokens are used (see Section 6.1.2).  This will limit the size of the
-   deny list.
+   deny list.  This mitigation can be implemented on the authorization
+   server without changes to other system components.
 
    *Limitations:* Maintaining a deny list of previously redeemed codes,
    even for a sliding window, may have an impact on the latency of
@@ -1661,7 +1670,8 @@ Table of Contents
    network, device management, user authentication and physical access
    policies and systems.  By limiting protocol initiation to a specific
    network, the attacker needs to have access to a device on the
-   network.
+   network.  This mitigation can be implemented on the authorization
+   server without changes to other system components.
 
    *Limitations:* Network level controls may not always be feasible,
    especially when dealing with consumer scenarios where the network may
@@ -1679,7 +1689,8 @@ Table of Contents
    successful attack.  The decision about which scopes are included may
    be further refined based on whether the protocol is initiated on a
    trusted device or the user's location relative to the location of the
-   Consumption Device.
+   Consumption Device.  This mitigation can be implemented on the
+   authorization server without changes to other system components.
 
    *Limitations:* Limiting scopes reduces the impact of a compromise,
    but does not avoid it.  It SHOULD be used in conjunction with other
@@ -1692,7 +1703,9 @@ Table of Contents
    depending on the user's location, the resources they are trying to
    access or whether they are using a trusted device.  Short lived
    tokens do not prevent or disrupt the attack, but serve as a remedial
-   mechanism in case the attack succeeded.
+   mechanism in case the attack succeeded.  This mitigation can be
+   implemented on the authorization server without changes to other
+   system components.
 
    *Limitations:* Short lived tokens reduces the time window during
    which an attacker can benefit from a successful attack.  This is most
@@ -1934,27 +1947,29 @@ Table of Contents
 
 6.2.1.  IETF OAuth 2.0 Device Authorization Grant [RFC8628]:
 
-   #### Description A standard to enable authorization on devices with
-   constrained input capabilities (smart TVs, printers, kiosks).  In
-   this protocol, the user code or QR code is displayed or made
-   available on the Consumption Device (smart TV) and entered on a
-   second device (e.g., a mobile phone).
+6.2.1.1.  Description
 
-6.2.1.1.  Susceptibility
+   A standard to enable authorization on devices with constrained input
+   capabilities (smart TVs, printers, kiosks).  In this protocol, the
+   user code or QR code is displayed or made available on the
+   Consumption Device (smart TV) and entered on a second device (e.g., a
+   mobile phone).
+
+6.2.1.2.  Susceptibility
 
    There are several reports in the public domain outlining how the
    unauthenticated channel may be exploited to execute a Cross-Device
    Consent Phishing attack ([Exploit1], [Exploit2], [Exploit3],
    [Exploit4], [Exploit5], [Exploit6]).
 
-6.2.1.2.  Device Capabilities
+6.2.1.3.  Device Capabilities
 
    There are no assumptions in the protocol about underlying
    capabilities of the device, making it a "least common denominator"
    protocol that is expected to work on the broadest set of devices and
    environments.
 
-6.2.1.3.  Mitigations
+6.2.1.4.  Mitigations
 
    In addition to the security considerations section in the standard,
    it is RECOMMENDED that one or more of the mitigations outlined in
@@ -1962,7 +1977,7 @@ Table of Contents
    establish proximity or prevent attackers from obtaining QR or user
    codes.
 
-6.2.1.4.  When to use
+6.2.1.5.  When to use
 
    Only use this protocol if other cross-device protocols are not viable
    due to device or system constraints.  Avoid using if the protected
@@ -1974,31 +1989,33 @@ Table of Contents
 6.2.2.  OpenID Foundation Client Initiated Back-Channel Authentication
         (CIBA):
 
-   #### Description Client Initiated Back-Channel Authentication (CIBA)
-   [CIBA]: A standard developed in the OpenID Foundation that allows a
-   device or service (e.g., a personal computer, smart TV, Kiosk) to
-   request the OpenID Provider to initiate an authentication flow if it
-   knows a valid identifier for the user.  The user completes the
-   authentication flow using a second device (e.g., a mobile phone).  In
-   this flow the user does not scan a QR code or obtain a user code from
-   the Consumption Device, but is instead contacted by the OpenID
-   Provider to complete the authentication using a push notification,
-   e-mail, text message or any other suitable mechanism.
+6.2.2.1.  Description
 
-6.2.2.1.  Susceptibility
+   Client Initiated Back-Channel Authentication (CIBA) [CIBA]: A
+   standard developed in the OpenID Foundation that allows a device or
+   service (e.g., a personal computer, smart TV, Kiosk) to request the
+   OpenID Provider to initiate an authentication flow if it knows a
+   valid identifier for the user.  The user completes the authentication
+   flow using a second device (e.g., a mobile phone).  In this flow the
+   user does not scan a QR code or obtain a user code from the
+   Consumption Device, but is instead contacted by the OpenID Provider
+   to complete the authentication using a push notification, e-mail,
+   text message or any other suitable mechanism.
+
+6.2.2.2.  Susceptibility
 
    Less susceptible to unauthenticated channel attacks, but still
    vulnerable to attackers who know or can guess the user identifier and
    initiate an attack as described in Section 4.3.4.
 
-6.2.2.2.  Device Capabilities
+6.2.2.3.  Device Capabilities
 
    There is no requirement on the Consumption Device to support specific
    hardware.  The Authorization Device must be registered/associated
    with the user and it must be possible for the Authorization Server to
    trigger an authorization on this device.
 
-6.2.2.3.  Mitigations
+6.2.2.4.  Mitigations
 
    In addition to the security considerations section in the standard,
    it is RECOMMENDED that one or more of the mitigations outlined in
@@ -2006,7 +2023,7 @@ Table of Contents
    establish proximity or prevent attackers from initiating
    authorization requests.
 
-6.2.2.4.  When to Use
+6.2.2.5.  When to Use
 
    Use CIBA instead of Device Authorization Grant if it is possible for
    the Consumption Device to obtain a user identifier on the Consumption
@@ -2017,17 +2034,19 @@ Table of Contents
 
 6.2.3.  FIDO2/WebAuthn
 
-   #### Description FIDO2/WebAuthn is a stack of standards developed in
-   the FIDO Alliance and W3C respectively which allow for origin-bound,
-   phishing-resistant user authentication using asymmetric cryptography
-   that can be invoked from a web browser or native client.  Version 2.2
-   of the FIDO Client to Authenticator Protocol (CTAP) supports a new
-   cross-device authentication protocol, called "hybrid transports",
-   which enables an external device, such as a phone or tablet, to be
-   used as a roaming authenticator for signing into the primary device,
-   such as a personal computer.  This is commonly called FIDO Cross-
-   Device Authentication (CDA).  CTAP 2.2 hybrid transports is
-   implemented by the client and authenticator platforms.
+6.2.3.1.  Description
+
+   FIDO2/WebAuthn is a stack of standards developed in the FIDO Alliance
+   and W3C respectively which allow for origin-bound, phishing-resistant
+   user authentication using asymmetric cryptography that can be invoked
+   from a web browser or native client.  Version 2.2 of the FIDO Client
+   to Authenticator Protocol (CTAP) supports a new cross-device
+   authentication protocol, called "hybrid transports", which enables an
+   external device, such as a phone or tablet, to be used as a roaming
+   authenticator for signing into the primary device, such as a personal
+   computer.  This is commonly called FIDO Cross-Device Authentication
+   (CDA).  CTAP 2.2 hybrid transports is implemented by the client and
+   authenticator platforms.
 
    When a user wants to authenticate using their mobile device
    (authenticator) for the first time, they need to link their
@@ -2042,13 +2061,13 @@ Table of Contents
    device, the QR code link step is not necessary for subsequent use.
    The user will receive a push notification on the authenticator.
 
-6.2.3.1.  Susceptibility
+6.2.3.2.  Susceptibility
 
    The Cross-Device Authentication flow proves proximity by leveraging
    BLE advertisements for service establishment, significantly reducing
    the susceptibility to any of the exploits described in Examples 1-6.
 
-6.2.3.2.  Device Capabilities
+6.2.3.3.  Device Capabilities
 
    Both the Consumption Device and the authenticator require BLE support
    and access to the internet.  The Consumption Device must support both
@@ -2058,14 +2077,14 @@ Table of Contents
    [FIDOCTAP22].  The device serving as the FIDO authenticator must also
    support CTAP 2.2 or later to be used as a cross-device authenticator.
 
-6.2.3.3.  Mitigations
+6.2.3.4.  Mitigations
 
    FIDO Cross-Device Authentication (CDA) establishes proximity through
    the use of BLE, reducing the need for additional mitigations.  An
    implementer MAY still choose to implement additional mitigation as
    described in this document.
 
-6.2.3.4.  When to Use
+6.2.3.5.  When to Use
 
    FIDO2/WebAuthn SHOULD be used for cross-device authentication
    scenarios whenever the devices are capable of doing so and a suitable
@@ -2153,17 +2172,16 @@ Table of Contents
       implemented based on a so-called Cross-Device Stub, essentially a
       component that serves to link the two devices before the protocol
       flow starts.  This can be seen as an implementation of a trusted
-      device relationship as described in (#trusted_devices).  The
-      mitigation was shown to be effective in the model.
+      device relationship as described in Section 6.1.7.  The mitigation
+      was shown to be effective in the model.
 
    *  In "Security analysis of the Grant Negotiation and Authorization
       Protocol" [Helmschmidt2022], an analysis of a draft of the Grant
       Negotiation and Authorization Protocol (GNAP) [RFC9635] was
       performed using the Web Infrastructure Model.  The same attack as
       in [Bauer2022] was found to apply to GNAP as well.  In this case,
-      a model of a "careful user" (see (#user_education)) was used to
-      show that the attack can be prevented (at least in theory) by the
-      user.
+      a model of a "careful user" (see Section 6.1.13 was used to show
+      that the attack can be prevented (at least in theory) by the user.
 
    *  In "The Good, the Bad and the (Not So) Ugly of Out-of-Band
       Authentication with eID Cards and Push Notifications: Design,
@@ -2171,7 +2189,7 @@ Table of Contents
       analysed an authentication protocol relying on push notifications
       delivered to an out-of-band device to approve the authentication
       attempt on the primary device (Backchannel-Transferred Session
-      Pattern, (#btsp)).  The analysis was performed using the
+      Pattern, Section 3.1.2).  The analysis was performed using the
       specification language ASLan++ and the model checker SATMC.
       According to the results of the analysis, they identified and
       defined the category of _implicit attacks_, which manage to
@@ -2189,10 +2207,10 @@ Table of Contents
       formally analyze a protocol relying on a QR code that has to be
       scanned on a secondary device to approve the authentication
       attempt on the primary device (User-Transferred Session Data
-      Pattern, (#utsdp)).  Given the results of the analysis, they
+      Pattern, Section 3.1.1).  Given the results of the analysis, they
       proposed some practical mitigations either to prevent or reduce
       the risk of successful attacks, such as those described in
-      (#user_education), (#request-verification) and (#request-binding).
+      Section 6.1.13, Section 6.1.16 and Section 6.1.17.
 
 7.  Conclusion
 
@@ -2222,9 +2240,9 @@ Table of Contents
    Frei, Nikhil Reddy Boreddy, Bjorn Hjelm, Joseph Heenan, Brian
    Campbell, Damien Bowden, Kristina Yasuda, Tim Würtele, Karsten Meyer
    zu Selhausen, Maryam Mehrnezhad, Marco Pernpruner, Giada Sciarretta,
-   Dean H.  Saxe, Roy Williams and others (please let us know, if you've
-   been mistakenly omitted) for their valuable input, feedback and
-   general support of this work.
+   Dean H.  Saxe, Roy Williams, Dan Moore and others (please let us
+   know, if you've been mistakenly omitted) for their valuable input,
+   feedback and general support of this work.
 
 9.  References
 
@@ -2398,15 +2416,40 @@ Appendix A.  Document History
 
    [[ To be removed from the final specification ]]
 
-   -latest * Shepherd feedback: Describe unauthenticated channel.  *
-   Shepherd feedback: Seperate normative and informative references.  *
-   Shepherd feedback: Update FIDO/WebAuthn references
+   -latest
 
--09    * Affiliation change to allow publication to Datatracker.    * No content changes - re-published to avoid expiry while waiting on shepherd review.
+   *  Fixed malformed labels
 
--08    * Editorial updates.
+   *  Clarified common use case for when phone and TVs do not use the
+      same network.
 
--07
+   *  Clarified role of authorization server in establishing proximity.
+
+   *  Clarified which mitigations can be implented by the authorization
+      server only.
+
+   *  Add Dan Moore to acknowledgements
+
+   -10
+
+   *  Shepherd feedback: Describe unauthenticated channel.
+
+   *  Shepherd feedback: Seperate normative and informative references.
+
+   *  Shepherd feedback: Update FIDO/WebAuthn references
+
+   -09
+
+   *  Affiliation change to allow publication to Datatracker.
+
+   *  No content changes - re-published to avoid expiry while waiting on
+      shepherd review.
+
+   -08
+
+   *  Editorial updates.
+
+   -07
 
    *  Clarification of FIDO\WebAuthn section.
 
