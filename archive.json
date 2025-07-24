@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-07-15T00:34:28.765771+00:00",
+  "timestamp": "2025-07-24T00:34:21.643498+00:00",
   "repo": "oauth-wg/oauth-cross-device-security",
   "labels": [
     {
@@ -1884,6 +1884,22 @@
           "updatedAt": "2025-07-12T16:27:32Z"
         }
       ]
+    },
+    {
+      "number": 176,
+      "id": "I_kwDOHK26QM7CE00_",
+      "title": "Broken and out-of-date references",
+      "url": "https://github.com/oauth-wg/oauth-cross-device-security/issues/176",
+      "state": "OPEN",
+      "author": "PieterKas",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Fix the out-of date or broken references in the references section:\n\n    [IEEE802154]\n               Institute of Electrical and Electronics Engineers, \"IEEE\n               Std 802.15.4-2020: IEEE Standard for Low-Rate Wireless\n               Networks\", {\"name\" => \"IEEE\", \"value\" =>\n               \"802.15.4-2020\"} , 2020,\n               <https://standards.ieee.org/standard/802_15_4-2020.html>.\n\nI am just looking at the specs and I see \"draft 01\" in\nhttps://openid.net/specs/openid-sse-framework-1_0-01.html, \"draft\" in\nhttps://openid.net/specs/openid-caep-specification-1_0-01.html, \"working\ndraft\" in https://www.w3.org/TR/2025/WD-webauthn-3-20250127/ , \"404 Not\nFound\" for\nhttps://fidoalliance.org/specs/fido-v2.2-ps-20250228/fido-client-to-authenticator-protocol-v2.2-ps-20250228.html.",
+      "createdAt": "2025-07-23T11:44:58Z",
+      "updatedAt": "2025-07-23T11:44:58Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
