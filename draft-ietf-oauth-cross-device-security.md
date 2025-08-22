@@ -60,7 +60,7 @@ normative:
   date: 2021-06
   target: "https://openid.net/specs/openid-caep-specification-1_0-01.html"
  SSF:
-  title: "OpenID Shared Signals and Events Framework Specification 1.0"
+  title: "OpenID Shared Signals Framework Specification 1.0"
   author:
     - initials: "A."
       surname: "Tulshibagwale"
@@ -82,8 +82,12 @@ normative:
       surname: "Bradley"
       fullname: "John Bradley"
       organization: "Yubico"
-  date: 2021-06
-  target: "https://openid.net/specs/openid-sse-framework-1_0-01.html"
+    - initials: "S."
+      surname: "Miel"
+      fullname: "Shayne Miel"
+      organization: "Cisco"
+  date: 2025-06
+  target: "https://openid.net/specs/openid-sharedsignals-framework-1_0-04.html"
  W3CWebAuthn:
   title: "Web Authentication: An API for accessing Public Key Credentials Level 3"
   author:
