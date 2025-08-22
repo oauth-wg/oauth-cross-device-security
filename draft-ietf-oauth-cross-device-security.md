@@ -136,8 +136,9 @@ normative:
       surname: "Waite"
       fullname: "David Waite"
       organization: "Ping Identity"
-  date: 2025-02
+  date: 2025-07
   target: "https://fidoalliance.org/specs/fido-v2.2-ps-20250228/fido-client-to-authenticator-protocol-v2.2-ps-20250228.html"
+  target: ""
  IEEE802154:
   title: "IEEE Std 802.15.4-2020: IEEE Standard for Low-Rate Wireless Networks"
   author:
