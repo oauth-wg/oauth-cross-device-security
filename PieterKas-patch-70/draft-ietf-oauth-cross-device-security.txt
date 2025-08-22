@@ -5,10 +5,10 @@
 oauth                                                      P. Kasselmann
 Internet-Draft                                                     SPIRL
 Intended status: Best Current Practice                           D. Fett
-Expires: 13 January 2026                                        Authlete
+Expires: 23 February 2026                                       Authlete
                                                                F. Skokan
                                                                     Okta
-                                                            12 July 2025
+                                                          22 August 2025
 
 
            Cross-Device Flows: Security Best Current Practice
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 13 January 2026.
+   This Internet-Draft will expire on 23 February 2026.
 
 Copyright Notice
 
@@ -1527,7 +1527,9 @@ Table of Contents
    The impact of an attack can be reduced by making QR or user codes
    short lived.  If an attacker obtains a short lived code, the duration
    during which the unauthenticated channel can be exploited is reduced,
-   potentially increasing the cost of a successful attack.
+   potentially increasing the cost of a successful attack.  This
+   mitigation can be implemented on the authorization server without
+   changes to other system components.
 
    *Limitations:* There is a practical limit to how short a user code
    can be valid due to network latency and user experience limitations
@@ -1544,7 +1546,9 @@ Table of Contents
    user code or QR code is sent to multiple victims.  One-time use may
    be achieved by including a nonce or date-stamp in the user code or QR
    code which is validated by the authorization server when the user
-   scans the QR code against a list of previously issued codes.
+   scans the QR code against a list of previously issued codes.  This
+   mitigation can be implemented on the authorization server without
+   changes to other system components.
 
    *Limitations:* Enforcing one-time use may be difficult in large
    globally distributed systems with low latency requirements, in which
@@ -1568,7 +1572,8 @@ Table of Contents
    were previously used.  The authorization server MAY use a sliding
    window equal to the lifetime of a token if short lived/timebound
    tokens are used (see Section 6.1.2).  This will limit the size of the
-   deny list.
+   deny list.  This mitigation can be implemented on the authorization
+   server without changes to other system components.
 
    *Limitations:* Maintaining a deny list of previously redeemed codes,
    even for a sliding window, may have an impact on the latency of
@@ -1665,7 +1670,8 @@ Table of Contents
    network, device management, user authentication and physical access
    policies and systems.  By limiting protocol initiation to a specific
    network, the attacker needs to have access to a device on the
-   network.
+   network.  This mitigation can be implemented on the authorization
+   server without changes to other system components.
 
    *Limitations:* Network level controls may not always be feasible,
    especially when dealing with consumer scenarios where the network may
@@ -1683,7 +1689,8 @@ Table of Contents
    successful attack.  The decision about which scopes are included may
    be further refined based on whether the protocol is initiated on a
    trusted device or the user's location relative to the location of the
-   Consumption Device.
+   Consumption Device.  This mitigation can be implemented on the
+   authorization server without changes to other system components.
 
    *Limitations:* Limiting scopes reduces the impact of a compromise,
    but does not avoid it.  It SHOULD be used in conjunction with other
@@ -1696,7 +1703,9 @@ Table of Contents
    depending on the user's location, the resources they are trying to
    access or whether they are using a trusted device.  Short lived
    tokens do not prevent or disrupt the attack, but serve as a remedial
-   mechanism in case the attack succeeded.
+   mechanism in case the attack succeeded.  This mitigation can be
+   implemented on the authorization server without changes to other
+   system components.
 
    *Limitations:* Short lived tokens reduces the time window during
    which an attacker can benefit from a successful attack.  This is most
@@ -2300,8 +2309,7 @@ Table of Contents
    [IEEE802154]
               Institute of Electrical and Electronics Engineers, "IEEE
               Std 802.15.4-2020: IEEE Standard for Low-Rate Wireless
-              Networks", {"name" => "IEEE", "value" =>
-              "802.15.4-2020"} , 2020,
+              Networks", 2020,
               <https://standards.ieee.org/standard/802_15_4-2020.html>.
 
 9.2.  Informative References
@@ -2411,10 +2419,13 @@ Appendix A.  Document History
 
    *  Fixed malformed labels
 
-   *  Clarfied common use case for when phone and TVs do not use the
+   *  Clarified common use case for when phone and TVs do not use the
       same network.
 
    *  Clarified role of authorization server in establishing proximity.
+
+   *  Clarified which mitigations can be implented by the authorization
+      server only.
 
    *  Add Dan Moore to acknowledgements
 
