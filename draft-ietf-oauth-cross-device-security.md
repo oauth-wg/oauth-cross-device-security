@@ -65,7 +65,7 @@ normative:
     - initials: "A."
       surname: "Tulshibagwale"
       fullname: "Atul Tulshibagwale"
-      organization: "Google"
+      organization: "SGNL"
     - initials: "T."
       surname: "Cappalli"
       fullname: "Tim Cappalli"
