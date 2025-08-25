@@ -5,10 +5,10 @@
 oauth                                                      P. Kasselmann
 Internet-Draft                                                     SPIRL
 Intended status: Best Current Practice                           D. Fett
-Expires: 23 February 2026                                       Authlete
+Expires: 26 February 2026                                       Authlete
                                                                F. Skokan
                                                                     Okta
-                                                          22 August 2025
+                                                          25 August 2025
 
 
            Cross-Device Flows: Security Best Current Practice
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 23 February 2026.
+   This Internet-Draft will expire on 26 February 2026.
 
 Copyright Notice
 
