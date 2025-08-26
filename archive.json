@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-08-24T00:34:26.977446+00:00",
+  "timestamp": "2025-08-26T00:30:51.901499+00:00",
   "repo": "oauth-wg/oauth-cross-device-security",
   "labels": [
     {
@@ -6858,13 +6858,13 @@
       "labels": [],
       "body": "See issue #176",
       "createdAt": "2025-08-22T11:15:31Z",
-      "updatedAt": "2025-08-22T11:18:38Z",
+      "updatedAt": "2025-08-25T16:01:54Z",
       "baseRepository": "oauth-wg/oauth-cross-device-security",
       "baseRefName": "main",
       "baseRefOid": "326e66d04d6e599b2c3c4a4aa72ccc733dfc3898",
       "headRepository": "oauth-wg/oauth-cross-device-security",
       "headRefName": "PieterKas-patch-71",
-      "headRefOid": "26cc16518b4442e3085be0cf4a11b01aefeae888",
+      "headRefOid": "46035185d9aaec2dfb5dfa97e83b68d30480003f",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -6878,7 +6878,28 @@
           "updatedAt": "2025-08-22T11:18:38Z"
         }
       ],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOHK26QM673hL4",
+          "commit": {
+            "abbreviatedOid": "26cc165"
+          },
+          "author": "timcappalli",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "I'm trying to figure out why the old URLs are going dead, but in the meantime, this should be the most stable URL. There are no further changes to 2.2 expected.",
+          "createdAt": "2025-08-25T15:01:04Z",
+          "updatedAt": "2025-08-25T15:01:33Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "```suggestion\n  target: \"https://fidoalliance.org/specs/fido-v2.2-ps-20250714/fido-client-to-authenticator-protocol-v2.2-ps-20250714.html\"\n```",
+              "createdAt": "2025-08-25T15:01:04Z",
+              "updatedAt": "2025-08-25T15:01:33Z"
+            }
+          ]
+        }
+      ]
     },
     {
       "number": 179,
