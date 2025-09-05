@@ -144,12 +144,12 @@ normative:
   target: "https://fidoalliance.org/specs/fido-v2.2-ps-20250714/fido-client-to-authenticator-protocol-v2.2-ps-20250714.html"
   target: ""
  IEEE802154:
-  title: "IEEE Std 802.15.4-2020: IEEE Standard for Low-Rate Wireless Networks"
+  title: "IEEE Std 802.15.4-2024: IEEE Standard for Low-Rate Wireless Networks"
   author:
     -
       organization: "Institute of Electrical and Electronics Engineers"
-  date: 2020
-  target: "https://standards.ieee.org/standard/802_15_4-2020.html"
+  date: 2024
+  target: "https://standards.ieee.org/ieee/802.15.4/11041/"
 
 informative:
  RFC9635: # Grant Negotiation and Authorization Protocol (GNAP)
