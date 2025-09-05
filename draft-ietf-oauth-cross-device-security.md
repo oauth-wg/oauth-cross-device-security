@@ -86,8 +86,8 @@ normative:
       surname: "Miel"
       fullname: "Shayne Miel"
       organization: "Cisco"
-  date: 2025-06
-  target: "https://openid.net/specs/openid-sharedsignals-framework-1_0-04.html"
+  date: 2025-08
+  target: "https://openid.net/specs/openid-sharedsignals-framework-1_0-final.html"
  W3CWebAuthn:
   title: "Web Authentication: An API for accessing Public Key Credentials Level 3"
   author:
