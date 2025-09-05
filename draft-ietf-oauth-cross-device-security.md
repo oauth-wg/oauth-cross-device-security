@@ -57,8 +57,8 @@ normative:
       surname: "Cappalli"
       fullname: "Tim Cappalli"
       organization: "Microsoft"
-  date: 2025-06
-  target: https://openid.net/specs/openid-caep-1_0-04.html
+  date: 2025-08
+  target: https://openid.net/specs/openid-caep-1_0-final.html
  SSF:
   title: "OpenID Shared Signals and Events Framework Specification 1.0"
   author:
