@@ -5,10 +5,10 @@
 oauth                                                      P. Kasselmann
 Internet-Draft                                                     SPIRL
 Intended status: Best Current Practice                           D. Fett
-Expires: 23 February 2026                                       Authlete
+Expires: 9 March 2026                                           Authlete
                                                                F. Skokan
                                                                     Okta
-                                                          22 August 2025
+                                                        5 September 2025
 
 
            Cross-Device Flows: Security Best Current Practice
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 23 February 2026.
+   This Internet-Draft will expire on 9 March 2026.
 
 Copyright Notice
 
@@ -2288,9 +2288,9 @@ Table of Contents
 
    [SSF]      Tulshibagwale, A., Cappalli, T., Scurtescu, M., Backman,
               A., Bradley, J., and S. Miel, "OpenID Shared Signals
-              Framework Specification 1.0", June 2025,
+              Framework Specification 1.0", August 2025,
               <https://openid.net/specs/openid-sharedsignals-framework-
-              1_0-04.html>.
+              1_0-final.html>.
 
    [W3CWebAuthn]
               Cappalli, T., Jones, M.B., Kumar, A., Lundberg, E., and M.
