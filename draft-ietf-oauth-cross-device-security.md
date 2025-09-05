@@ -149,9 +149,6 @@ normative:
     -
       organization: "Institute of Electrical and Electronics Engineers"
   date: 2020
-  seriesinfo:
-    - name: "IEEE"
-      value: "802.15.4-2020"
   target: "https://standards.ieee.org/standard/802_15_4-2020.html"
 
 informative:
