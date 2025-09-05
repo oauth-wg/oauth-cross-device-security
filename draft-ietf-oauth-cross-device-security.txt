@@ -2282,9 +2282,8 @@ Table of Contents
               backchannel-authentication-core-1_0.html>.
 
    [CAEP]     Tulshibagwale, A. and T. Cappalli, "OpenID Continuous
-              Access Evaluation Profile 1.0 - draft 01", June 2021,
-              <https://openid.net/specs/openid-caep-specification-
-              1_0-01.html>.
+              Access Evaluation Profile 1.0", August 2025,
+              <https://openid.net/specs/openid-caep-1_0-final.html>.
 
    [SSF]      Tulshibagwale, A., Cappalli, T., Scurtescu, M., Backman,
               A., Bradley, J., and S. Miel, "OpenID Shared Signals
