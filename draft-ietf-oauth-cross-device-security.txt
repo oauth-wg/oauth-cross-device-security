@@ -2304,9 +2304,9 @@ Table of Contents
 
    [IEEE802154]
               Institute of Electrical and Electronics Engineers, "IEEE
-              Std 802.15.4-2020: IEEE Standard for Low-Rate Wireless
-              Networks", 2020,
-              <https://standards.ieee.org/standard/802_15_4-2020.html>.
+              Std 802.15.4-2024: IEEE Standard for Low-Rate Wireless
+              Networks", 2024,
+              <https://standards.ieee.org/ieee/802.15.4/11041/>.
 
 9.2.  Informative References
 
