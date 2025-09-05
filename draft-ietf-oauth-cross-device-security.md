@@ -1166,7 +1166,8 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
    * Clarified common use case for when phone and TVs do not use the same network.
    * Clarified role of authorization server in establishing proximity.
    * Clarified which mitigations can be implented by the authorization server only.
-   * Add Dan Moore to acknowledgements
+   * Add Dan Moore to acknowledgements.
+   * Updated outdated references.
 
    -10
 
