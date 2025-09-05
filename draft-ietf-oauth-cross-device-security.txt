@@ -2287,10 +2287,10 @@ Table of Contents
               1_0-01.html>.
 
    [SSF]      Tulshibagwale, A., Cappalli, T., Scurtescu, M., Backman,
-              A., and J. Bradley, "OpenID Shared Signals and Events
-              Framework Specification 1.0", June 2021,
-              <https://openid.net/specs/openid-sse-framework-
-              1_0-01.html>.
+              A., Bradley, J., and S. Miel, "OpenID Shared Signals
+              Framework Specification 1.0", August 2025,
+              <https://openid.net/specs/openid-sharedsignals-framework-
+              1_0-final.html>.
 
    [W3CWebAuthn]
               Cappalli, T., Jones, M.B., Kumar, A., Lundberg, E., and M.
