@@ -5,10 +5,10 @@
 oauth                                                      P. Kasselmann
 Internet-Draft                                                     SPIRL
 Intended status: Best Current Practice                           D. Fett
-Expires: 14 January 2026                                        Authlete
+Expires: 9 March 2026                                           Authlete
                                                                F. Skokan
                                                                     Okta
-                                                            13 July 2025
+                                                        5 September 2025
 
 
            Cross-Device Flows: Security Best Current Practice
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 14 January 2026.
+   This Internet-Draft will expire on 9 March 2026.
 
 Copyright Notice
 
@@ -2301,10 +2301,7 @@ Table of Contents
    [FIDOCTAP22]
               Bradley, J., Jones, M.B., Kumar, A., Lindemann, R.,
               Verrept, S., and D. Waite, "Client to Authenticator
-              Protocol (CTAP)", February 2025,
-              <https://fidoalliance.org/specs/fido-v2.2-ps-20250228/
-              fido-client-to-authenticator-protocol-v2.2-ps-
-              20250228.html>.
+              Protocol (CTAP)", July 2025.
 
    [IEEE802154]
               Institute of Electrical and Electronics Engineers, "IEEE
