@@ -1164,11 +1164,18 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
 # Document History
    \[\[ To be removed from the final specification ]]
 
-
    -latest
    * AD Feedback: Add Security Consideration
    * AD Feedback: Add IANA Consideration
    * Change affiliation
+
+   -12
+
+   * Fixed FIDO CTAP V2.2 URL
+   * Update SSF Reference
+   * CAEP Reference Update
+   * Fix IEEE reference
+   * Update IEEE Reference
 
    -11
 
