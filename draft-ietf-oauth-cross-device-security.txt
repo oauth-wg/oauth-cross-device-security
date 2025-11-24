@@ -331,9 +331,9 @@ Table of Contents
 
    Section 3 provides details about susceptible protocols and Section 4
    provides attack descriptions.  Section 6.1 provides details about the
-   security mechanisms and mitigations, (protocol-selection) provides
-   protocol selection guidance and Section 6.3 provides details from
-   formal analysis of protocols that apply to cross device flows.
+   security mechanisms and mitigations, Section 6.2 provides protocol
+   selection guidance and Section 6.3 provides details from formal
+   analysis of protocols that apply to cross device flows.
 
 3.  Cross-Device Flow Patterns
 
@@ -2421,9 +2421,10 @@ Appendix A.  Document History
 
    [[ To be removed from the final specification ]]
 
-   -latest * AD Feedback: Capitalise SHOULD not -> SHOULD NOT (issue
-   #185) * AD Feedback: Add Security Consideration * AD Feedback: Add
-   IANA Consideration * Change affiliation
+   -latest * Fixed reference for protocol selection (see issue #189) *
+   Change affiliation * AD Feedback: Capitalise SHOULD not -> SHOULD NOT
+   (issue #185) * AD Feedback: Add Security Consideration * AD Feedback:
+   Add IANA Consideration
 
    -12
 
