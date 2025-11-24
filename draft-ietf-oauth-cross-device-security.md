@@ -394,7 +394,7 @@ This specification uses the terms "access token", "refresh token",
 "authorization request", and
 "client" defined by The OAuth 2.0 Authorization Framework {{RFC6749}}.
 
-# Best Practices
+# Best Practices {#best-practices}
 This section describes the set of security mechanisms and measures to secure cross-device protools against Cross-Device Consent Phishing and Cross-Device Session Phishing attacks that the OAuth working group considers best practices at the time of writing.
 
 1. Implementers MUST perform a risk assessment before implementing cross-device flows, weighing the risks from Cross-Device Consent Phishing and Cross-Device Session Phishing attacks against benefits for users.
@@ -860,7 +860,7 @@ A number of protocols that have been standardized, or are in the process of bein
 
 Cross-device protocols SHOULD not be used for same-device scenarios. If the Consumption Device and Authorization Device are the same device, protocols like OpenID Connect Core {{OpenID.Core}} and OAuth 2.0 Authorization Code Grant as defined in {{RFC6749}} are more appropriate. If a protocol supports both same-device and cross-device modes (e.g., {{OpenID.SIOPV2}}), the cross-device mode SHOULD not be used for same-device scenarios. An authorization server MAY choose to block cross-device protocols used in same-device scenarios if it detects that the same device is used. An authorization server may use techniques such as device fingerprinting, network address or other techniques to detect if a cross-device protocol is being used on the same device. If an implementor decides to use a cross-device protocol or a protocol with a cross-device mode in a same-device scenario, the mitigations recommended in this document SHOULD be implemented to reduce the risks that the unauthenticated channel is exploited.
 
-# Mitigating Against Cross-Device Flow Attacks
+# Mitigating Against Cross-Device Flow Attacks {#mitigating-against-cross-device-flow-attacks}
 The unauthenticated channel between the Consumption Device and the Authorization Device allows attackers to change the context in which the authorization request is presented to the user. This shifts responsibility of authenticating the channel between the two devices to the end-user. End-users have "expertise elsewhere", are typically not security experts, and don't understand the protocols and systems they interact with. As a result, end-users are poorly equipped to authenticate the channel between the two devices. Mitigations should focus on:
 
 1. Minimizing reliance on the user to make decisions to authenticate the channel.
@@ -1142,6 +1142,8 @@ The following works have been identified as relevant to the analysis of cross-de
    described in {{user_education}}, {{request-verification}} and
    {{request-binding}}.
 
+# Security Considerations
+Security considerations are described in {{best-practices}} and {{mitigating-against-cross-device-flow-attacks}}.
 
 # IANA Considerations
 
