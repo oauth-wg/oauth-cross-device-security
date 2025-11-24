@@ -156,12 +156,13 @@ Table of Contents
        6.2.3.  FIDO2/WebAuthn
        6.2.4.  Protocol Selection Summary
      6.3.  Foundational Pillars
-   7.  IANA Considerations
-   8.  Conclusion
-   9.  Contributors
-   10. References
-     10.1.  Normative References
-     10.2.  Informative References
+   7.  Security Considerations
+   8.  IANA Considerations
+   9.  Conclusion
+   10. Contributors
+   11. References
+     11.1.  Normative References
+     11.2.  Informative References
    Appendix A.  Document History
    Authors' Addresses
 
@@ -2213,11 +2214,15 @@ Table of Contents
       the risk of successful attacks, such as those described in
       Section 6.1.13, Section 6.1.16 and Section 6.1.17.
 
-7.  IANA Considerations
+7.  Security Considerations
+
+   Security considerations are described in Section 2 and Section 6.
+
+8.  IANA Considerations
 
    This document has no IANA actions.
 
-8.  Conclusion
+9.  Conclusion
 
    Cross-device flows enable authorization on devices with limited input
    capabilities, allow for secure authentication when using public or
@@ -2239,7 +2244,7 @@ Table of Contents
    these attacks, and the introduction of formal methods to evaluate the
    impact of mitigations and find additional issues.
 
-9.  Contributors
+10.  Contributors
 
    The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian
    Frei, Nikhil Reddy Boreddy, Bjorn Hjelm, Joseph Heenan, Brian
@@ -2249,9 +2254,9 @@ Table of Contents
    know, if you've been mistakenly omitted) for their valuable input,
    feedback and general support of this work.
 
-10.  References
+11.  References
 
-10.1.  Normative References
+11.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -2313,7 +2318,7 @@ Table of Contents
               Networks", 2024,
               <https://standards.ieee.org/ieee/802.15.4/11041/>.
 
-10.2.  Informative References
+11.2.  Informative References
 
    [RFC9635]  Richer, J., Ed. and F. Imbault, "Grant Negotiation and
               Authorization Protocol (GNAP)", RFC 9635,
