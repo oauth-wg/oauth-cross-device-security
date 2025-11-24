@@ -15,8 +15,8 @@ kw: ["security", "oauth2", "best current practice"]
 # date: 2022-02-02 -- date is filled in automatically by xml2rfc if not given
 author:
 - name: Pieter Kasselmann
-  org: SPIRL
-  email: pieter@spirl.com
+  org: Defakto
+  email: prkasselman@gmail.com
 - name: Daniel Fett
   org: Authlete
   email: mail@danielfett.de
@@ -1144,6 +1144,10 @@ The following works have been identified as relevant to the analysis of cross-de
 
 # Security Considerations
 Security considerations are described in {{best-practices}} and {{mitigating-against-cross-device-flow-attacks}}.
+
+# IANA Considerations
+
+This document has no IANA actions.
 
 # Conclusion
 Cross-device flows enable authorization on devices with limited input capabilities, allow for secure authentication when using public or shared devices, provide a path towards multi-factor authentication and, provide the convenience of a single, portable credential store.
