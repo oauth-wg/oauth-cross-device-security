@@ -1352,13 +1352,13 @@ Table of Contents
       protocols.  The user scans a QR code presented by the relying
       party to initiate the flow.
 
-   Cross-device protocols SHOULD NOT be used for same-device scenarios.
+   Cross-device protocols SHOULD not be used for same-device scenarios.
    If the Consumption Device and Authorization Device are the same
    device, protocols like OpenID Connect Core [OpenID.Core] and OAuth
    2.0 Authorization Code Grant as defined in [RFC6749] are more
    appropriate.  If a protocol supports both same-device and cross-
    device modes (e.g., [OpenID.SIOPV2]), the cross-device mode SHOULD
-   NOT be used for same-device scenarios.  An authorization server MAY
+   not be used for same-device scenarios.  An authorization server MAY
    choose to block cross-device protocols used in same-device scenarios
    if it detects that the same device is used.  An authorization server
    may use techniques such as device fingerprinting, network address or
@@ -2423,8 +2423,7 @@ Appendix A.  Document History
 
    -latest * Fixed reference for protocol selection (see issue #189) *
    Change affiliation * AD Feedback: Add Security Consideration * AD
-   Feedback: Add IANA Consideration * AD Feedback: Capitalise SHOULD not
-   -> SHOULD NOT (issue #185)
+   Feedback: Add IANA Consideration
 
    -12
 
