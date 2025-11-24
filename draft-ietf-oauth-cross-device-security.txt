@@ -2421,7 +2421,10 @@ Appendix A.  Document History
 
    [[ To be removed from the final specification ]]
 
-   -latest
+   -latest * AD Feedback: Add Security Consideration * AD Feedback: Add
+   IANA Consideration * Change affiliation
+
+   -11
 
    *  Fixed malformed labels
 
