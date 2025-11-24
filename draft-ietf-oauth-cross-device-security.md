@@ -1143,6 +1143,9 @@ The following works have been identified as relevant to the analysis of cross-de
    {{request-binding}}.
 
 
+# IANA Considerations
+
+This document has no IANA actions.
 
 # Conclusion
 Cross-device flows enable authorization on devices with limited input capabilities, allow for secure authentication when using public or shared devices, provide a path towards multi-factor authentication and, provide the convenience of a single, portable credential store.
