@@ -405,7 +405,7 @@ This section describes the set of security mechanisms and measures to secure cro
 
 These best practices apply to the Device Authorization Grant ({{RFC8628}}) as well as other cross-device protocols such as the Client Initiated Backchannel Authentication {{CIBA}}, Self-Issued OpenID Provider v2 {{OpenID.SIOPV2}}, OpenID for Verifiable Presentations {{OpenID.VP}}, the Pre-Authorized Code Flow in ({{OpenID.VCI}}) and other cross-device protocols that rely on the user to authenticate the channel between devices.
 
-{{cross-device-flow-patterns}} provides details about susceptible protocols and {{cross-device-flow-exploits}} provides attack descriptions. {{practical-mitigations}} provides details about the security mechanisms and mitigations, (protocol-selection) provides protocol selection guidance and {{foundational-pillars}} provides details from formal analysis of protocols that apply to cross device flows.
+{{cross-device-flow-patterns}} provides details about susceptible protocols and {{cross-device-flow-exploits}} provides attack descriptions. {{practical-mitigations}} provides details about the security mechanisms and mitigations, {{protocol-selection}} provides protocol selection guidance and {{foundational-pillars}} provides details from formal analysis of protocols that apply to cross device flows.
 
 # Cross-Device Flow Patterns {#cross-device-flow-patterns}
 Cross-device flows allow a user to start a flow on one device (e.g., a smart TV) and then transfer the session to continue it on a second device (e.g., a mobile phone). The second device may be used to access the service that was running on the first device, or to perform an action such as authenticating or granting authorization before potentially passing control back to the first device.
@@ -1164,6 +1164,9 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
 
 
    -latest
+   * Fixed reference for protocol selection (see issue #189)
+
+   -11
 
    * Fixed malformed labels
    * Clarified common use case for when phone and TVs do not use the same network.
