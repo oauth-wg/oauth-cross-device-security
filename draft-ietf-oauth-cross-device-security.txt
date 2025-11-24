@@ -3,7 +3,7 @@
 
 
 oauth                                                      P. Kasselmann
-Internet-Draft                                                     SPIRL
+Internet-Draft                                                   Defakto
 Intended status: Best Current Practice                           D. Fett
 Expires: 28 May 2026                                            Authlete
                                                                F. Skokan
@@ -2589,8 +2589,8 @@ Appendix A.  Document History
 Authors' Addresses
 
    Pieter Kasselmann
-   SPIRL
-   Email: pieter@spirl.com
+   Defakto
+   Email: prkasselman@gmail.com
 
 
    Daniel Fett
