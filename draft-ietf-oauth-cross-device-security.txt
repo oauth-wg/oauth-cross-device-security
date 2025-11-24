@@ -5,10 +5,10 @@
 oauth                                                      P. Kasselmann
 Internet-Draft                                                     SPIRL
 Intended status: Best Current Practice                           D. Fett
-Expires: 9 March 2026                                           Authlete
+Expires: 28 May 2026                                            Authlete
                                                                F. Skokan
                                                                     Okta
-                                                        5 September 2025
+                                                        24 November 2025
 
 
            Cross-Device Flows: Security Best Current Practice
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 9 March 2026.
+   This Internet-Draft will expire on 28 May 2026.
 
 Copyright Notice
 
@@ -156,11 +156,12 @@ Table of Contents
        6.2.3.  FIDO2/WebAuthn
        6.2.4.  Protocol Selection Summary
      6.3.  Foundational Pillars
-   7.  Conclusion
-   8.  Contributors
-   9.  References
-     9.1.  Normative References
-     9.2.  Informative References
+   7.  IANA Considerations
+   8.  Conclusion
+   9.  Contributors
+   10. References
+     10.1.  Normative References
+     10.2.  Informative References
    Appendix A.  Document History
    Authors' Addresses
 
@@ -2212,7 +2213,11 @@ Table of Contents
       the risk of successful attacks, such as those described in
       Section 6.1.13, Section 6.1.16 and Section 6.1.17.
 
-7.  Conclusion
+7.  IANA Considerations
+
+   This document has no IANA actions.
+
+8.  Conclusion
 
    Cross-device flows enable authorization on devices with limited input
    capabilities, allow for secure authentication when using public or
@@ -2234,7 +2239,7 @@ Table of Contents
    these attacks, and the introduction of formal methods to evaluate the
    impact of mitigations and find additional issues.
 
-8.  Contributors
+9.  Contributors
 
    The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian
    Frei, Nikhil Reddy Boreddy, Bjorn Hjelm, Joseph Heenan, Brian
@@ -2244,9 +2249,9 @@ Table of Contents
    know, if you've been mistakenly omitted) for their valuable input,
    feedback and general support of this work.
 
-9.  References
+10.  References
 
-9.1.  Normative References
+10.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -2308,7 +2313,7 @@ Table of Contents
               Networks", 2024,
               <https://standards.ieee.org/ieee/802.15.4/11041/>.
 
-9.2.  Informative References
+10.2.  Informative References
 
    [RFC9635]  Richer, J., Ed. and F. Imbault, "Grant Negotiation and
               Authorization Protocol (GNAP)", RFC 9635,
