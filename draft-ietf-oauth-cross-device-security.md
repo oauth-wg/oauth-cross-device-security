@@ -395,7 +395,7 @@ This specification uses the terms "access token", "refresh token",
 "client" defined by The OAuth 2.0 Authorization Framework {{RFC6749}}.
 
 # Best Practices {#best-practices}
-This section describes the set of security mechanisms and measures to secure cross-device protools against Cross-Device Consent Phishing and Cross-Device Session Phishing attacks that the OAuth working group considers best practices at the time of writing.
+This section describes the set of security mechanisms and measures to secure cross-device protocols against Cross-Device Consent Phishing and Cross-Device Session Phishing attacks that the OAuth working group considers best practices at the time of writing this specification.
 
 1. Implementers MUST perform a risk assessment before implementing cross-device flows, weighing the risks from Cross-Device Consent Phishing and Cross-Device Session Phishing attacks against benefits for users.
 2. Implementers SHOULD avoid cross-device flows if risks cannot be sufficiently mitigated.
@@ -608,7 +608,7 @@ A user is accessing a Computer Aid Design (CAD) application. When accessing the 
 A network administrator wants to access an adminstration portal used to configure network assets and deploy new applications. When attempting to access the service, the network administrator receives a notification in an app on their mobile device, requesting them to confirm access to the portal. The network administrator approves the request on their mobile phone and is granted access to the portal.
 
 # Cross-Device Flow Exploits {#cross-device-flow-exploits}
-Attackers exploit the absence of an authenticated channel between the two devices used in a cross-device flow by using social engineering techniques typicaly used in phishing attacks.
+Attackers exploit the absence of an authenticated channel between the two devices used in a cross-device flow by using social engineering techniques typically used in phishing attacks.
 
 In cross-device authorization flows the attacker uses these social engineering techniques by changing the context in which the authorization request is presented to convince the user to grant authorization when they shouldn't. These attacks are also known as Cross-Device Consent Phishing (CDCP) attacks.
 
@@ -928,7 +928,7 @@ The authorization server may be able to detect misuse of the codes due to repeat
 ### Trusted Devices {#trusted_devices}
 If an attacker is unable to initiate the protocol, they are unable to obtain a QR code or user code that can be leveraged for the attacks described in this document. By restricting the protocol to only be executed on devices trusted by the authorization server, it prevents attackers from using arbitrary devices, or by mimicking devices to initiate the protocol.
 
-Authorization Servers MAY use different mechanisms to establish which devices it trusts. This includes limiting cross-device flows to specific device types such as intractive whiteboards or smart TVs, pre-registering devices with the authorization server or only allow cross-device flows on devices managed through device management systems. Device management systems may enforce policies that govern patching, version updates, on-device anti-malware deployment, revocation status and device location amongst others. Trusted devices MAY have their identities rooted in hardware (e.g., a TPM or equivalent technology).
+Authorization Servers MAY use different mechanisms to establish which devices it trusts. This includes limiting cross-device flows to specific device types such as interactive whiteboards or smart TVs, pre-registering devices with the authorization server or only allow cross-device flows on devices managed through device management systems. Device management systems may enforce policies that govern patching, version updates, on-device anti-malware deployment, revocation status and device location amongst others. Trusted devices MAY have their identities rooted in hardware (e.g., a TPM or equivalent technology).
 
 By only allowing trusted devices to initiate cross-device flows, it requires the attacker to have access to such a device and maintain access in a way that does not result in the device's trust status from being revoked.
 
@@ -1165,6 +1165,7 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
    \[\[ To be removed from the final specification ]]
 
    -latest
+   * Adresseed AD Nits (see https://github.com/oauth-wg/oauth-cross-device-security/issues/195)
    * Fixed reference for protocol selection (see issue #189)
    * Change affiliation
    * AD Feedback: Add Security Consideration
