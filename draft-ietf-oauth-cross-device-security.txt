@@ -299,9 +299,10 @@ Table of Contents
 2.  Best Practices
 
    This section describes the set of security mechanisms and measures to
-   secure cross-device protools against Cross-Device Consent Phishing
+   secure cross-device protocols against Cross-Device Consent Phishing
    and Cross-Device Session Phishing attacks that the OAuth working
-   group considers best practices at the time of writing.
+   group considers best practices at the time of writing this
+   specification.
 
    1.  Implementers MUST perform a risk assessment before implementing
        cross-device flows, weighing the risks from Cross-Device Consent
@@ -760,7 +761,7 @@ Table of Contents
 
    Attackers exploit the absence of an authenticated channel between the
    two devices used in a cross-device flow by using social engineering
-   techniques typicaly used in phishing attacks.
+   techniques typically used in phishing attacks.
 
    In cross-device authorization flows the attacker uses these social
    engineering techniques by changing the context in which the
@@ -1640,7 +1641,7 @@ Table of Contents
 
    Authorization Servers MAY use different mechanisms to establish which
    devices it trusts.  This includes limiting cross-device flows to
-   specific device types such as intractive whiteboards or smart TVs,
+   specific device types such as interactive whiteboards or smart TVs,
    pre-registering devices with the authorization server or only allow
    cross-device flows on devices managed through device management
    systems.  Device management systems may enforce policies that govern
@@ -2421,10 +2422,11 @@ Appendix A.  Document History
 
    [[ To be removed from the final specification ]]
 
-   -latest * Fixed reference for protocol selection (see issue #189) *
-   Change affiliation * AD Feedback: Add Security Consideration * AD
-   Feedback: Add IANA Consideration * AD Feedback: Capitalise SHOULD not
-   -> SHOULD NOT (issue #185)
+   -latest * Adresseed AD Nits (see https://github.com/oauth-wg/oauth-
+   cross-device-security/issues/195) * Fixed reference for protocol
+   selection (see issue #189) * Change affiliation * AD Feedback: Add
+   Security Consideration * AD Feedback: Add IANA Consideration * AD
+   Feedback: Capitalise SHOULD not -> SHOULD NOT (issue #185)
 
    -12
 

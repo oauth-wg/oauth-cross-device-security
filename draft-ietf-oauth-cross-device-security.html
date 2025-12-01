@@ -1515,7 +1515,7 @@ appear in all capitals, as shown here.<a href="#section-1.4-1" class="pilcrow">�
       <h2 id="name-best-practices">
 <a href="#section-2" class="section-number selfRef">2. </a><a href="#name-best-practices" class="section-name selfRef">Best Practices</a>
       </h2>
-<p id="section-2-1">This section describes the set of security mechanisms and measures to secure cross-device protools against Cross-Device Consent Phishing and Cross-Device Session Phishing attacks that the OAuth working group considers best practices at the time of writing.<a href="#section-2-1" class="pilcrow">¶</a></p>
+<p id="section-2-1">This section describes the set of security mechanisms and measures to secure cross-device protocols against Cross-Device Consent Phishing and Cross-Device Session Phishing attacks that the OAuth working group considers best practices at the time of writing this specification.<a href="#section-2-1" class="pilcrow">¶</a></p>
 <ol start="1" type="1" class="normal type-1" id="section-2-2">
 <li id="section-2-2.1">
           <p id="section-2-2.1.1">Implementers MUST perform a risk assessment before implementing cross-device flows, weighing the risks from Cross-Device Consent Phishing and Cross-Device Session Phishing attacks against benefits for users.<a href="#section-2-2.1.1" class="pilcrow">¶</a></p>
@@ -1887,7 +1887,7 @@ Session  |   |              |     Context           |               |
       <h2 id="name-cross-device-flow-exploits">
 <a href="#section-4" class="section-number selfRef">4. </a><a href="#name-cross-device-flow-exploits" class="section-name selfRef">Cross-Device Flow Exploits</a>
       </h2>
-<p id="section-4-1">Attackers exploit the absence of an authenticated channel between the two devices used in a cross-device flow by using social engineering techniques typicaly used in phishing attacks.<a href="#section-4-1" class="pilcrow">¶</a></p>
+<p id="section-4-1">Attackers exploit the absence of an authenticated channel between the two devices used in a cross-device flow by using social engineering techniques typically used in phishing attacks.<a href="#section-4-1" class="pilcrow">¶</a></p>
 <p id="section-4-2">In cross-device authorization flows the attacker uses these social engineering techniques by changing the context in which the authorization request is presented to convince the user to grant authorization when they shouldn't. These attacks are also known as Cross-Device Consent Phishing (CDCP) attacks.<a href="#section-4-2" class="pilcrow">¶</a></p>
 <p id="section-4-3">In cross-device session transfer flows the attacker uses these social engineering techniques to convince the user to initiate a session transfer and send them a session transfer code. Once the attacker is in posession of this session transfer code, they present it to the Authorization Server to transfer the session and access the users resources. These attacks are referred to as Cross-Device Session Phishing (CDSP) attacks.<a href="#section-4-3" class="pilcrow">¶</a></p>
 <div id="cross-device-authorization-flow-exploits">
@@ -2420,7 +2420,7 @@ Session  |   |              |     Context           |               |
 <a href="#section-6.1.7" class="section-number selfRef">6.1.7. </a><a href="#name-trusted-devices" class="section-name selfRef">Trusted Devices</a>
           </h4>
 <p id="section-6.1.7-1">If an attacker is unable to initiate the protocol, they are unable to obtain a QR code or user code that can be leveraged for the attacks described in this document. By restricting the protocol to only be executed on devices trusted by the authorization server, it prevents attackers from using arbitrary devices, or by mimicking devices to initiate the protocol.<a href="#section-6.1.7-1" class="pilcrow">¶</a></p>
-<p id="section-6.1.7-2">Authorization Servers MAY use different mechanisms to establish which devices it trusts. This includes limiting cross-device flows to specific device types such as intractive whiteboards or smart TVs, pre-registering devices with the authorization server or only allow cross-device flows on devices managed through device management systems. Device management systems may enforce policies that govern patching, version updates, on-device anti-malware deployment, revocation status and device location amongst others. Trusted devices MAY have their identities rooted in hardware (e.g., a TPM or equivalent technology).<a href="#section-6.1.7-2" class="pilcrow">¶</a></p>
+<p id="section-6.1.7-2">Authorization Servers MAY use different mechanisms to establish which devices it trusts. This includes limiting cross-device flows to specific device types such as interactive whiteboards or smart TVs, pre-registering devices with the authorization server or only allow cross-device flows on devices managed through device management systems. Device management systems may enforce policies that govern patching, version updates, on-device anti-malware deployment, revocation status and device location amongst others. Trusted devices MAY have their identities rooted in hardware (e.g., a TPM or equivalent technology).<a href="#section-6.1.7-2" class="pilcrow">¶</a></p>
 <p id="section-6.1.7-3">By only allowing trusted devices to initiate cross-device flows, it requires the attacker to have access to such a device and maintain access in a way that does not result in the device's trust status from being revoked.<a href="#section-6.1.7-3" class="pilcrow">¶</a></p>
 <p id="section-6.1.7-4"><strong>Limitations:</strong> An attacker may still be able to obtain access to a trusted device and use it to initiate authorization requests, making it necessary to apply additional controls and integrating with other threat detection and management systems that can detect suspicious behaviour such as repeated requests to initiate authorization or high volume of service activation on the same device.<a href="#section-6.1.7-4" class="pilcrow">¶</a></p>
 </section>
@@ -3060,6 +3060,7 @@ described in <a href="#user_education" class="auto internal xref">Section 6.1.13
       </h2>
 <p id="appendix-A-1">[[ To be removed from the final specification ]]<a href="#appendix-A-1" class="pilcrow">¶</a></p>
 <p id="appendix-A-2">-latest
+   * Adresseed AD Nits (see https://github.com/oauth-wg/oauth-cross-device-security/issues/195)
    * Fixed reference for protocol selection (see issue #189)
    * Change affiliation
    * AD Feedback: Add Security Consideration
