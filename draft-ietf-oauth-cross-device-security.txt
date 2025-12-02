@@ -2,7 +2,7 @@
 
 
 
-oauth                                                      P. Kasselmann
+oauth                                                       P. Kasselman
 Internet-Draft                                                   Defakto
 Intended status: Best Current Practice                           D. Fett
 Expires: 5 June 2026                                            Authlete
@@ -2629,7 +2629,7 @@ Appendix A.  Document History
 
 Authors' Addresses
 
-   Pieter Kasselmann
+   Pieter Kasselman
    Defakto
    Email: prkasselman@gmail.com
 
