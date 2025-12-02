@@ -14,7 +14,7 @@ lang: en
 kw: ["security", "oauth2", "best current practice"]
 # date: 2022-02-02 -- date is filled in automatically by xml2rfc if not given
 author:
-- name: Pieter Kasselmann
+- name: Pieter Kasselman
   org: Defakto
   email: prkasselman@gmail.com
 - name: Daniel Fett
