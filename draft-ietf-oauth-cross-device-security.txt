@@ -2433,11 +2433,17 @@ Appendix A.  Document History
 
    [[ To be removed from the final specification ]]
 
-   -latest * Adresseed AD Nits (see https://github.com/oauth-wg/oauth-
-   cross-device-security/issues/195) * Fixed reference for protocol
-   selection (see issue #189) * Change affiliation * AD Feedback: Add
-   Security Consideration * AD Feedback: Add IANA Consideration * AD
-   Feedback: Capitalise SHOULD not -> SHOULD NOT (issue #185)
+   -latest * Fixed reference for protocol selection (see issue #189) *
+   Change affiliation * AD Feedback: Add Security Consideration * AD
+   Feedback: Add IANA Consideration * AD Feedback: Capitalise SHOULD not
+   -> SHOULD NOT (issue #185) * AD Feedback: AD Nits (see
+   https://github.com/oauth-wg/oauth-cross-device-security/issues/195) *
+   AD Feedback: Clarify limitations on consumption device (see
+   https://github.com/oauth-wg/oauth-cross-device-security/issues/194) *
+   AD Feedback: Remove repetitive text (see https://github.com/oauth-wg/
+   oauth-cross-device-security/issues/193) * AD Feedback: Clrify
+   seperate use cases (see https://github.com/oauth-wg/oauth-cross-
+   device-security/issues/192)
 
    -12
 
