@@ -5,10 +5,10 @@
 oauth                                                      P. Kasselmann
 Internet-Draft                                                   Defakto
 Intended status: Best Current Practice                           D. Fett
-Expires: 4 June 2026                                            Authlete
+Expires: 5 June 2026                                            Authlete
                                                                F. Skokan
                                                                     Okta
-                                                         1 December 2025
+                                                         2 December 2025
 
 
            Cross-Device Flows: Security Best Current Practice
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 4 June 2026.
+   This Internet-Draft will expire on 5 June 2026.
 
 Copyright Notice
 
@@ -1441,8 +1441,15 @@ Table of Contents
    less cross-device flows.  Establishing proximity between the location
    of the Consumption Device and the Authorization Device limits an
    attacker's ability to launch attacks by sending the user or QR codes
-   to large numbers of users that are geographically distributed.  There
-   are a couple of ways to establish proximity:
+   to large numbers of users that are geographically distributed.  Note
+   that the authorization server typically cannot directly determine
+   whether the Consumption Device and Authorization Device are
+   physically close to each other.  Instead, it must rely on the
+   surrounding systems, protocols in use, device capabilities, or
+   information it obtains from other systems to establish or verify
+   proximity.  The authorization server can validate information it
+   receives, but it cannot independently measure or enforce proximity on
+   its own.  There are a number of ways to establish proximity:
 
    *  Physical connectivity: This is a good indicator of proximity, but
       requires specific ports, cables and hardware and may be
@@ -1451,9 +1458,7 @@ Table of Contents
       removed for security purposes).  Physical connectivity may be
       better suited to dedicated hardware like FIDO devices that can be
       used with protocols that are resistant to the exploits described
-      in this document.  The authorization server does not directly
-      establish proximity, but relies on the deployed system and
-      selected protocols and devices to establish proximity.
+      in this document.
 
    *  Wireless proximity: Near Field Communications (NFC), Bluetooth Low
       Energy (BLE), and Ultra Wideband (UWB) services can be used to
@@ -1464,10 +1469,7 @@ Table of Contents
       experience challenges when setting up.  UWB standards such as IEEE
       802.15.4 and the IEEE 802.15.4z-2020 Amendment 1 enable secure
       ranging between devices and allow devices to establish proximity
-      relative to each other [IEEE802154].  The authorization server
-      does not directly establish proximity, but relies on the deployed
-      system and selected protocols and devices to establish proximity
-      using these wireless proximity protocols.
+      relative to each other [IEEE802154].
 
    *  Shared network: Device proximity can be inferred by verifying that
       both devices are on the same network.  This check may be performed
@@ -1489,7 +1491,7 @@ Table of Contents
       location information derived from global navigation satellite-
       system (GNSS) co-ordinates or geolocation lookup of IP addresses
       and comparing proximity.  Geolocation based on GNSS may vary in
-      accuracy depending on the users location, and when mapped to
+      accuracy depending on the user's location, and when mapped to
       national or regional boundaries may show a Consumption and
       Authorization Device in different locations if those devices are
       close to a border.  Since relative position is more important than
@@ -1498,7 +1500,7 @@ Table of Contents
       determining proximity.  Geolocation based on IP addresses may be
       inaccurate along regional or national borders due to overlapping
       coverage by different network providers from the respective
-      regions.  This may result in the Consumption device being mapped
+      regions.  This may result in the Consumption Device being mapped
       to one region, while the Authorization Device may be on another
       network from another provider and mapped to another region.  These
       inaccuracies may require restrictions to be at a more granular
@@ -1512,17 +1514,16 @@ Table of Contents
    is operating, it MAY be necessary to use more than one mechanism to
    establish proximity to raise the bar for any potential attackers.
 
-   Note: There are scenarios that require that an authorization takes
-   place in a different location than the one in which the transaction
-   is authorized.  For example, there may be a primary and secondary
-   credit card holder and both can initiate transactions, but only the
-   primary holder can authorize it.  There is no guarantee that the
-   primary and secondary holders are in the same location at the time of
-   the authorization.  In such cases, proximity (or lack of proximity)
-   may be an indicator of risk and the system may deploy additional
-   controls (e.g., transaction value limits, transaction velocity
-   limits) or use the proximity information as input to a risk
-   management system.
+   Note: There are scenarios that require that authorization takes place
+   in a different location than the one in which the transaction is
+   initiated.  For example, there may be a primary and secondary credit
+   card holder and both can initiate transactions, but only the primary
+   holder can authorize it.  There is no guarantee that the primary and
+   secondary holders are in the same location at the time of the
+   authorization.  In such cases, proximity (or lack of proximity) may
+   be an indicator of risk and the system may deploy additional controls
+   (e.g., transaction value limits, transaction velocity limits) or use
+   the proximity information as input to a risk management system.
 
    *Limitations:* Proximity mechanisms make it harder to perform Cross-
    Device Consent Phishing (CDCP) attacks.  However, depending on how
