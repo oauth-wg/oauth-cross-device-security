@@ -906,7 +906,7 @@ Note: There are scenarios that require that authorization takes place in a diffe
 ### Short Lived/Timebound QR or User Codes {#Short-Lived-Timebound-Codes}
 The impact of an attack can be reduced by making QR or user codes short lived. If an attacker obtains a short lived code, the duration during which the unauthenticated channel can be exploited is reduced, potentially increasing the cost of a successful attack. This mitigation can be implemented on the authorization server without changes to other system components.
 
-**Limitations:** There is a practical limit to how short a user code can be valid due to network latency and user experience limitations (time taken to enter a code, or incorrectly entering a code). More sophisticated Cross-Device Consent Phishing attacks counter the effectiveness of short lived codes by convincing a user to respond to a phishing e-mail and only request the QR or user code once the user clicks on the link in the phishing e-mail {{Exploit6}}.
+**Limitations:** There is a practical limit to how short a user code can be valid due to network latency and user experience limitations (time taken to enter a code, time to complete authentication, or time needed to re-enter codes or re-authenticate due to an error). More sophisticated Cross-Device Consent Phishing attacks counter the effectiveness of short lived codes by convincing a user to respond to a phishing e-mail and only request the QR or user code once the user clicks on the link in the phishing e-mail {{Exploit6}}.
 
 ### One-Time or Limited Use Codes
 By enforcing one-time use or limited use of user or QR codes, the authorization server can limit the impact of attacks where the same user code or QR code is sent to multiple victims. One-time use may be achieved by including a nonce or date-stamp in the user code or QR code which is validated by the authorization server when the user scans the QR code against a list of previously issued codes. This mitigation can be implemented on the authorization server without changes to other system components.
@@ -1168,9 +1168,11 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
    \[\[ To be removed from the final specification ]]
 
    -latest
+   * Secdir Feeddback: Addditional information on allowing time to authenticate (https://github.com/oauth-wg/oauth-cross-device-security/issues/203)
    * Provide additional guidance on user impact of using a VPN (see https://github.com/oauth-wg/oauth-cross-device-security/issues/202)
 
-   -latest
+   -13
+
    * Fixed reference for protocol selection (see issue #189)
    * Change affiliation
    * AD Feedback: Add Security Consideration
