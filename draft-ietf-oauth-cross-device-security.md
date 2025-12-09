@@ -901,7 +901,7 @@ Depending on the risk profile and the threat model in which a system is operatin
 
 Note: There are scenarios that require that authorization takes place in a different location than the one in which the transaction is initiated. For example, there may be a primary and secondary credit card holder and both can initiate transactions, but only the primary holder can authorize it. There is no guarantee that the primary and secondary holders are in the same location at the time of the authorization. In such cases, proximity (or lack of proximity) may be an indicator of risk and the system may deploy additional controls (e.g., transaction value limits, transaction velocity limits) or use the proximity information as input to a risk management system.
 
-**Limitations:** Proximity mechanisms make it harder to perform Cross-Device Consent Phishing (CDCP) attacks. However, depending on how the proximity check is performed, an attacker may be able to circumvent the protection: The attacker can use a VPN to simulate a shared network or spoof a GNSS position. For example, the attacker can try to request the location of the end-user's Authorization Device through browser APIs and then simulate the same location on their Consumption Device using standard debugging features available on many platforms.
+**Limitations:** Proximity mechanisms make it harder to perform Cross-Device Consent Phishing (CDCP) attacks. However, depending on how the proximity check is performed, an attacker may be able to circumvent the protection: The attacker can use a VPN to simulate a shared network or spoof a GNSS position. For example, the attacker can try to request the location of the end-user's Authorization Device through browser APIs and then simulate the same location on their Consumption Device using standard debugging features available on many platforms. Relying on IP address mapping can degrade user experience when a VPN is used on the Consumption or Authorization Device. In such cases, the devices may appear to be in different locations, requiring additional user guidance or alternative mechanisms to establish proximity.
 
 ### Short Lived/Timebound QR or User Codes {#Short-Lived-Timebound-Codes}
 The impact of an attack can be reduced by making QR or user codes short lived. If an attacker obtains a short lived code, the duration during which the unauthenticated channel can be exploited is reduced, potentially increasing the cost of a successful attack. This mitigation can be implemented on the authorization server without changes to other system components.
@@ -1166,6 +1166,9 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
 
 # Document History
    \[\[ To be removed from the final specification ]]
+
+   -latest
+   * Provide additional guidance on user impact of using a VPN (see https://github.com/oauth-wg/oauth-cross-device-security/issues/202)
 
    -latest
    * Fixed reference for protocol selection (see issue #189)
