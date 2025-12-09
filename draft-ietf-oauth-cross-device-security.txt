@@ -5,10 +5,10 @@
 oauth                                                       P. Kasselman
 Internet-Draft                                                   Defakto
 Intended status: Best Current Practice                           D. Fett
-Expires: 5 June 2026                                            Authlete
+Expires: 12 June 2026                                           Authlete
                                                                F. Skokan
                                                                     Okta
-                                                         2 December 2025
+                                                         9 December 2025
 
 
            Cross-Device Flows: Security Best Current Practice
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 5 June 2026.
+   This Internet-Draft will expire on 12 June 2026.
 
 Copyright Notice
 
@@ -1043,19 +1043,15 @@ Table of Contents
       attacker gains access to the user's resources.
 
    The unauthenticated channel may also be exploited in variations of
-   the above scenario where the user (as opposed to the attacker)
+   the above scenario if there is no session maintained in the channel
+   for steps C and G.  In that case a user (as opposed to the attacker)
    initiates the flow and is then convinced using social engineering
    techniques into sending the authorization data (e.g., a 6 digit
-   authorization code) to the attacker.  In these flows, the user is
-   already authenticated and they request authorization data to transfer
-   a session or obtain some other privilege such as joining a device to
-   a network.  The authorization data may be represented as a QR code or
-   text string (e.g., 6 digit authorization code).  The attacker then
-   proceeds to exploit the unauthenticated channel by using social
-   engineering techniques to convince the user to send the QR code or
-   user code to the attacker.  The attacker then use the authorization
-   data to obtain the privileges that would have been assigned to the
-   user.
+   authorization code) to the attacker, instead of using it themselves.
+   The authorization data may be represented as a QR code or text string
+   (e.g., 6 digit authorization code).  The attacker then starts the
+   flow and uses the authorization data to obtain the privileges that
+   would have been assigned to the user.
 
 4.2.  Cross-Device Session Transfer Exploits
 
