@@ -1168,8 +1168,9 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
    \[\[ To be removed from the final specification ]]
 
    -latest
-   * Secdir Feeddback: Addditional information on allowing time to authenticate (https://github.com/oauth-wg/oauth-cross-device-security/issues/203)
-   * Provide additional guidance on user impact of using a VPN (see https://github.com/oauth-wg/oauth-cross-device-security/issues/202)
+   * Secdir Feedback: Additional information on allowing time to authenticate (https://github.com/oauth-wg/oauth-cross-device-security/issues/203)
+   * Secdir Feedback: Provide additional guidance on user impact of using a VPN (see https://github.com/oauth-wg/oauth-cross-device-security/issues/202)
+   * Secdir Feedback: Clarify section 4.1.3 (https://github.com/oauth-wg/oauth-cross-device-security/issues/201)
 
    -13
 
