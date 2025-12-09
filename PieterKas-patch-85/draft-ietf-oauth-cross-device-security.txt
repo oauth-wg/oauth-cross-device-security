@@ -1049,9 +1049,9 @@ Table of Contents
    techniques into sending the authorization data (e.g., a 6 digit
    authorization code) to the attacker, instead of using it themselves.
    The authorization data may be represented as a QR code or text string
-   (e.g., 6 digit authorization code).  The attacker then start the flow
-   and use the authorization data to obtain the privileges that would
-   have been assigned to the user.
+   (e.g., 6 digit authorization code).  The attacker then starts the
+   flow and uses the authorization data to obtain the privileges that
+   would have been assigned to the user.
 
 4.2.  Cross-Device Session Transfer Exploits
 
