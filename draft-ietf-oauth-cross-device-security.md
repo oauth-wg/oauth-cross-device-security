@@ -1168,6 +1168,10 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
    \[\[ To be removed from the final specification ]]
 
    -latest
+   * Secdir Feeddback: Addditional information on allowing time to authenticate (https://github.com/oauth-wg/oauth-cross-device-security/issues/203)
+
+   -12
+
    * Fixed reference for protocol selection (see issue #189)
    * Change affiliation
    * AD Feedback: Add Security Consideration
