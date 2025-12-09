@@ -755,7 +755,7 @@ Figure: User-Transferred Authorization Data Pattern Exploits
 - (F) The attacker enters the authorization data (e.g., a 6 digit authorization code) on the Consumption Device.
 - (G) The Authorization Server grants authorization and issues access and refresh tokens to the Consumption Device, which is under the attacker's control. On completion of the exploit, the attacker gains access to the user's resources.
 
-The unauthenticated channel may also be exploited in variations of the above scenario where the user (as opposed to the attacker) initiates the flow  and is then convinced using social engineering techniques into sending the authorization data (e.g., a 6 digit authorization code) to the attacker. In these flows, the user is already authenticated and they request authorization data to transfer a session or obtain some other privilege such as joining a device to a network. The authorization data may be represented as a QR code or text string (e.g., 6 digit authorization code). The attacker then proceeds to exploit the unauthenticated channel by using social engineering techniques to convince the user to send the QR code or user code to the attacker. The attacker then use the authorization data to obtain the privileges that would have been assigned to the user.
+The unauthenticated channel may also be exploited in variations of the above scenario if there is no session maintained in the channel for steps C and G. In that case a user (as opposed to the attacker) initiates the flow and is then convinced using social engineering techniques into sending the authorization data (e.g., a 6 digit authorization code) to the attacker, instead of using it themselves. The authorization data may be represented as a QR code or text string (e.g., 6 digit authorization code). The attacker then starts the flow and uses the authorization data to obtain the privileges that would have been assigned to the user.
 
 ## Cross-Device Session Transfer Exploits
 Attackers exploit cross-device session transfer flows by using social engineering techniques typically used in phishing attacks to convince the user to authorize the transfer of a session and then send the session transfer code or QR code to the attacker. The absence of an authenticated channel between these two devices enables the attacker to use the session transfer code on their own device to obtain access to the session and access the users data. These attacks are referred to as Cross-Device Session Phishing (CDSP) attacks.
@@ -901,7 +901,7 @@ Depending on the risk profile and the threat model in which a system is operatin
 
 Note: There are scenarios that require that authorization takes place in a different location than the one in which the transaction is initiated. For example, there may be a primary and secondary credit card holder and both can initiate transactions, but only the primary holder can authorize it. There is no guarantee that the primary and secondary holders are in the same location at the time of the authorization. In such cases, proximity (or lack of proximity) may be an indicator of risk and the system may deploy additional controls (e.g., transaction value limits, transaction velocity limits) or use the proximity information as input to a risk management system.
 
-**Limitations:** Proximity mechanisms make it harder to perform Cross-Device Consent Phishing (CDCP) attacks. However, depending on how the proximity check is performed, an attacker may be able to circumvent the protection: The attacker can use a VPN to simulate a shared network or spoof a GNSS position. For example, the attacker can try to request the location of the end-user's Authorization Device through browser APIs and then simulate the same location on their Consumption Device using standard debugging features available on many platforms.
+**Limitations:** Proximity mechanisms make it harder to perform Cross-Device Consent Phishing (CDCP) attacks. However, depending on how the proximity check is performed, an attacker may be able to circumvent the protection: The attacker can use a VPN to simulate a shared network or spoof a GNSS position. For example, the attacker can try to request the location of the end-user's Authorization Device through browser APIs and then simulate the same location on their Consumption Device using standard debugging features available on many platforms. Relying on IP address mapping can degrade user experience when a VPN is used on the Consumption or Authorization Device. In such cases, the devices may appear to be in different locations, requiring additional user guidance or alternative mechanisms to establish proximity.
 
 ### Short Lived/Timebound QR or User Codes {#Short-Lived-Timebound-Codes}
 The impact of an attack can be reduced by making QR or user codes short lived. If an attacker obtains a short lived code, the duration during which the unauthenticated channel can be exploited is reduced, potentially increasing the cost of a successful attack. This mitigation can be implemented on the authorization server without changes to other system components.
@@ -1169,8 +1169,9 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
 
    -latest
    * Secdir Feeddback: Addditional information on allowing time to authenticate (https://github.com/oauth-wg/oauth-cross-device-security/issues/203)
+   * Provide additional guidance on user impact of using a VPN (see https://github.com/oauth-wg/oauth-cross-device-security/issues/202)
 
-   -12
+   -13
 
    * Fixed reference for protocol selection (see issue #189)
    * Change affiliation
