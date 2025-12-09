@@ -2383,7 +2383,7 @@ Session  |   |              |     Context           |               |
 <a href="#section-6.1.2" class="section-number selfRef">6.1.2. </a><a href="#name-short-lived-timebound-qr-or" class="section-name selfRef">Short Lived/Timebound QR or User Codes</a>
           </h4>
 <p id="section-6.1.2-1">The impact of an attack can be reduced by making QR or user codes short lived. If an attacker obtains a short lived code, the duration during which the unauthenticated channel can be exploited is reduced, potentially increasing the cost of a successful attack. This mitigation can be implemented on the authorization server without changes to other system components.<a href="#section-6.1.2-1" class="pilcrow">¶</a></p>
-<p id="section-6.1.2-2"><strong>Limitations:</strong> There is a practical limit to how short a user code can be valid due to network latency and user experience limitations (time taken to enter a code, or incorrectly entering a code). More sophisticated Cross-Device Consent Phishing attacks counter the effectiveness of short lived codes by convincing a user to respond to a phishing e-mail and only request the QR or user code once the user clicks on the link in the phishing e-mail <span>[<a href="#Exploit6" class="cite xref">Exploit6</a>]</span>.<a href="#section-6.1.2-2" class="pilcrow">¶</a></p>
+<p id="section-6.1.2-2"><strong>Limitations:</strong> There is a practical limit to how short a user code can be valid due to network latency and user experience limitations (time taken to enter a code, time to complete authentication, or time needed to re-enter codes or re-authenticate due to an error). More sophisticated Cross-Device Consent Phishing attacks counter the effectiveness of short lived codes by convincing a user to respond to a phishing e-mail and only request the QR or user code once the user clicks on the link in the phishing e-mail <span>[<a href="#Exploit6" class="cite xref">Exploit6</a>]</span>.<a href="#section-6.1.2-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="one-time-or-limited-use-codes">
@@ -3068,255 +3068,276 @@ described in <a href="#user_education" class="auto internal xref">Section 6.1.13
       </h2>
 <p id="appendix-A-1">[[ To be removed from the final specification ]]<a href="#appendix-A-1" class="pilcrow">¶</a></p>
 <p id="appendix-A-2">-latest
+   * Secdir Feeddback: Addditional information on allowing time to authenticate (https://github.com/oauth-wg/oauth-cross-device-security/issues/203)
    * Provide additional guidance on user impact of using a VPN (see https://github.com/oauth-wg/oauth-cross-device-security/issues/202)<a href="#appendix-A-2" class="pilcrow">¶</a></p>
-<p id="appendix-A-3">-latest
-   * Fixed reference for protocol selection (see issue #189)
-   * Change affiliation
-   * AD Feedback: Add Security Consideration
-   * AD Feedback: Add IANA Consideration
-   * AD Feedback: Capitalise SHOULD not -&gt; SHOULD NOT (issue #185)
-   * AD Feedback: AD Nits (see https://github.com/oauth-wg/oauth-cross-device-security/issues/195)
-   * AD Feedback: Clarify limitations on consumption device (see https://github.com/oauth-wg/oauth-cross-device-security/issues/194)
-   * AD Feedback: Remove repetitive text (see https://github.com/oauth-wg/oauth-cross-device-security/issues/193)
-   * AD Feedback: Clrify seperate use cases (see https://github.com/oauth-wg/oauth-cross-device-security/issues/192)<a href="#appendix-A-3" class="pilcrow">¶</a></p>
-<p id="appendix-A-4">-12<a href="#appendix-A-4" class="pilcrow">¶</a></p>
+<p id="appendix-A-3">-13<a href="#appendix-A-3" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-A-5.1">
-          <p id="appendix-A-5.1.1">Fixed FIDO CTAP V2.2 URL<a href="#appendix-A-5.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="appendix-A-4.1">
+          <p id="appendix-A-4.1.1">Fixed reference for protocol selection (see issue #189)<a href="#appendix-A-4.1.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="appendix-A-5.2">
-          <p id="appendix-A-5.2.1">Update SSF Reference<a href="#appendix-A-5.2.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-A-4.2">
+          <p id="appendix-A-4.2.1">Change affiliation<a href="#appendix-A-4.2.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="appendix-A-5.3">
-          <p id="appendix-A-5.3.1">CAEP Reference Update<a href="#appendix-A-5.3.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-A-4.3">
+          <p id="appendix-A-4.3.1">AD Feedback: Add Security Consideration<a href="#appendix-A-4.3.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="appendix-A-5.4">
-          <p id="appendix-A-5.4.1">Fix IEEE reference<a href="#appendix-A-5.4.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-A-4.4">
+          <p id="appendix-A-4.4.1">AD Feedback: Add IANA Consideration<a href="#appendix-A-4.4.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="appendix-A-5.5">
-          <p id="appendix-A-5.5.1">Update IEEE Reference<a href="#appendix-A-5.5.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-A-4.5">
+          <p id="appendix-A-4.5.1">AD Feedback: Capitalise SHOULD not -&gt; SHOULD NOT (issue #185)<a href="#appendix-A-4.5.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-A-4.6">
+          <p id="appendix-A-4.6.1">AD Feedback: AD Nits (see https://github.com/oauth-wg/oauth-cross-device-security/issues/195)<a href="#appendix-A-4.6.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-A-4.7">
+          <p id="appendix-A-4.7.1">AD Feedback: Clarify limitations on consumption device (see https://github.com/oauth-wg/oauth-cross-device-security/issues/194)<a href="#appendix-A-4.7.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-A-4.8">
+          <p id="appendix-A-4.8.1">AD Feedback: Remove repetitive text (see https://github.com/oauth-wg/oauth-cross-device-security/issues/193)<a href="#appendix-A-4.8.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-A-4.9">
+          <p id="appendix-A-4.9.1">AD Feedback: Clrify seperate use cases (see https://github.com/oauth-wg/oauth-cross-device-security/issues/192)<a href="#appendix-A-4.9.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-A-6">-11<a href="#appendix-A-6" class="pilcrow">¶</a></p>
+<p id="appendix-A-5">-12<a href="#appendix-A-5" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-A-7.1">
-          <p id="appendix-A-7.1.1">Fixed malformed labels<a href="#appendix-A-7.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="appendix-A-6.1">
+          <p id="appendix-A-6.1.1">Fixed FIDO CTAP V2.2 URL<a href="#appendix-A-6.1.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="appendix-A-7.2">
-          <p id="appendix-A-7.2.1">Clarified common use case for when phone and TVs do not use the same network.<a href="#appendix-A-7.2.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-A-6.2">
+          <p id="appendix-A-6.2.1">Update SSF Reference<a href="#appendix-A-6.2.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="appendix-A-7.3">
-          <p id="appendix-A-7.3.1">Clarified role of authorization server in establishing proximity.<a href="#appendix-A-7.3.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-A-6.3">
+          <p id="appendix-A-6.3.1">CAEP Reference Update<a href="#appendix-A-6.3.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="appendix-A-7.4">
-          <p id="appendix-A-7.4.1">Clarified which mitigations can be implented by the authorization server only.<a href="#appendix-A-7.4.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-A-6.4">
+          <p id="appendix-A-6.4.1">Fix IEEE reference<a href="#appendix-A-6.4.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="appendix-A-7.5">
-          <p id="appendix-A-7.5.1">Add Dan Moore to acknowledgements.<a href="#appendix-A-7.5.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-A-7.6">
-          <p id="appendix-A-7.6.1">Updated outdated references.<a href="#appendix-A-7.6.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-A-6.5">
+          <p id="appendix-A-6.5.1">Update IEEE Reference<a href="#appendix-A-6.5.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-A-8">-10<a href="#appendix-A-8" class="pilcrow">¶</a></p>
+<p id="appendix-A-7">-11<a href="#appendix-A-7" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-A-9.1">
-          <p id="appendix-A-9.1.1">Shepherd feedback: Describe unauthenticated channel.<a href="#appendix-A-9.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="appendix-A-8.1">
+          <p id="appendix-A-8.1.1">Fixed malformed labels<a href="#appendix-A-8.1.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="appendix-A-9.2">
-          <p id="appendix-A-9.2.1">Shepherd feedback: Seperate normative and informative references.<a href="#appendix-A-9.2.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-A-8.2">
+          <p id="appendix-A-8.2.1">Clarified common use case for when phone and TVs do not use the same network.<a href="#appendix-A-8.2.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="appendix-A-9.3">
-          <p id="appendix-A-9.3.1">Shepherd feedback: Update FIDO/WebAuthn references<a href="#appendix-A-9.3.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-A-8.3">
+          <p id="appendix-A-8.3.1">Clarified role of authorization server in establishing proximity.<a href="#appendix-A-8.3.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-A-8.4">
+          <p id="appendix-A-8.4.1">Clarified which mitigations can be implented by the authorization server only.<a href="#appendix-A-8.4.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-A-8.5">
+          <p id="appendix-A-8.5.1">Add Dan Moore to acknowledgements.<a href="#appendix-A-8.5.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-A-8.6">
+          <p id="appendix-A-8.6.1">Updated outdated references.<a href="#appendix-A-8.6.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-A-10">-09<a href="#appendix-A-10" class="pilcrow">¶</a></p>
+<p id="appendix-A-9">-10<a href="#appendix-A-9" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-A-11.1">
-          <p id="appendix-A-11.1.1">Affiliation change to allow publication to Datatracker.<a href="#appendix-A-11.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="appendix-A-10.1">
+          <p id="appendix-A-10.1.1">Shepherd feedback: Describe unauthenticated channel.<a href="#appendix-A-10.1.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="appendix-A-11.2">
-          <p id="appendix-A-11.2.1">No content changes - re-published to avoid expiry while waiting on shepherd review.<a href="#appendix-A-11.2.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-A-10.2">
+          <p id="appendix-A-10.2.1">Shepherd feedback: Seperate normative and informative references.<a href="#appendix-A-10.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-A-10.3">
+          <p id="appendix-A-10.3.1">Shepherd feedback: Update FIDO/WebAuthn references<a href="#appendix-A-10.3.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-A-12">-08<a href="#appendix-A-12" class="pilcrow">¶</a></p>
+<p id="appendix-A-11">-09<a href="#appendix-A-11" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-A-13.1">
-          <p id="appendix-A-13.1.1">Editorial updates.<a href="#appendix-A-13.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="appendix-A-12.1">
+          <p id="appendix-A-12.1.1">Affiliation change to allow publication to Datatracker.<a href="#appendix-A-12.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-A-12.2">
+          <p id="appendix-A-12.2.1">No content changes - re-published to avoid expiry while waiting on shepherd review.<a href="#appendix-A-12.2.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-A-14">-07<a href="#appendix-A-14" class="pilcrow">¶</a></p>
+<p id="appendix-A-13">-08<a href="#appendix-A-13" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-A-15.1">
-          <p id="appendix-A-15.1.1">Clarification of FIDO\WebAuthn section.<a href="#appendix-A-15.1.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-A-15.2">
-          <p id="appendix-A-15.2.1">Updated langugage in section on FIDO to allow for use of FIDO keys on consumption devices.<a href="#appendix-A-15.2.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-A-15.3">
-          <p id="appendix-A-15.3.1">Clarified origin of QR Code.<a href="#appendix-A-15.3.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-A-15.4">
-          <p id="appendix-A-15.4.1">Editorial updates<a href="#appendix-A-15.4.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-A-15.5">
-          <p id="appendix-A-15.5.1">Updated examples to be consistent.<a href="#appendix-A-15.5.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-A-15.6">
-          <p id="appendix-A-15.6.1">Made diagram description clearer.<a href="#appendix-A-15.6.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-A-15.7">
-          <p id="appendix-A-15.7.1">Added CTAP 2.2 Draft.<a href="#appendix-A-15.7.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-A-15.8">
-          <p id="appendix-A-15.8.1">Added additional guidance on geolocation inaccuracies.<a href="#appendix-A-15.8.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-A-15.9">
-          <p id="appendix-A-15.9.1">Added Roy Williams to acknowledgements<a href="#appendix-A-15.9.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-A-15.10">
-          <p id="appendix-A-15.10.1">Clarified that authorization servers can detect<a href="#appendix-A-15.10.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-A-15.11">
-          <p id="appendix-A-15.11.1">Consistent use of "smart TV"<a href="#appendix-A-15.11.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-A-15.12">
-          <p id="appendix-A-15.12.1">Fixed references<a href="#appendix-A-15.12.1" class="pilcrow">¶</a></p>
+<li class="normal" id="appendix-A-14.1">
+          <p id="appendix-A-14.1.1">Editorial updates.<a href="#appendix-A-14.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-A-16">-06<a href="#appendix-A-16" class="pilcrow">¶</a></p>
+<p id="appendix-A-15">-07<a href="#appendix-A-15" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-A-17.1">
-          <p id="appendix-A-17.1.1">Corrected typos.<a href="#appendix-A-17.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="appendix-A-16.1">
+          <p id="appendix-A-16.1.1">Clarification of FIDO\WebAuthn section.<a href="#appendix-A-16.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-A-16.2">
+          <p id="appendix-A-16.2.1">Updated langugage in section on FIDO to allow for use of FIDO keys on consumption devices.<a href="#appendix-A-16.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-A-16.3">
+          <p id="appendix-A-16.3.1">Clarified origin of QR Code.<a href="#appendix-A-16.3.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-A-16.4">
+          <p id="appendix-A-16.4.1">Editorial updates<a href="#appendix-A-16.4.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-A-16.5">
+          <p id="appendix-A-16.5.1">Updated examples to be consistent.<a href="#appendix-A-16.5.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-A-16.6">
+          <p id="appendix-A-16.6.1">Made diagram description clearer.<a href="#appendix-A-16.6.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-A-16.7">
+          <p id="appendix-A-16.7.1">Added CTAP 2.2 Draft.<a href="#appendix-A-16.7.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-A-16.8">
+          <p id="appendix-A-16.8.1">Added additional guidance on geolocation inaccuracies.<a href="#appendix-A-16.8.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-A-16.9">
+          <p id="appendix-A-16.9.1">Added Roy Williams to acknowledgements<a href="#appendix-A-16.9.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-A-16.10">
+          <p id="appendix-A-16.10.1">Clarified that authorization servers can detect<a href="#appendix-A-16.10.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-A-16.11">
+          <p id="appendix-A-16.11.1">Consistent use of "smart TV"<a href="#appendix-A-16.11.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-A-16.12">
+          <p id="appendix-A-16.12.1">Fixed references<a href="#appendix-A-16.12.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-A-18">-05<a href="#appendix-A-18" class="pilcrow">¶</a></p>
+<p id="appendix-A-17">-06<a href="#appendix-A-17" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-A-19.1">
-          <p id="appendix-A-19.1.1">Added section to provide actionable guidance to implementers on how to use this document.<a href="#appendix-A-19.1.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-A-19.2">
-          <p id="appendix-A-19.2.1">Expanded section on formal analysis to include completed research projects.<a href="#appendix-A-19.2.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-A-19.3">
-          <p id="appendix-A-19.3.1">Added reference to OpenID for Verifiable Presentations.<a href="#appendix-A-19.3.1" class="pilcrow">¶</a></p>
+<li class="normal" id="appendix-A-18.1">
+          <p id="appendix-A-18.1.1">Corrected typos.<a href="#appendix-A-18.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-A-20">-04<a href="#appendix-A-20" class="pilcrow">¶</a></p>
+<p id="appendix-A-19">-05<a href="#appendix-A-19" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-A-21.1">
-          <p id="appendix-A-21.1.1">Corrected formatting issue that prevented history from showing correctly.<a href="#appendix-A-21.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="appendix-A-20.1">
+          <p id="appendix-A-20.1.1">Added section to provide actionable guidance to implementers on how to use this document.<a href="#appendix-A-20.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-A-20.2">
+          <p id="appendix-A-20.2.1">Expanded section on formal analysis to include completed research projects.<a href="#appendix-A-20.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-A-20.3">
+          <p id="appendix-A-20.3.1">Added reference to OpenID for Verifiable Presentations.<a href="#appendix-A-20.3.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-A-22">-03<a href="#appendix-A-22" class="pilcrow">¶</a></p>
+<p id="appendix-A-21">-04<a href="#appendix-A-21" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-A-23.1">
-          <p id="appendix-A-23.1.1">Introduced normative SHOULD, RECOMMENDED and MAY when applied to actions the Authorization Server, Resource Server or Client may implement.<a href="#appendix-A-23.1.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-A-23.2">
-          <p id="appendix-A-23.2.1">Added User Education as a standalone mitigation.<a href="#appendix-A-23.2.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-A-23.3">
-          <p id="appendix-A-23.3.1">Added Maryam Mehrnezhad, Marco Pernpruner and Giada Sciarretta to the contributors list.<a href="#appendix-A-23.3.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-A-23.4">
-          <p id="appendix-A-23.4.1">Added Request Binding with Out-of-Band Data as an additional mitigation.<a href="#appendix-A-23.4.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-A-23.5">
-          <p id="appendix-A-23.5.1">Adopted the OpenID Foundation terminology from <span>[<a href="#CIBA" class="cite xref">CIBA</a>]</span> and changed Initiating Device to Consumption Device<a href="#appendix-A-23.5.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-A-23.6">
-          <p id="appendix-A-23.6.1">Added Fake Helpdesk and Consent Request Overload examples<a href="#appendix-A-23.6.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-A-23.7">
-          <p id="appendix-A-23.7.1">Replaced "Authenticated Flow" mitigation name with "Authenticate-then-Intitiate"<a href="#appendix-A-23.7.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-A-23.8">
-          <p id="appendix-A-23.8.1">Added Cross-Device Session Transfer pattern<a href="#appendix-A-23.8.1" class="pilcrow">¶</a></p>
+<li class="normal" id="appendix-A-22.1">
+          <p id="appendix-A-22.1.1">Corrected formatting issue that prevented history from showing correctly.<a href="#appendix-A-22.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-A-24">-02<a href="#appendix-A-24" class="pilcrow">¶</a></p>
+<p id="appendix-A-23">-03<a href="#appendix-A-23" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-A-25.1">
-          <p id="appendix-A-25.1.1">Fixed typos and grammar edits<a href="#appendix-A-25.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="appendix-A-24.1">
+          <p id="appendix-A-24.1.1">Introduced normative SHOULD, RECOMMENDED and MAY when applied to actions the Authorization Server, Resource Server or Client may implement.<a href="#appendix-A-24.1.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="appendix-A-25.2">
-          <p id="appendix-A-25.2.1">Capitalised Initiating Device and Authorization Device<a href="#appendix-A-25.2.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-A-24.2">
+          <p id="appendix-A-24.2.1">Added User Education as a standalone mitigation.<a href="#appendix-A-24.2.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="appendix-A-25.3">
-          <p id="appendix-A-25.3.1">Introduced Cross-Device Consent Phishing as a label for the types of attacks described in this document.<a href="#appendix-A-25.3.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-A-24.3">
+          <p id="appendix-A-24.3.1">Added Maryam Mehrnezhad, Marco Pernpruner and Giada Sciarretta to the contributors list.<a href="#appendix-A-24.3.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="appendix-A-25.4">
-          <p id="appendix-A-25.4.1">Updated labels for different types of flows (User-Transferred Session Data Pattern, Backchannel-Transferred Session Pattern, User-Transferred Authorization Data Pattern)<a href="#appendix-A-25.4.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-A-24.4">
+          <p id="appendix-A-24.4.1">Added Request Binding with Out-of-Band Data as an additional mitigation.<a href="#appendix-A-24.4.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="appendix-A-25.5">
-          <p id="appendix-A-25.5.1">Adopted consistent use of hyphenation in using "cross-device"<a href="#appendix-A-25.5.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-A-24.5">
+          <p id="appendix-A-24.5.1">Adopted the OpenID Foundation terminology from <span>[<a href="#CIBA" class="cite xref">CIBA</a>]</span> and changed Initiating Device to Consumption Device<a href="#appendix-A-24.5.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="appendix-A-25.6">
-          <p id="appendix-A-25.6.1">Consistent use of "Authorization Device"<a href="#appendix-A-25.6.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-A-24.6">
+          <p id="appendix-A-24.6.1">Added Fake Helpdesk and Consent Request Overload examples<a href="#appendix-A-24.6.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="appendix-A-25.7">
-          <p id="appendix-A-25.7.1">Update Reference to Secure Signals Framework to reflect name change from Secure Signals and Events<a href="#appendix-A-25.7.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-A-24.7">
+          <p id="appendix-A-24.7.1">Replaced "Authenticated Flow" mitigation name with "Authenticate-then-Intitiate"<a href="#appendix-A-24.7.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="appendix-A-25.8">
-          <p id="appendix-A-25.8.1">Described difference between proximity enforced and proximity-less cross-device flows<a href="#appendix-A-25.8.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-A-25.9">
-          <p id="appendix-A-25.9.1">General editorial pass<a href="#appendix-A-25.9.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-A-24.8">
+          <p id="appendix-A-24.8.1">Added Cross-Device Session Transfer pattern<a href="#appendix-A-24.8.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-A-26">-01<a href="#appendix-A-26" class="pilcrow">¶</a></p>
+<p id="appendix-A-25">-02<a href="#appendix-A-25" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-A-27.1">
-          <p id="appendix-A-27.1.1">Added additional diagrams and descriptions to distinguish between different cross-device flow patterns.<a href="#appendix-A-27.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="appendix-A-26.1">
+          <p id="appendix-A-26.1.1">Fixed typos and grammar edits<a href="#appendix-A-26.1.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="appendix-A-27.2">
-          <p id="appendix-A-27.2.1">Added short description on limitations of each mitigation.<a href="#appendix-A-27.2.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-A-26.2">
+          <p id="appendix-A-26.2.1">Capitalised Initiating Device and Authorization Device<a href="#appendix-A-26.2.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="appendix-A-27.3">
-          <p id="appendix-A-27.3.1">Added acknowledgement of additional contributors.<a href="#appendix-A-27.3.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-A-26.3">
+          <p id="appendix-A-26.3.1">Introduced Cross-Device Consent Phishing as a label for the types of attacks described in this document.<a href="#appendix-A-26.3.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="appendix-A-27.4">
-          <p id="appendix-A-27.4.1">Fixed document history format.<a href="#appendix-A-27.4.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-A-26.4">
+          <p id="appendix-A-26.4.1">Updated labels for different types of flows (User-Transferred Session Data Pattern, Backchannel-Transferred Session Pattern, User-Transferred Authorization Data Pattern)<a href="#appendix-A-26.4.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-A-26.5">
+          <p id="appendix-A-26.5.1">Adopted consistent use of hyphenation in using "cross-device"<a href="#appendix-A-26.5.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-A-26.6">
+          <p id="appendix-A-26.6.1">Consistent use of "Authorization Device"<a href="#appendix-A-26.6.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-A-26.7">
+          <p id="appendix-A-26.7.1">Update Reference to Secure Signals Framework to reflect name change from Secure Signals and Events<a href="#appendix-A-26.7.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-A-26.8">
+          <p id="appendix-A-26.8.1">Described difference between proximity enforced and proximity-less cross-device flows<a href="#appendix-A-26.8.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-A-26.9">
+          <p id="appendix-A-26.9.1">General editorial pass<a href="#appendix-A-26.9.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-A-28">-00 (Working Group Draft)<a href="#appendix-A-28" class="pilcrow">¶</a></p>
+<p id="appendix-A-27">-01<a href="#appendix-A-27" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-A-29.1">
-          <p id="appendix-A-29.1.1">Initial WG revision (content unchanged from draft-kasselman-cross-device-security-03)<a href="#appendix-A-29.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="appendix-A-28.1">
+          <p id="appendix-A-28.1.1">Added additional diagrams and descriptions to distinguish between different cross-device flow patterns.<a href="#appendix-A-28.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-A-28.2">
+          <p id="appendix-A-28.2.1">Added short description on limitations of each mitigation.<a href="#appendix-A-28.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-A-28.3">
+          <p id="appendix-A-28.3.1">Added acknowledgement of additional contributors.<a href="#appendix-A-28.3.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-A-28.4">
+          <p id="appendix-A-28.4.1">Fixed document history format.<a href="#appendix-A-28.4.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-A-30">-03 draft-kasselman-cross-device-security<a href="#appendix-A-30" class="pilcrow">¶</a></p>
+<p id="appendix-A-29">-00 (Working Group Draft)<a href="#appendix-A-29" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-A-31.1">
-          <p id="appendix-A-31.1.1">Minor edits and typos<a href="#appendix-A-31.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="appendix-A-30.1">
+          <p id="appendix-A-30.1.1">Initial WG revision (content unchanged from draft-kasselman-cross-device-security-03)<a href="#appendix-A-30.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-A-32">-02 draft-kasselman-cross-device-security<a href="#appendix-A-32" class="pilcrow">¶</a></p>
+<p id="appendix-A-31">-03 draft-kasselman-cross-device-security<a href="#appendix-A-31" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-A-33.1">
-          <p id="appendix-A-33.1.1">Minor edits and typos<a href="#appendix-A-33.1.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-A-33.2">
-          <p id="appendix-A-33.2.1">Upload as draft-ietf-oauth-cross-device-security-best-practice-02<a href="#appendix-A-33.2.1" class="pilcrow">¶</a></p>
+<li class="normal" id="appendix-A-32.1">
+          <p id="appendix-A-32.1.1">Minor edits and typos<a href="#appendix-A-32.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-A-34">-01 draft-kasselman-cross-device-security<a href="#appendix-A-34" class="pilcrow">¶</a></p>
+<p id="appendix-A-33">-02 draft-kasselman-cross-device-security<a href="#appendix-A-33" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-A-35.1">
-          <p id="appendix-A-35.1.1">Updated draft based on feedback from version circulated to OAuth working group<a href="#appendix-A-35.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="appendix-A-34.1">
+          <p id="appendix-A-34.1.1">Minor edits and typos<a href="#appendix-A-34.1.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="appendix-A-35.2">
-          <p id="appendix-A-35.2.1">Upload as draft-ietf-oauth-cross-device-security-best-practice-01<a href="#appendix-A-35.2.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-A-34.2">
+          <p id="appendix-A-34.2.1">Upload as draft-ietf-oauth-cross-device-security-best-practice-02<a href="#appendix-A-34.2.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="appendix-A-36">-00 draft-kasselman-cross-device-security<a href="#appendix-A-36" class="pilcrow">¶</a></p>
+<p id="appendix-A-35">-01 draft-kasselman-cross-device-security<a href="#appendix-A-35" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="appendix-A-37.1">
-          <p id="appendix-A-37.1.1">Initial draft adopted from document circulated to the OAuth Security Workshop Slack Channel<a href="#appendix-A-37.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="appendix-A-36.1">
+          <p id="appendix-A-36.1.1">Updated draft based on feedback from version circulated to OAuth working group<a href="#appendix-A-36.1.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="appendix-A-37.2">
-          <p id="appendix-A-37.2.1">Upload as draft-ietf-oauth-cross-device-security-best-practice-00<a href="#appendix-A-37.2.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="appendix-A-36.2">
+          <p id="appendix-A-36.2.1">Upload as draft-ietf-oauth-cross-device-security-best-practice-01<a href="#appendix-A-36.2.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+<p id="appendix-A-37">-00 draft-kasselman-cross-device-security<a href="#appendix-A-37" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="appendix-A-38.1">
+          <p id="appendix-A-38.1.1">Initial draft adopted from document circulated to the OAuth Security Workshop Slack Channel<a href="#appendix-A-38.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-A-38.2">
+          <p id="appendix-A-38.2.1">Upload as draft-ietf-oauth-cross-device-security-best-practice-00<a href="#appendix-A-38.2.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 </section>
