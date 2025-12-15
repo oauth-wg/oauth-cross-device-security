@@ -317,7 +317,7 @@ informative:
  NISTGlossary:
   title: "NIST Computer Security Resource Center Glossary"
   target: "https://csrc.nist.gov/glossary"
-        
+
 --- abstract
 
 This document describes threats against cross-device flows
