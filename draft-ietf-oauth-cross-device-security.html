@@ -1442,20 +1442,23 @@ Authentication <span>[<a href="#CIBA" class="cite xref">CIBA</a>]</span> are two
 <p id="section-1.1-2">In these flows, the Consumption Device and the Authorization Device are not directly connected and there is no technical mechanisms for the Authorization Device and Consumption Device to establish mutual authentication. It is left to the user to decide whether the source of the authorization request (the Consumption Device) should be trusted before they scan a QR code, enter a user code, or accept an authorization request pushed to their Authorization Device. The transfer of the authorization request and context between the Consumption Device and Authorization device is done over an unauthenticated channel. The only mitigation against this unauthenticated channel is the user's judgement.<a href="#section-1.1-2" class="pilcrow">¶</a></p>
 <p id="section-1.1-3">Cross-Device Consent Phishing (CDCP) attacks exploit the unauthenticated channel
 between the Consumption Device and Authorization Device using social engineering
-techniques to gain unauthorized access to the user's data. Several publications
-have emerged in the public domain (<span>[<a href="#Exploit1" class="cite xref">Exploit1</a>]</span>, <span>[<a href="#Exploit2" class="cite xref">Exploit2</a>]</span>, <span>[<a href="#Exploit3" class="cite xref">Exploit3</a>]</span>, <span>[<a href="#Exploit4" class="cite xref">Exploit4</a>]</span>,
+techniques commonly used in phishing attacks to gain unauthorized access to the
+user's data.<a href="#section-1.1-3" class="pilcrow">¶</a></p>
+<p id="section-1.1-4">Note: This document uses the terms "social engineering" and "phishing" as
+described in the NIST Computer Security Resource Center Glossary <span>[<a href="#NISTGlossary" class="cite xref">NISTGlossary</a>]</span>.<a href="#section-1.1-4" class="pilcrow">¶</a></p>
+<p id="section-1.1-5">Several publications have emerged in the public domain (<span>[<a href="#Exploit1" class="cite xref">Exploit1</a>]</span>, <span>[<a href="#Exploit2" class="cite xref">Exploit2</a>]</span>, <span>[<a href="#Exploit3" class="cite xref">Exploit3</a>]</span>, <span>[<a href="#Exploit4" class="cite xref">Exploit4</a>]</span>,
 <span>[<a href="#Exploit5" class="cite xref">Exploit5</a>]</span>, <span>[<a href="#Exploit6" class="cite xref">Exploit6</a>]</span>), describing how the unauthenticated channel can be
 exploited using social engineering techniques borrowed from phishing. Unlike traditional
 phishing attacks, these attacks don't harvest credentials. Instead, they skip the
 step of collecting credentials by persuading users to grant authorization using
-their Authorization Devices.<a href="#section-1.1-3" class="pilcrow">¶</a></p>
-<p id="section-1.1-4">Once the user grants authorization, the attacker has access to the user's
+their Authorization Devices.<a href="#section-1.1-5" class="pilcrow">¶</a></p>
+<p id="section-1.1-6">Once the user grants authorization, the attacker has access to the user's
 resources and in some cases is able to collect access and refresh tokens. Once in
 possession of the access and refresh tokens, the attacker may use these tokens to
 execute lateral attacks and gain additional access, or monetize the tokens by
 selling them. These attacks are effective even when multi-factor authentication
 is deployed, since the attacker's aim is not to capture and replay the credentials,
-but rather to persuade the user to grant authorization.<a href="#section-1.1-4" class="pilcrow">¶</a></p>
+but rather to persuade the user to grant authorization.<a href="#section-1.1-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="cross-device-session-transfer">
@@ -3053,8 +3056,12 @@ described in <a href="#user_education" class="auto internal xref">Section 6.1.13
 <span class="refAuthor">Helmschmidt, F.</span>, <span class="refTitle">"Security analysis of the Grant Negotiation and Authorization Protocol"</span>, <time datetime="2022" class="refDate">2022</time>, <span>&lt;<a href="https://elib.uni-stuttgart.de/handle/11682/12220">https://elib.uni-stuttgart.de/handle/11682/12220</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="Baki2023">[Baki2023]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Baki, S.</span> and <span class="refAuthor">R. M. Verma</span>, <span class="refTitle">"Sixteen Years of Phishing User Studies: What Have We Learned?, IEEE Transactions on Dependable and Secure Computing, Volume 20, Number 2, Pages 1200–1212"</span>, <time datetime="2023" class="refDate">2023</time>, <span>&lt;<a href="https://doi.org/10.1109/TDSC.2022.3151103">https://doi.org/10.1109/TDSC.2022.3151103</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="NISTGlossary">[NISTGlossary]</dt>
+      <dd>
+<span class="refTitle">"NIST Computer Security Resource Center Glossary"</span>, <span>n.d.</span>, <span>&lt;<a href="https://csrc.nist.gov/glossary">https://csrc.nist.gov/glossary</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
