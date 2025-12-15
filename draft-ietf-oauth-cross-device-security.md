@@ -314,6 +314,10 @@ informative:
   date: 2023
   target: "https://doi.org/10.1109/TDSC.2022.3151103"
 
+ NISTGlossary:
+  title: "NIST Computer Security Resource Center Glossary"
+  target: "https://csrc.nist.gov/glossary"
+
 --- abstract
 
 This document describes threats against cross-device flows
@@ -344,8 +348,13 @@ In these flows, the Consumption Device and the Authorization Device are not dire
 
 Cross-Device Consent Phishing (CDCP) attacks exploit the unauthenticated channel
 between the Consumption Device and Authorization Device using social engineering
-techniques to gain unauthorized access to the user's data. Several publications
-have emerged in the public domain ({{Exploit1}}, {{Exploit2}}, {{Exploit3}}, {{Exploit4}},
+techniques commonly used in phishing attacks to gain unauthorized access to the
+user's data.
+
+Note: This document uses the terms "social engineering" and "phishing" as
+described in the NIST Computer Security Resource Center Glossary {{NISTGlossary}}.
+
+Several publications have emerged in the public domain ({{Exploit1}}, {{Exploit2}}, {{Exploit3}}, {{Exploit4}},
 {{Exploit5}}, {{Exploit6}}), describing how the unauthenticated channel can be
 exploited using social engineering techniques borrowed from phishing. Unlike traditional
 phishing attacks, these attacks don't harvest credentials. Instead, they skip the
