@@ -5,10 +5,10 @@
 oauth                                                       P. Kasselman
 Internet-Draft                                                   Defakto
 Intended status: Best Current Practice                           D. Fett
-Expires: 12 June 2026                                           Authlete
+Expires: 18 June 2026                                           Authlete
                                                                F. Skokan
                                                                     Okta
-                                                         9 December 2025
+                                                        15 December 2025
 
 
            Cross-Device Flows: Security Best Current Practice
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 12 June 2026.
+   This Internet-Draft will expire on 18 June 2026.
 
 Copyright Notice
 
@@ -179,9 +179,10 @@ Table of Contents
 
    In all cases, it is up to the user to decide whether to grant
    authorization or not.  However, the QR code or PIN are transferred
-   via an unauthorized channel, leaving it up to the user to decide in
-   which context an authorization is requested.  This may be exploited
-   by attackers to gain unauthorized access to a user's resources.
+   via an unauthenticated channel, leaving it up to the user to decide
+   in which context an authorization is requested.  This may be
+   exploited by attackers to gain unauthorized access to a user's
+   resources.
 
    To accommodate the various nuances of cross-device flows, this
    document distinguished between use cases where the cross-device flow
