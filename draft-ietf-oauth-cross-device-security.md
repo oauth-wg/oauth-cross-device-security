@@ -349,7 +349,7 @@ In these flows, the Consumption Device and the Authorization Device are not dire
 Cross-Device Consent Phishing (CDCP) attacks exploit the unauthenticated channel
 between the Consumption Device and Authorization Device using social engineering
 techniques commonly used in phishing attacks to gain unauthorized access to the
-user's data. 
+user's data.
 
 Note: This document uses the terms "social engineering" and "phishing" as
 described in the NIST Computer Security Resource Center Glossary {{NISTGlossary}}.
