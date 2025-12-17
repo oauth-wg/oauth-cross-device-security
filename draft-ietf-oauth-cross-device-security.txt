@@ -432,11 +432,7 @@ Table of Contents
       example the user may attempt to access data in an enterprise
       application and receive a 6 digit authorization code on their
       Authentication Device (e.g., mobile phone) that they enter on
-      Consumption Device.  Note: The use of a 6 digit code is
-      illustrative and reflects common practice at the time of writing.
-      Code length may vary based on usability and risk considerations,
-      and specifying the appropriate length is out of scope for this
-      document.
+      Consumption Device.
 
 3.1.1.  User-Transferred Session Data Pattern
 
