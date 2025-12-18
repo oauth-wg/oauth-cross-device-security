@@ -679,6 +679,8 @@ In the backchannel-transferred session pattern, the client requests the authoriz
 
 Attackers exploit this lack of context by using social engineering techniques to prime the user for an authorization request and thereby convince them to granting authorization. The social engineering techniques range in sophistication from messages misrepresenting the reason for receiving an authorization request, to triggering a large volume of requests at an inconvenient time for the user, in the hope that the user will grant authorization to make the requests stop. The figure below shows an example of such an attack.
 
+The ability to trigger authorization requests without user involvement can be exploited an attacker to overwhelm users with a high volume of requests in a short period, increasing the likelihood of inadvertent approval.
+
 ~~~ ascii-art
                               (C) Backchannel Authorization
              +--------------+     Request           +---------------+
@@ -962,7 +964,7 @@ Another mitigation strategy includes limiting the life of the access and refresh
 **Limitations:** Short lived tokens reduces the time window during which an attacker can benefit from a successful attack. This is most effective for access tokens. However, once an attacker obtains a refresh token, they can continue to request new access tokens, as well as refresh tokens. Forcing the expiry of refresh tokens may cause the user to re-authorize an action more frequently, which results in a negative user experience.
 
 ### Rate Limits
-An attacker that engages in a scaled attack may need to request a large number of user codes (see exploit {{example-b1}}) or initiate a large number of authorization requests (see exploit {{example-b4}}) in a short period of time. An authorization server MAY apply rate limits to minimize the number of requests it would accept from a client or send to a user in a limited time period.
+An attacker that engages in a scaled attack may need to request a large number of user codes (see exploit {{example-b1}}) or initiate a large number of authorization requests (see exploit {{example-b4}} and {{example-b9}}) in a short period of time. An authorization server MAY apply rate limits to minimize the number of requests it would accept from a client or send to a user in a limited time period.
 
 **Limitations:** Rate limits are effective at slowing an attacker down and help to degrade scaled attacks, but do not prevent more targeted attacks that are executed with lower volumes and velocity. Therefore, it should be used along with other techniques to provide a defence-in-depth defence against cross-device attacks.
 
