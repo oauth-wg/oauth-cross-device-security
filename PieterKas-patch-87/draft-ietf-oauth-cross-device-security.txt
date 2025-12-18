@@ -5,10 +5,10 @@
 oauth                                                       P. Kasselman
 Internet-Draft                                                   Defakto
 Intended status: Best Current Practice                           D. Fett
-Expires: 20 June 2026                                           Authlete
+Expires: 21 June 2026                                           Authlete
                                                                F. Skokan
                                                                     Okta
-                                                        17 December 2025
+                                                        18 December 2025
 
 
            Cross-Device Flows: Security Best Current Practice
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 20 June 2026.
+   This Internet-Draft will expire on 21 June 2026.
 
 Copyright Notice
 
