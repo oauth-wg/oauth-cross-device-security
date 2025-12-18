@@ -1979,8 +1979,7 @@ Session  |   |              |     Context           |               |
           </h4>
 <p id="section-4.1.2-1">In the backchannel-transferred session pattern, the client requests the authorization server to authenticate the user and obtain authorization for an action. This may happen as a result of user interaction with the Consumption Device, but may also be triggered without the users direct interaction with the Consumption Device, resulting in an authorization request presented to the user without context of why or who triggered the request.<a href="#section-4.1.2-1" class="pilcrow">¶</a></p>
 <p id="section-4.1.2-2">Attackers exploit this lack of context by using social engineering techniques to prime the user for an authorization request and thereby convince them to granting authorization. The social engineering techniques range in sophistication from messages misrepresenting the reason for receiving an authorization request, to triggering a large volume of requests at an inconvenient time for the user, in the hope that the user will grant authorization to make the requests stop. The figure below shows an example of such an attack.<a href="#section-4.1.2-2" class="pilcrow">¶</a></p>
-<p id="section-4.1.2-3">The ability to trigger authorization requests without user involvement can be exploited by an attacker to overwhelm users with a high volume of requests in a short period, increasing the likelihood of inadvertent approval.<a href="#section-4.1.2-3" class="pilcrow">¶</a></p>
-<div class="alignLeft art-ascii-art art-text artwork" id="section-4.1.2-4">
+<div class="alignLeft art-ascii-art art-text artwork" id="section-4.1.2-3">
 <pre>
                               (C) Backchannel Authorization
              +--------------+     Request           +---------------+
@@ -2010,27 +2009,27 @@ Session  |   |              |     Context           |               |
          +--&gt;|              |(D) Request User       |               |
              |              |    Authorization      |               |
              +--------------+                       +---------------+
-</pre><a href="#section-4.1.2-4" class="pilcrow">¶</a>
+</pre><a href="#section-4.1.2-3" class="pilcrow">¶</a>
 </div>
-<p id="section-4.1.2-5">Figure: Backchannel-Transferred Session Pattern Exploits<a href="#section-4.1.2-5" class="pilcrow">¶</a></p>
+<p id="section-4.1.2-4">Figure: Backchannel-Transferred Session Pattern Exploits<a href="#section-4.1.2-4" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-4.1.2-6.1">
-              <p id="section-4.1.2-6.1.1">(A) The attacker sends a social engineering message to prepare the user for the upcoming authorization (optional).<a href="#section-4.1.2-6.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-4.1.2-5.1">
+              <p id="section-4.1.2-5.1.1">(A) The attacker sends a social engineering message to prepare the user for the upcoming authorization (optional).<a href="#section-4.1.2-5.1.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-4.1.2-6.2">
-              <p id="section-4.1.2-6.2.1">(B) The attacker initiates the protocol on the Consumption Device (or by mimicking the Consumption Device) by starting a purchase, adding a device to a network or accessing a service on the Consumption Device.<a href="#section-4.1.2-6.2.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-4.1.2-5.2">
+              <p id="section-4.1.2-5.2.1">(B) The attacker initiates the protocol on the Consumption Device (or by mimicking the Consumption Device) by starting a purchase, adding a device to a network or accessing a service on the Consumption Device.<a href="#section-4.1.2-5.2.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-4.1.2-6.3">
-              <p id="section-4.1.2-6.3.1">(C) The client on the Consumption Device requests user authorization on the backchannel from the Authorization Server.<a href="#section-4.1.2-6.3.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-4.1.2-5.3">
+              <p id="section-4.1.2-5.3.1">(C) The client on the Consumption Device requests user authorization on the backchannel from the Authorization Server.<a href="#section-4.1.2-5.3.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-4.1.2-6.4">
-              <p id="section-4.1.2-6.4.1">(D) The Authorization Server requests the authorization from the user on the user's device.<a href="#section-4.1.2-6.4.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-4.1.2-5.4">
+              <p id="section-4.1.2-5.4.1">(D) The Authorization Server requests the authorization from the user on the user's device.<a href="#section-4.1.2-5.4.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-4.1.2-6.5">
-              <p id="section-4.1.2-6.5.1">(E) The user authenticates to the authorization server before granting authorization on their device.<a href="#section-4.1.2-6.5.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-4.1.2-5.5">
+              <p id="section-4.1.2-5.5.1">(E) The user authenticates to the authorization server before granting authorization on their device.<a href="#section-4.1.2-5.5.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-4.1.2-6.6">
-              <p id="section-4.1.2-6.6.1">(G) The Authorization Server issues tokens or grants authorization to the Consumption Device, which is under the attacker's control. The attacker gains access to the user's resources and possibly any authorization artifacts like access and refresh tokens.<a href="#section-4.1.2-6.6.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-4.1.2-5.6">
+              <p id="section-4.1.2-5.6.1">(G) The Authorization Server issues tokens or grants authorization to the Consumption Device, which is under the attacker's control. The attacker gains access to the user's resources and possibly any authorization artifacts like access and refresh tokens.<a href="#section-4.1.2-5.6.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 </section>
@@ -2469,7 +2468,7 @@ Session  |   |              |     Context           |               |
           <h4 id="name-rate-limits">
 <a href="#section-6.1.11" class="section-number selfRef">6.1.11. </a><a href="#name-rate-limits" class="section-name selfRef">Rate Limits</a>
           </h4>
-<p id="section-6.1.11-1">An attacker that engages in a scaled attack may need to request a large number of user codes (see exploit <a href="#example-b1" class="auto internal xref">Section 4.3.1</a>) or initiate a large number of authorization requests (see exploit <a href="#example-b4" class="auto internal xref">Section 4.3.4</a> and {example-b9}) in a short period of time. An authorization server MAY apply rate limits to minimize the number of requests it would accept from a client or send to a user in a limited time period.<a href="#section-6.1.11-1" class="pilcrow">¶</a></p>
+<p id="section-6.1.11-1">An attacker that engages in a scaled attack may need to request a large number of user codes (see exploit <a href="#example-b1" class="auto internal xref">Section 4.3.1</a>) or initiate a large number of authorization requests (see exploit <a href="#example-b4" class="auto internal xref">Section 4.3.4</a>) in a short period of time. An authorization server MAY apply rate limits to minimize the number of requests it would accept from a client or send to a user in a limited time period.<a href="#section-6.1.11-1" class="pilcrow">¶</a></p>
 <p id="section-6.1.11-2"><strong>Limitations:</strong> Rate limits are effective at slowing an attacker down and help to degrade scaled attacks, but do not prevent more targeted attacks that are executed with lower volumes and velocity. Therefore, it should be used along with other techniques to provide a defence-in-depth defence against cross-device attacks.<a href="#section-6.1.11-2" class="pilcrow">¶</a></p>
 </section>
 </div>
