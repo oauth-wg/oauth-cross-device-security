@@ -5,10 +5,10 @@
 oauth                                                       P. Kasselman
 Internet-Draft                                                   Defakto
 Intended status: Best Current Practice                           D. Fett
-Expires: 20 June 2026                                           Authlete
+Expires: 21 June 2026                                           Authlete
                                                                F. Skokan
                                                                     Okta
-                                                        17 December 2025
+                                                        18 December 2025
 
 
            Cross-Device Flows: Security Best Current Practice
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 20 June 2026.
+   This Internet-Draft will expire on 21 June 2026.
 
 Copyright Notice
 
@@ -419,7 +419,7 @@ Table of Contents
       Authorization Device via a backchannel with the Authorization
       Server.  For example the user may attempt an online purchase on a
       Consumption Device (e.g., a personal computer) and receive an
-      authorization request on their Authentication Device (e.g., mobile
+      authorization request on their Authorization Device (e.g., mobile
       phone).  The Client Initiated Backchannel Authentication [CIBA] is
       an example of a cross-device flow that follow this pattern.
 
@@ -431,8 +431,12 @@ Table of Contents
       to Consumption Device (e.g., by manually entering it).  For
       example the user may attempt to access data in an enterprise
       application and receive a 6 digit authorization code on their
-      Authentication Device (e.g., mobile phone) that they enter on
-      Consumption Device.
+      Authorization Device (e.g., mobile phone) that they enter on
+      Consumption Device.  Note: The use of a 6 digit code is
+      illustrative and reflects common practice at the time of writing.
+      Code length may vary based on usability and risk considerations,
+      and specifying the appropriate length is out of scope for this
+      document.
 
 3.1.1.  User-Transferred Session Data Pattern
 
