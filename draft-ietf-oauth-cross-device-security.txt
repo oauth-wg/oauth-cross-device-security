@@ -346,10 +346,10 @@ Table of Contents
 
 3.  Cross-Device Flow Patterns
 
-   Cross-device flows allow a user to start a flow on one device (e.g.,
-   a smart TV) and then transfer the session to a second device (e.g., a
-   mobile phone).  This specification focus on two use cases for
-   transferring the session:
+   Cross-device flows enable a user to initiate an interaction on one
+   device (e.g., a smart TV) and complete or continue it on a second
+   device (e.g., a mobile phone).  This specification addresses two
+   distinct cross-device use cases:
 
    *  *Cross-Device Authorization:* In the cross-device authorization
       use case, the second device is used to authenticate the user or
