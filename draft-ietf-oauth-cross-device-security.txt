@@ -5,10 +5,10 @@
 oauth                                                       P. Kasselman
 Internet-Draft                                                   Defakto
 Intended status: Best Current Practice                           D. Fett
-Expires: 21 June 2026                                           Authlete
+Expires: 22 June 2026                                           Authlete
                                                                F. Skokan
                                                                     Okta
-                                                        18 December 2025
+                                                        19 December 2025
 
 
            Cross-Device Flows: Security Best Current Practice
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 21 June 2026.
+   This Internet-Draft will expire on 22 June 2026.
 
 Copyright Notice
 
@@ -919,6 +919,11 @@ Table of Contents
    that the user will grant authorization to make the requests stop.
    The figure below shows an example of such an attack.
 
+   The ability to trigger authorization requests without user
+   involvement can be exploited an attacker to overwhelm users with a
+   high volume of requests in a short period, increasing the likelihood
+   of inadvertent approval.
+
                                  (C) Backchannel Authorization
                 +--------------+     Request           +---------------+
                 |  Attacker's  |<--------------------->|               |
@@ -1745,10 +1750,10 @@ Table of Contents
 
    An attacker that engages in a scaled attack may need to request a
    large number of user codes (see exploit Section 4.3.1) or initiate a
-   large number of authorization requests (see exploit Section 4.3.4) in
-   a short period of time.  An authorization server MAY apply rate
-   limits to minimize the number of requests it would accept from a
-   client or send to a user in a limited time period.
+   large number of authorization requests (see exploit Section 4.3.4 and
+   Section 4.3.10) in a short period of time.  An authorization server
+   MAY apply rate limits to minimize the number of requests it would
+   accept from a client or send to a user in a limited time period.
 
    *Limitations:* Rate limits are effective at slowing an attacker down
    and help to degrade scaled attacks, but do not prevent more targeted
