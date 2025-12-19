@@ -417,7 +417,7 @@ These best practices apply to the Device Authorization Grant ({{RFC8628}}) as we
 {{cross-device-flow-patterns}} provides details about susceptible protocols and {{cross-device-flow-exploits}} provides attack descriptions. {{practical-mitigations}} provides details about the security mechanisms and mitigations, {{protocol-selection}} provides protocol selection guidance and {{foundational-pillars}} provides details from formal analysis of protocols that apply to cross device flows.
 
 # Cross-Device Flow Patterns {#cross-device-flow-patterns}
-Cross-device flows allow a user to start a flow on one device (e.g., a smart TV) and then transfer the session to a second device (e.g., a mobile phone). This specification focus on two use cases for transferring the session:
+Cross-device flows enable a user to initiate an interaction on one device (e.g., a smart TV) and complete or continue it on a second device (e.g., a mobile phone). This specification addresses two distinct cross-device use cases:
 
 - **Cross-Device Authorization:** In the cross-device authorization use case, the second device is used to authenticate the user or grant authorization before passing control back to the first device as described in {{cda}}.
 - **Cross-Device Session Transfer** In the cross-device session transfer use case, the user is already authenticated on the first device, before the session is transferred to the second device without requiring the user to re-authenticate as described in {{cdst}}.
