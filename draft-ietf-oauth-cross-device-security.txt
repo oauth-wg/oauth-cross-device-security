@@ -5,10 +5,10 @@
 oauth                                                       P. Kasselman
 Internet-Draft                                                   Defakto
 Intended status: Best Current Practice                           D. Fett
-Expires: 22 June 2026                                           Authlete
+Expires: 25 June 2026                                           Authlete
                                                                F. Skokan
                                                                     Okta
-                                                        19 December 2025
+                                                        22 December 2025
 
 
            Cross-Device Flows: Security Best Current Practice
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 22 June 2026.
+   This Internet-Draft will expire on 25 June 2026.
 
 Copyright Notice
 
@@ -1670,15 +1670,15 @@ Table of Contents
    initiate the protocol.
 
    Authorization Servers MAY use different mechanisms to establish which
-   devices it trusts.  This includes limiting cross-device flows to
-   specific device types such as interactive whiteboards or smart TVs,
-   pre-registering devices with the authorization server or only allow
-   cross-device flows on devices managed through device management
-   systems.  Device management systems may enforce policies that govern
-   patching, version updates, on-device anti-malware deployment,
-   revocation status and device location amongst others.  Trusted
-   devices MAY have their identities rooted in hardware (e.g., a TPM or
-   equivalent technology).
+   devices it trusts for cross-device flows.  This includes limiting
+   cross-device flows to specific device types such as interactive
+   whiteboards or smart TVs, pre-registering devices with the
+   authorization server or only allow cross-device flows on devices
+   managed through device management systems.  Device management systems
+   may enforce policies that govern patching, version updates, on-device
+   anti-malware deployment, revocation status and device location
+   amongst others.  Trusted devices MAY have their identities rooted in
+   hardware (e.g., a TPM or equivalent technology).
 
    By only allowing trusted devices to initiate cross-device flows, it
    requires the attacker to have access to such a device and maintain
