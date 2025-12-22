@@ -185,7 +185,7 @@ Table of Contents
    resources.
 
    To accommodate the various nuances of cross-device flows, this
-   document distinguished between use cases where the cross-device flow
+   document distinguishes between use cases where the cross-device flow
    is used to authorize access to a resource (cross-device authorization
    flows) and use cases where the cross-device flow is used to transfer
    an existing session (cross-device session transfer flows).
@@ -201,7 +201,7 @@ Table of Contents
    popular cross-device authorization flows.
 
    In these flows, the Consumption Device and the Authorization Device
-   are not directly connected and there is no technical mechanisms for
+   are not directly connected and there are no technical mechanisms for
    the Authorization Device and Consumption Device to establish mutual
    authentication.  It is left to the user to decide whether the source
    of the authorization request (the Consumption Device) should be
@@ -397,7 +397,7 @@ Table of Contents
       they already carry with them.
 
    There are three cross-device flow patterns for transferring the
-   authorization request between the Consumption Device to the
+   authorization request between the Consumption Device and the
    Authorization Device.
 
    *  *User-Transferred Session Data Pattern:* In the first pattern, the
@@ -410,7 +410,7 @@ Table of Contents
       Consumption Device and enter it on the Authorization Device, or
       they may scan a QR code displayed on the Consumption Device with
       the Authorization Device.  The Device Authorization Grant
-      ([RFC8628]) is an example of a cross-device flow that follow this
+      ([RFC8628]) is an example of a cross-device flow that follows this
       pattern.
 
    *  *Backchannel-Transferred Session Pattern:* In the second pattern,
@@ -645,7 +645,7 @@ Table of Contents
    Figure: Cross-Dvice Session Transfer Pattern
 
    *  (A) The user is authenticated on the Authorization Device and
-      authorizes the transfer of the session to the Consumption device.
+      authorizes the transfer of the session to the Consumption Device.
 
    *  (B) The client on the Authorization Device requests a session
       transfer code from the Authorization Server.
@@ -701,7 +701,7 @@ Table of Contents
         Transferred Session Data Pattern)
 
    An end-user wants to rent a bicycle from a bike sharing scheme.  The
-   bicycles are locked in bicylce racks on sidewalks throughout a city.
+   bicycles are locked in bicycle racks on sidewalks throughout a city.
    To unlock and use a bicycle, the user scans a QR code on the bicycle
    using their mobile phone.  Scanning the QR code redirects the user to
    the bicycle sharing scheme's authorization page where the user
@@ -761,7 +761,7 @@ Table of Contents
 3.3.8.  Example A8: Access a Productivity Application (User-Transferred
         Authorization Data Pattern)
 
-   A user is accessing a Computer Aid Design (CAD) application.  When
+   A user is accessing a Computer Aided Design (CAD) application.  When
    accessing the application, authorization data in the form of a 6
    digit authorization code is sent to the user's mobile phone.  The
    user views the 6 digit authorization code on their phone and enters
@@ -794,7 +794,7 @@ Table of Contents
    engineering techniques to convince the user to initiate a session
    transfer and send them a session transfer code.  Once the attacker is
    in posession of this session transfer code, they present it to the
-   Authorization Server to transfer the session and access the users
+   Authorization Server to transfer the session and access the user's
    resources.  These attacks are referred to as Cross-Device Session
    Phishing (CDSP) attacks.
 
@@ -832,8 +832,8 @@ Table of Contents
    their Authorization Device (e.g., mobile phone).  Once the end-user
    performs the authorization on the mobile device, the attacker who
    initiated the authentication or authorization request obtains access
-   to the users resources.  The figure below shows an example of such an
-   attack.
+   to the user's resources.  The figure below shows an example of such
+   an attack.
 
                               (B) Consumption Device
               +--------------+     Get QR/User Code  +---------------+
@@ -841,14 +841,14 @@ Table of Contents
               |  Consumption |(G) Grant Authorization| Authorization |
               |   Device     |<--------------------->|     Server    |
               +--------------+                       |               |
-                ^   | (C) Attacker Copy              |               |
+                ^   | (C) Attacker Copies            |               |
    (A) Attacker |   |     QR or User Code            |               |
-       Start    |   |                                |               |
+       Starts   |   |                                |               |
        Flow     |   V                                |               |
               +--------------+                       |               |
               |              |                       |               |
               |   Attacker   |                       |               |
-              |              | (D) Attacker Change   |               |
+              |              | (D) Attacker Changes  |               |
               |              |     QR Code/User Code |               |
               |              |     Context           |               |
               +--------------+                       |               |
@@ -861,7 +861,7 @@ Table of Contents
               | Authorization|                       |               |
               |    Device    |<--------------------->|               |
               |              |(F) User Authenticates |               |
-              |              | and Authorize Access  |               |
+              |              | and Authorizes Access |               |
               +--------------+                       +---------------+
 
    Figure: User-Transferred Session Data Pattern Exploits
@@ -946,7 +946,7 @@ Table of Contents
                        |       Message to User         |               |
                        |                               |               |
    (E)User             v                               |               |
-     Authorize  +--------------+                       |               |
+     Authorizes +--------------+                       |               |
      Action +---| Authorization|                       |               |
             |   |    Device    |<--------------------->|               |
             +-->|              |(D) Request User       |               |
@@ -1113,10 +1113,10 @@ Table of Contents
 
    Figure: Cross-Device Session Transfer Pattern Exploit
 
-   *  (A) The attacker sends a social engineering message to that
-      convinces the user that they should authorize a session transfer
-      including instructions on what to do with the QR code or session
-      transfer code once they receive it.
+   *  (A) The attacker sends a social engineering message that convinces
+      the user that they should authorize a session transfer including
+      instructions on what to do with the QR code or session transfer
+      code once they receive it.
 
    *  (B) The user is authenticated on their Authorization Device and
       authorizes the transfer of the session to the Consumption Device.
@@ -1786,10 +1786,10 @@ Table of Contents
    to another device.
 
    *Limitations:* Sender-constrained tokens, especially sender-
-   constrained tokens that require proof-of-posession, raise the bar for
-   executing the attack and profiting from exfiltrating tokens.
-   Although a software proof-of-posession key is better than no proof-
-   of-posession key, an attacker may still exfiltrate the software key.
+   constrained tokens that require proof-of-possession, raise the bar
+   for executing the attack and profiting from exfiltrating tokens.
+   Although a software proof-of-possession key is better than no proof-
+   of-possession key, an attacker may still exfiltrate the software key.
    Hardware keys are harder to exfiltrate, but come with additional
    implementation complexity.  An attacker that controls the Consumption
    Device may still be able to excercise the key, even if it is in
