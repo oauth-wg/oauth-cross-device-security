@@ -1690,7 +1690,10 @@ Table of Contents
    it necessary to apply additional controls and integrating with other
    threat detection and management systems that can detect suspicious
    behaviour such as repeated requests to initiate authorization or high
-   volume of service activation on the same device.
+   volume of service activation on the same device.  An attacker may
+   also spoof device identities or device types that are not
+   cryptographically established or verified through attestation
+   mechanisms.
 
 6.1.8.  Trusted Networks
 
