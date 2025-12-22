@@ -1484,7 +1484,10 @@ Table of Contents
       experience challenges when setting up.  UWB standards such as IEEE
       802.15.4 and the IEEE 802.15.4z-2020 Amendment 1 enable secure
       ranging between devices and allow devices to establish proximity
-      relative to each other [IEEE802154].
+      relative to each other [IEEE802154].  FIDO and WebAuthn-based
+      cross-device flows leverage wireless proximity using BLE and are
+      the RECOMMENDED approach for performing secure cross-device flows
+      (see Section 6.2.3).
 
    *  Shared network: Device proximity can be inferred by verifying that
       both devices are on the same network.  This check may be performed
