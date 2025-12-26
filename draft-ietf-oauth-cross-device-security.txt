@@ -5,10 +5,10 @@
 oauth                                                       P. Kasselman
 Internet-Draft                                                   Defakto
 Intended status: Best Current Practice                           D. Fett
-Expires: 25 June 2026                                           Authlete
+Expires: 29 June 2026                                           Authlete
                                                                F. Skokan
                                                                     Okta
-                                                        22 December 2025
+                                                        26 December 2025
 
 
            Cross-Device Flows: Security Best Current Practice
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 25 June 2026.
+   This Internet-Draft will expire on 29 June 2026.
 
 Copyright Notice
 
@@ -1866,9 +1866,13 @@ Table of Contents
    By requiring a user to authenticate on the Consumption Device with a
    phishing resistant authentication method before initiating a cross-
    device flow, the server can prevent an attacker from initiating a
-   cross-device flow and obtaining QR codes or user codes.  This
-   prevents the attacker from obtaining a QR code or user code that they
-   can use to mislead an unsuspecting user.  This requires that the
+   cross-device flow and obtaining QR codes or user codes.  For example,
+   a banking application may initiate a cross-device authorization
+   request using the Backchannel-Transferred Session pattern only after
+   the user is already authenticated and attempts a high-value
+   transaction.  This prevents the attacker from inititiating a cross-
+   device authorization request, obtaining a QR code or a user code that
+   they can use to mislead an unsuspecting user.  This requires that the
    Consumption Device has sufficient input capabilities to support a
    phishing resistant authentication mechanism, which may in itself
    negate the need for a cross-device flow.
