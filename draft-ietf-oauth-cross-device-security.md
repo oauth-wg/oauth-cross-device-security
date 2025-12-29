@@ -512,7 +512,7 @@ or connecting a service to the Consumption Device.
 The Client Initiated Backchannel Authentication {{CIBA}} transfers the session on the backchannel with the Authorization Server to request authorization on the Authorization Device. The figure below shows an example of this flow.
 
 ~~~ ascii-art
-                               
+
              +--------------+                       +---------------+
              |  Consumption |--(B) Backchannel ---->|               |
              |     Device   |      Authorization    |               |
@@ -744,7 +744,7 @@ Attackers exploit this lack of context by using social engineering techniques to
 The ability to trigger authorization requests without user involvement can be exploited an attacker to overwhelm users with a high volume of requests in a short period, increasing the likelihood of inadvertent approval.
 
 ~~~ ascii-art
- 
+
              +--------------+                       +---------------+
      +------>|  Attacker's  |--(C) Backchannel ---->|               |
      |       |  Consumption |      Authorization    |               |
