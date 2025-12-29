@@ -529,11 +529,11 @@ Table of Contents
    example of this flow.
 
                 +--------------+                       +---------------+
-                |  Consumption |--(B) Backchannel ---->|               |
-                |     Device   |      Authorization    |               |
-                |              |      Request          |               |
-                |              |                       | Authorization |
-       +------->|              |<-(F) Grant------------|     Server    |
+       +------->|  Consumption |--(B) Backchannel ---->|               |
+       |        |     Device   |      Authorization    |               |
+       |        |              |      Request          |               |
+       |        |              |                       | Authorization |
+       |        |              |<-(F) Grant------------|     Server    |
        |        +--------------+      Authorization    |               |
       (A) User                                         |               |
        |  Start                                        |               |
