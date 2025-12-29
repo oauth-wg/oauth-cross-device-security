@@ -1056,7 +1056,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Kasselman, et al.</td>
-<td class="center">Expires 29 June 2026</td>
+<td class="center">Expires 2 July 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1069,12 +1069,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-oauth-cross-device-security-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-12-26" class="published">26 December 2025</time>
+<time datetime="2025-12-29" class="published">29 December 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Best Current Practice</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-06-29">29 June 2026</time></dd>
+<dd class="expires"><time datetime="2026-07-02">2 July 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1132,7 +1132,7 @@ specialists, fraud analysts and engineers implementing cross-device flows.<a hre
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 29 June 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 2 July 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1607,22 +1607,41 @@ carry with them.<a href="#section-3.1-3.4.1" class="pilcrow">¶</a></p>
 <p id="section-3.1.1-1">The Device Authorization Grant (<span>[<a href="#RFC8628" class="cite xref">RFC8628</a>]</span>) is an example of a cross-device flow that relies on the user copying information from the Consumption Device to the Authorization Device by either entering data manually or scanning a QR code. The figure below shows a typical example of this flow:<a href="#section-3.1.1-1" class="pilcrow">¶</a></p>
 <div class="alignLeft art-ascii-art art-text artwork" id="section-3.1.1-2">
 <pre>
-                              (B) Consumption Device
-             +--------------+     Get QR/User Code  +---------------+
-(A)User  +---|  Consumption |&lt;---------------------&gt;|               |
-   Start |   |   Device     |(E) Grant Authorization| Authorization |
-   Flow  +--&gt;|              |&lt;---------------------&gt;|     Server    |
-             +--------------+                       |               |
-                    |                               |               |
-                    | (C) Scan QR code              |               |
-                    |         or                    |               |
-                    |   enter User Code             |               |
-                    v                               |               |
-             +--------------+                       |               |
-             | Authorization|                       |               |
-             |    Device    |&lt;---------------------&gt;|               |
-             |              |(D) User Authenticates |               |
-             |              | and Authorize Access  |               |
+             +--------------+                       +---------------+
+             |  Consumption |--(B) Request --------&gt;|               |
+             |    Device    |      QR/User Code     |               |
+             |              |                       |               |
+             |              |&lt;-(C) Return ----------|               |
+    +-------&gt;|              |      QR/User Code     |               |
+    |        |              |                       |               |
+    |        |              |--(D) Poll for -------&gt;|               |
+   (A) User  |              |      Authorization    |               |
+    |  Start |              |                       |               |
+    |  Flow  |              |&lt;-(J) Grant -----------| Authorization |
+    |        |              |      Authorization    |     Server    |
+    |        +--------------+                       |               |
+    |                                               |               |
++------+                                            |               |
+| User |                                            |               |
++------+                                            |               |
+ |   |                                              |               |
+ |  (E) Scan QR code or enter User Code             |               |
+ |   |                                              |               |
+ |   |       +--------------+                       |               |
+ |   +------&gt;| Authorization|                       |               |
+ |           |    Device    |--(F) Send QR code ---&gt;|               |
+ |           |              |      or user code     |               |
+ |           |              |                       |               |
+ |           |              |&lt;-(G) Request user ----|               |
+ |           |              |     Authentication and|               |
+ |           |              |     Authorization     |               |
+ +-(H) User-&gt;|              |                       |               |
+Authenticates|              |                       |               |
+and grants   |              |                       |               |
+Authorization|              |                       |               |
+             |              |--(I) Authentication -&gt;|               |
+             |              |      and Authorization|               |
+             |              |      Completes        |               |
              +--------------+                       +---------------+
 </pre><a href="#section-3.1.1-2" class="pilcrow">¶</a>
 </div>
@@ -1633,17 +1652,31 @@ carry with them.<a href="#section-3.1-3.4.1" class="pilcrow">¶</a></p>
 or connecting a service to the Consumption Device.<a href="#section-3.1.1-4.1.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-3.1.1-4.2">
-              <p id="section-3.1.1-4.2.1">(B) The Consumption Device retrieves a QR code or user code from an Authorization Server.<a href="#section-3.1.1-4.2.1" class="pilcrow">¶</a></p>
+              <p id="section-3.1.1-4.2.1">(B) The Consumption Device requests a QR code or user code from an Authorization Server.<a href="#section-3.1.1-4.2.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-3.1.1-4.3">
-              <p id="section-3.1.1-4.3.1">(C) The QR code or user code is displayed on the Consumption Device where the user scans the QR code
-or enters the user code on the Authorization Device.<a href="#section-3.1.1-4.3.1" class="pilcrow">¶</a></p>
+              <p id="section-3.1.1-4.3.1">(C) The Authorization Server returns a QR code or user code to the Consumption Device, which displays it to the user with instructions to scan the QR code or enter the user code using the Authorization Device.<a href="#section-3.1.1-4.3.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-3.1.1-4.4">
-              <p id="section-3.1.1-4.4.1">(D) If the user is unauthenticated, they authenticate to the Authorization Server before granting authorization.<a href="#section-3.1.1-4.4.1" class="pilcrow">¶</a></p>
+              <p id="section-3.1.1-4.4.1">(D) The Consumption Device starts polling the Authorization Server to find out if the user granted authorization.<a href="#section-3.1.1-4.4.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-3.1.1-4.5">
-              <p id="section-3.1.1-4.5.1">(E) The Authorization Server issues tokens or grants authorization to the Consumption Device to access the user's resources.<a href="#section-3.1.1-4.5.1" class="pilcrow">¶</a></p>
+              <p id="section-3.1.1-4.5.1">(E) The user scans the QR code or enters the user code on the Authorization Device.<a href="#section-3.1.1-4.5.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-3.1.1-4.6">
+              <p id="section-3.1.1-4.6.1">(F) The QR code or user code is sent to the Authorization Server<a href="#section-3.1.1-4.6.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-3.1.1-4.7">
+              <p id="section-3.1.1-4.7.1">(G) The Authorization Server validates the QR code or user code and prompts the user to authenticate and accept or decline the authorization request.<a href="#section-3.1.1-4.7.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-3.1.1-4.8">
+              <p id="section-3.1.1-4.8.1">(H) The user authenticates and grants authorization using the Authorization Device.<a href="#section-3.1.1-4.8.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-3.1.1-4.9">
+              <p id="section-3.1.1-4.9.1">(I) The user is authenticated with the Authorization Server and authorization is granted to access the user's resources (there may be several additional messages, depending on the authentication protocol, user interface and other implementation details).<a href="#section-3.1.1-4.9.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-3.1.1-4.10">
+              <p id="section-3.1.1-4.10.1">(J) The Authorization Server issues tokens or grants authorization to the Consumption Device to access the user's resources.<a href="#section-3.1.1-4.10.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 </section>
@@ -1916,34 +1949,53 @@ Session  |   |              |     Context           |               |
 <p id="section-4.1.1-2">Attackers exploit this absence of an authenticated channel between the two devices by obtaining QR codes or user codes (e.g., by initiating the authorization flows). They then use social engineering techniques to change the context in which authorization is requested to convince end-users to scan the QR code or enter it on their Authorization Device (e.g., mobile phone). Once the end-user performs the authorization on the mobile device, the attacker who initiated the authentication or authorization request obtains access to the user's resources. The figure below shows an example of such an attack.<a href="#section-4.1.1-2" class="pilcrow">¶</a></p>
 <div class="alignLeft art-ascii-art art-text artwork" id="section-4.1.1-3">
 <pre>
-                           (B) Consumption Device
-           +--------------+     Get QR/User Code  +---------------+
-           |  Attacker's  |&lt;---------------------&gt;|               |
-           |  Consumption |(G) Grant Authorization| Authorization |
-           |   Device     |&lt;---------------------&gt;|     Server    |
-           +--------------+                       |               |
-             ^   | (C) Attacker Copies            |               |
-(A) Attacker |   |     QR or User Code            |               |
-    Starts   |   |                                |               |
-    Flow     |   V                                |               |
-           +--------------+                       |               |
-           |              |                       |               |
-           |   Attacker   |                       |               |
-           |              | (D) Attacker Changes  |               |
-           |              |     QR Code/User Code |               |
-           |              |     Context           |               |
-           +--------------+                       |               |
-                  | (E) User is convinced by the  |               |
-                  |     attacker and scans QR code|               |
-                  |     or enters User Code       |               |
-                  v                               |               |
-           +--------------+                       |               |
-           |   End User   |                       |               |
-           | Authorization|                       |               |
-           |    Device    |&lt;---------------------&gt;|               |
-           |              |(F) User Authenticates |               |
-           |              | and Authorizes Access |               |
-           +--------------+                       +---------------+
+             +--------------+                       +---------------+
+             |  Attacker's  |--(B) Request --------&gt;|               |
+             |  Consumption |      QR/User Code     |               |
+             |    Device    |                       |               |
+             |              |&lt;-(C) Return ----------|               |
+    +-------&gt;|              |      QR/User Code     |               |
+    |        |              |                       |               |
+    |        |              |--(D) Poll for -------&gt;|               |
+    |        |              |      Authorization    |               |
+    |        |              |                       |               |
+    |        |              |&lt;-(L) Grant -----------| Authorization |
+    |        |              |      Authorization    |     Server    |
+    |        +--------------+                       |               |
+    |              |                                |               |
+   (A) Attacker   (E) Attacker Copies               |               |
+    |  Starts      |  QR or User Code               |               |
+    |  Flow        |                                |               |
++--------------+   |                                |               |
+|   Attacker   |&lt;--+                                |               |
++--------------+                                    |               |
+       |                                            |               |
+       (F) Attacker Changes                         |               |
+       |   QR Code/User Code                        |               |
+       v   Context                                  |               |
++--------------+                                    |               |
+|     User     |                                    |               |
++--------------+                                    |               |
+ |   |                                              |               |
+ |  (G) User is convinced by the                    |               |
+ |   |  attacker and scans QR code                  |               |
+ |   |  or enters User Code                         |               |
+ |   |       +--------------+                       |               |
+ |   +------&gt;| Authorization|                       |               |
+ |           |    Device    |--(H) Send QR code ---&gt;|               |
+ |           |              |      or user code     |               |
+ |           |              |                       |               |
+ |           |              |&lt;-(I) Request user ----|               |
+ |           |              |     Authentication and|               |
+ |           |              |     Authorization     |               |
+ +-(J) User-&gt;|              |                       |               |
+Authenticates|              |                       |               |
+and grants   |              |                       |               |
+Authorization|              |                       |               |
+             |              |--(K) Authentication -&gt;|               |
+             |              |      and Authorization|               |
+             |              |      Completes        |               |
+             +--------------+                       +---------------+
 </pre><a href="#section-4.1.1-3" class="pilcrow">¶</a>
 </div>
 <p id="section-4.1.1-4">Figure: User-Transferred Session Data Pattern Exploits<a href="#section-4.1.1-4" class="pilcrow">¶</a></p>
@@ -1952,22 +2004,37 @@ Session  |   |              |     Context           |               |
               <p id="section-4.1.1-5.1.1">(A) The attacker initiates the protocol on the Consumption Device (or mimicks the Consumption Device) by starting a purchase, adding a device to a network or connecting a service to the Consumption Device.<a href="#section-4.1.1-5.1.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-4.1.1-5.2">
-              <p id="section-4.1.1-5.2.1">(B) The Consumption Device retrieves a QR code or user code from an Authorization Server.<a href="#section-4.1.1-5.2.1" class="pilcrow">¶</a></p>
+              <p id="section-4.1.1-5.2.1">(B) The Consumption Device requests a QR code or user code from an Authorization Server.<a href="#section-4.1.1-5.2.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-4.1.1-5.3">
-              <p id="section-4.1.1-5.3.1">(C) The attacker copies the QR code or user code.<a href="#section-4.1.1-5.3.1" class="pilcrow">¶</a></p>
+              <p id="section-4.1.1-5.3.1">(C) The Authorization Server returns a QR code or user code to the Consumption Device, which displays it to the user with instructions to scan the QR code or enter the user code using the Authorization Device.<a href="#section-4.1.1-5.3.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-4.1.1-5.4">
-              <p id="section-4.1.1-5.4.1">(D) The attacker changes the context in which the QR code or user code is displayed in such a way that the user is likely to scan the QR code or use the user code when completing the authorization. For example, the attacker could craft an e-mail that includes the user code or QR code and send it to the user. The e-mail might encourage the user to scan the QR code or enter the user code by suggesting that doing so would grant them a reward through a loyalty program or prevent the loss of their data.<a href="#section-4.1.1-5.4.1" class="pilcrow">¶</a></p>
+              <p id="section-4.1.1-5.4.1">(D) The Consumption Device starts polling the Authorization Server to find out if the user granted authorization.<a href="#section-4.1.1-5.4.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-4.1.1-5.5">
-              <p id="section-4.1.1-5.5.1">(E) The QR code or user code is displayed to the user in a context chosen by the attacker. The user is convinced by the attacker's effort and scans the QR code or enters the user code on the Authorization Device.<a href="#section-4.1.1-5.5.1" class="pilcrow">¶</a></p>
+              <p id="section-4.1.1-5.5.1">(E) The attacker copies the QR code or user code.<a href="#section-4.1.1-5.5.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-4.1.1-5.6">
-              <p id="section-4.1.1-5.6.1">(F) The user authenticates to the Authorization Server before granting authorization.<a href="#section-4.1.1-5.6.1" class="pilcrow">¶</a></p>
+              <p id="section-4.1.1-5.6.1">(F) The attacker changes the context in which the QR code or user code is displayed in such a way that the user is likely to scan the QR code or use the user code when completing the authorization. For example, the attacker could craft an e-mail that includes the user code or QR code and send it to the user. The e-mail might encourage the user to scan the QR code or enter the user code by suggesting that doing so would grant them a reward through a loyalty program or prevent the loss of their data.<a href="#section-4.1.1-5.6.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-4.1.1-5.7">
-              <p id="section-4.1.1-5.7.1">(G) The Authorization Server issues tokens or grants authorization to the Consumption Device, which is under the attacker's control, to access the user's resources. The attacker gains access to the resources and any authorization artifacts (like access and refresh tokens) which may be used in future exploits.<a href="#section-4.1.1-5.7.1" class="pilcrow">¶</a></p>
+              <p id="section-4.1.1-5.7.1">(G) The QR code or user code is displayed to the user in a context chosen by the attacker. The user is convinced by the attacker's effort and scans the QR code or enters the user code on the Authorization Device.<a href="#section-4.1.1-5.7.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-4.1.1-5.8">
+              <p id="section-4.1.1-5.8.1">(H) The QR code or user code is sent to the Authorization Server<a href="#section-4.1.1-5.8.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-4.1.1-5.9">
+              <p id="section-4.1.1-5.9.1">(I) The Authorization Server validates the QR code or user code and prompts the user to authenticate and accept or decline the authorization request.<a href="#section-4.1.1-5.9.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-4.1.1-5.10">
+              <p id="section-4.1.1-5.10.1">(J) The user authenticates and grants authorization using the Authorization Device.<a href="#section-4.1.1-5.10.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-4.1.1-5.11">
+              <p id="section-4.1.1-5.11.1">(K) The user is authenticated with the Authorization Server and authorization is granted to access the user's resources (there may be several additional messages, depending on the authentication protocol, user interface and other implementation details).<a href="#section-4.1.1-5.11.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-4.1.1-5.12">
+              <p id="section-4.1.1-5.12.1">(L) The Authorization Server issues tokens or grants authorization to the Consumption Device, which is under the attacker's control, to access the user's resources. The attacker gains access to the resources and any authorization artifacts (like access and refresh tokens) which may be used in future exploits.<a href="#section-4.1.1-5.12.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 </section>
