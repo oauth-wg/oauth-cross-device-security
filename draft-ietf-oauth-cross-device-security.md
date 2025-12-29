@@ -514,11 +514,11 @@ The Client Initiated Backchannel Authentication {{CIBA}} transfers the session o
 ~~~ ascii-art
 
              +--------------+                       +---------------+
-             |  Consumption |--(B) Backchannel ---->|               |
-             |     Device   |      Authorization    |               |
-             |              |      Request          |               |
-             |              |                       | Authorization |
-    +------->|              |<-(F) Grant------------|     Server    |
+    +------->|  Consumption |--(B) Backchannel ---->|               |
+    |        |     Device   |      Authorization    |               |
+    |        |              |      Request          |               |
+    |        |              |                       | Authorization |
+    |        |              |<-(F) Grant------------|     Server    |
     |        +--------------+      Authorization    |               |
    (A) User                                         |               |
     |  Start                                        |               |
