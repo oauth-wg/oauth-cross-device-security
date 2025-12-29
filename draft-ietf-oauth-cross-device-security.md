@@ -762,7 +762,7 @@ The ability to trigger authorization requests without user involvement can be ex
      |                                              |               |
     (A) Attacker Sends                              |               |
      |  Social Engineering                          |               |
-     v  Message to User                             |               |
+     v  Message to User (optional)                  |               |
 +----------+                                        |               |
 |   User   |                                        |               |
 +----------+                                        |               |
