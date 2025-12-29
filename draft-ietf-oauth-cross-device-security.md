@@ -455,7 +455,7 @@ There are three cross-device flow patterns for transferring the authorization re
 The Device Authorization Grant ({{RFC8628}}) is an example of a cross-device flow that relies on the user copying information from the Consumption Device to the Authorization Device by either entering data manually or scanning a QR code. The figure below shows a typical example of this flow:
 
 ~~~ ascii-art
-                              
+
              +--------------+                       +---------------+
              |  Consumption |-(B) Request---------->|               |
              |    Device    |     QR/User Code      |               |
@@ -659,7 +659,7 @@ A common action in cross-device flows is to present the user with a QR code or a
 Attackers exploit this absence of an authenticated channel between the two devices by obtaining QR codes or user codes (e.g., by initiating the authorization flows). They then use social engineering techniques to change the context in which authorization is requested to convince end-users to scan the QR code or enter it on their Authorization Device (e.g., mobile phone). Once the end-user performs the authorization on the mobile device, the attacker who initiated the authentication or authorization request obtains access to the user's resources. The figure below shows an example of such an attack.
 
 ~~~ ascii-art
-                              
+
              +--------------+                       +---------------+
              |  Attacker's  |-(B) Request---------->|               |
              |  Consumption |     QR/User Code      |               |
