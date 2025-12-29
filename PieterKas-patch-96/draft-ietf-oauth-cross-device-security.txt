@@ -517,7 +517,7 @@ Table of Contents
       be several additional messages, depending on the authentication
       protocol, user interface and other implementation details).
 
-   *  (G) The Authorization Server issues tokens or grants authorization
+   *  (J) The Authorization Server issues tokens or grants authorization
       to the Consumption Device to access the user's resources.
 
 3.1.2.  Backchannel-Transferred Session Pattern
