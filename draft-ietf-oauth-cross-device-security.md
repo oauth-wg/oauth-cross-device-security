@@ -457,14 +457,14 @@ The Device Authorization Grant ({{RFC8628}}) is an example of a cross-device flo
 ~~~ ascii-art
 
              +--------------+                       +---------------+
-             |  Consumption |-(B) Request---------->|               |
-             |    Device    |     QR/User Code      |               |
+             |  Consumption |--(B) Request -------->|               |
+             |    Device    |      QR/User Code     |               |
              |              |                       |               |
              |              |<-(C) Return ----------|               |
-    +------->|              |     QR/User Code      |               |
+    +------->|              |      QR/User Code     |               |
     |        |              |                       |               |
-    |        |              |-(D) Poll for -------->|               |
-   (A) User  |              |     Authorization     |               |
+    |        |              |--(D) Poll for ------->|               |
+   (A) User  |              |      Authorization    |               |
     |  Start |              |                       |               |
     |  Flow  |              |<-(J) Grant -----------| Authorization |
     |        |              |      Authorization    |     Server    |
@@ -478,8 +478,8 @@ The Device Authorization Grant ({{RFC8628}}) is an example of a cross-device flo
  |   |                                              |               |
  |   |       +--------------+                       |               |
  |   +------>| Authorization|                       |               |
- |           |    Device    |-(F) Send QR code ---->|               |
- |           |              |     or user code      |               |
+ |           |    Device    |--(F) Send QR code --->|               |
+ |           |              |      or user code     |               |
  |           |              |                       |               |
  |           |              |<-(G) Request user ----|               |
  |           |              |     Authentication and|               |
@@ -661,14 +661,14 @@ Attackers exploit this absence of an authenticated channel between the two devic
 ~~~ ascii-art
 
              +--------------+                       +---------------+
-             |  Attacker's  |-(B) Request---------->|               |
-             |  Consumption |     QR/User Code      |               |
+             |  Attacker's  |--(B) Request -------->|               |
+             |  Consumption |      QR/User Code     |               |
              |    Device    |                       |               |
              |              |<-(C) Return ----------|               |
-    +------->|              |     QR/User Code      |               |
+    +------->|              |      QR/User Code     |               |
     |        |              |                       |               |
-    |        |              |-(D) Poll for -------->|               |
-    |        |              |     Authorization     |               |
+    |        |              |--(D) Poll for ------->|               |
+    |        |              |      Authorization    |               |
     |        |              |                       |               |
     |        |              |<-(L) Grant -----------| Authorization |
     |        |              |      Authorization    |     Server    |
@@ -693,8 +693,8 @@ Attackers exploit this absence of an authenticated channel between the two devic
  |   |  or enters User Code                         |               |
  |   |       +--------------+                       |               |
  |   +------>| Authorization|                       |               |
- |           |    Device    |-(H) Send QR code ---->|               |
- |           |              |     or user code      |               |
+ |           |    Device    |--(H) Send QR code --->|               |
+ |           |              |      or user code     |               |
  |           |              |                       |               |
  |           |              |<-(I) Request user ----|               |
  |           |              |     Authentication and|               |
