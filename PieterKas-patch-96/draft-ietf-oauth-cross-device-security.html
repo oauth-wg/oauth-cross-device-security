@@ -1608,14 +1608,14 @@ carry with them.<a href="#section-3.1-3.4.1" class="pilcrow">¶</a></p>
 <div class="alignLeft art-ascii-art art-text artwork" id="section-3.1.1-2">
 <pre>
              +--------------+                       +---------------+
-             |  Consumption |-(B) Request----------&gt;|               |
-             |    Device    |     QR/User Code      |               |
+             |  Consumption |--(B) Request --------&gt;|               |
+             |    Device    |      QR/User Code     |               |
              |              |                       |               |
              |              |&lt;-(C) Return ----------|               |
-    +-------&gt;|              |     QR/User Code      |               |
+    +-------&gt;|              |      QR/User Code     |               |
     |        |              |                       |               |
-    |        |              |-(D) Poll for --------&gt;|               |
-   (A) User  |              |     Authorization     |               |
+    |        |              |--(D) Poll for -------&gt;|               |
+   (A) User  |              |      Authorization    |               |
     |  Start |              |                       |               |
     |  Flow  |              |&lt;-(J) Grant -----------| Authorization |
     |        |              |      Authorization    |     Server    |
@@ -1629,8 +1629,8 @@ carry with them.<a href="#section-3.1-3.4.1" class="pilcrow">¶</a></p>
  |   |                                              |               |
  |   |       +--------------+                       |               |
  |   +------&gt;| Authorization|                       |               |
- |           |    Device    |-(F) Send QR code ----&gt;|               |
- |           |              |     or user code      |               |
+ |           |    Device    |--(F) Send QR code ---&gt;|               |
+ |           |              |      or user code     |               |
  |           |              |                       |               |
  |           |              |&lt;-(G) Request user ----|               |
  |           |              |     Authentication and|               |
@@ -1950,14 +1950,14 @@ Session  |   |              |     Context           |               |
 <div class="alignLeft art-ascii-art art-text artwork" id="section-4.1.1-3">
 <pre>
              +--------------+                       +---------------+
-             |  Attacker's  |-(B) Request----------&gt;|               |
-             |  Consumption |     QR/User Code      |               |
+             |  Attacker's  |--(B) Request --------&gt;|               |
+             |  Consumption |      QR/User Code     |               |
              |    Device    |                       |               |
              |              |&lt;-(C) Return ----------|               |
-    +-------&gt;|              |     QR/User Code      |               |
+    +-------&gt;|              |      QR/User Code     |               |
     |        |              |                       |               |
-    |        |              |-(D) Poll for --------&gt;|               |
-    |        |              |     Authorization     |               |
+    |        |              |--(D) Poll for -------&gt;|               |
+    |        |              |      Authorization    |               |
     |        |              |                       |               |
     |        |              |&lt;-(L) Grant -----------| Authorization |
     |        |              |      Authorization    |     Server    |
@@ -1982,8 +1982,8 @@ Session  |   |              |     Context           |               |
  |   |  or enters User Code                         |               |
  |   |       +--------------+                       |               |
  |   +------&gt;| Authorization|                       |               |
- |           |    Device    |-(H) Send QR code ----&gt;|               |
- |           |              |     or user code      |               |
+ |           |    Device    |--(H) Send QR code ---&gt;|               |
+ |           |              |      or user code     |               |
  |           |              |                       |               |
  |           |              |&lt;-(I) Request user ----|               |
  |           |              |     Authentication and|               |
