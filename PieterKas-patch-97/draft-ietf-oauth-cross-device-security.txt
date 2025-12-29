@@ -1036,7 +1036,7 @@ Table of Contents
         |                                              |               |
        (A) Attacker Sends                              |               |
         |  Social Engineering                          |               |
-        v  Message to User                             |               |
+        v  Message to User (optional)                  |               |
    +----------+                                        |               |
    |   User   |                                        |               |
    +----------+                                        |               |
