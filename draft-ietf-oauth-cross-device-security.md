@@ -154,42 +154,42 @@ normative:
 informative:
  RFC9635: # Grant Negotiation and Authorization Protocol (GNAP)
 
- Exploit1:
+ ARTDCPHISH:
   title: "The Art of the Device Code Phish"
   author:
       - name: Bobby Cooke
   date: 2021-07
   target: https://0xboku.com/2021/07/12/ArtOfDeviceCodePhish.html
 
- Exploit2:
+ DCFLOWPHISH:
   title: "Microsoft 365 OAuth Device Code Flow and Phishing"
   author:
       - name: Daniel Min
   date: 2021-08
   target: https://www.optiv.com/insights/source-zero/blog/microsoft-365-oauth-device-code-flow-and-phishing
 
- Exploit3:
+ NEWDCPHISH:
   title: "Introducing a new phishing technique for compromising Office 365 accounts"
   author:
       - name: Nestori Syynimaa
   date: 2020-10
   target: https://o365blog.com/post/phishing/#new-phishing-technique-device-code-authentication
 
- Exploit4:
+ DEFCON29:
   title: "New Phishing Attacks Exploiting OAuth Authentication Flows (DEFCON 29)"
   author:
    - name: Jenko Hwong
   date: 2021-08
   target: https://www.youtube.com/watch?v=9slRYvpKHp4
 
- Exploit5:
+ DCATTACK:
   title: "OAuth's Device Code Flow Abused in Phishing Attacks"
   author:
    - organization: "Secureworks Counter Threat Unit (CTU)"
   date: 2021-08
   target: https://www.secureworks.com/blog/oauths-device-code-flow-abused-in-phishing-attacks
 
- Exploit6:
+ SQPHISH:
   title: "SquarePhish: Advanced phishing tool combines QR codes and OAuth 2.0 device code flow"
   author:
    - name: Kam Talebzadeh
@@ -344,7 +344,7 @@ Device to access a resource (e.g., access to a service). The Device
 Authorization Grant {{RFC8628}} and Client-Initiated Backchannel
 Authentication {{CIBA}} are two examples of popular cross-device authorization flows.
 
-In these flows, the Consumption Device and the Authorization Device are not directly connected and there are no technical mechanisms for the Authorization Device and Consumption Device to establish mutual authentication. It is left to the user to decide whether the source of the authorization request (the Consumption Device) should be trusted before they scan a QR code, enter a user code, or accept an authorization request pushed to their Authorization Device. The transfer of the authorization request and context between the Consumption Device and Authorization device is done over an unauthenticated channel. The only mitigation against this unauthenticated channel is the user's judgement.
+In these flows, the Consumption Device and the Authorization Device are not directly connected and there are no technical mechanisms for the Authorization Device and Consumption Device to establish mutual authentication. It is left to the user to decide whether the source of the authorization request (the Consumption Device) should be trusted before they scan a QR code, enter a user code, or accept an authorization request pushed to their Authorization Device. The transfer of the authorization request and context between the Consumption Device and Authorization Device is done over an unauthenticated channel. The only mitigation against this unauthenticated channel is the user's judgement.
 
 Cross-Device Consent Phishing (CDCP) attacks exploit the unauthenticated channel
 between the Consumption Device and Authorization Device using social engineering
@@ -354,8 +354,8 @@ user's data.
 Note: This document uses the terms "social engineering" and "phishing" as
 described in the NIST Computer Security Resource Center Glossary {{NISTGlossary}}.
 
-Several publications have emerged in the public domain ({{Exploit1}}, {{Exploit2}}, {{Exploit3}}, {{Exploit4}},
-{{Exploit5}}, {{Exploit6}}), describing how the unauthenticated channel can be
+Several publications have emerged in the public domain ({{ARTDCPHISH}}, {{DCFLOWPHISH}}, {{NEWDCPHISH}}, {{DEFCON29}},
+{{DCATTACK}}, {{SQPHISH}}), describing how the unauthenticated channel can be
 exploited using social engineering techniques borrowed from phishing. Unlike traditional
 phishing attacks, these attacks don't harvest credentials. Instead, they skip the
 step of collecting credentials by persuading users to grant authorization using
@@ -1030,7 +1030,7 @@ Note: There are scenarios that require that authorization takes place in a diffe
 ### Short Lived/Timebound QR or User Codes {#Short-Lived-Timebound-Codes}
 The impact of an attack can be reduced by making QR or user codes short lived. If an attacker obtains a short lived code, the duration during which the unauthenticated channel can be exploited is reduced, potentially increasing the cost of a successful attack. This mitigation can be implemented on the authorization server without changes to other system components.
 
-**Limitations:** There is a practical limit to how short a user code can be valid due to network latency and user experience limitations (time taken to enter a code, time to complete authentication, or time needed to re-enter codes or re-authenticate due to an error). More sophisticated Cross-Device Consent Phishing attacks counter the effectiveness of short lived codes by convincing a user to respond to a phishing e-mail and only request the QR or user code once the user clicks on the link in the phishing e-mail {{Exploit6}}.
+**Limitations:** There is a practical limit to how short a user code can be valid due to network latency and user experience limitations (time taken to enter a code, time to complete authentication, or time needed to re-enter codes or re-authenticate due to an error). More sophisticated Cross-Device Consent Phishing attacks counter the effectiveness of short lived codes by convincing a user to respond to a phishing e-mail and only request the QR or user code once the user clicks on the link in the phishing e-mail {{SQPHISH}}.
 
 ### One-Time or Limited Use Codes
 By enforcing one-time use or limited use of user or QR codes, the authorization server can limit the impact of attacks where the same user code or QR code is sent to multiple victims. One-time use may be achieved by including a nonce or date-stamp in the user code or QR code which is validated by the authorization server when the user scans the QR code against a list of previously issued codes. This mitigation can be implemented on the authorization server without changes to other system components.
@@ -1154,7 +1154,7 @@ Some cross-device protocols are more susceptible to the exploits described in th
 A standard to enable authorization on devices with constrained input capabilities (smart TVs, printers, kiosks). In this protocol, the user code or QR code is displayed or made available on the Consumption Device (smart TV) and entered on a second device (e.g., a mobile phone).
 
 #### Susceptibility
-There are several reports in the public domain outlining how the unauthenticated channel may be exploited to execute a Cross-Device Consent Phishing attack ({{Exploit1}}, {{Exploit2}}, {{Exploit3}}, {{Exploit4}}, {{Exploit5}}, {{Exploit6}}).
+There are several reports in the public domain outlining how the unauthenticated channel may be exploited to execute a Cross-Device Consent Phishing attack ({{ARTDCPHISH}}, {{DCFLOWPHISH}}, {{NEWDCPHISH}}, {{DEFCON29}}, {{DCATTACK}}, {{SQPHISH}}).
 
 #### Device Capabilities
 There are no assumptions in the protocol about underlying capabilities of the device, making it a "least common denominator" protocol that is expected to work on the broadest set of devices and environments.
