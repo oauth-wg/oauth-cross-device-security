@@ -582,7 +582,7 @@ The session transfer preserves state information, including authentication state
 In this flow, the user is authenticated and starts the flow by authorizing the transfer of the session on the Authorization Device. The Authorization Device requests a session transfer code that may be rendered as a QR code on the Authorization Device. When the user scans the QR code or enters it on the Consumption Device where they would like the session to continue, the Consumption Device presents it to the Authorization Server. The Authorization Server then transfers the session to the Consumption Device. This may include transferring authentication and authorization state to optimize the user experience. This type of flow is used, for example, for adding new devices to networks, bootstrapping new applications, or provisioning new credentials. The Pre-Authorized Code Flow in ({{OpenID.VCI}}) is an instance of using this pattern to provision a new credential. The figure below shows a typical flow.
 
 ~~~ ascii-art
-                               
+
             +---------------+                       +---------------+
   +-------->| Authorization |                       | Authorization |
   |         |    Device     |--(B) Session -------->|     Server    |
@@ -833,7 +833,7 @@ Attackers exploit cross-device session transfer flows by using social engineerin
 
 
 ~~~ ascii-art
-                               
+
             +---------------+                       +---------------+
     +------>| Authorization |                       | Authorization |
     |       |    Device     |--(C) Session -------->|     Server    |
