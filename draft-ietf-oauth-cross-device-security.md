@@ -558,22 +558,30 @@ Examples of the user-transferred authorization data pattern include flows in whi
 
 
 ~~~ ascii-art
-                              (B) Backchannel Authorization
-             +--------------+     Request           +---------------+
-(A)User  +---|  Consumption |<--------------------->|               |
-   Start |   |   Device     |(E) Grant Authorization| Authorization |
-   Flow  +-->|              |<--------------------->|     Server    |
-             +--------------+                       |               |
-                    ^                               |               |
-                    | (D)User Enters                |               |
-                    |    Authorization Data         |               |
-                    |                               |               |
-                    |                               |               |
-             +--------------+                       |               |
-             | Authorization|                       |               |
-             |    Device    |<--------------------->|               |
-             |              |(C) Send Authorization |               |
-             |              |    Data               |               |
+
+             +--------------+                       +---------------+
+    +------->|  Consumption |--(B) Backchannel ---->|               |
+    |        |     Device   |      Authorization    |               |
+    |        |              |      Request          |               |
+    |        |              |                       | Authorization |
+    |        |              |<-(F) Grant------------|     Server    |
+    |        +--------------+      Authorization    |               |
+   (A) User       ^                                 |               |
+    |  Start      |                                 |               |
+    |  Flow      (E) User Enters                    |               |
+    |             |  Authorization                  |               |
++------+          |  Data                           |               |
+| User |----------+                                 |               |
++------+                                            |               |
+    ^                                               |               |
+   (D) User Copies                                  |               |
+    |  Authorization Data                           |               |
+    |                                               |               |
+    |        +--------------+                       |               |
+    |        | Authorization|                       |               |
+    |        |    Device    |<-(C) Send ------------|               |
+    +--------|              |      Authorization    |               |
+             |              |      Data             |               |
              +--------------+                       +---------------+
 ~~~
 Figure: User-Transferred Authorization Data Pattern
@@ -581,8 +589,9 @@ Figure: User-Transferred Authorization Data Pattern
 - (A) The user takes an action on the Consumption Device by starting a purchase, adding a device to a network or connecting a service to the Consumption Device.
 - (B) The client on the Consumption Device requests user authorization on the backchannel from the Authorization Server.
 - (C) The Authorization Server sends authorization data (e.g., a 6 digit authorization code) to the Authorization Device. Examples of mechanisms that may be used to distribute the authorization data include text messages, email or a mobile application.
-- (D) The user enters the authorization data (e.g., the 6 digit authorization code) on the Consumption Device.
-- (E) The Authorization Server issues tokens or grants authorization to the Consumption Device to access the user's resources.
+- (D) The user reads and copies the authorization data (e.g., the 6 digit authorization code) received on the Authorization Device.
+- (E) The user enters the authorization data on the Consumption Device.
+- (F) The Authorization Server issues tokens or grants authorization to the Consumption Device to access the user's resources.
 
 The Authorization Server may choose to authenticate the user before sending the authorization data.
 
@@ -797,45 +806,54 @@ In cross-device flows that follow the user-transferred authorization data patter
 Attackers exploit the user-transferred authorization data pattern by combining the social engineering techniques used to set context for users and convincing users to providing them with authorization data sent to their Authorization Devices (e.g., mobile phones). These attacks are very similar to phishing attacks, except that the attacker also has the ability to trigger the authorization request to be sent to the user directly by the Authorization Server.
 
 ~~~ ascii-art
-                              (C) Backchannel Authorization
-             +--------------+     Request           +---------------+
-             |  Attacker's  |<--------------------->|               |
-             |  Consumption |(G) Grant Authorization| Authorization |
-             |  Device      |<--------------------->|     Server    |
-             +--------------+                       |               |
-               ^       ^                            |               |
-  (B) Attacker |       | (F) Attacker Forwards      |               |
-      Starts   |       |     Authorization Data     |               |
-      Flow     |       |                            |               |
-             +--------------+                       |               |
-             |              |                       |               |
-             |   Attacker   |                       |               |
-             |              |                       |               |
-             |              |                       |               |
-             |              |                       |               |
-             +--------------+                       |               |
-(A) Attacker    |       ^   (E) User                |               |
-    Sends       |       |       Sends               |               |
-    Social      |       |       Authorization Data  |               |
-    Engineering |       |                           |               |
-    Message     |       |                           |               |
-                v       |                           |               |
+
+             +--------------+                       +---------------+
+    +------->|  Consumption |--(C) Backchannel ---->| Authorization |
+    |        |    Device    |      Authorization    |    Server     |
+    |        |              |      Request          |               |
+    |        |              |                       |               |
+    |        |              |<-(H) Grant------------|               |
+    |        +--------------+      Authorization    |               |
+    |                    ^                          |               |
+    |                    |                          |               |
+   (B) Attacker         (G) Attacker Enters         |               |
+    |  Start             |  Authorization           |               |
+    |  Flow              |  Data                    |               |
+    |                    |                          |               |
++------------------------------------------+        |               |
+|                 Attacker                 |        |               |
++------------------------------------------+        |               |
+  |                   ^                             |               |
+ (A) Attacker        (F) User                       |               |
+  |  Sends            |  Sends                      |               |
+  |  Social           |  Authorization              |               |
+  |  Engineering      |  Data                       |               |
+  v  Message          |                             |               |
++------------------------------------------+        |               |
+|                   User                   |        |               |
++------------------------------------------+        |               |
+                  ^                                 |               |
+                  |                                 |               |
+                 (E) User Copies                    |               |
+                  |  Authorization Data             |               |
+                  |                                 |               |
              +--------------+                       |               |
              | Authorization|                       |               |
-             |    Device    |<--------------------->|               |
-             |              |(D) Send Authorization |               |
-             |              |    Data               |               |
+             |    Device    |<-(D) Send ------------|               |
+             |              |      Authorization    |               |
+             |              |      Data             |               |
              +--------------+                       +---------------+
 ~~~
-Figure: User-Transferred Authorization Data Pattern Exploits
+Figure: User-Transferred Authorization Data Pattern
 
 - (A) The attacker sends a social engineering message to prime the user for the authorization request they are about to receive, including instructions on what to do with the authorization data once they receive it.
 - (B) The attacker initiates the protocol on the Consumption Device (or by mimicking the Consumption Device) by starting a purchase, adding a device to a network or accessing a service on the Consumption Device.
 - (C) The client on the Consumption Device requests user authorization on the backchannel from the Authorization Server.
-- (D) The Authorization Server sends authorization data (e.g., a 6 digit authorization code) to the user's Authorization Device (the authorization data may be presented as a QR code, or text message).
-- (E) The user is convinced by the social engineering message received in step (A) and forwards the authorization data (e.g., a 6 digit authorization code) to the attacker.
-- (F) The attacker enters the authorization data (e.g., a 6 digit authorization code) on the Consumption Device.
-- (G) The Authorization Server grants authorization and issues access and refresh tokens to the Consumption Device, which is under the attacker's control. On completion of the exploit, the attacker gains access to the user's resources.
+- (D) The Authorization Server sends authorization data (e.g., a 6 digit authorization code) to the Authorization Device. Examples of mechanisms that may be used to distribute the authorization data include text messages, email or a mobile application. The authorization data may be presented as text or a QR code.
+- (E) The user is convinced by the social engineering message received from the attacker in step (A) and copies the authorization data received on the Authorization Device.
+- (F) The user forwards the authorization data to the attacker.
+- (G) The attacker enters the authorization data (e.g., a 6 digit authorization code) on the Consumption Device.
+- (H) The Authorization Server grants authorization and issues access and refresh tokens to the Consumption Device, which is under the attacker's control. On completion of the exploit, the attacker gains access to the user's resources.
 
 The unauthenticated channel may also be exploited in variations of the above scenario if there is no session maintained in the channel for steps C and G. In that case a user (as opposed to the attacker) initiates the flow and is then convinced using social engineering techniques into sending the authorization data (e.g., a 6 digit authorization code) to the attacker, instead of using it themselves. The authorization data may be represented as a QR code or text string (e.g., 6 digit authorization code). The attacker then starts the flow and uses the authorization data to obtain the privileges that would have been assigned to the user.
 
