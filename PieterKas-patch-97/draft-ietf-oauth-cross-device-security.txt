@@ -5,10 +5,10 @@
 oauth                                                       P. Kasselman
 Internet-Draft                                                   Defakto
 Intended status: Best Current Practice                           D. Fett
-Expires: 2 July 2026                                            Authlete
+Expires: 3 July 2026                                            Authlete
                                                                F. Skokan
                                                                     Okta
-                                                        29 December 2025
+                                                        30 December 2025
 
 
            Cross-Device Flows: Security Best Current Practice
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 2 July 2026.
+   This Internet-Draft will expire on 3 July 2026.
 
 Copyright Notice
 
@@ -517,9 +517,8 @@ Table of Contents
       messages, depending on the authentication protocol, user interface
       and other implementation details).
 
-   *  (J) The Authorization Server grants authorization (e.g. by
-      issueing tokens) to the Consumption Device to access the user's
-      resources.
+   *  (J) The Authorization Server grants authorization (e.g. by issuing
+      tokens) to the Consumption Device to access the user's resources.
 
 3.1.2.  Backchannel-Transferred Session Pattern
 
@@ -580,9 +579,8 @@ Table of Contents
       messages, depending on the authentication protocol, user interface
       and other implementation details).
 
-   *  (F) The Authorization Server grants authorization (e.g. by
-      issueing tokens) to the Consumption Device to access the user's
-      resources.
+   *  (F) The Authorization Server grants authorization (e.g. by issuing
+      tokens) to the Consumption Device to access the user's resources.
 
    The Authorization Server may use a variety of mechanisms to request
    user authorization, including a push notification to a dedicated app
