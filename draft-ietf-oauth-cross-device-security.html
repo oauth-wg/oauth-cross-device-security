@@ -1439,15 +1439,15 @@ trusted, device (Authorization Device) to authorize the Consumption
 Device to access a resource (e.g., access to a service). The Device
 Authorization Grant <span>[<a href="#RFC8628" class="cite xref">RFC8628</a>]</span> and Client-Initiated Backchannel
 Authentication <span>[<a href="#CIBA" class="cite xref">CIBA</a>]</span> are two examples of popular cross-device authorization flows.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
-<p id="section-1.1-2">In these flows, the Consumption Device and the Authorization Device are not directly connected and there are no technical mechanisms for the Authorization Device and Consumption Device to establish mutual authentication. It is left to the user to decide whether the source of the authorization request (the Consumption Device) should be trusted before they scan a QR code, enter a user code, or accept an authorization request pushed to their Authorization Device. The transfer of the authorization request and context between the Consumption Device and Authorization device is done over an unauthenticated channel. The only mitigation against this unauthenticated channel is the user's judgement.<a href="#section-1.1-2" class="pilcrow">¶</a></p>
+<p id="section-1.1-2">In these flows, the Consumption Device and the Authorization Device are not directly connected and there are no technical mechanisms for the Authorization Device and Consumption Device to establish mutual authentication. It is left to the user to decide whether the source of the authorization request (the Consumption Device) should be trusted before they scan a QR code, enter a user code, or accept an authorization request pushed to their Authorization Device. The transfer of the authorization request and context between the Consumption Device and Authorization Device is done over an unauthenticated channel. The only mitigation against this unauthenticated channel is the user's judgement.<a href="#section-1.1-2" class="pilcrow">¶</a></p>
 <p id="section-1.1-3">Cross-Device Consent Phishing (CDCP) attacks exploit the unauthenticated channel
 between the Consumption Device and Authorization Device using social engineering
 techniques commonly used in phishing attacks to gain unauthorized access to the
 user's data.<a href="#section-1.1-3" class="pilcrow">¶</a></p>
 <p id="section-1.1-4">Note: This document uses the terms "social engineering" and "phishing" as
 described in the NIST Computer Security Resource Center Glossary <span>[<a href="#NISTGlossary" class="cite xref">NISTGlossary</a>]</span>.<a href="#section-1.1-4" class="pilcrow">¶</a></p>
-<p id="section-1.1-5">Several publications have emerged in the public domain (<span>[<a href="#Exploit1" class="cite xref">Exploit1</a>]</span>, <span>[<a href="#Exploit2" class="cite xref">Exploit2</a>]</span>, <span>[<a href="#Exploit3" class="cite xref">Exploit3</a>]</span>, <span>[<a href="#Exploit4" class="cite xref">Exploit4</a>]</span>,
-<span>[<a href="#Exploit5" class="cite xref">Exploit5</a>]</span>, <span>[<a href="#Exploit6" class="cite xref">Exploit6</a>]</span>), describing how the unauthenticated channel can be
+<p id="section-1.1-5">Several publications have emerged in the public domain (<span>[<a href="#ARTDCPHISH" class="cite xref">ARTDCPHISH</a>]</span>, <span>[<a href="#DCFLOWPHISH" class="cite xref">DCFLOWPHISH</a>]</span>, <span>[<a href="#NEWDCPHISH" class="cite xref">NEWDCPHISH</a>]</span>, <span>[<a href="#DEFCON29" class="cite xref">DEFCON29</a>]</span>,
+<span>[<a href="#DCATTACK" class="cite xref">DCATTACK</a>]</span>, <span>[<a href="#SQPHISH" class="cite xref">SQPHISH</a>]</span>), describing how the unauthenticated channel can be
 exploited using social engineering techniques borrowed from phishing. Unlike traditional
 phishing attacks, these attacks don't harvest credentials. Instead, they skip the
 step of collecting credentials by persuading users to grant authorization using
@@ -2519,7 +2519,7 @@ Authorization|              |                       |               |
 <a href="#section-6.1.2" class="section-number selfRef">6.1.2. </a><a href="#name-short-lived-timebound-qr-or" class="section-name selfRef">Short Lived/Timebound QR or User Codes</a>
           </h4>
 <p id="section-6.1.2-1">The impact of an attack can be reduced by making QR or user codes short lived. If an attacker obtains a short lived code, the duration during which the unauthenticated channel can be exploited is reduced, potentially increasing the cost of a successful attack. This mitigation can be implemented on the authorization server without changes to other system components.<a href="#section-6.1.2-1" class="pilcrow">¶</a></p>
-<p id="section-6.1.2-2"><strong>Limitations:</strong> There is a practical limit to how short a user code can be valid due to network latency and user experience limitations (time taken to enter a code, time to complete authentication, or time needed to re-enter codes or re-authenticate due to an error). More sophisticated Cross-Device Consent Phishing attacks counter the effectiveness of short lived codes by convincing a user to respond to a phishing e-mail and only request the QR or user code once the user clicks on the link in the phishing e-mail <span>[<a href="#Exploit6" class="cite xref">Exploit6</a>]</span>.<a href="#section-6.1.2-2" class="pilcrow">¶</a></p>
+<p id="section-6.1.2-2"><strong>Limitations:</strong> There is a practical limit to how short a user code can be valid due to network latency and user experience limitations (time taken to enter a code, time to complete authentication, or time needed to re-enter codes or re-authenticate due to an error). More sophisticated Cross-Device Consent Phishing attacks counter the effectiveness of short lived codes by convincing a user to respond to a phishing e-mail and only request the QR or user code once the user clicks on the link in the phishing e-mail <span>[<a href="#SQPHISH" class="cite xref">SQPHISH</a>]</span>.<a href="#section-6.1.2-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="one-time-or-limited-use-codes">
@@ -2813,7 +2813,7 @@ Authorization|              |                       |               |
             <h5 id="name-susceptibility">
 <a href="#section-6.2.1.2" class="section-number selfRef">6.2.1.2. </a><a href="#name-susceptibility" class="section-name selfRef">Susceptibility</a>
             </h5>
-<p id="section-6.2.1.2-1">There are several reports in the public domain outlining how the unauthenticated channel may be exploited to execute a Cross-Device Consent Phishing attack (<span>[<a href="#Exploit1" class="cite xref">Exploit1</a>]</span>, <span>[<a href="#Exploit2" class="cite xref">Exploit2</a>]</span>, <span>[<a href="#Exploit3" class="cite xref">Exploit3</a>]</span>, <span>[<a href="#Exploit4" class="cite xref">Exploit4</a>]</span>, <span>[<a href="#Exploit5" class="cite xref">Exploit5</a>]</span>, <span>[<a href="#Exploit6" class="cite xref">Exploit6</a>]</span>).<a href="#section-6.2.1.2-1" class="pilcrow">¶</a></p>
+<p id="section-6.2.1.2-1">There are several reports in the public domain outlining how the unauthenticated channel may be exploited to execute a Cross-Device Consent Phishing attack (<span>[<a href="#ARTDCPHISH" class="cite xref">ARTDCPHISH</a>]</span>, <span>[<a href="#DCFLOWPHISH" class="cite xref">DCFLOWPHISH</a>]</span>, <span>[<a href="#NEWDCPHISH" class="cite xref">NEWDCPHISH</a>]</span>, <span>[<a href="#DEFCON29" class="cite xref">DEFCON29</a>]</span>, <span>[<a href="#DCATTACK" class="cite xref">DCATTACK</a>]</span>, <span>[<a href="#SQPHISH" class="cite xref">SQPHISH</a>]</span>).<a href="#section-6.2.1.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="device-capabilities">
@@ -3128,27 +3128,27 @@ described in <a href="#user_education" class="auto internal xref">Section 6.1.13
         <dd>
 <span class="refAuthor">Richer, J., Ed.</span> and <span class="refAuthor">F. Imbault</span>, <span class="refTitle">"Grant Negotiation and Authorization Protocol (GNAP)"</span>, <span class="seriesInfo">RFC 9635</span>, <span class="seriesInfo">DOI 10.17487/RFC9635</span>, <time datetime="2024-10" class="refDate">October 2024</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9635">https://www.rfc-editor.org/rfc/rfc9635</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="Exploit1">[Exploit1]</dt>
+<dt id="ARTDCPHISH">[ARTDCPHISH]</dt>
         <dd>
 <span class="refAuthor">Cooke, B.</span>, <span class="refTitle">"The Art of the Device Code Phish"</span>, <time datetime="2021-07" class="refDate">July 2021</time>, <span>&lt;<a href="https://0xboku.com/2021/07/12/ArtOfDeviceCodePhish.html">https://0xboku.com/2021/07/12/ArtOfDeviceCodePhish.html</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="Exploit2">[Exploit2]</dt>
+<dt id="DCFLOWPHISH">[DCFLOWPHISH]</dt>
         <dd>
 <span class="refAuthor">Min, D.</span>, <span class="refTitle">"Microsoft 365 OAuth Device Code Flow and Phishing"</span>, <time datetime="2021-08" class="refDate">August 2021</time>, <span>&lt;<a href="https://www.optiv.com/insights/source-zero/blog/microsoft-365-oauth-device-code-flow-and-phishing">https://www.optiv.com/insights/source-zero/blog/microsoft-365-oauth-device-code-flow-and-phishing</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="Exploit3">[Exploit3]</dt>
+<dt id="NEWDCPHISH">[NEWDCPHISH]</dt>
         <dd>
 <span class="refAuthor">Syynimaa, N.</span>, <span class="refTitle">"Introducing a new phishing technique for compromising Office 365 accounts"</span>, <time datetime="2020-10" class="refDate">October 2020</time>, <span>&lt;<a href="https://o365blog.com/post/phishing/#new-phishing-technique-device-code-authentication">https://o365blog.com/post/phishing/#new-phishing-technique-device-code-authentication</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="Exploit4">[Exploit4]</dt>
+<dt id="DEFCON29">[DEFCON29]</dt>
         <dd>
 <span class="refAuthor">Hwong, J.</span>, <span class="refTitle">"New Phishing Attacks Exploiting OAuth Authentication Flows (DEFCON 29)"</span>, <time datetime="2021-08" class="refDate">August 2021</time>, <span>&lt;<a href="https://www.youtube.com/watch?v=9slRYvpKHp4">https://www.youtube.com/watch?v=9slRYvpKHp4</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="Exploit5">[Exploit5]</dt>
+<dt id="DCATTACK">[DCATTACK]</dt>
         <dd>
 <span class="refAuthor">Secureworks Counter Threat Unit (CTU)</span>, <span class="refTitle">"OAuth's Device Code Flow Abused in Phishing Attacks"</span>, <time datetime="2021-08" class="refDate">August 2021</time>, <span>&lt;<a href="https://www.secureworks.com/blog/oauths-device-code-flow-abused-in-phishing-attacks">https://www.secureworks.com/blog/oauths-device-code-flow-abused-in-phishing-attacks</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="Exploit6">[Exploit6]</dt>
+<dt id="SQPHISH">[SQPHISH]</dt>
         <dd>
 <span class="refAuthor">Talebzadeh, K.</span> and <span class="refAuthor">N. Romsdah</span>, <span class="refTitle">"SquarePhish: Advanced phishing tool combines QR codes and OAuth 2.0 device code flow"</span>, <time datetime="2022-08" class="refDate">August 2022</time>, <span>&lt;<a href="https://www.helpnetsecurity.com/2022/08/11/squarephish-video/">https://www.helpnetsecurity.com/2022/08/11/squarephish-video/</a>&gt;</span>. </dd>
 <dd class="break"></dd>

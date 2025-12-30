@@ -208,7 +208,7 @@ Table of Contents
    trusted before they scan a QR code, enter a user code, or accept an
    authorization request pushed to their Authorization Device.  The
    transfer of the authorization request and context between the
-   Consumption Device and Authorization device is done over an
+   Consumption Device and Authorization Device is done over an
    unauthenticated channel.  The only mitigation against this
    unauthenticated channel is the user's judgement.
 
@@ -222,8 +222,8 @@ Table of Contents
    "phishing" as described in the NIST Computer Security Resource Center
    Glossary [NISTGlossary].
 
-   Several publications have emerged in the public domain ([Exploit1],
-   [Exploit2], [Exploit3], [Exploit4], [Exploit5], [Exploit6]),
+   Several publications have emerged in the public domain ([ARTDCPHISH],
+   [DCFLOWPHISH], [NEWDCPHISH], [DEFCON29], [DCATTACK], [SQPHISH]),
    describing how the unauthenticated channel can be exploited using
    social engineering techniques borrowed from phishing.  Unlike
    traditional phishing attacks, these attacks don't harvest
@@ -1727,7 +1727,7 @@ Table of Contents
    sophisticated Cross-Device Consent Phishing attacks counter the
    effectiveness of short lived codes by convincing a user to respond to
    a phishing e-mail and only request the QR or user code once the user
-   clicks on the link in the phishing e-mail [Exploit6].
+   clicks on the link in the phishing e-mail [SQPHISH].
 
 6.1.3.  One-Time or Limited Use Codes
 
@@ -2157,8 +2157,8 @@ Table of Contents
 
    There are several reports in the public domain outlining how the
    unauthenticated channel may be exploited to execute a Cross-Device
-   Consent Phishing attack ([Exploit1], [Exploit2], [Exploit3],
-   [Exploit4], [Exploit5], [Exploit6]).
+   Consent Phishing attack ([ARTDCPHISH], [DCFLOWPHISH], [NEWDCPHISH],
+   [DEFCON29], [DCATTACK], [SQPHISH]).
 
 6.2.1.3.  Device Capabilities
 
@@ -2521,29 +2521,32 @@ Table of Contents
               DOI 10.17487/RFC9635, October 2024,
               <https://www.rfc-editor.org/rfc/rfc9635>.
 
-   [Exploit1] Cooke, B., "The Art of the Device Code Phish", July 2021,
+   [ARTDCPHISH]
+              Cooke, B., "The Art of the Device Code Phish", July 2021,
               <https://0xboku.com/2021/07/12/ArtOfDeviceCodePhish.html>.
 
-   [Exploit2] Min, D., "Microsoft 365 OAuth Device Code Flow and
+   [DCFLOWPHISH]
+              Min, D., "Microsoft 365 OAuth Device Code Flow and
               Phishing", August 2021, <https://www.optiv.com/insights/
               source-zero/blog/microsoft-365-oauth-device-code-flow-and-
               phishing>.
 
-   [Exploit3] Syynimaa, N., "Introducing a new phishing technique for
+   [NEWDCPHISH]
+              Syynimaa, N., "Introducing a new phishing technique for
               compromising Office 365 accounts", October 2020,
               <https://o365blog.com/post/phishing/#new-phishing-
               technique-device-code-authentication>.
 
-   [Exploit4] Hwong, J., "New Phishing Attacks Exploiting OAuth
+   [DEFCON29] Hwong, J., "New Phishing Attacks Exploiting OAuth
               Authentication Flows (DEFCON 29)", August 2021,
               <https://www.youtube.com/watch?v=9slRYvpKHp4>.
 
-   [Exploit5] Secureworks Counter Threat Unit (CTU), "OAuth's Device
+   [DCATTACK] Secureworks Counter Threat Unit (CTU), "OAuth's Device
               Code Flow Abused in Phishing Attacks", August 2021,
               <https://www.secureworks.com/blog/oauths-device-code-flow-
               abused-in-phishing-attacks>.
 
-   [Exploit6] Talebzadeh, K. and N. Romsdah, "SquarePhish: Advanced
+   [SQPHISH]  Talebzadeh, K. and N. Romsdah, "SquarePhish: Advanced
               phishing tool combines QR codes and OAuth 2.0 device code
               flow", August 2022,
               <https://www.helpnetsecurity.com/2022/08/11/squarephish-
