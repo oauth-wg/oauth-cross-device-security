@@ -505,7 +505,7 @@ or connecting a service to the Consumption Device.
 - (G) The Authorization Server validates the QR code or user code and prompts the user to authenticate and accept or decline the authorization request.
 - (H) The user authenticates and grants authorization using the Authorization Device.
 - (I) The user is authenticated and authorization is granted to access the user's resources (there may be several additional messages, depending on the authentication protocol, user interface and other implementation details).
-- (J) The Authorization Server grants authorization (e.g. by issueing tokens) to the Consumption Device to access the user's resources.
+- (J) The Authorization Server grants authorization (e.g. by issuing tokens) to the Consumption Device to access the user's resources.
 
 ### Backchannel-Transferred Session Pattern {#btsp}
 
@@ -549,7 +549,7 @@ Figure: Backchannel-Transferred Session Pattern
 - (C) The Authorization Server requests user authentication and authorization on the user's Authorization Device.
 - (D) If the user is unauthenticated, they use their Authorization Device to authenticate and grant authorization to the Authorization Server.
 - (E) The user is authenticated and authorization is granted to access the user's resources (there may be several additional messages, depending on the authentication protocol, user interface and other implementation details).
-- (F) The Authorization Server grants authorization (e.g. by issueing tokens) to the Consumption Device to access the user's resources.
+- (F) The Authorization Server grants authorization (e.g. by issuing tokens) to the Consumption Device to access the user's resources.
 
 The Authorization Server may use a variety of mechanisms to request user authorization, including a push notification to a dedicated app on a mobile phone, or sending a text message with a link to an endpoint where the user can authenticate and authorize an action.
 
