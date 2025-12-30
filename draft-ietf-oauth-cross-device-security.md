@@ -582,36 +582,47 @@ The session transfer preserves state information, including authentication state
 In this flow, the user is authenticated and starts the flow by authorizing the transfer of the session on the Authorization Device. The Authorization Device requests a session transfer code that may be rendered as a QR code on the Authorization Device. When the user scans the QR code or enters it on the Consumption Device where they would like the session to continue, the Consumption Device presents it to the Authorization Server. The Authorization Server then transfers the session to the Consumption Device. This may include transferring authentication and authorization state to optimize the user experience. This type of flow is used, for example, for adding new devices to networks, bootstrapping new applications, or provisioning new credentials. The Pre-Authorized Code Flow in ({{OpenID.VCI}}) is an instance of using this pattern to provision a new credential. The figure below shows a typical flow.
 
 ~~~ ascii-art
-                              (B) Session Transfer
-             +--------------+     Request           +---------------+
-(A)User  +---| Authorization|---------------------->|               |
-   Start |   |   Device     |(C) Session Transfer   |               |
-   Flow  |   |              |    Code               | Authorization |
-         +-->|              |<----------------------|     Server    |
-             +--------------+                       |               |
-                    |                               |               |
-                    | (D) Scan QR code              |               |
-                    |      or enter                 |               |
-                    | Session Transfer Code         |               |
-                    |                               |               |
-                    v         (E) Present Session   |               |
-             +--------------+     Transfer Code     |               |
-             | Consumption  |---------------------->|               |
-(G)User  +---|    Device    |                       |               |
-Resumes  |   |              | (F) Return Session    |               |
-Session  |   |              |     Context           |               |
-         +-->|              |<----------------------|               |
-             +--------------+                       +---------------+
+                               
+            +---------------+                       +---------------+
+  +-------->| Authorization |                       | Authorization |
+  |         |    Device     |--(B) Session -------->|     Server    |
+  |         |               |      Transfer Request |               |
+  |         |               |                       |               |
+  |         |               |<-(C) Session ---------|               |
+  |         |               |      Transfer Code    |               |
+  |         |               |                       |               |
+  |         +---------------+                       |               |
+ (A) User      |                                    |               |
+  |  Start    (D) User Views                        |               |
+  |  Flow      |  Session Transfer Code             |               |
+  |            v  or QR Code                        |               |
++---------------------------+                       |               |
+|           User            |                       |               |
++---------------------------+                       |               |
+                   |                                |               |
+                  (E) Enter Session Transfer Code   |               |
+                   |  or Scan QR code               |               |
+                   |                                |               |
+                   v                                |               |
+            +---------------+                       |               |
+            |  Consumption  |                       |               |
+            |     Device    |--(F) Present -------->|               |
+            |               |      Session Transfer |               |
+            |               |      Code             |               |
+            |               |                       |               |
+            |               |<-(G) Return Session --|               |
+            |               |      Context           |               |
+            +---------------+                       +---------------+
 ~~~
 Figure: Cross-Dvice Session Transfer Pattern
 
 - (A) The user is authenticated on the Authorization Device and authorizes the transfer of the session to the Consumption Device.
-- (B) The client on the Authorization Device requests a session transfer code from the Authorization Server.
+- (B) The user starts the flow and is authenticated on their Authorization Device before they authorize the transfer of the session to the Consumption Device.
 - (C) The Authorization Server responds with a session transfer code, which may be rendered as a QR code on the Authorization Device.
-- (D) The user scans the QR code with the Consumption Device (e.g., their mobile phone), or enters the session transfer code on the target Consumption Device.
-- (E) The client on the Consumption Device presents the session transfer code to the Authorization Server.
-- (F) The Authorization Server verifies the session transfer code and retrieves the session context information needed to resume the session on the Consumption Device.
-- (G) The user resumes the session and is able to access the information on the Consumption Device that they authorized on the Authorization Device.
+- (D) The user views the session transfer code, which may be rendered as a QR code.
+- (E) The user enters the session transfer code the Consumption Device (e.g., their mobile phone). If the session transfer code is rendered as a QR code, the user scans the QR code with the target Consumption Device.
+- (F) The client on the Consumption Device presents the session transfer code to the Authorization Server.
+- (G) The Authorization Server verifies the session transfer code and returns the session context information needed to resume the session on the Consumption Device. The user resumes the session they initiated and authorized on the Authorization Device and proceeds to access the information on the Consumption Device.
 
 ## Examples of Cross-Device Flows
 Examples of cross-device flow scenarios include:
@@ -820,48 +831,61 @@ The unauthenticated channel may also be exploited in variations of the above sce
 ## Cross-Device Session Transfer Exploits
 Attackers exploit cross-device session transfer flows by using social engineering techniques typically used in phishing attacks to convince the user to authorize the transfer of a session and then send the session transfer code or QR code to the attacker. The absence of an authenticated channel between these two devices enables the attacker to use the session transfer code on their own device to obtain access to the session and access the users data. These attacks are referred to as Cross-Device Session Phishing (CDSP) attacks.
 
-~~~ ascii-art
-                              (C) Session Transfer
-             +--------------+     Request           +---------------+
-(B)User  +---| Authorization|---------------------->|               |
-   Start |   |   Device     |(D) Session Transfer   |               |
-   Flow  |   |              |    Code               | Authorization |
-         +-->|              |<----------------------|     Server    |
-             +--------------+                       |               |
-(A)Attacker    ^          |                         |               |
-   Sends Social|          | (E) User sends QR code  |               |
-   Engineering |          |     or Session Transfer |               |
-   Message     |          v     Code to Attacker    |               |
-             +--------------+                       |               |
-             |              |                       |               |
-             |   Attacker   |                       |               |
-             |              |                       |               |
-             |              |                       |               |
-             |              |                       |               |
-             +--------------+                       |               |
-(F)Attacker scans   |                               |               |
-   QR code or enters|                               |               |
-   Session Transfer |                               |               |
-   Code             v         (G) Present Session   |               |
-             +--------------+     Transfer Code     |               |
-             |  Attacker's  |---------------------->|               |
-(I)      +---|  Consumption |                       |               |
- Attacker|   |    Device    | (H) Return Session    |               |
- Resumes |   |              |     Context           |               |
- Session +-->|              |<----------------------|               |
-             +--------------+                       +---------------+
-~~~
-Figure: Cross-Device Session Transfer Pattern Exploit
 
-- (A) The attacker sends a social engineering message that convinces the user that they should authorize a session transfer including instructions on what to do with the QR code or session transfer code once they receive it.
-- (B) The user is authenticated on their Authorization Device and authorizes the transfer of the session to the Consumption Device.
+~~~ ascii-art
+                               
+            +---------------+                       +---------------+
+    +------>| Authorization |                       | Authorization |
+    |       |    Device     |--(C) Session -------->|     Server    |
+    |       |               |      Transfer Request |               |
+    |       |               |                       |               |
+    |       |               |<-(D) Session ---------|               |
+    |       |               |      Transfer Code    |               |
+    |       |               |                       |               |
+    |       +---------------+                       |               |
+   (B) User      |                                  |               |
+    |  Start    (E) User Views                      |               |
+    |  Flow      |  Session Transfer Code           |               |
+    |            v  or QR Code                      |               |
++--------------------------------+                  |               |
+|             User               |                  |               |
++--------------------------------+                  |               |
+  ^                |                                |               |
+  |                |                                |               |
+ (A) Attacker     (F) User sends Session            |               |
+  |  Sends         |  Transfer or QR Code           |               |
+  |  Social        |  to Attacker                   |               |
+  |  Engineering   |                                |               |
+  |  Message       v                                |               |
++-------------------------------+                   |               |
+|            Attacker           |                   |               |
++-------------------------------+                   |               |
+                     |                              |               |
+                    (G) Attacker Enter              |               |
+                     |  Session Transfer Code       |               |
+                     |  or Scan QR Code             |               |
+                     v                              |               |
+            +---------------+                       |               |
+            |  Consumption  |                       |               |
+            |     Device    |--(H) Present -------->|               |
+            |               |      Session Transfer |               |
+            |               |      Code             |               |
+            |               |                       |               |
+            |               |<-(I) Return Session --|               |
+            |               |      Context           |               |
+            +---------------+                       +---------------+
+~~~
+Figure: Cross-Device Session Transfer Pattern
+
+- (A) The attacker sends a social engineering message that convinces the user that they should authorize a session transfer including instructions on what to do with the QR code or session transfer code once they obtained it.
+- (B) The user starts the flow and is authenticated on their Authorization Device before they authorize the transfer of the session to the Consumption Device.
 - (C) The client on the Authorization Device requests a session transfer code from the Authorization Server.
 - (D) The Authorization Server responds with a session transfer code, which may be rendered as a QR code on the Authorization Device.
-- (E) The user sends the QR code or session transfer code to the attacker, following the instructions they received in step (A).
-- (F) Once the attacker receives the QR code, they scan it or enter it on their own Consumption Device.
-- (G) The client on the Consumption Device presents the session transfer code to the Authorization Server.
-- (H) The Authorization Server verifies the session transfer code and retrieves the session context information needed to resume the session on the Consumption Device.
-- (I) The attacker resumes the session on their own Consumption Device and is able to access the information that the user authorized on their Authorization Device in step (B).
+- (E) The user views the session transfer code, which may be rendered as a QR code.
+- (F) The user sends the QR code or session transfer code to the attacker, following the instructions they received in step (A).
+- (G) Once the attacker receives the QR code, they scan it or enter it on their own Consumption Device.
+- (H) The client on the Consumption Device presents the session transfer code to the Authorization Server.
+- (I) The Authorization Server verifies the session transfer code and returns the session context information needed to resume the session on the Consumption Device. The attacker resumes the session on their own Consumption Device and is able to access the information that the user authorized on their Authorization Device in step (B).
 
 ## Examples of Cross-Device Flow Exploits
 The following examples illustrate these attacks in practical settings and show how the unauthenticated channel is exploited by attackers who can copy the QR codes and user codes, change the context in which they are presented using social engineering techniques and mislead end-users into granting consent to avail of services, access data and make payments.
