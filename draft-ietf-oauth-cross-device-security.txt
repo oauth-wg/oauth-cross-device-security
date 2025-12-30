@@ -5,10 +5,10 @@
 oauth                                                       P. Kasselman
 Internet-Draft                                                   Defakto
 Intended status: Best Current Practice                           D. Fett
-Expires: 2 July 2026                                            Authlete
+Expires: 3 July 2026                                            Authlete
                                                                F. Skokan
                                                                     Okta
-                                                        29 December 2025
+                                                        30 December 2025
 
 
            Cross-Device Flows: Security Best Current Practice
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 2 July 2026.
+   This Internet-Draft will expire on 3 July 2026.
 
 Copyright Notice
 
@@ -512,13 +512,13 @@ Table of Contents
    *  (H) The user authenticates and grants authorization using the
       Authorization Device.
 
-   *  (I) The user is authenticated with the Authorization Server and
-      authorization is granted to access the user's resources (there may
-      be several additional messages, depending on the authentication
-      protocol, user interface and other implementation details).
+   *  (I) The user is authenticated and authorization is granted to
+      access the user's resources (there may be several additional
+      messages, depending on the authentication protocol, user interface
+      and other implementation details).
 
-   *  (J) The Authorization Server issues tokens or grants authorization
-      to the Consumption Device to access the user's resources.
+   *  (J) The Authorization Server grants authorization (e.g. by issuing
+      tokens) to the Consumption Device to access the user's resources.
 
 3.1.2.  Backchannel-Transferred Session Pattern
 
@@ -527,22 +527,33 @@ Table of Contents
    authorization on the Authorization Device.  The figure below shows an
    example of this flow.
 
-                                 (B) Backchannel Authorization
-                +--------------+     Request           +---------------+
-   (A)User  +---|  Consumption |<--------------------->|               |
-      Start |   |   Device     |(E) Grant Authorization| Authorization |
-      Flow  +-->|              |<--------------------->|     Server    |
-                +--------------+                       |               |
-                                                       |               |
-                                                       |               |
-                                                       |               |
-                                                       |               |
-   (D)User                                             |               |
-     Authorize  +--------------+                       |               |
-     Action +---| Authorization|                       |               |
-            |   |    Device    |<--------------------->|               |
-            +-->|              |(C) Request User       |               |
-                |              |    Authorization      |               |
+                +--------------+                       +---------------+
+       +------->|  Consumption |--(B) Backchannel ---->|               |
+       |        |     Device   |      Authorization    |               |
+       |        |              |      Request          |               |
+       |        |              |                       | Authorization |
+       |        |              |<-(F) Grant------------|     Server    |
+       |        +--------------+      Authorization    |               |
+      (A) User                                         |               |
+       |  Start                                        |               |
+       |  Flow                                         |               |
+       |                                               |               |
+   +------+                                            |               |
+   | User |                                            |               |
+   +------+                                            |               |
+       |                                               |               |
+      (D) User Authenticate                            |               |
+       |  and Authorize Action                         |               |
+       |                                               |               |
+       |        +--------------+                       |               |
+       |        | Authorization|                       |               |
+       |        |    Device    |<-(C) Request User ----|               |
+       +------->|              |      Authentication   |               |
+                |              |      and Authorization|               |
+                |              |                       |               |
+                |              |--(E) Authentication ->|               |
+                |              |      and Authorization|               |
+                |              |      Completes        |               |
                 +--------------+                       +---------------+
 
    Figure: Backchannel-Transferred Session Pattern
@@ -552,17 +563,24 @@ Table of Contents
       to the Consumption Device.
 
    *  (B) The client on the Consumption Device requests user
-      authorization on the backchannel from the Authorization Server.
+      authorization on the backchannel from the Authorization Server and
+      instructs the user to authorize the request on the Authorization
+      Device and waits for a response from the Authorization Server.
 
-   *  (C) The Authorization Server requests the authorization from the
-      user on the user's Authorization Device.
+   *  (C) The Authorization Server requests user authentication and
+      authorization on the user's Authorization Device.
 
-   *  (D) If the user is unauthenticated, they authenticate to the
-      Authorization Server before using their device to grant
-      authorization.
+   *  (D) If the user is unauthenticated, they use their Authorization
+      Device to authenticate and grant authorization to the
+      Authorization Server.
 
-   *  (E) The Authorization Server issues tokens or grants authorization
-      to the Consumption Device to access the user's resources.
+   *  (E) The user is authenticated and authorization is granted to
+      access the user's resources (there may be several additional
+      messages, depending on the authentication protocol, user interface
+      and other implementation details).
+
+   *  (F) The Authorization Server grants authorization (e.g. by issuing
+      tokens) to the Consumption Device to access the user's resources.
 
    The Authorization Server may use a variety of mechanisms to request
    user authorization, including a push notification to a dedicated app
@@ -972,8 +990,8 @@ Table of Contents
    *  (L) The Authorization Server issues tokens or grants authorization
       to the Consumption Device, which is under the attacker's control,
       to access the user's resources.  The attacker gains access to the
-      resources and any authorization artifacts (like access and refresh
-      tokens) which may be used in future exploits.
+      resources and any authorization artifacts like access and refresh
+      tokens.
 
 4.1.2.  Backchannel-Transferred Session Pattern Exploits
 
@@ -999,33 +1017,40 @@ Table of Contents
    high volume of requests in a short period, increasing the likelihood
    of inadvertent approval.
 
-                                 (C) Backchannel Authorization
-                +--------------+     Request           +---------------+
-                |  Attacker's  |<--------------------->|               |
-                |  Consumption |(F) Grant Authorization| Authorization |
-                |  Device      |<--------------------->|     Server    |
-                +--------------+                       |               |
-                  ^                                    |               |
-     (B) Attacker |                                    |               |
-         Starts   |                                    |               |
-         Flow     |                                    |               |
-                +--------------+                       |               |
+                +--------------+                       +---------------+
+        +------>|  Attacker's  |--(C) Backchannel ---->|               |
+        |       |  Consumption |      Authorization    |               |
+        |       |  Device      |      Request          |               |
+        |       |              |                       | Authorization |
+        |       |              |<-(G) Grant------------|     Server    |
+        |       +--------------+      Authorization    |               |
+       (B) Attacker                                    |               |
+        |  Start                                       |               |
+        |  Flow                                        |               |
+        |                                              |               |
+   +----------+                                        |               |
+   | Attacker |                                        |               |
+   +----------+                                        |               |
+        |                                              |               |
+       (A) Attacker Sends                              |               |
+        |  Social Engineering                          |               |
+        v  Message to User (optional)                  |               |
+   +----------+                                        |               |
+   |   User   |                                        |               |
+   +----------+                                        |               |
+        |                                              |               |
+       (E) User Authenticate                           |               |
+        |  and Authorize Action                        |               |
+        |                                              |               |
+        |       +--------------+                       |               |
+        |       | Authorization|                       |               |
+        |       |    Device    |<-(D) Request User ----|               |
+        +------>|              |      Authentication   |               |
+                |              |      and Authorization|               |
                 |              |                       |               |
-                |   Attacker   |                       |               |
-                |              |                       |               |
-                |              |                       |               |
-                |              |                       |               |
-                +--------------+                       |               |
-                       |  (A) Attacker Sends           |               |
-                       |       Social Engineering      |               |
-                       |       Message to User         |               |
-                       |                               |               |
-   (E)User             v                               |               |
-     Authorizes +--------------+                       |               |
-     Action +---| Authorization|                       |               |
-            |   |    Device    |<--------------------->|               |
-            +-->|              |(D) Request User       |               |
-                |              |    Authorization      |               |
+                |              |--(F) Authentication ->|               |
+                |              |      and Authorization|               |
+                |              |      Completes        |               |
                 +--------------+                       +---------------+
 
    Figure: Backchannel-Transferred Session Pattern Exploits
@@ -1034,18 +1059,25 @@ Table of Contents
       user for the upcoming authorization (optional).
 
    *  (B) The attacker initiates the protocol on the Consumption Device
-      (or by mimicking the Consumption Device) by starting a purchase,
-      adding a device to a network or accessing a service on the
-      Consumption Device.
+      (or mimics the Consumption Device) by starting a purchase, adding
+      a device to a network or accessing a service on the Consumption
+      Device.
 
    *  (C) The client on the Consumption Device requests user
-      authorization on the backchannel from the Authorization Server.
+      authorization on the backchannel from the Authorization Server and
+      waits for a response from the Authorization Server.
 
-   *  (D) The Authorization Server requests the authorization from the
-      user on the user's device.
+   *  (D) The Authorization Server requests user authentication and
+      authorization on the user's Authorization Device.
 
-   *  (E) The user authenticates to the authorization server before
-      granting authorization on their device.
+   *  (E) If the user is unauthenticated, they use their Authorization
+      Device to authenticate and grant authorization to the
+      Authorization Server.
+
+   *  (F) The user is authenticated and authorization is granted to
+      access the user's resources (there may be several additional
+      messages, depending on the authentication protocol, user interface
+      and other implementation details).
 
    *  (G) The Authorization Server issues tokens or grants authorization
       to the Consumption Device, which is under the attacker's control.
