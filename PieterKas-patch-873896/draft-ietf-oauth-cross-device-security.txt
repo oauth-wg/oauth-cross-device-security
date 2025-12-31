@@ -2,13 +2,13 @@
 
 
 
-oauth                                                      P. Kasselmann
+oauth                                                       P. Kasselman
 Internet-Draft                                                   Defakto
 Intended status: Best Current Practice                           D. Fett
-Expires: 4 June 2026                                            Authlete
+Expires: 4 July 2026                                            Authlete
                                                                F. Skokan
                                                                     Okta
-                                                         1 December 2025
+                                                        31 December 2025
 
 
            Cross-Device Flows: Security Best Current Practice
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 4 June 2026.
+   This Internet-Draft will expire on 4 July 2026.
 
 Copyright Notice
 
@@ -179,15 +179,16 @@ Table of Contents
 
    In all cases, it is up to the user to decide whether to grant
    authorization or not.  However, the QR code or PIN are transferred
-   via an unauthorized channel, leaving it up to the user to decide in
-   which context an authorization is requested.  This may be exploited
-   by attackers to gain unauthorized access to a user's resources.
+   via an unauthenticated channel, leaving it up to the user to decide
+   in which context an authorization is requested.  This may be
+   exploited by attackers to gain unauthorized access to a user's
+   resources.
 
    To accommodate the various nuances of cross-device flows, this
-   document distinguished between cases where the cross-device flow is
-   used to authorize access to a resource (cross-device authorization
-   flows) and cases where the cross-device flow is used to transfer an
-   existing session (cross-device session transfer flows).
+   document distinguishes between use cases where the cross-device flow
+   is used to authorize access to a resource (cross-device authorization
+   flows) and use cases where the cross-device flow is used to transfer
+   an existing session (cross-device session transfer flows).
 
 1.1.  Cross-Device Authorization
 
@@ -200,28 +201,35 @@ Table of Contents
    popular cross-device authorization flows.
 
    In these flows, the Consumption Device and the Authorization Device
-   are not directly connected and there is no technical mechanisms for
+   are not directly connected and there are no technical mechanisms for
    the Authorization Device and Consumption Device to establish mutual
    authentication.  It is left to the user to decide whether the source
    of the authorization request (the Consumption Device) should be
    trusted before they scan a QR code, enter a user code, or accept an
    authorization request pushed to their Authorization Device.  The
    transfer of the authorization request and context between the
-   Consumption Device and Authorization device is done over an
+   Consumption Device and Authorization Device is done over an
    unauthenticated channel.  The only mitigation against this
    unauthenticated channel is the user's judgement.
 
    Cross-Device Consent Phishing (CDCP) attacks exploit the
    unauthenticated channel between the Consumption Device and
-   Authorization Device using social engineering techniques to gain
-   unauthorized access to the user's data.  Several publications have
-   emerged in the public domain ([Exploit1], [Exploit2], [Exploit3],
-   [Exploit4], [Exploit5], [Exploit6]), describing how the
-   unauthenticated channel can be exploited using social engineering
-   techniques borrowed from phishing.  Unlike traditional phishing
-   attacks, these attacks don't harvest credentials.  Instead, they skip
-   the step of collecting credentials by persuading users to grant
-   authorization using their Authorization Devices.
+   Authorization Device using social engineering techniques commonly
+   used in phishing attacks to gain unauthorized access to the user's
+   data.
+
+   Note: This document uses the terms "social engineering" and
+   "phishing" as described in the NIST Computer Security Resource Center
+   Glossary [NISTGlossary].
+
+   Several publications have emerged in the public domain ([ARTDCPHISH],
+   [DCFLOWPHISH], [NEWDCPHISH], [DEFCON29], [DCATTACK], [SQPHISH]),
+   describing how the unauthenticated channel can be exploited using
+   social engineering techniques borrowed from phishing.  Unlike
+   traditional phishing attacks, these attacks don't harvest
+   credentials.  Instead, they skip the step of collecting credentials
+   by persuading users to grant authorization using their Authorization
+   Devices.
 
    Once the user grants authorization, the attacker has access to the
    user's resources and in some cases is able to collect access and
@@ -338,16 +346,25 @@ Table of Contents
 
 3.  Cross-Device Flow Patterns
 
-   Cross-device flows allow a user to start a flow on one device (e.g.,
-   a smart TV) and then transfer the session to continue it on a second
-   device (e.g., a mobile phone).  The second device may be used to
-   access the service that was running on the first device, or to
-   perform an action such as authenticating or granting authorization
-   before potentially passing control back to the first device.
+   Cross-device flows enable a user to initiate an interaction on one
+   device (e.g., a smart TV) and complete or continue it on a second
+   device (e.g., a mobile phone).  This specification addresses two
+   distinct cross-device use cases:
+
+   *  *Cross-Device Authorization:* In the cross-device authorization
+      use case, the second device is used to authenticate the user or
+      grant authorization before passing control back to the first
+      device as described in Section 3.1.
+
+   *  *Cross-Device Session Transfer* In the cross-device session
+      transfer use case, the user is already authenticated on the first
+      device, before the session is transferred to the second device
+      without requiring the user to re-authenticate as described in
+      Section 3.2.
 
    These flows typically involve using a mobile phone to scan a QR code
    or enter a user code displayed on the first device (e.g., Smart TV,
-   Kiosk, Personal Computer or other electronic devices.).
+   Kiosk, Personal Computer or other electronic devices).
 
 3.1.  Cross-Device Authorization
 
@@ -380,7 +397,7 @@ Table of Contents
       they already carry with them.
 
    There are three cross-device flow patterns for transferring the
-   authorization request between the Consumption Device to the
+   authorization request between the Consumption Device and the
    Authorization Device.
 
    *  *User-Transferred Session Data Pattern:* In the first pattern, the
@@ -393,7 +410,7 @@ Table of Contents
       Consumption Device and enter it on the Authorization Device, or
       they may scan a QR code displayed on the Consumption Device with
       the Authorization Device.  The Device Authorization Grant
-      ([RFC8628]) is an example of a cross-device flow that follow this
+      ([RFC8628]) is an example of a cross-device flow that follows this
       pattern.
 
    *  *Backchannel-Transferred Session Pattern:* In the second pattern,
@@ -402,7 +419,7 @@ Table of Contents
       Authorization Device via a backchannel with the Authorization
       Server.  For example the user may attempt an online purchase on a
       Consumption Device (e.g., a personal computer) and receive an
-      authorization request on their Authentication Device (e.g., mobile
+      authorization request on their Authorization Device (e.g., mobile
       phone).  The Client Initiated Backchannel Authentication [CIBA] is
       an example of a cross-device flow that follow this pattern.
 
@@ -414,8 +431,12 @@ Table of Contents
       to Consumption Device (e.g., by manually entering it).  For
       example the user may attempt to access data in an enterprise
       application and receive a 6 digit authorization code on their
-      Authentication Device (e.g., mobile phone) that they enter on
-      Consumption Device.
+      Authorization Device (e.g., mobile phone) that they enter on
+      Consumption Device.  Note: The use of a 6 digit code is
+      illustrative and reflects common practice at the time of writing.
+      Code length may vary based on usability and risk considerations,
+      and specifying the appropriate length is out of scope for this
+      document.
 
 3.1.1.  User-Transferred Session Data Pattern
 
@@ -425,22 +446,41 @@ Table of Contents
    data manually or scanning a QR code.  The figure below shows a
    typical example of this flow:
 
-                                 (B) Consumption Device
-                +--------------+     Get QR/User Code  +---------------+
-   (A)User  +---|  Consumption |<--------------------->|               |
-      Start |   |   Device     |(E) Grant Authorization| Authorization |
-      Flow  +-->|              |<--------------------->|     Server    |
-                +--------------+                       |               |
-                       |                               |               |
-                       | (C) Scan QR code              |               |
-                       |         or                    |               |
-                       |   enter User Code             |               |
-                       v                               |               |
-                +--------------+                       |               |
-                | Authorization|                       |               |
-                |    Device    |<--------------------->|               |
-                |              |(D) User Authenticates |               |
-                |              | and Authorize Access  |               |
+                +--------------+                       +---------------+
+                |  Consumption |--(B) Request -------->|               |
+                |    Device    |      QR/User Code     |               |
+                |              |                       |               |
+                |              |<-(C) Return ----------|               |
+       +------->|              |      QR/User Code     |               |
+       |        |              |                       |               |
+       |        |              |--(D) Poll for ------->|               |
+      (A) User  |              |      Authorization    |               |
+       |  Start |              |                       |               |
+       |  Flow  |              |<-(J) Grant -----------| Authorization |
+       |        |              |      Authorization    |     Server    |
+       |        +--------------+                       |               |
+       |                                               |               |
+   +------+                                            |               |
+   | User |                                            |               |
+   +------+                                            |               |
+    |   |                                              |               |
+    |  (E) Scan QR code or enter User Code             |               |
+    |   |                                              |               |
+    |   |       +--------------+                       |               |
+    |   +------>| Authorization|                       |               |
+    |           |    Device    |--(F) Send QR code --->|               |
+    |           |              |      or user code     |               |
+    |           |              |                       |               |
+    |           |              |<-(G) Request user ----|               |
+    |           |              |     Authentication and|               |
+    |           |              |     Authorization     |               |
+    +-(H) User->|              |                       |               |
+   Authenticates|              |                       |               |
+   and grants   |              |                       |               |
+   Authorization|              |                       |               |
+                |              |--(I) Authentication ->|               |
+                |              |      and Authorization|               |
+                |              |      Completes        |               |
                 +--------------+                       +---------------+
 
    Figure: User-Transferred Session Data Pattern
@@ -449,18 +489,36 @@ Table of Contents
       a purchase, adding a device to a network or connecting a service
       to the Consumption Device.
 
-   *  (B) The Consumption Device retrieves a QR code or user code from
-      an Authorization Server.
+   *  (B) The Consumption Device requests a QR code or user code from an
+      Authorization Server.
 
-   *  (C) The QR code or user code is displayed on the Consumption
-      Device where the user scans the QR code or enters the user code on
-      the Authorization Device.
+   *  (C) The Authorization Server returns a QR code or user code to the
+      Consumption Device, which displays it to the user with
+      instructions to scan the QR code or enter the user code using the
+      Authorization Device.
 
-   *  (D) If the user is unauthenticated, they authenticate to the
-      Authorization Server before granting authorization.
+   *  (D) The Consumption Device starts polling the Authorization Server
+      to find out if the user granted authorization.
 
-   *  (E) The Authorization Server issues tokens or grants authorization
-      to the Consumption Device to access the user's resources.
+   *  (E) The user scans the QR code or enters the user code on the
+      Authorization Device.
+
+   *  (F) The QR code or user code is sent to the Authorization Server
+
+   *  (G) The Authorization Server validates the QR code or user code
+      and prompts the user to authenticate and accept or decline the
+      authorization request.
+
+   *  (H) The user authenticates and grants authorization using the
+      Authorization Device.
+
+   *  (I) The user is authenticated and authorization is granted to
+      access the user's resources (there may be several additional
+      messages, depending on the authentication protocol, user interface
+      and other implementation details).
+
+   *  (J) The Authorization Server grants authorization (e.g. by issuing
+      tokens) to the Consumption Device to access the user's resources.
 
 3.1.2.  Backchannel-Transferred Session Pattern
 
@@ -469,22 +527,33 @@ Table of Contents
    authorization on the Authorization Device.  The figure below shows an
    example of this flow.
 
-                                 (B) Backchannel Authorization
-                +--------------+     Request           +---------------+
-   (A)User  +---|  Consumption |<--------------------->|               |
-      Start |   |   Device     |(E) Grant Authorization| Authorization |
-      Flow  +-->|              |<--------------------->|     Server    |
-                +--------------+                       |               |
-                                                       |               |
-                                                       |               |
-                                                       |               |
-                                                       |               |
-   (D)User                                             |               |
-     Authorize  +--------------+                       |               |
-     Action +---| Authorization|                       |               |
-            |   |    Device    |<--------------------->|               |
-            +-->|              |(C) Request User       |               |
-                |              |    Authorization      |               |
+                +--------------+                       +---------------+
+       +------->|  Consumption |--(B) Backchannel ---->|               |
+       |        |     Device   |      Authorization    |               |
+       |        |              |      Request          |               |
+       |        |              |                       | Authorization |
+       |        |              |<-(F) Grant------------|     Server    |
+       |        +--------------+      Authorization    |               |
+      (A) User                                         |               |
+       |  Start                                        |               |
+       |  Flow                                         |               |
+       |                                               |               |
+   +------+                                            |               |
+   | User |                                            |               |
+   +------+                                            |               |
+       |                                               |               |
+      (D) User Authenticate                            |               |
+       |  and Authorize Action                         |               |
+       |                                               |               |
+       |        +--------------+                       |               |
+       |        | Authorization|                       |               |
+       |        |    Device    |<-(C) Request User ----|               |
+       +------->|              |      Authentication   |               |
+                |              |      and Authorization|               |
+                |              |                       |               |
+                |              |--(E) Authentication ->|               |
+                |              |      and Authorization|               |
+                |              |      Completes        |               |
                 +--------------+                       +---------------+
 
    Figure: Backchannel-Transferred Session Pattern
@@ -494,17 +563,24 @@ Table of Contents
       to the Consumption Device.
 
    *  (B) The client on the Consumption Device requests user
-      authorization on the backchannel from the Authorization Server.
+      authorization on the backchannel from the Authorization Server and
+      instructs the user to authorize the request on the Authorization
+      Device and waits for a response from the Authorization Server.
 
-   *  (C) The Authorization Server requests the authorization from the
-      user on the user's Authorization Device.
+   *  (C) The Authorization Server requests user authentication and
+      authorization on the user's Authorization Device.
 
-   *  (D) If the user is unauthenticated, they authenticate to the
-      Authorization Server before using their device to grant
-      authorization.
+   *  (D) If the user is unauthenticated, they use their Authorization
+      Device to authenticate and grant authorization to the
+      Authorization Server.
 
-   *  (E) The Authorization Server issues tokens or grants authorization
-      to the Consumption Device to access the user's resources.
+   *  (E) The user is authenticated and authorization is granted to
+      access the user's resources (there may be several additional
+      messages, depending on the authentication protocol, user interface
+      and other implementation details).
+
+   *  (F) The Authorization Server grants authorization (e.g. by issuing
+      tokens) to the Consumption Device to access the user's resources.
 
    The Authorization Server may use a variety of mechanisms to request
    user authorization, including a push notification to a dedicated app
@@ -523,22 +599,29 @@ Table of Contents
    for validation before gaining access to the user's resources.  The
    figure below shows an example of this flow.
 
-                                 (B) Backchannel Authorization
-                +--------------+     Request           +---------------+
-   (A)User  +---|  Consumption |<--------------------->|               |
-      Start |   |   Device     |(E) Grant Authorization| Authorization |
-      Flow  +-->|              |<--------------------->|     Server    |
-                +--------------+                       |               |
-                       ^                               |               |
-                       | (D)User Enters                |               |
-                       |    Authorization Data         |               |
-                       |                               |               |
-                       |                               |               |
-                +--------------+                       |               |
-                | Authorization|                       |               |
-                |    Device    |<--------------------->|               |
-                |              |(C) Send Authorization |               |
-                |              |    Data               |               |
+                +--------------+                       +---------------+
+       +------->|  Consumption |--(B) Backchannel ---->|               |
+       |        |     Device   |      Authorization    |               |
+       |        |              |      Request          |               |
+       |        |              |                       | Authorization |
+       |        |              |<-(F) Grant------------|     Server    |
+       |        +--------------+      Authorization    |               |
+      (A) User       ^                                 |               |
+       |  Start      |                                 |               |
+       |  Flow      (E) User Enters                    |               |
+       |             |  Authorization                  |               |
+   +------+          |  Data                           |               |
+   | User |----------+                                 |               |
+   +------+                                            |               |
+       ^                                               |               |
+      (D) User Copies                                  |               |
+       |  Authorization Data                           |               |
+       |                                               |               |
+       |        +--------------+                       |               |
+       |        | Authorization|                       |               |
+       |        |    Device    |<-(C) Send ------------|               |
+       +--------|              |      Authorization    |               |
+                |              |      Data             |               |
                 +--------------+                       +---------------+
 
    Figure: User-Transferred Authorization Data Pattern
@@ -555,10 +638,13 @@ Table of Contents
       of mechanisms that may be used to distribute the authorization
       data include text messages, email or a mobile application.
 
-   *  (D) The user enters the authorization data (e.g., the 6 digit
-      authorization code) on the Consumption Device.
+   *  (D) The user reads and copies the authorization data (e.g., the 6
+      digit authorization code) received on the Authorization Device.
 
-   *  (E) The Authorization Server issues tokens or grants authorization
+   *  (E) The user enters the authorization data on the Consumption
+      Device.
+
+   *  (F) The Authorization Server issues tokens or grants authorization
       to the Consumption Device to access the user's resources.
 
    The Authorization Server may choose to authenticate the user before
@@ -600,57 +686,72 @@ Table of Contents
    ([OpenID.VCI]) is an instance of using this pattern to provision a
    new credential.  The figure below shows a typical flow.
 
-                                 (B) Session Transfer
-                +--------------+     Request           +---------------+
-   (A)User  +---| Authorization|---------------------->|               |
-      Start |   |   Device     |(C) Session Transfer   |               |
-      Flow  |   |              |    Code               | Authorization |
-            +-->|              |<----------------------|     Server    |
-                +--------------+                       |               |
-                       |                               |               |
-                       | (D) Scan QR code              |               |
-                       |      or enter                 |               |
-                       | Session Transfer Code         |               |
-                       |                               |               |
-                       v         (E) Present Session   |               |
-                +--------------+     Transfer Code     |               |
-                | Consumption  |---------------------->|               |
-   (G)User  +---|    Device    |                       |               |
-   Resumes  |   |              | (F) Return Session    |               |
-   Session  |   |              |     Context           |               |
-            +-->|              |<----------------------|               |
-                +--------------+                       +---------------+
+               +---------------+                       +---------------+
+     +-------->| Authorization |                       | Authorization |
+     |         |    Device     |--(B) Session -------->|     Server    |
+     |         |               |      Transfer Request |               |
+     |         |               |                       |               |
+     |         |               |<-(C) Session ---------|               |
+     |         |               |      Transfer Code    |               |
+     |         |               |                       |               |
+     |         +---------------+                       |               |
+    (A) User      |                                    |               |
+     |  Start    (D) User Views                        |               |
+     |  Flow      |  Session Transfer Code             |               |
+     |            v  or QR Code                        |               |
+   +---------------------------+                       |               |
+   |           User            |                       |               |
+   +---------------------------+                       |               |
+                      |                                |               |
+                     (E) Enter Session Transfer Code   |               |
+                      |  or Scan QR code               |               |
+                      |                                |               |
+                      v                                |               |
+               +---------------+                       |               |
+               |  Consumption  |                       |               |
+               |     Device    |--(F) Present -------->|               |
+               |               |      Session Transfer |               |
+               |               |      Code             |               |
+               |               |                       |               |
+               |               |<-(G) Return Session --|               |
+               |               |      Context          |               |
+               +---------------+                       +---------------+
 
    Figure: Cross-Dvice Session Transfer Pattern
 
    *  (A) The user is authenticated on the Authorization Device and
-      authorizes the transfer of the session to the Consumption device.
+      authorizes the transfer of the session to the Consumption Device.
 
-   *  (B) The client on the Authorization Device requests a session
-      transfer code from the Authorization Server.
+   *  (B) The user starts the flow and is authenticated on their
+      Authorization Device before they authorize the transfer of the
+      session to the Consumption Device.
 
    *  (C) The Authorization Server responds with a session transfer
       code, which may be rendered as a QR code on the Authorization
       Device.
 
-   *  (D) The user scans the QR code with the Consumption Device (e.g.,
-      their mobile phone), or enters the session transfer code on the
+   *  (D) The user views the session transfer code, which may be
+      rendered as a QR code.
+
+   *  (E) The user enters the session transfer code the Consumption
+      Device (e.g., their mobile phone).  If the session transfer code
+      is rendered as a QR code, the user scans the QR code with the
       target Consumption Device.
 
-   *  (E) The client on the Consumption Device presents the session
+   *  (F) The client on the Consumption Device presents the session
       transfer code to the Authorization Server.
 
-   *  (F) The Authorization Server verifies the session transfer code
-      and retrieves the session context information needed to resume the
-      session on the Consumption Device.
-
-   *  (G) The user resumes the session and is able to access the
-      information on the Consumption Device that they authorized on the
-      Authorization Device.
+   *  (G) The Authorization Server verifies the session transfer code
+      and returns the session context information needed to resume the
+      session on the Consumption Device.  The user resumes the session
+      they initiated and authorized on the Authorization Device and
+      proceeds to access the information on the Consumption Device.
 
 3.3.  Examples of Cross-Device Flows
 
-   Examples of cross-device flow scenarios include:
+   The following examples illustrate the above flows in a diverse range
+   of practical settings.  Corresponding examples off how these flows
+   may be exploited are documented in Section 4.3.
 
 3.3.1.  Example A1: Authorize Access to a Video Streaming Service (User-
         Transferred Session Data Pattern)
@@ -662,7 +763,8 @@ Table of Contents
    enter their credentials to authorize the smart TV to access the
    streaming service.  The user enters their credentials and grants
    authorization, after which the streaming service is available on the
-   smart TV.
+   smart TV.  Section 4.3.1 illustrates an exploit that applies to this
+   scenario.
 
 3.3.2.  Example A2: Authorize Access to Productivity Services (User-
         Transferred Session Data Pattern)
@@ -674,19 +776,21 @@ Table of Contents
    to authenticate and authorize the interactive whiteboard to access
    their files.  The user enters their credentials and authorizes the
    transaction and the interactive whiteboard retrieves their files and
-   allows the user to interact with the content.
+   allows the user to interact with the content.  Section 4.3.2
+   describes an exploit relevant to this example.
 
 3.3.3.  Example A3: Authorize Use of a Bike Sharing Scheme (User-
         Transferred Session Data Pattern)
 
    An end-user wants to rent a bicycle from a bike sharing scheme.  The
-   bicycles are locked in bicylce racks on sidewalks throughout a city.
+   bicycles are locked in bicycle racks on sidewalks throughout a city.
    To unlock and use a bicycle, the user scans a QR code on the bicycle
    using their mobile phone.  Scanning the QR code redirects the user to
    the bicycle sharing scheme's authorization page where the user
    authenticates and authorizes payment for renting the bicycle.  Once
    authorized, the bicycle sharing service unlocks the bicycle, allowing
-   the user to use it to cycle around the city.
+   the user to use it to cycle around the city.  Section 4.3.3 outlines
+   an exploit relevant to this situation.
 
 3.3.4.  Example A4: Authorize a Financial Transaction (Backchannel-
         Transferred Session Pattern)
@@ -695,6 +799,8 @@ Table of Contents
    purchase, they get a notification on their mobile phone, asking them
    to authorize the transaction.  The user opens their app and
    authenticates to the service before authorizing the transaction.
+   Section 4.3.4 and Section 4.3.5 describes exploits relevant to this
+   example.
 
 3.3.5.  Example A5: Add a Device to a Network (Cross-Device Session
         Transfer Pattern)
@@ -708,7 +814,8 @@ Table of Contents
    authorizes the user to join their mobile phone to the network.  The
    employee scans the QR code with their mobile phone and the mobile
    phone is joined to the network.  The employee can start accessing
-   corporate data and services on their mobile device.
+   corporate data and services on their mobile device.  Section 4.3.6
+   gives an example of how this flow may be exploited.
 
 3.3.6.  Example A6: Remote Onboarding (User-Transferred Session Data
         Pattern)
@@ -725,7 +832,8 @@ Table of Contents
    driving license), proof of a background check by an identity
    verifier, and proof of their qualifications.  The employee authorizes
    the release of the credentials and after completing the onboarding
-   process, their account is activated.
+   process, their account is activated.  Section 4.3.7 provides an
+   example of an exploit for this use case.
 
 3.3.7.  Example A7: Application Bootstrap (Cross-Device Session Transfer
         Pattern)
@@ -735,17 +843,19 @@ Table of Contents
    The employee initiates the cross-device flow and is shown a QR code
    in their application.  The employee launches the mobile application
    on their phone and scans the QR code which results in the user being
-   signed into the application on the mobile phone.
+   signed into the application on the mobile phone.  Section 4.3.8
+   describes an exploit that applies to this scenario.
 
 3.3.8.  Example A8: Access a Productivity Application (User-Transferred
         Authorization Data Pattern)
 
-   A user is accessing a Computer Aid Design (CAD) application.  When
+   A user is accessing a Computer Aided Design (CAD) application.  When
    accessing the application, authorization data in the form of a 6
    digit authorization code is sent to the user's mobile phone.  The
    user views the 6 digit authorization code on their phone and enters
    it in the CAD application, after which the CAD application displays
-   the user's most recent designs.
+   the user's most recent designs.  Section 4.3.9 outlines an attack
+   relevant to this scenario.
 
 3.3.9.  Example A9: Administer a System (Backchannel-Transferred Session
         Pattern)
@@ -756,6 +866,7 @@ Table of Contents
    a notification in an app on their mobile device, requesting them to
    confirm access to the portal.  The network administrator approves the
    request on their mobile phone and is granted access to the portal.
+   Section 4.3.10 describes how an attacker might exploit this flow.
 
 4.  Cross-Device Flow Exploits
 
@@ -773,7 +884,7 @@ Table of Contents
    engineering techniques to convince the user to initiate a session
    transfer and send them a session transfer code.  Once the attacker is
    in posession of this session transfer code, they present it to the
-   Authorization Server to transfer the session and access the users
+   Authorization Server to transfer the session and access the user's
    resources.  These attacks are referred to as Cross-Device Session
    Phishing (CDSP) attacks.
 
@@ -811,37 +922,56 @@ Table of Contents
    their Authorization Device (e.g., mobile phone).  Once the end-user
    performs the authorization on the mobile device, the attacker who
    initiated the authentication or authorization request obtains access
-   to the users resources.  The figure below shows an example of such an
-   attack.
+   to the user's resources.  The figure below shows an example of such
+   an attack.
 
-                              (B) Consumption Device
-              +--------------+     Get QR/User Code  +---------------+
-              |  Attacker's  |<--------------------->|               |
-              |  Consumption |(G) Grant Authorization| Authorization |
-              |   Device     |<--------------------->|     Server    |
-              +--------------+                       |               |
-                ^   | (C) Attacker Copy              |               |
-   (A) Attacker |   |     QR or User Code            |               |
-       Start    |   |                                |               |
-       Flow     |   V                                |               |
-              +--------------+                       |               |
-              |              |                       |               |
-              |   Attacker   |                       |               |
-              |              | (D) Attacker Change   |               |
-              |              |     QR Code/User Code |               |
-              |              |     Context           |               |
-              +--------------+                       |               |
-                     | (E) User is convinced by the  |               |
-                     |     attacker and scans QR code|               |
-                     |     or enters User Code       |               |
-                     v                               |               |
-              +--------------+                       |               |
-              |   End User   |                       |               |
-              | Authorization|                       |               |
-              |    Device    |<--------------------->|               |
-              |              |(F) User Authenticates |               |
-              |              | and Authorize Access  |               |
-              +--------------+                       +---------------+
+                +--------------+                       +---------------+
+                |  Attacker's  |--(B) Request -------->|               |
+                |  Consumption |      QR/User Code     |               |
+                |    Device    |                       |               |
+                |              |<-(C) Return ----------|               |
+       +------->|              |      QR/User Code     |               |
+       |        |              |                       |               |
+       |        |              |--(D) Poll for ------->|               |
+       |        |              |      Authorization    |               |
+       |        |              |                       |               |
+       |        |              |<-(L) Grant -----------| Authorization |
+       |        |              |      Authorization    |     Server    |
+       |        +--------------+                       |               |
+       |              |                                |               |
+      (A) Attacker   (E) Attacker Copies               |               |
+       |  Starts      |  QR or User Code               |               |
+       |  Flow        |                                |               |
+   +--------------+   |                                |               |
+   |   Attacker   |<--+                                |               |
+   +--------------+                                    |               |
+          |                                            |               |
+          (F) Attacker Changes                         |               |
+          |   QR Code/User Code                        |               |
+          v   Context                                  |               |
+   +--------------+                                    |               |
+   |     User     |                                    |               |
+   +--------------+                                    |               |
+    |   |                                              |               |
+    |  (G) User is convinced by the                    |               |
+    |   |  attacker and scans QR code                  |               |
+    |   |  or enters User Code                         |               |
+    |   |       +--------------+                       |               |
+    |   +------>| Authorization|                       |               |
+    |           |    Device    |--(H) Send QR code --->|               |
+    |           |              |      or user code     |               |
+    |           |              |                       |               |
+    |           |              |<-(I) Request user ----|               |
+    |           |              |     Authentication and|               |
+    |           |              |     Authorization     |               |
+    +-(J) User->|              |                       |               |
+   Authenticates|              |                       |               |
+   and grants   |              |                       |               |
+   Authorization|              |                       |               |
+                |              |--(K) Authentication ->|               |
+                |              |      and Authorization|               |
+                |              |      Completes        |               |
+                +--------------+                       +---------------+
 
    Figure: User-Transferred Session Data Pattern Exploits
 
@@ -850,12 +980,20 @@ Table of Contents
       a device to a network or connecting a service to the Consumption
       Device.
 
-   *  (B) The Consumption Device retrieves a QR code or user code from
-      an Authorization Server.
+   *  (B) The Consumption Device requests a QR code or user code from an
+      Authorization Server.
 
-   *  (C) The attacker copies the QR code or user code.
+   *  (C) The Authorization Server returns a QR code or user code to the
+      Consumption Device, which displays it to the user with
+      instructions to scan the QR code or enter the user code using the
+      Authorization Device.
 
-   *  (D) The attacker changes the context in which the QR code or user
+   *  (D) The Consumption Device starts polling the Authorization Server
+      to find out if the user granted authorization.
+
+   *  (E) The attacker copies the QR code or user code.
+
+   *  (F) The attacker changes the context in which the QR code or user
       code is displayed in such a way that the user is likely to scan
       the QR code or use the user code when completing the
       authorization.  For example, the attacker could craft an e-mail
@@ -865,19 +1003,30 @@ Table of Contents
       reward through a loyalty program or prevent the loss of their
       data.
 
-   *  (E) The QR code or user code is displayed to the user in a context
+   *  (G) The QR code or user code is displayed to the user in a context
       chosen by the attacker.  The user is convinced by the attacker's
       effort and scans the QR code or enters the user code on the
       Authorization Device.
 
-   *  (F) The user authenticates to the Authorization Server before
-      granting authorization.
+   *  (H) The QR code or user code is sent to the Authorization Server
 
-   *  (G) The Authorization Server issues tokens or grants authorization
+   *  (I) The Authorization Server validates the QR code or user code
+      and prompts the user to authenticate and accept or decline the
+      authorization request.
+
+   *  (J) The user authenticates and grants authorization using the
+      Authorization Device.
+
+   *  (K) The user is authenticated with the Authorization Server and
+      authorization is granted to access the user's resources (there may
+      be several additional messages, depending on the authentication
+      protocol, user interface and other implementation details).
+
+   *  (L) The Authorization Server issues tokens or grants authorization
       to the Consumption Device, which is under the attacker's control,
       to access the user's resources.  The attacker gains access to the
-      resources and any authorization artifacts (like access and refresh
-      tokens) which may be used in future exploits.
+      resources and any authorization artifacts like access and refresh
+      tokens.
 
 4.1.2.  Backchannel-Transferred Session Pattern Exploits
 
@@ -898,33 +1047,45 @@ Table of Contents
    that the user will grant authorization to make the requests stop.
    The figure below shows an example of such an attack.
 
-                                 (C) Backchannel Authorization
-                +--------------+     Request           +---------------+
-                |  Attacker's  |<--------------------->|               |
-                |  Consumption |(F) Grant Authorization| Authorization |
-                |  Device      |<--------------------->|     Server    |
-                +--------------+                       |               |
-                  ^                                    |               |
-     (B) Attacker |                                    |               |
-         Starts   |                                    |               |
-         Flow     |                                    |               |
-                +--------------+                       |               |
+   The ability to trigger authorization requests without user
+   involvement can be exploited an attacker to overwhelm users with a
+   high volume of requests in a short period, increasing the likelihood
+   of inadvertent approval.
+
+                +--------------+                       +---------------+
+        +------>|  Attacker's  |--(C) Backchannel ---->|               |
+        |       |  Consumption |      Authorization    |               |
+        |       |  Device      |      Request          |               |
+        |       |              |                       | Authorization |
+        |       |              |<-(G) Grant------------|     Server    |
+        |       +--------------+      Authorization    |               |
+       (B) Attacker                                    |               |
+        |  Start                                       |               |
+        |  Flow                                        |               |
+        |                                              |               |
+   +----------+                                        |               |
+   | Attacker |                                        |               |
+   +----------+                                        |               |
+        |                                              |               |
+       (A) Attacker Sends                              |               |
+        |  Social Engineering                          |               |
+        v  Message to User (optional)                  |               |
+   +----------+                                        |               |
+   |   User   |                                        |               |
+   +----------+                                        |               |
+        |                                              |               |
+       (E) User Authenticate                           |               |
+        |  and Authorize Action                        |               |
+        |                                              |               |
+        |       +--------------+                       |               |
+        |       | Authorization|                       |               |
+        |       |    Device    |<-(D) Request User ----|               |
+        +------>|              |      Authentication   |               |
+                |              |      and Authorization|               |
                 |              |                       |               |
-                |   Attacker   |                       |               |
-                |              |                       |               |
-                |              |                       |               |
-                |              |                       |               |
-                +--------------+                       |               |
-                       |  (A) Attacker Sends           |               |
-                       |       Social Engineering      |               |
-                       |       Message to User         |               |
-                       |                               |               |
-   (E)User             v                               |               |
-     Authorize  +--------------+                       |               |
-     Action +---| Authorization|                       |               |
-            |   |    Device    |<--------------------->|               |
-            +-->|              |(D) Request User       |               |
-                |              |    Authorization      |               |
+                |              |--(F) Authentication ->|               |
+                |              |      and Authorization|               |
+                |              |      Completes        |               |
                 +--------------+                       +---------------+
 
    Figure: Backchannel-Transferred Session Pattern Exploits
@@ -933,18 +1094,25 @@ Table of Contents
       user for the upcoming authorization (optional).
 
    *  (B) The attacker initiates the protocol on the Consumption Device
-      (or by mimicking the Consumption Device) by starting a purchase,
-      adding a device to a network or accessing a service on the
-      Consumption Device.
+      (or mimics the Consumption Device) by starting a purchase, adding
+      a device to a network or accessing a service on the Consumption
+      Device.
 
    *  (C) The client on the Consumption Device requests user
-      authorization on the backchannel from the Authorization Server.
+      authorization on the backchannel from the Authorization Server and
+      waits for a response from the Authorization Server.
 
-   *  (D) The Authorization Server requests the authorization from the
-      user on the user's device.
+   *  (D) The Authorization Server requests user authentication and
+      authorization on the user's Authorization Device.
 
-   *  (E) The user authenticates to the authorization server before
-      granting authorization on their device.
+   *  (E) If the user is unauthenticated, they use their Authorization
+      Device to authenticate and grant authorization to the
+      Authorization Server.
+
+   *  (F) The user is authenticated and authorization is granted to
+      access the user's resources (there may be several additional
+      messages, depending on the authentication protocol, user interface
+      and other implementation details).
 
    *  (G) The Authorization Server issues tokens or grants authorization
       to the Consumption Device, which is under the attacker's control.
@@ -971,37 +1139,44 @@ Table of Contents
    attacker also has the ability to trigger the authorization request to
    be sent to the user directly by the Authorization Server.
 
-                                 (C) Backchannel Authorization
-                +--------------+     Request           +---------------+
-                |  Attacker's  |<--------------------->|               |
-                |  Consumption |(G) Grant Authorization| Authorization |
-                |  Device      |<--------------------->|     Server    |
-                +--------------+                       |               |
-                  ^       ^                            |               |
-     (B) Attacker |       | (F) Attacker Forwards      |               |
-         Starts   |       |     Authorization Data     |               |
-         Flow     |       |                            |               |
-                +--------------+                       |               |
-                |              |                       |               |
-                |   Attacker   |                       |               |
-                |              |                       |               |
-                |              |                       |               |
-                |              |                       |               |
-                +--------------+                       |               |
-   (A) Attacker    |       ^   (E) User                |               |
-       Sends       |       |       Sends               |               |
-       Social      |       |       Authorization Data  |               |
-       Engineering |       |                           |               |
-       Message     |       |                           |               |
-                   v       |                           |               |
+                +--------------+                       +---------------+
+       +------->|  Consumption |--(C) Backchannel ---->| Authorization |
+       |        |    Device    |      Authorization    |    Server     |
+       |        |              |      Request          |               |
+       |        |              |                       |               |
+       |        |              |<-(H) Grant------------|               |
+       |        +--------------+      Authorization    |               |
+       |                    ^                          |               |
+       |                    |                          |               |
+      (B) Attacker         (G) Attacker Enters         |               |
+       |  Start             |  Authorization           |               |
+       |  Flow              |  Data                    |               |
+       |                    |                          |               |
+   +------------------------------------------+        |               |
+   |                 Attacker                 |        |               |
+   +------------------------------------------+        |               |
+     |                   ^                             |               |
+    (A) Attacker        (F) User                       |               |
+     |  Sends            |  Sends                      |               |
+     |  Social           |  Authorization              |               |
+     |  Engineering      |  Data                       |               |
+     v  Message          |                             |               |
+   +------------------------------------------+        |               |
+   |                   User                   |        |               |
+   +------------------------------------------+        |               |
+                     ^                                 |               |
+                     |                                 |               |
+                    (E) User Copies                    |               |
+                     |  Authorization Data             |               |
+                     |                                 |               |
                 +--------------+                       |               |
                 | Authorization|                       |               |
-                |    Device    |<--------------------->|               |
-                |              |(D) Send Authorization |               |
-                |              |    Data               |               |
+                |    Device    |<-(D) Send ------------|               |
+                |              |      Authorization    |               |
+                |              |      Data             |               |
                 +--------------+                       +---------------+
 
-   Figure: User-Transferred Authorization Data Pattern Exploits
+   Figure: User-Transferred Authorization Data Pattern
 
    *  (A) The attacker sends a social engineering message to prime the
       user for the authorization request they are about to receive,
@@ -1017,36 +1192,35 @@ Table of Contents
       authorization on the backchannel from the Authorization Server.
 
    *  (D) The Authorization Server sends authorization data (e.g., a 6
-      digit authorization code) to the user's Authorization Device (the
-      authorization data may be presented as a QR code, or text
-      message).
+      digit authorization code) to the Authorization Device.  Examples
+      of mechanisms that may be used to distribute the authorization
+      data include text messages, email or a mobile application.  The
+      authorization data may be presented as text or a QR code.
 
    *  (E) The user is convinced by the social engineering message
-      received in step (A) and forwards the authorization data (e.g., a
-      6 digit authorization code) to the attacker.
+      received from the attacker in step (A) and copies the
+      authorization data received on the Authorization Device.
 
-   *  (F) The attacker enters the authorization data (e.g., a 6 digit
+   *  (F) The user forwards the authorization data to the attacker.
+
+   *  (G) The attacker enters the authorization data (e.g., a 6 digit
       authorization code) on the Consumption Device.
 
-   *  (G) The Authorization Server grants authorization and issues
+   *  (H) The Authorization Server grants authorization and issues
       access and refresh tokens to the Consumption Device, which is
       under the attacker's control.  On completion of the exploit, the
       attacker gains access to the user's resources.
 
    The unauthenticated channel may also be exploited in variations of
-   the above scenario where the user (as opposed to the attacker)
+   the above scenario if there is no session maintained in the channel
+   for steps C and G.  In that case a user (as opposed to the attacker)
    initiates the flow and is then convinced using social engineering
    techniques into sending the authorization data (e.g., a 6 digit
-   authorization code) to the attacker.  In these flows, the user is
-   already authenticated and they request authorization data to transfer
-   a session or obtain some other privilege such as joining a device to
-   a network.  The authorization data may be represented as a QR code or
-   text string (e.g., 6 digit authorization code).  The attacker then
-   proceeds to exploit the unauthenticated channel by using social
-   engineering techniques to convince the user to send the QR code or
-   user code to the attacker.  The attacker then use the authorization
-   data to obtain the privileges that would have been assigned to the
-   user.
+   authorization code) to the attacker, instead of using it themselves.
+   The authorization data may be represented as a QR code or text string
+   (e.g., 6 digit authorization code).  The attacker then starts the
+   flow and uses the authorization data to obtain the privileges that
+   would have been assigned to the user.
 
 4.2.  Cross-Device Session Transfer Exploits
 
@@ -1059,45 +1233,57 @@ Table of Contents
    to the session and access the users data.  These attacks are referred
    to as Cross-Device Session Phishing (CDSP) attacks.
 
-                                 (C) Session Transfer
-                +--------------+     Request           +---------------+
-   (B)User  +---| Authorization|---------------------->|               |
-      Start |   |   Device     |(D) Session Transfer   |               |
-      Flow  |   |              |    Code               | Authorization |
-            +-->|              |<----------------------|     Server    |
-                +--------------+                       |               |
-   (A)Attacker    ^          |                         |               |
-      Sends Social|          | (E) User sends QR code  |               |
-      Engineering |          |     or Session Transfer |               |
-      Message     |          v     Code to Attacker    |               |
-                +--------------+                       |               |
-                |              |                       |               |
-                |   Attacker   |                       |               |
-                |              |                       |               |
-                |              |                       |               |
-                |              |                       |               |
-                +--------------+                       |               |
-   (F)Attacker scans   |                               |               |
-      QR code or enters|                               |               |
-      Session Transfer |                               |               |
-      Code             v         (G) Present Session   |               |
-                +--------------+     Transfer Code     |               |
-                |  Attacker's  |---------------------->|               |
-   (I)      +---|  Consumption |                       |               |
-    Attacker|   |    Device    | (H) Return Session    |               |
-    Resumes |   |              |     Context           |               |
-    Session +-->|              |<----------------------|               |
-                +--------------+                       +---------------+
+              +---------------+                       +---------------+
+      +------>| Authorization |                       | Authorization |
+      |       |    Device     |--(C) Session -------->|     Server    |
+      |       |               |      Transfer Request |               |
+      |       |               |                       |               |
+      |       |               |<-(D) Session ---------|               |
+      |       |               |      Transfer Code    |               |
+      |       |               |                       |               |
+      |       +---------------+                       |               |
+     (B) User      |                                  |               |
+      |  Start    (E) User Views                      |               |
+      |  Flow      |  Session Transfer Code           |               |
+      |            v  or QR Code                      |               |
+  +--------------------------------+                  |               |
+  |             User               |                  |               |
+  +--------------------------------+                  |               |
+    ^                |                                |               |
+    |                |                                |               |
+   (A) Attacker     (F) User sends Session            |               |
+    |  Sends         |  Transfer or QR Code           |               |
+    |  Social        |  to Attacker                   |               |
+    |  Engineering   |                                |               |
+    |  Message       v                                |               |
+  +-------------------------------+                   |               |
+  |            Attacker           |                   |               |
+  +-------------------------------+                   |               |
+                       |                              |               |
+                      (G) Attacker Enter              |               |
+                       |  Session Transfer Code       |               |
+                       |  or Scan QR Code             |               |
+                       v                              |               |
+              +---------------+                       |               |
+              |  Consumption  |                       |               |
+              |     Device    |--(H) Present -------->|               |
+              |               |      Session Transfer |               |
+              |               |      Code             |               |
+              |               |                       |               |
+              |               |<-(I) Return Session --|               |
+              |               |      Context           |               |
+              +---------------+                       +---------------+
 
-   Figure: Cross-Device Session Transfer Pattern Exploit
+   Figure: Cross-Device Session Transfer Pattern
 
-   *  (A) The attacker sends a social engineering message to that
-      convinces the user that they should authorize a session transfer
-      including instructions on what to do with the QR code or session
-      transfer code once they receive it.
+   *  (A) The attacker sends a social engineering message that convinces
+      the user that they should authorize a session transfer including
+      instructions on what to do with the QR code or session transfer
+      code once they obtained it.
 
-   *  (B) The user is authenticated on their Authorization Device and
-      authorizes the transfer of the session to the Consumption Device.
+   *  (B) The user starts the flow and is authenticated on their
+      Authorization Device before they authorize the transfer of the
+      session to the Consumption Device.
 
    *  (C) The client on the Authorization Device requests a session
       transfer code from the Authorization Server.
@@ -1106,34 +1292,39 @@ Table of Contents
       code, which may be rendered as a QR code on the Authorization
       Device.
 
-   *  (E) The user sends the QR code or session transfer code to the
+   *  (E) The user views the session transfer code, which may be
+      rendered as a QR code.
+
+   *  (F) The user sends the QR code or session transfer code to the
       attacker, following the instructions they received in step (A).
 
-   *  (F) Once the attacker receives the QR code, they scan it or enter
+   *  (G) Once the attacker receives the QR code, they scan it or enter
       it on their own Consumption Device.
 
-   *  (G) The client on the Consumption Device presents the session
+   *  (H) The client on the Consumption Device presents the session
       transfer code to the Authorization Server.
 
-   *  (H) The Authorization Server verifies the session transfer code
-      and retrieves the session context information needed to resume the
-      session on the Consumption Device.
-
-   *  (I) The attacker resumes the session on their own Consumption
-      Device and is able to access the information that the user
-      authorized on their Authorization Device in step (B).
+   *  (I) The Authorization Server verifies the session transfer code
+      and returns the session context information needed to resume the
+      session on the Consumption Device.  The attacker resumes the
+      session on their own Consumption Device and is able to access the
+      information that the user authorized on their Authorization Device
+      in step (B).
 
 4.3.  Examples of Cross-Device Flow Exploits
 
    The following examples illustrate these attacks in practical settings
-   and show how the unauthenticated channel is exploited by attackers
-   who can copy the QR codes and user codes, change the context in which
+   applied to the use cases described in Section 3.3.  These examples
+   show how the unauthenticated channel is exploited by attackers who
+   can copy the QR codes and user codes, change the context in which
    they are presented using social engineering techniques and mislead
    end-users into granting consent to avail of services, access data and
    make payments.
 
 4.3.1.  Example B1: Illicit Access to a Video Streaming Service (User-
         Transferred Session Data Pattern)
+
+   This exploit applies to the use case described in Section 3.3.1.
 
    An attacker obtains a smart TV and attempts to access an online
    streaming service.  The smart TV obtains a QR code from the streaming
@@ -1160,6 +1351,8 @@ Table of Contents
 4.3.2.  Example B2: Illicit Access to Productivity Services (User-
         Transferred Session Data Pattern)
 
+   This exploit applies to the use case described in Section 3.3.2.
+
    An attacker emulates an enterprise application (e.g., an interactive
    whiteboard) and initiates a cross-device flow by requesting a user
    code and URL from the authorization server.  The attacker obtains a
@@ -1182,6 +1375,8 @@ Table of Contents
 4.3.3.  Example B3: Illicit Access to Physical Assets (User-Transferred
         Session Data Pattern)
 
+   This exploit applies to the use case described in Section 3.3.3.
+
    An attacker copies a QR code from a bicycle locked in a bicycle rack
    in a city, prints it on a label and places the label on a bicycle at
    the other end of the bicycle rack.  A customer approaches the bicycle
@@ -1197,6 +1392,8 @@ Table of Contents
 4.3.4.  Example B4.1: Illicit Transaction Authorization (Backchannel-
         Transferred Session Pattern)
 
+   This exploit applies to the use case described in Section 3.3.4.
+
    An attacker obtains a list of user identifiers for a financial
    institution and triggers a transaction request for each of the users
    on the list.  The financial institution's authorization server sends
@@ -1207,6 +1404,8 @@ Table of Contents
 
 4.3.5.  Example B4.2: Fake Helpdesk (Backchannel-Transferred Session
         Pattern)
+
+   This exploit applies to the use case described in Section 3.3.4.
 
    An attacker obtains the contact information for a user and contacts
    them, pretending to be a representative of the user's financial
@@ -1225,6 +1424,8 @@ Table of Contents
 4.3.6.  Example B5: Illicit Network Join (Cross-Device Session Transfer
         Pattern)
 
+   This exploit applies to the use case described in Section 3.3.5.
+
    An attacker creates a message to all employees of a company, claiming
    to be from a trusted technology provider investigating a suspected
    security breach.  They ask employees to send them the QR code
@@ -1239,6 +1440,8 @@ Table of Contents
 
 4.3.7.  Example B6: Illicit Onboarding (User-Transferred Session Data
         Pattern)
+
+   This exploit applies to the use case described in Section 3.3.6.
 
    An attacker initiates an employee onboarding flow and obtains a QR
    code from the onboarding portal to invoke a digital wallet and
@@ -1255,6 +1458,8 @@ Table of Contents
 4.3.8.  Example B7: Illicit Application Bootstrap (Cross-Device Session
         Transfer Pattern)
 
+   This exploit applies to the use case described in Section 3.3.7.
+
    An attacker creates a message to all employees of a company, claiming
    to be from the company's IT service provider.  They claim that they
    are trying to resolve an application performance issue and ask
@@ -1266,6 +1471,8 @@ Table of Contents
 
 4.3.9.  Example B8: Account Takeover (User-Transferred Session Data
         Pattern)
+
+   This exploit applies to the use case described in Section 3.3.8.
 
    An attacker wants to use some website which requires presentation of
    a verifiable credential for authentication.  The attacker creates a
@@ -1281,6 +1488,8 @@ Table of Contents
 4.3.10.  Example B9: Illicit Access to Administration Capabilities
          Through Consent Request Overload (Backchannel-Transferred
          Session Pattern)
+
+   This exploit applies to the use case described in Section 3.3.9.
 
    An attacker attempts to access an adminstration portal repeatedly,
    generating a stream of authorization requests to the network
@@ -1416,11 +1625,12 @@ Table of Contents
 
    3.  Remediates or reduces the impact if the attack succeeds.
 
-   It is RECOMMENDED that one or more of the mitigations are applied
-   whenever implementing a cross-device flow.  Every mitigation provides
-   an additional layer of security that makes it harder to initiate the
-   attack, disrupts attacks in progress or reduces the impact of a
-   successful attack.
+   It is RECOMMENDED that one or more of the mitigations be applied when
+   implementing a cross-device flow.  Each mitigation, despite
+   limitations in its effectiveness, provides an additional layer of
+   security that may increase the difficulty of initiating an attack,
+   disrupt attacks in progress, or reduce the impact of a successful
+   attack.
 
 6.1.1.  Establish Proximity
 
@@ -1432,8 +1642,16 @@ Table of Contents
    less cross-device flows.  Establishing proximity between the location
    of the Consumption Device and the Authorization Device limits an
    attacker's ability to launch attacks by sending the user or QR codes
-   to large numbers of users that are geographically distributed.  There
-   are a couple of ways to establish proximity:
+   to large numbers of users that are geographically distributed.  Note
+   that the authorization server typically cannot directly determine
+   whether the Consumption Device and Authorization Device are
+   physically close to each other.  Instead, it must rely on the
+   surrounding systems, protocols in use, device capabilities, or
+   information it obtains from other systems to establish or verify
+   proximity.  The authorization server can validate information it
+   receives, but it cannot independently measure or enforce proximity on
+   its own.  There are a number of ways to establish proximity, each
+   with its own implementation benefits and limitations:
 
    *  Physical connectivity: This is a good indicator of proximity, but
       requires specific ports, cables and hardware and may be
@@ -1442,9 +1660,7 @@ Table of Contents
       removed for security purposes).  Physical connectivity may be
       better suited to dedicated hardware like FIDO devices that can be
       used with protocols that are resistant to the exploits described
-      in this document.  The authorization server does not directly
-      establish proximity, but relies on the deployed system and
-      selected protocols and devices to establish proximity.
+      in this document.
 
    *  Wireless proximity: Near Field Communications (NFC), Bluetooth Low
       Energy (BLE), and Ultra Wideband (UWB) services can be used to
@@ -1455,10 +1671,10 @@ Table of Contents
       experience challenges when setting up.  UWB standards such as IEEE
       802.15.4 and the IEEE 802.15.4z-2020 Amendment 1 enable secure
       ranging between devices and allow devices to establish proximity
-      relative to each other [IEEE802154].  The authorization server
-      does not directly establish proximity, but relies on the deployed
-      system and selected protocols and devices to establish proximity
-      using these wireless proximity protocols.
+      relative to each other [IEEE802154].  FIDO and WebAuthn-based
+      cross-device flows leverage wireless proximity using BLE and are
+      the RECOMMENDED approach for performing secure cross-device flows
+      (see Section 6.2.3).
 
    *  Shared network: Device proximity can be inferred by verifying that
       both devices are on the same network.  This check may be performed
@@ -1480,7 +1696,7 @@ Table of Contents
       location information derived from global navigation satellite-
       system (GNSS) co-ordinates or geolocation lookup of IP addresses
       and comparing proximity.  Geolocation based on GNSS may vary in
-      accuracy depending on the users location, and when mapped to
+      accuracy depending on the user's location, and when mapped to
       national or regional boundaries may show a Consumption and
       Authorization Device in different locations if those devices are
       close to a border.  Since relative position is more important than
@@ -1489,7 +1705,7 @@ Table of Contents
       determining proximity.  Geolocation based on IP addresses may be
       inaccurate along regional or national borders due to overlapping
       coverage by different network providers from the respective
-      regions.  This may result in the Consumption device being mapped
+      regions.  This may result in the Consumption Device being mapped
       to one region, while the Authorization Device may be on another
       network from another provider and mapped to another region.  These
       inaccuracies may require restrictions to be at a more granular
@@ -1503,17 +1719,16 @@ Table of Contents
    is operating, it MAY be necessary to use more than one mechanism to
    establish proximity to raise the bar for any potential attackers.
 
-   Note: There are scenarios that require that an authorization takes
-   place in a different location than the one in which the transaction
-   is authorized.  For example, there may be a primary and secondary
-   credit card holder and both can initiate transactions, but only the
-   primary holder can authorize it.  There is no guarantee that the
-   primary and secondary holders are in the same location at the time of
-   the authorization.  In such cases, proximity (or lack of proximity)
-   may be an indicator of risk and the system may deploy additional
-   controls (e.g., transaction value limits, transaction velocity
-   limits) or use the proximity information as input to a risk
-   management system.
+   Note: There are scenarios that require that authorization takes place
+   in a different location than the one in which the transaction is
+   initiated.  For example, there may be a primary and secondary credit
+   card holder and both can initiate transactions, but only the primary
+   holder can authorize it.  There is no guarantee that the primary and
+   secondary holders are in the same location at the time of the
+   authorization.  In such cases, proximity (or lack of proximity) may
+   be an indicator of risk and the system may deploy additional controls
+   (e.g., transaction value limits, transaction velocity limits) or use
+   the proximity information as input to a risk management system.
 
    *Limitations:* Proximity mechanisms make it harder to perform Cross-
    Device Consent Phishing (CDCP) attacks.  However, depending on how
@@ -1523,7 +1738,11 @@ Table of Contents
    can try to request the location of the end-user's Authorization
    Device through browser APIs and then simulate the same location on
    their Consumption Device using standard debugging features available
-   on many platforms.
+   on many platforms.  Relying on IP address mapping can degrade user
+   experience when a VPN is used on the Consumption or Authorization
+   Device.  In such cases, the devices may appear to be in different
+   locations, requiring additional user guidance or alternative
+   mechanisms to establish proximity.
 
 6.1.2.  Short Lived/Timebound QR or User Codes
 
@@ -1536,11 +1755,12 @@ Table of Contents
 
    *Limitations:* There is a practical limit to how short a user code
    can be valid due to network latency and user experience limitations
-   (time taken to enter a code, or incorrectly entering a code).  More
+   (time taken to enter a code, time to complete authentication, or time
+   needed to re-enter codes or re-authenticate due to an error).  More
    sophisticated Cross-Device Consent Phishing attacks counter the
    effectiveness of short lived codes by convincing a user to respond to
    a phishing e-mail and only request the QR or user code once the user
-   clicks on the link in the phishing e-mail [Exploit6].
+   clicks on the link in the phishing e-mail [SQPHISH].
 
 6.1.3.  One-Time or Limited Use Codes
 
@@ -1640,15 +1860,15 @@ Table of Contents
    initiate the protocol.
 
    Authorization Servers MAY use different mechanisms to establish which
-   devices it trusts.  This includes limiting cross-device flows to
-   specific device types such as interactive whiteboards or smart TVs,
-   pre-registering devices with the authorization server or only allow
-   cross-device flows on devices managed through device management
-   systems.  Device management systems may enforce policies that govern
-   patching, version updates, on-device anti-malware deployment,
-   revocation status and device location amongst others.  Trusted
-   devices MAY have their identities rooted in hardware (e.g., a TPM or
-   equivalent technology).
+   devices it trusts for cross-device flows.  This includes limiting
+   cross-device flows to specific device types such as interactive
+   whiteboards or smart TVs, pre-registering devices with the
+   authorization server or only allow cross-device flows on devices
+   managed through device management systems.  Device management systems
+   may enforce policies that govern patching, version updates, on-device
+   anti-malware deployment, revocation status and device location
+   amongst others.  Trusted devices MAY have their identities rooted in
+   hardware (e.g., a TPM or equivalent technology).
 
    By only allowing trusted devices to initiate cross-device flows, it
    requires the attacker to have access to such a device and maintain
@@ -1660,7 +1880,10 @@ Table of Contents
    it necessary to apply additional controls and integrating with other
    threat detection and management systems that can detect suspicious
    behaviour such as repeated requests to initiate authorization or high
-   volume of service activation on the same device.
+   volume of service activation on the same device.  An attacker may
+   also spoof device identities or device types that are not
+   cryptographically established or verified through attestation
+   mechanisms.
 
 6.1.8.  Trusted Networks
 
@@ -1722,10 +1945,10 @@ Table of Contents
 
    An attacker that engages in a scaled attack may need to request a
    large number of user codes (see exploit Section 4.3.1) or initiate a
-   large number of authorization requests (see exploit Section 4.3.4) in
-   a short period of time.  An authorization server MAY apply rate
-   limits to minimize the number of requests it would accept from a
-   client in a limited time period.
+   large number of authorization requests (see exploit Section 4.3.4 and
+   Section 4.3.10) in a short period of time.  An authorization server
+   MAY apply rate limits to minimize the number of requests it would
+   accept from a client or send to a user in a limited time period.
 
    *Limitations:* Rate limits are effective at slowing an attacker down
    and help to degrade scaled attacks, but do not prevent more targeted
@@ -1750,10 +1973,10 @@ Table of Contents
    to another device.
 
    *Limitations:* Sender-constrained tokens, especially sender-
-   constrained tokens that require proof-of-posession, raise the bar for
-   executing the attack and profiting from exfiltrating tokens.
-   Although a software proof-of-posession key is better than no proof-
-   of-posession key, an attacker may still exfiltrate the software key.
+   constrained tokens that require proof-of-possession, raise the bar
+   for executing the attack and profiting from exfiltrating tokens.
+   Although a software proof-of-possession key is better than no proof-
+   of-possession key, an attacker may still exfiltrate the software key.
    Hardware keys are harder to exfiltrate, but come with additional
    implementation complexity.  An attacker that controls the Consumption
    Device may still be able to excercise the key, even if it is in
@@ -1830,19 +2053,24 @@ Table of Contents
    By requiring a user to authenticate on the Consumption Device with a
    phishing resistant authentication method before initiating a cross-
    device flow, the server can prevent an attacker from initiating a
-   cross-device flow and obtaining QR codes or user codes.  This
-   prevents the attacker from obtaining a QR code or user code that they
-   can use to mislead an unsuspecting user.  This requires that the
+   cross-device flow and obtaining QR codes or user codes.  For example,
+   a banking application may initiate a cross-device authorization
+   request using the Backchannel-Transferred Session pattern only after
+   the user is already authenticated and attempts a high-value
+   transaction.  This prevents the attacker from inititiating a cross-
+   device authorization request, obtaining a QR code or a user code that
+   they can use to mislead an unsuspecting user.  This requires that the
    Consumption Device has sufficient input capabilities to support a
    phishing resistant authentication mechanism, which may in itself
    negate the need for a cross-device flow.
 
-   *Limitations:* Authenticating on the Consumption Device before
-   starting a cross-device flow does not prevent the attacks described
-   in Section 4.3.6 and Section 4.3.8 and it is RECOMMENDED that
-   additional mitigations described in this document is used if the
-   cross-device flows are used in scenarios such as Section 3.3.5 and
-   Section 3.3.7.
+   *Limitations:* This mitigation is limited to Consumption Devices
+   capable of supporting phishing resistant authentication mechanisms.
+   Authenticating on the Consumption Device before starting a cross-
+   device flow does not prevent the attacks described in Section 4.3.6
+   and Section 4.3.8 and it is RECOMMENDED that additional mitigations
+   described in this document is used if the cross-device flows are used
+   in scenarios such as Section 3.3.5 and Section 3.3.7.
 
 6.1.16.  Request Initiation Verification
 
@@ -1962,8 +2190,8 @@ Table of Contents
 
    There are several reports in the public domain outlining how the
    unauthenticated channel may be exploited to execute a Cross-Device
-   Consent Phishing attack ([Exploit1], [Exploit2], [Exploit3],
-   [Exploit4], [Exploit5], [Exploit6]).
+   Consent Phishing attack ([ARTDCPHISH], [DCFLOWPHISH], [NEWDCPHISH],
+   [DEFCON29], [DCATTACK], [SQPHISH]).
 
 6.2.1.3.  Device Capabilities
 
@@ -2326,29 +2554,32 @@ Table of Contents
               DOI 10.17487/RFC9635, October 2024,
               <https://www.rfc-editor.org/rfc/rfc9635>.
 
-   [Exploit1] Cooke, B., "The Art of the Device Code Phish", July 2021,
+   [ARTDCPHISH]
+              Cooke, B., "The Art of the Device Code Phish", July 2021,
               <https://0xboku.com/2021/07/12/ArtOfDeviceCodePhish.html>.
 
-   [Exploit2] Min, D., "Microsoft 365 OAuth Device Code Flow and
+   [DCFLOWPHISH]
+              Min, D., "Microsoft 365 OAuth Device Code Flow and
               Phishing", August 2021, <https://www.optiv.com/insights/
               source-zero/blog/microsoft-365-oauth-device-code-flow-and-
               phishing>.
 
-   [Exploit3] Syynimaa, N., "Introducing a new phishing technique for
+   [NEWDCPHISH]
+              Syynimaa, N., "Introducing a new phishing technique for
               compromising Office 365 accounts", October 2020,
               <https://o365blog.com/post/phishing/#new-phishing-
               technique-device-code-authentication>.
 
-   [Exploit4] Hwong, J., "New Phishing Attacks Exploiting OAuth
+   [DEFCON29] Hwong, J., "New Phishing Attacks Exploiting OAuth
               Authentication Flows (DEFCON 29)", August 2021,
               <https://www.youtube.com/watch?v=9slRYvpKHp4>.
 
-   [Exploit5] Secureworks Counter Threat Unit (CTU), "OAuth's Device
+   [DCATTACK] Secureworks Counter Threat Unit (CTU), "OAuth's Device
               Code Flow Abused in Phishing Attacks", August 2021,
               <https://www.secureworks.com/blog/oauths-device-code-flow-
               abused-in-phishing-attacks>.
 
-   [Exploit6] Talebzadeh, K. and N. Romsdah, "SquarePhish: Advanced
+   [SQPHISH]  Talebzadeh, K. and N. Romsdah, "SquarePhish: Advanced
               phishing tool combines QR codes and OAuth 2.0 device code
               flow", August 2022,
               <https://www.helpnetsecurity.com/2022/08/11/squarephish-
@@ -2418,15 +2649,47 @@ Table of Contents
               Pages 1200–1212", 2023,
               <https://doi.org/10.1109/TDSC.2022.3151103>.
 
+   [NISTGlossary]
+              "NIST Computer Security Resource Center Glossary", n.d.,
+              <https://csrc.nist.gov/glossary>.
+
 Appendix A.  Document History
 
    [[ To be removed from the final specification ]]
 
-   -latest * Adresseed AD Nits (see https://github.com/oauth-wg/oauth-
-   cross-device-security/issues/195) * Fixed reference for protocol
-   selection (see issue #189) * Change affiliation * AD Feedback: Add
-   Security Consideration * AD Feedback: Add IANA Consideration * AD
-   Feedback: Capitalise SHOULD not -> SHOULD NOT (issue #185)
+   -latest * Secdir Feedback: Additional information on allowing time to
+   authenticate (https://github.com/oauth-wg/oauth-cross-device-
+   security/issues/203) * Secdir Feedback: Provide additional guidance
+   on user impact of using a VPN (see https://github.com/oauth-wg/oauth-
+   cross-device-security/issues/202) * Secdir Feedback: Clarify section
+   4.1.3 (https://github.com/oauth-wg/oauth-cross-device-security/
+   issues/201) * Art Feedback: Add reference defining social engineering
+   and phishing
+
+   -13
+
+   *  Fixed reference for protocol selection (see issue #189)
+
+   *  Change affiliation
+
+   *  AD Feedback: Add Security Consideration
+
+   *  AD Feedback: Add IANA Consideration
+
+   *  AD Feedback: Capitalise SHOULD not -> SHOULD NOT (issue #185)
+
+   *  AD Feedback: AD Nits (see https://github.com/oauth-wg/oauth-cross-
+      device-security/issues/195)
+
+   *  AD Feedback: Clarify limitations on consumption device (see
+      https://github.com/oauth-wg/oauth-cross-device-security/
+      issues/194)
+
+   *  AD Feedback: Remove repetitive text (see https://github.com/oauth-
+      wg/oauth-cross-device-security/issues/193)
+
+   *  AD Feedback: Clrify seperate use cases (see https://github.com/
+      oauth-wg/oauth-cross-device-security/issues/192)
 
    -12
 
@@ -2612,7 +2875,7 @@ Appendix A.  Document History
 
 Authors' Addresses
 
-   Pieter Kasselmann
+   Pieter Kasselman
    Defakto
    Email: prkasselman@gmail.com
 
