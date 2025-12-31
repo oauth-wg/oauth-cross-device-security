@@ -1942,12 +1942,12 @@ Table of Contents
 6.1.11.  Rate Limits
 
    An attacker that engages in a scaled attack may need to request a
-   large number of user codes (see exploit Section 4.3.1) or initiate a
-   large number of authorization requests (see exploit Section 4.3.4.1
-   and Section 4.3.9) in a short period of time.  An authorization
-   server MAY apply rate limits to minimize the number of requests it
-   would accept from a client or send to a user in a limited time
-   period.
+   large number of user codes (see exploit described in Section 4.3.1)
+   or initiate a large number of authorization requests (see exploits
+   described in Section 4.3.4.1 and Section 4.3.9) in a short period of
+   time.  An authorization server MAY apply rate limits to minimize the
+   number of requests it would accept from a client or send to a user in
+   a limited time period.
 
    *Limitations:* Rate limits are effective at slowing an attacker down
    and help to degrade scaled attacks, but do not prevent more targeted
