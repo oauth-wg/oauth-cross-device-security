@@ -659,7 +659,7 @@ An employee wants to access their files on an interactive whiteboard in a confer
 An end-user wants to rent a bicycle from a bike sharing scheme. The bicycles are locked in bicycle racks on sidewalks throughout a city. To unlock and use a bicycle, the user scans a QR code on the bicycle using their mobile phone. Scanning the QR code redirects the user to the bicycle sharing scheme's authorization page where the user authenticates and authorizes payment for renting the bicycle. Once authorized, the bicycle sharing service unlocks the bicycle, allowing the user to use it to cycle around the city. {{example-b3}} outlines an exploit relevant to this situation.
 
 ### Example A4: Authorize a Financial Transaction (Backchannel-Transferred Session Pattern) {#example-a4}
-An end-user makes an online purchase. Before completing the purchase, they get a notification on their mobile phone, asking them to authorize the transaction. The user opens their app and authenticates to the service before authorizing the transaction. {{example-b4}} and {{example-b4-2}} describes exploits relevant to this example.
+An end-user makes an online purchase. Before completing the purchase, they get a notification on their mobile phone, asking them to authorize the transaction. The user opens their app and authenticates to the service before authorizing the transaction. {{example-b4}} describes two exploits relevant to this example.
 
 ### Example A5: Add a Device to a Network (Cross-Device Session Transfer Pattern) {#example-a5}
 An employee is issued with a personal computer that is already joined to a network. The employee wants to add their mobile phone to the network to allow it to access corporate data and services (e.g., files and e-mail). The employee is logged-in on the personal computer where they initiate the process of adding their mobile phone to the network. The personal computer displays a QR code which authorizes the user to join their mobile phone to the network. The employee scans the QR code with their mobile phone and the mobile phone is joined to the network. The employee can start accessing corporate data and services on their mobile device. {{example-b5}} gives an example of how this flow may be exploited.
@@ -947,14 +947,13 @@ This exploit applies to the use case described in {{example-a3}}.
 
 An attacker copies a QR code from a bicycle locked in a bicycle rack in a city, prints it on a label and places the label on a bicycle at the other end of the bicycle rack. A customer approaches the bicycle that contains the replicated QR code and scans the code and authenticates before authorizing payment for renting the bicycle. The bicycle rack unlocks the bicycle containing the original QR code and the attacker removes the bicycle before cycling down the street while the customer is left frustrated that the bicycle they were trying to use is not being unlocked {{NYC.Bike}}. The customer proceeds to unlock another bicycle and lodges a complaint with the bicycle renting company.
 
-### Example B4.1: Illicit Transaction Authorization (Backchannel-Transferred Session Pattern) {#example-b4}
-This exploit applies to the use case described in {{example-a4}}.
+### Example B4: Illicit Transaction Authorization (Backchannel-Transferred Session Pattern) {#example-b4}
+These exploits applies to the use case described in {{example-a4}}.
 
+#### Example B4.1: Bulk Authorization Request (Backchannel-Transferred Session Pattern) {#example-b4-1}
 An attacker obtains a list of user identifiers for a financial institution and triggers a transaction request for each of the users on the list. The financial institution's authorization server sends push notifications to each of the users, requesting authorization of a transaction. The vast majority of users ignore the request to authorize the transaction, but a small percentage grants authorization by approving the transaction.
 
-### Example B4.2: Fake Helpdesk (Backchannel-Transferred Session Pattern) {#example-b4-2}
-This exploit applies to the use case described in {{example-a4}}.
-
+#### Example B4.2: Fake Helpdesk (Backchannel-Transferred Session Pattern) {#example-b4-2}
 An attacker obtains the contact information for a user and contacts them, pretending to be a representative of the user's financial institution. The attacker informs the user that there were a number of fraudulent transactions against their account and asks them to review these transactions by approving or rejecting them. The attacker then triggers a sequence of transactions. The user receives an authorization request for each transaction and declines them as they do not recognize them. The attacker then informs the user that they need to close the users account and transfer all the funds to a new account to prevent further fraudulent transactions. The user receives another authorization request which they approve, or provide additional authorization information to the attacker which enables the attacker to complete their attack and defraud the user.
 
 ### Example B5: Illicit Network Join (Cross-Device Session Transfer Pattern) {#example-b5}
@@ -1097,7 +1096,7 @@ Another mitigation strategy includes limiting the life of the access and refresh
 **Limitations:** Short lived tokens reduces the time window during which an attacker can benefit from a successful attack. This is most effective for access tokens. However, once an attacker obtains a refresh token, they can continue to request new access tokens, as well as refresh tokens. Forcing the expiry of refresh tokens may cause the user to re-authorize an action more frequently, which results in a negative user experience.
 
 ### Rate Limits
-An attacker that engages in a scaled attack may need to request a large number of user codes (see exploit {{example-b1}}) or initiate a large number of authorization requests (see exploit {{example-b4}} and {{example-b9}}) in a short period of time. An authorization server MAY apply rate limits to minimize the number of requests it would accept from a client or send to a user in a limited time period.
+An attacker that engages in a scaled attack may need to request a large number of user codes (see exploit {{example-b1}}) or initiate a large number of authorization requests (see exploit {{example-b4-1}} and {{example-b9}}) in a short period of time. An authorization server MAY apply rate limits to minimize the number of requests it would accept from a client or send to a user in a limited time period.
 
 **Limitations:** Rate limits are effective at slowing an attacker down and help to degrade scaled attacks, but do not prevent more targeted attacks that are executed with lower volumes and velocity. Therefore, it should be used along with other techniques to provide a defence-in-depth defence against cross-device attacks.
 
@@ -1191,7 +1190,7 @@ Only use this protocol if other cross-device protocols are not viable due to dev
 Client Initiated Back-Channel Authentication (CIBA) {{CIBA}}: A standard developed in the OpenID Foundation that allows a device or service (e.g., a personal computer, smart TV, Kiosk) to request the OpenID Provider to initiate an authentication flow if it knows a valid identifier for the user. The user completes the authentication flow using a second device (e.g., a mobile phone). In this flow the user does not scan a QR code or obtain a user code from the Consumption Device, but is instead contacted by the OpenID Provider to complete the authentication using a push notification, e-mail, text message or any other suitable mechanism.
 
 #### Susceptibility
-Less susceptible to unauthenticated channel attacks, but still vulnerable to attackers who know or can guess the user identifier and initiate an attack as described in {{example-b4}}.
+Less susceptible to unauthenticated channel attacks, but still vulnerable to attackers who know or can guess the user identifier and initiate an attack as described in {{example-b4-1}}.
 
 #### Device Capabilities
 There is no requirement on the Consumption Device to support specific hardware. The Authorization Device must be registered/associated with the user and it must be possible for the Authorization Server to trigger an authorization on this device.
