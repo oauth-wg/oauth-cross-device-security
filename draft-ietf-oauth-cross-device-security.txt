@@ -2478,9 +2478,11 @@ Table of Contents
    Frei, Nikhil Reddy Boreddy, Bjorn Hjelm, Joseph Heenan, Brian
    Campbell, Damien Bowden, Kristina Yasuda, Tim Würtele, Karsten Meyer
    zu Selhausen, Maryam Mehrnezhad, Marco Pernpruner, Giada Sciarretta,
-   Dean H.  Saxe, Roy Williams, Dan Moore and others (please let us
-   know, if you've been mistakenly omitted) for their valuable input,
-   feedback and general support of this work.
+   Dean H.  Saxe, Roy Williams, Aaron Parecki, George Fletcher, Hannes
+   Tschofenig, Dan Moore, Deb Cooley, Paul Kyzivat, David Mandelberg,
+   Jim Fenton and Bing Liu and others (please let us know, if you've
+   been mistakenly omitted) for their valuable input, feedback and
+   general support of this work.
 
 11.  References
 
@@ -2710,6 +2712,11 @@ Appendix A.  Document History
          navvigation (https://github.com/oauth-wg/oauth-cross-device-
          security/issues/232)
 
+      -  Added Aaron Parecki, George Fletcher, Hannes Tschofenig, Dan
+         Moore, Deb Cooley, Paul Kyzivat, David Mandelberg, Jim Fenton
+         and Bing Liu to the list of people who proivded input and made
+         contributions.
+
       -13
 
       -  Fixed reference for protocol selection (see issue #189)
@@ -2732,8 +2739,9 @@ Appendix A.  Document History
       -  AD Feedback: Remove repetitive text (see https://github.com/
          oauth-wg/oauth-cross-device-security/issues/193)
 
-      -  AD Feedback: Clrify seperate use cases (see https://github.com/
-         oauth-wg/oauth-cross-device-security/issues/192)
+      -  AD Feedback: Clarify seperate use cases (see
+         https://github.com/oauth-wg/oauth-cross-device-security/
+         issues/192)
 
       -12
 
