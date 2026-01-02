@@ -5,10 +5,10 @@
 oauth                                                       P. Kasselman
 Internet-Draft                                                   Defakto
 Intended status: Best Current Practice                           D. Fett
-Expires: 3 July 2026                                            Authlete
+Expires: 6 July 2026                                            Authlete
                                                                F. Skokan
                                                                     Okta
-                                                        30 December 2025
+                                                          2 January 2026
 
 
            Cross-Device Flows: Security Best Current Practice
@@ -49,11 +49,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 3 July 2026.
+   This Internet-Draft will expire on 6 July 2026.
 
 Copyright Notice
 
-   Copyright (c) 2025 IETF Trust and the persons identified as the
+   Copyright (c) 2026 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -112,22 +112,20 @@ Table of Contents
                (User-Transferred Session Data Pattern)
        4.3.3.  Example B3: Illicit Access to Physical Assets
                (User-Transferred Session Data Pattern)
-       4.3.4.  Example B4.1: Illicit Transaction Authorization
+       4.3.4.  Example B4: Illicit Transaction Authorization
                (Backchannel-Transferred Session Pattern)
-       4.3.5.  Example B4.2: Fake Helpdesk (Backchannel-Transferred
-               Session Pattern)
-       4.3.6.  Example B5: Illicit Network Join (Cross-Device Session
+       4.3.5.  Example B5: Illicit Network Join (Cross-Device Session
                Transfer Pattern)
-       4.3.7.  Example B6: Illicit Onboarding (User-Transferred
+       4.3.6.  Example B6: Illicit Onboarding (User-Transferred
                Session Data Pattern)
-       4.3.8.  Example B7: Illicit Application Bootstrap (Cross-Device
+       4.3.7.  Example B7: Illicit Application Bootstrap (Cross-Device
                Session Transfer Pattern)
-       4.3.9.  Example B8: Account Takeover (User-Transferred Session
+       4.3.8.  Example B8: Account Takeover (User-Transferred Session
                Data Pattern)
-       4.3.10. Example B9: Illicit Access to Administration
+       4.3.9.  Example B9: Illicit Access to Administration
                Capabilities Through Consent Request Overload
                (Backchannel-Transferred Session Pattern)
-       4.3.11. Out of Scope
+       4.3.10. Out of Scope
    5.  Cross-Device Protocols and Standards
    6.  Mitigating Against Cross-Device Flow Attacks
      6.1.  Practical Mitigations
@@ -686,36 +684,36 @@ Table of Contents
    ([OpenID.VCI]) is an instance of using this pattern to provision a
    new credential.  The figure below shows a typical flow.
 
-              +---------------+                       +---------------+
-    +-------->| Authorization |                       | Authorization |
-    |         |    Device     |--(B) Session -------->|     Server    |
-    |         |               |      Transfer Request |               |
-    |         |               |                       |               |
-    |         |               |<-(C) Session ---------|               |
-    |         |               |      Transfer Code    |               |
-    |         |               |                       |               |
-    |         +---------------+                       |               |
-   (A) User      |                                    |               |
-    |  Start    (D) User Views                        |               |
-    |  Flow      |  Session Transfer Code             |               |
-    |            v  or QR Code                        |               |
-  +---------------------------+                       |               |
-  |           User            |                       |               |
-  +---------------------------+                       |               |
-                     |                                |               |
-                    (E) Enter Session Transfer Code   |               |
-                     |  or Scan QR code               |               |
-                     |                                |               |
-                     v                                |               |
-              +---------------+                       |               |
-              |  Consumption  |                       |               |
-              |     Device    |--(F) Present -------->|               |
-              |               |      Session Transfer |               |
-              |               |      Code             |               |
-              |               |                       |               |
-              |               |<-(G) Return Session --|               |
-              |               |      Context           |               |
-              +---------------+                       +---------------+
+               +---------------+                       +---------------+
+     +-------->| Authorization |                       | Authorization |
+     |         |    Device     |--(B) Session -------->|     Server    |
+     |         |               |      Transfer Request |               |
+     |         |               |                       |               |
+     |         |               |<-(C) Session ---------|               |
+     |         |               |      Transfer Code    |               |
+     |         |               |                       |               |
+     |         +---------------+                       |               |
+    (A) User      |                                    |               |
+     |  Start    (D) User Views                        |               |
+     |  Flow      |  Session Transfer Code             |               |
+     |            v  or QR Code                        |               |
+   +---------------------------+                       |               |
+   |           User            |                       |               |
+   +---------------------------+                       |               |
+                      |                                |               |
+                     (E) Enter Session Transfer Code   |               |
+                      |  or Scan QR code               |               |
+                      |                                |               |
+                      v                                |               |
+               +---------------+                       |               |
+               |  Consumption  |                       |               |
+               |     Device    |--(F) Present -------->|               |
+               |               |      Session Transfer |               |
+               |               |      Code             |               |
+               |               |                       |               |
+               |               |<-(G) Return Session --|               |
+               |               |      Context          |               |
+               +---------------+                       +---------------+
 
    Figure: Cross-Dvice Session Transfer Pattern
 
@@ -749,7 +747,9 @@ Table of Contents
 
 3.3.  Examples of Cross-Device Flows
 
-   Examples of cross-device flow scenarios include:
+   The following examples illustrate the above flows in a diverse range
+   of practical settings.  Corresponding examples off how these flows
+   may be exploited are documented in Section 4.3.
 
 3.3.1.  Example A1: Authorize Access to a Video Streaming Service (User-
         Transferred Session Data Pattern)
@@ -761,7 +761,8 @@ Table of Contents
    enter their credentials to authorize the smart TV to access the
    streaming service.  The user enters their credentials and grants
    authorization, after which the streaming service is available on the
-   smart TV.
+   smart TV.  Section 4.3.1 illustrates an exploit that applies to this
+   scenario.
 
 3.3.2.  Example A2: Authorize Access to Productivity Services (User-
         Transferred Session Data Pattern)
@@ -773,7 +774,8 @@ Table of Contents
    to authenticate and authorize the interactive whiteboard to access
    their files.  The user enters their credentials and authorizes the
    transaction and the interactive whiteboard retrieves their files and
-   allows the user to interact with the content.
+   allows the user to interact with the content.  Section 4.3.2
+   describes an exploit relevant to this example.
 
 3.3.3.  Example A3: Authorize Use of a Bike Sharing Scheme (User-
         Transferred Session Data Pattern)
@@ -785,7 +787,8 @@ Table of Contents
    the bicycle sharing scheme's authorization page where the user
    authenticates and authorizes payment for renting the bicycle.  Once
    authorized, the bicycle sharing service unlocks the bicycle, allowing
-   the user to use it to cycle around the city.
+   the user to use it to cycle around the city.  Section 4.3.3 outlines
+   an exploit relevant to this situation.
 
 3.3.4.  Example A4: Authorize a Financial Transaction (Backchannel-
         Transferred Session Pattern)
@@ -794,6 +797,7 @@ Table of Contents
    purchase, they get a notification on their mobile phone, asking them
    to authorize the transaction.  The user opens their app and
    authenticates to the service before authorizing the transaction.
+   Section 4.3.4 describes two exploits relevant to this example.
 
 3.3.5.  Example A5: Add a Device to a Network (Cross-Device Session
         Transfer Pattern)
@@ -807,7 +811,8 @@ Table of Contents
    authorizes the user to join their mobile phone to the network.  The
    employee scans the QR code with their mobile phone and the mobile
    phone is joined to the network.  The employee can start accessing
-   corporate data and services on their mobile device.
+   corporate data and services on their mobile device.  Section 4.3.5
+   gives an example of how this flow may be exploited.
 
 3.3.6.  Example A6: Remote Onboarding (User-Transferred Session Data
         Pattern)
@@ -824,7 +829,8 @@ Table of Contents
    driving license), proof of a background check by an identity
    verifier, and proof of their qualifications.  The employee authorizes
    the release of the credentials and after completing the onboarding
-   process, their account is activated.
+   process, their account is activated.  Section 4.3.6 provides an
+   example of an exploit for this use case.
 
 3.3.7.  Example A7: Application Bootstrap (Cross-Device Session Transfer
         Pattern)
@@ -834,7 +840,8 @@ Table of Contents
    The employee initiates the cross-device flow and is shown a QR code
    in their application.  The employee launches the mobile application
    on their phone and scans the QR code which results in the user being
-   signed into the application on the mobile phone.
+   signed into the application on the mobile phone.  Section 4.3.7
+   describes an exploit that applies to this scenario.
 
 3.3.8.  Example A8: Access a Productivity Application (User-Transferred
         Authorization Data Pattern)
@@ -844,7 +851,8 @@ Table of Contents
    digit authorization code is sent to the user's mobile phone.  The
    user views the 6 digit authorization code on their phone and enters
    it in the CAD application, after which the CAD application displays
-   the user's most recent designs.
+   the user's most recent designs.  Section 4.3.8 outlines an attack
+   relevant to this scenario.
 
 3.3.9.  Example A9: Administer a System (Backchannel-Transferred Session
         Pattern)
@@ -855,6 +863,7 @@ Table of Contents
    a notification in an app on their mobile device, requesting them to
    confirm access to the portal.  The network administrator approves the
    request on their mobile phone and is granted access to the portal.
+   Section 4.3.9 describes how an attacker might exploit this flow.
 
 4.  Cross-Device Flow Exploits
 
@@ -1302,14 +1311,17 @@ Table of Contents
 4.3.  Examples of Cross-Device Flow Exploits
 
    The following examples illustrate these attacks in practical settings
-   and show how the unauthenticated channel is exploited by attackers
-   who can copy the QR codes and user codes, change the context in which
+   applied to the use cases described in Section 3.3.  These examples
+   show how the unauthenticated channel is exploited by attackers who
+   can copy the QR codes and user codes, change the context in which
    they are presented using social engineering techniques and mislead
    end-users into granting consent to avail of services, access data and
    make payments.
 
 4.3.1.  Example B1: Illicit Access to a Video Streaming Service (User-
         Transferred Session Data Pattern)
+
+   This exploit applies to the use case described in Section 3.3.1.
 
    An attacker obtains a smart TV and attempts to access an online
    streaming service.  The smart TV obtains a QR code from the streaming
@@ -1336,6 +1348,8 @@ Table of Contents
 4.3.2.  Example B2: Illicit Access to Productivity Services (User-
         Transferred Session Data Pattern)
 
+   This exploit applies to the use case described in Section 3.3.2.
+
    An attacker emulates an enterprise application (e.g., an interactive
    whiteboard) and initiates a cross-device flow by requesting a user
    code and URL from the authorization server.  The attacker obtains a
@@ -1358,6 +1372,8 @@ Table of Contents
 4.3.3.  Example B3: Illicit Access to Physical Assets (User-Transferred
         Session Data Pattern)
 
+   This exploit applies to the use case described in Section 3.3.3.
+
    An attacker copies a QR code from a bicycle locked in a bicycle rack
    in a city, prints it on a label and places the label on a bicycle at
    the other end of the bicycle rack.  A customer approaches the bicycle
@@ -1370,8 +1386,13 @@ Table of Contents
    proceeds to unlock another bicycle and lodges a complaint with the
    bicycle renting company.
 
-4.3.4.  Example B4.1: Illicit Transaction Authorization (Backchannel-
+4.3.4.  Example B4: Illicit Transaction Authorization (Backchannel-
         Transferred Session Pattern)
+
+   These exploits applies to the use case described in Section 3.3.4.
+
+4.3.4.1.  Example B4.1: Bulk Authorization Request (Backchannel-
+          Transferred Session Pattern)
 
    An attacker obtains a list of user identifiers for a financial
    institution and triggers a transaction request for each of the users
@@ -1381,8 +1402,8 @@ Table of Contents
    authorize the transaction, but a small percentage grants
    authorization by approving the transaction.
 
-4.3.5.  Example B4.2: Fake Helpdesk (Backchannel-Transferred Session
-        Pattern)
+4.3.4.2.  Example B4.2: Fake Helpdesk (Backchannel-Transferred Session
+          Pattern)
 
    An attacker obtains the contact information for a user and contacts
    them, pretending to be a representative of the user's financial
@@ -1398,8 +1419,10 @@ Table of Contents
    additional authorization information to the attacker which enables
    the attacker to complete their attack and defraud the user.
 
-4.3.6.  Example B5: Illicit Network Join (Cross-Device Session Transfer
+4.3.5.  Example B5: Illicit Network Join (Cross-Device Session Transfer
         Pattern)
+
+   This exploit applies to the use case described in Section 3.3.5.
 
    An attacker creates a message to all employees of a company, claiming
    to be from a trusted technology provider investigating a suspected
@@ -1413,8 +1436,10 @@ Table of Contents
    access as an entry point and perform lateral moves to obtain
    additional privileges and access to restricted resources.
 
-4.3.7.  Example B6: Illicit Onboarding (User-Transferred Session Data
+4.3.6.  Example B6: Illicit Onboarding (User-Transferred Session Data
         Pattern)
+
+   This exploit applies to the use case described in Section 3.3.6.
 
    An attacker initiates an employee onboarding flow and obtains a QR
    code from the onboarding portal to invoke a digital wallet and
@@ -1428,8 +1453,10 @@ Table of Contents
    to obtain the QR code displays a message to the attacker with
    instructions on how to access their account.
 
-4.3.8.  Example B7: Illicit Application Bootstrap (Cross-Device Session
+4.3.7.  Example B7: Illicit Application Bootstrap (Cross-Device Session
         Transfer Pattern)
+
+   This exploit applies to the use case described in Section 3.3.7.
 
    An attacker creates a message to all employees of a company, claiming
    to be from the company's IT service provider.  They claim that they
@@ -1440,8 +1467,10 @@ Table of Contents
    send the QR code to the attacker.  The attacker scans the QR code
    with their mobile phone and access the users data and resources.
 
-4.3.9.  Example B8: Account Takeover (User-Transferred Session Data
+4.3.8.  Example B8: Account Takeover (User-Transferred Session Data
         Pattern)
+
+   This exploit applies to the use case described in Section 3.3.8.
 
    An attacker wants to use some website which requires presentation of
    a verifiable credential for authentication.  The attacker creates a
@@ -1454,9 +1483,11 @@ Table of Contents
    original session from the attackers device is authorized with the
    user's credentials.
 
-4.3.10.  Example B9: Illicit Access to Administration Capabilities
-         Through Consent Request Overload (Backchannel-Transferred
-         Session Pattern)
+4.3.9.  Example B9: Illicit Access to Administration Capabilities
+        Through Consent Request Overload (Backchannel-Transferred
+        Session Pattern)
+
+   This exploit applies to the use case described in Section 3.3.9.
 
    An attacker attempts to access an adminstration portal repeatedly,
    generating a stream of authorization requests to the network
@@ -1466,7 +1497,7 @@ Table of Contents
    notifications, they accidentally approve access and the attacker
    gains access to the portal.
 
-4.3.11.  Out of Scope
+4.3.10.  Out of Scope
 
    In all of the attack scenarios listed above, a user is misled or
    exploited.  For other attacks, where the user is willingly colluding
@@ -1911,11 +1942,12 @@ Table of Contents
 6.1.11.  Rate Limits
 
    An attacker that engages in a scaled attack may need to request a
-   large number of user codes (see exploit Section 4.3.1) or initiate a
-   large number of authorization requests (see exploit Section 4.3.4 and
-   Section 4.3.10) in a short period of time.  An authorization server
-   MAY apply rate limits to minimize the number of requests it would
-   accept from a client or send to a user in a limited time period.
+   large number of user codes (see exploit described in Section 4.3.1)
+   or initiate a large number of authorization requests (see exploits
+   described in Section 4.3.4.1 and Section 4.3.9) in a short period of
+   time.  An authorization server MAY apply rate limits to minimize the
+   number of requests it would accept from a client or send to a user in
+   a limited time period.
 
    *Limitations:* Rate limits are effective at slowing an attacker down
    and help to degrade scaled attacks, but do not prevent more targeted
@@ -2034,8 +2066,8 @@ Table of Contents
    *Limitations:* This mitigation is limited to Consumption Devices
    capable of supporting phishing resistant authentication mechanisms.
    Authenticating on the Consumption Device before starting a cross-
-   device flow does not prevent the attacks described in Section 4.3.6
-   and Section 4.3.8 and it is RECOMMENDED that additional mitigations
+   device flow does not prevent the attacks described in Section 4.3.5
+   and Section 4.3.7 and it is RECOMMENDED that additional mitigations
    described in this document is used if the cross-device flows are used
    in scenarios such as Section 3.3.5 and Section 3.3.7.
 
@@ -2204,7 +2236,7 @@ Table of Contents
 
    Less susceptible to unauthenticated channel attacks, but still
    vulnerable to attackers who know or can guess the user identifier and
-   initiate an attack as described in Section 4.3.4.
+   initiate an attack as described in Section 4.3.4.1.
 
 6.2.2.3.  Device Capabilities
 
