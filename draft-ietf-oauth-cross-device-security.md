@@ -633,7 +633,7 @@ In this flow, the user is authenticated and starts the flow by authorizing the t
             |               |      Code             |               |
             |               |                       |               |
             |               |<-(G) Return Session --|               |
-            |               |      Context           |               |
+            |               |      Context          |               |
             +---------------+                       +---------------+
 ~~~
 Figure: Cross-Dvice Session Transfer Pattern
@@ -646,35 +646,35 @@ Figure: Cross-Dvice Session Transfer Pattern
 - (F) The client on the Consumption Device presents the session transfer code to the Authorization Server.
 - (G) The Authorization Server verifies the session transfer code and returns the session context information needed to resume the session on the Consumption Device. The user resumes the session they initiated and authorized on the Authorization Device and proceeds to access the information on the Consumption Device.
 
-## Examples of Cross-Device Flows
-Examples of cross-device flow scenarios include:
+## Examples of Cross-Device Flows {#example-flows}
+The following examples illustrate the above flows in a diverse range of practical settings. Corresponding examples off how these flows may be exploited are documented in {{example-exploits}}.
 
-### Example A1: Authorize Access to a Video Streaming Service (User-Transferred Session Data Pattern)
-An end-user sets up a new smart TV and wants to connect it to their favorite streaming service. The streaming service displays a QR code on the TV that the user scans with their mobile phone. The user is redirected to the streaming service provider's web page and asked to enter their credentials to authorize the smart TV to access the streaming service. The user enters their credentials and grants authorization, after which the streaming service is available on the smart TV.
+### Example A1: Authorize Access to a Video Streaming Service (User-Transferred Session Data Pattern) {#example-a1}
+An end-user sets up a new smart TV and wants to connect it to their favorite streaming service. The streaming service displays a QR code on the TV that the user scans with their mobile phone. The user is redirected to the streaming service provider's web page and asked to enter their credentials to authorize the smart TV to access the streaming service. The user enters their credentials and grants authorization, after which the streaming service is available on the smart TV. {{example-b1}} illustrates an exploit that applies to this scenario.
 
-### Example A2: Authorize Access to Productivity Services (User-Transferred Session Data Pattern)
-An employee wants to access their files on an interactive whiteboard in a conference room. The interactive whiteboard displays a URL and a code. The user enters the URL on their personal computer and is prompted for the code. Once they enter the code, the user is asked to authenticate and authorize the interactive whiteboard to access their files. The user enters their credentials and authorizes the transaction and the interactive whiteboard retrieves their files and allows the user to interact with the content.
+### Example A2: Authorize Access to Productivity Services (User-Transferred Session Data Pattern) {#example-a2}
+An employee wants to access their files on an interactive whiteboard in a conference room. The interactive whiteboard displays a URL and a code. The user enters the URL on their personal computer and is prompted for the code. Once they enter the code, the user is asked to authenticate and authorize the interactive whiteboard to access their files. The user enters their credentials and authorizes the transaction and the interactive whiteboard retrieves their files and allows the user to interact with the content. {{example-b2}} describes an exploit relevant to this example.
 
-### Example A3: Authorize Use of a Bike Sharing Scheme (User-Transferred Session Data Pattern)
-An end-user wants to rent a bicycle from a bike sharing scheme. The bicycles are locked in bicycle racks on sidewalks throughout a city. To unlock and use a bicycle, the user scans a QR code on the bicycle using their mobile phone. Scanning the QR code redirects the user to the bicycle sharing scheme's authorization page where the user authenticates and authorizes payment for renting the bicycle. Once authorized, the bicycle sharing service unlocks the bicycle, allowing the user to use it to cycle around the city.
+### Example A3: Authorize Use of a Bike Sharing Scheme (User-Transferred Session Data Pattern) {#example-a3}
+An end-user wants to rent a bicycle from a bike sharing scheme. The bicycles are locked in bicycle racks on sidewalks throughout a city. To unlock and use a bicycle, the user scans a QR code on the bicycle using their mobile phone. Scanning the QR code redirects the user to the bicycle sharing scheme's authorization page where the user authenticates and authorizes payment for renting the bicycle. Once authorized, the bicycle sharing service unlocks the bicycle, allowing the user to use it to cycle around the city. {{example-b3}} outlines an exploit relevant to this situation.
 
-### Example A4: Authorize a Financial Transaction (Backchannel-Transferred Session Pattern)
-An end-user makes an online purchase. Before completing the purchase, they get a notification on their mobile phone, asking them to authorize the transaction. The user opens their app and authenticates to the service before authorizing the transaction.
+### Example A4: Authorize a Financial Transaction (Backchannel-Transferred Session Pattern) {#example-a4}
+An end-user makes an online purchase. Before completing the purchase, they get a notification on their mobile phone, asking them to authorize the transaction. The user opens their app and authenticates to the service before authorizing the transaction. {{example-b4}} describes two exploits relevant to this example.
 
 ### Example A5: Add a Device to a Network (Cross-Device Session Transfer Pattern) {#example-a5}
-An employee is issued with a personal computer that is already joined to a network. The employee wants to add their mobile phone to the network to allow it to access corporate data and services (e.g., files and e-mail). The employee is logged-in on the personal computer where they initiate the process of adding their mobile phone to the network. The personal computer displays a QR code which authorizes the user to join their mobile phone to the network. The employee scans the QR code with their mobile phone and the mobile phone is joined to the network. The employee can start accessing corporate data and services on their mobile device.
+An employee is issued with a personal computer that is already joined to a network. The employee wants to add their mobile phone to the network to allow it to access corporate data and services (e.g., files and e-mail). The employee is logged-in on the personal computer where they initiate the process of adding their mobile phone to the network. The personal computer displays a QR code which authorizes the user to join their mobile phone to the network. The employee scans the QR code with their mobile phone and the mobile phone is joined to the network. The employee can start accessing corporate data and services on their mobile device. {{example-b5}} gives an example of how this flow may be exploited.
 
-### Example A6: Remote Onboarding (User-Transferred Session Data Pattern)
-A new employee is directed to an onboarding portal to provide additional information to confirm their identity on their first day with their new employer. Before activating the employee's account, the onboarding portal requests that the employee present a government issued ID, proof of a background check and proof of their qualifications. The onboarding portal displays a QR code, which the user scans with their mobile phone. Scanning the QR code invokes the employee's digital wallet on their mobile phone, and the employee is asked to present digital versions of an identity document (e.g., a driving license), proof of a background check by an identity verifier, and proof of their qualifications. The employee authorizes the release of the credentials and after completing the onboarding process, their account is activated.
+### Example A6: Remote Onboarding (User-Transferred Session Data Pattern) {#example-a6}
+A new employee is directed to an onboarding portal to provide additional information to confirm their identity on their first day with their new employer. Before activating the employee's account, the onboarding portal requests that the employee present a government issued ID, proof of a background check and proof of their qualifications. The onboarding portal displays a QR code, which the user scans with their mobile phone. Scanning the QR code invokes the employee's digital wallet on their mobile phone, and the employee is asked to present digital versions of an identity document (e.g., a driving license), proof of a background check by an identity verifier, and proof of their qualifications. The employee authorizes the release of the credentials and after completing the onboarding process, their account is activated. {{example-b6}} provides an example of an exploit for this use case.
 
 ### Example A7: Application Bootstrap (Cross-Device Session Transfer Pattern) {#example-a7}
-An employee is signed into an application on their personal computer and wants to bootstrap the mobile application on their mobile phone. The employee initiates the cross-device flow and is shown a QR code in their application. The employee launches the mobile application on their phone and scans the QR code which results in the user being signed into the application on the mobile phone.
+An employee is signed into an application on their personal computer and wants to bootstrap the mobile application on their mobile phone. The employee initiates the cross-device flow and is shown a QR code in their application. The employee launches the mobile application on their phone and scans the QR code which results in the user being signed into the application on the mobile phone. {{Example-B7}} describes an exploit that applies to this scenario.
 
-### Example A8: Access a Productivity Application (User-Transferred Authorization Data Pattern)
-A user is accessing a Computer Aided Design (CAD) application. When accessing the application, authorization data in the form of a 6 digit authorization code is sent to the user's mobile phone. The user views the 6 digit authorization code on their phone and enters it in the CAD application, after which the CAD application displays the user's most recent designs.
+### Example A8: Access a Productivity Application (User-Transferred Authorization Data Pattern) {#example-a8}
+A user is accessing a Computer Aided Design (CAD) application. When accessing the application, authorization data in the form of a 6 digit authorization code is sent to the user's mobile phone. The user views the 6 digit authorization code on their phone and enters it in the CAD application, after which the CAD application displays the user's most recent designs. {{example-b8}} outlines an attack relevant to this scenario.
 
-### Example A9: Administer a System (Backchannel-Transferred Session Pattern)
-A network administrator wants to access an adminstration portal used to configure network assets and deploy new applications. When attempting to access the service, the network administrator receives a notification in an app on their mobile device, requesting them to confirm access to the portal. The network administrator approves the request on their mobile phone and is granted access to the portal.
+### Example A9: Administer a System (Backchannel-Transferred Session Pattern) {#example-a9}
+A network administrator wants to access an adminstration portal used to configure network assets and deploy new applications. When attempting to access the service, the network administrator receives a notification in an app on their mobile device, requesting them to confirm access to the portal. The network administrator approves the request on their mobile phone and is granted access to the portal. {{example-b9}} describes how an attacker might exploit this flow.
 
 # Cross-Device Flow Exploits {#cross-device-flow-exploits}
 Attackers exploit the absence of an authenticated channel between the two devices used in a cross-device flow by using social engineering techniques typically used in phishing attacks.
@@ -927,39 +927,58 @@ Figure: Cross-Device Session Transfer Pattern
 - (H) The client on the Consumption Device presents the session transfer code to the Authorization Server.
 - (I) The Authorization Server verifies the session transfer code and returns the session context information needed to resume the session on the Consumption Device. The attacker resumes the session on their own Consumption Device and is able to access the information that the user authorized on their Authorization Device in step (B).
 
-## Examples of Cross-Device Flow Exploits
-The following examples illustrate these attacks in practical settings and show how the unauthenticated channel is exploited by attackers who can copy the QR codes and user codes, change the context in which they are presented using social engineering techniques and mislead end-users into granting consent to avail of services, access data and make payments.
+## Examples of Cross-Device Flow Exploits {#example-exploits}
+The following examples illustrate these attacks in practical settings applied to the use cases described in {{example-flows}}. These examples show how the unauthenticated channel is exploited by attackers who can copy the QR codes and user codes, change the context in which they are presented using social engineering techniques and mislead end-users into granting consent to avail of services, access data and make payments.
 
 ### Example B1: Illicit Access to a Video Streaming Service (User-Transferred Session Data Pattern) {#example-b1}
+This exploit applies to the use case described in {{example-a1}}.
+
 An attacker obtains a smart TV and attempts to access an online streaming service. The smart TV obtains a QR code from the streaming service authorization server and displays it on screen. The attacker copies the QR code and embeds it in an e-mail that is sent to a large number of recipients. The e-mail contains a message stating that the streaming service wants to thank them for their loyal support and by scanning the QR code, they will be able to add a bonus device to their account for no charge. One of the recipients open the e-mail and scan the QR code to claim the loyalty reward. The user performs multi-factor authentication, and when asked if they want a new device to be added to their account, they authorize the action. The attacker's device is now authorized to access the content and obtains an access and refresh token. The access token allows the attacker to access content and the refresh token allows the attacker to obtain fresh tokens whenever the access token expires.
 
 The attacker scales up the attack by emulating a new smart TV, obtaining multiple QR codes and widening the audience it sends the QR code to. Whenever a recipient scans the QR code and authorizes the addition of a new device, the attacker obtains an access and refresh token, which they sell for a profit.
 
-### Example B2: Illicit Access to Productivity Services (User-Transferred Session Data Pattern)
+### Example B2: Illicit Access to Productivity Services (User-Transferred Session Data Pattern) {#example-b2}
+This exploit applies to the use case described in {{example-a2}}.
+
 An attacker emulates an enterprise application (e.g., an interactive whiteboard) and initiates a cross-device flow by requesting a user code and URL from the authorization server. The attacker obtains a list of potential victims and sends an e-mail informing users that their files will be deleted within 24 hours if they don't follow the link, enter the user code and authenticate. The e-mail reminds them that this is the third time that they have been notified and their last opportunity to prevent deletion of their work files. One or more employees respond by following the URL, entering the code and performing multi-factor authentication. Throughout the authentication experience, the user is interacting with a trusted user experience, re-enforcing the legitimacy of the request. Once these employees authorized access, the attacker obtains access and refresh tokens from the authorization server and uses it to access the users' files, perform lateral attacks to obtain access to other information and continuously refresh the session by requesting new access tokens. These tokens may be exfiltrated and sold to third parties.
 
-### Example B3: Illicit Access to Physical Assets (User-Transferred Session Data Pattern)
+### Example B3: Illicit Access to Physical Assets (User-Transferred Session Data Pattern) {#example-b3}
+This exploit applies to the use case described in {{example-a3}}.
+
 An attacker copies a QR code from a bicycle locked in a bicycle rack in a city, prints it on a label and places the label on a bicycle at the other end of the bicycle rack. A customer approaches the bicycle that contains the replicated QR code and scans the code and authenticates before authorizing payment for renting the bicycle. The bicycle rack unlocks the bicycle containing the original QR code and the attacker removes the bicycle before cycling down the street while the customer is left frustrated that the bicycle they were trying to use is not being unlocked {{NYC.Bike}}. The customer proceeds to unlock another bicycle and lodges a complaint with the bicycle renting company.
 
-### Example B4.1: Illicit Transaction Authorization (Backchannel-Transferred Session Pattern) {#example-b4}
+### Example B4: Illicit Transaction Authorization (Backchannel-Transferred Session Pattern) {#example-b4}
+These exploits applies to the use case described in {{example-a4}}.
+
+#### Example B4.1: Bulk Authorization Request (Backchannel-Transferred Session Pattern) {#example-b4-1}
 An attacker obtains a list of user identifiers for a financial institution and triggers a transaction request for each of the users on the list. The financial institution's authorization server sends push notifications to each of the users, requesting authorization of a transaction. The vast majority of users ignore the request to authorize the transaction, but a small percentage grants authorization by approving the transaction.
 
-### Example B4.2: Fake Helpdesk (Backchannel-Transferred Session Pattern)
+#### Example B4.2: Fake Helpdesk (Backchannel-Transferred Session Pattern) {#example-b4-2}
 An attacker obtains the contact information for a user and contacts them, pretending to be a representative of the user's financial institution. The attacker informs the user that there were a number of fraudulent transactions against their account and asks them to review these transactions by approving or rejecting them. The attacker then triggers a sequence of transactions. The user receives an authorization request for each transaction and declines them as they do not recognize them. The attacker then informs the user that they need to close the users account and transfer all the funds to a new account to prevent further fraudulent transactions. The user receives another authorization request which they approve, or provide additional authorization information to the attacker which enables the attacker to complete their attack and defraud the user.
 
 ### Example B5: Illicit Network Join (Cross-Device Session Transfer Pattern) {#example-b5}
+This exploit applies to the use case described in {{example-a5}}.
+
 An attacker creates a message to all employees of a company, claiming to be from a trusted technology provider investigating a suspected security breach. They ask employees to send them the QR code typically used to join a new device to the network, along with detailed steps on how to obtain the QR code. The employee, eager to assist, initiates the process to add a new mobile device to the network. They authenticate to the network and obtain a QR code. They send the QR code to the attacker. The attacker scans the QR code and adds their own device to the network. They use this device access as an entry point and perform lateral moves to obtain additional privileges and access to restricted resources.
 
-### Example B6: Illicit Onboarding (User-Transferred Session Data Pattern)
+### Example B6: Illicit Onboarding (User-Transferred Session Data Pattern) {#example-b6}
+This exploit applies to the use case described in {{example-a6}}.
+
 An attacker initiates an employee onboarding flow and obtains a QR code from the onboarding portal to invoke a digital wallet and present a verifiable credential attesting to a new employee's identity. The attacker obtains a list of potential new employees and sends an e-mail informing them that it is time to present proof of their background check or government issued ID. The new employee scans the QR code, invokes their digital wallet and presents their credentials. Once the credentials are presented, the employee's account is activated. The employee portal accessed by the attacker to obtain the QR code displays a message to the attacker with instructions on how to access their account.
 
 ### Example B7: Illicit Application Bootstrap (Cross-Device Session Transfer Pattern) {#Example-B7}
+This exploit applies to the use case described in {{example-a7}}.
+
 An attacker creates a message to all employees of a company, claiming to be from the company's IT service provider. They claim that they are trying to resolve an application performance issue and ask employees to send them the QR code typically used to transfer a session. The employee, eager to assist, initiates the process to transfer a session. They authenticate and obtain a QR code and then send the QR code to the attacker. The attacker scans the QR code with their mobile phone and access the users data and resources.
 
-### Example B8: Account Takeover (User-Transferred Session Data Pattern)
+### Example B8: Account Takeover (User-Transferred Session Data Pattern) {#example-b8}
+This exploit applies to the use case described in {{example-a8}}.
+
 An attacker wants to use some website which requires presentation of a verifiable credential for authentication. The attacker creates a phishing website which will in real time capture log-in QR Codes from the original website and present these to the user. The attacker tries to get the user to use the phishing website by sending messages by e-mail or other messaging technologies. The user scans the QR code on the phishing website, invokes their digital wallet and presents their credentials. Once the credentials are presented, the original session from the attackers device is authorized with the user's credentials.
 
 ### Example B9: Illicit Access to Administration Capabilities Through Consent Request Overload (Backchannel-Transferred Session Pattern) {#example-b9}
+This exploit applies to the use case described in {{example-a9}}.
+
 An attacker attempts to access an adminstration portal repeatedly, generating a stream of authorization requests to the network administrator. The attempts are timed to occur while the administrator is asleep. The administrator is woken by the incoming requests on their phone, and, in an attempt to stop the notifications, they accidentally approve access and the attacker gains access to the portal.
 
 ### Out of Scope
@@ -1077,7 +1096,7 @@ Another mitigation strategy includes limiting the life of the access and refresh
 **Limitations:** Short lived tokens reduces the time window during which an attacker can benefit from a successful attack. This is most effective for access tokens. However, once an attacker obtains a refresh token, they can continue to request new access tokens, as well as refresh tokens. Forcing the expiry of refresh tokens may cause the user to re-authorize an action more frequently, which results in a negative user experience.
 
 ### Rate Limits
-An attacker that engages in a scaled attack may need to request a large number of user codes (see exploit {{example-b1}}) or initiate a large number of authorization requests (see exploit {{example-b4}} and {{example-b9}}) in a short period of time. An authorization server MAY apply rate limits to minimize the number of requests it would accept from a client or send to a user in a limited time period.
+An attacker that engages in a scaled attack may need to request a large number of user codes (see exploit described in {{example-b1}}) or initiate a large number of authorization requests (see exploits described in {{example-b4-1}} and {{example-b9}}) in a short period of time. An authorization server MAY apply rate limits to minimize the number of requests it would accept from a client or send to a user in a limited time period.
 
 **Limitations:** Rate limits are effective at slowing an attacker down and help to degrade scaled attacks, but do not prevent more targeted attacks that are executed with lower volumes and velocity. Therefore, it should be used along with other techniques to provide a defence-in-depth defence against cross-device attacks.
 
@@ -1171,7 +1190,7 @@ Only use this protocol if other cross-device protocols are not viable due to dev
 Client Initiated Back-Channel Authentication (CIBA) {{CIBA}}: A standard developed in the OpenID Foundation that allows a device or service (e.g., a personal computer, smart TV, Kiosk) to request the OpenID Provider to initiate an authentication flow if it knows a valid identifier for the user. The user completes the authentication flow using a second device (e.g., a mobile phone). In this flow the user does not scan a QR code or obtain a user code from the Consumption Device, but is instead contacted by the OpenID Provider to complete the authentication using a push notification, e-mail, text message or any other suitable mechanism.
 
 #### Susceptibility
-Less susceptible to unauthenticated channel attacks, but still vulnerable to attackers who know or can guess the user identifier and initiate an attack as described in {{example-b4}}.
+Less susceptible to unauthenticated channel attacks, but still vulnerable to attackers who know or can guess the user identifier and initiate an attack as described in {{example-b4-1}}.
 
 #### Device Capabilities
 There is no requirement on the Consumption Device to support specific hardware. The Authorization Device must be registered/associated with the user and it must be possible for the Authorization Server to trigger an authorization on this device.
