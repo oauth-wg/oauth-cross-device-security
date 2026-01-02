@@ -2656,242 +2656,271 @@ Appendix A.  Document History
 
    [[ To be removed from the final specification ]]
 
-   -latest * Secdir Feedback: Additional information on allowing time to
-   authenticate (https://github.com/oauth-wg/oauth-cross-device-
-   security/issues/203) * Secdir Feedback: Provide additional guidance
-   on user impact of using a VPN (see https://github.com/oauth-wg/oauth-
-   cross-device-security/issues/202) * Secdir Feedback: Clarify section
-   4.1.3 (https://github.com/oauth-wg/oauth-cross-device-security/
-   issues/201) * Art Feedback: Add reference defining social engineering
-   and phishing (https://github.com/oauth-wg/oauth-cross-device-
-   security/issues/207) * Art Feedback: Clarify diagrams
-   (https://github.com/oauth-wg/oauth-cross-device-security/issues/208)
-   * ARTART Feedback: Cross-link to reference "consent fatigue" attacks
-   (https://github.com/oauth-wg/oauth-cross-device-security/issues/211)
-   * ARTART Feedback: Editorial updates (https://github.com/oauth-wg/
-   oauth-cross-device-security/issues/212, https://github.com/oauth-wg/
-   oauth-cross-device-security/issues/218, https://github.com/oauth-wg/
-   oauth-cross-device-security/issues/217, https://github.com/oauth-wg/
-   oauth-cross-device-security/issues/213) * ARTART Feedback: Clarify
-   that 6 digit codes are examples only (https://github.com/oauth-wg/
-   oauth-cross-device-security/issues/214) * ARTART Feedback: Make
-   limitations of proximity scehems clearer (https://github.com/oauth-
-   wg/oauth-cross-device-security/issues/215) * ARTART Feedback: Add
-   note on risks of device type spoofing (https://github.com/oauth-wg/
-   oauth-cross-device-security/issues/216) * ARTART Feedback: Provide
-   examples of authenticate-then-initiate mitigations and limitations
-   (https://github.com/oauth-wg/oauth-cross-device-security/issues/219)
-   * OPSDIR Feedback: Editorial updates (https://github.com/oauth-wg/
-   oauth-cross-device-security/issues/231) * OPSDIR Feedback: Add
-   example cross references to ease navvigation (https://github.com/
-   oauth-wg/oauth-cross-device-security/issues/232)
+   *  latest
 
-   -13
+      -  Secdir Feedback: Additional information on allowing time to
+         authenticate (https://github.com/oauth-wg/oauth-cross-device-
+         security/issues/203)
 
-   *  Fixed reference for protocol selection (see issue #189)
+      -  Secdir Feedback: Provide additional guidance on user impact of
+         using a VPN (see https://github.com/oauth-wg/oauth-cross-
+         device-security/issues/202)
 
-   *  Change affiliation
+      -  Secdir Feedback: Clarify section 4.1.3 (https://github.com/
+         oauth-wg/oauth-cross-device-security/issues/201)
 
-   *  AD Feedback: Add Security Consideration
+      -  Art Feedback: Add reference defining social engineering and
+         phishing (https://github.com/oauth-wg/oauth-cross-device-
+         security/issues/207)
 
-   *  AD Feedback: Add IANA Consideration
+      -  Art Feedback: Clarify diagrams (https://github.com/oauth-wg/
+         oauth-cross-device-security/issues/208)
 
-   *  AD Feedback: Capitalise SHOULD not -> SHOULD NOT (issue #185)
+      -  ARTART Feedback: Cross-link to reference "consent fatigue"
+         attacks (https://github.com/oauth-wg/oauth-cross-device-
+         security/issues/211)
 
-   *  AD Feedback: AD Nits (see https://github.com/oauth-wg/oauth-cross-
-      device-security/issues/195)
+      -  ARTART Feedback: Editorial updates (https://github.com/oauth-
+         wg/oauth-cross-device-security/issues/212, https://github.com/
+         oauth-wg/oauth-cross-device-security/issues/218,
+         https://github.com/oauth-wg/oauth-cross-device-security/
+         issues/217, https://github.com/oauth-wg/oauth-cross-device-
+         security/issues/213)
 
-   *  AD Feedback: Clarify limitations on consumption device (see
-      https://github.com/oauth-wg/oauth-cross-device-security/
-      issues/194)
+      -  ARTART Feedback: Clarify that 6 digit codes are examples only
+         (https://github.com/oauth-wg/oauth-cross-device-security/
+         issues/214)
 
-   *  AD Feedback: Remove repetitive text (see https://github.com/oauth-
-      wg/oauth-cross-device-security/issues/193)
+      -  ARTART Feedback: Make limitations of proximity scehems clearer
+         (https://github.com/oauth-wg/oauth-cross-device-security/
+         issues/215)
 
-   *  AD Feedback: Clrify seperate use cases (see https://github.com/
-      oauth-wg/oauth-cross-device-security/issues/192)
+      -  ARTART Feedback: Add note on risks of device type spoofing
+         (https://github.com/oauth-wg/oauth-cross-device-security/
+         issues/216)
 
-   -12
+      -  ARTART Feedback: Provide examples of authenticate-then-initiate
+         mitigations and limitations (https://github.com/oauth-wg/oauth-
+         cross-device-security/issues/219)
 
-   *  Fixed FIDO CTAP V2.2 URL
+      -  OPSDIR Feedback: Editorial updates (https://github.com/oauth-
+         wg/oauth-cross-device-security/issues/231)
 
-   *  Update SSF Reference
+      -  OPSDIR Feedback: Add example cross references to ease
+         navvigation (https://github.com/oauth-wg/oauth-cross-device-
+         security/issues/232)
 
-   *  CAEP Reference Update
+      -13
 
-   *  Fix IEEE reference
+      -  Fixed reference for protocol selection (see issue #189)
 
-   *  Update IEEE Reference
+      -  Change affiliation
 
-   -11
+      -  AD Feedback: Add Security Consideration
 
-   *  Fixed malformed labels
+      -  AD Feedback: Add IANA Consideration
 
-   *  Clarified common use case for when phone and TVs do not use the
-      same network.
+      -  AD Feedback: Capitalise SHOULD not -> SHOULD NOT (issue #185)
 
-   *  Clarified role of authorization server in establishing proximity.
+      -  AD Feedback: AD Nits (see https://github.com/oauth-wg/oauth-
+         cross-device-security/issues/195)
 
-   *  Clarified which mitigations can be implented by the authorization
-      server only.
+      -  AD Feedback: Clarify limitations on consumption device (see
+         https://github.com/oauth-wg/oauth-cross-device-security/
+         issues/194)
 
-   *  Add Dan Moore to acknowledgements.
+      -  AD Feedback: Remove repetitive text (see https://github.com/
+         oauth-wg/oauth-cross-device-security/issues/193)
 
-   *  Updated outdated references.
+      -  AD Feedback: Clrify seperate use cases (see https://github.com/
+         oauth-wg/oauth-cross-device-security/issues/192)
 
-   -10
+      -12
 
-   *  Shepherd feedback: Describe unauthenticated channel.
+      -  Fixed FIDO CTAP V2.2 URL
 
-   *  Shepherd feedback: Seperate normative and informative references.
+      -  Update SSF Reference
 
-   *  Shepherd feedback: Update FIDO/WebAuthn references
+      -  CAEP Reference Update
 
-   -09
+      -  Fix IEEE reference
 
-   *  Affiliation change to allow publication to Datatracker.
+      -  Update IEEE Reference
 
-   *  No content changes - re-published to avoid expiry while waiting on
-      shepherd review.
+      -11
 
-   -08
+      -  Fixed malformed labels
 
-   *  Editorial updates.
+      -  Clarified common use case for when phone and TVs do not use the
+         same network.
 
-   -07
+      -  Clarified role of authorization server in establishing
+         proximity.
 
-   *  Clarification of FIDO\WebAuthn section.
+      -  Clarified which mitigations can be implented by the
+         authorization server only.
 
-   *  Updated langugage in section on FIDO to allow for use of FIDO keys
-      on consumption devices.
+      -  Add Dan Moore to acknowledgements.
 
-   *  Clarified origin of QR Code.
+      -  Updated outdated references.
 
-   *  Editorial updates
+      -10
 
-   *  Updated examples to be consistent.
+      -  Shepherd feedback: Describe unauthenticated channel.
 
-   *  Made diagram description clearer.
+      -  Shepherd feedback: Seperate normative and informative
+         references.
 
-   *  Added CTAP 2.2 Draft.
+      -  Shepherd feedback: Update FIDO/WebAuthn references
 
-   *  Added additional guidance on geolocation inaccuracies.
+      -09
 
-   *  Added Roy Williams to acknowledgements
+      -  Affiliation change to allow publication to Datatracker.
 
-   *  Clarified that authorization servers can detect
+      -  No content changes - re-published to avoid expiry while waiting
+         on shepherd review.
 
-   *  Consistent use of "smart TV"
+      -08
 
-   *  Fixed references
+      -  Editorial updates.
 
-   -06
+      -07
 
-   *  Corrected typos.
+      -  Clarification of FIDO\WebAuthn section.
 
-   -05
+      -  Updated langugage in section on FIDO to allow for use of FIDO
+         keys on consumption devices.
 
-   *  Added section to provide actionable guidance to implementers on
-      how to use this document.
+      -  Clarified origin of QR Code.
 
-   *  Expanded section on formal analysis to include completed research
-      projects.
+      -  Editorial updates
 
-   *  Added reference to OpenID for Verifiable Presentations.
+      -  Updated examples to be consistent.
 
-   -04
+      -  Made diagram description clearer.
 
-   *  Corrected formatting issue that prevented history from showing
-      correctly.
+      -  Added CTAP 2.2 Draft.
 
-   -03
+      -  Added additional guidance on geolocation inaccuracies.
 
-   *  Introduced normative SHOULD, RECOMMENDED and MAY when applied to
-      actions the Authorization Server, Resource Server or Client may
-      implement.
+      -  Added Roy Williams to acknowledgements
 
-   *  Added User Education as a standalone mitigation.
+      -  Clarified that authorization servers can detect
 
-   *  Added Maryam Mehrnezhad, Marco Pernpruner and Giada Sciarretta to
-      the contributors list.
+      -  Consistent use of "smart TV"
 
-   *  Added Request Binding with Out-of-Band Data as an additional
-      mitigation.
+      -  Fixed references
 
-   *  Adopted the OpenID Foundation terminology from [CIBA] and changed
-      Initiating Device to Consumption Device
+      -06
 
-   *  Added Fake Helpdesk and Consent Request Overload examples
+      -  Corrected typos.
 
-   *  Replaced "Authenticated Flow" mitigation name with "Authenticate-
-      then-Intitiate"
+      -05
 
-   *  Added Cross-Device Session Transfer pattern
+      -  Added section to provide actionable guidance to implementers on
+         how to use this document.
 
-   -02
+      -  Expanded section on formal analysis to include completed
+         research projects.
 
-   *  Fixed typos and grammar edits
+      -  Added reference to OpenID for Verifiable Presentations.
 
-   *  Capitalised Initiating Device and Authorization Device
+      -04
 
-   *  Introduced Cross-Device Consent Phishing as a label for the types
-      of attacks described in this document.
+      -  Corrected formatting issue that prevented history from showing
+         correctly.
 
-   *  Updated labels for different types of flows (User-Transferred
-      Session Data Pattern, Backchannel-Transferred Session Pattern,
-      User-Transferred Authorization Data Pattern)
+      -03
 
-   *  Adopted consistent use of hyphenation in using "cross-device"
+      -  Introduced normative SHOULD, RECOMMENDED and MAY when applied
+         to actions the Authorization Server, Resource Server or Client
+         may implement.
 
-   *  Consistent use of "Authorization Device"
+      -  Added User Education as a standalone mitigation.
 
-   *  Update Reference to Secure Signals Framework to reflect name
-      change from Secure Signals and Events
+      -  Added Maryam Mehrnezhad, Marco Pernpruner and Giada Sciarretta
+         to the contributors list.
 
-   *  Described difference between proximity enforced and proximity-less
-      cross-device flows
+      -  Added Request Binding with Out-of-Band Data as an additional
+         mitigation.
 
-   *  General editorial pass
+      -  Adopted the OpenID Foundation terminology from [CIBA] and
+         changed Initiating Device to Consumption Device
 
-   -01
+      -  Added Fake Helpdesk and Consent Request Overload examples
 
-   *  Added additional diagrams and descriptions to distinguish between
-      different cross-device flow patterns.
+      -  Replaced "Authenticated Flow" mitigation name with
+         "Authenticate-then-Intitiate"
 
-   *  Added short description on limitations of each mitigation.
+      -  Added Cross-Device Session Transfer pattern
 
-   *  Added acknowledgement of additional contributors.
+      -02
 
-   *  Fixed document history format.
+      -  Fixed typos and grammar edits
 
-   -00 (Working Group Draft)
+      -  Capitalised Initiating Device and Authorization Device
 
-   *  Initial WG revision (content unchanged from draft-kasselman-cross-
-      device-security-03)
+      -  Introduced Cross-Device Consent Phishing as a label for the
+         types of attacks described in this document.
 
-   -03 draft-kasselman-cross-device-security
+      -  Updated labels for different types of flows (User-Transferred
+         Session Data Pattern, Backchannel-Transferred Session Pattern,
+         User-Transferred Authorization Data Pattern)
 
-   *  Minor edits and typos
+      -  Adopted consistent use of hyphenation in using "cross-device"
 
-   -02 draft-kasselman-cross-device-security
+      -  Consistent use of "Authorization Device"
 
-   *  Minor edits and typos
+      -  Update Reference to Secure Signals Framework to reflect name
+         change from Secure Signals and Events
 
-   *  Upload as draft-ietf-oauth-cross-device-security-best-practice-02
+      -  Described difference between proximity enforced and proximity-
+         less cross-device flows
 
-   -01 draft-kasselman-cross-device-security
+      -  General editorial pass
 
-   *  Updated draft based on feedback from version circulated to OAuth
-      working group
+      -01
 
-   *  Upload as draft-ietf-oauth-cross-device-security-best-practice-01
+      -  Added additional diagrams and descriptions to distinguish
+         between different cross-device flow patterns.
 
-   -00 draft-kasselman-cross-device-security
+      -  Added short description on limitations of each mitigation.
 
-   *  Initial draft adopted from document circulated to the OAuth
-      Security Workshop Slack Channel
+      -  Added acknowledgement of additional contributors.
 
-   *  Upload as draft-ietf-oauth-cross-device-security-best-practice-00
+      -  Fixed document history format.
+
+      -00 (Working Group Draft)
+
+      -  Initial WG revision (content unchanged from draft-kasselman-
+         cross-device-security-03)
+
+      -03 draft-kasselman-cross-device-security
+
+      -  Minor edits and typos
+
+      -02 draft-kasselman-cross-device-security
+
+      -  Minor edits and typos
+
+      -  Upload as draft-ietf-oauth-cross-device-security-best-
+         practice-02
+
+      -01 draft-kasselman-cross-device-security
+
+      -  Updated draft based on feedback from version circulated to
+         OAuth working group
+
+      -  Upload as draft-ietf-oauth-cross-device-security-best-
+         practice-01
+
+      -00 draft-kasselman-cross-device-security
+
+      -  Initial draft adopted from document circulated to the OAuth
+         Security Workshop Slack Channel
+
+      -  Upload as draft-ietf-oauth-cross-device-security-best-
+         practice-00
 
 Authors' Addresses
 
