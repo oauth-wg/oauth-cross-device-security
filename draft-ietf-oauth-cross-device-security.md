@@ -1314,7 +1314,16 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
    * Secdir Feedback: Additional information on allowing time to authenticate (https://github.com/oauth-wg/oauth-cross-device-security/issues/203)
    * Secdir Feedback: Provide additional guidance on user impact of using a VPN (see https://github.com/oauth-wg/oauth-cross-device-security/issues/202)
    * Secdir Feedback: Clarify section 4.1.3 (https://github.com/oauth-wg/oauth-cross-device-security/issues/201)
-   * Art Feedback: Add reference defining social engineering and phishing
+   * Art Feedback: Add reference defining social engineering and phishing (https://github.com/oauth-wg/oauth-cross-device-security/issues/207)
+   * Art Feedback: Clarify diagrams (https://github.com/oauth-wg/oauth-cross-device-security/issues/208)
+   * ARTART Feedback: Cross-link to reference "consent fatigue" attacks (https://github.com/oauth-wg/oauth-cross-device-security/issues/211)
+   * ARTART Feedback: Editorial updates (https://github.com/oauth-wg/oauth-cross-device-security/issues/212, https://github.com/oauth-wg/oauth-cross-device-security/issues/218, https://github.com/oauth-wg/oauth-cross-device-security/issues/217, https://github.com/oauth-wg/oauth-cross-device-security/issues/213)
+   * ARTART Feedback: Clarify that 6 digit codes are examples only (https://github.com/oauth-wg/oauth-cross-device-security/issues/214)
+   * ARTART Feedback: Make limitations of proximity scehems clearer (https://github.com/oauth-wg/oauth-cross-device-security/issues/215)
+   * ARTART Feedback: Add note on risks of device type spoofing (https://github.com/oauth-wg/oauth-cross-device-security/issues/216)
+   * ARTART Feedback: Provide examples of authenticate-then-initiate mitigations and limitations (https://github.com/oauth-wg/oauth-cross-device-security/issues/219)
+   * OPSDIR Feedback: Editorial updates (https://github.com/oauth-wg/oauth-cross-device-security/issues/231)
+   * OPSDIR Feedback: Add example cross references to ease navvigation (https://github.com/oauth-wg/oauth-cross-device-security/issues/232)
 
    -13
 
