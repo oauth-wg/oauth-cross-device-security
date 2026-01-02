@@ -1303,7 +1303,7 @@ The popularity of cross-device flows attracted the attention of attackers that e
 To address these attacks, we propose a three pronged approach that includes the deployment of practical mitigations to safeguard protocols that are already deployed, provide guidance on when to use different protocols, including protocols that are not susceptible to these attacks, and the introduction of formal methods to evaluate the impact of mitigations and find additional issues.
 
 # Contributors
-The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil Reddy Boreddy, Bjorn Hjelm, Joseph Heenan, Brian Campbell, Damien Bowden, Kristina Yasuda, Tim Würtele, Karsten Meyer zu Selhausen, Maryam Mehrnezhad, Marco Pernpruner, Giada Sciarretta, Dean H. Saxe, Roy Williams, Dan Moore and others (please let us know, if you've been mistakenly omitted) for their valuable input, feedback and general support of this work.
+The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil Reddy Boreddy, Bjorn Hjelm, Joseph Heenan, Brian Campbell, Damien Bowden, Kristina Yasuda, Tim Würtele, Karsten Meyer zu Selhausen, Maryam Mehrnezhad, Marco Pernpruner, Giada Sciarretta, Dean H. Saxe, Roy Williams, Aaron Parecki, George Fletcher, Hannes Tschofenig, Dan Moore, Deb Cooley, Paul Kyzivat, David Mandelberg, Jim Fenton and Bing Liu and others (please let us know, if you've been mistakenly omitted) for their valuable input, feedback and general support of this work.
 
 --- back
 
@@ -1324,6 +1324,7 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
    * ARTART Feedback: Provide examples of authenticate-then-initiate mitigations and limitations (https://github.com/oauth-wg/oauth-cross-device-security/issues/219)
    * OPSDIR Feedback: Editorial updates (https://github.com/oauth-wg/oauth-cross-device-security/issues/231)
    * OPSDIR Feedback: Add example cross references to ease navvigation (https://github.com/oauth-wg/oauth-cross-device-security/issues/232)
+   * Added Aaron Parecki, George Fletcher, Hannes Tschofenig, Dan Moore, Deb Cooley, Paul Kyzivat, David Mandelberg, Jim Fenton and Bing Liu to the list of people who proivded input and made contributions.
 
    -13
 
@@ -1335,7 +1336,7 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
    * AD Feedback: AD Nits (see https://github.com/oauth-wg/oauth-cross-device-security/issues/195)
    * AD Feedback: Clarify limitations on consumption device (see https://github.com/oauth-wg/oauth-cross-device-security/issues/194)
    * AD Feedback: Remove repetitive text (see https://github.com/oauth-wg/oauth-cross-device-security/issues/193)
-   * AD Feedback: Clrify seperate use cases (see https://github.com/oauth-wg/oauth-cross-device-security/issues/192)
+   * AD Feedback: Clarify seperate use cases (see https://github.com/oauth-wg/oauth-cross-device-security/issues/192)
 
    -12
 
