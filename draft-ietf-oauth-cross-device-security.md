@@ -384,7 +384,7 @@ techniques to convince the user to send the session transfer code to the attacke
 These attacks borrow techniques from traditional phishing attacks, but instead of collecting passwords, attackers collect session transfer codes and other artefacts that allow them to setup a session and then use it to access a user's data.
 
 ## Defending Against Cross-Device Attacks
-This document provides guidance to implementers to defend against Cross-Device Consent Phishing and Cross-Device Session Phishing attacks. This guidance includes:
+This document provides guidance to implementers (e.g. system designers, architects, product managers, security specialists, fraud analysts, and engineers) of cross-device flows to defend against Cross-Device Consent Phishing and Cross-Device Session Phishing attacks.
 
 1. Practical mitigations for susceptible protocols ({{practical-mitigations}}).
 2. Protocol selection guidance to avoid using susceptible protocols ({{protocol-selection}}).
