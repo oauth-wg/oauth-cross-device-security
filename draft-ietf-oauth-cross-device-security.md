@@ -1139,7 +1139,7 @@ In the User-Transferred Session Data Pattern, users MAY enter out-of-band inform
 **Limitations:** A sophistacted attacker may include an additional step in their attack where they create a phishing attack that gathers the out-of-band data from the user before initiating the authorization request. The additional step could also have a negative impact on the usability level of the solution.
 
 ### Practical Mitigation Summary
-The practical mitigations described in this section can prevent the attacks from being initiated, disrupt attacks once they start or reduce the impact or remediate an attack if it succeeds. When combining one or more of these mitigations the overall security profile of a cross-device flow improves significantly. The following table provides a summary view of these mitigations:
+The practical mitigations described in this section can, within the limitations described, prevent or substantially increase the difficulty of initiating attacks, disrupt attacks once they start or reduce the impact of, or remediate, an attack if it succeeds. When one or more of these mitigations are combined, the overall security profile of a cross-device flow improves significantly. The following table provides a summary of these mitigations:
 
 
 | Mitigation                            | Prevent | Disrupt | Recover |
