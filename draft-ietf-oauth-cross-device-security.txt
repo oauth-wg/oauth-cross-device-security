@@ -277,9 +277,11 @@ Table of Contents
 
 1.3.  Defending Against Cross-Device Attacks
 
-   This document provides guidance to implementers to defend against
+   This document provides guidance to implementers (e.g. system
+   designers, architects, product managers, security specialists, fraud
+   analysts, and engineers) of cross-device flows to defend against
    Cross-Device Consent Phishing and Cross-Device Session Phishing
-   attacks.  This guidance includes:
+   attacks.
 
    1.  Practical mitigations for susceptible protocols (Section 6.1).
 
