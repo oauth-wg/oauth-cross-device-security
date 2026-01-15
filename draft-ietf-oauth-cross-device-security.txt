@@ -1716,6 +1716,10 @@ Table of Contents
    Depending on the risk profile and the threat model in which a system
    is operating, it MAY be necessary to use more than one mechanism to
    establish proximity to raise the bar for any potential attackers.
+   Proximity mechanisms that rely on establishing user's location or
+   identifying a user's device SHOULD be evaluated for their privacy
+   impliciations within the context of a specific application or
+   deployment.
 
    Note: There are scenarios that require that authorization takes place
    in a different location than the one in which the transaction is
@@ -1723,10 +1727,13 @@ Table of Contents
    card holder and both can initiate transactions, but only the primary
    holder can authorize it.  There is no guarantee that the primary and
    secondary holders are in the same location at the time of the
-   authorization.  In such cases, proximity (or lack of proximity) may
-   be an indicator of risk and the system may deploy additional controls
-   (e.g., transaction value limits, transaction velocity limits) or use
-   the proximity information as input to a risk management system.
+   authorization.  In such cases, proximity can still serve as a risk
+   signal.  For example, while the primary and secondary holders may
+   normally be located in the same city, a sudden presence in different
+   continents may prompt the system to apply additional controls (e.g.,
+   transaction value limits or transaction velocity limits) or
+   incorporate proximity information into a broader risk management
+   decision.
 
    *Limitations:* Proximity mechanisms make it harder to perform Cross-
    Device Consent Phishing (CDCP) attacks.  However, depending on how
@@ -1872,6 +1879,10 @@ Table of Contents
    requires the attacker to have access to such a device and maintain
    access in a way that does not result in the device's trust status
    from being revoked.
+
+   Mechanisms that identify a specific device SHOULD be evaluated for
+   their privacy impliciations within the context of a specific
+   application or deployment.
 
    *Limitations:* An attacker may still be able to obtain access to a
    trusted device and use it to initiate authorization requests, making
