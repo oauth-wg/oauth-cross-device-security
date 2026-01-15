@@ -647,7 +647,7 @@ Figure: Cross-Dvice Session Transfer Pattern
 - (G) The Authorization Server verifies the session transfer code and returns the session context information needed to resume the session on the Consumption Device. The user resumes the session they initiated and authorized on the Authorization Device and proceeds to access the information on the Consumption Device.
 
 ## Examples of Cross-Device Flows {#example-flows}
-The following examples illustrate the above flows in a diverse range of practical settings. Corresponding examples off how these flows may be exploited are documented in {{example-exploits}}.
+The following examples illustrate the above flows in a diverse range of practical settings. Corresponding examples of how these flows may be exploited are documented in {{example-exploits}}.
 
 ### Example A1: Authorize Access to a Video Streaming Service (User-Transferred Session Data Pattern) {#example-a1}
 An end-user sets up a new smart TV and wants to connect it to their favorite streaming service. The streaming service displays a QR code on the TV that the user scans with their mobile phone. The user is redirected to the streaming service provider's web page and asked to enter their credentials to authorize the smart TV to access the streaming service. The user enters their credentials and grants authorization, after which the streaming service is available on the smart TV. {{example-b1}} illustrates an exploit that applies to this scenario.
