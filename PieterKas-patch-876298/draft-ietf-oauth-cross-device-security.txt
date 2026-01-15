@@ -1727,10 +1727,13 @@ Table of Contents
    card holder and both can initiate transactions, but only the primary
    holder can authorize it.  There is no guarantee that the primary and
    secondary holders are in the same location at the time of the
-   authorization.  In such cases, proximity (or lack of proximity) may
-   be an indicator of risk and the system may deploy additional controls
-   (e.g., transaction value limits, transaction velocity limits) or use
-   the proximity information as input to a risk management system.
+   authorization.  In such cases, proximity can still serve as a risk
+   signal.  For example, while the primary and secondary holders may
+   normally be located in the same city, a sudden presence in different
+   continents may prompt the system to apply additional controls (e.g.,
+   transaction value limits or transaction velocity limits) or
+   incorporate proximity information into a broader risk management
+   decision.
 
    *Limitations:* Proximity mechanisms make it harder to perform Cross-
    Device Consent Phishing (CDCP) attacks.  However, depending on how
