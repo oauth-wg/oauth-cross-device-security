@@ -5,10 +5,10 @@
 oauth                                                       P. Kasselman
 Internet-Draft                                                   Defakto
 Intended status: Best Current Practice                           D. Fett
-Expires: 6 July 2026                                            Authlete
+Expires: 19 July 2026                                           Authlete
                                                                F. Skokan
                                                                     Okta
-                                                          2 January 2026
+                                                         15 January 2026
 
 
            Cross-Device Flows: Security Best Current Practice
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 6 July 2026.
+   This Internet-Draft will expire on 19 July 2026.
 
 Copyright Notice
 
@@ -748,8 +748,8 @@ Table of Contents
 3.3.  Examples of Cross-Device Flows
 
    The following examples illustrate the above flows in a diverse range
-   of practical settings.  Corresponding examples off how these flows
-   may be exploited are documented in Section 4.3.
+   of practical settings.  Corresponding examples of how these flows may
+   be exploited are documented in Section 4.3.
 
 3.3.1.  Example A1: Authorize Access to a Video Streaming Service (User-
         Transferred Session Data Pattern)
