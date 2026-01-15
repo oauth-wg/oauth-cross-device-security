@@ -404,7 +404,7 @@ This specification uses the terms "access token", "refresh token",
 "client" defined by The OAuth 2.0 Authorization Framework {{RFC6749}}.
 
 # Best Practices {#best-practices}
-This section describes the set of security mechanisms and measures to secure cross-device protocols against Cross-Device Consent Phishing and Cross-Device Session Phishing attacks that the OAuth working group considers best practices at the time of writing this specification.
+This section describes the best current security practices for protecting cross-device protocols against Cross-Device Consent Phishing and Cross-Device Session Phishing attacks.
 
 1. Implementers MUST perform a risk assessment before implementing cross-device flows, weighing the risks from Cross-Device Consent Phishing and Cross-Device Session Phishing attacks against benefits for users.
 2. Implementers SHOULD avoid cross-device flows if risks cannot be sufficiently mitigated.
