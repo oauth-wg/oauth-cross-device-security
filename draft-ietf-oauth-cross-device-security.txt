@@ -2120,12 +2120,13 @@ Table of Contents
 
 6.1.18.  Practical Mitigation Summary
 
-   The practical mitigations described in this section can prevent the
-   attacks from being initiated, disrupt attacks once they start or
-   reduce the impact or remediate an attack if it succeeds.  When
-   combining one or more of these mitigations the overall security
+   The practical mitigations described in this section can, within the
+   limitations described, prevent or substantially increase the
+   difficulty of initiating attacks, disrupt attacks once they start or
+   reduce the impact of, or remediate, an attack if it succeeds.  When
+   one or more of these mitigations are combined, the overall security
    profile of a cross-device flow improves significantly.  The following
-   table provides a summary view of these mitigations:
+   table provides a summary of these mitigations:
 
      +=================================+=========+=========+=========+
      | Mitigation                      | Prevent | Disrupt | Recover |
