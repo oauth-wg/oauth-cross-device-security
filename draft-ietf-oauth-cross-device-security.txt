@@ -1892,10 +1892,12 @@ Table of Contents
    the network is subject to security controls managed by the network
    operator, which may include only allowing trusted devices on the
    network, device management, user authentication and physical access
-   policies and systems.  By limiting protocol initiation to a specific
-   network, the attacker needs to have access to a device on the
-   network.  This mitigation can be implemented on the authorization
-   server without changes to other system components.
+   policies and systems.  In some deployments a trusted network may also
+   be inferred using SIM or network operator supplied information.  By
+   limiting protocol initiation to a specific network, the attacker
+   needs to have access to a device on the network.  This mitigation can
+   be implemented on the authorization server without changes to other
+   system components.
 
    *Limitations:* Network level controls may not always be feasible,
    especially when dealing with consumer scenarios where the network may
