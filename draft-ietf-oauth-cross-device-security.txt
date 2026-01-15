@@ -1833,7 +1833,7 @@ Table of Contents
    content filtering engine as described in Section 6.1.5, or through
    other mechanisms such as reports from end-users.  If an authorization
    server determines that a user code or QR code is being used in an
-   attack it may choose to invalidate all tokens issued in response to
+   attack it MAY choose to invalidate all tokens issued in response to
    these codes and make that information available through a token
    introspection endpoint (see [RFC7662]).  In addition it may notify
    resource servers to stop accepting these tokens or to terminate
