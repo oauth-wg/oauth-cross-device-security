@@ -1441,21 +1441,19 @@ Authentication <span>[<a href="#CIBA" class="cite xref">CIBA</a>]</span> are two
 between the Consumption Device and Authorization Device using social engineering
 techniques commonly used in phishing attacks to gain unauthorized access to the
 user's data.<a href="#section-1.1-3" class="pilcrow">¶</a></p>
-<p id="section-1.1-4">Note: This document uses the terms "social engineering" and "phishing" as
-described in the NIST Computer Security Resource Center Glossary <span>[<a href="#NISTGlossary" class="cite xref">NISTGlossary</a>]</span>.<a href="#section-1.1-4" class="pilcrow">¶</a></p>
-<p id="section-1.1-5">Several publications have emerged in the public domain (<span>[<a href="#ARTDCPHISH" class="cite xref">ARTDCPHISH</a>]</span>, <span>[<a href="#DCFLOWPHISH" class="cite xref">DCFLOWPHISH</a>]</span>, <span>[<a href="#NEWDCPHISH" class="cite xref">NEWDCPHISH</a>]</span>, <span>[<a href="#DEFCON29" class="cite xref">DEFCON29</a>]</span>,
+<p id="section-1.1-4">Several publications have emerged in the public domain (<span>[<a href="#ARTDCPHISH" class="cite xref">ARTDCPHISH</a>]</span>, <span>[<a href="#DCFLOWPHISH" class="cite xref">DCFLOWPHISH</a>]</span>, <span>[<a href="#NEWDCPHISH" class="cite xref">NEWDCPHISH</a>]</span>, <span>[<a href="#DEFCON29" class="cite xref">DEFCON29</a>]</span>,
 <span>[<a href="#DCATTACK" class="cite xref">DCATTACK</a>]</span>, <span>[<a href="#SQPHISH" class="cite xref">SQPHISH</a>]</span>), describing how the unauthenticated channel can be
 exploited using social engineering techniques borrowed from phishing. Unlike traditional
 phishing attacks, these attacks don't harvest credentials. Instead, they skip the
 step of collecting credentials by persuading users to grant authorization using
-their Authorization Devices.<a href="#section-1.1-5" class="pilcrow">¶</a></p>
-<p id="section-1.1-6">Once the user grants authorization, the attacker has access to the user's
+their Authorization Devices.<a href="#section-1.1-4" class="pilcrow">¶</a></p>
+<p id="section-1.1-5">Once the user grants authorization, the attacker has access to the user's
 resources and in some cases is able to collect access and refresh tokens. Once in
 possession of the access and refresh tokens, the attacker may use these tokens to
 execute lateral attacks and gain additional access, or monetize the tokens by
 selling them. These attacks are effective even when multi-factor authentication
 is deployed, since the attacker's aim is not to capture and replay the credentials,
-but rather to persuade the user to grant authorization.<a href="#section-1.1-6" class="pilcrow">¶</a></p>
+but rather to persuade the user to grant authorization.<a href="#section-1.1-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="cross-device-session-transfer">
@@ -1506,6 +1504,8 @@ appear in all capitals, as shown here.<a href="#section-1.4-1" class="pilcrow">�
 "authorization server", "resource server", "authorization endpoint",
 "authorization request", and
 "client" defined by The OAuth 2.0 Authorization Framework <span>[<a href="#RFC6749" class="cite xref">RFC6749</a>]</span>.<a href="#section-1.4-2" class="pilcrow">¶</a></p>
+<p id="section-1.4-3">This document uses the terms "social engineering" and "phishing" as
+described in the NIST Computer Security Resource Center Glossary <span>[<a href="#NISTGlossary" class="cite xref">NISTGlossary</a>]</span>.<a href="#section-1.4-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1515,7 +1515,7 @@ appear in all capitals, as shown here.<a href="#section-1.4-1" class="pilcrow">�
       <h2 id="name-best-practices">
 <a href="#section-2" class="section-number selfRef">2. </a><a href="#name-best-practices" class="section-name selfRef">Best Practices</a>
       </h2>
-<p id="section-2-1">This section describes the best current security practices for protecting cross-device protocols against Cross-Device Consent Phishing and Cross-Device Session Phishing attacks.<a href="#section-2-1" class="pilcrow">¶</a></p>
+<p id="section-2-1">This section describes the set of security mechanisms and measures to secure cross-device protocols against CDCP and CDSP attacks that the OAuth working group considers best practices at the time of writing this specification.<a href="#section-2-1" class="pilcrow">¶</a></p>
 <ol start="1" type="1" class="normal type-1" id="section-2-2">
 <li id="section-2-2.1">
           <p id="section-2-2.1.1">Implementers MUST perform a risk assessment before implementing cross-device flows, weighing the risks from Cross-Device Consent Phishing and Cross-Device Session Phishing attacks against benefits for users.<a href="#section-2-2.1.1" class="pilcrow">¶</a></p>
@@ -1587,13 +1587,13 @@ carry with them.<a href="#section-3.1-3.4.1" class="pilcrow">¶</a></p>
 <p id="section-3.1-4">There are three cross-device flow patterns for transferring the authorization request between the Consumption Device and the Authorization Device.<a href="#section-3.1-4" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-3.1-5.1">
-            <p id="section-3.1-5.1.1"><strong>User-Transferred Session Data Pattern:</strong> In the first pattern, the user initiates the authorization process with the authorization server by copying information from the Consumption Device to the Authorization Device, before authorizing an action. By transferring the data from the Consumption Device to the Authorization Device, the user transfers the authorization session. For example the user may read a code displayed on the Consumption Device and enter it on the Authorization Device, or they may scan a QR code displayed on the Consumption Device with the Authorization Device. The Device Authorization Grant (<span>[<a href="#RFC8628" class="cite xref">RFC8628</a>]</span>) is an example of a cross-device flow that follows this pattern.<a href="#section-3.1-5.1.1" class="pilcrow">¶</a></p>
+            <p id="section-3.1-5.1.1"><strong>User-Transferred Session Data Pattern:</strong> In the first pattern, the user initiates the authorization process with the authorization server by copying information from the Consumption Device to the Authorization Device, before authorizing an action. By transferring the data from the Consumption Device to the Authorization Device, the user transfers the authorization session. For example, the user may read a code displayed on the Consumption Device and enter it on the Authorization Device, or they may scan a QR code displayed on the Consumption Device with the Authorization Device. The Device Authorization Grant (<span>[<a href="#RFC8628" class="cite xref">RFC8628</a>]</span>) is an example of a cross-device flow that follows this pattern.<a href="#section-3.1-5.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-3.1-5.2">
-            <p id="section-3.1-5.2.1"><strong>Backchannel-Transferred Session Pattern:</strong> In the second pattern, the OAuth client on the Consumption Device is responsible for transferring the session and initiating authorization on the Authorization Device via a backchannel with the Authorization Server. For example the user may attempt an online purchase on a Consumption Device (e.g., a personal computer) and receive an authorization request on their Authorization Device (e.g., mobile phone). The Client Initiated Backchannel Authentication <span>[<a href="#CIBA" class="cite xref">CIBA</a>]</span> is an example of a cross-device flow that follow this pattern.<a href="#section-3.1-5.2.1" class="pilcrow">¶</a></p>
+            <p id="section-3.1-5.2.1"><strong>Backchannel-Transferred Session Pattern:</strong> In the second pattern, the OAuth client on the Consumption Device is responsible for transferring the session and initiating authorization on the Authorization Device via a backchannel with the Authorization Server. For example, the user may attempt an online purchase on a Consumption Device (e.g., a personal computer) and receive an authorization request on their Authorization Device (e.g., mobile phone). The Client Initiated Backchannel Authentication <span>[<a href="#CIBA" class="cite xref">CIBA</a>]</span> is an example of a cross-device flow that follow this pattern.<a href="#section-3.1-5.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-3.1-5.3">
-            <p id="section-3.1-5.3.1"><strong>User-Transferred Authorization Data Pattern:</strong> In the third pattern, the OAuth client on the Consumption Device triggers the authorization request via a backchannel with the Authorization Server. Authorization data (e.g., a 6 digit authorization code) is displayed on the Authorization Device, which the user transfers to Consumption Device (e.g., by manually entering it). For example the user may attempt to access data in an enterprise application and receive a 6 digit authorization code on their Authorization Device (e.g., mobile phone) that they enter on Consumption Device. Note: The use of a 6 digit code is illustrative and reflects common practice at the time of writing. Code length may vary based on usability and risk considerations, and specifying the appropriate length is out of scope for this document.<a href="#section-3.1-5.3.1" class="pilcrow">¶</a></p>
+            <p id="section-3.1-5.3.1"><strong>User-Transferred Authorization Data Pattern:</strong> In the third pattern, the OAuth client on the Consumption Device triggers the authorization request via a backchannel with the Authorization Server. Authorization data (e.g., a 6-digit authorization code) is displayed on the Authorization Device, which the user transfers to Consumption Device (e.g., by manually entering it). For example, the user may attempt to access data in an enterprise application and receive a 6-digit authorization code on their Authorization Device (e.g., mobile phone) that they enter on Consumption Device. Note: The use of a 6-digit code is illustrative and reflects common practice at the time of writing. Code length may vary based on usability and risk considerations, and specifying the appropriate length is out of scope for this document.<a href="#section-3.1-5.3.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <div id="utsdp">
@@ -1734,7 +1734,7 @@ or connecting a service to the Consumption Device.<a href="#section-3.1.1-4.1.1"
               <p id="section-3.1.2-4.5.1">(E) The user is authenticated and authorization is granted to access the user's resources (there may be several additional messages, depending on the authentication protocol, user interface and other implementation details).<a href="#section-3.1.2-4.5.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-3.1.2-4.6">
-              <p id="section-3.1.2-4.6.1">(F) The Authorization Server grants authorization (e.g. by issuing tokens) to the Consumption Device to access the user's resources.<a href="#section-3.1.2-4.6.1" class="pilcrow">¶</a></p>
+              <p id="section-3.1.2-4.6.1">(F) The Authorization Server grants authorization (e.g., by issuing tokens) to the Consumption Device to access the user's resources.<a href="#section-3.1.2-4.6.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 <p id="section-3.1.2-5">The Authorization Server may use a variety of mechanisms to request user authorization, including a push notification to a dedicated app on a mobile phone, or sending a text message with a link to an endpoint where the user can authenticate and authorize an action.<a href="#section-3.1.2-5" class="pilcrow">¶</a></p>
@@ -1745,7 +1745,7 @@ or connecting a service to the Consumption Device.<a href="#section-3.1.1-4.1.1"
           <h4 id="name-user-transferred-authorizat">
 <a href="#section-3.1.3" class="section-number selfRef">3.1.3. </a><a href="#name-user-transferred-authorizat" class="section-name selfRef">User-Transferred Authorization Data Pattern</a>
           </h4>
-<p id="section-3.1.3-1">Examples of the user-transferred authorization data pattern include flows in which the Consumption Device requests the Authorization Server to send authorization data (e.g., a 6 digit authorization code in a text message, e-mail or mobile application) to the Authorization Device. Once the Authorization Device receives the authorization data, the user enters it on the Consumption Device. The Consumption Device sends the authorization data back to the Authorization Server for validation before gaining access to the user's resources. The figure below shows an example of this flow.<a href="#section-3.1.3-1" class="pilcrow">¶</a></p>
+<p id="section-3.1.3-1">Examples of the user-transferred authorization data pattern include flows in which the Consumption Device requests the Authorization Server to send authorization data (e.g., a 6-digit authorization code in a text message, e-mail or mobile application) to the Authorization Device. Once the Authorization Device receives the authorization data, the user enters it on the Consumption Device. The Consumption Device sends the authorization data back to the Authorization Server for validation before gaining access to the user's resources. The figure below shows an example of this flow.<a href="#section-3.1.3-1" class="pilcrow">¶</a></p>
 <div class="alignLeft art-ascii-art art-text artwork" id="section-3.1.3-2">
 <pre>
              +--------------+                       +---------------+
@@ -1783,10 +1783,10 @@ or connecting a service to the Consumption Device.<a href="#section-3.1.1-4.1.1"
               <p id="section-3.1.3-4.2.1">(B) The client on the Consumption Device requests user authorization on the backchannel from the Authorization Server.<a href="#section-3.1.3-4.2.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-3.1.3-4.3">
-              <p id="section-3.1.3-4.3.1">(C) The Authorization Server sends authorization data (e.g., a 6 digit authorization code) to the Authorization Device. Examples of mechanisms that may be used to distribute the authorization data include text messages, email or a mobile application.<a href="#section-3.1.3-4.3.1" class="pilcrow">¶</a></p>
+              <p id="section-3.1.3-4.3.1">(C) The Authorization Server sends authorization data (e.g., a 6-digit authorization code) to the Authorization Device. Examples of mechanisms that may be used to distribute the authorization data include text messages, email or a mobile application.<a href="#section-3.1.3-4.3.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-3.1.3-4.4">
-              <p id="section-3.1.3-4.4.1">(D) The user reads and copies the authorization data (e.g., the 6 digit authorization code) received on the Authorization Device.<a href="#section-3.1.3-4.4.1" class="pilcrow">¶</a></p>
+              <p id="section-3.1.3-4.4.1">(D) The user reads and copies the authorization data (e.g., the 6-digit authorization code) received on the Authorization Device.<a href="#section-3.1.3-4.4.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-3.1.3-4.5">
               <p id="section-3.1.3-4.5.1">(E) The user enters the authorization data on the Consumption Device.<a href="#section-3.1.3-4.5.1" class="pilcrow">¶</a></p>
@@ -1847,7 +1847,7 @@ or connecting a service to the Consumption Device.<a href="#section-3.1.1-4.1.1"
             +---------------+                       +---------------+
 </pre><a href="#section-3.2.1-2" class="pilcrow">¶</a>
 </div>
-<p id="section-3.2.1-3">Figure: Cross-Dvice Session Transfer Pattern<a href="#section-3.2.1-3" class="pilcrow">¶</a></p>
+<p id="section-3.2.1-3">Figure: Cross-Device Session Transfer Pattern<a href="#section-3.2.1-3" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-3.2.1-4.1">
               <p id="section-3.2.1-4.1.1">(A) The user is authenticated on the Authorization Device and authorizes the transfer of the session to the Consumption Device.<a href="#section-3.2.1-4.1.1" class="pilcrow">¶</a></p>
@@ -1880,7 +1880,7 @@ or connecting a service to the Consumption Device.<a href="#section-3.1.1-4.1.1"
         <h3 id="name-examples-of-cross-device-fl">
 <a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-examples-of-cross-device-fl" class="section-name selfRef">Examples of Cross-Device Flows</a>
         </h3>
-<p id="section-3.3-1">The following examples illustrate the above flows in a diverse range of practical settings. Corresponding examples of how these flows may be exploited are documented in <a href="#example-exploits" class="auto internal xref">Section 4.3</a>.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
+<p id="section-3.3-1">The following examples illustrate the above flows in a diverse range of practical settings. Corresponding examples of how these flows may be exploited by attackers are documented in <a href="#example-exploits" class="auto internal xref">Section 4.3</a>.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
 <div id="example-a1">
 <section id="section-3.3.1">
           <h4 id="name-example-a1-authorize-access">
@@ -1950,7 +1950,7 @@ or connecting a service to the Consumption Device.<a href="#section-3.1.1-4.1.1"
           <h4 id="name-example-a9-administer-a-sys">
 <a href="#section-3.3.9" class="section-number selfRef">3.3.9. </a><a href="#name-example-a9-administer-a-sys" class="section-name selfRef">Example A9: Administer a System (Backchannel-Transferred Session Pattern)</a>
           </h4>
-<p id="section-3.3.9-1">A network administrator wants to access an adminstration portal used to configure network assets and deploy new applications. When attempting to access the service, the network administrator receives a notification in an app on their mobile device, requesting them to confirm access to the portal. The network administrator approves the request on their mobile phone and is granted access to the portal. <a href="#example-b9" class="auto internal xref">Section 4.3.9</a> describes how an attacker might exploit this flow.<a href="#section-3.3.9-1" class="pilcrow">¶</a></p>
+<p id="section-3.3.9-1">A network administrator wants to access an administration portal used to configure network assets and deploy new applications. When attempting to access the service, the network administrator receives a notification in an app on their mobile device, requesting them to confirm access to the portal. The network administrator approves the request on their mobile phone and is granted access to the portal. <a href="#example-b9" class="auto internal xref">Section 4.3.9</a> describes how an attacker might exploit this flow.<a href="#section-3.3.9-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1963,14 +1963,14 @@ or connecting a service to the Consumption Device.<a href="#section-3.1.1-4.1.1"
 <a href="#section-4" class="section-number selfRef">4. </a><a href="#name-cross-device-flow-exploits" class="section-name selfRef">Cross-Device Flow Exploits</a>
       </h2>
 <p id="section-4-1">Attackers exploit the absence of an authenticated channel between the two devices used in a cross-device flow by using social engineering techniques typically used in phishing attacks.<a href="#section-4-1" class="pilcrow">¶</a></p>
-<p id="section-4-2">In cross-device authorization flows the attacker uses these social engineering techniques by changing the context in which the authorization request is presented to convince the user to grant authorization when they shouldn't. These attacks are also known as Cross-Device Consent Phishing (CDCP) attacks.<a href="#section-4-2" class="pilcrow">¶</a></p>
-<p id="section-4-3">In cross-device session transfer flows the attacker uses these social engineering techniques to convince the user to initiate a session transfer and send them a session transfer code. Once the attacker is in posession of this session transfer code, they present it to the Authorization Server to transfer the session and access the user's resources. These attacks are referred to as Cross-Device Session Phishing (CDSP) attacks.<a href="#section-4-3" class="pilcrow">¶</a></p>
+<p id="section-4-2">In cross-device authorization flows the attacker uses these social engineering techniques by changing the context in which the authorization request is presented to convince the user to grant authorization when they shouldn't. These attacks are also known as CDCP attacks.<a href="#section-4-2" class="pilcrow">¶</a></p>
+<p id="section-4-3">In cross-device session transfer flows the attacker uses these social engineering techniques to convince the user to initiate a session transfer and send them a session transfer code. Once the attacker is in possession of this session transfer code, they present it to the Authorization Server to transfer the session and access the user's resources. These attacks are referred to as CDSP attacks.<a href="#section-4-3" class="pilcrow">¶</a></p>
 <div id="cross-device-authorization-flow-exploits">
 <section id="section-4.1">
         <h3 id="name-cross-device-authorization-">
 <a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-cross-device-authorization-" class="section-name selfRef">Cross-Device Authorization Flow Exploits</a>
         </h3>
-<p id="section-4.1-1">Attackers exploit cross-device authorization flows by initiating an authorization flow on the Consumption Device and then use social engineering techniques to change the context in which the request is presented to the user in order to convince them to grant authorization on the Authorization Device. The attacker is able to change the context of the authorization request because the channel between the Consumption Device and the Authorization Device is unauthenticated. These attacks are also known as Cross-Device Consent Phishing (CDCP) attacks.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+<p id="section-4.1-1">Attackers exploit cross-device authorization flows by initiating an authorization flow on the Consumption Device and then use social engineering techniques to change the context in which the request is presented to the user in order to convince them to grant authorization on the Authorization Device. The attacker is able to change the context of the authorization request because the channel between the Consumption Device and the Authorization Device is unauthenticated. These attacks are also known as CDCP attacks.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
 <div id="user-transferred-session-data-pattern-exploits">
 <section id="section-4.1.1">
           <h4 id="name-user-transferred-session-dat">
@@ -2202,7 +2202,7 @@ Authorization|              |                       |               |
               <p id="section-4.1.3-5.3.1">(C) The client on the Consumption Device requests user authorization on the backchannel from the Authorization Server.<a href="#section-4.1.3-5.3.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-4.1.3-5.4">
-              <p id="section-4.1.3-5.4.1">(D) The Authorization Server sends authorization data (e.g., a 6 digit authorization code) to the Authorization Device. Examples of mechanisms that may be used to distribute the authorization data include text messages, email or a mobile application. The authorization data may be presented as text or a QR code.<a href="#section-4.1.3-5.4.1" class="pilcrow">¶</a></p>
+              <p id="section-4.1.3-5.4.1">(D) The Authorization Server sends authorization data (e.g., a 6-digit authorization code) to the Authorization Device. Examples of mechanisms that may be used to distribute the authorization data include text messages, email or a mobile application. The authorization data may be presented as text or a QR code.<a href="#section-4.1.3-5.4.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-4.1.3-5.5">
               <p id="section-4.1.3-5.5.1">(E) The user is convinced by the social engineering message received from the attacker in step (A) and copies the authorization data received on the Authorization Device.<a href="#section-4.1.3-5.5.1" class="pilcrow">¶</a></p>
@@ -2211,13 +2211,13 @@ Authorization|              |                       |               |
               <p id="section-4.1.3-5.6.1">(F) The user forwards the authorization data to the attacker.<a href="#section-4.1.3-5.6.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-4.1.3-5.7">
-              <p id="section-4.1.3-5.7.1">(G) The attacker enters the authorization data (e.g., a 6 digit authorization code) on the Consumption Device.<a href="#section-4.1.3-5.7.1" class="pilcrow">¶</a></p>
+              <p id="section-4.1.3-5.7.1">(G) The attacker enters the authorization data (e.g., a 6-digit authorization code) on the Consumption Device.<a href="#section-4.1.3-5.7.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-4.1.3-5.8">
               <p id="section-4.1.3-5.8.1">(H) The Authorization Server grants authorization and issues access and refresh tokens to the Consumption Device, which is under the attacker's control. On completion of the exploit, the attacker gains access to the user's resources.<a href="#section-4.1.3-5.8.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
-<p id="section-4.1.3-6">The unauthenticated channel may also be exploited in variations of the above scenario if there is no session maintained in the channel for steps C and G. In that case a user (as opposed to the attacker) initiates the flow and is then convinced using social engineering techniques into sending the authorization data (e.g., a 6 digit authorization code) to the attacker, instead of using it themselves. The authorization data may be represented as a QR code or text string (e.g., 6 digit authorization code). The attacker then starts the flow and uses the authorization data to obtain the privileges that would have been assigned to the user.<a href="#section-4.1.3-6" class="pilcrow">¶</a></p>
+<p id="section-4.1.3-6">The unauthenticated channel may also be exploited in variations of the above scenario if there is no session maintained in the channel for steps C and G. In that case a user (as opposed to the attacker) initiates the flow and is then convinced using social engineering techniques into sending the authorization data (e.g., a 6-digit authorization code) to the attacker, instead of using it themselves. The authorization data may be represented as a QR code or text string (e.g., 6-digit authorization code). The attacker then starts the flow and uses the authorization data to obtain the privileges that would have been assigned to the user.<a href="#section-4.1.3-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -2227,7 +2227,7 @@ Authorization|              |                       |               |
         <h3 id="name-cross-device-session-transfer-">
 <a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-cross-device-session-transfer-" class="section-name selfRef">Cross-Device Session Transfer Exploits</a>
         </h3>
-<p id="section-4.2-1">Attackers exploit cross-device session transfer flows by using social engineering techniques typically used in phishing attacks to convince the user to authorize the transfer of a session and then send the session transfer code or QR code to the attacker. The absence of an authenticated channel between these two devices enables the attacker to use the session transfer code on their own device to obtain access to the session and access the users data. These attacks are referred to as Cross-Device Session Phishing (CDSP) attacks.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+<p id="section-4.2-1">Attackers exploit cross-device session transfer flows by using social engineering techniques typically used in phishing attacks to convince the user to authorize the transfer of a session and then send the session transfer code or QR code to the attacker. The absence of an authenticated channel between these two devices enables the attacker to use the session transfer code on their own device to obtain access to the session and access the users data. These attacks are referred to as CDSP attacks.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
 <div class="alignLeft art-ascii-art art-text artwork" id="section-4.2-2">
 <pre>
             +---------------+                       +---------------+
@@ -2268,7 +2268,7 @@ Authorization|              |                       |               |
             |               |      Code             |               |
             |               |                       |               |
             |               |&lt;-(I) Return Session --|               |
-            |               |      Context           |               |
+            |               |      Context          |               |
             +---------------+                       +---------------+
 </pre><a href="#section-4.2-2" class="pilcrow">¶</a>
 </div>
@@ -2404,7 +2404,7 @@ Authorization|              |                       |               |
 <a href="#section-4.3.9" class="section-number selfRef">4.3.9. </a><a href="#name-example-b9-illicit-access-t" class="section-name selfRef">Example B9: Illicit Access to Administration Capabilities Through Consent Request Overload (Backchannel-Transferred Session Pattern)</a>
           </h4>
 <p id="section-4.3.9-1">This exploit applies to the use case described in <a href="#example-a9" class="auto internal xref">Section 3.3.9</a>.<a href="#section-4.3.9-1" class="pilcrow">¶</a></p>
-<p id="section-4.3.9-2">An attacker attempts to access an adminstration portal repeatedly, generating a stream of authorization requests to the network administrator. The attempts are timed to occur while the administrator is asleep. The administrator is woken by the incoming requests on their phone, and, in an attempt to stop the notifications, they accidentally approve access and the attacker gains access to the portal.<a href="#section-4.3.9-2" class="pilcrow">¶</a></p>
+<p id="section-4.3.9-2">An attacker attempts to access an administration portal repeatedly, generating a stream of authorization requests to the network administrator. The attempts are timed to occur while the administrator is asleep. The administrator is woken by the incoming requests on their phone, and, in an attempt to stop the notifications, they accidentally approve access and the attacker gains access to the portal.<a href="#section-4.3.9-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="out-of-scope">
@@ -2471,7 +2471,7 @@ Authorization|              |                       |               |
           <p id="section-6-2.3.1">Recovering from incorrect channel authentication decisions by users.<a href="#section-6-2.3.1" class="pilcrow">¶</a></p>
 </li>
       </ol>
-<p id="section-6-3">To achieve the above outcomes, mitigating against Cross-Device Consent Phishing attacks require a three-pronged approach:<a href="#section-6-3" class="pilcrow">¶</a></p>
+<p id="section-6-3">To achieve the above outcomes, mitigating against CDCP attacks require a three-pronged approach:<a href="#section-6-3" class="pilcrow">¶</a></p>
 <ol start="1" type="1" class="normal type-1" id="section-6-4">
 <li id="section-6-4.1">
           <p id="section-6-4.1.1">Reduce risks of deployed protocols with practical mitigations.<a href="#section-6-4.1.1" class="pilcrow">¶</a></p>
@@ -2488,7 +2488,7 @@ Authorization|              |                       |               |
         <h3 id="name-practical-mitigations">
 <a href="#section-6.1" class="section-number selfRef">6.1. </a><a href="#name-practical-mitigations" class="section-name selfRef">Practical Mitigations</a>
         </h3>
-<p id="section-6.1-1">A number of protocols that enable cross-device flows that are susceptible to Cross-Device Consent Phishing attacks are already deployed. The security profile of these protocols can be improved through practical mitigations that provide defense in depth that either:<a href="#section-6.1-1" class="pilcrow">¶</a></p>
+<p id="section-6.1-1">A number of protocols that enable cross-device flows that are susceptible to CDCP attacks are already deployed. The security profile of these protocols can be improved through practical mitigations that provide defense in depth that either:<a href="#section-6.1-1" class="pilcrow">¶</a></p>
 <ol start="1" type="1" class="normal type-1" id="section-6.1-2">
 <li id="section-6.1-2.1">
             <p id="section-6.1-2.1.1">Prevents the attack from being initiated.<a href="#section-6.1-2.1.1" class="pilcrow">¶</a></p>
@@ -2523,7 +2523,7 @@ Authorization|              |                       |               |
           </ul>
 <p id="section-6.1.1-3">Depending on the risk profile and the threat model in which a system is operating, it MAY be necessary to use more than one mechanism to establish proximity to raise the bar for any potential attackers. Proximity mechanisms that rely on establishing user's location or identifying a user's device SHOULD be evaluated for their privacy impliciations within the context of a specific application or deployment.<a href="#section-6.1.1-3" class="pilcrow">¶</a></p>
 <p id="section-6.1.1-4">Note: There are scenarios that require that authorization takes place in a different location than the one in which the transaction is initiated. For example, there may be a primary and secondary credit card holder and both can initiate transactions, but only the primary holder can authorize it. There is no guarantee that the primary and secondary holders are in the same location at the time of the authorization. In such cases, proximity can still serve as a risk signal. For example, while the primary and secondary holders may normally be located in the same city, a sudden presence in different continents may prompt the system to apply additional controls (e.g., transaction value limits or transaction velocity limits) or incorporate proximity information into a broader risk management decision.<a href="#section-6.1.1-4" class="pilcrow">¶</a></p>
-<p id="section-6.1.1-5"><strong>Limitations:</strong> Proximity mechanisms make it harder to perform Cross-Device Consent Phishing (CDCP) attacks. However, depending on how the proximity check is performed, an attacker may be able to circumvent the protection: The attacker can use a VPN to simulate a shared network or spoof a GNSS position. For example, the attacker can try to request the location of the end-user's Authorization Device through browser APIs and then simulate the same location on their Consumption Device using standard debugging features available on many platforms. Relying on IP address mapping can degrade user experience when a VPN is used on the Consumption or Authorization Device. In such cases, the devices may appear to be in different locations, requiring additional user guidance or alternative mechanisms to establish proximity.<a href="#section-6.1.1-5" class="pilcrow">¶</a></p>
+<p id="section-6.1.1-5"><strong>Limitations:</strong> Proximity mechanisms make it harder to perform CDCP attacks. However, depending on how the proximity check is performed, an attacker may be able to circumvent the protection: The attacker can use a VPN to simulate a shared network or spoof a GNSS position. For example, the attacker can try to request the location of the end-user's Authorization Device through browser APIs and then simulate the same location on their Consumption Device using standard debugging features available on many platforms. Relying on IP address mapping can degrade user experience when a VPN is used on the Consumption or Authorization Device. In such cases, the devices may appear to be in different locations, requiring additional user guidance or alternative mechanisms to establish proximity.<a href="#section-6.1.1-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="Short-Lived-Timebound-Codes">
@@ -2655,7 +2655,7 @@ Authorization|              |                       |               |
           <h4 id="name-authenticate-then-initiate">
 <a href="#section-6.1.15" class="section-number selfRef">6.1.15. </a><a href="#name-authenticate-then-initiate" class="section-name selfRef">Authenticate-then-Initiate</a>
           </h4>
-<p id="section-6.1.15-1">By requiring a user to authenticate on the Consumption Device with a phishing resistant authentication method before initiating a cross-device flow, the server can prevent an attacker from initiating a cross-device flow and obtaining QR codes or user codes. For example, a banking application may initiate a cross-device authorization request using the Backchannel-Transferred Session pattern only after the user is already authenticated and attempts a high-value transaction. This prevents the attacker from inititiating a cross-device authorization request, obtaining a QR code or a user code that they can use to mislead an unsuspecting user. This requires that the Consumption Device has sufficient input capabilities to support a phishing resistant authentication mechanism, which may in itself negate the need for a cross-device flow.<a href="#section-6.1.15-1" class="pilcrow">¶</a></p>
+<p id="section-6.1.15-1">By requiring a user to authenticate on the Consumption Device with a phishing resistant authentication method before initiating a cross-device flow, the server can prevent an attacker from initiating a cross-device flow and obtaining QR codes or user codes. For example, a banking application may initiate a cross-device authorization request using the Backchannel-Transferred Session pattern only after the user is already authenticated and attempts a high-value transaction. This prevents the attacker from initiating a cross-device authorization request, obtaining a QR code or a user code that they can use to mislead an unsuspecting user. This requires that the Consumption Device has sufficient input capabilities to support a phishing resistant authentication mechanism, which may in itself negate the need for a cross-device flow.<a href="#section-6.1.15-1" class="pilcrow">¶</a></p>
 <p id="section-6.1.15-2"><strong>Limitations:</strong> This mitigation is limited to Consumption Devices capable of supporting phishing resistant authentication mechanisms. Authenticating on the Consumption Device before starting a cross-device flow does not prevent the attacks described in <a href="#example-b5" class="auto internal xref">Section 4.3.5</a> and <a href="#Example-B7" class="auto internal xref">Section 4.3.7</a> and it is RECOMMENDED that additional mitigations described in this document is used if the cross-device flows are used in scenarios such as <a href="#example-a5" class="auto internal xref">Section 3.3.5</a> and <a href="#example-a7" class="auto internal xref">Section 3.3.7</a>.<a href="#section-6.1.15-2" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -2674,7 +2674,7 @@ Authorization|              |                       |               |
 <a href="#section-6.1.17" class="section-number selfRef">6.1.17. </a><a href="#name-request-binding-with-out-of" class="section-name selfRef">Request Binding with Out-of-Band Data</a>
           </h4>
 <p id="section-6.1.17-1">In the User-Transferred Session Data Pattern, users MAY enter out-of-band information on the Consumption Device to start the authorization process. The out-of-band data entered by the user MAY then be included in the QR code which is displayed on the Consumption Device. When the QR code is scanned by the Authorization Device, the out-of-band data is verified by the user or by the Authorization Device. The out-of-band data could be any attribute that the user or Authorization Device can retrieve during the authorization process. Examples include a serial number, one-time password or PIN, location or any other data that the user or the Authorization Device can recall or retrieve during the authorization process (<span>[<a href="#MPRCS2020" class="cite xref">MPRCS2020</a>]</span>, <span>[<a href="#PCRSM2023" class="cite xref">PCRSM2023</a>]</span>).<a href="#section-6.1.17-1" class="pilcrow">¶</a></p>
-<p id="section-6.1.17-2"><strong>Limitations:</strong> A sophistacted attacker may include an additional step in their attack where they create a phishing attack that gathers the out-of-band data from the user before initiating the authorization request. The additional step could also have a negative impact on the usability level of the solution.<a href="#section-6.1.17-2" class="pilcrow">¶</a></p>
+<p id="section-6.1.17-2"><strong>Limitations:</strong> A sophisticated attacker may include an additional step in their attack where they create a phishing attack that gathers the out-of-band data from the user before initiating the authorization request. The additional step could also have a negative impact on the usability level of the solution.<a href="#section-6.1.17-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="practical-mitigation-summary">
@@ -2819,7 +2819,7 @@ Authorization|              |                       |               |
             <h5 id="name-description">
 <a href="#section-6.2.1.1" class="section-number selfRef">6.2.1.1. </a><a href="#name-description" class="section-name selfRef">Description</a>
             </h5>
-<p id="section-6.2.1.1-1">A standard to enable authorization on devices with constrained input capabilities (smart TVs, printers, kiosks). In this protocol, the user code or QR code is displayed or made available on the Consumption Device (smart TV) and entered on a second device (e.g., a mobile phone).<a href="#section-6.2.1.1-1" class="pilcrow">¶</a></p>
+<p id="section-6.2.1.1-1"><span>[<a href="#RFC8628" class="cite xref">RFC8628</a>]</span> is a standard to enable authorization on devices with constrained input capabilities (e.g., smart TVs, printers, and kiosks). In this protocol, the user code or QR code is displayed or made available on the Consumption Device (smart TV) and entered on a second device (e.g., a mobile phone).<a href="#section-6.2.1.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="susceptibility">
@@ -2827,7 +2827,7 @@ Authorization|              |                       |               |
             <h5 id="name-susceptibility">
 <a href="#section-6.2.1.2" class="section-number selfRef">6.2.1.2. </a><a href="#name-susceptibility" class="section-name selfRef">Susceptibility</a>
             </h5>
-<p id="section-6.2.1.2-1">There are several reports in the public domain outlining how the unauthenticated channel may be exploited to execute a Cross-Device Consent Phishing attack (<span>[<a href="#ARTDCPHISH" class="cite xref">ARTDCPHISH</a>]</span>, <span>[<a href="#DCFLOWPHISH" class="cite xref">DCFLOWPHISH</a>]</span>, <span>[<a href="#NEWDCPHISH" class="cite xref">NEWDCPHISH</a>]</span>, <span>[<a href="#DEFCON29" class="cite xref">DEFCON29</a>]</span>, <span>[<a href="#DCATTACK" class="cite xref">DCATTACK</a>]</span>, <span>[<a href="#SQPHISH" class="cite xref">SQPHISH</a>]</span>).<a href="#section-6.2.1.2-1" class="pilcrow">¶</a></p>
+<p id="section-6.2.1.2-1">There are several reports in the public domain outlining how the unauthenticated channel may be exploited to execute a CDCP attack (<span>[<a href="#ARTDCPHISH" class="cite xref">ARTDCPHISH</a>]</span>, <span>[<a href="#DCFLOWPHISH" class="cite xref">DCFLOWPHISH</a>]</span>, <span>[<a href="#NEWDCPHISH" class="cite xref">NEWDCPHISH</a>]</span>, <span>[<a href="#DEFCON29" class="cite xref">DEFCON29</a>]</span>, <span>[<a href="#DCATTACK" class="cite xref">DCATTACK</a>]</span>, <span>[<a href="#SQPHISH" class="cite xref">SQPHISH</a>]</span>).<a href="#section-6.2.1.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="device-capabilities">
@@ -3015,7 +3015,7 @@ results of the analysis, they identified and defined the category of
 malicious authentication attempt through social engineering
 techniques, thus not compromising all the authentication factors
 involved; these attacks are aligned with the definition of
-Cross-Device Consent Phishing (CDCP) attacks.<a href="#section-6.3-6.3.1" class="pilcrow">¶</a></p>
+CDCP attacks.<a href="#section-6.3-6.3.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.3-6.4">
             <p id="section-6.3-6.4.1">In "An Automated Multi-Layered Methodology to Assist the Secure and
@@ -3058,7 +3058,7 @@ described in <a href="#user_education" class="auto internal xref">Section 6.1.13
 <a href="#section-9" class="section-number selfRef">9. </a><a href="#name-conclusion" class="section-name selfRef">Conclusion</a>
       </h2>
 <p id="section-9-1">Cross-device flows enable authorization on devices with limited input capabilities, allow for secure authentication when using public or shared devices, provide a path towards multi-factor authentication and, provide the convenience of a single, portable credential store.<a href="#section-9-1" class="pilcrow">¶</a></p>
-<p id="section-9-2">The popularity of cross-device flows attracted the attention of attackers that exploit the unauthenticated channel between the Consumption Device and Authorization Device using techniques commonly used in phishing attacks. These Cross-Device Consent Phishing (CDCP) attacks allow attackers to obtain access and refresh tokens, rather than authentication credentials, resulting in access to resources even if the user used multi-factor authentication.<a href="#section-9-2" class="pilcrow">¶</a></p>
+<p id="section-9-2">The popularity of cross-device flows attracted the attention of attackers that exploit the unauthenticated channel between the Consumption Device and Authorization Device using techniques commonly used in phishing attacks. These CDCP attacks allow attackers to obtain access and refresh tokens, rather than authentication credentials, resulting in access to resources even if the user used multi-factor authentication.<a href="#section-9-2" class="pilcrow">¶</a></p>
 <p id="section-9-3">To address these attacks, we propose a three pronged approach that includes the deployment of practical mitigations to safeguard protocols that are already deployed, provide guidance on when to use different protocols, including protocols that are not susceptible to these attacks, and the introduction of formal methods to evaluate the impact of mitigations and find additional issues.<a href="#section-9-3" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -3254,7 +3254,7 @@ described in <a href="#user_education" class="auto internal xref">Section 6.1.13
               <p id="appendix-A-2.1.2.8.1">ARTART Feedback: Clarify that 6 digit codes are examples only (https://github.com/oauth-wg/oauth-cross-device-security/issues/214)<a href="#appendix-A-2.1.2.8.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="appendix-A-2.1.2.9">
-              <p id="appendix-A-2.1.2.9.1">ARTART Feedback: Make limitations of proximity scehems clearer (https://github.com/oauth-wg/oauth-cross-device-security/issues/215)<a href="#appendix-A-2.1.2.9.1" class="pilcrow">¶</a></p>
+              <p id="appendix-A-2.1.2.9.1">ARTART Feedback: Make limitations of proximity schemes clearer (https://github.com/oauth-wg/oauth-cross-device-security/issues/215)<a href="#appendix-A-2.1.2.9.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="appendix-A-2.1.2.10">
               <p id="appendix-A-2.1.2.10.1">ARTART Feedback: Add note on risks of device type spoofing (https://github.com/oauth-wg/oauth-cross-device-security/issues/216)<a href="#appendix-A-2.1.2.10.1" class="pilcrow">¶</a></p>
@@ -3266,7 +3266,7 @@ described in <a href="#user_education" class="auto internal xref">Section 6.1.13
               <p id="appendix-A-2.1.2.12.1">OPSDIR Feedback: Editorial updates (https://github.com/oauth-wg/oauth-cross-device-security/issues/231)<a href="#appendix-A-2.1.2.12.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="appendix-A-2.1.2.13">
-              <p id="appendix-A-2.1.2.13.1">OPSDIR Feedback: Add example cross references to ease navvigation (https://github.com/oauth-wg/oauth-cross-device-security/issues/232)<a href="#appendix-A-2.1.2.13.1" class="pilcrow">¶</a></p>
+              <p id="appendix-A-2.1.2.13.1">OPSDIR Feedback: Add example cross references to ease navigation (https://github.com/oauth-wg/oauth-cross-device-security/issues/232)<a href="#appendix-A-2.1.2.13.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="appendix-A-2.1.2.14">
               <p id="appendix-A-2.1.2.14.1">Added Aaron Parecki, George Fletcher, Hannes Tschofenig, Dan Moore, Deb Cooley, Paul Kyzivat, David Mandelberg, Jim Fenton and Bing Liu to the list of people who proivded input and made contributions.<a href="#appendix-A-2.1.2.14.1" class="pilcrow">¶</a></p>
@@ -3300,7 +3300,7 @@ described in <a href="#user_education" class="auto internal xref">Section 6.1.13
               <p id="appendix-A-2.1.4.8.1">AD Feedback: Remove repetitive text (see https://github.com/oauth-wg/oauth-cross-device-security/issues/193)<a href="#appendix-A-2.1.4.8.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="appendix-A-2.1.4.9">
-              <p id="appendix-A-2.1.4.9.1">AD Feedback: Clarify seperate use cases (see https://github.com/oauth-wg/oauth-cross-device-security/issues/192)<a href="#appendix-A-2.1.4.9.1" class="pilcrow">¶</a></p>
+              <p id="appendix-A-2.1.4.9.1">AD Feedback: Clarify separate use cases (see https://github.com/oauth-wg/oauth-cross-device-security/issues/192)<a href="#appendix-A-2.1.4.9.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 <p id="appendix-A-2.1.5">
@@ -3335,7 +3335,7 @@ described in <a href="#user_education" class="auto internal xref">Section 6.1.13
               <p id="appendix-A-2.1.8.3.1">Clarified role of authorization server in establishing proximity.<a href="#appendix-A-2.1.8.3.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="appendix-A-2.1.8.4">
-              <p id="appendix-A-2.1.8.4.1">Clarified which mitigations can be implented by the authorization server only.<a href="#appendix-A-2.1.8.4.1" class="pilcrow">¶</a></p>
+              <p id="appendix-A-2.1.8.4.1">Clarified which mitigations can be implemented by the authorization server only.<a href="#appendix-A-2.1.8.4.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="appendix-A-2.1.8.5">
               <p id="appendix-A-2.1.8.5.1">Add Dan Moore to acknowledgements.<a href="#appendix-A-2.1.8.5.1" class="pilcrow">¶</a></p>
@@ -3351,7 +3351,7 @@ described in <a href="#user_education" class="auto internal xref">Section 6.1.13
               <p id="appendix-A-2.1.10.1.1">Shepherd feedback: Describe unauthenticated channel.<a href="#appendix-A-2.1.10.1.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="appendix-A-2.1.10.2">
-              <p id="appendix-A-2.1.10.2.1">Shepherd feedback: Seperate normative and informative references.<a href="#appendix-A-2.1.10.2.1" class="pilcrow">¶</a></p>
+              <p id="appendix-A-2.1.10.2.1">Shepherd feedback: Separate normative and informative references.<a href="#appendix-A-2.1.10.2.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="appendix-A-2.1.10.3">
               <p id="appendix-A-2.1.10.3.1">Shepherd feedback: Update FIDO/WebAuthn references<a href="#appendix-A-2.1.10.3.1" class="pilcrow">¶</a></p>
