@@ -314,6 +314,10 @@ informative:
   date: 2023
   target: "https://doi.org/10.1109/TDSC.2022.3151103"
 
+ NISTPhishing:
+  title: "NIST Small Business Cybersecurity Fact Sheet: Phishing"
+  target: "https://www.nist.gov/system/files/documents/2024/03/12/Phishing_SMB%20FactSheet_2024_Final.pdf"
+
  NISTGlossary:
   title: "NIST Computer Security Resource Center Glossary"
   target: "https://csrc.nist.gov/glossary"
@@ -1106,7 +1110,7 @@ Sender-constrained tokens limit the impact of a successful attack by preventing 
 **Limitations:** Sender-constrained tokens, especially sender-constrained tokens that require proof-of-possession, raise the bar for executing the attack and profiting from exfiltrating tokens. Although a software proof-of-possession key is better than no proof-of-possession key, an attacker may still exfiltrate the software key. Hardware keys are harder to exfiltrate, but come with additional implementation complexity. An attacker that controls the Consumption Device may still be able to excercise the key, even if it is in hardware. Consequently the main protection derived from sender-constrained tokens is preventing tokens from being moved from the Consumption Device to another device, thereby making it harder sell stolen tokens and profit from the attack.
 
 ### User Education {#user_education}
-Research shows that user education is effective in reducing the risk of phishing attacks {{Baki2023}}. The service provider MAY educate users on the risks of cross-device consent phishing and provide out-of-band reinforcement to the user on the context and conditions under which an authorization grant may be requested. For example, if the service provider does not send e-mails with QR codes requesting users to grant authorization, this may be reinforced in marketing messages and anti-fraud awareness campaigns. The service provider MAY also choose to reinforce these user education messages through in-app experiences. In {{PCRSM2023}}, it is proposed to advise users to verify the trustworthiness of the source of a QR code, for instance by checking that the connection is protected through TLS or by verifying that the URL really belongs to the Authorization Server.
+Research shows that user education is effective in reducing the risk of phishing attacks {{Baki2023}}. The service provider MAY educate users on the risks of cross-device consent phishing, as part of broader anti-phishing education, such as guidance to avoid clicking on links in emails or other unsolicited messages, as described by NIST in {{NISTPhishing}}. In addition, the service provider MAY provide out-of-band reinforcement on the context and conditions under which an authorization grant may be requested. For example, if the service provider does not send emails containing QR codes that request users to grant authorization, this expectation may be reinforced through marketing communications and anti-fraud awareness campaigns. The service provider MAY also reinforce these user education messages through in-app experiences. In {{PCRSM2023}}, it is proposed that users be advised to verify the trustworthiness of the source of a QR code, for example by confirming that the connection is protected using TLS or that the URL belongs to the Authorization Server.
 
 **Limitations:** Although user education helps to raise awareness and reduce the overall risk to users, it is insufficient on its own to mitigate cross-device consent phishing attacks. In particular, carefully designed phishing attacks can be practically indistinguishable from benign authorization flows even for well-trained users. User education SHOULD therefore be used in conjunction with other controls described in this document.
 
