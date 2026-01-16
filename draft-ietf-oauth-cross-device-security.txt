@@ -5,10 +5,10 @@
 oauth                                                       P. Kasselman
 Internet-Draft                                                   Defakto
 Intended status: Best Current Practice                           D. Fett
-Expires: 19 July 2026                                           Authlete
+Expires: 20 July 2026                                           Authlete
                                                                F. Skokan
                                                                     Okta
-                                                         15 January 2026
+                                                         16 January 2026
 
 
            Cross-Device Flows: Security Best Current Practice
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 19 July 2026.
+   This Internet-Draft will expire on 20 July 2026.
 
 Copyright Notice
 
@@ -2495,9 +2495,9 @@ Table of Contents
    zu Selhausen, Maryam Mehrnezhad, Marco Pernpruner, Giada Sciarretta,
    Dean H.  Saxe, Roy Williams, Aaron Parecki, George Fletcher, Hannes
    Tschofenig, Dan Moore, Deb Cooley, Paul Kyzivat, David Mandelberg,
-   Jim Fenton and Bing Liu and others (please let us know, if you've
-   been mistakenly omitted) for their valuable input, feedback and
-   general support of this work.
+   Jim Fenton, Bing Liu, Mohamed Boucadair and others (please let us
+   know, if you've been mistakenly omitted) for their valuable input,
+   feedback and general support of this work.
 
 11.  References
 
@@ -2734,9 +2734,13 @@ Appendix A.  Document History
          security/issues/232)
 
       -  Added Aaron Parecki, George Fletcher, Hannes Tschofenig, Dan
-         Moore, Deb Cooley, Paul Kyzivat, David Mandelberg, Jim Fenton
-         and Bing Liu to the list of people who proivded input and made
-         contributions.
+         Moore, Deb Cooley, Paul Kyzivat, David Mandelberg, Jim Fenton,
+         Mohamed Boucadair and Bing Liu to the list of people who
+         proivded input and made contributions.
+
+      -  Feedback from Mohamed Boucadair
+         (https://mailarchive.ietf.org/arch/msg/oauth/
+         ylRSRkQYgdoYJF1SqwBIHPcEZ4k/)
 
       -13
 
