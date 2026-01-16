@@ -1331,7 +1331,7 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
    * OPSDIR Feedback: Editorial updates (https://github.com/oauth-wg/oauth-cross-device-security/issues/231)
    * OPSDIR Feedback: Add example cross references to ease navigation (https://github.com/oauth-wg/oauth-cross-device-security/issues/232)
    * Added Aaron Parecki, George Fletcher, Hannes Tschofenig, Dan Moore, Deb Cooley, Paul Kyzivat, David Mandelberg, Jim Fenton, Mohamed Boucadair and Bing Liu to the list of people who proivded input and made contributions.
-   * Feedback from Mohamed Boucadair (https://mailarchive.ietf.org/arch/msg/oauth/ylRSRkQYgdoYJF1SqwBIHPcEZ4k/) 
+   * Feedback from Mohamed Boucadair (https://mailarchive.ietf.org/arch/msg/oauth/ylRSRkQYgdoYJF1SqwBIHPcEZ4k/)
 
    -13
 
