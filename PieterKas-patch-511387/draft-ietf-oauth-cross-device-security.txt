@@ -327,7 +327,7 @@ Table of Contents
        and selected protocols.
 
    5.  Implementers SHOULD include proximity as one of the selected
-       mitigations as defined in Section 6.1.1, if possible."
+       mitigations as defined in Section 6.1.1, if possible.
 
    These best practices apply to the Device Authorization Grant
    ([RFC8628]) as well as other cross-device protocols such as the
