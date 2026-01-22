@@ -95,8 +95,7 @@ Table of Contents
                Data Pattern)
        3.3.7.  Example A7: Application Bootstrap (Cross-Device Session
                Transfer Pattern)
-       3.3.8.  Example A8: Access a Productivity Application
-               (User-Transferred Authorization Data Pattern)
+       3.3.8.  Example A8: Access a Productivity Application ()
        3.3.9.  Example A9: Administer a System
                (Backchannel-Transferred Session Pattern)
    4.  Cross-Device Flow Exploits
@@ -602,8 +601,12 @@ Table of Contents
        +------->|  Consumption |--(B) Backchannel ---->|               |
        |        |     Device   |      Authorization    |               |
        |        |              |      Request          |               |
+       |        |              |                       |               |
+       |        |              |--(F) Send------------>|               |
+       |        |              |      Authorization    |               |
+       |        |              |      Data             |               |
        |        |              |                       | Authorization |
-       |        |              |<-(F) Grant------------|     Server    |
+       |        |              |<-(G) Grant------------|     Server    |
        |        +--------------+      Authorization    |               |
       (A) User       ^                                 |               |
        |  Start      |                                 |               |
@@ -643,8 +646,12 @@ Table of Contents
    *  (E) The user enters the authorization data on the Consumption
       Device.
 
-   *  (F) The Authorization Server issues tokens or grants authorization
-      to the Consumption Device to access the user's resources.
+   *  (F) The Consumption Device sends the authorization data to the
+      Authorization Server.
+
+   *  (G) The Authorization Server issues tokens or grants authorization
+      to the Consumption Device to access the user's resources if the
+      authorization data is the same as that send in step (C).
 
    The Authorization Server may choose to authenticate the user before
    sending the authorization data.
@@ -844,8 +851,7 @@ Table of Contents
    signed into the application on the mobile phone.  Section 4.3.7
    describes an exploit that applies to this scenario.
 
-3.3.8.  Example A8: Access a Productivity Application (User-Transferred
-        Authorization Data Pattern)
+3.3.8.  Example A8: Access a Productivity Application ()
 
    A user is accessing a Computer Aided Design (CAD) application.  When
    accessing the application, authorization data in the form of a 6
@@ -1140,7 +1146,11 @@ Table of Contents
        |        |    Device    |      Authorization    |    Server     |
        |        |              |      Request          |               |
        |        |              |                       |               |
-       |        |              |<-(H) Grant------------|               |
+       |        |              |--(H) Send------------>|               |
+       |        |              |      Authorization    |               |
+       |        |              |      Data             |               |
+       |        |              |                       |               |
+       |        |              |<-(I) Grant------------|               |
        |        +--------------+      Authorization    |               |
        |                    ^                          |               |
        |                    |                          |               |
@@ -1202,7 +1212,10 @@ Table of Contents
    *  (G) The attacker enters the authorization data (e.g., a 6-digit
       authorization code) on the Consumption Device.
 
-   *  (H) The Authorization Server grants authorization and issues
+   *  (H) The attacker's Consumption Device sends the authorization data
+      to the Authorization Server.
+
+   *  (I) The Authorization Server grants authorization and issues
       access and refresh tokens to the Consumption Device, which is
       under the attacker's control.  On completion of the exploit, the
       attacker gains access to the user's resources.
