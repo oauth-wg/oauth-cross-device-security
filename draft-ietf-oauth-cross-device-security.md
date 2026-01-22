@@ -413,7 +413,7 @@ This section describes the set of security mechanisms and measures to secure cro
 1. Implementers MUST perform a risk assessment before implementing cross-device flows, weighing the risks from Cross-Device Consent Phishing and Cross-Device Session Phishing attacks against benefits for users.
 2. Implementers SHOULD avoid cross-device flows if risks cannot be sufficiently mitigated.
 3. Implementers SHOULD follow the guidance provided in {{protocol-selection}} for protocol selection.
-4. Implementers MUST implement practical mitigations as listed in {{practical-mitigations}} that are appropriate for the use case, architecture, and selected protocols.
+4. Implementers MUST select appropriate mitigations from {{practical-mitigations}} to address risks identified in the risk assessment.
 5. Implementers SHOULD implement proximity checks as defined in {{establish-proximity}} if possible.
 
 These best practices apply to the Device Authorization Grant ({{RFC8628}}) as well as other cross-device protocols such as the Client Initiated Backchannel Authentication {{CIBA}}, Self-Issued OpenID Provider v2 {{OpenID.SIOPV2}}, OpenID for Verifiable Presentations {{OpenID.VP}}, the Pre-Authorized Code Flow in ({{OpenID.VCI}}) and other cross-device protocols that rely on the user to authenticate the channel between devices.
