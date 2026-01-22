@@ -114,7 +114,7 @@ normative:
   date: 2025-01
   target: "https://www.w3.org/TR/2025/WD-webauthn-3-20250127/"
  FIDOCTAP22:
-  title: "Client to Authenticator Protocol (CTAP), Version 2.2, July 2025"
+  title: "Client to Authenticator Protocol (CTAP), Version 2.2, July 2025, FIDO Alliance"
   author:
     - initials: "J."
       surname: "Bradley"
@@ -142,7 +142,6 @@ normative:
       organization: "Ping Identity"
   date: 2025-07
   target: "https://fidoalliance.org/specs/fido-v2.2-ps-20250714/fido-client-to-authenticator-protocol-v2.2-ps-20250714.html"
-  publisher: "FIDO Alliance"
  IEEE802154:
   title: "IEEE Std 802.15.4-2024: IEEE Standard for Low-Rate Wireless Networks"
   author:
