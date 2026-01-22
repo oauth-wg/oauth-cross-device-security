@@ -2555,9 +2555,9 @@ Table of Contents
    [FIDOCTAP22]
               Bradley, J., Jones, M.B., Kumar, A., Lindemann, R.,
               Verrept, S., and D. Waite, "Client to Authenticator
-              Protocol (CTAP), Version 2.2, July 2025", July 2025,
-              <https://fidoalliance.org/specs/fido-v2.2-ps-20250714/
-              fido-client-to-authenticator-protocol-v2.2-ps-
+              Protocol (CTAP), Version 2.2, July 2025, FIDO Alliance",
+              July 2025, <https://fidoalliance.org/specs/fido-v2.2-ps-
+              20250714/fido-client-to-authenticator-protocol-v2.2-ps-
               20250714.html>.
 
    [IEEE802154]
