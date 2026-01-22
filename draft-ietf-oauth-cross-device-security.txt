@@ -2044,10 +2044,11 @@ Table of Contents
    access to your files.  If you are not trying to access your files,
    you should decline this request and notify the security department").
 
-   It SHOULD be clear to the user how to decline the request.  To avoid
-   accidental authorization grants, the "decline" option SHOULD be the
-   default option or given similar prominence in the user experience as
-   the "grant" option.
+   The user interface SHOULD provide an obvious and unambiguous way for
+   the user to decline or cancel a request.  To avoid accidental
+   authorization grants, the "decline" option SHOULD be the default
+   option or given similar prominence in the user experience as the
+   "grant" option.
 
    If the user uses an application on a mobile device to scan a QR code,
    the application MAY display information advising the user under which
