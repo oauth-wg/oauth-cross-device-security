@@ -567,8 +567,12 @@ Examples of the user-transferred authorization data pattern include flows in whi
     +------->|  Consumption |--(B) Backchannel ---->|               |
     |        |     Device   |      Authorization    |               |
     |        |              |      Request          |               |
+    |        |              |                       |               |
+    |        |              |--(F) Send------------>|               |
+    |        |              |      Authorization    |               |
+    |        |              |      Data             |               |
     |        |              |                       | Authorization |
-    |        |              |<-(F) Grant------------|     Server    |
+    |        |              |<-(G) Grant------------|     Server    |
     |        +--------------+      Authorization    |               |
    (A) User       ^                                 |               |
     |  Start      |                                 |               |
@@ -595,7 +599,8 @@ Figure: User-Transferred Authorization Data Pattern
 - (C) The Authorization Server sends authorization data (e.g., a 6-digit authorization code) to the Authorization Device. Examples of mechanisms that may be used to distribute the authorization data include text messages, email or a mobile application.
 - (D) The user reads and copies the authorization data (e.g., the 6-digit authorization code) received on the Authorization Device.
 - (E) The user enters the authorization data on the Consumption Device.
-- (F) The Authorization Server issues tokens or grants authorization to the Consumption Device to access the user's resources.
+- (F) The Consumption Device sends the authorization data to the Authorization Server.
+- (G) The Authorization Server issues tokens or grants authorization to the Consumption Device to access the user's resources if the authorization data is the same as that send in step (C).
 
 The Authorization Server may choose to authenticate the user before sending the authorization data.
 
@@ -674,7 +679,7 @@ A new employee is directed to an onboarding portal to provide additional informa
 ### Example A7: Application Bootstrap (Cross-Device Session Transfer Pattern) {#example-a7}
 An employee is signed into an application on their personal computer and wants to bootstrap the mobile application on their mobile phone. The employee initiates the cross-device flow and is shown a QR code in their application. The employee launches the mobile application on their phone and scans the QR code which results in the user being signed into the application on the mobile phone. {{Example-B7}} describes an exploit that applies to this scenario.
 
-### Example A8: Access a Productivity Application (User-Transferred Authorization Data Pattern) {#example-a8}
+### Example A8: Access a Productivity Application () {#example-a8}
 A user is accessing a Computer Aided Design (CAD) application. When accessing the application, authorization data in the form of a 6 digit authorization code is sent to the user's mobile phone. The user views the 6 digit authorization code on their phone and enters it in the CAD application, after which the CAD application displays the user's most recent designs. {{example-b8}} outlines an attack relevant to this scenario.
 
 ### Example A9: Administer a System (Backchannel-Transferred Session Pattern) {#example-a9}
@@ -827,7 +832,11 @@ Attackers exploit the user-transferred authorization data pattern by combining t
     |        |    Device    |      Authorization    |    Server     |
     |        |              |      Request          |               |
     |        |              |                       |               |
-    |        |              |<-(H) Grant------------|               |
+    |        |              |--(H) Send------------>|               |
+    |        |              |      Authorization    |               |
+    |        |              |      Data             |               |
+    |        |              |                       |               |
+    |        |              |<-(I) Grant------------|               |
     |        +--------------+      Authorization    |               |
     |                    ^                          |               |
     |                    |                          |               |
@@ -868,7 +877,8 @@ Figure: User-Transferred Authorization Data Pattern
 - (E) The user is convinced by the social engineering message received from the attacker in step (A) and copies the authorization data received on the Authorization Device.
 - (F) The user forwards the authorization data to the attacker.
 - (G) The attacker enters the authorization data (e.g., a 6-digit authorization code) on the Consumption Device.
-- (H) The Authorization Server grants authorization and issues access and refresh tokens to the Consumption Device, which is under the attacker's control. On completion of the exploit, the attacker gains access to the user's resources.
+- (H) The attacker's Consumption Device sends the authorization data to the Authorization Server.
+- (I) The Authorization Server grants authorization and issues access and refresh tokens to the Consumption Device, which is under the attacker's control. On completion of the exploit, the attacker gains access to the user's resources.
 
 The unauthenticated channel may also be exploited in variations of the above scenario if there is no session maintained in the channel for steps C and G. In that case a user (as opposed to the attacker) initiates the flow and is then convinced using social engineering techniques into sending the authorization data (e.g., a 6-digit authorization code) to the attacker, instead of using it themselves. The authorization data may be represented as a QR code or text string (e.g., 6-digit authorization code). The attacker then starts the flow and uses the authorization data to obtain the privileges that would have been assigned to the user.
 
