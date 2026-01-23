@@ -440,8 +440,8 @@ Table of Contents
    The Device Authorization Grant ([RFC8628]) is an example of a cross-
    device flow that relies on the user copying information from the
    Consumption Device to the Authorization Device by either entering
-   data manually or scanning a QR code.  The figure below shows a
-   typical example of this flow:
+   data manually or scanning a QR code.  Figure 1 shows a typical
+   example of this flow:
 
                 +--------------+                       +---------------+
                 |  Consumption |--(B) Request -------->|               |
@@ -480,7 +480,7 @@ Table of Contents
                 |              |      Completes        |               |
                 +--------------+                       +---------------+
 
-   Figure: User-Transferred Session Data Pattern
+   Figure 1: User-Transferred Session Data Pattern
 
    *  (A) The user takes an action on the Consumption Device by starting
       a purchase, adding a device to a network or connecting a service
@@ -521,8 +521,8 @@ Table of Contents
 
    The Client Initiated Backchannel Authentication [CIBA] transfers the
    session on the backchannel with the Authorization Server to request
-   authorization on the Authorization Device.  The figure below shows an
-   example of this flow.
+   authorization on the Authorization Device.  Figure 2 shows an example
+   of this flow.
 
                 +--------------+                       +---------------+
        +------->|  Consumption |--(B) Backchannel ---->|               |
@@ -553,7 +553,7 @@ Table of Contents
                 |              |      Completes        |               |
                 +--------------+                       +---------------+
 
-   Figure: Backchannel-Transferred Session Pattern
+   Figure 2: Backchannel-Transferred Session Pattern
 
    *  (A) The user takes an action on the Consumption Device by starting
       a purchase, adding a device to a network or connecting a service
@@ -594,8 +594,8 @@ Table of Contents
    Device.  Once the Authorization Device receives the authorization
    data, the user enters it on the Consumption Device.  The Consumption
    Device sends the authorization data back to the Authorization Server
-   for validation before gaining access to the user's resources.  The
-   figure below shows an example of this flow.
+   for validation before gaining access to the user's resources.
+   Figure 3 shows an example of this flow.
 
                 +--------------+                       +---------------+
        +------->|  Consumption |--(B) Backchannel ---->|               |
@@ -626,7 +626,7 @@ Table of Contents
                 |              |      Data             |               |
                 +--------------+                       +---------------+
 
-   Figure: User-Transferred Authorization Data Pattern
+   Figure 3: User-Transferred Authorization Data Pattern
 
    *  (A) The user takes an action on the Consumption Device by starting
       a purchase, adding a device to a network or connecting a service
@@ -690,7 +690,7 @@ Table of Contents
    new devices to networks, bootstrapping new applications, or
    provisioning new credentials.  The Pre-Authorized Code Flow in
    ([OpenID.VCI]) is an instance of using this pattern to provision a
-   new credential.  The figure below shows a typical flow.
+   new credential.  Figure 4 below shows a typical flow.
 
                +---------------+                       +---------------+
      +-------->| Authorization |                       | Authorization |
@@ -723,7 +723,7 @@ Table of Contents
                |               |      Context          |               |
                +---------------+                       +---------------+
 
-   Figure: Cross-Device Session Transfer Pattern
+   Figure 4: Cross-Device Session Transfer Pattern
 
    *  (A) The user is authenticated on the Authorization Device and
       authorizes the transfer of the session to the Consumption Device.
@@ -924,8 +924,8 @@ Table of Contents
    their Authorization Device (e.g., mobile phone).  Once the end-user
    performs the authorization on the mobile device, the attacker who
    initiated the authentication or authorization request obtains access
-   to the user's resources.  The figure below shows an example of such
-   an attack.
+   to the user's resources.  The Figure 5 shows an example of such an
+   attack.
 
                 +--------------+                       +---------------+
                 |  Attacker's  |--(B) Request -------->|               |
@@ -975,7 +975,7 @@ Table of Contents
                 |              |      Completes        |               |
                 +--------------+                       +---------------+
 
-   Figure: User-Transferred Session Data Pattern Exploits
+   Figure 5: User-Transferred Session Data Pattern Exploit
 
    *  (A) The attacker initiates the protocol on the Consumption Device
       (or mimicks the Consumption Device) by starting a purchase, adding
@@ -1047,7 +1047,7 @@ Table of Contents
    reason for receiving an authorization request, to triggering a large
    volume of requests at an inconvenient time for the user, in the hope
    that the user will grant authorization to make the requests stop.
-   The figure below shows an example of such an attack.
+   Figure 6 shows an example of such an attack.
 
    The ability to trigger authorization requests without user
    involvement can be exploited an attacker to overwhelm users with a
@@ -1090,7 +1090,7 @@ Table of Contents
                 |              |      Completes        |               |
                 +--------------+                       +---------------+
 
-   Figure: Backchannel-Transferred Session Pattern Exploits
+   Figure 6: Backchannel-Transferred Session Pattern Exploit
 
    *  (A) The attacker sends a social engineering message to prepare the
       user for the upcoming authorization (optional).
@@ -1182,7 +1182,7 @@ Table of Contents
                 |              |      Data             |               |
                 +--------------+                       +---------------+
 
-   Figure: User-Transferred Authorization Data Pattern
+   Figure 7: User-Transferred Authorization Data Pattern Exploit
 
    *  (A) The attacker sends a social engineering message to prime the
       user for the authorization request they are about to receive,
@@ -1283,7 +1283,7 @@ Table of Contents
                |               |      Context          |               |
                +---------------+                       +---------------+
 
-   Figure: Cross-Device Session Transfer Pattern
+   Figure 8: Cross-Device Session Transfer Pattern Exploit
 
    *  (A) The attacker sends a social engineering message that convinces
       the user that they should authorize a session transfer including
