@@ -574,6 +574,7 @@ aside, blockquote {
 }
 blockquote {
   margin: 1em 0;
+  border-left: 2px var(--pilcrow-strong) solid;
 }
 cite {
   display: block;
@@ -644,7 +645,7 @@ a.pilcrow {
   }
 }
 @media not print {
-  :hover > a.pilcrow {
+  :hover > a.pilcrow, a.pilcrow:focus {
     opacity: 1;
   }
   a.pilcrow[href]:hover {
@@ -1056,7 +1057,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Kasselman, et al.</td>
-<td class="center">Expires 26 July 2026</td>
+<td class="center">Expires 27 July 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1069,12 +1070,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-oauth-cross-device-security-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-01-22" class="published">22 January 2026</time>
+<time datetime="2026-01-23" class="published">23 January 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Best Current Practice</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-07-26">26 July 2026</time></dd>
+<dd class="expires"><time datetime="2026-07-27">27 July 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1132,7 +1133,7 @@ specialists, fraud analysts and engineers implementing cross-device flows.<a hre
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 26 July 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 27 July 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1231,7 +1232,7 @@ specialists, fraud analysts and engineers implementing cross-device flows.<a hre
                     <p id="section-toc.1-1.3.2.3.2.7.1"><a href="#section-3.3.7" class="auto internal xref">3.3.7</a>.  <a href="#name-example-a7-application-boot" class="internal xref">Example A7: Application Bootstrap (Cross-Device Session Transfer Pattern)</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3.2.8">
-                    <p id="section-toc.1-1.3.2.3.2.8.1"><a href="#section-3.3.8" class="auto internal xref">3.3.8</a>.  <a href="#name-example-a8-access-a-product" class="internal xref">Example A8: Access a Productivity Application (User-Transferred Authorization Data Pattern)</a></p>
+                    <p id="section-toc.1-1.3.2.3.2.8.1"><a href="#section-3.3.8" class="auto internal xref">3.3.8</a>.  <a href="#name-example-a8-access-a-product" class="internal xref">Example A8: Access a Productivity Application ()</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3.2.9">
                     <p id="section-toc.1-1.3.2.3.2.9.1"><a href="#section-3.3.9" class="auto internal xref">3.3.9</a>.  <a href="#name-example-a9-administer-a-sys" class="internal xref">Example A9: Administer a System (Backchannel-Transferred Session Pattern)</a></p>
@@ -1527,7 +1528,7 @@ described in the NIST Computer Security Resource Center Glossary <span>[<a href=
           <p id="section-2-2.3.1">Implementers SHOULD follow the guidance provided in <a href="#protocol-selection" class="auto internal xref">Section 6.2</a> for protocol selection.<a href="#section-2-2.3.1" class="pilcrow">¶</a></p>
 </li>
         <li id="section-2-2.4">
-          <p id="section-2-2.4.1">Implementers MUST implement practical mitigations as listed in <a href="#practical-mitigations" class="auto internal xref">Section 6.1</a> that are appropriate for the use case, architecture, and selected protocols.<a href="#section-2-2.4.1" class="pilcrow">¶</a></p>
+          <p id="section-2-2.4.1">Implementers MUST select appropriate mitigations from <a href="#practical-mitigations" class="auto internal xref">Section 6.1</a> to address risks identified in the risk assessment.<a href="#section-2-2.4.1" class="pilcrow">¶</a></p>
 </li>
         <li id="section-2-2.5">
           <p id="section-2-2.5.1">Implementers SHOULD include proximity as one of the selected mitigations as defined in <a href="#establish-proximity" class="auto internal xref">Section 6.1.1</a>, if possible.<a href="#section-2-2.5.1" class="pilcrow">¶</a></p>
@@ -1752,8 +1753,12 @@ or connecting a service to the Consumption Device.<a href="#section-3.1.1-4.1.1"
     +-------&gt;|  Consumption |--(B) Backchannel ----&gt;|               |
     |        |     Device   |      Authorization    |               |
     |        |              |      Request          |               |
+    |        |              |                       |               |
+    |        |              |--(F) Send------------&gt;|               |
+    |        |              |      Authorization    |               |
+    |        |              |      Data             |               |
     |        |              |                       | Authorization |
-    |        |              |&lt;-(F) Grant------------|     Server    |
+    |        |              |&lt;-(G) Grant------------|     Server    |
     |        +--------------+      Authorization    |               |
    (A) User       ^                                 |               |
     |  Start      |                                 |               |
@@ -1792,7 +1797,10 @@ or connecting a service to the Consumption Device.<a href="#section-3.1.1-4.1.1"
               <p id="section-3.1.3-4.5.1">(E) The user enters the authorization data on the Consumption Device.<a href="#section-3.1.3-4.5.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-3.1.3-4.6">
-              <p id="section-3.1.3-4.6.1">(F) The Authorization Server issues tokens or grants authorization to the Consumption Device to access the user's resources.<a href="#section-3.1.3-4.6.1" class="pilcrow">¶</a></p>
+              <p id="section-3.1.3-4.6.1">(F) The Consumption Device sends the authorization data to the Authorization Server.<a href="#section-3.1.3-4.6.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-3.1.3-4.7">
+              <p id="section-3.1.3-4.7.1">(G) The Authorization Server issues tokens or grants authorization to the Consumption Device to access the user's resources if the authorization data is the same as that send in step (C).<a href="#section-3.1.3-4.7.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 <p id="section-3.1.3-5">The Authorization Server may choose to authenticate the user before sending the authorization data.<a href="#section-3.1.3-5" class="pilcrow">¶</a></p>
@@ -1940,7 +1948,7 @@ or connecting a service to the Consumption Device.<a href="#section-3.1.1-4.1.1"
 <div id="example-a8">
 <section id="section-3.3.8">
           <h4 id="name-example-a8-access-a-product">
-<a href="#section-3.3.8" class="section-number selfRef">3.3.8. </a><a href="#name-example-a8-access-a-product" class="section-name selfRef">Example A8: Access a Productivity Application (User-Transferred Authorization Data Pattern)</a>
+<a href="#section-3.3.8" class="section-number selfRef">3.3.8. </a><a href="#name-example-a8-access-a-product" class="section-name selfRef">Example A8: Access a Productivity Application ()</a>
           </h4>
 <p id="section-3.3.8-1">A user is accessing a Computer Aided Design (CAD) application. When accessing the application, authorization data in the form of a 6 digit authorization code is sent to the user's mobile phone. The user views the 6 digit authorization code on their phone and enters it in the CAD application, after which the CAD application displays the user's most recent designs. <a href="#example-b8" class="auto internal xref">Section 4.3.8</a> outlines an attack relevant to this scenario.<a href="#section-3.3.8-1" class="pilcrow">¶</a></p>
 </section>
@@ -2157,7 +2165,11 @@ Authorization|              |                       |               |
     |        |    Device    |      Authorization    |    Server     |
     |        |              |      Request          |               |
     |        |              |                       |               |
-    |        |              |&lt;-(H) Grant------------|               |
+    |        |              |--(H) Send------------&gt;|               |
+    |        |              |      Authorization    |               |
+    |        |              |      Data             |               |
+    |        |              |                       |               |
+    |        |              |&lt;-(I) Grant------------|               |
     |        +--------------+      Authorization    |               |
     |                    ^                          |               |
     |                    |                          |               |
@@ -2214,7 +2226,10 @@ Authorization|              |                       |               |
               <p id="section-4.1.3-5.7.1">(G) The attacker enters the authorization data (e.g., a 6-digit authorization code) on the Consumption Device.<a href="#section-4.1.3-5.7.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-4.1.3-5.8">
-              <p id="section-4.1.3-5.8.1">(H) The Authorization Server grants authorization and issues access and refresh tokens to the Consumption Device, which is under the attacker's control. On completion of the exploit, the attacker gains access to the user's resources.<a href="#section-4.1.3-5.8.1" class="pilcrow">¶</a></p>
+              <p id="section-4.1.3-5.8.1">(H) The attacker's Consumption Device sends the authorization data to the Authorization Server.<a href="#section-4.1.3-5.8.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-4.1.3-5.9">
+              <p id="section-4.1.3-5.9.1">(I) The Authorization Server grants authorization and issues access and refresh tokens to the Consumption Device, which is under the attacker's control. On completion of the exploit, the attacker gains access to the user's resources.<a href="#section-4.1.3-5.9.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 <p id="section-4.1.3-6">The unauthenticated channel may also be exploited in variations of the above scenario if there is no session maintained in the channel for steps C and G. In that case a user (as opposed to the attacker) initiates the flow and is then convinced using social engineering techniques into sending the authorization data (e.g., a 6-digit authorization code) to the attacker, instead of using it themselves. The authorization data may be represented as a QR code or text string (e.g., 6-digit authorization code). The attacker then starts the flow and uses the authorization data to obtain the privileges that would have been assigned to the user.<a href="#section-4.1.3-6" class="pilcrow">¶</a></p>
@@ -2451,7 +2466,8 @@ Authorization|              |                       |               |
           <p id="section-5-4.4.1"><strong>Self-Issued OpenID Provider v2 (SIOP V2):</strong> A standard that allows end-user to present self-attested or third party attested attributes when used with OpenID for Verifiable Credential protocols. The user scans a QR code presented by the relying party to initiate the flow.<a href="#section-5-4.4.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="section-5-5">Cross-device protocols SHOULD NOT be used for same-device scenarios. If the Consumption Device and Authorization Device are the same device, protocols like OpenID Connect Core <span>[<a href="#OpenID.Core" class="cite xref">OpenID.Core</a>]</span> and OAuth 2.0 Authorization Code Grant as defined in <span>[<a href="#RFC6749" class="cite xref">RFC6749</a>]</span> are more appropriate. If a protocol supports both same-device and cross-device modes (e.g., <span>[<a href="#OpenID.SIOPV2" class="cite xref">OpenID.SIOPV2</a>]</span>), the cross-device mode SHOULD NOT be used for same-device scenarios. An authorization server MAY choose to block cross-device protocols used in same-device scenarios if it detects that the same device is used. An authorization server may use techniques such as device fingerprinting, network address or other techniques to detect if a cross-device protocol is being used on the same device. If an implementor decides to use a cross-device protocol or a protocol with a cross-device mode in a same-device scenario, the mitigations recommended in this document SHOULD be implemented to reduce the risks that the unauthenticated channel is exploited.<a href="#section-5-5" class="pilcrow">¶</a></p>
+<p id="section-5-5">Cross-device protocols SHOULD NOT be used for same-device scenarios. If the Consumption Device and Authorization Device are the same device, protocols like OpenID Connect Core <span>[<a href="#OpenID.Core" class="cite xref">OpenID.Core</a>]</span> and OAuth 2.0 Authorization Code Grant as defined in <span>[<a href="#RFC6749" class="cite xref">RFC6749</a>]</span> are more appropriate. If a protocol supports both same-device and cross-device modes (e.g., <span>[<a href="#OpenID.SIOPV2" class="cite xref">OpenID.SIOPV2</a>]</span>), the cross-device mode SHOULD NOT be used for same-device scenarios. An authorization server MAY choose to block cross-device protocols used in same-device scenarios if it detects that the same device is used. Implementors should take into account that in environments that use Network Address Translation (NAT), multiple devices may appear to originate from the same network address, increasing the risk of incorrectly inferring that a cross-device flow is occurring on a single device.<a href="#section-5-5" class="pilcrow">¶</a></p>
+<p id="section-5-6">An authorization server MAY use techniques such as device fingerprinting, network address or other techniques to detect if a cross-device protocol is being used on the same device. If an implementor decides to use a cross-device protocol or a protocol with a cross-device mode in a same-device scenario, the mitigations recommended in this document SHOULD be implemented to reduce the risks that the unauthenticated channel is exploited.<a href="#section-5-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="mitigating-against-cross-device-flow-attacks">
@@ -2509,7 +2525,7 @@ Authorization|              |                       |               |
 <p id="section-6.1.1-1">The unauthenticated channel between the Consumption Device and Authorization Device allows attackers to obtain a QR code or user code in one location and display it in another location. Consequently, proximity-enforced cross-device flows are more resistant to Cross-Device Consent Phishing attacks than proximity-less cross-device flows. Establishing proximity between the location of the Consumption Device and the Authorization Device limits an attacker's ability to launch attacks by sending the user or QR codes to large numbers of users that are geographically distributed. Note that the authorization server typically cannot directly determine whether the Consumption Device and Authorization Device are physically close to each other. Instead, it must rely on the surrounding systems, protocols in use, device capabilities, or information it obtains from other systems to establish or verify proximity. The authorization server can validate information it receives, but it cannot independently measure or enforce proximity on its own. There are a number of ways to establish proximity, each with its own implementation benefits and limitations:<a href="#section-6.1.1-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-6.1.1-2.1">
-              <p id="section-6.1.1-2.1.1">Physical connectivity: This is a good indicator of proximity, but requires specific ports, cables and hardware and may be challenging from a user experience perspective or may not be possible in certain settings (e.g., when USB ports are blocked or removed for security purposes). Physical connectivity may be better suited to dedicated hardware like FIDO devices that can be used with protocols that are resistant to the exploits described in this document.<a href="#section-6.1.1-2.1.1" class="pilcrow">¶</a></p>
+              <p id="section-6.1.1-2.1.1">Physical connectivity: This is a good indicator of proximity, but requires specific ports, cables and hardware and may be challenging from a user experience perspective or may not be possible in certain settings (e.g., when USB ports are blocked or removed for security purposes). Physical connectivity may be better suited to dedicated hardware like FIDO devices that can be used with protocols that are resistant to the exploits described in this document. The use of physically connected devices may introduce additional security risks (e.g., data access or device compromise through malicious peripherals), the assessment and mitigation of which are beyond the scope of this document.<a href="#section-6.1.1-2.1.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-6.1.1-2.2">
               <p id="section-6.1.1-2.2.1">Wireless proximity: Near Field Communications (NFC), Bluetooth Low Energy (BLE), and Ultra Wideband (UWB) services can be used to prove proximity between the two devices. NFC technology is widely deployed in mobile phones as part of payment solutions, but NFC readers are less widely deployed. BLE presents another alternative for establishing proximity, but may present user experience challenges when setting up. UWB standards such as IEEE  802.15.4 and the IEEE 802.15.4z-2020 Amendment 1 enable secure ranging between devices and allow devices to establish proximity relative to each other <span>[<a href="#IEEE802154" class="cite xref">IEEE802154</a>]</span>. FIDO and WebAuthn-based cross-device flows leverage wireless proximity using BLE and are the RECOMMENDED approach for performing secure cross-device flows (see <a href="#fido" class="auto internal xref">Section 6.2.3</a>).<a href="#section-6.1.1-2.2.1" class="pilcrow">¶</a></p>
@@ -2644,7 +2660,7 @@ Authorization|              |                       |               |
           </h4>
 <p id="section-6.1.14-1">The user experience SHOULD preserve the context within which the protocols were initiated and communicate this clearly to the user when they are asked to authorize, authenticate or present a credential. In preserving the context, it should be clear to the user who invoked the flow, why it was invoked and what the consequence of completing the authorization, authentication or credential presentation is. The user experience SHOULD reinforce the message that unless the user initiated the authorization request, or was expecting it, they should decline the request.<a href="#section-6.1.14-1" class="pilcrow">¶</a></p>
 <p id="section-6.1.14-2">This information MAY be communicated graphically or in a simple message (e.g., "It looks like you are trying to access your files on a digital whiteboard in your city center office. Click here to grant access to your files. If you are not trying to access your files, you should decline this request and notify the security department").<a href="#section-6.1.14-2" class="pilcrow">¶</a></p>
-<p id="section-6.1.14-3">It SHOULD be clear to the user how to decline the request. To avoid accidental authorization grants, the "decline" option SHOULD be the default option or given similar prominence in the user experience as the "grant" option.<a href="#section-6.1.14-3" class="pilcrow">¶</a></p>
+<p id="section-6.1.14-3">The user interface SHOULD provide an obvious and unambiguous way for the user to decline or cancel a request. To avoid accidental authorization grants, the "decline" option SHOULD be the default option or given similar prominence in the user experience as the "grant" option.<a href="#section-6.1.14-3" class="pilcrow">¶</a></p>
 <p id="section-6.1.14-4">If the user uses an application on a mobile device to scan a QR code, the application MAY display information advising the user under which conditions they should expect to be asked to scan a QR code and under which circumstances they should never scan a QR code (e.g., display a message that the QR code will only be displayed on kiosks within trusted locations or on trusted websites hosted on a specific domain, and never in e-mail or other media and locations).<a href="#section-6.1.14-4" class="pilcrow">¶</a></p>
 <p id="section-6.1.14-5">The user experience MAY include information to further educate the user on cross-device consent phishing attacks and reinforce the conditions under which authorization grants may be requested.<a href="#section-6.1.14-5" class="pilcrow">¶</a></p>
 <p id="section-6.1.14-6"><strong>Limitations:</strong> Improvements to user experience on their own is unlikely to be sufficient and SHOULD be used in conjunction with other controls described in this document.<a href="#section-6.1.14-6" class="pilcrow">¶</a></p>
