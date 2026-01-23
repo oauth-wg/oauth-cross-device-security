@@ -5,10 +5,10 @@
 oauth                                                       P. Kasselman
 Internet-Draft                                                   Defakto
 Intended status: Best Current Practice                           D. Fett
-Expires: 26 July 2026                                           Authlete
+Expires: 27 July 2026                                           Authlete
                                                                F. Skokan
                                                                     Okta
-                                                         22 January 2026
+                                                         23 January 2026
 
 
            Cross-Device Flows: Security Best Current Practice
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 26 July 2026.
+   This Internet-Draft will expire on 27 July 2026.
 
 Copyright Notice
 
@@ -324,8 +324,8 @@ Table of Contents
    4.  Implementers MUST select appropriate mitigations from Section 6.1
        to address risks identified in the risk assessment.
 
-   5.  Implementers SHOULD implement proximity checks as defined in
-       Section 6.1.1 if possible.
+   5.  Implementers SHOULD include proximity as one of the selected
+       mitigations as defined in Section 6.1.1, if possible.
 
    These best practices apply to the Device Authorization Grant
    ([RFC8628]) as well as other cross-device protocols such as the
