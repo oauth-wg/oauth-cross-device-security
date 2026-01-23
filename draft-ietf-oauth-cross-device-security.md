@@ -496,7 +496,7 @@ Authorization|              |                       |               |
              |              |      Completes        |               |
              +--------------+                       +---------------+
 ~~~
-{: #fig-device-authz-flow title="User-Transferred Session Data Pattern"}
+{:#fig-device-authz-flow title="User-Transferred Session Data Pattern"}
 
 - (A) The user takes an action on the Consumption Device by starting a purchase, adding a device to a network
 or connecting a service to the Consumption Device.
@@ -545,7 +545,7 @@ The Client Initiated Backchannel Authentication {{CIBA}} transfers the session o
              |              |      Completes        |               |
              +--------------+                       +---------------+
 ~~~
-{: #fig-ciba-backchannel-flow title="Backchannel-Transferred Session Pattern"}
+{:#fig-ciba-backchannel-flow title="Backchannel-Transferred Session Pattern"}
 
 - (A) The user takes an action on the Consumption Device by starting a purchase, adding a device to a network or connecting a service to the Consumption Device.
 - (B) The client on the Consumption Device requests user authorization on the backchannel from the Authorization Server and instructs the user to authorize the request on the Authorization Device and waits for a response from the Authorization Server.
@@ -590,7 +590,7 @@ Examples of the user-transferred authorization data pattern include flows in whi
              |              |      Data             |               |
              +--------------+                       +---------------+
 ~~~
-{: #fig-user-transferred-authz-data-flow title="User-Transferred Authorization Data Pattern"}
+{:#fig-user-transferred-authz-data-flow title="User-Transferred Authorization Data Pattern"}
 
 - (A) The user takes an action on the Consumption Device by starting a purchase, adding a device to a network or connecting a service to the Consumption Device.
 - (B) The client on the Consumption Device requests user authorization on the backchannel from the Authorization Server.
@@ -643,7 +643,7 @@ In this flow, the user is authenticated and starts the flow by authorizing the t
             |               |      Context          |               |
             +---------------+                       +---------------+
 ~~~
-{: #fig-cross-device-session-transfer-flow title="Cross-Device Session Transfer Pattern"}
+{:#fig-cross-device-session-transfer-flow title="Cross-Device Session Transfer Pattern"}
 
 - (A) The user is authenticated on the Authorization Device and authorizes the transfer of the session to the Consumption Device.
 - (B) The user starts the flow and is authenticated on their Authorization Device before they authorize the transfer of the session to the Consumption Device.
@@ -748,7 +748,7 @@ Authorization|              |                       |               |
              |              |      Completes        |               |
              +--------------+                       +---------------+
 ~~~
-{: #fig-user-transferred-session-data-exploit-flow title="User-Transferred Session Data Pattern Exploits"}
+{:#fig-user-transferred-session-data-exploit-flow title="User-Transferred Session Data Pattern Exploits"}
 
 - (A) The attacker initiates the protocol on the Consumption Device (or mimicks the Consumption Device) by starting a purchase, adding a device to a network or connecting a service to the Consumption Device.
 - (B) The Consumption Device requests a QR code or user code from an Authorization Server.
@@ -808,7 +808,7 @@ The ability to trigger authorization requests without user involvement can be ex
              |              |      Completes        |               |
              +--------------+                       +---------------+
 ~~~
-{: #fig-backchannel-session-exploit-flow title="Backchannel-Transferred Session Pattern Exploits"}
+{:#fig-backchannel-session-exploit-flow title="Backchannel-Transferred Session Pattern Exploits"}
 
 - (A) The attacker sends a social engineering message to prepare the user for the upcoming authorization (optional).
 - (B) The attacker initiates the protocol on the Consumption Device (or mimics the Consumption Device) by starting a purchase, adding a device to a network or accessing a service on the Consumption Device.
@@ -866,7 +866,7 @@ Attackers exploit the user-transferred authorization data pattern by combining t
              |              |      Data             |               |
              +--------------+                       +---------------+
 ~~~
-{: #fig-user-transferred-authz-data-attack-flow title="User-Transferred Authorization Data Pattern Exploits"}
+{:#fig-user-transferred-authz-data-attack-flow title="User-Transferred Authorization Data Pattern Exploits"}
 
 - (A) The attacker sends a social engineering message to prime the user for the authorization request they are about to receive, including instructions on what to do with the authorization data once they receive it.
 - (B) The attacker initiates the protocol on the Consumption Device (or by mimicking the Consumption Device) by starting a purchase, adding a device to a network or accessing a service on the Consumption Device.
@@ -927,7 +927,7 @@ Attackers exploit cross-device session transfer flows by using social engineerin
             |               |      Context          |               |
             +---------------+                       +---------------+
 ~~~
-{: #fig-cross-device-session-transfer-flow title="Cross-Device Session Transfer Pattern Exploit"}
+{:#fig-cross-device-session-transfer-flow title="Cross-Device Session Transfer Pattern Exploit"}
 
 - (A) The attacker sends a social engineering message that convinces the user that they should authorize a session transfer including instructions on what to do with the QR code or session transfer code once they obtained it.
 - (B) The user starts the flow and is authenticated on their Authorization Device before they authorize the transfer of the session to the Consumption Device.
