@@ -129,7 +129,7 @@ Table of Contents
    6.  Mitigating Against Cross-Device Flow Attacks
      6.1.  Practical Mitigations
        6.1.1.  Establish Proximity
-       6.1.2.  Short Lived/Timebound QR or User Codes
+       6.1.2.  Short-Lived/Timebound QR or User Codes
        6.1.3.  One-Time or Limited Use Codes
        6.1.4.  Unique Codes
        6.1.5.  Content Filtering
@@ -137,7 +137,7 @@ Table of Contents
        6.1.7.  Trusted Devices
        6.1.8.  Trusted Networks
        6.1.9.  Limited Scopes
-       6.1.10. Short Lived Tokens
+       6.1.10. Short-Lived Tokens
        6.1.11. Rate Limits
        6.1.12. Sender-Constrained Tokens
        6.1.13. User Education
@@ -267,8 +267,8 @@ Table of Contents
    the user to send the session transfer code to the attacker.  These
    attacks borrow techniques from traditional phishing attacks, but
    instead of collecting passwords, attackers collect session transfer
-   codes and other artefacts that allow them to setup a session and then
-   use it to access a user's data.
+   codes and other artifacts that allow them to set up a session and
+   then use it to access a user's data.
 
 1.3.  Defending Against Cross-Device Attacks
 
@@ -843,20 +843,20 @@ Table of Contents
 3.3.7.  Example A7: Application Bootstrap (Cross-Device Session Transfer
         Pattern)
 
-   An employee is signed into an application on their personal computer
+   An employee is signed in to an application on their personal computer
    and wants to bootstrap the mobile application on their mobile phone.
    The employee initiates the cross-device flow and is shown a QR code
    in their application.  The employee launches the mobile application
    on their phone and scans the QR code which results in the user being
-   signed into the application on the mobile phone.  Section 4.3.7
+   signed in to the application on the mobile phone.  Section 4.3.7
    describes an exploit that applies to this scenario.
 
 3.3.8.  Example A8: Access a Productivity Application ()
 
    A user is accessing a Computer Aided Design (CAD) application.  When
-   accessing the application, authorization data in the form of a 6
-   digit authorization code is sent to the user's mobile phone.  The
-   user views the 6 digit authorization code on their phone and enters
+   accessing the application, authorization data in the form of a
+   6-digit authorization code is sent to the user's mobile phone.  The
+   user views the 6-digit authorization code on their phone and enters
    it in the CAD application, after which the CAD application displays
    the user's most recent designs.  Section 4.3.8 outlines an attack
    relevant to this scenario.
@@ -1042,7 +1042,7 @@ Table of Contents
 
    Attackers exploit this lack of context by using social engineering
    techniques to prime the user for an authorization request and thereby
-   convince them to granting authorization.  The social engineering
+   convince them to grant authorization.  The social engineering
    techniques range in sophistication from messages misrepresenting the
    reason for receiving an authorization request, to triggering a large
    volume of requests at an inconvenient time for the user, in the hope
@@ -1127,15 +1127,15 @@ Table of Contents
    data pattern, the client on the Consumption Device initiates the
    authorization request, but the user still has to transfer the
    authorization data to the Consumption Device.  The authorization data
-   may take different forms, including a numerical value such as a 6
-   digit authorization code.  The authorization request may happen as a
-   result of user interaction with the Consumption Device, but may also
-   be triggered without the user's direct interaction with the
+   may take different forms, including a numerical value such as a
+   6-digit authorization code.  The authorization request may happen as
+   a result of user interaction with the Consumption Device, but may
+   also be triggered without the user's direct interaction with the
    Consumption Device.
 
    Attackers exploit the user-transferred authorization data pattern by
    combining the social engineering techniques used to set context for
-   users and convincing users to providing them with authorization data
+   users and convincing users to provide them with authorization data
    sent to their Authorization Devices (e.g., mobile phones).  These
    attacks are very similar to phishing attacks, except that the
    attacker also has the ability to trigger the authorization request to
@@ -1327,8 +1327,8 @@ Table of Contents
    show how the unauthenticated channel is exploited by attackers who
    can copy the QR codes and user codes, change the context in which
    they are presented using social engineering techniques and mislead
-   end-users into granting consent to avail of services, access data and
-   make payments.
+   end-users to grant consent to avail of services, access data and make
+   payments.
 
 4.3.1.  Example B1: Illicit Access to a Video Streaming Service (User-
         Transferred Session Data Pattern)
@@ -1401,7 +1401,7 @@ Table of Contents
 4.3.4.  Example B4: Illicit Transaction Authorization (Backchannel-
         Transferred Session Pattern)
 
-   These exploits applies to the use case described in Section 3.3.4.
+   These exploits apply to the use case described in Section 3.3.4.
 
 4.3.4.1.  Example B4.1: Bulk Authorization Request (Backchannel-
           Transferred Session Pattern)
@@ -1706,31 +1706,31 @@ Table of Contents
       effectively enforce it.  Note that it is common for a Consumption
       Device (e.g., a TV) to use a Wi-Fi connection while the
       Authorization Device (e.g., a phone) uses a mobile network.
-      Though physically in close proximity, they don't share a network,
-      so other proximity checks are needed.
+      Though physically in proximity, they don't share a network, so
+      other proximity checks are needed.
 
-   *  Geolocation: Proximity can be established by comparing geo-
-      location information derived from global navigation satellite-
-      system (GNSS) co-ordinates or geolocation lookup of IP addresses
-      and comparing proximity.  Geolocation based on GNSS may vary in
-      accuracy depending on the user's location, and when mapped to
-      national or regional boundaries may show a Consumption and
-      Authorization Device in different locations if those devices are
-      close to a border.  Since relative position is more important than
-      absolute location, implementations should consider relative
-      location to both devices rather than absolute location when
-      determining proximity.  Geolocation based on IP addresses may be
-      inaccurate along regional or national borders due to overlapping
-      coverage by different network providers from the respective
-      regions.  This may result in the Consumption Device being mapped
-      to one region, while the Authorization Device may be on another
-      network from another provider and mapped to another region.  These
-      inaccuracies may require restrictions to be at a more granular
-      level (e.g., same city, country, region or continent).  Similar to
-      the shared network checks, these checks may be performed by the
-      authorization server or on the users device, provided that the
-      information encoded in a QR code is integrity protected using a
-      digital signature.
+   *  Geolocation: Proximity can be established by comparing geolocation
+      information derived from global navigation satellite-system (GNSS)
+      co-ordinates or geolocation lookup of IP addresses and comparing
+      proximity.  Geolocation based on GNSS may vary in accuracy
+      depending on the user's location, and when mapped to national or
+      regional boundaries may show a Consumption and Authorization
+      Device in different locations if those devices are close to a
+      border.  Since relative position is more important than absolute
+      location, implementations should consider relative location to
+      both devices rather than absolute location when determining
+      proximity.  Geolocation based on IP addresses may be inaccurate
+      along regional or national borders due to overlapping coverage by
+      different network providers from the respective regions.  This may
+      result in the Consumption Device being mapped to one region, while
+      the Authorization Device may be on another network from another
+      provider and mapped to another region.  These inaccuracies may
+      require restrictions to be at a more granular level (e.g., same
+      city, country, region or continent).  Similar to the shared
+      network checks, these checks may be performed by the authorization
+      server or on the users device, provided that the information
+      encoded in a QR code is integrity protected using a digital
+      signature.
 
    Depending on the risk profile and the threat model in which a system
    is operating, it MAY be necessary to use more than one mechanism to
@@ -1767,10 +1767,10 @@ Table of Contents
    appear to be in different locations, requiring additional user
    guidance or alternative mechanisms to establish proximity.
 
-6.1.2.  Short Lived/Timebound QR or User Codes
+6.1.2.  Short-Lived/Timebound QR or User Codes
 
    The impact of an attack can be reduced by making QR or user codes
-   short lived.  If an attacker obtains a short lived code, the duration
+   short-lived.  If an attacker obtains a short-lived code, the duration
    during which the unauthenticated channel can be exploited is reduced,
    potentially increasing the cost of a successful attack.  This
    mitigation can be implemented on the authorization server without
@@ -1781,7 +1781,7 @@ Table of Contents
    (time taken to enter a code, time to complete authentication, or time
    needed to re-enter codes or re-authenticate due to an error).  More
    sophisticated Cross-Device Consent Phishing attacks counter the
-   effectiveness of short lived codes by convincing a user to respond to
+   effectiveness of short-lived codes by convincing a user to respond to
    a phishing e-mail and only request the QR or user code once the user
    clicks on the link in the phishing e-mail [SQPHISH].
 
@@ -1798,14 +1798,14 @@ Table of Contents
 
    *Limitations:* Enforcing one-time use may be difficult in large
    globally distributed systems with low latency requirements, in which
-   case short lived tokens may be more practical.  One-time use codes
+   case short-lived tokens may be more practical.  One-time use codes
    may also have an impact on the user experience.  For example, a user
    may enter a code, but their session may be interrupted before the
    access request is completed.  If the code is a one-time use code,
    they would need to restart the session and obtain a new code since
    they won't be allowed to enter the same code a second time.  To avoid
-   this, implementers MAY allow the same code to be presented a small
-   number of times.
+   this, implementers MAY allow the same code to be presented a few
+   times.
 
 6.1.4.  Unique Codes
 
@@ -1816,7 +1816,7 @@ Table of Contents
    same codes being presented repeatedly.  This may be achieved by
    maintaining a deny list that contains QR codes or user codes that
    were previously used.  The authorization server MAY use a sliding
-   window equal to the lifetime of a token if short lived/timebound
+   window equal to the lifetime of a token if short-lived/timebound
    tokens are used (see Section 6.1.2).  This will limit the size of the
    deny list.  This mitigation can be implemented on the authorization
    server without changes to other system components.
@@ -1834,7 +1834,7 @@ Table of Contents
    mechanisms).  By deploying content filtering (e.g., anti-spam
    filter), these messages can be blocked and prevented from reaching
    the end-users.  It may be possible to fine-tune content filtering
-   solutions to detect artefacts like QR codes or user codes that are
+   solutions to detect artifacts like QR codes or user codes that are
    included in a message that is sent to multiple recipients in the
    expectation that at least one of the recipients will be convinced by
    the message and grant authorization to access restricted resources.
@@ -1860,7 +1860,7 @@ Table of Contents
    server determines that a user code or QR code is being used in an
    attack it MAY choose to invalidate all tokens issued in response to
    these codes and make that information available through a token
-   introspection endpoint (see [RFC7662]).  In addition it may notify
+   introspection endpoint (see [RFC7662]).  In addition, it may notify
    resource servers to stop accepting these tokens or to terminate
    existing sessions associated with these tokens using Continuous
    Access Evaluation Protocol (CAEP) messages [CAEP] using the Shared
@@ -1951,18 +1951,18 @@ Table of Contents
    but does not avoid it.  It SHOULD be used in conjunction with other
    mitigations described in this document.
 
-6.1.10.  Short Lived Tokens
+6.1.10.  Short-Lived Tokens
 
    Another mitigation strategy includes limiting the life of the access
    and refresh tokens.  The lifetime can be lengthened or shortened,
    depending on the user's location, the resources they are trying to
-   access or whether they are using a trusted device.  Short lived
+   access or whether they are using a trusted device.  Short-lived
    tokens do not prevent or disrupt the attack, but serve as a remedial
    mechanism in case the attack succeeded.  This mitigation can be
    implemented on the authorization server without changes to other
    system components.
 
-   *Limitations:* Short lived tokens reduces the time window during
+   *Limitations:* Short-lived tokens reduces the time window during
    which an attacker can benefit from a successful attack.  This is most
    effective for access tokens.  However, once an attacker obtains a
    refresh token, they can continue to request new access tokens, as
@@ -2010,7 +2010,7 @@ Table of Contents
    Hardware keys are harder to exfiltrate, but come with additional
    implementation complexity.  An attacker that controls the Consumption
    Device may still be able to excercise the key, even if it is in
-   hardware.  Consequently the main protection derived from sender-
+   hardware.  Consequently, the main protection derived from sender-
    constrained tokens is preventing tokens from being moved from the
    Consumption Device to another device, thereby making it harder sell
    stolen tokens and profit from the attack.
@@ -2165,7 +2165,7 @@ Table of Contents
      +=================================+=========+=========+=========+
      | Establish Proximity             |    X    |    X    |         |
      +---------------------------------+---------+---------+---------+
-     | Short Lived/Timebound Codes     |         |    X    |         |
+     | Short-Lived/Timebound Codes     |         |    X    |         |
      +---------------------------------+---------+---------+---------+
      | One-Time or Limited Use Codes   |         |    X    |         |
      +---------------------------------+---------+---------+---------+
@@ -2181,7 +2181,7 @@ Table of Contents
      +---------------------------------+---------+---------+---------+
      | Limited Scopes                  |         |         |    X    |
      +---------------------------------+---------+---------+---------+
-     | Short Lived Tokens              |         |         |    X    |
+     | Short-Lived Tokens              |         |         |    X    |
      +---------------------------------+---------+---------+---------+
      | Rate Limits                     |    X    |    X    |         |
      +---------------------------------+---------+---------+---------+
@@ -2310,10 +2310,10 @@ Table of Contents
    to Authenticator Protocol (CTAP) supports a new cross-device
    authentication protocol, called "hybrid transports", which enables an
    external device, such as a phone or tablet, to be used as a roaming
-   authenticator for signing into the primary device, such as a personal
-   computer.  This is commonly called FIDO Cross-Device Authentication
-   (CDA).  CTAP 2.2 hybrid transports is implemented by the client and
-   authenticator platforms.
+   authenticator for signing in to the primary device, such as a
+   personal computer.  This is commonly called FIDO Cross-Device
+   Authentication (CDA).  CTAP 2.2 hybrid transports is implemented by
+   the client and authenticator platforms.
 
    When a user wants to authenticate using their mobile device
    (authenticator) for the first time, they need to link their
@@ -2453,7 +2453,7 @@ Table of Contents
    *  In "The Good, the Bad and the (Not So) Ugly of Out-of-Band
       Authentication with eID Cards and Push Notifications: Design,
       Formal and Risk Analysis" [MPRCS2020], Pernpruner et al. formally
-      analysed an authentication protocol relying on push notifications
+      analyzed an authentication protocol relying on push notifications
       delivered to an out-of-band device to approve the authentication
       attempt on the primary device (Backchannel-Transferred Session
       Pattern, Section 3.1.2).  The analysis was performed using the
@@ -2501,7 +2501,7 @@ Table of Contents
    credentials, resulting in access to resources even if the user used
    multi-factor authentication.
 
-   To address these attacks, we propose a three pronged approach that
+   To address these attacks, we propose a three-pronged approach that
    includes the deployment of practical mitigations to safeguard
    protocols that are already deployed, provide guidance on when to use
    different protocols, including protocols that are not susceptible to
@@ -2516,9 +2516,9 @@ Table of Contents
    zu Selhausen, Maryam Mehrnezhad, Marco Pernpruner, Giada Sciarretta,
    Dean H.  Saxe, Roy Williams, Aaron Parecki, George Fletcher, Hannes
    Tschofenig, Dan Moore, Deb Cooley, Paul Kyzivat, David Mandelberg,
-   Jim Fenton, Bing Liu, Mohamed Boucadair and others (please let us
-   know, if you've been mistakenly omitted) for their valuable input,
-   feedback and general support of this work.
+   Jim Fenton, Bing Liu, Mohamed Boucadair, Mike Bishop, Roman Danyliw
+   and others for their valuable input, feedback and general support of
+   this work.
 
 11.  References
 
@@ -2734,7 +2734,7 @@ Appendix A.  Document History
          issues/217, https://github.com/oauth-wg/oauth-cross-device-
          security/issues/213)
 
-      -  ARTART Feedback: Clarify that 6 digit codes are examples only
+      -  ARTART Feedback: Clarify that 6-digit codes are examples only
          (https://github.com/oauth-wg/oauth-cross-device-security/
          issues/214)
 
