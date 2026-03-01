@@ -5,10 +5,10 @@
 oauth                                                       P. Kasselman
 Internet-Draft                                                   Defakto
 Intended status: Best Current Practice                           D. Fett
-Expires: 1 September 2026                                       Authlete
+Expires: 2 September 2026                                       Authlete
                                                                F. Skokan
                                                                     Okta
-                                                        28 February 2026
+                                                            1 March 2026
 
 
            Cross-Device Flows: Security Best Current Practice
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 1 September 2026.
+   This Internet-Draft will expire on 2 September 2026.
 
 Copyright Notice
 
@@ -1591,10 +1591,11 @@ Table of Contents
    defines a browser API for requesting and presenting verifiable
    credentials.  The API is designed to be used in both same-device and
    cross-device scenarios.  In cross-device scenarios, the API can be
-   used to secure flows against the attacks presented in this documet by
-   ensuring proximity between the Consumption Device and Authorization
-   Device (e.g., by leveraging Bluetooth Low Energy (BLE)).  In same-
-   device scenarios, the API can be used without proximity checks.
+   used to secure flows against the attacks presented in this document
+   by ensuring proximity between the Consumption Device and
+   Authorization Device (e.g., by leveraging Bluetooth Low Energy
+   (BLE)).  In same-device scenarios, the API can be used without
+   proximity checks.
 
    An authorization server MAY use techniques such as device
    fingerprinting, network address or other techniques to detect if a
