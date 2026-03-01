@@ -204,47 +204,52 @@ informative:
   target: https://nypost.com/2021/08/07/citi-bikes-being-swiped-by-joyriding-scammers-who-have-cracked-the-qr-code/
 
  OpenID.SIOPV2:
-  title: "Self-Issued OpenID Provider v2"
+  title: "Self-Issued OpenID Provider v2 - Draft 13"
   author:
    - name: Kristina Yasuda
      org: Microsoft
    - name: Michael B. Jones
-     org: Microsoft
+     org: Self-Issued Consulting
    - name: Torsten Lodderstedt
-     org: yes.com
+     org: SPRIND
   date: 2022-11
-  target: https://bitbucket.org/openid/connect/src/master/openid-connect-self-issued-v2/openid-connect-self-issued-v2-1_0.md
+  target: https://openid.net/specs/openid-connect-self-issued-v2-1_0.html
 
  OpenID.VP:
-  title: "OpenID for Verifiable Credential Presentations"
+  title: "OpenID for Verifiable Presentations 1.0"
   author:
    - name: Oliver Terbu
      org: Mattr
    - name: Torsten Lodderstedt
-     org: yes.com
+     org: SPRIND
    - name: Kristina Yasuda
-     org: Microsoft
-   - name: Tobias Looker
-     org: Mattr
-  date: 2023-11
+     org: SPRIND
+   - name: Daniel Fett
+     org: Authlete
+   - name: Joseph Heenan
+     org: Authlete
+  date: 2025-09
   target: https://openid.net/specs/openid-4-verifiable-presentations-1_0.html
 
  OpenID.VCI:
-  title: "OpenID for Verifiable Credential Issuance"
+  title: "OpenID for Verifiable Credential Issuance 1.0"
   author:
    - name: Torsten Lodderstedt
-     org: yes.com
+     org: SPRIND
    - name: Kristina Yasuda
-     org: Microsoft
+     org: SPRIND
    - name: Tobias Looker
      org: Mattr
-  date: 2023-10
+   - name: Paul Bastian
+     org: Bundesdruckerei
+  date: 2025-09
   target: https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html
 
  Bauer2022:
   title: "Formal analysis of self-issued OpenID providers"
   author:
-   - name: C Bauer
+   - name: Christina Bauer
+     org: University of Stuttgart
   date: 2022
   target: https://elib.uni-stuttgart.de/handle/11682/12417
 
@@ -320,6 +325,10 @@ informative:
  NISTGlossary:
   title: "NIST Computer Security Resource Center Glossary"
   target: "https://csrc.nist.gov/glossary"
+
+ W3C.DCAPI:
+  title: "Digital Credentials API - W3C Editor's Draft"
+  target: https://w3c-fedid.github.io/digital-credentials/
 
 --- abstract
 
@@ -1017,7 +1026,9 @@ A number of protocols that have been standardized, or are in the process of bein
 
 - **Self-Issued OpenID Provider v2 (SIOP V2):** A standard that allows end-user to present self-attested or third party attested attributes when used with OpenID for Verifiable Credential protocols. The user scans a QR code presented by the relying party to initiate the flow.
 
-Cross-device protocols SHOULD NOT be used for same-device scenarios. If the Consumption Device and Authorization Device are the same device, protocols like OpenID Connect Core {{OpenID.Core}} and OAuth 2.0 Authorization Code Grant as defined in {{RFC6749}} are more appropriate. If a protocol supports both same-device and cross-device modes (e.g., {{OpenID.SIOPV2}}), the cross-device mode SHOULD NOT be used for same-device scenarios. An authorization server MAY choose to block cross-device protocols used in same-device scenarios if it detects that the same device is used. Implementors should take into account that in environments that use Network Address Translation (NAT), multiple devices may appear to originate from the same network address, increasing the risk of incorrectly inferring that a cross-device flow is occurring on a single device.
+Cross-device protocols SHOULD NOT be used for same-device scenarios. If the Consumption Device and Authorization Device are the same device, protocols like OpenID Connect Core {{OpenID.Core}} and OAuth 2.0 Authorization Code Grant as defined in {{RFC6749}} are more appropriate. If a protocol supports both same-device and cross-device modes (e.g., {{OpenID.SIOPV2}} and {{OpenID.VP}}), the cross-device mode SHOULD NOT be used for same-device scenarios. An authorization server MAY choose to block cross-device protocols used in same-device scenarios if it detects that the same device is used. Implementors should take into account that in environments that use Network Address Translation (NAT), multiple devices may appear to originate from the same network address, increasing the risk of incorrectly inferring that a cross-device flow is occurring on a single device.
+
+The W3C Digital Credentials API {{W3C.DCAPI}} is a standard that defines a browser API for requesting and presenting verifiable credentials. The API is designed to be used in both same-device and cross-device scenarios. In cross-device scenarios, the API can be used to secure flows against the attacks presented in this document by ensuring proximity between the Consumption Device and Authorization Device (e.g., by leveraging Bluetooth Low Energy (BLE)). In same-device scenarios, the API can be used without proximity checks.
 
 An authorization server MAY use techniques such as device fingerprinting, network address or other techniques to detect if a cross-device protocol is being used on the same device. If an implementor decides to use a cross-device protocol or a protocol with a cross-device mode in a same-device scenario, the mitigations recommended in this document SHOULD be implemented to reduce the risks that the unauthenticated channel is exploited.
 
@@ -1049,7 +1060,7 @@ The unauthenticated channel between the Consumption Device and Authorization Dev
 
 - Physical connectivity: This is a good indicator of proximity, but requires specific ports, cables and hardware and may be challenging from a user experience perspective or may not be possible in certain settings (e.g., when USB ports are blocked or removed for security purposes). Physical connectivity may be better suited to dedicated hardware like FIDO devices that can be used with protocols that are resistant to the exploits described in this document. The use of physically connected devices may introduce additional security risks (e.g., data access or device compromise through malicious peripherals), the assessment and mitigation of which are beyond the scope of this document.
 
-- Wireless proximity: Near Field Communications (NFC), Bluetooth Low Energy (BLE), and Ultra Wideband (UWB) services can be used to prove proximity between the two devices. NFC technology is widely deployed in mobile phones as part of payment solutions, but NFC readers are less widely deployed. BLE presents another alternative for establishing proximity, but may present user experience challenges when setting up. UWB standards such as IEEE  802.15.4 and the IEEE 802.15.4z-2020 Amendment 1 enable secure ranging between devices and allow devices to establish proximity relative to each other {{IEEE802154}}. FIDO and WebAuthn-based cross-device flows leverage wireless proximity using BLE and are the RECOMMENDED approach for performing secure cross-device flows (see {{fido}}).
+- Wireless proximity: Near Field Communications (NFC), Bluetooth Low Energy (BLE), and Ultra Wideband (UWB) services can be used to prove proximity between the two devices. NFC technology is widely deployed in mobile phones as part of payment solutions, but NFC readers are less widely deployed. BLE presents another alternative for establishing proximity, but may present user experience challenges when setting up. UWB standards such as IEEE  802.15.4 and the IEEE 802.15.4z-2020 Amendment 1 enable secure ranging between devices and allow devices to establish proximity relative to each other {{IEEE802154}}. FIDO and WebAuthn-based cross-device flows leverage wireless proximity using BLE and are the RECOMMENDED approach for performing secure cross-device flows (see {{fido}}). For the presentation of digital credentials, the W3C Digital Credentials API {{W3C.DCAPI}} can be used.
 
 - Shared network: Device proximity can be inferred by verifying that both devices are on the same network. This check may be performed by the authorization server by comparing the network addresses of the device where the code is displayed (Consumption Device) with that of the Authorization Device. Alternatively the check can be performed on the device, provided that the network address is available. This could be achieved if the authorization server encodes the Consumption Device's network address in the QR code and uses a digital signature to prevent tampering with the code. This does require the wallet to be aware of the countermeasure and effectively enforce it. Note that it is common for a Consumption Device (e.g., a TV) to use a Wi-Fi connection while the Authorization Device (e.g., a phone) uses a mobile network. Though physically in proximity, they don't share a network, so other proximity checks are needed.
 
