@@ -174,7 +174,7 @@ specialists, fraud analysts and engineers implementing cross-device flows.
   font-weight: 400;
   font-display: swap;
   src: local('Oxygen Mono'), local('OxygenMono-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/oxygenmono-regular-latin-ext.woff2') format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 @font-face {
   font-family: 'Oxygen Mono';
@@ -182,7 +182,8 @@ specialists, fraud analysts and engineers implementing cross-device flows.
   font-weight: 400;
   font-display: swap;
   src: local('Oxygen Mono'), local('OxygenMono-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/oxygenmono-regular-latin.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 }
 
 @font-face {
@@ -1053,11 +1054,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">CDFS</td>
-<td class="right">January 2026</td>
+<td class="right">March 2026</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Kasselman, et al.</td>
-<td class="center">Expires 27 July 2026</td>
+<td class="center">Expires 2 September 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1070,12 +1071,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-oauth-cross-device-security-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-01-23" class="published">23 January 2026</time>
+<time datetime="2026-03-01" class="published">1 March 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Best Current Practice</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-07-27">27 July 2026</time></dd>
+<dd class="expires"><time datetime="2026-09-02">2 September 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1133,7 +1134,7 @@ specialists, fraud analysts and engineers implementing cross-device flows.<a hre
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 27 July 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 2 September 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -2466,8 +2467,9 @@ Authorization|              |                       |               |
           <p id="section-5-4.4.1"><strong>Self-Issued OpenID Provider v2 (SIOP V2):</strong> A standard that allows end-user to present self-attested or third party attested attributes when used with OpenID for Verifiable Credential protocols. The user scans a QR code presented by the relying party to initiate the flow.<a href="#section-5-4.4.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="section-5-5">Cross-device protocols SHOULD NOT be used for same-device scenarios. If the Consumption Device and Authorization Device are the same device, protocols like OpenID Connect Core <span>[<a href="#OpenID.Core" class="cite xref">OpenID.Core</a>]</span> and OAuth 2.0 Authorization Code Grant as defined in <span>[<a href="#RFC6749" class="cite xref">RFC6749</a>]</span> are more appropriate. If a protocol supports both same-device and cross-device modes (e.g., <span>[<a href="#OpenID.SIOPV2" class="cite xref">OpenID.SIOPV2</a>]</span>), the cross-device mode SHOULD NOT be used for same-device scenarios. An authorization server MAY choose to block cross-device protocols used in same-device scenarios if it detects that the same device is used. Implementors should take into account that in environments that use Network Address Translation (NAT), multiple devices may appear to originate from the same network address, increasing the risk of incorrectly inferring that a cross-device flow is occurring on a single device.<a href="#section-5-5" class="pilcrow">¶</a></p>
-<p id="section-5-6">An authorization server MAY use techniques such as device fingerprinting, network address or other techniques to detect if a cross-device protocol is being used on the same device. If an implementor decides to use a cross-device protocol or a protocol with a cross-device mode in a same-device scenario, the mitigations recommended in this document SHOULD be implemented to reduce the risks that the unauthenticated channel is exploited.<a href="#section-5-6" class="pilcrow">¶</a></p>
+<p id="section-5-5">Cross-device protocols SHOULD NOT be used for same-device scenarios. If the Consumption Device and Authorization Device are the same device, protocols like OpenID Connect Core <span>[<a href="#OpenID.Core" class="cite xref">OpenID.Core</a>]</span> and OAuth 2.0 Authorization Code Grant as defined in <span>[<a href="#RFC6749" class="cite xref">RFC6749</a>]</span> are more appropriate. If a protocol supports both same-device and cross-device modes (e.g., <span>[<a href="#OpenID.SIOPV2" class="cite xref">OpenID.SIOPV2</a>]</span> and <span>[<a href="#OpenID.VP" class="cite xref">OpenID.VP</a>]</span>), the cross-device mode SHOULD NOT be used for same-device scenarios. An authorization server MAY choose to block cross-device protocols used in same-device scenarios if it detects that the same device is used. Implementors should take into account that in environments that use Network Address Translation (NAT), multiple devices may appear to originate from the same network address, increasing the risk of incorrectly inferring that a cross-device flow is occurring on a single device.<a href="#section-5-5" class="pilcrow">¶</a></p>
+<p id="section-5-6">The W3C Digital Credentials API <span>[<a href="#W3C.DCAPI" class="cite xref">W3C.DCAPI</a>]</span> is a standard that defines a browser API for requesting and presenting verifiable credentials. The API is designed to be used in both same-device and cross-device scenarios. In cross-device scenarios, the API can be used to secure flows against the attacks presented in this document by ensuring proximity between the Consumption Device and Authorization Device (e.g., by leveraging Bluetooth Low Energy (BLE)). In same-device scenarios, the API can be used without proximity checks.<a href="#section-5-6" class="pilcrow">¶</a></p>
+<p id="section-5-7">An authorization server MAY use techniques such as device fingerprinting, network address or other techniques to detect if a cross-device protocol is being used on the same device. If an implementor decides to use a cross-device protocol or a protocol with a cross-device mode in a same-device scenario, the mitigations recommended in this document SHOULD be implemented to reduce the risks that the unauthenticated channel is exploited.<a href="#section-5-7" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="mitigating-against-cross-device-flow-attacks">
@@ -2528,7 +2530,7 @@ Authorization|              |                       |               |
               <p id="section-6.1.1-2.1.1">Physical connectivity: This is a good indicator of proximity, but requires specific ports, cables and hardware and may be challenging from a user experience perspective or may not be possible in certain settings (e.g., when USB ports are blocked or removed for security purposes). Physical connectivity may be better suited to dedicated hardware like FIDO devices that can be used with protocols that are resistant to the exploits described in this document. The use of physically connected devices may introduce additional security risks (e.g., data access or device compromise through malicious peripherals), the assessment and mitigation of which are beyond the scope of this document.<a href="#section-6.1.1-2.1.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-6.1.1-2.2">
-              <p id="section-6.1.1-2.2.1">Wireless proximity: Near Field Communications (NFC), Bluetooth Low Energy (BLE), and Ultra Wideband (UWB) services can be used to prove proximity between the two devices. NFC technology is widely deployed in mobile phones as part of payment solutions, but NFC readers are less widely deployed. BLE presents another alternative for establishing proximity, but may present user experience challenges when setting up. UWB standards such as IEEE  802.15.4 and the IEEE 802.15.4z-2020 Amendment 1 enable secure ranging between devices and allow devices to establish proximity relative to each other <span>[<a href="#IEEE802154" class="cite xref">IEEE802154</a>]</span>. FIDO and WebAuthn-based cross-device flows leverage wireless proximity using BLE and are the RECOMMENDED approach for performing secure cross-device flows (see <a href="#fido" class="auto internal xref">Section 6.2.3</a>).<a href="#section-6.1.1-2.2.1" class="pilcrow">¶</a></p>
+              <p id="section-6.1.1-2.2.1">Wireless proximity: Near Field Communications (NFC), Bluetooth Low Energy (BLE), and Ultra Wideband (UWB) services can be used to prove proximity between the two devices. NFC technology is widely deployed in mobile phones as part of payment solutions, but NFC readers are less widely deployed. BLE presents another alternative for establishing proximity, but may present user experience challenges when setting up. UWB standards such as IEEE  802.15.4 and the IEEE 802.15.4z-2020 Amendment 1 enable secure ranging between devices and allow devices to establish proximity relative to each other <span>[<a href="#IEEE802154" class="cite xref">IEEE802154</a>]</span>. FIDO and WebAuthn-based cross-device flows leverage wireless proximity using BLE and are the RECOMMENDED approach for performing secure cross-device flows (see <a href="#fido" class="auto internal xref">Section 6.2.3</a>). For the presentation of digital credentials, the W3C Digital Credentials API <span>[<a href="#W3C.DCAPI" class="cite xref">W3C.DCAPI</a>]</span> can be used.<a href="#section-6.1.1-2.2.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-6.1.1-2.3">
               <p id="section-6.1.1-2.3.1">Shared network: Device proximity can be inferred by verifying that both devices are on the same network. This check may be performed by the authorization server by comparing the network addresses of the device where the code is displayed (Consumption Device) with that of the Authorization Device. Alternatively the check can be performed on the device, provided that the network address is available. This could be achieved if the authorization server encodes the Consumption Device's network address in the QR code and uses a digital signature to prevent tampering with the code. This does require the wallet to be aware of the countermeasure and effectively enforce it. Note that it is common for a Consumption Device (e.g., a TV) to use a Wi-Fi connection while the Authorization Device (e.g., a phone) uses a mobile network. Though physically in proximity, they don't share a network, so other proximity checks are needed.<a href="#section-6.1.1-2.3.1" class="pilcrow">¶</a></p>
@@ -3188,15 +3190,15 @@ described in <a href="#user_education" class="auto internal xref">Section 6.1.13
 <dd class="break"></dd>
 <dt id="OpenID.SIOPV2">[OpenID.SIOPV2]</dt>
         <dd>
-<span class="refAuthor">Yasuda, K.</span>, <span class="refAuthor">Jones, M. B.</span>, and <span class="refAuthor">T. Lodderstedt</span>, <span class="refTitle">"Self-Issued OpenID Provider v2"</span>, <time datetime="2022-11" class="refDate">November 2022</time>, <span>&lt;<a href="https://bitbucket.org/openid/connect/src/master/openid-connect-self-issued-v2/openid-connect-self-issued-v2-1_0.md">https://bitbucket.org/openid/connect/src/master/openid-connect-self-issued-v2/openid-connect-self-issued-v2-1_0.md</a>&gt;</span>. </dd>
+<span class="refAuthor">Yasuda, K.</span>, <span class="refAuthor">Jones, M. B.</span>, and <span class="refAuthor">T. Lodderstedt</span>, <span class="refTitle">"Self-Issued OpenID Provider v2 - Draft 13"</span>, <time datetime="2022-11" class="refDate">November 2022</time>, <span>&lt;<a href="https://openid.net/specs/openid-connect-self-issued-v2-1_0.html">https://openid.net/specs/openid-connect-self-issued-v2-1_0.html</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="OpenID.VP">[OpenID.VP]</dt>
         <dd>
-<span class="refAuthor">Terbu, O.</span>, <span class="refAuthor">Lodderstedt, T.</span>, <span class="refAuthor">Yasuda, K.</span>, and <span class="refAuthor">T. Looker</span>, <span class="refTitle">"OpenID for Verifiable Credential Presentations"</span>, <time datetime="2023-11" class="refDate">November 2023</time>, <span>&lt;<a href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">https://openid.net/specs/openid-4-verifiable-presentations-1_0.html</a>&gt;</span>. </dd>
+<span class="refAuthor">Terbu, O.</span>, <span class="refAuthor">Lodderstedt, T.</span>, <span class="refAuthor">Yasuda, K.</span>, <span class="refAuthor">Fett, D.</span>, and <span class="refAuthor">J. Heenan</span>, <span class="refTitle">"OpenID for Verifiable Presentations 1.0"</span>, <time datetime="2025-09" class="refDate">September 2025</time>, <span>&lt;<a href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">https://openid.net/specs/openid-4-verifiable-presentations-1_0.html</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="OpenID.VCI">[OpenID.VCI]</dt>
         <dd>
-<span class="refAuthor">Lodderstedt, T.</span>, <span class="refAuthor">Yasuda, K.</span>, and <span class="refAuthor">T. Looker</span>, <span class="refTitle">"OpenID for Verifiable Credential Issuance"</span>, <time datetime="2023-10" class="refDate">October 2023</time>, <span>&lt;<a href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html</a>&gt;</span>. </dd>
+<span class="refAuthor">Lodderstedt, T.</span>, <span class="refAuthor">Yasuda, K.</span>, <span class="refAuthor">Looker, T.</span>, and <span class="refAuthor">P. Bastian</span>, <span class="refTitle">"OpenID for Verifiable Credential Issuance 1.0"</span>, <time datetime="2025-09" class="refDate">September 2025</time>, <span>&lt;<a href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="Bauer2022">[Bauer2022]</dt>
         <dd>
@@ -3227,8 +3229,12 @@ described in <a href="#user_education" class="auto internal xref">Section 6.1.13
 <span class="refTitle">"NIST Small Business Cybersecurity Fact Sheet: Phishing"</span>, <span>n.d.</span>, <span>&lt;<a href="https://www.nist.gov/system/files/documents/2024/03/12/Phishing_SMB%20FactSheet_2024_Final.pdf">https://www.nist.gov/system/files/documents/2024/03/12/Phishing_SMB%20FactSheet_2024_Final.pdf</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="NISTGlossary">[NISTGlossary]</dt>
-      <dd>
+        <dd>
 <span class="refTitle">"NIST Computer Security Resource Center Glossary"</span>, <span>n.d.</span>, <span>&lt;<a href="https://csrc.nist.gov/glossary">https://csrc.nist.gov/glossary</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="W3C.DCAPI">[W3C.DCAPI]</dt>
+      <dd>
+<span class="refTitle">"Digital Credentials API - W3C Editor's Draft"</span>, <span>n.d.</span>, <span>&lt;<a href="https://w3c-fedid.github.io/digital-credentials/">https://w3c-fedid.github.io/digital-credentials/</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>

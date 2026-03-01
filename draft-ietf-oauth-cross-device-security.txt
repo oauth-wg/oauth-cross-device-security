@@ -5,10 +5,10 @@
 oauth                                                       P. Kasselman
 Internet-Draft                                                   Defakto
 Intended status: Best Current Practice                           D. Fett
-Expires: 27 July 2026                                           Authlete
+Expires: 2 September 2026                                       Authlete
                                                                F. Skokan
                                                                     Okta
-                                                         23 January 2026
+                                                            1 March 2026
 
 
            Cross-Device Flows: Security Best Current Practice
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 27 July 2026.
+   This Internet-Draft will expire on 2 September 2026.
 
 Copyright Notice
 
@@ -1577,14 +1577,25 @@ Table of Contents
    device, protocols like OpenID Connect Core [OpenID.Core] and OAuth
    2.0 Authorization Code Grant as defined in [RFC6749] are more
    appropriate.  If a protocol supports both same-device and cross-
-   device modes (e.g., [OpenID.SIOPV2]), the cross-device mode SHOULD
-   NOT be used for same-device scenarios.  An authorization server MAY
-   choose to block cross-device protocols used in same-device scenarios
-   if it detects that the same device is used.  Implementors should take
-   into account that in environments that use Network Address
-   Translation (NAT), multiple devices may appear to originate from the
-   same network address, increasing the risk of incorrectly inferring
-   that a cross-device flow is occurring on a single device.
+   device modes (e.g., [OpenID.SIOPV2] and [OpenID.VP]), the cross-
+   device mode SHOULD NOT be used for same-device scenarios.  An
+   authorization server MAY choose to block cross-device protocols used
+   in same-device scenarios if it detects that the same device is used.
+   Implementors should take into account that in environments that use
+   Network Address Translation (NAT), multiple devices may appear to
+   originate from the same network address, increasing the risk of
+   incorrectly inferring that a cross-device flow is occurring on a
+   single device.
+
+   The W3C Digital Credentials API [W3C.DCAPI] is a standard that
+   defines a browser API for requesting and presenting verifiable
+   credentials.  The API is designed to be used in both same-device and
+   cross-device scenarios.  In cross-device scenarios, the API can be
+   used to secure flows against the attacks presented in this document
+   by ensuring proximity between the Consumption Device and
+   Authorization Device (e.g., by leveraging Bluetooth Low Energy
+   (BLE)).  In same-device scenarios, the API can be used without
+   proximity checks.
 
    An authorization server MAY use techniques such as device
    fingerprinting, network address or other techniques to detect if a
@@ -1691,7 +1702,8 @@ Table of Contents
       relative to each other [IEEE802154].  FIDO and WebAuthn-based
       cross-device flows leverage wireless proximity using BLE and are
       the RECOMMENDED approach for performing secure cross-device flows
-      (see Section 6.2.3).
+      (see Section 6.2.3).  For the presentation of digital credentials,
+      the W3C Digital Credentials API [W3C.DCAPI] can be used.
 
    *  Shared network: Device proximity can be inferred by verifying that
       both devices are on the same network.  This check may be performed
@@ -2632,22 +2644,21 @@ Table of Contents
 
    [OpenID.SIOPV2]
               Yasuda, K., Jones, M. B., and T. Lodderstedt, "Self-Issued
-              OpenID Provider v2", November 2022,
-              <https://bitbucket.org/openid/connect/src/master/openid-
-              connect-self-issued-v2/openid-connect-self-issued-
-              v2-1_0.md>.
+              OpenID Provider v2 - Draft 13", November 2022,
+              <https://openid.net/specs/openid-connect-self-issued-
+              v2-1_0.html>.
 
    [OpenID.VP]
-              Terbu, O., Lodderstedt, T., Yasuda, K., and T. Looker,
-              "OpenID for Verifiable Credential Presentations", November
-              2023, <https://openid.net/specs/openid-4-verifiable-
-              presentations-1_0.html>.
+              Terbu, O., Lodderstedt, T., Yasuda, K., Fett, D., and J.
+              Heenan, "OpenID for Verifiable Presentations 1.0",
+              September 2025, <https://openid.net/specs/openid-4-
+              verifiable-presentations-1_0.html>.
 
    [OpenID.VCI]
-              Lodderstedt, T., Yasuda, K., and T. Looker, "OpenID for
-              Verifiable Credential Issuance", October 2023,
-              <https://openid.net/specs/openid-4-verifiable-credential-
-              issuance-1_0.html>.
+              Lodderstedt, T., Yasuda, K., Looker, T., and P. Bastian,
+              "OpenID for Verifiable Credential Issuance 1.0", September
+              2025, <https://openid.net/specs/openid-4-verifiable-
+              credential-issuance-1_0.html>.
 
    [Bauer2022]
               Bauer, C., "Formal analysis of self-issued OpenID
@@ -2698,6 +2709,10 @@ Table of Contents
    [NISTGlossary]
               "NIST Computer Security Resource Center Glossary", n.d.,
               <https://csrc.nist.gov/glossary>.
+
+   [W3C.DCAPI]
+              "Digital Credentials API - W3C Editor's Draft", n.d.,
+              <https://w3c-fedid.github.io/digital-credentials/>.
 
 Appendix A.  Document History
 
