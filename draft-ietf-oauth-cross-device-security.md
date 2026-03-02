@@ -1338,7 +1338,13 @@ The authors would like to thank Tim Cappalli, Nick Ludwig, Adrian Frei, Nikhil R
 # Document History
    \[\[ To be removed from the final specification ]]
 
- - latest
+  - latest
+
+   * Updated reference
+   * Added reference to use of W3C Digital Credential API as a mechanism that use BLE to establish proximity for credential presentation (https://github.com/oauth-wg/oauth-cross-device-security/issues/148)
+
+  -13
+
    * Secdir Feedback: Additional information on allowing time to authenticate (https://github.com/oauth-wg/oauth-cross-device-security/issues/203)
    * Secdir Feedback: Provide additional guidance on user impact of using a VPN (see https://github.com/oauth-wg/oauth-cross-device-security/issues/202)
    * Secdir Feedback: Clarify section 4.1.3 (https://github.com/oauth-wg/oauth-cross-device-security/issues/201)
