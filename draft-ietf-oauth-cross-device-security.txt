@@ -3,7 +3,7 @@
 
 
 oauth                                                       P. Kasselman
-Internet-Draft                                                   Defakto
+Internet-Draft                                          Defakto Security
 Intended status: Best Current Practice                           D. Fett
 Expires: 3 September 2026                                       Authlete
                                                                F. Skokan
@@ -3008,7 +3008,7 @@ Appendix A.  Document History
 Authors' Addresses
 
    Pieter Kasselman
-   Defakto
+   Defakto Security
    Email: prkasselman@gmail.com
 
 
